@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YT + SRT 自訂字幕</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #111;
+      color: #fff;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 12px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    .toolbar input[type="text"] {
+      height: 42px;
+      border: 1px solid #444;
+      border-radius: 10px;
+      background: #1c1c1c;
+      color: #fff;
+      padding: 0 12px;
+      font-size: 16px;
+    }
+
+    .toolbar button,
+    .toolbar input[type="file"] {
+      height: 42px;
+      font-size: 14px;
+    }
+
+    .player-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    #player {
+      width: 100%;
+      height: 100%;
+    }
+
+    .subtitle-layer {
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      bottom: 8%;
+      text-align: center;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .subtitle-text {
+      display: inline-block;
+      max-width: 100%;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.45);
+      font-size: clamp(20px, 2.2vw, 34px);
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+      text-shadow:
+        0 0 2px #000,
+        0 0 4px #000,
+        0 0 8px #000,
+        0 0 12px #000;
+    }
+
+    .info {
+      margin-top: 16px;
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    .list {
+      margin-top: 20px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 12px;
+      max-height: 280px;
+      overflow: auto;
+    }
+
+    .item {
+      padding: 10px;
+      border-bottom: 1px solid #2a2a2a;
+      cursor: pointer;
+    }
+
+    .item:last-child {
+      border-bottom: none;
+    }
+
+    .item.active {
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+    }
+
+    .time {
+      color: #9ecbff;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .text {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="toolbar">
+      <input id="videoIdInput" type="text" placeholder="請輸入 YouTube 影片 ID，例如 dqNMWaT9mog" />
+      <button id="loadVideoBtn">載入影片</button>
+      <input id="srtFileInput" type="file" accept=".srt" />
+    </div>
+
+    <div class="player-wrap">
+      <div id="player"></div>
+      <div class="subtitle-layer">
+        <div id="subtitle" class="subtitle-text"></div>
+      </div>
+    </div>
+
+    <div class="info" id="info">尚未載入字幕</div>
+    <div class="list" id="subtitleList"></div>
+  </div>
+
+  <script>
+    let player = null;
+    let syncTimer = null;
+    let subtitles = [];
+    let currentSubtitleIndex = -1;
+
+    function srtTimeToSeconds(timeStr) {
+      // 00:01:02,500 -> 秒
+      const match = timeStr.trim().match(/(\d{2}):(\d{2}):(\d{2}),(\d{3})/);
+      if (!match) return 0;
+      const [, hh, mm, ss, ms] = match;
+      return (
+        parseInt(hh, 10) * 3600 +
+        parseInt(mm, 10) * 60 +
+        parseInt(ss, 10) +
+        parseInt(ms, 10) / 1000
+      );
+    }
+
+    function parseSrt(srtText) {
+      // 處理 BOM
+      srtText = srtText.replace(/^\uFEFF/, "");
+
+      // 統一換行
+      const normalized = srtText.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+      // 每段字幕以空白行分隔
+      const blocks = normalized.split(/\n{2,}/);
+      const results = [];
+
+      for (const block of blocks) {
+        const lines = block.split("\n").filter(Boolean);
+        if (lines.length < 2) continue;
+
+        let index = 0;
+
+        // 第一行可能是序號
+        if (/^\d+$/.test(lines[0].trim())) {
+          index = 1;
+        }
+
+        const timeLine = lines[index];
+        if (!timeLine || !timeLine.includes("-->")) continue;
+
+        const [startStr, endStr] = timeLine.split("-->").map(s => s.trim());
+        const text = lines.slice(index + 1).join("\n").trim();
+
+        if (!text) continue;
+
+        results.push({
+          start: srtTimeToSeconds(startStr),
+          end: srtTimeToSeconds(endStr),
+          text
+        });
+      }
+
+      return results;
+    }
+
+    function formatTime(sec) {
+      const h = Math.floor(sec / 3600);
+      const m = Math.floor((sec % 3600) / 60);
+      const s = Math.floor(sec % 60);
+      const ms = Math.round((sec - Math.floor(sec)) * 1000);
+
+      const hh = String(h).padStart(2, "0");
+      const mm = String(m).padStart(2, "0");
+      const ss = String(s).padStart(2, "0");
+      const mmm = String(ms).padStart(3, "0");
+
+      return `${hh}:${mm}:${ss},${mmm}`;
+    }
+
+    function renderSubtitleList() {
+      const list = document.getElementById("subtitleList");
+      list.innerHTML = "";
+
+      subtitles.forEach((sub, i) => {
+        const div = document.createElement("div");
+        div.className = "item" + (i === currentSubtitleIndex ? " active" : "");
+        div.innerHTML = `
+          <div class="time">${formatTime(sub.start)} --> ${formatTime(sub.end)}</div>
+          <div class="text"></div>
+        `;
+        div.querySelector(".text").textContent = sub.text;
+
+        div.addEventListener("click", () => {
+          if (player && typeof player.seekTo === "function") {
+            player.seekTo(sub.start, true);
+          }
+        });
+
+        list.appendChild(div);
+      });
+    }
+
+    function updateActiveSubtitle(index) {
+      currentSubtitleIndex = index;
+      const subtitleEl = document.getElementById("subtitle");
+
+      if (index >= 0) {
+        subtitleEl.textContent = subtitles[index].text;
+      } else {
+        subtitleEl.textContent = "";
+      }
+
+      renderSubtitleList();
+    }
+
+    function syncSubtitle() {
+      if (!player || typeof player.getCurrentTime !== "function") return;
+
+      const currentTime = player.getCurrentTime();
+      const index = subtitles.findIndex(
+        s => currentTime >= s.start && currentTime <= s.end
+      );
+
+      if (index !== currentSubtitleIndex) {
+        updateActiveSubtitle(index);
+      }
+    }
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player("player", {
+        videoId: "",
+        playerVars: {
+          autoplay: 0,
+          controls: 1,
+          rel: 0,
+          playsinline: 1,
+          enablejsapi: 1
+        },
+        events: {
+          onReady: () => {
+            if (syncTimer) clearInterval(syncTimer);
+            syncTimer = setInterval(syncSubtitle, 150);
+          }
+        }
+      });
+    }
+
+    document.getElementById("loadVideoBtn").addEventListener("click", () => {
+      const videoId = document.getElementById("videoIdInput").value.trim();
+      if (!videoId) {
+        alert("請輸入 YouTube 影片 ID");
+        return;
+      }
+
+      if (player && typeof player.loadVideoById === "function") {
+        player.loadVideoById(videoId);
+      }
+    });
+
+    document.getElementById("srtFileInput").addEventListener("change", (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const text = reader.result;
+        subtitles = parseSrt(text);
+
+        document.getElementById("info").textContent =
+          subtitles.length > 0
+            ? `已載入字幕，共 ${subtitles.length} 段`
+            : "字幕解析失敗或沒有讀到資料";
+
+        updateActiveSubtitle(-1);
+        renderSubtitleList();
+      };
+
+      reader.onerror = () => {
+        alert("讀取字幕檔失敗");
+      };
+
+      reader.readAsText(file, "utf-8");
+    });
+
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+
+    window.addEventListener("beforeunload", () => {
+      if (syncTimer) clearInterval(syncTimer);
+    });
+  </script>
+</body>
+</html>

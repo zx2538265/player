@@ -148,6 +148,16 @@
     let syncTimer = null;
     let subtitles = [];
     let currentSubtitleIndex = -1;
+    let subtitleRequestToken = 0;
+
+    const videoIdInput = document.getElementById("videoIdInput");
+    const infoEl = document.getElementById("info");
+    const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
+
+    if (initialVideoId) {
+      videoIdInput.value = initialVideoId;
+      infoEl.textContent = `已從網址讀取影片 ID：${initialVideoId}`;
+    }
 
     function srtTimeToSeconds(timeStr) {
       // 00:01:02,500 -> 秒
@@ -265,6 +275,52 @@
       }
     }
 
+    async function loadSubtitleFromSrtFolder(videoId) {
+      const requestToken = ++subtitleRequestToken;
+      const srtPath = `srt/${encodeURIComponent(videoId)}.srt`;
+
+      infoEl.textContent = `嘗試載入字幕：${srtPath}`;
+
+      try {
+        const response = await fetch(srtPath, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const text = await response.text();
+        if (requestToken !== subtitleRequestToken) return;
+
+        subtitles = parseSrt(text);
+        infoEl.textContent =
+          subtitles.length > 0
+            ? `已自動載入字幕（${srtPath}），共 ${subtitles.length} 段`
+            : `已讀取 ${srtPath}，但解析不到字幕內容`;
+
+        updateActiveSubtitle(-1);
+        renderSubtitleList();
+      } catch (err) {
+        if (requestToken !== subtitleRequestToken) return;
+
+        subtitles = [];
+        updateActiveSubtitle(-1);
+        renderSubtitleList();
+        infoEl.textContent = `找不到對應字幕檔：${srtPath}`;
+      }
+    }
+
+    function loadVideoById(videoId) {
+      if (!videoId) {
+        alert("請輸入 YouTube 影片 ID");
+        return;
+      }
+
+      if (player && typeof player.loadVideoById === "function") {
+        player.loadVideoById(videoId);
+      }
+
+      loadSubtitleFromSrtFolder(videoId);
+    }
+
     function onYouTubeIframeAPIReady() {
       player = new YT.Player("player", {
         videoId: "",
@@ -279,21 +335,18 @@
           onReady: () => {
             if (syncTimer) clearInterval(syncTimer);
             syncTimer = setInterval(syncSubtitle, 150);
+
+            if (initialVideoId) {
+              loadVideoById(initialVideoId);
+            }
           }
         }
       });
     }
 
     document.getElementById("loadVideoBtn").addEventListener("click", () => {
-      const videoId = document.getElementById("videoIdInput").value.trim();
-      if (!videoId) {
-        alert("請輸入 YouTube 影片 ID");
-        return;
-      }
-
-      if (player && typeof player.loadVideoById === "function") {
-        player.loadVideoById(videoId);
-      }
+      const videoId = videoIdInput.value.trim();
+      loadVideoById(videoId);
     });
 
     document.getElementById("srtFileInput").addEventListener("change", (e) => {
@@ -305,7 +358,7 @@
         const text = reader.result;
         subtitles = parseSrt(text);
 
-        document.getElementById("info").textContent =
+        infoEl.textContent =
           subtitles.length > 0
             ? `已載入字幕，共 ${subtitles.length} 段`
             : "字幕解析失敗或沒有讀到資料";

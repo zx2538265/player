@@ -37,7 +37,7 @@
     }
 
     .container {
-      width: min(100%, 1400px);
+      width: min(100%, 1000px);
       margin: 0 auto;
       --subtitle-scale: 1;
       --subtitle-bottom: 8%;
@@ -198,8 +198,8 @@
     }
 
     .side-button {
-      min-width: 56px;
-      min-height: 56px;
+      min-width: 18px;
+      min-height: 18px;
       border: 1px solid rgba(255, 255, 255, 0.18);
       background: rgba(16, 18, 24, 0.72);
       color: #fff;
@@ -230,8 +230,8 @@
     }
 
     #toggleFullscreenBtn {
-      min-width: 96px;
-      font-size: 13px;
+      min-width: 18px;
+      font-size: 22px;
       font-weight: 700;
     }
 
@@ -372,8 +372,8 @@
       }
 
       #toggleFullscreenBtn {
-        min-width: 84px;
-        font-size: 12px;
+        min-width: 48px;
+        font-size: 20px;
       }
 
       .subtitle-settings {
@@ -408,9 +408,10 @@
 
     @media (max-width: 560px) {
       .player-side-tools {
-        top: auto;
-        bottom: 10px;
-        transform: none;
+        top: 30%;
+        right: 10px;
+        bottom: auto;
+        transform: translateY(-50%);
         align-items: flex-end;
       }
 
@@ -471,7 +472,7 @@
 
           <div class="side-buttons">
             <button id="toggleSubtitleSettingsBtn" class="side-button" type="button" aria-label="開啟字幕設定" aria-expanded="false">⚙</button>
-            <button id="toggleFullscreenBtn" class="side-button" type="button">全螢幕</button>
+            <button id="toggleFullscreenBtn" class="side-button" type="button" aria-label="進入全螢幕" title="進入全螢幕">⛶</button>
           </div>
         </div>
       </div>
@@ -787,7 +788,9 @@
       playerWrapEl.classList.add("is-pseudo-fullscreen");
       playerWrapEl.classList.add("is-fullscreen");
       document.body.classList.add("no-scroll");
-      toggleFullscreenBtnEl.textContent = "離開全螢幕";
+      toggleFullscreenBtnEl.textContent = "🗗";
+      toggleFullscreenBtnEl.setAttribute("aria-label", "離開全螢幕");
+      toggleFullscreenBtnEl.setAttribute("title", "離開全螢幕");
       updateSubtitlePositionFieldVisibility();
     }
 
@@ -796,7 +799,9 @@
       playerWrapEl.classList.remove("is-pseudo-fullscreen");
       playerWrapEl.classList.remove("is-fullscreen");
       document.body.classList.remove("no-scroll");
-      toggleFullscreenBtnEl.textContent = "全螢幕";
+      toggleFullscreenBtnEl.textContent = "⛶";
+      toggleFullscreenBtnEl.setAttribute("aria-label", "進入全螢幕");
+      toggleFullscreenBtnEl.setAttribute("title", "進入全螢幕");
       updateSubtitlePositionFieldVisibility();
     }
 
@@ -806,7 +811,9 @@
 
       if (isPseudoFullscreen) {
         playerWrapEl.classList.add("is-fullscreen");
-        toggleFullscreenBtnEl.textContent = "離開全螢幕";
+        toggleFullscreenBtnEl.textContent = "🗗";
+        toggleFullscreenBtnEl.setAttribute("aria-label", "離開全螢幕");
+        toggleFullscreenBtnEl.setAttribute("title", "離開全螢幕");
         updateSubtitlePositionFieldVisibility();
         return;
       }
@@ -816,7 +823,9 @@
           fullscreenEl.appendChild(subtitleLayerEl);
         }
         playerWrapEl.classList.add("is-fullscreen");
-        toggleFullscreenBtnEl.textContent = "離開全螢幕";
+        toggleFullscreenBtnEl.textContent = "🗗";
+        toggleFullscreenBtnEl.setAttribute("aria-label", "離開全螢幕");
+        toggleFullscreenBtnEl.setAttribute("title", "離開全螢幕");
         updateSubtitlePositionFieldVisibility();
       } else {
         if (subtitleLayerEl.parentElement !== subtitleOriginalParent) {
@@ -827,7 +836,9 @@
           }
         }
         playerWrapEl.classList.remove("is-fullscreen");
-        toggleFullscreenBtnEl.textContent = "全螢幕";
+        toggleFullscreenBtnEl.textContent = "⛶";
+        toggleFullscreenBtnEl.setAttribute("aria-label", "進入全螢幕");
+        toggleFullscreenBtnEl.setAttribute("title", "進入全螢幕");
         updateSubtitlePositionFieldVisibility();
       }
     }

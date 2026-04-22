@@ -16,6 +16,10 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
+      --subtitle-scale: 1;
+      --subtitle-bottom: 8%;
+      --subtitle-bottom-fs: 6%;
+      --subtitle-bottom-fs-mobile: 10%;
     }
 
     .toolbar {
@@ -60,7 +64,7 @@
       position: absolute;
       left: 6%;
       right: 6%;
-      bottom: 8%;
+      bottom: var(--subtitle-bottom);
       text-align: center;
       pointer-events: none;
       z-index: 10;
@@ -72,7 +76,7 @@
       padding: 10px 18px;
       border-radius: 14px;
       background: rgba(0, 0, 0, 0.45);
-      font-size: clamp(28px, 2.2vw, 36px);
+      font-size: calc(clamp(28px, 2.2vw, 36px) * var(--subtitle-scale));
       line-height: 1.45;
       white-space: pre-wrap;
       word-break: break-word;
@@ -84,16 +88,16 @@
     }
 
     .player-wrap.is-fullscreen .subtitle-layer {
-      bottom: 6%;
+      bottom: var(--subtitle-bottom-fs);
     }
 
     .player-wrap.is-fullscreen .subtitle-text {
-      font-size: clamp(28px, 2.1vh + 0.7vw, 52px);
+      font-size: calc(clamp(28px, 2.1vh + 0.7vw, 52px) * var(--subtitle-scale));
     }
 
     @media (max-width: 1024px) {
       .subtitle-text {
-        font-size: clamp(22px, 3.2vw, 30px);
+        font-size: calc(clamp(22px, 3.2vw, 30px) * var(--subtitle-scale));
       }
     }
 
@@ -104,16 +108,77 @@
       }
 
       .subtitle-text {
-        font-size: clamp(16px, 4.4vw, 24px);
+        font-size: calc(clamp(16px, 4.4vw, 24px) * var(--subtitle-scale));
         line-height: 1.5;
       }
 
       .player-wrap.is-fullscreen .subtitle-layer {
-        bottom: 10%;
+        bottom: var(--subtitle-bottom-fs-mobile);
       }
 
       .player-wrap.is-fullscreen .subtitle-text {
-        font-size: clamp(18px, 2.6vh + 1vw, 30px);
+        font-size: calc(clamp(18px, 2.6vh + 1vw, 30px) * var(--subtitle-scale));
+      }
+    }
+
+    .subtitle-settings {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(140px, 1fr));
+      gap: 10px 14px;
+      align-items: end;
+      background: #181818;
+      border: 1px solid #2d2d2d;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .setting-field {
+      display: grid;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .setting-label {
+      color: #d8d8d8;
+      font-size: 12px;
+      letter-spacing: 0.2px;
+    }
+
+    .setting-field input[type="range"] {
+      width: 100%;
+      accent-color: #9ecbff;
+    }
+
+    .setting-value {
+      color: #9ecbff;
+      font-size: 12px;
+      min-height: 16px;
+    }
+
+    .setting-reset {
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid #3b3b3b;
+      background: #242424;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .setting-reset:hover {
+      background: #2c2c2c;
+    }
+
+    @media (max-width: 900px) {
+      .subtitle-settings {
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+      }
+    }
+
+    @media (max-width: 580px) {
+      .subtitle-settings {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -173,6 +238,30 @@
       </div>
     </div>
 
+    <div class="subtitle-settings" id="subtitleSettings">
+      <div class="setting-field">
+        <label class="setting-label" for="subtitleScaleRange">字幕大小</label>
+        <input id="subtitleScaleRange" type="range" min="80" max="160" step="1" value="100" />
+        <div class="setting-value" id="subtitleScaleValue">100%</div>
+      </div>
+
+      <div class="setting-field">
+        <label class="setting-label" for="subtitleBottomRange">一般位置（底部）</label>
+        <input id="subtitleBottomRange" type="range" min="2" max="20" step="1" value="8" />
+        <div class="setting-value" id="subtitleBottomValue">8%</div>
+      </div>
+
+      <div class="setting-field">
+        <label class="setting-label" for="subtitleBottomFsRange">全螢幕位置（底部）</label>
+        <input id="subtitleBottomFsRange" type="range" min="2" max="20" step="1" value="6" />
+        <div class="setting-value" id="subtitleBottomFsValue">6%</div>
+      </div>
+
+      <div class="setting-field">
+        <button id="resetSubtitleSettingsBtn" type="button" class="setting-reset">重設字幕設定</button>
+      </div>
+    </div>
+
     <div class="info" id="info">尚未載入字幕</div>
     <div class="list" id="subtitleList"></div>
   </div>
@@ -188,9 +277,26 @@
 
     const videoIdInput = document.getElementById("videoIdInput");
     const infoEl = document.getElementById("info");
+    const containerEl = document.querySelector(".container");
     const playerWrapEl = document.querySelector(".player-wrap");
     const subtitleLayerEl = document.querySelector(".subtitle-layer");
+    const subtitleScaleRangeEl = document.getElementById("subtitleScaleRange");
+    const subtitleBottomRangeEl = document.getElementById("subtitleBottomRange");
+    const subtitleBottomFsRangeEl = document.getElementById("subtitleBottomFsRange");
+    const subtitleScaleValueEl = document.getElementById("subtitleScaleValue");
+    const subtitleBottomValueEl = document.getElementById("subtitleBottomValue");
+    const subtitleBottomFsValueEl = document.getElementById("subtitleBottomFsValue");
+    const resetSubtitleSettingsBtnEl = document.getElementById("resetSubtitleSettingsBtn");
     const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
+    const subtitleSettingsStorageKey = "yt-srt-subtitle-settings";
+
+    const defaultSubtitleSettings = {
+      scale: 100,
+      bottom: 8,
+      bottomFs: 6
+    };
+
+    let subtitleSettings = { ...defaultSubtitleSettings };
 
     subtitleOriginalParent = subtitleLayerEl.parentElement;
     subtitleOriginalNextSibling = subtitleLayerEl.nextSibling;
@@ -199,6 +305,81 @@
       videoIdInput.value = initialVideoId;
       infoEl.textContent = `已從網址讀取影片 ID：${initialVideoId}`;
     }
+
+    function normalizeSubtitleSettings(raw) {
+      const scale = Number(raw?.scale);
+      const bottom = Number(raw?.bottom);
+      const bottomFs = Number(raw?.bottomFs);
+
+      return {
+        scale: Number.isFinite(scale) ? Math.min(160, Math.max(80, Math.round(scale))) : defaultSubtitleSettings.scale,
+        bottom: Number.isFinite(bottom) ? Math.min(20, Math.max(2, Math.round(bottom))) : defaultSubtitleSettings.bottom,
+        bottomFs: Number.isFinite(bottomFs) ? Math.min(20, Math.max(2, Math.round(bottomFs))) : defaultSubtitleSettings.bottomFs
+      };
+    }
+
+    function getMobileFullscreenBottom(bottomFs) {
+      return Math.max(10, bottomFs);
+    }
+
+    function applySubtitleSettings() {
+      containerEl.style.setProperty("--subtitle-scale", (subtitleSettings.scale / 100).toString());
+      containerEl.style.setProperty("--subtitle-bottom", `${subtitleSettings.bottom}%`);
+      containerEl.style.setProperty("--subtitle-bottom-fs", `${subtitleSettings.bottomFs}%`);
+      containerEl.style.setProperty("--subtitle-bottom-fs-mobile", `${getMobileFullscreenBottom(subtitleSettings.bottomFs)}%`);
+
+      subtitleScaleRangeEl.value = String(subtitleSettings.scale);
+      subtitleBottomRangeEl.value = String(subtitleSettings.bottom);
+      subtitleBottomFsRangeEl.value = String(subtitleSettings.bottomFs);
+
+      subtitleScaleValueEl.textContent = `${subtitleSettings.scale}%`;
+      subtitleBottomValueEl.textContent = `${subtitleSettings.bottom}%`;
+      subtitleBottomFsValueEl.textContent = `${subtitleSettings.bottomFs}%`;
+    }
+
+    function saveSubtitleSettings() {
+      localStorage.setItem(subtitleSettingsStorageKey, JSON.stringify(subtitleSettings));
+    }
+
+    function loadSubtitleSettings() {
+      try {
+        const raw = localStorage.getItem(subtitleSettingsStorageKey);
+        if (!raw) return;
+        subtitleSettings = normalizeSubtitleSettings(JSON.parse(raw));
+      } catch (err) {
+        subtitleSettings = { ...defaultSubtitleSettings };
+      }
+    }
+
+    function bindSubtitleSettingEvents() {
+      subtitleScaleRangeEl.addEventListener("input", () => {
+        subtitleSettings.scale = Number(subtitleScaleRangeEl.value);
+        applySubtitleSettings();
+        saveSubtitleSettings();
+      });
+
+      subtitleBottomRangeEl.addEventListener("input", () => {
+        subtitleSettings.bottom = Number(subtitleBottomRangeEl.value);
+        applySubtitleSettings();
+        saveSubtitleSettings();
+      });
+
+      subtitleBottomFsRangeEl.addEventListener("input", () => {
+        subtitleSettings.bottomFs = Number(subtitleBottomFsRangeEl.value);
+        applySubtitleSettings();
+        saveSubtitleSettings();
+      });
+
+      resetSubtitleSettingsBtnEl.addEventListener("click", () => {
+        subtitleSettings = { ...defaultSubtitleSettings };
+        applySubtitleSettings();
+        saveSubtitleSettings();
+      });
+    }
+
+    loadSubtitleSettings();
+    applySubtitleSettings();
+    bindSubtitleSettingEvents();
 
     function srtTimeToSeconds(timeStr) {
       // 00:01:02,500 -> 秒

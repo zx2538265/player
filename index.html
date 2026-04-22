@@ -13,6 +13,10 @@
       font-family: Arial, "Microsoft JhengHei", sans-serif;
     }
 
+    body.no-scroll {
+      overflow: hidden;
+    }
+
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -76,6 +80,16 @@
       border-radius: 16px;
     }
 
+    .player-wrap.is-pseudo-fullscreen {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      aspect-ratio: auto;
+      border-radius: 0;
+      z-index: 9999;
+    }
+
     #player {
       width: 100%;
       height: 100%;
@@ -97,7 +111,7 @@
       padding: 10px 18px;
       border-radius: 14px;
       background: rgba(0, 0, 0, 0.45);
-      font-size: calc(clamp(28px, 2.2vw, 36px) * var(--subtitle-scale));
+      font-size: calc(clamp(24px, 1.9vw, 32px) * var(--subtitle-scale));
       line-height: 1.45;
       white-space: pre-wrap;
       word-break: break-word;
@@ -112,13 +126,21 @@
       bottom: var(--subtitle-bottom-fs);
     }
 
+    .player-wrap.is-pseudo-fullscreen .subtitle-layer {
+      bottom: var(--subtitle-bottom-fs);
+    }
+
     .player-wrap.is-fullscreen .subtitle-text {
-      font-size: calc(clamp(28px, 2.1vh + 0.7vw, 52px) * var(--subtitle-scale));
+      font-size: calc(clamp(24px, 1.9vh + 0.6vw, 46px) * var(--subtitle-scale));
+    }
+
+    .player-wrap.is-pseudo-fullscreen .subtitle-text {
+      font-size: calc(clamp(24px, 1.9vh + 0.6vw, 46px) * var(--subtitle-scale));
     }
 
     @media (max-width: 1024px) {
       .subtitle-text {
-        font-size: calc(clamp(22px, 3.2vw, 30px) * var(--subtitle-scale));
+        font-size: calc(clamp(20px, 2.8vw, 28px) * var(--subtitle-scale));
       }
     }
 
@@ -129,7 +151,7 @@
       }
 
       .subtitle-text {
-        font-size: calc(clamp(16px, 4.4vw, 24px) * var(--subtitle-scale));
+        font-size: calc(clamp(14px, 3.8vw, 21px) * var(--subtitle-scale));
         line-height: 1.5;
       }
 
@@ -137,8 +159,16 @@
         bottom: var(--subtitle-bottom-fs-mobile);
       }
 
+      .player-wrap.is-pseudo-fullscreen .subtitle-layer {
+        bottom: var(--subtitle-bottom-fs-mobile);
+      }
+
       .player-wrap.is-fullscreen .subtitle-text {
-        font-size: calc(clamp(18px, 2.6vh + 1vw, 30px) * var(--subtitle-scale));
+        font-size: calc(clamp(16px, 2.2vh + 0.9vw, 26px) * var(--subtitle-scale));
+      }
+
+      .player-wrap.is-pseudo-fullscreen .subtitle-text {
+        font-size: calc(clamp(16px, 2.2vh + 0.9vw, 26px) * var(--subtitle-scale));
       }
     }
 
@@ -327,6 +357,7 @@
     let subtitleRequestToken = 0;
     let subtitleOriginalParent = null;
     let subtitleOriginalNextSibling = null;
+    let isPseudoFullscreen = false;
 
     const videoIdInput = document.getElementById("videoIdInput");
     const infoEl = document.getElementById("info");
@@ -564,28 +595,54 @@
       if (!el) return;
 
       if (el.requestFullscreen) {
-        el.requestFullscreen();
+        return el.requestFullscreen();
       } else if (el.webkitRequestFullscreen) {
-        el.webkitRequestFullscreen();
+        return el.webkitRequestFullscreen();
       } else if (el.msRequestFullscreen) {
-        el.msRequestFullscreen();
+        return el.msRequestFullscreen();
       }
+
+      return Promise.reject(new Error("Fullscreen API unavailable"));
     }
 
     function exitFullscreen() {
       if (document.exitFullscreen) {
-        document.exitFullscreen();
+        return document.exitFullscreen();
       } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
+        return document.webkitExitFullscreen();
       } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
+        return document.msExitFullscreen();
       }
+
+      return Promise.resolve();
+    }
+
+    function enterPseudoFullscreen() {
+      isPseudoFullscreen = true;
+      playerWrapEl.classList.add("is-pseudo-fullscreen");
+      playerWrapEl.classList.add("is-fullscreen");
+      document.body.classList.add("no-scroll");
+      toggleFullscreenBtnEl.textContent = "離開全螢幕";
+    }
+
+    function exitPseudoFullscreen() {
+      isPseudoFullscreen = false;
+      playerWrapEl.classList.remove("is-pseudo-fullscreen");
+      playerWrapEl.classList.remove("is-fullscreen");
+      document.body.classList.remove("no-scroll");
+      toggleFullscreenBtnEl.textContent = "全螢幕";
     }
 
     // 全螢幕修正：進入全螢幕時把字幕層搬到全螢幕節點內，離開時再移回原本 .player-wrap。
     function syncSubtitleLayerForFullscreen() {
       const fullscreenEl = getFullscreenElement();
       const isPlayerFullscreen = !!fullscreenEl && playerWrapEl.contains(fullscreenEl);
+
+      if (isPseudoFullscreen) {
+        playerWrapEl.classList.add("is-fullscreen");
+        toggleFullscreenBtnEl.textContent = "離開全螢幕";
+        return;
+      }
 
       if (isPlayerFullscreen) {
         if (subtitleLayerEl.parentElement !== fullscreenEl) {
@@ -612,10 +669,23 @@
       const fullscreenEl = getFullscreenElement();
       const isPlayerFullscreen = !!fullscreenEl && playerWrapEl.contains(fullscreenEl);
 
+      if (isPseudoFullscreen) {
+        exitPseudoFullscreen();
+        return;
+      }
+
       if (isPlayerFullscreen) {
         exitFullscreen();
       } else {
-        requestElementFullscreen(playerWrapEl);
+        Promise.resolve(requestElementFullscreen(playerWrapEl)).catch(() => {
+          enterPseudoFullscreen();
+        });
+      }
+    }
+
+    function handleKeydown(e) {
+      if (e.key === "Escape" && isPseudoFullscreen) {
+        exitPseudoFullscreen();
       }
     }
 
@@ -728,12 +798,14 @@
     document.addEventListener("fullscreenchange", syncSubtitleLayerForFullscreen);
     document.addEventListener("webkitfullscreenchange", syncSubtitleLayerForFullscreen);
     document.addEventListener("msfullscreenchange", syncSubtitleLayerForFullscreen);
+    document.addEventListener("keydown", handleKeydown);
 
     window.addEventListener("beforeunload", () => {
       if (syncTimer) clearInterval(syncTimer);
       document.removeEventListener("fullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("webkitfullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("msfullscreenchange", syncSubtitleLayerForFullscreen);
+      document.removeEventListener("keydown", handleKeydown);
     });
   </script>
 </body>

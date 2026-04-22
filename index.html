@@ -64,6 +64,48 @@
       background: #2f2f2f;
     }
 
+    #toggleFullscreenBtn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      height: 36px;
+      min-width: 96px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(18, 18, 18, 0.66);
+      color: #fff;
+      border-radius: 10px;
+      padding: 0 12px;
+      cursor: pointer;
+      z-index: 30;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    #toggleFullscreenBtn:hover {
+      background: rgba(34, 34, 34, 0.78);
+    }
+
+    #toggleSubtitleSettingsBtn {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.94);
+      color: #111;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 31;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    #toggleSubtitleSettingsBtn:hover {
+      background: #fff;
+    }
+
     #videoIdInput,
     #loadVideoBtn,
     #srtFileInput,
@@ -108,7 +150,7 @@
     .subtitle-text {
       display: inline-block;
       max-width: 90%;
-      padding: 10px 18px;
+      padding: 8px 10px;
       border-radius: 14px;
       background: rgba(0, 0, 0, 0.45);
       font-size: calc(clamp(24px, 1.9vw, 32px) * var(--subtitle-scale));
@@ -173,15 +215,33 @@
     }
 
     .subtitle-settings {
-      margin-top: 14px;
+      position: absolute;
+      right: 14px;
+      bottom: 74px;
+      width: min(360px, calc(100% - 28px));
       display: grid;
-      grid-template-columns: repeat(4, minmax(140px, 1fr));
-      gap: 10px 14px;
-      align-items: end;
-      background: #181818;
-      border: 1px solid #2d2d2d;
-      border-radius: 12px;
-      padding: 12px;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      background: rgba(10, 10, 12, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 14px;
+      z-index: 31;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.44);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      pointer-events: none;
+      transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+    }
+
+    .player-wrap.show-settings .subtitle-settings {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
     }
 
     .setting-field {
@@ -192,7 +252,7 @@
 
     .setting-label {
       color: #d8d8d8;
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 0.2px;
     }
 
@@ -203,12 +263,12 @@
 
     .setting-value {
       color: #9ecbff;
-      font-size: 12px;
+      font-size: 13px;
       min-height: 16px;
     }
 
     .setting-reset {
-      height: 34px;
+      height: 36px;
       border-radius: 8px;
       border: 1px solid #3b3b3b;
       background: #242424;
@@ -219,18 +279,6 @@
 
     .setting-reset:hover {
       background: #2c2c2c;
-    }
-
-    @media (max-width: 900px) {
-      .subtitle-settings {
-        grid-template-columns: repeat(2, minmax(140px, 1fr));
-      }
-    }
-
-    @media (max-width: 580px) {
-      .subtitle-settings {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 768px) {
@@ -251,12 +299,25 @@
       }
 
       #toggleFullscreenBtn {
-        width: 100%;
+        top: 10px;
+        right: 10px;
+        height: 34px;
+        min-width: 90px;
+      }
+
+      #toggleSubtitleSettingsBtn {
+        right: 10px;
+        bottom: 10px;
+        width: 48px;
+        height: 48px;
+        font-size: 25px;
       }
 
       .subtitle-settings {
-        margin-top: 10px;
-        padding: 10px;
+        right: 10px;
+        bottom: 66px;
+        width: min(320px, calc(100% - 20px));
+        padding: 12px;
       }
 
       .list {
@@ -310,7 +371,6 @@
     <div class="toolbar">
       <input id="videoIdInput" type="text" placeholder="請輸入 YouTube 影片 ID，例如 dqNMWaT9mog" />
       <button id="loadVideoBtn">載入影片</button>
-      <button id="toggleFullscreenBtn" type="button">全螢幕</button>
       <input id="srtFileInput" type="file" accept=".srt" />
     </div>
 
@@ -319,30 +379,31 @@
       <div class="subtitle-layer">
         <div id="subtitle" class="subtitle-text"></div>
       </div>
-    </div>
+      <div class="subtitle-settings" id="subtitleSettings">
+        <div class="setting-field">
+          <label class="setting-label" for="subtitleScaleRange">字幕大小</label>
+          <input id="subtitleScaleRange" type="range" min="80" max="160" step="1" value="100" />
+          <div class="setting-value" id="subtitleScaleValue">100%</div>
+        </div>
 
-    <div class="subtitle-settings" id="subtitleSettings">
-      <div class="setting-field">
-        <label class="setting-label" for="subtitleScaleRange">字幕大小</label>
-        <input id="subtitleScaleRange" type="range" min="80" max="160" step="1" value="100" />
-        <div class="setting-value" id="subtitleScaleValue">100%</div>
-      </div>
+        <div class="setting-field">
+          <label class="setting-label" for="subtitleBottomRange">一般位置（底部）</label>
+          <input id="subtitleBottomRange" type="range" min="2" max="20" step="1" value="8" />
+          <div class="setting-value" id="subtitleBottomValue">8%</div>
+        </div>
 
-      <div class="setting-field">
-        <label class="setting-label" for="subtitleBottomRange">一般位置（底部）</label>
-        <input id="subtitleBottomRange" type="range" min="2" max="20" step="1" value="8" />
-        <div class="setting-value" id="subtitleBottomValue">8%</div>
-      </div>
+        <div class="setting-field">
+          <label class="setting-label" for="subtitleBottomFsRange">全螢幕位置（底部）</label>
+          <input id="subtitleBottomFsRange" type="range" min="2" max="20" step="1" value="6" />
+          <div class="setting-value" id="subtitleBottomFsValue">6%</div>
+        </div>
 
-      <div class="setting-field">
-        <label class="setting-label" for="subtitleBottomFsRange">全螢幕位置（底部）</label>
-        <input id="subtitleBottomFsRange" type="range" min="2" max="20" step="1" value="6" />
-        <div class="setting-value" id="subtitleBottomFsValue">6%</div>
+        <div class="setting-field">
+          <button id="resetSubtitleSettingsBtn" type="button" class="setting-reset">重設字幕設定</button>
+        </div>
       </div>
-
-      <div class="setting-field">
-        <button id="resetSubtitleSettingsBtn" type="button" class="setting-reset">重設字幕設定</button>
-      </div>
+      <button id="toggleSubtitleSettingsBtn" type="button" aria-label="開啟字幕設定" aria-expanded="false">⚙</button>
+      <button id="toggleFullscreenBtn" type="button">全螢幕</button>
     </div>
 
     <div class="info" id="info">尚未載入字幕</div>
@@ -367,11 +428,13 @@
     const subtitleScaleRangeEl = document.getElementById("subtitleScaleRange");
     const subtitleBottomRangeEl = document.getElementById("subtitleBottomRange");
     const subtitleBottomFsRangeEl = document.getElementById("subtitleBottomFsRange");
+    const subtitleSettingsPanelEl = document.getElementById("subtitleSettings");
     const subtitleScaleValueEl = document.getElementById("subtitleScaleValue");
     const subtitleBottomValueEl = document.getElementById("subtitleBottomValue");
     const subtitleBottomFsValueEl = document.getElementById("subtitleBottomFsValue");
     const resetSubtitleSettingsBtnEl = document.getElementById("resetSubtitleSettingsBtn");
     const toggleFullscreenBtnEl = document.getElementById("toggleFullscreenBtn");
+    const toggleSubtitleSettingsBtnEl = document.getElementById("toggleSubtitleSettingsBtn");
     const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
     const subtitleSettingsStorageKey = "yt-srt-subtitle-settings";
 
@@ -422,6 +485,11 @@
       subtitleBottomFsValueEl.textContent = `${subtitleSettings.bottomFs}%`;
     }
 
+    function setSubtitleSettingsPanelOpen(isOpen) {
+      playerWrapEl.classList.toggle("show-settings", isOpen);
+      toggleSubtitleSettingsBtnEl.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
     function saveSubtitleSettings() {
       localStorage.setItem(subtitleSettingsStorageKey, JSON.stringify(subtitleSettings));
     }
@@ -437,6 +505,16 @@
     }
 
     function bindSubtitleSettingEvents() {
+      toggleSubtitleSettingsBtnEl.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = playerWrapEl.classList.contains("show-settings");
+        setSubtitleSettingsPanelOpen(!isOpen);
+      });
+
+      subtitleSettingsPanelEl.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+
       subtitleScaleRangeEl.addEventListener("input", () => {
         subtitleSettings.scale = Number(subtitleScaleRangeEl.value);
         applySubtitleSettings();
@@ -459,6 +537,13 @@
         subtitleSettings = { ...defaultSubtitleSettings };
         applySubtitleSettings();
         saveSubtitleSettings();
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!playerWrapEl.classList.contains("show-settings")) return;
+        if (subtitleSettingsPanelEl.contains(e.target)) return;
+        if (toggleSubtitleSettingsBtnEl.contains(e.target)) return;
+        setSubtitleSettingsPanelOpen(false);
       });
     }
 
@@ -684,6 +769,10 @@
     }
 
     function handleKeydown(e) {
+      if (e.key === "Escape" && playerWrapEl.classList.contains("show-settings")) {
+        setSubtitleSettingsPanelOpen(false);
+      }
+
       if (e.key === "Escape" && isPseudoFullscreen) {
         exitPseudoFullscreen();
       }

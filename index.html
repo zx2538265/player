@@ -136,7 +136,7 @@
 
     .subtitle-layer {
       position: absolute;
-      left: 6%;
+      left: 15%;
       right: calc(78px + 6%);
       bottom: var(--subtitle-bottom);
       text-align: center;
@@ -169,6 +169,15 @@
       right: calc(88px + 5%);
     }
 
+    .player-wrap.show-settings .subtitle-layer {
+      right: min(430px, 52%);
+    }
+
+    .player-wrap.show-settings.is-fullscreen .subtitle-layer,
+    .player-wrap.show-settings.is-pseudo-fullscreen .subtitle-layer {
+      right: min(440px, 54%);
+    }
+
     .player-wrap.is-fullscreen .subtitle-text,
     .player-wrap.is-pseudo-fullscreen .subtitle-text {
       font-size: calc(clamp(24px, 1.8vh + 0.7vw, 44px) * var(--subtitle-scale));
@@ -198,8 +207,8 @@
     }
 
     .side-button {
-      min-width: 18px;
-      min-height: 18px;
+      min-width: 56px;
+      min-height: 56px;
       border: 1px solid rgba(255, 255, 255, 0.18);
       background: rgba(16, 18, 24, 0.72);
       color: #fff;
@@ -230,7 +239,7 @@
     }
 
     #toggleFullscreenBtn {
-      min-width: 18px;
+      min-width: 56px;
       font-size: 22px;
       font-weight: 700;
     }
@@ -342,7 +351,7 @@
 
     @media (max-width: 1024px) {
       .subtitle-layer {
-        left: 5%;
+        left: 15%;
         right: calc(76px + 5%);
       }
 
@@ -372,8 +381,7 @@
       }
 
       #toggleFullscreenBtn {
-        min-width: 48px;
-        font-size: 20px;
+        display: none;
       }
 
       .subtitle-settings {
@@ -383,8 +391,12 @@
       }
 
       .subtitle-layer {
-        left: 4%;
-        right: calc(62px + 4%);
+        left: 15%;
+        right: calc(54px + 4%);
+      }
+
+      .player-wrap.show-settings .subtitle-layer {
+        right: min(340px, 58%);
       }
 
       .subtitle-text {
@@ -397,7 +409,12 @@
       .player-wrap.is-fullscreen .subtitle-layer,
       .player-wrap.is-pseudo-fullscreen .subtitle-layer {
         bottom: var(--subtitle-bottom-fs-mobile);
-        right: calc(62px + 3%);
+        right: calc(54px + 3%);
+      }
+
+      .player-wrap.show-settings.is-fullscreen .subtitle-layer,
+      .player-wrap.show-settings.is-pseudo-fullscreen .subtitle-layer {
+        right: min(340px, 60%);
       }
 
       .player-wrap.is-fullscreen .subtitle-text,
@@ -424,7 +441,13 @@
       }
 
       .subtitle-layer {
-        right: calc(58px + 4%);
+        right: calc(54px + 4%);
+      }
+
+      .player-wrap.show-settings .subtitle-layer,
+      .player-wrap.show-settings.is-fullscreen .subtitle-layer,
+      .player-wrap.show-settings.is-pseudo-fullscreen .subtitle-layer {
+        right: min(310px, 64%);
       }
     }
   </style>

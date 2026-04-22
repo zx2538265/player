@@ -426,11 +426,15 @@
 
       subtitleScaleRangeEl.value = String(subtitleSettings.scale);
       subtitleBottomRangeEl.value = String(subtitleSettings.bottom);
-      subtitleBottomFsRangeEl.value = String(subtitleSettings.bottomFs);
+      if (subtitleBottomFsRangeEl) {
+        subtitleBottomFsRangeEl.value = String(subtitleSettings.bottomFs);
+      }
 
       subtitleScaleValueEl.textContent = `${subtitleSettings.scale}%`;
       subtitleBottomValueEl.textContent = `${subtitleSettings.bottom}%`;
-      subtitleBottomFsValueEl.textContent = `${subtitleSettings.bottomFs}%`;
+      if (subtitleBottomFsValueEl) {
+        subtitleBottomFsValueEl.textContent = `${subtitleSettings.bottomFs}%`;
+      }
     }
 
     function saveSubtitleSettings() {
@@ -460,11 +464,13 @@
         saveSubtitleSettings();
       });
 
-      subtitleBottomFsRangeEl.addEventListener("input", () => {
-        subtitleSettings.bottomFs = Number(subtitleBottomFsRangeEl.value);
-        applySubtitleSettings();
-        saveSubtitleSettings();
-      });
+      if (subtitleBottomFsRangeEl) {
+        subtitleBottomFsRangeEl.addEventListener("input", () => {
+          subtitleSettings.bottomFs = Number(subtitleBottomFsRangeEl.value);
+          applySubtitleSettings();
+          saveSubtitleSettings();
+        });
+      }
 
       resetSubtitleSettingsBtnEl.addEventListener("click", () => {
         subtitleSettings = { ...defaultSubtitleSettings };

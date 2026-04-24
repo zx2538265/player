@@ -746,7 +746,14 @@
       }
 
       if (player && typeof player.loadVideoById === "function") {
-        player.loadVideoById(videoId);
+        player.loadVideoById({
+          videoId,
+          suggestedQuality: "hd1080"
+        });
+
+        if (typeof player.setPlaybackQuality === "function") {
+          player.setPlaybackQuality("hd1080");
+        }
       }
 
       loadSubtitleFromSrtFolder(videoId);
@@ -761,12 +768,17 @@
           fs: 0,
           rel: 0,
           playsinline: 1,
-          enablejsapi: 1
+          enablejsapi: 1,
+          vq: "hd1080"
         },
         events: {
           onReady: () => {
             if (syncTimer) clearInterval(syncTimer);
             syncTimer = setInterval(syncSubtitle, 150);
+
+            if (player && typeof player.setPlaybackQuality === "function") {
+              player.setPlaybackQuality("hd1080");
+            }
 
             if (initialVideoId) {
               loadVideoById(initialVideoId);

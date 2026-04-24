@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YT + SRT 自訂字幕</title>
+  <title>影片撥放器</title>
   <style>
     body {
       margin: 0;
@@ -23,7 +23,7 @@
       --subtitle-scale: 1;
       --subtitle-bottom: 8%;
       --subtitle-bottom-fs: 6%;
-      --subtitle-bottom-fs-mobile: 10%;
+      --subtitle-bottom-fs-mobile: 10;
     }
 
     .toolbar {
@@ -67,7 +67,6 @@
     #videoIdInput,
     #loadVideoBtn,
     #srtFileInput,
-    #toggleFullscreenBtn,
     #subtitleList {
       display: none !important;
     }
@@ -84,16 +83,109 @@
     .player-wrap.is-pseudo-fullscreen {
       position: fixed;
       inset: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100dvw;
+      height: 100dvh;
       aspect-ratio: auto;
       border-radius: 0;
       z-index: 9999;
     }
 
+    @supports not (height: 100dvh) {
+      .player-wrap.is-pseudo-fullscreen {
+        height: -webkit-fill-available;
+      }
+    }
+
     #player {
       width: 100%;
       height: 100%;
+    }
+
+    .player-wrap.is-pseudo-fullscreen #player,
+    .player-wrap.is-pseudo-fullscreen #player iframe {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .player-side-tools {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+      pointer-events: auto;
+    }
+
+    .player-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.18s ease, border-color 0.18s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      pointer-events: auto;
+    }
+
+    .fullscreen-btn::before {
+      content: "⤢";
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .fullscreen-btn.is-active::before {
+      content: "⤡";
+    }
+
+    .subtitle-setting-btn::before {
+      content: "⚙";
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .player-icon-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .player-icon-btn:focus-visible {
+      outline: 2px solid rgba(158, 203, 255, 0.85);
+      outline-offset: 2px;
+    }
+
+    .floating-subtitle-settings {
+      position: absolute;
+      right: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 260px;
+      display: none;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      background: rgba(24, 24, 24, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
+      padding: 12px;
+      z-index: 31;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      pointer-events: auto;
+    }
+
+    .floating-subtitle-settings.is-open {
+      display: grid;
     }
 
     .subtitle-layer {
@@ -147,42 +239,51 @@
 
     @media (max-width: 768px) {
       .subtitle-layer {
-        left: 5%;
-        right: 5%;
+        left: 4%;
+        right: 4%;
       }
 
       .subtitle-text {
-        font-size: calc(clamp(14px, 3.8vw, 21px) * var(--subtitle-scale));
+        max-width: 100%;
+        font-size: calc(clamp(15px, 3.8vw, 24px) * var(--subtitle-scale));
         line-height: 1.5;
       }
 
       .player-wrap.is-fullscreen .subtitle-layer {
-        bottom: var(--subtitle-bottom-fs-mobile);
+        bottom: max(8dvh, env(safe-area-inset-bottom));
+        bottom: max(calc(var(--subtitle-bottom-fs-mobile, 8) * 1dvh), env(safe-area-inset-bottom));
       }
 
       .player-wrap.is-pseudo-fullscreen .subtitle-layer {
-        bottom: var(--subtitle-bottom-fs-mobile);
+        bottom: max(8dvh, env(safe-area-inset-bottom));
+        bottom: max(calc(var(--subtitle-bottom-fs-mobile, 8) * 1dvh), env(safe-area-inset-bottom));
       }
 
       .player-wrap.is-fullscreen .subtitle-text {
-        font-size: calc(clamp(16px, 2.2vh + 0.9vw, 26px) * var(--subtitle-scale));
+        font-size: calc(clamp(15px, 3.8vw, 24px) * var(--subtitle-scale));
       }
 
       .player-wrap.is-pseudo-fullscreen .subtitle-text {
-        font-size: calc(clamp(16px, 2.2vh + 0.9vw, 26px) * var(--subtitle-scale));
+        font-size: calc(clamp(15px, 3.8vw, 24px) * var(--subtitle-scale));
+      }
+
+      .player-side-tools {
+        right: 8px;
+      }
+
+      .player-icon-btn {
+        width: 36px;
+        height: 36px;
+      }
+
+      .floating-subtitle-settings {
+        right: 44px;
+        width: min(240px, calc(100vw - 72px));
       }
     }
 
     .subtitle-settings {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(140px, 1fr));
-      gap: 10px 14px;
       align-items: end;
-      background: #181818;
-      border: 1px solid #2d2d2d;
-      border-radius: 12px;
-      padding: 12px;
     }
 
     .setting-field {
@@ -222,18 +323,6 @@
       background: #2c2c2c;
     }
 
-    @media (max-width: 900px) {
-      .subtitle-settings {
-        grid-template-columns: repeat(2, minmax(140px, 1fr));
-      }
-    }
-
-    @media (max-width: 580px) {
-      .subtitle-settings {
-        grid-template-columns: 1fr;
-      }
-    }
-
     @media (max-width: 768px) {
       body {
         padding: 12px;
@@ -249,15 +338,6 @@
 
       .toolbar {
         margin-bottom: 12px;
-      }
-
-      #toggleFullscreenBtn {
-        width: 100%;
-      }
-
-      .subtitle-settings {
-        margin-top: 10px;
-        padding: 10px;
       }
 
       .list {
@@ -311,7 +391,6 @@
     <div class="toolbar">
       <input id="videoIdInput" type="text" placeholder="請輸入 YouTube 影片 ID，例如 dqNMWaT9mog" />
       <button id="loadVideoBtn">載入影片</button>
-      <button id="toggleFullscreenBtn" type="button">全螢幕</button>
       <input id="srtFileInput" type="file" accept=".srt" />
     </div>
 
@@ -320,39 +399,57 @@
       <div class="subtitle-layer">
         <div id="subtitle" class="subtitle-text"></div>
       </div>
-    </div>
+      <div class="player-side-tools">
+        <button
+          id="toggleFullscreenBtn"
+          class="player-icon-btn fullscreen-btn"
+          type="button"
+          aria-label="進入全螢幕"
+          title="進入全螢幕"
+        ></button>
 
-    <div class="subtitle-settings" id="subtitleSettings">
-      <div class="setting-field">
-        <label class="setting-label" for="subtitleScaleRange">字幕大小</label>
-        <input
-          id="subtitleScaleRange"
-          type="range"
-          min="80"
-          max="160"
-          step="1"
-          value="100"
-        />
-        <div class="setting-value" id="subtitleScaleValue">100%</div>
-      </div>
+        <button
+          id="toggleSubtitleSettingsBtn"
+          class="player-icon-btn subtitle-setting-btn"
+          type="button"
+          aria-label="開啟字幕設定"
+          aria-expanded="false"
+          title="開啟字幕設定"
+        ></button>
 
-      <div class="setting-field">
-        <label class="setting-label" for="subtitleBottomRange">一般位置（底部）</label>
-        <input
-          id="subtitleBottomRange"
-          type="range"
-          min="2"
-          max="20"
-          step="1"
-          value="8"
-        />
-        <div class="setting-value" id="subtitleBottomValue">8%</div>
-      </div>
+        <div class="subtitle-settings floating-subtitle-settings" id="subtitleSettings">
+          <div class="setting-field">
+            <label class="setting-label" for="subtitleScaleRange">字幕大小</label>
+            <input
+              id="subtitleScaleRange"
+              type="range"
+              min="80"
+              max="160"
+              step="1"
+              value="100"
+            />
+            <div class="setting-value" id="subtitleScaleValue">100%</div>
+          </div>
 
-      <div class="setting-field">
-        <button id="resetSubtitleSettingsBtn" type="button" class="setting-reset">
-          重設字幕設定
-        </button>
+          <div class="setting-field">
+            <label class="setting-label" for="subtitleBottomRange">一般位置（底部）</label>
+            <input
+              id="subtitleBottomRange"
+              type="range"
+              min="2"
+              max="20"
+              step="1"
+              value="8"
+            />
+            <div class="setting-value" id="subtitleBottomValue">8%</div>
+          </div>
+
+          <div class="setting-field">
+            <button id="resetSubtitleSettingsBtn" type="button" class="setting-reset">
+              重設字幕設定
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -374,7 +471,9 @@
     const infoEl = document.getElementById("info");
     const containerEl = document.querySelector(".container");
     const playerWrapEl = document.querySelector(".player-wrap");
+    const playerSideToolsEl = document.querySelector(".player-side-tools");
     const subtitleLayerEl = document.querySelector(".subtitle-layer");
+    const subtitleSettingsEl = document.getElementById("subtitleSettings");
     const subtitleScaleRangeEl = document.getElementById("subtitleScaleRange");
     const subtitleBottomRangeEl = document.getElementById("subtitleBottomRange");
     const subtitleBottomFsRangeEl = document.getElementById("subtitleBottomFsRange");
@@ -383,6 +482,7 @@
     const subtitleBottomFsValueEl = document.getElementById("subtitleBottomFsValue");
     const resetSubtitleSettingsBtnEl = document.getElementById("resetSubtitleSettingsBtn");
     const toggleFullscreenBtnEl = document.getElementById("toggleFullscreenBtn");
+    const toggleSubtitleSettingsBtnEl = document.getElementById("toggleSubtitleSettingsBtn");
     const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
     const subtitleSettingsStorageKey = "yt-srt-subtitle-settings";
 
@@ -402,6 +502,26 @@
       infoEl.textContent = `已從網址讀取影片 ID：${initialVideoId}`;
     }
 
+    function updateFullscreenButtonState(isFullscreen) {
+      const label = isFullscreen ? "離開全螢幕" : "進入全螢幕";
+      toggleFullscreenBtnEl.classList.toggle("is-active", isFullscreen);
+      toggleFullscreenBtnEl.setAttribute("aria-label", label);
+      toggleFullscreenBtnEl.setAttribute("title", label);
+    }
+
+    function setSubtitleSettingsOpen(isOpen) {
+      const label = isOpen ? "關閉字幕設定" : "開啟字幕設定";
+      subtitleSettingsEl.classList.toggle("is-open", isOpen);
+      toggleSubtitleSettingsBtnEl.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      toggleSubtitleSettingsBtnEl.setAttribute("aria-label", label);
+      toggleSubtitleSettingsBtnEl.setAttribute("title", label);
+    }
+
+    function toggleSubtitleSettingsOpen() {
+      const isOpen = subtitleSettingsEl.classList.contains("is-open");
+      setSubtitleSettingsOpen(!isOpen);
+    }
+
     function normalizeSubtitleSettings(raw) {
       const scale = Number(raw?.scale);
       const bottom = Number(raw?.bottom);
@@ -415,14 +535,16 @@
     }
 
     function getMobileFullscreenBottom(bottomFs) {
-      return Math.max(10, bottomFs);
+      return Math.min(14, Math.max(7, bottomFs));
     }
 
     function applySubtitleSettings() {
+      const fullscreenBottom = subtitleBottomFsRangeEl ? subtitleSettings.bottomFs : subtitleSettings.bottom;
+
       containerEl.style.setProperty("--subtitle-scale", (subtitleSettings.scale / 100).toString());
       containerEl.style.setProperty("--subtitle-bottom", `${subtitleSettings.bottom}%`);
-      containerEl.style.setProperty("--subtitle-bottom-fs", `${subtitleSettings.bottomFs}%`);
-      containerEl.style.setProperty("--subtitle-bottom-fs-mobile", `${getMobileFullscreenBottom(subtitleSettings.bottomFs)}%`);
+      containerEl.style.setProperty("--subtitle-bottom-fs", `${fullscreenBottom}%`);
+      containerEl.style.setProperty("--subtitle-bottom-fs-mobile", String(getMobileFullscreenBottom(fullscreenBottom)));
 
       subtitleScaleRangeEl.value = String(subtitleSettings.scale);
       subtitleBottomRangeEl.value = String(subtitleSettings.bottom);
@@ -482,6 +604,8 @@
     loadSubtitleSettings();
     applySubtitleSettings();
     bindSubtitleSettingEvents();
+    updateFullscreenButtonState(false);
+    setSubtitleSettingsOpen(false);
 
     function srtTimeToSeconds(timeStr) {
       // 00:01:02,500 -> 秒
@@ -639,7 +763,7 @@
       playerWrapEl.classList.add("is-pseudo-fullscreen");
       playerWrapEl.classList.add("is-fullscreen");
       document.body.classList.add("no-scroll");
-      toggleFullscreenBtnEl.textContent = "離開全螢幕";
+      updateFullscreenButtonState(true);
     }
 
     function exitPseudoFullscreen() {
@@ -647,7 +771,7 @@
       playerWrapEl.classList.remove("is-pseudo-fullscreen");
       playerWrapEl.classList.remove("is-fullscreen");
       document.body.classList.remove("no-scroll");
-      toggleFullscreenBtnEl.textContent = "全螢幕";
+      updateFullscreenButtonState(false);
     }
 
     // 全螢幕修正：進入全螢幕時把字幕層搬到全螢幕節點內，離開時再移回原本 .player-wrap。
@@ -657,7 +781,7 @@
 
       if (isPseudoFullscreen) {
         playerWrapEl.classList.add("is-fullscreen");
-        toggleFullscreenBtnEl.textContent = "離開全螢幕";
+        updateFullscreenButtonState(true);
         return;
       }
 
@@ -666,7 +790,7 @@
           fullscreenEl.appendChild(subtitleLayerEl);
         }
         playerWrapEl.classList.add("is-fullscreen");
-        toggleFullscreenBtnEl.textContent = "離開全螢幕";
+        updateFullscreenButtonState(true);
       } else {
         if (subtitleLayerEl.parentElement !== subtitleOriginalParent) {
           if (subtitleOriginalNextSibling && subtitleOriginalNextSibling.parentNode === subtitleOriginalParent) {
@@ -676,7 +800,7 @@
           }
         }
         playerWrapEl.classList.remove("is-fullscreen");
-        toggleFullscreenBtnEl.textContent = "全螢幕";
+        updateFullscreenButtonState(false);
       }
     }
 
@@ -701,8 +825,20 @@
     }
 
     function handleKeydown(e) {
-      if (e.key === "Escape" && isPseudoFullscreen) {
+      if (e.key !== "Escape") return;
+
+      if (subtitleSettingsEl.classList.contains("is-open")) {
+        setSubtitleSettingsOpen(false);
+      }
+
+      if (isPseudoFullscreen) {
         exitPseudoFullscreen();
+      }
+    }
+
+    function handleDocumentClick(e) {
+      if (!playerSideToolsEl.contains(e.target)) {
+        setSubtitleSettingsOpen(false);
       }
     }
 
@@ -795,6 +931,13 @@
 
     toggleFullscreenBtnEl.addEventListener("click", togglePlayerFullscreen);
 
+    toggleSubtitleSettingsBtnEl.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleSubtitleSettingsOpen();
+    });
+
+    document.addEventListener("click", handleDocumentClick);
+
     document.getElementById("srtFileInput").addEventListener("change", (e) => {
       const file = e.target.files?.[0];
       if (!file) return;
@@ -835,6 +978,7 @@
       document.removeEventListener("webkitfullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("msfullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("keydown", handleKeydown);
+      document.removeEventListener("click", handleDocumentClick);
     });
   </script>
 </body>

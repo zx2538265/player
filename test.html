@@ -107,41 +107,85 @@
       height: 100% !important;
     }
 
-    .floating-fullscreen-btn {
+    .player-side-tools {
       position: absolute;
       top: 50%;
       right: 12px;
       transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.48);
-      color: #fff;
-      cursor: pointer;
       z-index: 30;
-      display: grid;
-      place-items: center;
-      transition: background 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+      pointer-events: auto;
     }
 
-    .floating-fullscreen-btn::before {
+    .player-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.18s ease, border-color 0.18s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      pointer-events: auto;
+    }
+
+    .fullscreen-btn::before {
       content: "⤢";
       font-size: 18px;
       line-height: 1;
     }
 
-    .floating-fullscreen-btn.is-active::before {
+    .fullscreen-btn.is-active::before {
       content: "⤡";
     }
 
-    .floating-fullscreen-btn:hover {
+    .subtitle-setting-btn::before {
+      content: "⚙";
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .player-icon-btn:hover {
       background: rgba(255, 255, 255, 0.16);
-      border-color: rgba(255, 255, 255, 0.45);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .player-icon-btn:focus-visible {
+      outline: 2px solid rgba(158, 203, 255, 0.85);
+      outline-offset: 2px;
+    }
+
+    .floating-subtitle-settings {
+      position: absolute;
+      right: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 260px;
+      display: none;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      background: rgba(24, 24, 24, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
+      padding: 12px;
+      z-index: 31;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      pointer-events: auto;
+    }
+
+    .floating-subtitle-settings.is-open {
+      display: grid;
     }
 
     .subtitle-layer {
@@ -223,23 +267,23 @@
         font-size: calc(clamp(15px, 3.8vw, 24px) * var(--subtitle-scale));
       }
 
-      .floating-fullscreen-btn {
+      .player-side-tools {
         right: 8px;
+      }
+
+      .player-icon-btn {
         width: 36px;
         height: 36px;
+      }
+
+      .floating-subtitle-settings {
+        right: 44px;
+        width: min(240px, calc(100vw - 72px));
       }
     }
 
     .subtitle-settings {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(140px, 1fr));
-      gap: 10px 14px;
       align-items: end;
-      background: #181818;
-      border: 1px solid #2d2d2d;
-      border-radius: 12px;
-      padding: 12px;
     }
 
     .setting-field {
@@ -279,18 +323,6 @@
       background: #2c2c2c;
     }
 
-    @media (max-width: 900px) {
-      .subtitle-settings {
-        grid-template-columns: repeat(2, minmax(140px, 1fr));
-      }
-    }
-
-    @media (max-width: 580px) {
-      .subtitle-settings {
-        grid-template-columns: 1fr;
-      }
-    }
-
     @media (max-width: 768px) {
       body {
         padding: 12px;
@@ -306,11 +338,6 @@
 
       .toolbar {
         margin-bottom: 12px;
-      }
-
-      .subtitle-settings {
-        margin-top: 10px;
-        padding: 10px;
       }
 
       .list {
@@ -372,46 +399,57 @@
       <div class="subtitle-layer">
         <div id="subtitle" class="subtitle-text"></div>
       </div>
-      <button
-        id="toggleFullscreenBtn"
-        type="button"
-        class="floating-fullscreen-btn"
-        aria-label="進入全螢幕"
-        title="進入全螢幕"
-      ></button>
-    </div>
+      <div class="player-side-tools">
+        <button
+          id="toggleFullscreenBtn"
+          class="player-icon-btn fullscreen-btn"
+          type="button"
+          aria-label="進入全螢幕"
+          title="進入全螢幕"
+        ></button>
 
-    <div class="subtitle-settings" id="subtitleSettings">
-      <div class="setting-field">
-        <label class="setting-label" for="subtitleScaleRange">字幕大小</label>
-        <input
-          id="subtitleScaleRange"
-          type="range"
-          min="80"
-          max="160"
-          step="1"
-          value="100"
-        />
-        <div class="setting-value" id="subtitleScaleValue">100%</div>
-      </div>
+        <button
+          id="toggleSubtitleSettingsBtn"
+          class="player-icon-btn subtitle-setting-btn"
+          type="button"
+          aria-label="開啟字幕設定"
+          aria-expanded="false"
+          title="開啟字幕設定"
+        ></button>
 
-      <div class="setting-field">
-        <label class="setting-label" for="subtitleBottomRange">一般位置（底部）</label>
-        <input
-          id="subtitleBottomRange"
-          type="range"
-          min="2"
-          max="20"
-          step="1"
-          value="8"
-        />
-        <div class="setting-value" id="subtitleBottomValue">8%</div>
-      </div>
+        <div class="subtitle-settings floating-subtitle-settings" id="subtitleSettings">
+          <div class="setting-field">
+            <label class="setting-label" for="subtitleScaleRange">字幕大小</label>
+            <input
+              id="subtitleScaleRange"
+              type="range"
+              min="80"
+              max="160"
+              step="1"
+              value="100"
+            />
+            <div class="setting-value" id="subtitleScaleValue">100%</div>
+          </div>
 
-      <div class="setting-field">
-        <button id="resetSubtitleSettingsBtn" type="button" class="setting-reset">
-          重設字幕設定
-        </button>
+          <div class="setting-field">
+            <label class="setting-label" for="subtitleBottomRange">一般位置（底部）</label>
+            <input
+              id="subtitleBottomRange"
+              type="range"
+              min="2"
+              max="20"
+              step="1"
+              value="8"
+            />
+            <div class="setting-value" id="subtitleBottomValue">8%</div>
+          </div>
+
+          <div class="setting-field">
+            <button id="resetSubtitleSettingsBtn" type="button" class="setting-reset">
+              重設字幕設定
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -433,7 +471,9 @@
     const infoEl = document.getElementById("info");
     const containerEl = document.querySelector(".container");
     const playerWrapEl = document.querySelector(".player-wrap");
+    const playerSideToolsEl = document.querySelector(".player-side-tools");
     const subtitleLayerEl = document.querySelector(".subtitle-layer");
+    const subtitleSettingsEl = document.getElementById("subtitleSettings");
     const subtitleScaleRangeEl = document.getElementById("subtitleScaleRange");
     const subtitleBottomRangeEl = document.getElementById("subtitleBottomRange");
     const subtitleBottomFsRangeEl = document.getElementById("subtitleBottomFsRange");
@@ -442,6 +482,7 @@
     const subtitleBottomFsValueEl = document.getElementById("subtitleBottomFsValue");
     const resetSubtitleSettingsBtnEl = document.getElementById("resetSubtitleSettingsBtn");
     const toggleFullscreenBtnEl = document.getElementById("toggleFullscreenBtn");
+    const toggleSubtitleSettingsBtnEl = document.getElementById("toggleSubtitleSettingsBtn");
     const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
     const subtitleSettingsStorageKey = "yt-srt-subtitle-settings";
 
@@ -468,6 +509,19 @@
       toggleFullscreenBtnEl.setAttribute("title", label);
     }
 
+    function setSubtitleSettingsOpen(isOpen) {
+      const label = isOpen ? "關閉字幕設定" : "開啟字幕設定";
+      subtitleSettingsEl.classList.toggle("is-open", isOpen);
+      toggleSubtitleSettingsBtnEl.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      toggleSubtitleSettingsBtnEl.setAttribute("aria-label", label);
+      toggleSubtitleSettingsBtnEl.setAttribute("title", label);
+    }
+
+    function toggleSubtitleSettingsOpen() {
+      const isOpen = subtitleSettingsEl.classList.contains("is-open");
+      setSubtitleSettingsOpen(!isOpen);
+    }
+
     function normalizeSubtitleSettings(raw) {
       const scale = Number(raw?.scale);
       const bottom = Number(raw?.bottom);
@@ -485,10 +539,12 @@
     }
 
     function applySubtitleSettings() {
+      const fullscreenBottom = subtitleBottomFsRangeEl ? subtitleSettings.bottomFs : subtitleSettings.bottom;
+
       containerEl.style.setProperty("--subtitle-scale", (subtitleSettings.scale / 100).toString());
       containerEl.style.setProperty("--subtitle-bottom", `${subtitleSettings.bottom}%`);
-      containerEl.style.setProperty("--subtitle-bottom-fs", `${subtitleSettings.bottomFs}%`);
-      containerEl.style.setProperty("--subtitle-bottom-fs-mobile", String(getMobileFullscreenBottom(subtitleSettings.bottomFs)));
+      containerEl.style.setProperty("--subtitle-bottom-fs", `${fullscreenBottom}%`);
+      containerEl.style.setProperty("--subtitle-bottom-fs-mobile", String(getMobileFullscreenBottom(fullscreenBottom)));
 
       subtitleScaleRangeEl.value = String(subtitleSettings.scale);
       subtitleBottomRangeEl.value = String(subtitleSettings.bottom);
@@ -549,6 +605,7 @@
     applySubtitleSettings();
     bindSubtitleSettingEvents();
     updateFullscreenButtonState(false);
+    setSubtitleSettingsOpen(false);
 
     function srtTimeToSeconds(timeStr) {
       // 00:01:02,500 -> 秒
@@ -768,8 +825,20 @@
     }
 
     function handleKeydown(e) {
-      if (e.key === "Escape" && isPseudoFullscreen) {
+      if (e.key !== "Escape") return;
+
+      if (subtitleSettingsEl.classList.contains("is-open")) {
+        setSubtitleSettingsOpen(false);
+      }
+
+      if (isPseudoFullscreen) {
         exitPseudoFullscreen();
+      }
+    }
+
+    function handleDocumentClick(e) {
+      if (!playerSideToolsEl.contains(e.target)) {
+        setSubtitleSettingsOpen(false);
       }
     }
 
@@ -862,6 +931,13 @@
 
     toggleFullscreenBtnEl.addEventListener("click", togglePlayerFullscreen);
 
+    toggleSubtitleSettingsBtnEl.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleSubtitleSettingsOpen();
+    });
+
+    document.addEventListener("click", handleDocumentClick);
+
     document.getElementById("srtFileInput").addEventListener("change", (e) => {
       const file = e.target.files?.[0];
       if (!file) return;
@@ -902,6 +978,7 @@
       document.removeEventListener("webkitfullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("msfullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("keydown", handleKeydown);
+      document.removeEventListener("click", handleDocumentClick);
     });
   </script>
 </body>

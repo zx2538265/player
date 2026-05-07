@@ -203,7 +203,7 @@
       max-width: 90%;
       padding: 3px 14px;
       border-radius: 14px;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.7);
       font-size: calc(clamp(24px, 1.9vw, 32px) * var(--subtitle-scale));
       line-height: 1.45;
       white-space: pre-wrap;
@@ -462,10 +462,14 @@
     let syncTimer = null;
     let subtitles = [];
     let currentSubtitleIndex = -1;
+    let subtitleItemElements = [];
+    let subtitleSearchHintIndex = -1;
     let subtitleRequestToken = 0;
     let subtitleOriginalParent = null;
     let subtitleOriginalNextSibling = null;
     let isPseudoFullscreen = false;
+    let isSyncStateActive = false;
+    let isSubtitleListClickBound = false;
 
     const videoIdInput = document.getElementById("videoIdInput");
     const infoEl = document.getElementById("info");
@@ -473,6 +477,8 @@
     const playerWrapEl = document.querySelector(".player-wrap");
     const playerSideToolsEl = document.querySelector(".player-side-tools");
     const subtitleLayerEl = document.querySelector(".subtitle-layer");
+    const subtitleEl = document.getElementById("subtitle");
+    const subtitleListEl = document.getElementById("subtitleList");
     const subtitleSettingsEl = document.getElementById("subtitleSettings");
     const subtitleScaleRangeEl = document.getElementById("subtitleScaleRange");
     const subtitleBottomRangeEl = document.getElementById("subtitleBottomRange");
@@ -674,32 +680,84 @@
       return `${hh}:${mm}:${ss},${mmm}`;
     }
 
+    function findSubtitleIndexByBinarySearch(currentTime) {
+      let left = 0;
+      let right = subtitles.length - 1;
+
+      while (left <= right) {
+        const mid = (left + right) >> 1;
+        const sub = subtitles[mid];
+
+        if (currentTime < sub.start) {
+          right = mid - 1;
+        } else if (currentTime > sub.end) {
+          left = mid + 1;
+        } else {
+          return mid;
+        }
+      }
+
+      return -1;
+    }
+
+    function findSubtitleIndex(currentTime) {
+      if (subtitles.length === 0) return -1;
+
+      if (subtitleSearchHintIndex >= 0 && subtitleSearchHintIndex < subtitles.length) {
+        const hinted = subtitles[subtitleSearchHintIndex];
+        if (currentTime >= hinted.start && currentTime <= hinted.end) {
+          return subtitleSearchHintIndex;
+        }
+
+        const nextIndex = subtitleSearchHintIndex + 1;
+        if (nextIndex < subtitles.length) {
+          const nextSub = subtitles[nextIndex];
+          if (currentTime >= nextSub.start && currentTime <= nextSub.end) {
+            return nextIndex;
+          }
+        }
+
+        const prevIndex = subtitleSearchHintIndex - 1;
+        if (prevIndex >= 0) {
+          const prevSub = subtitles[prevIndex];
+          if (currentTime >= prevSub.start && currentTime <= prevSub.end) {
+            return prevIndex;
+          }
+        }
+      }
+
+      return findSubtitleIndexByBinarySearch(currentTime);
+    }
+
     function renderSubtitleList() {
-      const list = document.getElementById("subtitleList");
-      list.innerHTML = "";
+      syncSubtitleListClickBinding();
+      subtitleListEl.innerHTML = "";
+      subtitleItemElements = [];
+
+      if (subtitles.length === 0 || !isSubtitleListVisible()) return;
+
+      const fragment = document.createDocumentFragment();
 
       subtitles.forEach((sub, i) => {
         const div = document.createElement("div");
         div.className = "item" + (i === currentSubtitleIndex ? " active" : "");
+        div.dataset.index = String(i);
         div.innerHTML = `
           <div class="time">${formatTime(sub.start)} --> ${formatTime(sub.end)}</div>
           <div class="text"></div>
         `;
         div.querySelector(".text").textContent = sub.text;
 
-        div.addEventListener("click", () => {
-          if (player && typeof player.seekTo === "function") {
-            player.seekTo(sub.start, true);
-          }
-        });
-
-        list.appendChild(div);
+        subtitleItemElements.push(div);
+        fragment.appendChild(div);
       });
+
+      subtitleListEl.appendChild(fragment);
     }
 
     function updateActiveSubtitle(index) {
+      const prevIndex = currentSubtitleIndex;
       currentSubtitleIndex = index;
-      const subtitleEl = document.getElementById("subtitle");
 
       if (index >= 0) {
         subtitleEl.textContent = subtitles[index].text;
@@ -707,20 +765,115 @@
         subtitleEl.textContent = "";
       }
 
-      renderSubtitleList();
+      if (prevIndex >= 0 && subtitleItemElements[prevIndex]) {
+        subtitleItemElements[prevIndex].classList.remove("active");
+      }
+
+      if (index >= 0 && subtitleItemElements[index]) {
+        subtitleItemElements[index].classList.add("active");
+      }
     }
 
     function syncSubtitle() {
-      if (!player || typeof player.getCurrentTime !== "function") return;
+      if (!player || typeof player.getCurrentTime !== "function" || subtitles.length === 0) return;
 
       const currentTime = player.getCurrentTime();
-      const index = subtitles.findIndex(
-        s => currentTime >= s.start && currentTime <= s.end
-      );
+      const index = findSubtitleIndex(currentTime);
+
+      if (index >= 0) {
+        subtitleSearchHintIndex = index;
+      }
 
       if (index !== currentSubtitleIndex) {
         updateActiveSubtitle(index);
       }
+    }
+
+    function startSyncTimer() {
+      if (syncTimer || !player) return;
+      syncTimer = setInterval(syncSubtitle, 150);
+    }
+
+    function stopSyncTimer() {
+      if (!syncTimer) return;
+      clearInterval(syncTimer);
+      syncTimer = null;
+    }
+
+    function isSubtitleListVisible() {
+      const style = window.getComputedStyle(subtitleListEl);
+      return style.display !== "none" && style.visibility !== "hidden";
+    }
+
+    function syncSubtitleListClickBinding() {
+      const shouldBind = isSubtitleListVisible();
+
+      if (shouldBind && !isSubtitleListClickBound) {
+        subtitleListEl.addEventListener("click", handleSubtitleListClick);
+        isSubtitleListClickBound = true;
+      } else if (!shouldBind && isSubtitleListClickBound) {
+        subtitleListEl.removeEventListener("click", handleSubtitleListClick);
+        isSubtitleListClickBound = false;
+      }
+    }
+
+    function refreshSyncTimerState() {
+      const shouldRun = isSyncStateActive && !document.hidden;
+
+      if (shouldRun) {
+        startSyncTimer();
+      } else {
+        stopSyncTimer();
+      }
+    }
+
+    function handleVisibilityChange() {
+      if (!document.hidden) {
+        syncSubtitle();
+      }
+
+      refreshSyncTimerState();
+    }
+
+    function handlePlayerStateChange(event) {
+      const state = Number(event?.data);
+      const playerState = window.YT?.PlayerState;
+
+      const isPlaying = state === (playerState ? playerState.PLAYING : 1);
+      const isBuffering = state === (playerState ? playerState.BUFFERING : 3);
+
+      isSyncStateActive = isPlaying || isBuffering;
+
+      if (!isSyncStateActive) {
+        syncSubtitle();
+      }
+
+      refreshSyncTimerState();
+    }
+
+    function handleSubtitleListClick(e) {
+      if (!isSubtitleListVisible()) return;
+
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+
+      const itemEl = target.closest(".item");
+      if (!itemEl || !subtitleListEl.contains(itemEl)) return;
+
+      const index = Number(itemEl.dataset.index);
+      if (!Number.isInteger(index) || !subtitles[index]) return;
+
+      if (player && typeof player.seekTo === "function") {
+        player.seekTo(subtitles[index].start, true);
+      }
+    }
+
+    function setSubtitles(nextSubtitles) {
+      subtitles = nextSubtitles;
+      currentSubtitleIndex = -1;
+      subtitleSearchHintIndex = subtitles.length > 0 ? 0 : -1;
+      subtitleEl.textContent = "";
+      renderSubtitleList();
     }
 
     function getFullscreenElement() {
@@ -857,20 +1010,17 @@
         const text = await response.text();
         if (requestToken !== subtitleRequestToken) return;
 
-        subtitles = parseSrt(text);
+        const parsedSubtitles = parseSrt(text);
+        parsedSubtitles.sort((a, b) => a.start - b.start || a.end - b.end);
+        setSubtitles(parsedSubtitles);
         infoEl.textContent =
           subtitles.length > 0
             ? `已自動載入字幕（${srtPath}），共 ${subtitles.length} 段`
             : `已讀取 ${srtPath}，但解析不到字幕內容`;
-
-        updateActiveSubtitle(-1);
-        renderSubtitleList();
       } catch (err) {
         if (requestToken !== subtitleRequestToken) return;
 
-        subtitles = [];
-        updateActiveSubtitle(-1);
-        renderSubtitleList();
+        setSubtitles([]);
         infoEl.textContent = `找不到對應字幕檔：${srtPath}`;
       }
     }
@@ -880,6 +1030,9 @@
         alert("請輸入 YouTube 影片 ID");
         return;
       }
+
+      // 切換影片時先清空舊字幕，避免等待新字幕期間持續進行舊資料比對。
+      setSubtitles([]);
 
       if (player && typeof player.loadVideoById === "function") {
         player.loadVideoById({
@@ -909,8 +1062,9 @@
         },
         events: {
           onReady: () => {
-            if (syncTimer) clearInterval(syncTimer);
-            syncTimer = setInterval(syncSubtitle, 150);
+            stopSyncTimer();
+            isSyncStateActive = false;
+            syncSubtitle();
 
             if (player && typeof player.setPlaybackQuality === "function") {
               player.setPlaybackQuality("hd1080");
@@ -919,10 +1073,13 @@
             if (initialVideoId) {
               loadVideoById(initialVideoId);
             }
-          }
+          },
+          onStateChange: handlePlayerStateChange
         }
       });
     }
+
+    syncSubtitleListClickBinding();
 
     document.getElementById("loadVideoBtn").addEventListener("click", () => {
       const videoId = videoIdInput.value.trim();
@@ -937,6 +1094,7 @@
     });
 
     document.addEventListener("click", handleDocumentClick);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     document.getElementById("srtFileInput").addEventListener("change", (e) => {
       const file = e.target.files?.[0];
@@ -945,15 +1103,14 @@
       const reader = new FileReader();
       reader.onload = () => {
         const text = reader.result;
-        subtitles = parseSrt(text);
+        const parsedSubtitles = parseSrt(text);
+        parsedSubtitles.sort((a, b) => a.start - b.start || a.end - b.end);
+        setSubtitles(parsedSubtitles);
 
         infoEl.textContent =
           subtitles.length > 0
             ? `已載入字幕，共 ${subtitles.length} 段`
             : "字幕解析失敗或沒有讀到資料";
-
-        updateActiveSubtitle(-1);
-        renderSubtitleList();
       };
 
       reader.onerror = () => {
@@ -973,12 +1130,15 @@
     document.addEventListener("keydown", handleKeydown);
 
     window.addEventListener("beforeunload", () => {
-      if (syncTimer) clearInterval(syncTimer);
+      stopSyncTimer();
       document.removeEventListener("fullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("webkitfullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("msfullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("keydown", handleKeydown);
       document.removeEventListener("click", handleDocumentClick);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      subtitleListEl.removeEventListener("click", handleSubtitleListClick);
+      isSubtitleListClickBound = false;
     });
   </script>
 </body>

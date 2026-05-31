@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -391,7 +392,7 @@
     }
 
     .item.active {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 8px;
     }
 
@@ -406,6 +407,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="toolbar">
@@ -421,47 +423,22 @@
         <div id="subtitle" class="subtitle-text"></div>
       </div>
       <div class="player-side-tools">
-        <button
-          id="toggleFullscreenBtn"
-          class="player-icon-btn fullscreen-btn"
-          type="button"
-          aria-label="進入全螢幕"
-          title="進入全螢幕"
-        ></button>
+        <button id="toggleFullscreenBtn" class="player-icon-btn fullscreen-btn" type="button" aria-label="進入全螢幕"
+          title="進入全螢幕"></button>
 
-        <button
-          id="toggleSubtitleSettingsBtn"
-          class="player-icon-btn subtitle-setting-btn"
-          type="button"
-          aria-label="開啟字幕設定"
-          aria-expanded="false"
-          title="開啟字幕設定"
-        ></button>
+        <button id="toggleSubtitleSettingsBtn" class="player-icon-btn subtitle-setting-btn" type="button"
+          aria-label="開啟字幕設定" aria-expanded="false" title="開啟字幕設定"></button>
 
         <div class="subtitle-settings floating-subtitle-settings" id="subtitleSettings">
           <div class="setting-field">
             <label class="setting-label" for="subtitleScaleRange">字幕大小</label>
-            <input
-              id="subtitleScaleRange"
-              type="range"
-              min="80"
-              max="160"
-              step="1"
-              value="100"
-            />
+            <input id="subtitleScaleRange" type="range" min="80" max="160" step="1" value="100" />
             <div class="setting-value" id="subtitleScaleValue">100%</div>
           </div>
 
           <div class="setting-field">
             <label class="setting-label" for="subtitleBottomRange">一般位置（底部）</label>
-            <input
-              id="subtitleBottomRange"
-              type="range"
-              min="2"
-              max="20"
-              step="1"
-              value="8"
-            />
+            <input id="subtitleBottomRange" type="range" min="2" max="20" step="1" value="8" />
             <div class="setting-value" id="subtitleBottomValue">8%</div>
           </div>
 
@@ -519,7 +496,7 @@
     const playerControlsAutoHideDelay = 2200;
 
     const defaultSubtitleSettings = {
-      scale: 100,
+      scale: 80,
       bottom: 8,
       bottomFs: 6
     };
@@ -1271,4 +1248,5 @@
     });
   </script>
 </body>
+
 </html>

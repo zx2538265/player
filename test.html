@@ -610,6 +610,10 @@
       schedulePlayerSideToolsAutoHide();
     }
 
+    function handleGlobalPointerActivity() {
+      revealPlayerSideTools();
+    }
+
     function normalizeSubtitleSettings(raw) {
       const scale = Number(raw?.scale);
       const bottom = Number(raw?.bottom);
@@ -1076,9 +1080,7 @@
         setSubtitleSettingsOpen(false);
       }
 
-      if (playerWrapEl.contains(e.target)) {
-        revealPlayerSideTools();
-      }
+      revealPlayerSideTools();
     }
 
     async function loadSubtitleFromSrtFolder(videoId) {
@@ -1176,6 +1178,8 @@
     playerWrapEl.addEventListener("mousemove", handlePlayerWrapInteraction);
     playerWrapEl.addEventListener("click", handlePlayerWrapInteraction);
     playerWrapEl.addEventListener("touchstart", handlePlayerWrapInteraction, { passive: true });
+    document.addEventListener("mousemove", handleGlobalPointerActivity);
+    document.addEventListener("click", handleGlobalPointerActivity);
     playerSideToolsEl.addEventListener("mouseenter", handleSideToolsMouseEnter);
     playerSideToolsEl.addEventListener("mouseleave", handleSideToolsMouseLeave);
     playerSideToolsEl.addEventListener("focusin", handleSideToolsFocusIn);
@@ -1232,6 +1236,8 @@
       document.removeEventListener("msfullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("keydown", handleKeydown);
       document.removeEventListener("click", handleDocumentClick);
+      document.removeEventListener("mousemove", handleGlobalPointerActivity);
+      document.removeEventListener("click", handleGlobalPointerActivity);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       playerWrapEl.removeEventListener("mousemove", handlePlayerWrapInteraction);
       playerWrapEl.removeEventListener("click", handlePlayerWrapInteraction);

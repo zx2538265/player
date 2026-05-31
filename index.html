@@ -101,6 +101,18 @@
       height: 100%;
     }
 
+    .player-activity-catcher {
+      position: absolute;
+      inset: 0;
+      z-index: 29;
+      display: none;
+      background: transparent;
+    }
+
+    .player-wrap.side-tools-hidden .player-activity-catcher {
+      display: block;
+    }
+
     .player-wrap.is-pseudo-fullscreen #player,
     .player-wrap.is-pseudo-fullscreen #player iframe {
       width: 100% !important;
@@ -118,6 +130,14 @@
       gap: 8px;
       align-items: flex-end;
       pointer-events: auto;
+      opacity: 1;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .player-wrap.side-tools-hidden .player-side-tools {
+      opacity: 0;
+      transform: translateY(-50%) translateX(10px);
+      pointer-events: none;
     }
 
     .player-icon-btn {
@@ -396,6 +416,7 @@
 
     <div class="player-wrap">
       <div id="player"></div>
+      <div class="player-activity-catcher" id="playerActivityCatcher" aria-hidden="true"></div>
       <div class="subtitle-layer">
         <div id="subtitle" class="subtitle-text"></div>
       </div>
@@ -470,12 +491,16 @@
     let isPseudoFullscreen = false;
     let isSyncStateActive = false;
     let isSubtitleListClickBound = false;
+    let controlsHideTimer = null;
+    let isPointerInsideSideTools = false;
+    let arePlayerSideToolsHidden = false;
 
     const videoIdInput = document.getElementById("videoIdInput");
     const infoEl = document.getElementById("info");
     const containerEl = document.querySelector(".container");
     const playerWrapEl = document.querySelector(".player-wrap");
     const playerSideToolsEl = document.querySelector(".player-side-tools");
+    const playerActivityCatcherEl = document.getElementById("playerActivityCatcher");
     const subtitleLayerEl = document.querySelector(".subtitle-layer");
     const subtitleEl = document.getElementById("subtitle");
     const subtitleListEl = document.getElementById("subtitleList");
@@ -491,6 +516,7 @@
     const toggleSubtitleSettingsBtnEl = document.getElementById("toggleSubtitleSettingsBtn");
     const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
     const subtitleSettingsStorageKey = "yt-srt-subtitle-settings";
+    const playerControlsAutoHideDelay = 2200;
 
     const defaultSubtitleSettings = {
       scale: 100,
@@ -521,11 +547,85 @@
       toggleSubtitleSettingsBtnEl.setAttribute("aria-expanded", isOpen ? "true" : "false");
       toggleSubtitleSettingsBtnEl.setAttribute("aria-label", label);
       toggleSubtitleSettingsBtnEl.setAttribute("title", label);
+
+      if (isOpen) {
+        revealPlayerSideTools();
+        clearPlayerControlsHideTimer();
+      } else {
+        schedulePlayerSideToolsAutoHide();
+      }
     }
 
     function toggleSubtitleSettingsOpen() {
       const isOpen = subtitleSettingsEl.classList.contains("is-open");
       setSubtitleSettingsOpen(!isOpen);
+    }
+
+    function setPlayerSideToolsHidden(hidden) {
+      if (arePlayerSideToolsHidden === hidden) return;
+      arePlayerSideToolsHidden = hidden;
+      playerWrapEl.classList.toggle("side-tools-hidden", hidden);
+    }
+
+    function clearPlayerControlsHideTimer() {
+      if (!controlsHideTimer) return;
+      clearTimeout(controlsHideTimer);
+      controlsHideTimer = null;
+    }
+
+    function schedulePlayerSideToolsAutoHide() {
+      clearPlayerControlsHideTimer();
+
+      if (subtitleSettingsEl.classList.contains("is-open") || isPointerInsideSideTools) {
+        return;
+      }
+
+      controlsHideTimer = setTimeout(() => {
+        setPlayerSideToolsHidden(true);
+      }, playerControlsAutoHideDelay);
+    }
+
+    function revealPlayerSideTools() {
+      setPlayerSideToolsHidden(false);
+      schedulePlayerSideToolsAutoHide();
+    }
+
+    function handlePlayerWrapInteraction(e) {
+      if (!(e.target instanceof Element)) {
+        revealPlayerSideTools();
+        return;
+      }
+
+      if (e.target.closest(".floating-subtitle-settings")) {
+        return;
+      }
+
+      revealPlayerSideTools();
+    }
+
+    function handleSideToolsMouseEnter() {
+      isPointerInsideSideTools = true;
+      clearPlayerControlsHideTimer();
+      setPlayerSideToolsHidden(false);
+    }
+
+    function handleSideToolsMouseLeave() {
+      isPointerInsideSideTools = false;
+      schedulePlayerSideToolsAutoHide();
+    }
+
+    function handleSideToolsFocusIn() {
+      clearPlayerControlsHideTimer();
+      setPlayerSideToolsHidden(false);
+    }
+
+    function handleSideToolsFocusOut(e) {
+      if (playerSideToolsEl.contains(e.relatedTarget)) return;
+      schedulePlayerSideToolsAutoHide();
+    }
+
+    function handleGlobalPointerActivity() {
+      revealPlayerSideTools();
     }
 
     function normalizeSubtitleSettings(raw) {
@@ -993,6 +1093,8 @@
       if (!playerSideToolsEl.contains(e.target)) {
         setSubtitleSettingsOpen(false);
       }
+
+      revealPlayerSideTools();
     }
 
     async function loadSubtitleFromSrtFolder(videoId) {
@@ -1080,11 +1182,25 @@
     }
 
     syncSubtitleListClickBinding();
+    revealPlayerSideTools();
 
     document.getElementById("loadVideoBtn").addEventListener("click", () => {
       const videoId = videoIdInput.value.trim();
       loadVideoById(videoId);
     });
+
+    playerWrapEl.addEventListener("mousemove", handlePlayerWrapInteraction);
+    playerWrapEl.addEventListener("click", handlePlayerWrapInteraction);
+    playerWrapEl.addEventListener("touchstart", handlePlayerWrapInteraction, { passive: true });
+    playerActivityCatcherEl.addEventListener("mousemove", handlePlayerWrapInteraction);
+    playerActivityCatcherEl.addEventListener("click", handlePlayerWrapInteraction);
+    playerActivityCatcherEl.addEventListener("touchstart", handlePlayerWrapInteraction, { passive: true });
+    document.addEventListener("mousemove", handleGlobalPointerActivity);
+    document.addEventListener("click", handleGlobalPointerActivity);
+    playerSideToolsEl.addEventListener("mouseenter", handleSideToolsMouseEnter);
+    playerSideToolsEl.addEventListener("mouseleave", handleSideToolsMouseLeave);
+    playerSideToolsEl.addEventListener("focusin", handleSideToolsFocusIn);
+    playerSideToolsEl.addEventListener("focusout", handleSideToolsFocusOut);
 
     toggleFullscreenBtnEl.addEventListener("click", togglePlayerFullscreen);
 
@@ -1131,12 +1247,25 @@
 
     window.addEventListener("beforeunload", () => {
       stopSyncTimer();
+      clearPlayerControlsHideTimer();
       document.removeEventListener("fullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("webkitfullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("msfullscreenchange", syncSubtitleLayerForFullscreen);
       document.removeEventListener("keydown", handleKeydown);
       document.removeEventListener("click", handleDocumentClick);
+      document.removeEventListener("mousemove", handleGlobalPointerActivity);
+      document.removeEventListener("click", handleGlobalPointerActivity);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      playerWrapEl.removeEventListener("mousemove", handlePlayerWrapInteraction);
+      playerWrapEl.removeEventListener("click", handlePlayerWrapInteraction);
+      playerWrapEl.removeEventListener("touchstart", handlePlayerWrapInteraction);
+      playerActivityCatcherEl.removeEventListener("mousemove", handlePlayerWrapInteraction);
+      playerActivityCatcherEl.removeEventListener("click", handlePlayerWrapInteraction);
+      playerActivityCatcherEl.removeEventListener("touchstart", handlePlayerWrapInteraction);
+      playerSideToolsEl.removeEventListener("mouseenter", handleSideToolsMouseEnter);
+      playerSideToolsEl.removeEventListener("mouseleave", handleSideToolsMouseLeave);
+      playerSideToolsEl.removeEventListener("focusin", handleSideToolsFocusIn);
+      playerSideToolsEl.removeEventListener("focusout", handleSideToolsFocusOut);
       subtitleListEl.removeEventListener("click", handleSubtitleListClick);
       isSubtitleListClickBound = false;
     });

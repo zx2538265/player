@@ -101,6 +101,18 @@
       height: 100%;
     }
 
+    .player-activity-catcher {
+      position: absolute;
+      inset: 0;
+      z-index: 29;
+      display: none;
+      background: transparent;
+    }
+
+    .player-wrap.side-tools-hidden .player-activity-catcher {
+      display: block;
+    }
+
     .player-wrap.is-pseudo-fullscreen #player,
     .player-wrap.is-pseudo-fullscreen #player iframe {
       width: 100% !important;
@@ -404,6 +416,7 @@
 
     <div class="player-wrap">
       <div id="player"></div>
+      <div class="player-activity-catcher" id="playerActivityCatcher" aria-hidden="true"></div>
       <div class="subtitle-layer">
         <div id="subtitle" class="subtitle-text"></div>
       </div>
@@ -487,6 +500,7 @@
     const containerEl = document.querySelector(".container");
     const playerWrapEl = document.querySelector(".player-wrap");
     const playerSideToolsEl = document.querySelector(".player-side-tools");
+    const playerActivityCatcherEl = document.getElementById("playerActivityCatcher");
     const subtitleLayerEl = document.querySelector(".subtitle-layer");
     const subtitleEl = document.getElementById("subtitle");
     const subtitleListEl = document.getElementById("subtitleList");
@@ -1178,6 +1192,9 @@
     playerWrapEl.addEventListener("mousemove", handlePlayerWrapInteraction);
     playerWrapEl.addEventListener("click", handlePlayerWrapInteraction);
     playerWrapEl.addEventListener("touchstart", handlePlayerWrapInteraction, { passive: true });
+    playerActivityCatcherEl.addEventListener("mousemove", handlePlayerWrapInteraction);
+    playerActivityCatcherEl.addEventListener("click", handlePlayerWrapInteraction);
+    playerActivityCatcherEl.addEventListener("touchstart", handlePlayerWrapInteraction, { passive: true });
     document.addEventListener("mousemove", handleGlobalPointerActivity);
     document.addEventListener("click", handleGlobalPointerActivity);
     playerSideToolsEl.addEventListener("mouseenter", handleSideToolsMouseEnter);
@@ -1242,6 +1259,9 @@
       playerWrapEl.removeEventListener("mousemove", handlePlayerWrapInteraction);
       playerWrapEl.removeEventListener("click", handlePlayerWrapInteraction);
       playerWrapEl.removeEventListener("touchstart", handlePlayerWrapInteraction);
+      playerActivityCatcherEl.removeEventListener("mousemove", handlePlayerWrapInteraction);
+      playerActivityCatcherEl.removeEventListener("click", handlePlayerWrapInteraction);
+      playerActivityCatcherEl.removeEventListener("touchstart", handlePlayerWrapInteraction);
       playerSideToolsEl.removeEventListener("mouseenter", handleSideToolsMouseEnter);
       playerSideToolsEl.removeEventListener("mouseleave", handleSideToolsMouseLeave);
       playerSideToolsEl.removeEventListener("focusin", handleSideToolsFocusIn);

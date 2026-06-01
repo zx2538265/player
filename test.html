@@ -415,7 +415,8 @@
       <button id="loadVideoBtn">載入影片</button>
       <input id="srtFileInput" type="file" accept=".srt" />
     </div>
-
+    <div class="info" id="info">尚未載入字幕</div>
+    <div class="list" id="subtitleList"></div>
     <div class="player-wrap">
       <div id="player"></div>
       <div class="player-activity-catcher" id="playerActivityCatcher" aria-hidden="true"></div>
@@ -451,8 +452,7 @@
       </div>
     </div>
 
-    <div class="info" id="info">尚未載入字幕</div>
-    <div class="list" id="subtitleList"></div>
+
     <iframe
       src="https://allenkaka.notion.site/ebd//358f1640416380ce9943cb914b0409f1?v=372f16404163804c947b000c5be27931"
       width="100%"
@@ -1101,8 +1101,8 @@
         setSubtitles(parsedSubtitles);
         infoEl.textContent =
           subtitles.length > 0
-            ? `已自動載入字幕（${srtPath}），共 ${subtitles.length} 段`
-            : `已讀取 ${srtPath}，但解析不到字幕內容`;
+            ? `已自動載入字幕，共 ${subtitles.length} 段`
+            : `已讀取 ，但解析不到字幕內容`;
       } catch (err) {
         if (requestToken !== subtitleRequestToken) return;
 

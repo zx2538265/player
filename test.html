@@ -447,10 +447,6 @@
       font-weight: 700;
     }
 
-    .use-notion-fallback .notion-embed-wrap {
-      display: none;
-    }
-
     .item {
       padding: 10px;
       border-bottom: 1px solid #2a2a2a;
@@ -533,8 +529,8 @@
         allowfullscreen
       ></iframe>
     </div>
-    <div class="notion-fallback" id="notionFallback">
-      <p>iPhone Safari 對跨站 Notion iframe 相容性不穩，這裡改用直接開啟 Notion 頁面會比較可靠。</p>
+    <div class="notion-fallback is-visible" id="notionFallback">
+      <p>若手機上的 Notion iframe 沒有正常載入，可直接開啟 Notion 頁面。iframe 仍會優先嘗試載入。</p>
       <a
         id="notionFallbackLink"
         class="notion-fallback-link"
@@ -715,21 +711,20 @@
       return Math.min(14, Math.max(7, bottomFs));
     }
 
-    function isIosSafari() {
-      const ua = navigator.userAgent;
-      const isAppleMobile = /iP(hone|ad|od)/.test(ua);
-      const isWebKitSafari = /WebKit/i.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS|mercury/i.test(ua);
-      return isAppleMobile && isWebKitSafari;
+    function normalizeNotionEmbedUrl(url) {
+      if (!url) return "";
+      return url.replace(/\/ebd\/{2,}/, "/ebd/");
     }
 
-    function applyNotionEmbedStrategy() {
-      if (!isIosSafari() || !notionFallbackEl) return;
+    function applyNotionEmbedUrl() {
+      const normalizedUrl = normalizeNotionEmbedUrl(notionEmbedUrl);
 
-      document.body.classList.add("use-notion-fallback");
-      notionFallbackEl.classList.add("is-visible");
+      if (notionEmbedEl && normalizedUrl && notionEmbedEl.getAttribute("src") !== normalizedUrl) {
+        notionEmbedEl.setAttribute("src", normalizedUrl);
+      }
 
-      if (notionFallbackLinkEl && notionEmbedUrl) {
-        notionFallbackLinkEl.href = notionEmbedUrl;
+      if (notionFallbackLinkEl && normalizedUrl) {
+        notionFallbackLinkEl.href = normalizedUrl;
       }
     }
 
@@ -797,7 +792,7 @@
     }
 
     loadSubtitleSettings();
-    applyNotionEmbedStrategy();
+    applyNotionEmbedUrl();
     applySubtitleSettings();
     bindSubtitleSettingEvents();
     updateFullscreenButtonState(false);

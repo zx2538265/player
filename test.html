@@ -375,6 +375,11 @@
         height: 75dvh;
         min-height: 75dvh;
       }
+
+      .notion-fallback {
+        margin-top: 16px;
+        border-radius: 12px;
+      }
     }
 
     .info {
@@ -407,6 +412,43 @@
       min-height: 600px;
       border: 0;
       background: #fff;
+    }
+
+    .notion-fallback {
+      display: none;
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 16px;
+      background: #1a1a1a;
+      border: 1px solid #2d2d2d;
+      color: #f1f1f1;
+    }
+
+    .notion-fallback.is-visible {
+      display: block;
+    }
+
+    .notion-fallback p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: #d6d6d6;
+    }
+
+    .notion-fallback-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 10px;
+      background: #f5f5f5;
+      color: #111;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .use-notion-fallback .notion-embed-wrap {
+      display: none;
     }
 
     .item {
@@ -483,12 +525,23 @@
 
     <div class="notion-embed-wrap">
       <iframe
+        id="notionEmbed"
         class="notion-embed"
         src="https://allenkaka.notion.site/ebd//358f1640416380ce9943cb914b0409f1?v=372f16404163804c947b000c5be27931"
         loading="lazy"
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
       ></iframe>
+    </div>
+    <div class="notion-fallback" id="notionFallback">
+      <p>iPhone Safari 對跨站 Notion iframe 相容性不穩，這裡改用直接開啟 Notion 頁面會比較可靠。</p>
+      <a
+        id="notionFallbackLink"
+        class="notion-fallback-link"
+        href="https://allenkaka.notion.site/ebd//358f1640416380ce9943cb914b0409f1?v=372f16404163804c947b000c5be27931"
+        target="_blank"
+        rel="noopener noreferrer"
+      >開啟 Notion 頁面</a>
     </div>
   </div>
 
@@ -528,9 +581,13 @@
     const resetSubtitleSettingsBtnEl = document.getElementById("resetSubtitleSettingsBtn");
     const toggleFullscreenBtnEl = document.getElementById("toggleFullscreenBtn");
     const toggleSubtitleSettingsBtnEl = document.getElementById("toggleSubtitleSettingsBtn");
+    const notionEmbedEl = document.getElementById("notionEmbed");
+    const notionFallbackEl = document.getElementById("notionFallback");
+    const notionFallbackLinkEl = document.getElementById("notionFallbackLink");
     const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
     const subtitleSettingsStorageKey = "yt-srt-subtitle-settings";
     const playerControlsAutoHideDelay = 2200;
+    const notionEmbedUrl = notionEmbedEl?.getAttribute("src") || "";
 
     const defaultSubtitleSettings = {
       scale: 80,
@@ -658,6 +715,24 @@
       return Math.min(14, Math.max(7, bottomFs));
     }
 
+    function isIosSafari() {
+      const ua = navigator.userAgent;
+      const isAppleMobile = /iP(hone|ad|od)/.test(ua);
+      const isWebKitSafari = /WebKit/i.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS|mercury/i.test(ua);
+      return isAppleMobile && isWebKitSafari;
+    }
+
+    function applyNotionEmbedStrategy() {
+      if (!isIosSafari() || !notionFallbackEl) return;
+
+      document.body.classList.add("use-notion-fallback");
+      notionFallbackEl.classList.add("is-visible");
+
+      if (notionFallbackLinkEl && notionEmbedUrl) {
+        notionFallbackLinkEl.href = notionEmbedUrl;
+      }
+    }
+
     function applySubtitleSettings() {
       const fullscreenBottom = subtitleBottomFsRangeEl ? subtitleSettings.bottomFs : subtitleSettings.bottom;
 
@@ -722,6 +797,7 @@
     }
 
     loadSubtitleSettings();
+    applyNotionEmbedStrategy();
     applySubtitleSettings();
     bindSubtitleSettingEvents();
     updateFullscreenButtonState(false);

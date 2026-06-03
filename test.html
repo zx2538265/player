@@ -365,20 +365,8 @@
         margin-top: 12px;
       }
 
-      .notion-embed-wrap {
+      .notion-link-wrap {
         margin-top: 16px;
-        border-radius: 12px;
-        min-height: 75dvh;
-      }
-
-      .notion-embed {
-        height: 75dvh;
-        min-height: 75dvh;
-      }
-
-      .notion-fallback {
-        margin-top: 16px;
-        border-radius: 12px;
       }
     }
 
@@ -397,54 +385,21 @@
       overflow: auto;
     }
 
-    .notion-embed-wrap {
+    .notion-link-wrap {
       margin-top: 24px;
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      min-height: 600px;
+      text-align: center;
     }
 
-    .notion-embed {
-      display: block;
-      width: 100%;
-      height: 70vh;
-      min-height: 600px;
-      border: 0;
-      background: #fff;
-    }
-
-    .notion-fallback {
-      display: none;
-      margin-top: 24px;
-      padding: 20px;
-      border-radius: 16px;
-      background: #1a1a1a;
-      border: 1px solid #2d2d2d;
-      color: #f1f1f1;
-    }
-
-    .notion-fallback.is-visible {
-      display: block;
-    }
-
-    .notion-fallback p {
-      margin: 0 0 14px;
-      line-height: 1.6;
-      color: #d6d6d6;
-    }
-
-    .notion-fallback-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0 16px;
-      border-radius: 10px;
-      background: #f5f5f5;
-      color: #111;
-      text-decoration: none;
+    .notion-link {
+      color: #9ecbff;
+      font-size: 16px;
       font-weight: 700;
+      text-decoration: none;
+    }
+
+    .notion-link:hover,
+    .notion-link:focus-visible {
+      text-decoration: underline;
     }
 
     .item {
@@ -519,25 +474,13 @@
     </div>
 
 
-    <div class="notion-embed-wrap">
-      <iframe
-        id="notionEmbed"
-        class="notion-embed"
-        src="https://allenkaka.notion.site/ebd//358f1640416380ce9943cb914b0409f1?v=372f16404163804c947b000c5be27931"
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <div class="notion-fallback is-visible" id="notionFallback">
-      <p>若手機上的 Notion iframe 沒有正常載入，可直接開啟 Notion 頁面。iframe 仍會優先嘗試載入。</p>
+    <div class="notion-link-wrap">
       <a
-        id="notionFallbackLink"
-        class="notion-fallback-link"
-        href="https://allenkaka.notion.site/ebd//358f1640416380ce9943cb914b0409f1?v=372f16404163804c947b000c5be27931"
+        class="notion-link"
+        href="https://allenkaka.notion.site/358f1640416380ce9943cb914b0409f1?v=372f16404163804c947b000c5be27931"
         target="_blank"
         rel="noopener noreferrer"
-      >開啟 Notion 頁面</a>
+      >更多翻譯影片 請點這裡</a>
     </div>
   </div>
 
@@ -577,13 +520,9 @@
     const resetSubtitleSettingsBtnEl = document.getElementById("resetSubtitleSettingsBtn");
     const toggleFullscreenBtnEl = document.getElementById("toggleFullscreenBtn");
     const toggleSubtitleSettingsBtnEl = document.getElementById("toggleSubtitleSettingsBtn");
-    const notionEmbedEl = document.getElementById("notionEmbed");
-    const notionFallbackEl = document.getElementById("notionFallback");
-    const notionFallbackLinkEl = document.getElementById("notionFallbackLink");
     const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
     const subtitleSettingsStorageKey = "yt-srt-subtitle-settings";
     const playerControlsAutoHideDelay = 2200;
-    const notionEmbedUrl = notionEmbedEl?.getAttribute("src") || "";
 
     const defaultSubtitleSettings = {
       scale: 80,
@@ -711,23 +650,6 @@
       return Math.min(14, Math.max(7, bottomFs));
     }
 
-    function normalizeNotionEmbedUrl(url) {
-      if (!url) return "";
-      return url.replace(/\/ebd\/{2,}/, "/ebd/");
-    }
-
-    function applyNotionEmbedUrl() {
-      const normalizedUrl = normalizeNotionEmbedUrl(notionEmbedUrl);
-
-      if (notionEmbedEl && normalizedUrl && notionEmbedEl.getAttribute("src") !== normalizedUrl) {
-        notionEmbedEl.setAttribute("src", normalizedUrl);
-      }
-
-      if (notionFallbackLinkEl && normalizedUrl) {
-        notionFallbackLinkEl.href = normalizedUrl;
-      }
-    }
-
     function applySubtitleSettings() {
       const fullscreenBottom = subtitleBottomFsRangeEl ? subtitleSettings.bottomFs : subtitleSettings.bottom;
 
@@ -792,7 +714,6 @@
     }
 
     loadSubtitleSettings();
-    applyNotionEmbedUrl();
     applySubtitleSettings();
     bindSubtitleSettingEvents();
     updateFullscreenButtonState(false);

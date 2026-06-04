@@ -436,8 +436,7 @@
       <button id="loadVideoBtn">載入影片</button>
       <input id="srtFileInput" type="file" accept=".srt" />
     </div>
-    <div class="info" id="info">尚未載入字幕</div>
-    <div class="list" id="subtitleList"></div>
+   
     <div class="player-wrap">
       <div id="player"></div>
       <div class="player-activity-catcher" id="playerActivityCatcher" aria-hidden="true"></div>
@@ -472,7 +471,8 @@
         </div>
       </div>
     </div>
-
+    <div class="info" id="info">尚未載入字幕</div>
+    <div class="list" id="subtitleList"></div>
 
     <div class="notion-link-wrap">
       <a
@@ -1231,7 +1231,7 @@
 
         infoEl.textContent =
           subtitles.length > 0
-            ? `已載入字幕，共 ${subtitles.length} 段`
+            ? `已載入字幕`
             : "字幕解析失敗或沒有讀到資料";
       };
 

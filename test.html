@@ -139,6 +139,59 @@
       transform: translate(-50%, -50%);
     }
 
+    .rotate-phone-hint {
+      position: absolute;
+      left: 50%;
+      top: max(24px, env(safe-area-inset-top));
+      transform: translateX(-50%);
+      z-index: 32;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.72);
+      color: #fff;
+      font-size: 14px;
+      white-space: nowrap;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .rotate-phone-hint.is-visible {
+      display: flex;
+    }
+
+    .rotate-phone-icon {
+      display: inline-flex;
+      width: 18px;
+      height: 28px;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid currentColor;
+      border-radius: 4px;
+      animation: rotate-phone 1.6s ease-in-out infinite;
+    }
+
+    @keyframes rotate-phone {
+      0%, 30% {
+        transform: rotate(0deg);
+      }
+
+      70%, 100% {
+        transform: rotate(90deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rotate-phone-icon {
+        animation: none;
+        transform: rotate(90deg);
+      }
+    }
+
     .player-side-tools {
       position: absolute;
       top: 50%;
@@ -462,6 +515,10 @@
           <div id="subtitle" class="subtitle-text"></div>
         </div>
       </div>
+      <div id="rotatePhoneHint" class="rotate-phone-hint" role="status" aria-live="polite" aria-hidden="true">
+        <span class="rotate-phone-icon" aria-hidden="true"></span>
+        <span>請將手機轉成橫向</span>
+      </div>
       <div class="player-side-tools">
         <button id="toggleFullscreenBtn" class="player-icon-btn fullscreen-btn" type="button" aria-label="進入全螢幕"
           title="進入全螢幕"></button>
@@ -511,6 +568,7 @@
     let subtitleSearchHintIndex = -1;
     let subtitleRequestToken = 0;
     let isPseudoFullscreen = false;
+    let hasLandscapeOrientationLock = false;
     let isSyncStateActive = false;
     let isSubtitleListClickBound = false;
     let controlsHideTimer = null;
@@ -523,6 +581,7 @@
     const playerWrapEl = document.querySelector(".player-wrap");
     const playerSideToolsEl = document.querySelector(".player-side-tools");
     const playerActivityCatcherEl = document.getElementById("playerActivityCatcher");
+    const rotatePhoneHintEl = document.getElementById("rotatePhoneHint");
     const subtitleEl = document.getElementById("subtitle");
     const subtitleListEl = document.getElementById("subtitleList");
     const subtitleSettingsEl = document.getElementById("subtitleSettings");
@@ -1024,12 +1083,60 @@
       return Promise.resolve();
     }
 
+    function isPlayerFullscreenActive() {
+      return isPseudoFullscreen || getFullscreenElement() === playerWrapEl || playerWrapEl.classList.contains("is-fullscreen");
+    }
+
+    function syncRotatePhoneHint() {
+      const isPortraitMobile = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
+      const shouldShow = isPlayerFullscreenActive() && isPortraitMobile;
+
+      rotatePhoneHintEl.classList.toggle("is-visible", shouldShow);
+      rotatePhoneHintEl.setAttribute("aria-hidden", shouldShow ? "false" : "true");
+    }
+
+    async function tryLockLandscapeOrientation() {
+      const orientation = screen.orientation;
+
+      if (!orientation || typeof orientation.lock !== "function") {
+        syncRotatePhoneHint();
+        return false;
+      }
+
+      try {
+        await orientation.lock("landscape");
+        hasLandscapeOrientationLock = true;
+        return true;
+      } catch {
+        hasLandscapeOrientationLock = false;
+        return false;
+      } finally {
+        syncRotatePhoneHint();
+      }
+    }
+
+    function unlockLandscapeOrientation() {
+      const orientation = screen.orientation;
+
+      if (hasLandscapeOrientationLock && orientation && typeof orientation.unlock === "function") {
+        try {
+          orientation.unlock();
+        } catch {
+          // 部分瀏覽器會在離開全螢幕時自動解除鎖定，此處可安全忽略。
+        }
+      }
+
+      hasLandscapeOrientationLock = false;
+      syncRotatePhoneHint();
+    }
+
     function enterPseudoFullscreen() {
       isPseudoFullscreen = true;
       playerWrapEl.classList.add("is-pseudo-fullscreen");
       playerWrapEl.classList.add("is-fullscreen");
       document.body.classList.add("no-scroll");
       updateFullscreenButtonState(true);
+      syncRotatePhoneHint();
     }
 
     function exitPseudoFullscreen() {
@@ -1038,6 +1145,7 @@
       playerWrapEl.classList.remove("is-fullscreen");
       document.body.classList.remove("no-scroll");
       updateFullscreenButtonState(false);
+      unlockLandscapeOrientation();
     }
 
     function syncPlayerFullscreenState() {
@@ -1048,6 +1156,7 @@
         playerWrapEl.classList.add("is-fullscreen");
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
+        syncRotatePhoneHint();
         return;
       }
 
@@ -1055,18 +1164,20 @@
         playerWrapEl.classList.add("is-fullscreen");
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
+        syncRotatePhoneHint();
       } else {
         playerWrapEl.classList.remove("is-fullscreen");
         document.body.classList.remove("no-scroll");
         updateFullscreenButtonState(false);
+        unlockLandscapeOrientation();
       }
     }
 
     // 因 YouTube iframe 內建全螢幕在跨網域文件內，外層頁面的字幕層無法覆蓋。
     // 這裡改用外層容器全螢幕，確保自訂字幕可持續顯示。
-    function togglePlayerFullscreen() {
+    async function togglePlayerFullscreen() {
       const fullscreenEl = getFullscreenElement();
-      const isPlayerFullscreen = !!fullscreenEl && playerWrapEl.contains(fullscreenEl);
+      const isPlayerFullscreen = fullscreenEl === playerWrapEl;
 
       if (isPseudoFullscreen) {
         exitPseudoFullscreen();
@@ -1074,12 +1185,23 @@
       }
 
       if (isPlayerFullscreen) {
-        exitFullscreen();
+        await exitFullscreen();
+        unlockLandscapeOrientation();
       } else {
-        Promise.resolve(requestElementFullscreen(playerWrapEl)).catch(() => {
+        try {
+          await Promise.resolve(requestElementFullscreen(playerWrapEl));
+        } catch {
           enterPseudoFullscreen();
-        });
+          await tryLockLandscapeOrientation();
+          return;
+        }
+
+        await tryLockLandscapeOrientation();
       }
+    }
+
+    function handleViewportOrientationChange() {
+      syncRotatePhoneHint();
     }
 
     function handleKeydown(e) {
@@ -1258,14 +1380,25 @@
     document.addEventListener("webkitfullscreenchange", syncPlayerFullscreenState);
     document.addEventListener("msfullscreenchange", syncPlayerFullscreenState);
     document.addEventListener("keydown", handleKeydown);
+    window.addEventListener("resize", handleViewportOrientationChange);
+    window.addEventListener("orientationchange", handleViewportOrientationChange);
+    if (screen.orientation && typeof screen.orientation.addEventListener === "function") {
+      screen.orientation.addEventListener("change", handleViewportOrientationChange);
+    }
 
     window.addEventListener("beforeunload", () => {
       stopSyncTimer();
       clearPlayerControlsHideTimer();
+      unlockLandscapeOrientation();
       document.removeEventListener("fullscreenchange", syncPlayerFullscreenState);
       document.removeEventListener("webkitfullscreenchange", syncPlayerFullscreenState);
       document.removeEventListener("msfullscreenchange", syncPlayerFullscreenState);
       document.removeEventListener("keydown", handleKeydown);
+      window.removeEventListener("resize", handleViewportOrientationChange);
+      window.removeEventListener("orientationchange", handleViewportOrientationChange);
+      if (screen.orientation && typeof screen.orientation.removeEventListener === "function") {
+        screen.orientation.removeEventListener("change", handleViewportOrientationChange);
+      }
       document.removeEventListener("click", handleDocumentClick);
       document.removeEventListener("mousemove", handleGlobalPointerActivity);
       document.removeEventListener("click", handleGlobalPointerActivity);

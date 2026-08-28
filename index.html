@@ -24,6 +24,8 @@
       --subtitle-scale: 1;
       --subtitle-bottom: 8%;
       --subtitle-bottom-fs: 6%;
+      --fullscreen-viewport-width: 100dvw;
+      --fullscreen-viewport-height: 100dvh;
     }
 
     .toolbar {
@@ -84,18 +86,12 @@
     .player-wrap:-webkit-full-screen,
     .player-wrap.is-pseudo-fullscreen {
       position: fixed;
-      inset: 0;
-      width: 100dvw;
-      height: 100dvh;
+      inset: 0 auto auto 0;
+      width: var(--fullscreen-viewport-width);
+      height: var(--fullscreen-viewport-height);
       aspect-ratio: auto;
       border-radius: 0;
       z-index: 9999;
-    }
-
-    @supports not (height: 100dvh) {
-      .player-wrap.is-pseudo-fullscreen {
-        height: -webkit-fill-available;
-      }
     }
 
     #player {
@@ -134,8 +130,8 @@
     */
     .player-wrap.is-fullscreen .video-content-guide {
       inset: 50% auto auto 50%;
-      width: min(100%, calc(100dvh * 16 / 9));
-      height: min(100%, calc(100dvw * 9 / 16));
+      width: min(100%, calc(var(--fullscreen-viewport-height) * 16 / 9));
+      height: min(100%, calc(var(--fullscreen-viewport-width) * 9 / 16));
       transform: translate(-50%, -50%);
     }
 
@@ -1087,6 +1083,15 @@
       return isPseudoFullscreen || getFullscreenElement() === playerWrapEl || playerWrapEl.classList.contains("is-fullscreen");
     }
 
+    function syncFullscreenViewportSize() {
+      const viewport = window.visualViewport;
+      const width = Math.round(viewport?.width || window.innerWidth);
+      const height = Math.round(viewport?.height || window.innerHeight);
+
+      containerEl.style.setProperty("--fullscreen-viewport-width", `${width}px`);
+      containerEl.style.setProperty("--fullscreen-viewport-height", `${height}px`);
+    }
+
     function syncRotatePhoneHint() {
       const isPortraitMobile = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
       const shouldShow = isPlayerFullscreenActive() && isPortraitMobile;
@@ -1131,6 +1136,7 @@
     }
 
     function enterPseudoFullscreen() {
+      syncFullscreenViewportSize();
       isPseudoFullscreen = true;
       playerWrapEl.classList.add("is-pseudo-fullscreen");
       playerWrapEl.classList.add("is-fullscreen");
@@ -1153,6 +1159,7 @@
       const isPlayerFullscreen = fullscreenEl === playerWrapEl;
 
       if (isPseudoFullscreen) {
+        syncFullscreenViewportSize();
         playerWrapEl.classList.add("is-fullscreen");
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
@@ -1161,6 +1168,7 @@
       }
 
       if (isPlayerFullscreen) {
+        syncFullscreenViewportSize();
         playerWrapEl.classList.add("is-fullscreen");
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
@@ -1201,6 +1209,7 @@
     }
 
     function handleViewportOrientationChange() {
+      syncFullscreenViewportSize();
       syncRotatePhoneHint();
     }
 
@@ -1382,6 +1391,7 @@
     document.addEventListener("keydown", handleKeydown);
     window.addEventListener("resize", handleViewportOrientationChange);
     window.addEventListener("orientationchange", handleViewportOrientationChange);
+    window.visualViewport?.addEventListener("resize", handleViewportOrientationChange);
     if (screen.orientation && typeof screen.orientation.addEventListener === "function") {
       screen.orientation.addEventListener("change", handleViewportOrientationChange);
     }
@@ -1396,6 +1406,7 @@
       document.removeEventListener("keydown", handleKeydown);
       window.removeEventListener("resize", handleViewportOrientationChange);
       window.removeEventListener("orientationchange", handleViewportOrientationChange);
+      window.visualViewport?.removeEventListener("resize", handleViewportOrientationChange);
       if (screen.orientation && typeof screen.orientation.removeEventListener === "function") {
         screen.orientation.removeEventListener("change", handleViewportOrientationChange);
       }

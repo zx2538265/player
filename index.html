@@ -124,10 +124,7 @@
       z-index: 10;
     }
 
-    /*
-      YouTube 全螢幕會把播放器鋪滿畫面，但影片仍維持 16:9，寬螢幕或直向螢幕會留下黑邊。
-      字幕以這個 16:9 guide 為座標系，而不是以整個螢幕為基準，切換全螢幕後位置才不會漂移。
-    */
+    /* 橫向全螢幕以 16:9 guide 定位字幕，避免字幕落到影片上下黑邊。 */
     .player-wrap.is-fullscreen .video-content-guide {
       inset: 50% auto auto 50%;
       width: min(100%, calc(var(--fullscreen-viewport-height) * 16 / 9));
@@ -135,56 +132,13 @@
       transform: translate(-50%, -50%);
     }
 
-    .rotate-phone-hint {
-      position: absolute;
-      left: 50%;
-      top: max(24px, env(safe-area-inset-top));
-      transform: translateX(-50%);
-      z-index: 32;
-      display: none;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.72);
-      color: #fff;
-      font-size: 14px;
-      white-space: nowrap;
-      pointer-events: none;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .rotate-phone-hint.is-visible {
-      display: flex;
-    }
-
-    .rotate-phone-icon {
-      display: inline-flex;
-      width: 18px;
-      height: 28px;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid currentColor;
-      border-radius: 4px;
-      animation: rotate-phone 1.6s ease-in-out infinite;
-    }
-
-    @keyframes rotate-phone {
-      0%, 30% {
-        transform: rotate(0deg);
-      }
-
-      70%, 100% {
-        transform: rotate(90deg);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .rotate-phone-icon {
-        animation: none;
-        transform: rotate(90deg);
+    /* 手機保持直向放大時，讓直式影片與字幕共用完整的直向畫面。 */
+    @media (max-width: 1024px) and (orientation: portrait) {
+      .player-wrap.is-fullscreen .video-content-guide {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        transform: none;
       }
     }
 
@@ -368,6 +322,13 @@
       }
     }
 
+    @media (max-width: 768px) and (orientation: portrait) {
+      .player-wrap.is-fullscreen .subtitle-text,
+      .player-wrap.is-pseudo-fullscreen .subtitle-text {
+        font-size: calc(clamp(20px, 5.2vw, 28px) * var(--subtitle-scale));
+      }
+    }
+
     .subtitle-settings {
       align-items: end;
     }
@@ -510,10 +471,6 @@
           <div id="subtitle" class="subtitle-text"></div>
         </div>
       </div>
-      <div id="rotatePhoneHint" class="rotate-phone-hint" role="status" aria-live="polite" aria-hidden="true">
-        <span class="rotate-phone-icon" aria-hidden="true"></span>
-        <span>請將手機轉成橫向</span>
-      </div>
       <div class="player-side-tools">
         <button id="toggleFullscreenBtn" class="player-icon-btn fullscreen-btn" type="button" aria-label="進入全螢幕"
           title="進入全螢幕"></button>
@@ -564,7 +521,6 @@
     let subtitleSearchHintIndex = -1;
     let subtitleRequestToken = 0;
     let isPseudoFullscreen = false;
-    let hasLandscapeOrientationLock = false;
     let isSyncStateActive = false;
     let isSubtitleListClickBound = false;
     let controlsHideTimer = null;
@@ -577,7 +533,6 @@
     const playerWrapEl = document.querySelector(".player-wrap");
     const playerSideToolsEl = document.querySelector(".player-side-tools");
     const playerActivityCatcherEl = document.getElementById("playerActivityCatcher");
-    const rotatePhoneHintEl = document.getElementById("rotatePhoneHint");
     const subtitleEl = document.getElementById("subtitle");
     const subtitleListEl = document.getElementById("subtitleList");
     const subtitleSettingsEl = document.getElementById("subtitleSettings");
@@ -1079,10 +1034,6 @@
       return Promise.resolve();
     }
 
-    function isPlayerFullscreenActive() {
-      return isPseudoFullscreen || getFullscreenElement() === playerWrapEl || playerWrapEl.classList.contains("is-fullscreen");
-    }
-
     function syncFullscreenViewportSize() {
       const viewport = window.visualViewport;
       const width = Math.round(viewport?.width || window.innerWidth);
@@ -1092,49 +1043,6 @@
       containerEl.style.setProperty("--fullscreen-viewport-height", `${height}px`);
     }
 
-    function syncRotatePhoneHint() {
-      const isPortraitMobile = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
-      const shouldShow = isPlayerFullscreenActive() && isPortraitMobile;
-
-      rotatePhoneHintEl.classList.toggle("is-visible", shouldShow);
-      rotatePhoneHintEl.setAttribute("aria-hidden", shouldShow ? "false" : "true");
-    }
-
-    async function tryLockLandscapeOrientation() {
-      const orientation = screen.orientation;
-
-      if (!orientation || typeof orientation.lock !== "function") {
-        syncRotatePhoneHint();
-        return false;
-      }
-
-      try {
-        await orientation.lock("landscape");
-        hasLandscapeOrientationLock = true;
-        return true;
-      } catch {
-        hasLandscapeOrientationLock = false;
-        return false;
-      } finally {
-        syncRotatePhoneHint();
-      }
-    }
-
-    function unlockLandscapeOrientation() {
-      const orientation = screen.orientation;
-
-      if (hasLandscapeOrientationLock && orientation && typeof orientation.unlock === "function") {
-        try {
-          orientation.unlock();
-        } catch {
-          // 部分瀏覽器會在離開全螢幕時自動解除鎖定，此處可安全忽略。
-        }
-      }
-
-      hasLandscapeOrientationLock = false;
-      syncRotatePhoneHint();
-    }
-
     function enterPseudoFullscreen() {
       syncFullscreenViewportSize();
       isPseudoFullscreen = true;
@@ -1142,7 +1050,6 @@
       playerWrapEl.classList.add("is-fullscreen");
       document.body.classList.add("no-scroll");
       updateFullscreenButtonState(true);
-      syncRotatePhoneHint();
     }
 
     function exitPseudoFullscreen() {
@@ -1151,7 +1058,6 @@
       playerWrapEl.classList.remove("is-fullscreen");
       document.body.classList.remove("no-scroll");
       updateFullscreenButtonState(false);
-      unlockLandscapeOrientation();
     }
 
     function syncPlayerFullscreenState() {
@@ -1163,7 +1069,6 @@
         playerWrapEl.classList.add("is-fullscreen");
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
-        syncRotatePhoneHint();
         return;
       }
 
@@ -1172,12 +1077,10 @@
         playerWrapEl.classList.add("is-fullscreen");
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
-        syncRotatePhoneHint();
       } else {
         playerWrapEl.classList.remove("is-fullscreen");
         document.body.classList.remove("no-scroll");
         updateFullscreenButtonState(false);
-        unlockLandscapeOrientation();
       }
     }
 
@@ -1194,23 +1097,18 @@
 
       if (isPlayerFullscreen) {
         await exitFullscreen();
-        unlockLandscapeOrientation();
       } else {
         try {
           await Promise.resolve(requestElementFullscreen(playerWrapEl));
         } catch {
           enterPseudoFullscreen();
-          await tryLockLandscapeOrientation();
           return;
         }
-
-        await tryLockLandscapeOrientation();
       }
     }
 
     function handleViewportOrientationChange() {
       syncFullscreenViewportSize();
-      syncRotatePhoneHint();
     }
 
     function handleKeydown(e) {
@@ -1399,7 +1297,6 @@
     window.addEventListener("beforeunload", () => {
       stopSyncTimer();
       clearPlayerControlsHideTimer();
-      unlockLandscapeOrientation();
       document.removeEventListener("fullscreenchange", syncPlayerFullscreenState);
       document.removeEventListener("webkitfullscreenchange", syncPlayerFullscreenState);
       document.removeEventListener("msfullscreenchange", syncPlayerFullscreenState);

@@ -142,59 +142,6 @@
       }
     }
 
-    .rotate-phone-hint {
-      position: absolute;
-      left: 50%;
-      top: max(24px, env(safe-area-inset-top));
-      transform: translateX(-50%);
-      z-index: 32;
-      display: none;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.72);
-      color: #fff;
-      font-size: 14px;
-      white-space: nowrap;
-      pointer-events: none;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .rotate-phone-hint.is-visible {
-      display: flex;
-    }
-
-    .rotate-phone-icon {
-      display: inline-flex;
-      width: 18px;
-      height: 28px;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid currentColor;
-      border-radius: 4px;
-      animation: rotate-phone 1.6s ease-in-out infinite;
-    }
-
-    @keyframes rotate-phone {
-      0%, 30% {
-        transform: rotate(0deg);
-      }
-
-      70%, 100% {
-        transform: rotate(90deg);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .rotate-phone-icon {
-        animation: none;
-        transform: rotate(90deg);
-      }
-    }
-
     .player-side-tools {
       position: absolute;
       top: 50%;
@@ -518,10 +465,6 @@
           <div id="subtitle" class="subtitle-text"></div>
         </div>
       </div>
-      <div id="rotatePhoneHint" class="rotate-phone-hint" role="status" aria-live="polite" aria-hidden="true">
-        <span class="rotate-phone-icon" aria-hidden="true"></span>
-        <span>橫式影片可將手機轉成橫向</span>
-      </div>
       <div class="player-side-tools">
         <button id="toggleFullscreenBtn" class="player-icon-btn fullscreen-btn" type="button" aria-label="進入全螢幕"
           title="進入全螢幕"></button>
@@ -583,7 +526,6 @@
     const playerWrapEl = document.querySelector(".player-wrap");
     const playerSideToolsEl = document.querySelector(".player-side-tools");
     const playerActivityCatcherEl = document.getElementById("playerActivityCatcher");
-    const rotatePhoneHintEl = document.getElementById("rotatePhoneHint");
     const subtitleEl = document.getElementById("subtitle");
     const subtitleListEl = document.getElementById("subtitleList");
     const subtitleSettingsEl = document.getElementById("subtitleSettings");
@@ -1085,10 +1027,6 @@
       return Promise.resolve();
     }
 
-    function isPlayerFullscreenActive() {
-      return isPseudoFullscreen || getFullscreenElement() === playerWrapEl || playerWrapEl.classList.contains("is-fullscreen");
-    }
-
     function syncFullscreenViewportSize() {
       const viewport = window.visualViewport;
       const width = Math.round(viewport?.width || window.innerWidth);
@@ -1098,14 +1036,6 @@
       containerEl.style.setProperty("--fullscreen-viewport-height", `${height}px`);
     }
 
-    function syncRotatePhoneHint() {
-      const isPortraitMobile = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
-      const shouldShow = isPlayerFullscreenActive() && isPortraitMobile;
-
-      rotatePhoneHintEl.classList.toggle("is-visible", shouldShow);
-      rotatePhoneHintEl.setAttribute("aria-hidden", shouldShow ? "false" : "true");
-    }
-
     function enterPseudoFullscreen() {
       syncFullscreenViewportSize();
       isPseudoFullscreen = true;
@@ -1113,7 +1043,6 @@
       playerWrapEl.classList.add("is-fullscreen");
       document.body.classList.add("no-scroll");
       updateFullscreenButtonState(true);
-      syncRotatePhoneHint();
     }
 
     function exitPseudoFullscreen() {
@@ -1122,7 +1051,6 @@
       playerWrapEl.classList.remove("is-fullscreen");
       document.body.classList.remove("no-scroll");
       updateFullscreenButtonState(false);
-      syncRotatePhoneHint();
     }
 
     function syncPlayerFullscreenState() {
@@ -1134,7 +1062,6 @@
         playerWrapEl.classList.add("is-fullscreen");
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
-        syncRotatePhoneHint();
         return;
       }
 
@@ -1143,12 +1070,10 @@
         playerWrapEl.classList.add("is-fullscreen");
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
-        syncRotatePhoneHint();
       } else {
         playerWrapEl.classList.remove("is-fullscreen");
         document.body.classList.remove("no-scroll");
         updateFullscreenButtonState(false);
-        syncRotatePhoneHint();
       }
     }
 
@@ -1177,7 +1102,6 @@
 
     function handleViewportOrientationChange() {
       syncFullscreenViewportSize();
-      syncRotatePhoneHint();
     }
 
     function handleKeydown(e) {

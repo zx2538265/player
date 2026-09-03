@@ -124,15 +124,22 @@
       z-index: 10;
     }
 
-    /*
-      YouTube 全螢幕會把播放器鋪滿畫面，但影片仍維持 16:9，寬螢幕或直向螢幕會留下黑邊。
-      字幕以這個 16:9 guide 為座標系，而不是以整個螢幕為基準，切換全螢幕後位置才不會漂移。
-    */
+    /* 橫向全螢幕以 16:9 guide 定位字幕，避免字幕落到影片上下黑邊。 */
     .player-wrap.is-fullscreen .video-content-guide {
       inset: 50% auto auto 50%;
       width: min(100%, calc(var(--fullscreen-viewport-height) * 16 / 9));
       height: min(100%, calc(var(--fullscreen-viewport-width) * 9 / 16));
       transform: translate(-50%, -50%);
+    }
+
+    /* 手機保持直向放大時，讓直式影片與字幕共用完整的直向畫面。 */
+    @media (max-width: 1024px) and (orientation: portrait) {
+      .player-wrap.is-fullscreen .video-content-guide {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        transform: none;
+      }
     }
 
     .rotate-phone-hint {
@@ -513,7 +520,7 @@
       </div>
       <div id="rotatePhoneHint" class="rotate-phone-hint" role="status" aria-live="polite" aria-hidden="true">
         <span class="rotate-phone-icon" aria-hidden="true"></span>
-        <span>請將手機轉成橫向</span>
+        <span>橫式影片可將手機轉成橫向</span>
       </div>
       <div class="player-side-tools">
         <button id="toggleFullscreenBtn" class="player-icon-btn fullscreen-btn" type="button" aria-label="進入全螢幕"
@@ -564,7 +571,6 @@
     let subtitleSearchHintIndex = -1;
     let subtitleRequestToken = 0;
     let isPseudoFullscreen = false;
-    let hasLandscapeOrientationLock = false;
     let isSyncStateActive = false;
     let isSubtitleListClickBound = false;
     let controlsHideTimer = null;
@@ -1100,41 +1106,6 @@
       rotatePhoneHintEl.setAttribute("aria-hidden", shouldShow ? "false" : "true");
     }
 
-    async function tryLockLandscapeOrientation() {
-      const orientation = screen.orientation;
-
-      if (!orientation || typeof orientation.lock !== "function") {
-        syncRotatePhoneHint();
-        return false;
-      }
-
-      try {
-        await orientation.lock("landscape");
-        hasLandscapeOrientationLock = true;
-        return true;
-      } catch {
-        hasLandscapeOrientationLock = false;
-        return false;
-      } finally {
-        syncRotatePhoneHint();
-      }
-    }
-
-    function unlockLandscapeOrientation() {
-      const orientation = screen.orientation;
-
-      if (hasLandscapeOrientationLock && orientation && typeof orientation.unlock === "function") {
-        try {
-          orientation.unlock();
-        } catch {
-          // 部分瀏覽器會在離開全螢幕時自動解除鎖定，此處可安全忽略。
-        }
-      }
-
-      hasLandscapeOrientationLock = false;
-      syncRotatePhoneHint();
-    }
-
     function enterPseudoFullscreen() {
       syncFullscreenViewportSize();
       isPseudoFullscreen = true;
@@ -1151,7 +1122,7 @@
       playerWrapEl.classList.remove("is-fullscreen");
       document.body.classList.remove("no-scroll");
       updateFullscreenButtonState(false);
-      unlockLandscapeOrientation();
+      syncRotatePhoneHint();
     }
 
     function syncPlayerFullscreenState() {
@@ -1177,7 +1148,7 @@
         playerWrapEl.classList.remove("is-fullscreen");
         document.body.classList.remove("no-scroll");
         updateFullscreenButtonState(false);
-        unlockLandscapeOrientation();
+        syncRotatePhoneHint();
       }
     }
 
@@ -1194,17 +1165,13 @@
 
       if (isPlayerFullscreen) {
         await exitFullscreen();
-        unlockLandscapeOrientation();
       } else {
         try {
           await Promise.resolve(requestElementFullscreen(playerWrapEl));
         } catch {
           enterPseudoFullscreen();
-          await tryLockLandscapeOrientation();
           return;
         }
-
-        await tryLockLandscapeOrientation();
       }
     }
 
@@ -1399,7 +1366,6 @@
     window.addEventListener("beforeunload", () => {
       stopSyncTimer();
       clearPlayerControlsHideTimer();
-      unlockLandscapeOrientation();
       document.removeEventListener("fullscreenchange", syncPlayerFullscreenState);
       document.removeEventListener("webkitfullscreenchange", syncPlayerFullscreenState);
       document.removeEventListener("msfullscreenchange", syncPlayerFullscreenState);

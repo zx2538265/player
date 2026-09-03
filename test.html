@@ -142,6 +142,75 @@
       }
     }
 
+    .orientation-hint {
+      position: absolute;
+      left: 50%;
+      top: max(20px, env(safe-area-inset-top));
+      z-index: 32;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: calc(100% - 32px);
+      padding: 10px 14px;
+      box-sizing: border-box;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.76);
+      color: #fff;
+      font-size: 14px;
+      line-height: 1.4;
+      text-align: center;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, -10px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .orientation-hint.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+      transition-delay: 0s;
+    }
+
+    .orientation-hint-icon {
+      display: inline-flex;
+      flex: 0 0 auto;
+      width: 16px;
+      height: 25px;
+      border: 2px solid currentColor;
+      border-radius: 4px;
+    }
+
+    .orientation-hint.is-visible .orientation-hint-icon {
+      animation: orientation-hint-rotate 1.6s ease-in-out 2;
+    }
+
+    @keyframes orientation-hint-rotate {
+      0%, 30% {
+        transform: rotate(0deg);
+      }
+
+      70%, 100% {
+        transform: rotate(90deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .orientation-hint,
+      .orientation-hint.is-visible {
+        transition: none;
+      }
+
+      .orientation-hint.is-visible .orientation-hint-icon {
+        animation: none;
+        transform: rotate(90deg);
+      }
+    }
+
     .player-side-tools {
       position: absolute;
       top: 50%;
@@ -472,6 +541,10 @@
           <div id="subtitle" class="subtitle-text"></div>
         </div>
       </div>
+      <div id="orientationHint" class="orientation-hint" role="status" aria-live="polite" aria-hidden="true">
+        <span class="orientation-hint-icon" aria-hidden="true"></span>
+        <span>若為橫式影片，可將手機轉成橫向觀看</span>
+      </div>
       <div class="player-side-tools">
         <button id="toggleFullscreenBtn" class="player-icon-btn fullscreen-btn" type="button" aria-label="進入全螢幕"
           title="進入全螢幕"></button>
@@ -524,6 +597,8 @@
     let isSyncStateActive = false;
     let isSubtitleListClickBound = false;
     let controlsHideTimer = null;
+    let orientationHintTimer = null;
+    let wasPlayerFullscreen = false;
     let isPointerInsideSideTools = false;
     let arePlayerSideToolsHidden = false;
 
@@ -533,6 +608,7 @@
     const playerWrapEl = document.querySelector(".player-wrap");
     const playerSideToolsEl = document.querySelector(".player-side-tools");
     const playerActivityCatcherEl = document.getElementById("playerActivityCatcher");
+    const orientationHintEl = document.getElementById("orientationHint");
     const subtitleEl = document.getElementById("subtitle");
     const subtitleListEl = document.getElementById("subtitleList");
     const subtitleSettingsEl = document.getElementById("subtitleSettings");
@@ -548,6 +624,7 @@
     const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
     const subtitleSettingsStorageKey = "yt-srt-subtitle-settings";
     const playerControlsAutoHideDelay = 2200;
+    const orientationHintDuration = 5000;
 
     const defaultSubtitleSettings = {
       scale: 80,
@@ -1043,6 +1120,40 @@
       containerEl.style.setProperty("--fullscreen-viewport-height", `${height}px`);
     }
 
+    function clearOrientationHintTimer() {
+      if (!orientationHintTimer) return;
+      clearTimeout(orientationHintTimer);
+      orientationHintTimer = null;
+    }
+
+    function hideOrientationHint() {
+      clearOrientationHintTimer();
+      orientationHintEl.classList.remove("is-visible");
+      orientationHintEl.setAttribute("aria-hidden", "true");
+    }
+
+    function showOrientationHintTemporarily() {
+      clearOrientationHintTimer();
+      orientationHintEl.classList.add("is-visible");
+      orientationHintEl.setAttribute("aria-hidden", "false");
+
+      orientationHintTimer = setTimeout(() => {
+        orientationHintEl.classList.remove("is-visible");
+        orientationHintEl.setAttribute("aria-hidden", "true");
+        orientationHintTimer = null;
+      }, orientationHintDuration);
+    }
+
+    function syncOrientationHintState(isFullscreen) {
+      if (isFullscreen && !wasPlayerFullscreen) {
+        showOrientationHintTemporarily();
+      } else if (!isFullscreen) {
+        hideOrientationHint();
+      }
+
+      wasPlayerFullscreen = isFullscreen;
+    }
+
     function enterPseudoFullscreen() {
       syncFullscreenViewportSize();
       isPseudoFullscreen = true;
@@ -1050,6 +1161,7 @@
       playerWrapEl.classList.add("is-fullscreen");
       document.body.classList.add("no-scroll");
       updateFullscreenButtonState(true);
+      syncOrientationHintState(true);
     }
 
     function exitPseudoFullscreen() {
@@ -1058,6 +1170,7 @@
       playerWrapEl.classList.remove("is-fullscreen");
       document.body.classList.remove("no-scroll");
       updateFullscreenButtonState(false);
+      syncOrientationHintState(false);
     }
 
     function syncPlayerFullscreenState() {
@@ -1069,6 +1182,7 @@
         playerWrapEl.classList.add("is-fullscreen");
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
+        syncOrientationHintState(true);
         return;
       }
 
@@ -1077,10 +1191,12 @@
         playerWrapEl.classList.add("is-fullscreen");
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
+        syncOrientationHintState(true);
       } else {
         playerWrapEl.classList.remove("is-fullscreen");
         document.body.classList.remove("no-scroll");
         updateFullscreenButtonState(false);
+        syncOrientationHintState(false);
       }
     }
 
@@ -1297,6 +1413,7 @@
     window.addEventListener("beforeunload", () => {
       stopSyncTimer();
       clearPlayerControlsHideTimer();
+      clearOrientationHintTimer();
       document.removeEventListener("fullscreenchange", syncPlayerFullscreenState);
       document.removeEventListener("webkitfullscreenchange", syncPlayerFullscreenState);
       document.removeEventListener("msfullscreenchange", syncPlayerFullscreenState);

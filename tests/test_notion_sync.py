@@ -35,6 +35,8 @@ class SyncTests(unittest.TestCase):
             self.calls.append((endpoint, body))
             if endpoint.startswith("databases/"):
                 return {"data_sources": [{"id": "a" * 32}]}
+            if endpoint.startswith("blocks/"):
+                return {"results": [], "has_more": False}
             return next(remaining)
         return request
 
@@ -103,6 +105,42 @@ class SyncTests(unittest.TestCase):
         data = json.loads(output.read_text(encoding="utf-8"))
         self.assertEqual(data["source"], "notion")
         self.assertEqual(len(data["works"]), 1)
+
+    def test_cover_precedes_page_images(self):
+        source = page()
+        source["cover"] = {"type": "external", "external": {"url": "https://example.com/cover.jpg"}}
+        def unexpected(*args):
+            self.fail("Page content should not be fetched when a cover exists")
+        self.assertEqual(sync.notion_image(source, unexpected), "https://example.com/cover.jpg")
+
+    def test_nested_image_and_pagination(self):
+        responses = iter([
+            {"results": [], "has_more": True, "next_cursor": "next"},
+            {"results": [{"id": "column", "type": "column", "has_children": True}], "has_more": False},
+            {"results": [{"type": "image", "image": {"type": "file", "file": {"url": "https://example.com/signed.png"}}}], "has_more": False}])
+        self.assertEqual(sync.notion_image(page(), lambda *args: next(responses)), "https://example.com/signed.png")
+
+    def test_notion_image_saved_without_temporary_url(self):
+        source = page()
+        source["cover"] = {"type": "file", "file": {"url": "https://example.com/cover?secret=temporary"}}
+        output = self.root / "library.json"
+        sync.sync(self.api([{"results": [source], "has_more": False}]), output, self.root, lambda url: (b"image-bytes", "jpg"))
+        text = output.read_text(encoding="utf-8")
+        result = json.loads(text)["works"][0]
+        self.assertEqual(result["imageSource"], "notion")
+        self.assertNotIn("temporary", text)
+        self.assertTrue((self.root / "covers" / Path(result["image"]).name).is_file())
+
+    def test_notion_download_failure_keeps_previous_catalog(self):
+        source = page()
+        source["cover"] = {"type": "external", "external": {"url": "https://example.com/image"}}
+        output = self.root / "library.json"
+        output.write_text("previous")
+        def fail(url):
+            raise sync.SyncError("download failed")
+        with self.assertRaises(sync.SyncError):
+            sync.sync(self.api([{"results": [source], "has_more": False}]), output, self.root, fail)
+        self.assertEqual(output.read_text(), "previous")
 
 
 if __name__ == "__main__":

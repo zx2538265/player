@@ -6,10 +6,13 @@ from pathlib import Path
 import re
 import sys
 import time
+import hashlib
+import ipaddress
+import socket
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlsplit, parse_qs
-from urllib.request import Request, urlopen
+from urllib.parse import urlsplit, parse_qs, quote
+from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 
 DATABASE_ID = "358f1640416380ce9943cb914b0409f1"
 ROOT = Path(__file__).resolve().parents[1]
@@ -100,6 +103,92 @@ def convert_page(page, subtitle_dir):
             "url": translation, "sourceUrl": source, "image": image}
 
 
+def notion_image(page, api):
+    """Page cover, otherwise the first image in page content (document order)."""
+    def file_url(file):
+        if not file:
+            return ""
+        kind = file.get("type")
+        url = file.get(kind, {}).get("url") if kind in ("file", "external") else None
+        if not url:
+            raise SyncError("Notion 圖片格式無法讀取；保留原清單。")
+        return https_url(url)
+
+    if page.get("cover"):
+        return file_url(page["cover"])
+    visited = set()
+
+    def walk(block_id, depth=0):
+        if block_id in visited or depth > 10 or len(visited) >= 200:
+            raise SyncError("Notion 圖片搜尋超出範圍；未更新清單。")
+        visited.add(block_id)
+        cursor, cursors = None, set()
+        while True:
+            endpoint = f"blocks/{quote(block_id, safe='')}/children?page_size=100"
+            if cursor:
+                endpoint += "&start_cursor=" + quote(cursor, safe="")
+            result = api(endpoint)
+            if not isinstance(result.get("results"), list) or not isinstance(result.get("has_more"), bool):
+                raise SyncError("Notion 圖片分頁回應不完整。")
+            for block in result["results"]:
+                if block.get("archived") or block.get("in_trash"):
+                    continue
+                if block.get("type") == "image":
+                    return file_url(block.get("image"))
+                if block.get("has_children") and block.get("type") not in ("child_page", "child_database", "synced_block"):
+                    image = walk(block["id"], depth + 1)
+                    if image:
+                        return image
+            if not result["has_more"]:
+                return ""
+            cursor = result.get("next_cursor")
+            if not cursor or cursor in cursors:
+                raise SyncError("Notion 圖片分頁未完整結束。")
+            cursors.add(cursor)
+    return walk(page["id"])
+
+
+def download_image(url):
+    """Public HTTPS only, bounded raster downloads; never forward Notion credentials."""
+    class NoRedirect(HTTPRedirectHandler):
+        def redirect_request(self, *args):
+            return None
+    opener = build_opener(NoRedirect)
+    try:
+        for _ in range(6):
+            parsed = urlsplit(https_url(url))
+            if parsed.port not in (None, 443):
+                raise SyncError("封面圖片須使用標準 HTTPS 連接埠。")
+            addresses = socket.getaddrinfo(parsed.hostname, 443, type=socket.SOCK_STREAM)
+            if not addresses or any(not ipaddress.ip_address(item[4][0]).is_global for item in addresses):
+                raise SyncError("封面圖片不可使用內部網路位址。")
+            try:
+                with opener.open(Request(url, headers={"User-Agent": "NotionCatalog/1.0"}), timeout=30) as response:
+                    data = response.read(20 * 1024 * 1024 + 1)
+                if len(data) > 20 * 1024 * 1024:
+                    raise SyncError("Notion 封面超過 20 MB；未更新清單。")
+                if data.startswith(b"\x89PNG\r\n\x1a\n"):
+                    ext = "png"
+                elif data.startswith(b"\xff\xd8\xff"):
+                    ext = "jpg"
+                elif data.startswith((b"GIF87a", b"GIF89a")):
+                    ext = "gif"
+                elif data.startswith(b"RIFF") and data[8:12] == b"WEBP":
+                    ext = "webp"
+                else:
+                    raise SyncError("Notion 封面不是支援的 PNG、JPEG、GIF 或 WebP 圖片。")
+                return data, ext
+            except HTTPError as error:
+                if error.code in (301, 302, 303, 307, 308) and error.headers.get("Location"):
+                    from urllib.parse import urljoin
+                    url = urljoin(url, error.headers["Location"])
+                    continue
+                raise SyncError(f"Notion 封面下載失敗（HTTP {error.code}）；保留原清單。") from None
+        raise SyncError("Notion 封面重新導向過多。")
+    except (URLError, OSError, ValueError):
+        raise SyncError("Notion 封面下載失敗；保留原清單，不輸出暫時性圖片網址。") from None
+
+
 def request_api(token, endpoint, body=None):
     data = json.dumps(body).encode() if body is not None else None
     for attempt in range(4):
@@ -149,9 +238,26 @@ def collect_pages(api):
     return pages
 
 
-def sync(api, output, subtitle_dir):
+def sync(api, output, subtitle_dir, image_loader=download_image):
     pages = collect_pages(api)
-    works = [work for page in pages if (work := convert_page(page, subtitle_dir)) is not None]
+    works = []
+    for page in pages:
+        work = convert_page(page, subtitle_dir)
+        if work is None:
+            continue
+        image_url = notion_image(page, api)
+        work["imageSource"] = "youtube" if work["image"] else "none"
+        if image_url:
+            content, extension = image_loader(image_url)
+            filename = hashlib.sha256(content).hexdigest() + "." + extension
+            cover_dir = output.parent / "covers"
+            cover_dir.mkdir(parents=True, exist_ok=True)
+            cover_path = cover_dir / filename
+            if not cover_path.exists():
+                cover_path.write_bytes(content)
+            work["image"] = "data/covers/" + filename
+            work["imageSource"] = "notion"
+        works.append(work)
     if not works:
         raise SyncError("未取得可公開作品；保留原清單。")
     works.sort(key=lambda w: (w["date"], w["id"]), reverse=True)
@@ -170,7 +276,10 @@ def main():
     token = os.environ.get("NOTION_TOKEN", "").strip()
     if not token:
         raise SyncError("缺少 NOTION_TOKEN；不會修改原清單。")
-    total, published = sync(lambda endpoint, body=None: request_api(token, endpoint, body), args.output, ROOT / "srt")
+    def api(endpoint, body=None):
+        time.sleep(0.35)
+        return request_api(token, endpoint, body)
+    total, published = sync(api, args.output, ROOT / "srt")
     print(f"已讀取 {total} 筆，輸出 {published} 筆作品。未修改 Notion 或發布網站。")
 
 

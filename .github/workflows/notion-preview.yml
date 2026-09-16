@@ -29,6 +29,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: notion-library-preview
-          path: ${{ runner.temp }}/notion-preview/library.json
+          path: ${{ runner.temp }}/notion-preview/
           retention-days: 7
           if-no-files-found: error

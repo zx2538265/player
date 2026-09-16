@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="韓文影片繁體中文翻譯作品目錄，搜尋作品並開啟中文字幕播放器。">
+  <meta name="robots" content="noindex">
+  <title>翻譯清單｜中文字幕作品</title>
+  <link rel="stylesheet" href="library.css">
+  <script src="library.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#works">跳到作品清單</a>
+  <header class="site-header">
+    <a class="brand" href="library.html"><span class="brand-mark" aria-hidden="true">字</span>翻譯收藏室</a>
+    <a class="notion-link" href="https://allenkaka.notion.site/358f1640416380ce9943cb914b0409f1?v=372f16404163804c947b000c5be27931" target="_blank" rel="noopener noreferrer">Notion 清單 ↗</a>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">中文字幕 · 翻譯作品</p><h1 id="page-title">喜歡的影片，<br>一起看懂。</h1><p class="intro-copy">收藏每一次笑聲、日常，和舞台以外的片刻。</p></div>
+      <div class="preview-note"><span>版面預覽</span><p>先收錄 7 部已核對的作品。<br>完整清單與 Notion 同步尚未接入。</p></div>
+    </section>
+    <section class="catalog" aria-label="搜尋與瀏覽作品">
+      <form class="search-form" role="search"><label for="search">搜尋作品</label><div class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜尋標題、藝人或節目…" autocomplete="off"><button id="clear" type="button" hidden>清除</button></div></form>
+      <div class="catalog-tools">
+        <div class="artist-select-label"><span id="artist-label">藝人／團體</span><details id="artist-picker" class="filter-picker"><summary aria-label="選擇藝人／團體"><span id="artist-summary">全部藝人／團體</span><span aria-hidden="true">⌄</span></summary><div class="artist-menu"><button id="artist-all" type="button">清除選擇（顯示全部）</button><div id="artist-filter" role="group" aria-labelledby="artist-label"></div></div></details></div>
+        <div class="artist-select-label"><span id="type-label">內容類型</span><details id="type-picker" class="filter-picker"><summary aria-label="選擇內容類型"><span id="type-summary">全部內容類型</span><span aria-hidden="true">⌄</span></summary><div class="artist-menu"><button id="type-all" type="button">清除選擇（顯示全部）</button><div id="type-filters" role="group" aria-labelledby="type-label"></div></div></details></div>
+      </div>
+      <div class="section-heading"><h2 id="works">作品一覽</h2><div class="results-tools"><p id="count" role="status" aria-live="polite"></p><label class="sort-label" for="sort">排序<select id="sort"><option value="curated">清單順序</option><option value="newest">原片日期：新到舊</option><option value="oldest">原片日期：舊到新</option></select></label></div></div>
+      <div id="grid" class="works-grid"></div>
+      <div id="empty" class="empty" hidden><h3>沒有找到符合的作品</h3><p>換個關鍵字，或試試其他類型。</p><button id="reset" type="button">顯示全部作品</button></div>
+      <noscript><p class="empty">請啟用 JavaScript 以瀏覽作品，或使用上方的 Notion 清單。</p></noscript>
+    </section>
+  </main>
+  <footer><span>翻譯收藏室</span><span>繁體中文字幕 · 影片由原頻道提供</span></footer>
+</body>
+</html>

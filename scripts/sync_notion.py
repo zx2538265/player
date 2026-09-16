@@ -75,15 +75,19 @@ def convert_page(page, subtitle_dir):
     if not title or not translation:
         raise SyncError("公開作品缺少標題或翻譯連結；未輸出不完整清單。")
     source = https_url(text_value(props.get("來源連結", {})))
-    tags_prop = props.get("標籤", {})
+    tags_prop = props.get("藝人／團體", props.get("標籤", {}))
     if tags_prop.get("type") == "multi_select":
         tags = [t["name"] for t in tags_prop.get("multi_select", [])]
     elif tags_prop.get("type") == "select":
         tags = [tags_prop["select"]["name"]] if tags_prop.get("select") else []
     elif tags_prop:
-        raise SyncError("「標籤」欄位必須是選取或多選。")
+        raise SyncError("「藝人／團體」欄位必須是選取或多選。")
     else:
         tags = []
+    type_prop = props.get("內容類型", {})
+    if type_prop and type_prop.get("type") != "select":
+        raise SyncError("「內容類型」欄位必須是單選。")
+    content_type = (type_prop.get("select") or {}).get("name", "")
     vid = video_id(translation)
     local_player = urlsplit(translation).hostname == "zx2538265.github.io" and urlsplit(translation).path.rstrip("/") in ("/player", "/player/index.html")
     if local_player and (not vid or not (subtitle_dir / f"{vid}.srt").is_file()):
@@ -100,7 +104,7 @@ def convert_page(page, subtitle_dir):
     except (TypeError, ValueError):
         raise SyncError("作品缺少有效的 Notion 建立日期。") from None
     return {"id": page["id"], "title": title, "tags": tags, "artist": " · ".join(tags) or "未分類",
-            "type": "", "date": created[:10], "dateLabel": "加入", "keywords": " ".join(tags),
+            "type": content_type, "date": created[:10], "dateLabel": "加入", "keywords": " ".join(tags + [content_type]).strip(),
             "url": translation, "sourceUrl": source, "image": image}
 
 

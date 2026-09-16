@@ -36,7 +36,7 @@ jobs:
       - name: 與正式網站比較
         id: compare
         run: python scripts/prepare_pages.py --catalog "${{ runner.temp }}/notion-preview/library.json" --site "${{ runner.temp }}/site"
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         if: steps.compare.outputs.changed == 'true'
         with:
           path: ${{ runner.temp }}/site

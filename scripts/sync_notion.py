@@ -15,6 +15,7 @@ from urllib.parse import urlsplit, parse_qs, quote
 from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 
 DATABASE_ID = "358f1640416380ce9943cb914b0409f1"
+VIEW_ID = "372f16404163804c947b000c5be27931"
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -208,22 +209,18 @@ def request_api(token, endpoint, body=None):
 
 
 def collect_pages(api):
-    database = api(f"databases/{DATABASE_ID}")
-    sources = database.get("data_sources", [])
-    if len(sources) != 1:
-        raise SyncError("預期指定資料庫只有一個資料來源；請確認資料來源設定。")
-    source_id = sources[0]["id"]
-    if not re.fullmatch(r"[0-9a-fA-F-]{32,36}", source_id):
-        raise SyncError("無效資料來源 ID。")
+    view = api(f"views/{VIEW_ID}")
+    if view.get("parent", {}).get("database_id", "").replace("-", "") != DATABASE_ID:
+        raise SyncError("Gallery 不屬於指定資料庫；未更新清單。")
     pages, seen, cursors = [], set(), set()
-    cursor = None
+    result = api(f"views/{VIEW_ID}/queries", {"page_size": 100})
+    query_id = result.get("id", "")
+    total = result.get("total_count")
     while True:
-        body = {"page_size": 100, "sorts": [{"timestamp": "created_time", "direction": "descending"}]}
-        if cursor:
-            body["start_cursor"] = cursor
-        result = api(f"data_sources/{source_id}/query", body)
         if not isinstance(result.get("results"), list) or not isinstance(result.get("has_more"), bool):
             raise SyncError("Notion 分頁回應不完整。")
+        if result.get("request_status", {}).get("type", "complete") != "complete":
+            raise SyncError("Notion 檢視查詢尚未完整；保留原清單。")
         for page in result["results"]:
             if page.get("object") != "page" or not page.get("id") or page["id"] in seen:
                 raise SyncError("Notion 回傳非作品資料或重複作品；請重試。")
@@ -235,6 +232,20 @@ def collect_pages(api):
         if not cursor or cursor in cursors or len(pages) >= 10000:
             raise SyncError("Notion 分頁未完整結束；未更新清單。")
         cursors.add(cursor)
+        if not re.fullmatch(r"[0-9a-fA-F-]{32,36}", query_id):
+            raise SyncError("無效檢視查詢 ID。")
+        result = api(f"views/{VIEW_ID}/queries/{query_id}?start_cursor={quote(cursor, safe='')}&page_size=100")
+    if not isinstance(total, int) or total != len(pages):
+        raise SyncError("Notion 檢視筆數不完整；保留原清單。")
+    # View queries return page references. Hydrate in exactly the saved view order.
+    for index, reference in enumerate(pages):
+        identifier = reference["id"]
+        if not re.fullmatch(r"[0-9a-fA-F-]{32,36}", identifier):
+            raise SyncError("無效作品 ID。")
+        page = api(f"pages/{identifier}")
+        if page.get("object") != "page" or page.get("id") != identifier or "properties" not in page:
+            raise SyncError("Notion 作品回應不完整；保留原清單。")
+        pages[index] = page
     return pages
 
 
@@ -260,8 +271,7 @@ def sync(api, output, subtitle_dir, image_loader=download_image):
         works.append(work)
     if not works:
         raise SyncError("未取得可公開作品；保留原清單。")
-    works.sort(key=lambda w: (w["date"], w["id"]), reverse=True)
-    payload = {"version": 1, "source": "notion", "syncedAt": datetime.now(timezone.utc).isoformat(), "works": works}
+    payload = {"version": 1, "source": "notion", "orderSource": "notion-view", "viewId": VIEW_ID, "syncedAt": datetime.now(timezone.utc).isoformat(), "works": works}
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(output.suffix + ".tmp")
     temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

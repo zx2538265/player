@@ -149,8 +149,6 @@ async function loadLibrary() {
       (!work.sourceUrl || safeUrl(work.sourceUrl)) && (!work.image || /^data\/covers\/[a-f0-9]{64}\.(png|jpg|gif|webp)$/.test(work.image) || safeUrl(work.image)))) throw new Error("Invalid catalog");
     libraryWorks = data.works;
     const isPreview = data.source === "preview";
-    document.querySelector(".preview-note span").textContent = isPreview ? "版面預覽" : "作品清單";
-    document.querySelector(".preview-note p").textContent = isPreview ? `目前 ${libraryWorks.length} 部示例作品；尚未執行 Notion 實際同步。` : `已收錄 ${libraryWorks.length} 部翻譯作品`;
     sortSelect.options[0].textContent = data.orderSource === "notion-view" ? "Notion 排序" : (isPreview ? "清單順序" : "最近加入");
     sortSelect.options[1].textContent = isPreview ? "原片日期：新到舊" : "加入日期：新到舊";
     sortSelect.options[2].textContent = isPreview ? "原片日期：舊到新" : "加入日期：舊到新";

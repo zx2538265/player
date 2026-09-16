@@ -118,6 +118,43 @@
       height: 100%;
     }
 
+    .subtitle-loading {
+      position: absolute;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: rgba(0, 0, 0, 0.88);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .subtitle-loading[hidden], .subtitle-loading [hidden] { display: none; }
+    .subtitle-loading-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #555;
+      border-top-color: #d7e6ff;
+      border-radius: 50%;
+      animation: subtitle-loading-spin 1s linear infinite;
+    }
+    .subtitle-loading button {
+      padding: 12px 20px;
+      border: 1px solid #777;
+      border-radius: 8px;
+      background: #252525;
+      color: #fff;
+      cursor: pointer;
+      font: inherit;
+    }
+    @keyframes subtitle-loading-spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      .subtitle-loading-spinner { animation: none; }
+    }
+
     .player-activity-catcher {
       position: absolute;
       inset: 0;
@@ -534,6 +571,11 @@
    
     <div class="player-wrap">
       <div id="player"></div>
+      <div id="subtitleLoading" class="subtitle-loading" hidden>
+        <span id="subtitleLoadingSpinner" class="subtitle-loading-spinner" aria-hidden="true"></span>
+        <span id="subtitleLoadingMessage" role="status" aria-live="polite">字幕載入中，請稍候…</span>
+        <button id="retrySubtitlesBtn" type="button" hidden>重新載入字幕</button>
+      </div>
       <div class="player-activity-catcher" id="playerActivityCatcher" aria-hidden="true"></div>
       <div class="video-content-guide">
         <div class="subtitle-layer">
@@ -585,6 +627,7 @@
     let subtitleItemElements = [];
     let subtitleSearchHintIndex = -1;
     let subtitleRequestToken = 0;
+    let requestedVideoId = "";
     let isPseudoFullscreen = false;
     let isSyncStateActive = false;
     let isSubtitleListClickBound = false;
@@ -596,6 +639,10 @@
 
     const videoIdInput = document.getElementById("videoIdInput");
     const infoEl = document.getElementById("info");
+    const subtitleLoadingEl = document.getElementById("subtitleLoading");
+    const subtitleLoadingSpinnerEl = document.getElementById("subtitleLoadingSpinner");
+    const subtitleLoadingMessageEl = document.getElementById("subtitleLoadingMessage");
+    const retrySubtitlesBtnEl = document.getElementById("retrySubtitlesBtn");
     const containerEl = document.querySelector(".container");
     const playerWrapEl = document.querySelector(".player-wrap");
     const playerSideToolsEl = document.querySelector(".player-side-tools");
@@ -1034,6 +1081,13 @@
       const isPlaying = state === (playerState ? playerState.PLAYING : 1);
       const isBuffering = state === (playerState ? playerState.BUFFERING : 3);
 
+      if (!subtitleLoadingEl.hidden && (isPlaying || isBuffering)) {
+        player.pauseVideo();
+        isSyncStateActive = false;
+        stopSyncTimer();
+        return;
+      }
+
       isSyncStateActive = isPlaying || isBuffering;
 
       if (!isSyncStateActive) {
@@ -1252,10 +1306,10 @@
       const requestToken = ++subtitleRequestToken;
       const srtPath = `srt/${encodeURIComponent(videoId)}.srt`;
 
-      infoEl.textContent = `嘗試載入字幕：${srtPath}`;
+      infoEl.textContent = "字幕載入中，請稍候…";
 
       try {
-        const response = await fetch(srtPath, { cache: "no-store" });
+        const response = await fetch(srtPath, { cache: "no-store", signal: AbortSignal.timeout(20000) });
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
         }
@@ -1264,28 +1318,46 @@
         if (requestToken !== subtitleRequestToken) return;
 
         const parsedSubtitles = parseSrt(text);
+        if (!parsedSubtitles.length) throw new Error("Empty subtitles");
         parsedSubtitles.sort((a, b) => a.start - b.start || a.end - b.end);
         setSubtitles(parsedSubtitles);
-        infoEl.textContent =
-          subtitles.length > 0
-            ? `已自動載入字幕，共 ${subtitles.length} 段`
-            : `已讀取 ，但解析不到字幕內容`;
+        infoEl.textContent = `已自動載入字幕，共 ${subtitles.length} 段`;
+        return true;
       } catch (err) {
         if (requestToken !== subtitleRequestToken) return;
 
         setSubtitles([]);
-        infoEl.textContent = `找不到對應字幕檔：${srtPath}`;
+        infoEl.textContent = "字幕載入失敗，影片尚未播放，請重新載入字幕。";
+        return false;
       }
     }
 
-    function loadVideoById(videoId) {
+    async function loadVideoById(videoId) {
       if (!videoId) {
         alert("請輸入 YouTube 影片 ID");
         return;
       }
 
-      // 切換影片時先清空舊字幕，避免等待新字幕期間持續進行舊資料比對。
+      requestedVideoId = videoId;
+      if (player && typeof player.pauseVideo === "function") player.pauseVideo();
+      subtitleLoadingEl.hidden = false;
+      subtitleLoadingSpinnerEl.hidden = false;
+      retrySubtitlesBtnEl.hidden = true;
+      subtitleLoadingMessageEl.textContent = "字幕載入中，請稍候…";
+      playerWrapEl.setAttribute("aria-busy", "true");
+      // 字幕讀取與解析成功後，才交給播放器載入影片。
       setSubtitles([]);
+
+      const ready = await loadSubtitleFromSrtFolder(videoId);
+      if (ready === undefined) return;
+      playerWrapEl.setAttribute("aria-busy", "false");
+      if (!ready) {
+        subtitleLoadingSpinnerEl.hidden = true;
+        subtitleLoadingMessageEl.textContent = "字幕載入失敗，請重試。";
+        retrySubtitlesBtnEl.hidden = false;
+        return;
+      }
+      subtitleLoadingEl.hidden = true;
 
       if (player && typeof player.loadVideoById === "function") {
         player.loadVideoById({
@@ -1298,8 +1370,9 @@
         }
       }
 
-      loadSubtitleFromSrtFolder(videoId);
     }
+
+    retrySubtitlesBtnEl.addEventListener("click", () => loadVideoById(requestedVideoId));
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player("player", {

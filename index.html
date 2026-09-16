@@ -4,7 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>影片撥放器</title>
+  <title>中文字幕播放器｜翻譯收藏室</title>
+  <script>
+    if (!new URLSearchParams(window.location.search).get("v")?.trim()) {
+      window.location.replace("library.html");
+    }
+  </script>
   <style>
     body {
       margin: 0;
@@ -35,6 +40,20 @@
       gap: 12px;
       margin-bottom: 20px;
       align-items: center;
+    }
+
+    .library-back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-right: auto;
+      color: #d7e6ff;
+      text-decoration: none;
+    }
+
+    .library-back-link:hover,
+    .library-back-link:focus-visible {
+      text-decoration: underline;
     }
 
     .toolbar input[type="text"] {
@@ -527,6 +546,7 @@
 <body>
   <div class="container">
     <div class="toolbar">
+      <a class="library-back-link" href="library.html">← 翻譯清單</a>
       <input id="videoIdInput" type="text" placeholder="請輸入 YouTube 影片 ID，例如 dqNMWaT9mog" />
       <button id="loadVideoBtn">載入影片</button>
       <input id="srtFileInput" type="file" accept=".srt" />
@@ -578,10 +598,8 @@
     <div class="notion-link-wrap">
       <a
         class="notion-link"
-        href="https://allenkaka.notion.site/358f1640416380ce9943cb914b0409f1?v=372f16404163804c947b000c5be27931"
-        target="_blank"
-        rel="noopener noreferrer"
-      >更多翻譯影片 請點這裡</a>
+        href="library.html"
+      >瀏覽更多翻譯影片</a>
     </div>
   </div>
 

@@ -1327,7 +1327,7 @@
         if (requestToken !== subtitleRequestToken) return;
 
         setSubtitles([]);
-        infoEl.textContent = "字幕載入失敗，影片尚未播放，請重新載入字幕。";
+        infoEl.textContent = "字幕載入失敗，仍可播放影片。";
         return false;
       }
     }
@@ -1345,18 +1345,12 @@
       retrySubtitlesBtnEl.hidden = true;
       subtitleLoadingMessageEl.textContent = "字幕載入中，請稍候…";
       playerWrapEl.setAttribute("aria-busy", "true");
-      // 字幕讀取與解析成功後，才交給播放器載入影片。
+      // 等待字幕載入完成；即使失敗，仍繼續載入影片。
       setSubtitles([]);
 
       const ready = await loadSubtitleFromSrtFolder(videoId);
       if (ready === undefined) return;
       playerWrapEl.setAttribute("aria-busy", "false");
-      if (!ready) {
-        subtitleLoadingSpinnerEl.hidden = true;
-        subtitleLoadingMessageEl.textContent = "字幕載入失敗，請重試。";
-        retrySubtitlesBtnEl.hidden = false;
-        return;
-      }
       subtitleLoadingEl.hidden = true;
 
       if (player && typeof player.loadVideoById === "function") {

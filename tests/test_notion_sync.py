@@ -11,7 +11,7 @@ sync = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(sync)
 
 
-def page(identifier="page-1"):
+def page(identifier="a" * 32):
     return {"object": "page", "id": identifier, "created_time": "2026-09-16T08:00:00Z", "properties": {
         "名稱": {"type": "title", "title": [{"plain_text": "中文測試 <script>"}]},
         "翻譯連結": {"type": "url", "url": "https://zx2538265.github.io/player/?v=r0aBwvfiNjY"},
@@ -30,14 +30,19 @@ class SyncTests(unittest.TestCase):
 
     def api(self, batches):
         self.calls = []
+        records = {p["id"]: p for batch in batches for p in batch["results"]}
+        batches = [dict(batch, id="c" * 32, total_count=sum(len(b["results"]) for b in batches)) for batch in batches]
         remaining = iter(batches)
         def request(endpoint, body=None):
             self.calls.append((endpoint, body))
-            if endpoint.startswith("databases/"):
-                return {"data_sources": [{"id": "a" * 32}]}
+            if endpoint == f"views/{sync.VIEW_ID}":
+                return {"parent": {"database_id": sync.DATABASE_ID}}
+            if endpoint.startswith("pages/"):
+                return records[endpoint.split("/")[1]]
             if endpoint.startswith("blocks/"):
                 return {"results": [], "has_more": False}
-            return next(remaining)
+            result = next(remaining)
+            return dict(result, results=[{"object": p["object"], "id": p["id"]} for p in result["results"]])
         return request
 
     def test_projection_and_multiple_tags(self):
@@ -77,9 +82,30 @@ class SyncTests(unittest.TestCase):
     def test_complete_pagination(self):
         api = self.api([
             {"results": [page()], "has_more": True, "next_cursor": "next"},
-            {"results": [page("page-2")], "has_more": False, "next_cursor": None}])
+            {"results": [page("b" * 32)], "has_more": False, "next_cursor": None}])
         self.assertEqual(len(sync.collect_pages(api)), 2)
-        self.assertEqual(self.calls[-1][1]["start_cursor"], "next")
+        self.assertIn((f"views/{sync.VIEW_ID}/queries/{'c' * 32}?start_cursor=next&page_size=100", None), self.calls)
+
+    def test_view_order_survives_same_day_and_different_dates(self):
+        first, second, third = page("a" * 32), page("f" * 32), page("b" * 32)
+        third["created_time"] = "2026-09-17T08:00:00Z"
+        output = self.root / "library.json"
+        sync.sync(self.api([{"results": [first, second, third], "has_more": False}]), output, self.root)
+        data = json.loads(output.read_text(encoding="utf-8"))
+        self.assertEqual([p["id"] for p in data["works"]], [first["id"], second["id"], third["id"]])
+        self.assertEqual(data["orderSource"], "notion-view")
+
+    def test_wrong_view_database_is_rejected(self):
+        with self.assertRaises(sync.SyncError):
+            sync.collect_pages(lambda *args: {"parent": {"database_id": "f" * 32}})
+
+    def test_incomplete_view_preserves_previous_file(self):
+        output = self.root / "library.json"
+        output.write_text("previous")
+        with self.assertRaises(sync.SyncError):
+            sync.sync(self.api([{"results": [page()], "has_more": False,
+                                 "request_status": {"type": "incomplete"}}]), output, self.root)
+        self.assertEqual(output.read_text(), "previous")
 
     def test_missing_cursor_fails(self):
         with self.assertRaises(sync.SyncError):

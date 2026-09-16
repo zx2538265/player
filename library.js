@@ -58,18 +58,7 @@ function makeCard(work, index) {
   const titleLink = makeElement("a", "", work.title);
   titleLink.href = playerUrl;
   title.append(titleLink);
-  const links = makeElement("div", "work-links");
-  const watch = makeElement("a", "watch", "▶ 觀看翻譯");
-  watch.href = playerUrl;
-  watch.setAttribute("aria-label", `觀看翻譯：${work.title}`);
-  const source = makeElement("a", "source", "原始影片 ↗");
-  source.href = work.sourceUrl || work.url;
-  source.target = "_blank";
-  source.rel = "noopener noreferrer";
-  source.setAttribute("aria-label", `YouTube 原片：${work.title}（另開分頁）`);
-  links.append(watch);
-  if (work.sourceUrl) links.append(source);
-  content.append(meta, title, links);
+  content.append(meta, title);
   article.append(cover, content);
   return article;
 }

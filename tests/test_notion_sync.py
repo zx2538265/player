@@ -155,41 +155,40 @@ class SyncTests(unittest.TestCase):
         self.assertEqual(data["source"], "notion")
         self.assertEqual(len(data["works"]), 1)
 
-    def test_cover_precedes_page_images(self):
+    def test_sync_uses_youtube_without_reading_notion_images(self):
+        for cover in (None, {"type": "file", "file": {"url": "https://example.com/cover?secret=temporary"}}):
+            with self.subTest(cover=cover):
+                source = page()
+                source["cover"] = cover
+                output = self.root / "library.json"
+                api = self.api([{"results": [source], "has_more": False}])
+                def metadata_only(endpoint, body=None):
+                    self.assertFalse(endpoint.startswith("blocks/"))
+                    return api(endpoint, body)
+                sync.sync(metadata_only, output, self.root)
+                text = output.read_text(encoding="utf-8")
+                work = json.loads(text)["works"][0]
+                self.assertEqual(work["image"], "https://i.ytimg.com/vi/r0aBwvfiNjY/hqdefault.jpg")
+                self.assertEqual(work["imageSource"], "youtube")
+                self.assertNotIn("temporary", text)
+                self.assertFalse((self.root / "covers").exists())
+
+    def test_external_translation_uses_youtube_source_cover(self):
         source = page()
+        source["properties"]["翻譯連結"]["url"] = "https://example.com/translation"
+        source["properties"]["來源連結"] = {"type": "url", "url": "https://youtu.be/r0aBwvfiNjY"}
+        work = sync.convert_page(source, self.root)
+        self.assertEqual(work["image"], "https://i.ytimg.com/vi/r0aBwvfiNjY/hqdefault.jpg")
+
+    def test_no_youtube_id_keeps_text_cover(self):
+        source = page()
+        source["properties"]["翻譯連結"]["url"] = "https://example.com/translation"
         source["cover"] = {"type": "external", "external": {"url": "https://example.com/cover.jpg"}}
-        def unexpected(*args):
-            self.fail("Page content should not be fetched when a cover exists")
-        self.assertEqual(sync.notion_image(source, unexpected), "https://example.com/cover.jpg")
-
-    def test_nested_image_and_pagination(self):
-        responses = iter([
-            {"results": [], "has_more": True, "next_cursor": "next"},
-            {"results": [{"id": "column", "type": "column", "has_children": True}], "has_more": False},
-            {"results": [{"type": "image", "image": {"type": "file", "file": {"url": "https://example.com/signed.png"}}}], "has_more": False}])
-        self.assertEqual(sync.notion_image(page(), lambda *args: next(responses)), "https://example.com/signed.png")
-
-    def test_notion_image_saved_without_temporary_url(self):
-        source = page()
-        source["cover"] = {"type": "file", "file": {"url": "https://example.com/cover?secret=temporary"}}
         output = self.root / "library.json"
-        sync.sync(self.api([{"results": [source], "has_more": False}]), output, self.root, lambda url: (b"image-bytes", "jpg"))
-        text = output.read_text(encoding="utf-8")
-        result = json.loads(text)["works"][0]
-        self.assertEqual(result["imageSource"], "notion")
-        self.assertNotIn("temporary", text)
-        self.assertTrue((self.root / "covers" / Path(result["image"]).name).is_file())
-
-    def test_notion_download_failure_keeps_previous_catalog(self):
-        source = page()
-        source["cover"] = {"type": "external", "external": {"url": "https://example.com/image"}}
-        output = self.root / "library.json"
-        output.write_text("previous")
-        def fail(url):
-            raise sync.SyncError("download failed")
-        with self.assertRaises(sync.SyncError):
-            sync.sync(self.api([{"results": [source], "has_more": False}]), output, self.root, fail)
-        self.assertEqual(output.read_text(), "previous")
+        sync.sync(self.api([{"results": [source], "has_more": False}]), output, self.root)
+        work = json.loads(output.read_text(encoding="utf-8"))["works"][0]
+        self.assertEqual(work["image"], "")
+        self.assertEqual(work["imageSource"], "none")
 
 
 if __name__ == "__main__":

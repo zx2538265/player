@@ -59,6 +59,29 @@ class SyncTests(unittest.TestCase):
         with self.assertRaises(sync.SyncError):
             sync.convert_page(page(), self.root)
 
+    def test_new_classifications_override_legacy_tags(self):
+        source = page()
+        source["properties"]["藝人／團體"] = {"type": "multi_select", "multi_select": [{"name": "薇娟"}, {"name": "Sana"}]}
+        source["properties"]["內容類型"] = {"type": "select", "select": {"name": "訪談／Q&A"}}
+        work = sync.convert_page(source, self.root)
+        self.assertEqual(work["tags"], ["薇娟", "Sana"])
+        self.assertEqual(work["type"], "訪談／Q&A")
+        self.assertNotIn("RESCENE", work["keywords"])
+
+    def test_intentionally_empty_classifications_remain_empty(self):
+        source = page()
+        source["properties"]["藝人／團體"] = {"type": "multi_select", "multi_select": []}
+        source["properties"]["內容類型"] = {"type": "select", "select": None}
+        work = sync.convert_page(source, self.root)
+        self.assertEqual(work["tags"], [])
+        self.assertEqual(work["type"], "")
+
+    def test_wrong_content_type_rejected(self):
+        source = page()
+        source["properties"]["內容類型"] = {"type": "rich_text", "rich_text": []}
+        with self.assertRaises(sync.SyncError):
+            sync.convert_page(source, self.root)
+
     def test_external_translation_is_preserved(self):
         source = page()
         source["properties"]["翻譯連結"]["url"] = "https://example.com/translation"

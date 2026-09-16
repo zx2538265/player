@@ -1,8 +1,11 @@
 import importlib.util
+import io
 import json
 from pathlib import Path
 import shutil
 import unittest
+from unittest.mock import patch
+from urllib.error import HTTPError, URLError
 import uuid
 
 spec = importlib.util.spec_from_file_location("prepare", Path(__file__).resolve().parents[1] / "scripts/prepare_pages.py")
@@ -47,3 +50,47 @@ class CompareTests(unittest.TestCase):
         before = prepare.fingerprint(self.root)
         (self.root / "release.json").write_text("{}")
         self.assertEqual(before, prepare.fingerprint(self.root))
+
+    def run_main(self, response=None, error=None, build_error=None):
+        output = self.root / "output"
+        summary = self.root / "summary"
+        output.write_text("")
+        summary.write_text("")
+        with patch.object(prepare, "prepare", return_value="a" * 64, side_effect=build_error), \
+                patch.object(prepare, "urlopen", side_effect=error,
+                             return_value=io.BytesIO(response or b"")), \
+                patch.dict(prepare.os.environ, GITHUB_OUTPUT=str(output), GITHUB_STEP_SUMMARY=str(summary)), \
+                patch("sys.argv", ["prepare_pages.py", "--catalog", "catalog.json", "--site", "site"]), \
+                patch("sys.stdout", new_callable=io.StringIO) as stdout:
+            prepare.main()
+        return output.read_text(), summary.read_text(encoding="utf-8"), stdout.getvalue()
+
+    def test_remote_failures_continue_deployment(self):
+        for error in (HTTPError(prepare.SITE, 403, "Forbidden", {}, None),
+                      HTTPError(prepare.SITE, 404, "Not Found", {}, None),
+                      HTTPError(prepare.SITE, 503, "Unavailable", {}, None),
+                      URLError("DNS failure"), TimeoutError()):
+            with self.subTest(error=error):
+                output, summary, log = self.run_main(error=error)
+                self.assertEqual(output, "changed=true\n")
+                self.assertIn("略過比較", summary)
+                self.assertIn("::warning::", log)
+
+    def test_invalid_release_continues_deployment(self):
+        for response in (b"<html>blocked</html>", b"{}", b"[]", b"null",
+                         b'{"digest": null}', b'{"digest": "invalid"}', b"\xff"):
+            with self.subTest(response=response):
+                output, _, log = self.run_main(response=response)
+                self.assertEqual(output, "changed=true\n")
+                self.assertIn("::warning::", log)
+
+    def test_valid_release_controls_deployment(self):
+        for digest, changed in (("a" * 64, "false"), ("b" * 64, "true")):
+            with self.subTest(digest=digest):
+                output, _, log = self.run_main(response=json.dumps({"digest": digest}).encode())
+                self.assertEqual(output, f"changed={changed}\n")
+                self.assertNotIn("::warning::", log)
+
+    def test_local_build_failure_still_fails(self):
+        with self.assertRaisesRegex(ValueError, "Invalid cover"):
+            self.run_main(build_error=ValueError("Invalid cover"))

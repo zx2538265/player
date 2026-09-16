@@ -1,12 +1,13 @@
 """Build a public-only Pages artifact and compare it with the live release."""
 import argparse
 import hashlib
+from http.client import HTTPException
 import json
 import os
 from pathlib import Path
 import shutil
 from urllib.request import Request, urlopen
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://allenka.com/"
@@ -64,14 +65,21 @@ def main():
         request = Request(SITE + "release.json", headers={"Cache-Control": "no-cache"})
         with urlopen(request, timeout=30) as response:
             previous = json.load(response)["digest"]
-    except HTTPError as error:
-        if error.code != 404:
-            raise
+            if (not isinstance(previous, str) or len(previous) != 64
+                    or any(char not in "0123456789abcdef" for char in previous)):
+                raise ValueError("Invalid release digest")
+    except (HTTPError, URLError, OSError, HTTPException, ValueError, KeyError, TypeError) as error:
+        previous = None
+        reason = f"HTTP {error.code}" if isinstance(error, HTTPError) else type(error).__name__
+        print(f"::warning::無法讀取線上版本（{reason}），將繼續發布。")
     changed = digest != previous
     with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
         output.write("changed=" + str(changed).lower() + "\n")
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as output:
-        output.write("內容有變更，準備發布。\n" if changed else "內容未變更，略過發布。\n")
+        if previous is None:
+            output.write("無法取得有效線上版本，略過比較並繼續發布。\n")
+        else:
+            output.write("內容有變更，準備發布。\n" if changed else "內容未變更，略過發布。\n")
     print("changed=" + str(changed).lower())
 
 

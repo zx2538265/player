@@ -9,7 +9,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE = "https://zx2538265.github.io/player/"
+SITE = "https://allenka.com/"
 
 
 def fingerprint(site):

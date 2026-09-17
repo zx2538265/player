@@ -59,6 +59,30 @@ class SyncTests(unittest.TestCase):
         with self.assertRaises(sync.SyncError):
             sync.convert_page(page(), self.root)
 
+    def test_custom_domain_restores_cover_without_youtube_source(self):
+        for path in ("/", "/index.html"):
+            for source_url in ("", "https://weverse.io/hyeri/live/0-176571789"):
+                with self.subTest(path=path, source_url=source_url):
+                    source = page()
+                    source["properties"]["翻譯連結"]["url"] = f"https://allenka.com{path}?v=r0aBwvfiNjY"
+                    source["properties"]["來源連結"] = {"type": "url", "url": source_url}
+                    work = sync.convert_page(source, self.root)
+                    self.assertEqual(work["image"], "https://i.ytimg.com/vi/r0aBwvfiNjY/hqdefault.jpg")
+                    self.assertEqual(work["sourceUrl"], source_url or "https://www.youtube.com/watch?v=r0aBwvfiNjY")
+
+    def test_custom_domain_requires_valid_id_and_subtitle(self):
+        for suffix in ("", "?v=invalid", "?v=abcdefghijk"):
+            with self.subTest(suffix=suffix), self.assertRaises(sync.SyncError):
+                source = page()
+                source["properties"]["翻譯連結"]["url"] = "https://allenka.com/" + suffix
+                sync.convert_page(source, self.root)
+
+    def test_unrelated_domains_and_paths_are_not_local_players(self):
+        for url in ("https://allenka.com.example.org/?v=r0aBwvfiNjY", "https://allenka.com/library.html?v=r0aBwvfiNjY"):
+            with self.subTest(url=url):
+                self.assertFalse(sync.is_local_player(url))
+                self.assertEqual(sync.video_id(url), "")
+
     def test_new_classifications_override_legacy_tags(self):
         source = page()
         source["properties"]["藝人／團體"] = {"type": "multi_select", "multi_select": [{"name": "薇娟"}, {"name": "Sana"}]}

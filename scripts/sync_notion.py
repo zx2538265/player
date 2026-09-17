@@ -44,9 +44,18 @@ def text_value(prop):
     return ""
 
 
+def is_local_player(url):
+    parsed = urlsplit(url)
+    return (
+        parsed.hostname == "zx2538265.github.io" and parsed.path.rstrip("/") in ("/player", "/player/index.html")
+    ) or (
+        parsed.hostname == "allenka.com" and parsed.path.rstrip("/") in ("", "/index.html")
+    )
+
+
 def video_id(url):
     parsed = urlsplit(url)
-    if parsed.hostname == "zx2538265.github.io" and parsed.path.rstrip("/") in ("/player", "/player/index.html"):
+    if is_local_player(url):
         value = parse_qs(parsed.query).get("v", [""])[0]
     elif parsed.hostname in ("www.youtube.com", "youtube.com", "m.youtube.com"):
         value = parse_qs(parsed.query).get("v", [""])[0]
@@ -86,7 +95,7 @@ def convert_page(page, subtitle_dir):
         raise SyncError("「內容類型」欄位必須是單選。")
     content_type = (type_prop.get("select") or {}).get("name", "")
     vid = video_id(translation)
-    local_player = urlsplit(translation).hostname == "zx2538265.github.io" and urlsplit(translation).path.rstrip("/") in ("/player", "/player/index.html")
+    local_player = is_local_player(translation)
     if local_player and (not vid or not (subtitle_dir / f"{vid}.srt").is_file()):
         raise SyncError("作品指向本站播放器，但缺少有效影片 ID 或對應 SRT。")
     vid = vid or video_id(source)

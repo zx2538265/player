@@ -29,6 +29,11 @@ jobs:
           python-version: '3.13'
       - name: 測試同步與差異比較
         run: python -m unittest discover -s tests -p 'test_*.py'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: 測試分享按鈕
+        run: node --test tests/test_share_button.cjs
       - name: 讀取 Notion
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}

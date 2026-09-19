@@ -566,6 +566,8 @@
       <a class="library-back-link" href="library.html">← 翻譯清單</a>
       <input id="videoIdInput" type="text" placeholder="請輸入 YouTube 影片 ID，例如 dqNMWaT9mog" />
       <button id="loadVideoBtn">載入影片</button>
+      <button id="copyShareBtn" type="button" hidden>複製分享連結</button>
+      <span id="shareStatus" role="status" aria-live="polite"></span>
       <input id="srtFileInput" type="file" accept=".srt" />
     </div>
    
@@ -619,6 +621,7 @@
 
   </div>
 
+  <script src="share.js"></script>
   <script>
     let player = null;
     let syncTimer = null;
@@ -676,6 +679,7 @@
     if (initialVideoId) {
       videoIdInput.value = initialVideoId;
       infoEl.textContent = `已從網址讀取影片 ID：${initialVideoId}`;
+      window.updateShareVideo(initialVideoId);
     }
 
     function updateFullscreenButtonState(isFullscreen) {
@@ -1339,6 +1343,7 @@
       }
 
       requestedVideoId = videoId;
+      window.updateShareVideo(videoId);
       if (player && typeof player.pauseVideo === "function") player.pauseVideo();
       subtitleLoadingEl.hidden = false;
       subtitleLoadingSpinnerEl.hidden = false;

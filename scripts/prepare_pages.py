@@ -39,13 +39,24 @@ def build_share_pages(payload, site):
         if not title:
             raise ValueError("Empty share title")
         description = " · ".join(value for value in (work.get("artist"), work.get("type"), "中文字幕｜翻譯收藏室") if value)
-        image = work.get("image") or f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
-        if image.startswith("data/covers/") and (site / image).is_file():
-            image = SITE + image
-        else:
-            parsed = urlsplit(image)
-            if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+        image = work.get("shareImage", "")
+        image_tags, image_body = "", ""
+        if image:
+            if not re.fullmatch(r"data/covers/[a-f0-9]{64}\.(jpg|png|webp|gif)", image) or not (site / image).is_file():
                 raise ValueError("Invalid share image")
+            width, height = work.get("shareImageWidth"), work.get("shareImageHeight")
+            if not isinstance(width, int) or not isinstance(height, int) or width <= 0 or height <= 0:
+                raise ValueError("Invalid share image dimensions")
+            image = SITE + image
+            mime = {"jpg": "image/jpeg", "png": "image/png", "webp": "image/webp", "gif": "image/gif"}[image.rsplit(".", 1)[1]]
+            image_tags = f'''<meta property="og:image" content="{image}">
+  <meta property="og:image:secure_url" content="{image}">
+  <meta property="og:image:width" content="{width}">
+  <meta property="og:image:height" content="{height}">
+  <meta property="og:image:type" content="{mime}">
+  <meta property="og:image:alt" content="{escape(title, quote=True)}">
+  <meta name="twitter:image" content="{image}">'''
+            image_body = f'<img src="{image}" alt="{escape(title, quote=True)}">'
         share_url = SITE + f"share/{vid}/"
         player_url = SITE + f"?v={vid}"
         values = {key: escape(value, quote=True) for key, value in {
@@ -65,23 +76,21 @@ def build_share_pages(payload, site):
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{description}">
   <meta property="og:url" content="{share}">
-  <meta property="og:image" content="{image}">
-  <meta property="og:image:alt" content="{title}">
-  <meta name="twitter:card" content="summary_large_image">
+  {image_tags}
+  <meta name="twitter:card" content="{card}">
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{description}">
-  <meta name="twitter:image" content="{image}">
   <style>body {{ margin: 40px auto; padding: 0 20px; max-width: 720px; background: #111; color: #fff; font-family: system-ui, sans-serif; }} img {{ max-width: 100%; border-radius: 12px; }} a {{ color: #9ecbff; }}</style>
 </head>
 <body>
-  <img src="{image}" alt="{title}">
+  {image_body}
   <h1>{title}</h1>
   <p>{description}</p>
   <p><a href="{player}">觀看中文字幕影片 →</a></p>
   <script>window.location.replace("../../?v={video_id}");</script>
 </body>
 </html>
-'''.format(**values, video_id=vid)
+'''.format(**values, video_id=vid, image_tags=image_tags, image_body=image_body, card="summary_large_image" if image else "summary")
         destination = site / "share" / vid
         destination.mkdir(parents=True)
         (destination / "index.html").write_text(page, encoding="utf-8")
@@ -119,13 +128,16 @@ def prepare(root, catalog, site):
         raise ValueError("Empty catalog")
     shutil.copy2(catalog, site / "data/library.json")
     for work in payload["works"]:
-        image = work.get("image", "")
-        if image.startswith("data/covers/"):
-            filename = Path(image).name
-            source = catalog.parent / "covers" / filename
-            if image != "data/covers/" + filename or hashlib.sha256(source.read_bytes()).hexdigest() != Path(filename).stem:
-                raise ValueError("Invalid cover")
-            shutil.copy2(source, site / image)
+        for field in ("image", "shareImage"):
+            image = work.get(field, "")
+            if image.startswith("data/covers/"):
+                if not re.fullmatch(r"data/covers/[a-f0-9]{64}\.(jpg|png|webp|gif)", image):
+                    raise ValueError("Invalid cover")
+                filename = Path(image).name
+                source = catalog.parent / "covers" / filename
+                if hashlib.sha256(source.read_bytes()).hexdigest() != Path(filename).stem:
+                    raise ValueError("Invalid cover")
+                shutil.copy2(source, site / image)
     build_share_pages(payload, site)
     digest = fingerprint(site)
     (site / "release.json").write_text(json.dumps({"version": 1, "digest": digest}) + "\n", encoding="utf-8")

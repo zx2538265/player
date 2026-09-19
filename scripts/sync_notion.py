@@ -1,5 +1,7 @@
 """Read the authorized Notion database; write only the public catalog projection."""
 import argparse
+import hashlib
+import io
 import json
 import os
 from pathlib import Path
@@ -9,7 +11,9 @@ import time
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit, parse_qs, quote
-from urllib.request import Request, urlopen
+from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
+
+from PIL import Image
 
 DATABASE_ID = "358f1640416380ce9943cb914b0409f1"
 VIEW_ID = "372f16404163804c947b000c5be27931"
@@ -173,7 +177,89 @@ def collect_pages(api):
     return pages
 
 
-def sync(api, output, subtitle_dir):
+def uploaded_image_url(api, page):
+    """Use the first uploaded body image, then an uploaded page cover."""
+    def uploaded(file):
+        return file.get("file", {}).get("url", "") if file and file.get("type") == "file" else ""
+
+    visited = set()
+    def walk(identifier, depth=0):
+        if depth > 8 or identifier in visited or len(visited) >= 200:
+            raise SyncError("Notion 圖片區塊超過搜尋範圍；未更新清單。")
+        visited.add(identifier)
+        cursor, cursors = "", set()
+        while True:
+            endpoint = f"blocks/{identifier}/children?page_size=100"
+            if cursor:
+                endpoint += "&start_cursor=" + quote(cursor, safe="")
+            result = api(endpoint)
+            if not isinstance(result.get("results"), list) or not isinstance(result.get("has_more"), bool):
+                raise SyncError("Notion 圖片區塊回應不完整。")
+            for block in result["results"]:
+                if block.get("archived") or block.get("in_trash"):
+                    continue
+                if block.get("type") == "image":
+                    url = uploaded(block.get("image"))
+                    if url:
+                        return url
+                if block.get("has_children") and block.get("type") not in ("child_page", "child_database"):
+                    child_id = block.get("id", "")
+                    if not re.fullmatch(r"[0-9a-fA-F-]{32,36}", child_id):
+                        raise SyncError("無效圖片區塊 ID。")
+                    url = walk(child_id, depth + 1)
+                    if url:
+                        return url
+            if not result["has_more"]:
+                return ""
+            cursor = result.get("next_cursor")
+            if not cursor or cursor in cursors or len(cursors) >= 100:
+                raise SyncError("Notion 圖片分頁未完整結束。")
+            cursors.add(cursor)
+
+    return walk(page["id"]) or uploaded(page.get("cover"))
+
+
+def download_uploaded_image(url):
+    # No Notion authorization header is sent to file storage; reject redirects.
+    parsed = urlsplit(https_url(url))
+    if parsed.hostname not in ("prod-files-secure.s3.us-west-2.amazonaws.com", "s3.us-west-2.amazonaws.com") or parsed.port not in (None, 443):
+        raise SyncError("Notion 上傳圖片主機尚未支援；未更新清單。")
+
+    class NoRedirect(HTTPRedirectHandler):
+        def redirect_request(self, *args, **kwargs):
+            return None
+
+    try:
+        with build_opener(NoRedirect()).open(Request(url), timeout=30) as response:
+            content = response.read(10 * 1024 * 1024 + 1)
+        if len(content) > 10 * 1024 * 1024:
+            raise ValueError()
+        return content
+    except (OSError, ValueError):
+        raise SyncError("Notion 圖片下載失敗或超過 10 MB；保留原清單。") from None
+
+
+def save_share_image(content, folder):
+    try:
+        with Image.open(io.BytesIO(content)) as image:
+            if image.format not in ("JPEG", "PNG", "WEBP", "GIF"):
+                raise ValueError()
+            width, height = image.size
+            if width * height > 40_000_000:
+                raise ValueError()
+            image.verify()
+            ext, mime = {"JPEG": ("jpg", "image/jpeg"), "PNG": ("png", "image/png"),
+                         "WEBP": ("webp", "image/webp"), "GIF": ("gif", "image/gif")}[image.format]
+    except (OSError, ValueError, Image.DecompressionBombError):
+        raise SyncError("Notion 圖片格式或內容無效；保留原清單。") from None
+    filename = hashlib.sha256(content).hexdigest() + "." + ext
+    folder.mkdir(parents=True, exist_ok=True)
+    (folder / filename).write_bytes(content)
+    return {"shareImage": "data/covers/" + filename, "shareImageWidth": width,
+            "shareImageHeight": height, "shareImageType": mime, "shareImageSource": "notion"}
+
+
+def sync(api, output, subtitle_dir, download=download_uploaded_image):
     pages = collect_pages(api)
     works = []
     for page in pages:
@@ -181,6 +267,12 @@ def sync(api, output, subtitle_dir):
         if work is None:
             continue
         work["imageSource"] = "youtube" if work["image"] else "none"
+        work["shareImage"] = ""
+        work["shareImageSource"] = "none"
+        if is_local_player(work["url"]):
+            image_url = uploaded_image_url(api, page)
+            if image_url:
+                work.update(save_share_image(download(image_url), output.parent / "covers"))
         works.append(work)
     if not works:
         raise SyncError("未取得可公開作品；保留原清單。")

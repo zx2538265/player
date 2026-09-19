@@ -27,6 +27,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.13'
+      - name: 安裝圖片驗證套件
+        run: python -m pip install -r scripts/requirements.txt
       - name: 測試同步與差異比較
         run: python -m unittest discover -s tests -p 'test_*.py'
       - uses: actions/setup-node@v4

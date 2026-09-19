@@ -41,6 +41,9 @@ class SharePagesTests(unittest.TestCase):
         self.work = {"title": '中文 "標題" & <script>alert(1)</script> VIDEO_ID',
                      "url": f"https://allenka.com/?v={self.vid}", "artist": "RESCENE", "type": "綜藝",
                      "image": f"https://i.ytimg.com/vi/{self.vid}/hqdefault.jpg"}
+        self.work.update(shareImage="data/covers/" + "a" * 64 + ".jpg", shareImageWidth=1280, shareImageHeight=720)
+        (self.site / "data/covers").mkdir()
+        (self.site / self.work["shareImage"]).write_bytes(b"fixture")
 
     def build(self, works=None):
         prepare.build_share_pages({"works": works if works is not None else [self.work]}, self.site)
@@ -50,7 +53,10 @@ class SharePagesTests(unittest.TestCase):
         html = (self.site / "share" / self.vid / "index.html").read_text(encoding="utf-8")
         parsed = Metadata(html)
         self.assertEqual(parsed.meta["og:title"], self.work["title"])
-        self.assertEqual(parsed.meta["og:image"], self.work["image"])
+        self.assertEqual(parsed.meta["og:image"], prepare.SITE + self.work["shareImage"])
+        self.assertEqual(parsed.meta["og:image:width"], "1280")
+        self.assertEqual(parsed.meta["og:image:height"], "720")
+        self.assertNotIn("ytimg.com", html)
         self.assertEqual(parsed.meta["og:url"], f"https://allenka.com/share/{self.vid}/")
         self.assertEqual(parsed.meta["twitter:card"], "summary_large_image")
         self.assertIn("RESCENE · 綜藝", parsed.meta["og:description"])
@@ -80,9 +86,16 @@ class SharePagesTests(unittest.TestCase):
             self.build()
 
     def test_unsafe_image_fails(self):
-        self.work["image"] = "javascript:alert(1)"
+        self.work["shareImage"] = "javascript:alert(1)"
         with self.assertRaisesRegex(ValueError, "Invalid share image"):
             self.build()
+
+    def test_no_uploaded_image_does_not_fall_back_to_youtube(self):
+        self.work.pop("shareImage")
+        self.build()
+        html = (self.site / "share" / self.vid / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("og:image", html)
+        self.assertNotIn("ytimg.com", html)
 
     def test_generated_metadata_participates_in_release_digest(self):
         self.build()

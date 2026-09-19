@@ -1,6 +1,8 @@
 import copy
 import importlib.util
 import json
+import io
+from PIL import Image
 from pathlib import Path
 import shutil
 import uuid
@@ -179,23 +181,54 @@ class SyncTests(unittest.TestCase):
         self.assertEqual(data["source"], "notion")
         self.assertEqual(len(data["works"]), 1)
 
-    def test_sync_uses_youtube_without_reading_notion_images(self):
+    def test_library_thumbnail_unchanged_but_share_uses_uploaded_cover(self):
         for cover in (None, {"type": "file", "file": {"url": "https://example.com/cover?secret=temporary"}}):
             with self.subTest(cover=cover):
                 source = page()
                 source["cover"] = cover
                 output = self.root / "library.json"
                 api = self.api([{"results": [source], "has_more": False}])
-                def metadata_only(endpoint, body=None):
-                    self.assertFalse(endpoint.startswith("blocks/"))
-                    return api(endpoint, body)
-                sync.sync(metadata_only, output, self.root)
+                content = io.BytesIO()
+                Image.new("RGB", (1280, 720)).save(content, format="JPEG")
+                sync.sync(api, output, self.root, download=lambda url: content.getvalue())
                 text = output.read_text(encoding="utf-8")
                 work = json.loads(text)["works"][0]
                 self.assertEqual(work["image"], "https://i.ytimg.com/vi/r0aBwvfiNjY/hqdefault.jpg")
                 self.assertEqual(work["imageSource"], "youtube")
                 self.assertNotIn("temporary", text)
-                self.assertFalse((self.root / "covers").exists())
+                self.assertEqual(work["shareImageSource"], "notion" if cover else "none")
+                if cover:
+                    self.assertEqual(work["shareImageWidth"], 1280)
+                    self.assertEqual(work["shareImageHeight"], 720)
+                    self.assertTrue((self.root / "covers" / Path(work["shareImage"]).name).is_file())
+
+    def test_body_upload_wins_over_page_cover_with_pagination(self):
+        source = page()
+        source["cover"] = {"type": "file", "file": {"url": "cover"}}
+        def api(endpoint):
+            if "start_cursor=" not in endpoint:
+                return {"results": [{"type": "image", "image": {"type": "external", "external": {"url": "ignored"}}}], "has_more": True, "next_cursor": "next"}
+            return {"results": [{"type": "image", "image": {"type": "file", "file": {"url": "body"}}}], "has_more": False}
+        self.assertEqual(sync.uploaded_image_url(api, source), "body")
+
+    def test_bad_image_or_download_failure_preserves_catalog(self):
+        source = page()
+        source["cover"] = {"type": "file", "file": {"url": "https://example.com/image"}}
+        output = self.root / "library.json"
+        output.write_text("previous")
+        with self.assertRaises(sync.SyncError):
+            sync.sync(self.api([{"results": [source], "has_more": False}]), output, self.root, download=lambda url: b"not an image")
+        self.assertEqual(output.read_text(), "previous")
+
+    def test_signed_url_changes_do_not_change_saved_image(self):
+        data = io.BytesIO()
+        Image.new("RGB", (20, 10)).save(data, format="PNG")
+        first = sync.save_share_image(data.getvalue(), self.root / "covers")
+        self.assertEqual(first, sync.save_share_image(data.getvalue(), self.root / "covers"))
+
+    def test_untrusted_download_host_rejected(self):
+        with self.assertRaises(sync.SyncError):
+            sync.download_uploaded_image("https://127.0.0.1/image")
 
     def test_external_translation_uses_youtube_source_cover(self):
         source = page()

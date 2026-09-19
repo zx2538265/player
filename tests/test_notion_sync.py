@@ -198,8 +198,8 @@ class SyncTests(unittest.TestCase):
                 self.assertNotIn("temporary", text)
                 self.assertEqual(work["shareImageSource"], "notion" if cover else "none")
                 if cover:
-                    self.assertEqual(work["shareImageWidth"], 1280)
-                    self.assertEqual(work["shareImageHeight"], 720)
+                    self.assertEqual(work["shareImageWidth"], 1200)
+                    self.assertEqual(work["shareImageHeight"], 630)
                     self.assertTrue((self.root / "covers" / Path(work["shareImage"]).name).is_file())
 
     def test_body_upload_wins_over_page_cover_with_pagination(self):
@@ -229,6 +229,25 @@ class SyncTests(unittest.TestCase):
     def test_untrusted_download_host_rejected(self):
         with self.assertRaises(sync.SyncError):
             sync.download_uploaded_image("https://127.0.0.1/image")
+
+    def test_share_canvas_preserves_edges_in_two_to_one_crop(self):
+        for size in ((1672, 941), (600, 1200), (1800, 400)):
+            with self.subTest(size=size):
+                source = Image.new("RGB", size, "white")
+                # Distinct top and bottom bands expose accidental cropping.
+                source.paste((255, 0, 0), (0, 0, size[0], size[1] // 5))
+                source.paste((0, 0, 255), (0, size[1] * 4 // 5, size[0], size[1]))
+                data = io.BytesIO()
+                source.save(data, format="PNG")
+                result = sync.save_share_image(data.getvalue(), self.root / "covers")
+                with Image.open(self.root / "covers" / Path(result["shareImage"]).name) as image:
+                    self.assertEqual(image.size, (1200, 630))
+                    cropped = image.crop((0, 15, 1200, 615))
+                    colors = list(cropped.getdata())
+                    self.assertTrue(any(r > 220 and b < 30 for r, g, b in colors))
+                    self.assertTrue(any(b > 220 and r < 30 for r, g, b in colors))
+                    self.assertLess(max(image.getpixel((600, 30))), 30)
+                    self.assertLess(max(image.getpixel((600, 600))), 30)
 
     def test_external_translation_uses_youtube_source_cover(self):
         source = page()

@@ -13,7 +13,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit, parse_qs, quote
 from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 DATABASE_ID = "358f1640416380ce9943cb914b0409f1"
 VIEW_ID = "372f16404163804c947b000c5be27931"
@@ -248,8 +248,19 @@ def save_share_image(content, folder):
             if width * height > 40_000_000:
                 raise ValueError()
             image.verify()
-            ext, mime = {"JPEG": ("jpg", "image/jpeg"), "PNG": ("png", "image/png"),
-                         "WEBP": ("webp", "image/webp"), "GIF": ("gif", "image/gif")}[image.format]
+        # Keep the complete image within a safe area even when a 1200x630
+        # card is centre-cropped to 2:1 (15 pixels removed at each edge).
+        with Image.open(io.BytesIO(content)) as source:
+            source.seek(0)
+            oriented = ImageOps.exif_transpose(source).convert("RGBA")
+            fitted = ImageOps.contain(oriented, (1080, 540), Image.Resampling.LANCZOS)
+            canvas = Image.new("RGB", (1200, 630), (24, 24, 24))
+            canvas.paste(fitted, ((1200 - fitted.width) // 2, (630 - fitted.height) // 2), fitted)
+            encoded = io.BytesIO()
+            canvas.save(encoded, format="JPEG", quality=95, subsampling=0)
+            content = encoded.getvalue()
+            width, height = canvas.size
+            ext, mime = "jpg", "image/jpeg"
     except (OSError, ValueError, Image.DecompressionBombError):
         raise SyncError("Notion 圖片格式或內容無效；保留原清單。") from None
     filename = hashlib.sha256(content).hexdigest() + "." + ext

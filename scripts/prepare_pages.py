@@ -1,16 +1,93 @@
 """Build a public-only Pages artifact and compare it with the live release."""
 import argparse
 import hashlib
+from html import escape
 from http.client import HTTPException
 import json
 import os
 from pathlib import Path
 import shutil
+import re
+from urllib.parse import urlsplit, parse_qs
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://allenka.com/"
+
+
+def share_video_id(work):
+    """Only publish share routes for recognized local player links."""
+    url = urlsplit(work.get("url", ""))
+    local = (url.hostname == "allenka.com" and url.path.rstrip("/") in ("", "/index.html")) or (
+        url.hostname == "zx2538265.github.io" and url.path.rstrip("/") in ("/player", "/player/index.html"))
+    vid = parse_qs(url.query).get("v", [""])[0]
+    return vid if local and url.scheme == "https" and not url.username and not url.password and re.fullmatch(r"[A-Za-z0-9_-]{11}", vid) else ""
+
+
+def build_share_pages(payload, site):
+    videos = {}
+    for work in payload["works"]:
+        vid = share_video_id(work)
+        if not vid:
+            continue
+        if vid in videos:
+            raise ValueError(f"Duplicate share video: {vid}")
+        if not (site / "srt" / f"{vid}.srt").is_file():
+            raise ValueError(f"Missing share subtitle: {vid}")
+        title = work["title"].strip()
+        if not title:
+            raise ValueError("Empty share title")
+        description = " · ".join(value for value in (work.get("artist"), work.get("type"), "中文字幕｜翻譯收藏室") if value)
+        image = work.get("image") or f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
+        if image.startswith("data/covers/") and (site / image).is_file():
+            image = SITE + image
+        else:
+            parsed = urlsplit(image)
+            if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+                raise ValueError("Invalid share image")
+        share_url = SITE + f"share/{vid}/"
+        player_url = SITE + f"?v={vid}"
+        values = {key: escape(value, quote=True) for key, value in {
+            "title": title, "description": description, "image": image,
+            "share": share_url, "player": player_url}.items()}
+        page = '''<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}｜翻譯收藏室</title>
+  <meta name="description" content="{description}">
+  <link rel="canonical" href="{share}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="翻譯收藏室">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:url" content="{share}">
+  <meta property="og:image" content="{image}">
+  <meta property="og:image:alt" content="{title}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{title}">
+  <meta name="twitter:description" content="{description}">
+  <meta name="twitter:image" content="{image}">
+  <style>body {{ margin: 40px auto; padding: 0 20px; max-width: 720px; background: #111; color: #fff; font-family: system-ui, sans-serif; }} img {{ max-width: 100%; border-radius: 12px; }} a {{ color: #9ecbff; }}</style>
+</head>
+<body>
+  <img src="{image}" alt="{title}">
+  <h1>{title}</h1>
+  <p>{description}</p>
+  <p><a href="{player}">觀看中文字幕影片 →</a></p>
+  <script>window.location.replace("../../?v={video_id}");</script>
+</body>
+</html>
+'''.format(**values, video_id=vid)
+        destination = site / "share" / vid
+        destination.mkdir(parents=True)
+        (destination / "index.html").write_text(page, encoding="utf-8")
+        videos[vid] = share_url
+    (site / "data/share.json").write_text(json.dumps({"version": 1, "videos": videos}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return len(videos)
 
 
 def fingerprint(site):
@@ -33,7 +110,7 @@ def prepare(root, catalog, site):
     if site.exists():
         raise ValueError("Output must be a new directory")
     site.mkdir(parents=True)
-    for name in ("index.html", "test.html", "library.html", "library.css", "library.js", ".nojekyll"):
+    for name in ("index.html", "test.html", "library.html", "library.css", "library.js", "share.js", ".nojekyll"):
         shutil.copy2(root / name, site / name)
     shutil.copytree(root / "srt", site / "srt")
     (site / "data/covers").mkdir(parents=True)
@@ -49,6 +126,7 @@ def prepare(root, catalog, site):
             if image != "data/covers/" + filename or hashlib.sha256(source.read_bytes()).hexdigest() != Path(filename).stem:
                 raise ValueError("Invalid cover")
             shutil.copy2(source, site / image)
+    build_share_pages(payload, site)
     digest = fingerprint(site)
     (site / "release.json").write_text(json.dumps({"version": 1, "digest": digest}) + "\n", encoding="utf-8")
     return digest

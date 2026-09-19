@@ -7,6 +7,9 @@ from pathlib import Path
 import shutil
 import uuid
 import unittest
+from unittest.mock import patch
+from urllib.error import HTTPError, URLError
+from http.client import IncompleteRead
 
 spec = importlib.util.spec_from_file_location("sync_notion", Path(__file__).resolve().parents[1] / "scripts/sync_notion.py")
 sync = importlib.util.module_from_spec(spec)
@@ -29,6 +32,44 @@ class SyncTests(unittest.TestCase):
         assert self.root.resolve().is_relative_to(scratch.resolve())
         self.addCleanup(shutil.rmtree, self.root)
         (self.root / "r0aBwvfiNjY.srt").write_text("test", encoding="utf-8")
+
+    def test_transient_api_errors_retry_and_recover(self):
+        failures = [URLError("private detail"), TimeoutError(), ConnectionResetError(),
+                    IncompleteRead(b"private"), json.JSONDecodeError("bad", "private", 0),
+                    HTTPError("private", 503, "unavailable", {}, None)]
+        for failure in failures:
+            with self.subTest(error=type(failure).__name__), \
+                    patch.object(sync, "urlopen", side_effect=[failure, io.BytesIO(b'{"ok": true}')]) as request, \
+                    patch.object(sync.time, "sleep") as sleep, patch("sys.stderr", new_callable=io.StringIO):
+                self.assertEqual(sync.request_api("secret", "pages/abc"), {"ok": True})
+                self.assertEqual(request.call_count, 2)
+                sleep.assert_called_once_with(1)
+
+    def test_api_exhaustion_is_bounded_and_redacted(self):
+        with patch.object(sync, "urlopen", side_effect=URLError("secret response")) as request, \
+                patch.object(sync.time, "sleep") as sleep, patch("sys.stderr", new_callable=io.StringIO) as log:
+            with self.assertRaises(sync.SyncError) as error:
+                sync.request_api("secret-token", "blocks/abc/children?start_cursor=secret-cursor")
+            self.assertEqual(request.call_count, 4)
+            self.assertEqual([call.args[0] for call in sleep.call_args_list], [1, 2, 4])
+            self.assertIn("blocks/abc/children", str(error.exception))
+            self.assertIn("4 次", str(error.exception))
+            self.assertNotIn("secret", str(error.exception) + log.getvalue())
+
+    def test_api_permission_failure_does_not_retry(self):
+        with patch.object(sync, "urlopen", side_effect=HTTPError("private", 401, "unauthorized", {}, None)) as request, \
+                patch.object(sync.time, "sleep") as sleep:
+            with self.assertRaisesRegex(sync.SyncError, "HTTP 401"):
+                sync.request_api("secret", "pages/abc")
+            self.assertEqual(request.call_count, 1)
+            sleep.assert_not_called()
+
+    def test_rate_limit_retry_after_and_invalid_json_recovery(self):
+        with patch.object(sync, "urlopen", side_effect=[HTTPError("private", 429, "rate limit", {"Retry-After": "5"}, None),
+                                                       io.BytesIO(b'<html>gateway</html>'), io.BytesIO(b'{"ok": true}')]), \
+                patch.object(sync.time, "sleep") as sleep, patch("sys.stderr", new_callable=io.StringIO):
+            self.assertEqual(sync.request_api("secret", "pages/abc"), {"ok": True})
+            self.assertEqual([call.args[0] for call in sleep.call_args_list], [5, 2])
 
     def api(self, batches):
         self.calls = []

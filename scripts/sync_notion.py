@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import io
+from http.client import HTTPException
 import json
 import os
 from pathlib import Path
@@ -120,20 +121,30 @@ def convert_page(page, subtitle_dir):
 
 def request_api(token, endpoint, body=None):
     data = json.dumps(body).encode() if body is not None else None
+    # Log only the API path; never tokens, response bodies or query cursors.
+    step = endpoint.split("?", 1)[0]
     for attempt in range(4):
         request = Request("https://api.notion.com/v1/" + endpoint, data=data, headers={
             "Authorization": "Bearer " + token, "Notion-Version": "2025-09-03", "Content-Type": "application/json"})
         try:
             with urlopen(request, timeout=30) as response:
-                return json.load(response)
+                result = json.load(response)
+                if not isinstance(result, dict):
+                    raise json.JSONDecodeError("Expected object", "", 0)
+                return result
         except HTTPError as error:
-            if (error.code == 429 or error.code >= 500) and attempt < 3:
-                delay = error.headers.get("Retry-After", "2")
-                time.sleep(min(30, max(1, int(delay) if delay.isdigit() else 2 ** attempt)))
-                continue
-            raise SyncError(f"Notion HTTP {error.code}；請檢查連線授權、資料庫 ID 或稍後重試。") from None
-        except (URLError, TimeoutError, json.JSONDecodeError):
-            raise SyncError("Notion 連線或回應格式異常；未更新清單。") from None
+            reason = f"HTTP {error.code}"
+            if error.code != 429 and error.code < 500:
+                raise SyncError(f"Notion {step}：{reason}；請檢查連線授權或資料來源設定。") from None
+            retry_after = (error.headers or {}).get("Retry-After", "")
+            delay = min(30, max(1, int(retry_after))) if retry_after.isdigit() and len(retry_after) < 6 else 2 ** attempt
+        except (OSError, HTTPException, json.JSONDecodeError, UnicodeDecodeError) as error:
+            reason = type(error).__name__
+            delay = 2 ** attempt
+        if attempt == 3:
+            raise SyncError(f"Notion {step}：{reason}，已嘗試 4 次；未更新清單。") from None
+        print(f"Notion {step}：{reason}，{delay} 秒後重試（{attempt + 2}/4）。", file=sys.stderr)
+        time.sleep(delay)
 
 
 def collect_pages(api):

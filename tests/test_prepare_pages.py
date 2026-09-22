@@ -46,6 +46,23 @@ class CompareTests(unittest.TestCase):
         (self.root / "index.html").write_text("player")
         self.assertNotEqual(before, prepare.fingerprint(self.root))
 
+    def test_bigbang_chant_runtime_is_in_public_artifact(self):
+        source = self.root / "source"
+        source.mkdir()
+        for name in ("index.html", "test.html", "library.html", "library.css", "library.js", "share.js", ".nojekyll"):
+            (source / name).write_text("")
+        (source / "srt").mkdir()
+        shutil.copytree(prepare.ROOT / "bigbang", source / "bigbang")
+        site = self.root / "site"
+        prepare.prepare(source, self.root / "data/library.json", site)
+        self.assertEqual((site / "bigbang/chant.js").read_bytes(), (source / "bigbang/chant.js").read_bytes())
+        html = (site / "bigbang/index.html").read_text(encoding="utf-8")
+        self.assertLess(html.index('src="chant.js'), html.index('src="practice.js'))
+        self.assertFalse((site / "bigbang/README.md").exists())
+        track = json.loads((site / "bigbang/songs.json").read_text(encoding="utf-8"))[0]["chant"]
+        self.assertEqual(track["videoId"], "5eiytN0_YR8")
+        self.assertEqual(len(track["cues"]), 37)
+
     def test_release_metadata_not_part_of_digest(self):
         before = prepare.fingerprint(self.root)
         (self.root / "release.json").write_text("{}")

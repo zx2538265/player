@@ -37,3 +37,12 @@ footer{border-top:2px solid var(--ink);color:var(--muted);font-size:9px;letter-s
 @media(max-width:768px){.intro{padding-right:76px;min-height:235px}.tour-art{width:58px;gap:4px;padding-left:6px;opacity:.65}.tour-art span{font-size:11px;right:4px;letter-spacing:2px}h1{font-size:clamp(38px,9vw,68px);letter-spacing:-1px}.intro .eyebrow{font-size:9px;letter-spacing:1px}.lede{font-size:12px}.intro .version{font-size:10px}.brand{font-size:30px}.brand span{font-size:8px}header{padding-top:22px;padding-bottom:20px}.catalog>.section-heading span{font-size:11px}}
 
 .continuous-control{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:12px 0;font-size:13px}.continuous-control label{cursor:pointer;display:flex;align-items:center;gap:6px}.continuous-control input{accent-color:var(--lime);width:18px;height:18px}#continuousStatus{font-size:12px;color:var(--muted)}
+.chant-panel{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.chant-toggle{display:flex;align-items:center;gap:8px;font-size:13px;white-space:nowrap;cursor:pointer}.chant-toggle input{accent-color:var(--lime);width:18px;height:18px}
+.chant-display{padding:24px;border:1px solid #555146;background:#111;min-height:220px}
+.chant-display[hidden]{display:none}.chant-label{margin:0 0 16px;color:var(--muted);font-size:14px;letter-spacing:2px}
+.chant-line{display:flex;align-items:center;gap:20px;min-height:85px}.chant-text{margin:0;font-size:clamp(30px,5vw,58px);font-weight:900;line-height:1.25;overflow-wrap:anywhere;white-space:pre-line;color:#c7c4ba}
+.chant-count{font-size:72px;font-weight:900;line-height:1;min-width:1ch;color:var(--lime);font-variant-numeric:tabular-nums}.chant-count:empty{display:none}
+.chant-next{margin:18px 0 0;min-height:24px;color:var(--muted);font-size:15px;overflow-wrap:anywhere}
+.chant-display[data-mode=active]{border-color:var(--lime);background:#201b10}.chant-display[data-mode=active] .chant-text,.chant-display[data-mode=active] .chant-label,.chant-display[data-mode=countdown] .chant-label{color:var(--lime)}
+@media(max-width:480px){.chant-display{padding:18px 14px;min-height:210px}.chant-line{gap:12px}.chant-count{font-size:54px}.chant-panel .section-heading{align-items:flex-start;gap:8px}.chant-panel h2{letter-spacing:0}}

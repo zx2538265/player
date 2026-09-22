@@ -23,7 +23,8 @@
   <meta name="twitter:image" content="https://allenka.com/bigbang/share-cover.png">
   <meta name="twitter:image:alt" content="黑白金風格的 BIGBANG 應援練習室封面">
   <link rel="stylesheet" href="practice.css">
-  <script src="practice.js?v=3" defer></script>
+  <script src="chant.js?v=1" defer></script>
+  <script src="practice.js?v=4" defer></script>
 </head>
 <body>
   <header><a class="brand" href="./">BIGBANG<span>VIP PRACTICE ROOM</span></a></header>
@@ -37,6 +38,15 @@
         <p id="status" role="status">正在載入教學影片…</p>
         <div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label><span id="continuousStatus" role="status"></span></div>
         <fieldset id="transport" disabled><legend class="sr-only">播放控制</legend><div class="transport"><button id="back">↶ 5 秒</button><button id="play" class="primary">播放</button><label class="speed">速度 <select id="speed"><option value="1">1×</option></select></label><output id="clock">0:00 / 0:00</output></div><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="230" value="0" step="0.1"></fieldset>
+        <section class="chant-panel" id="chantPanel" aria-labelledby="chantHeading">
+          <div class="section-heading"><h2 id="chantHeading">02 / 應援大字提示</h2><label class="chant-toggle"><input id="chantEnabled" type="checkbox" checked> 顯示提示</label></div>
+          <p id="chantNote" class="version"></p>
+          <div id="chantDisplay" class="chant-display" data-mode="waiting">
+            <p id="chantLabel" class="chant-label">正在載入提示…</p>
+            <div class="chant-line"><span id="chantCount" class="chant-count" aria-label="進場倒數"></span><p id="chantText" class="chant-text"></p></div>
+            <p id="chantNext" class="chant-next"></p>
+          </div>
+        </section>
         <div class="source"><h2>本首來源</h2><div id="currentSources"></div></div>
       </section>
     </div>

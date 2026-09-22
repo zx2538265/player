@@ -1,8 +1,11 @@
 # BIGBANG 應援練習室
 
-依 2026/9/11 MetLife Stadium 場的觀眾歌單紀錄排列 32 首（不含 VCR、band jam 與預錄串場）。可切換單曲、播放 YouTube 教學、調整速度、倒退 5 秒，並開啟各首應援來源。FANTASTIC BABY、HANDS UP、TONIGHT、BLUE、LOSER、BAD BOY、BAE BAE 提供應援大字與進場倒數；不含 A–B 循環或段落儲存功能。
+依 2026/9/11 MetLife Stadium 場的觀眾歌單紀錄排列 32 首（不含 VCR、band jam 與預錄串場）。可切換單曲、播放 YouTube 教學、調整速度、倒退 5 秒，並開啟各首應援來源。FANTASTIC BABY、HANDS UP、TONIGHT、BLUE、LOSER、BAD BOY、BAE BAE、LIES 提供應援大字與進場倒數；不含 A–B 循環或段落儲存功能。
 
 ## 應援大字示範
+
+- LIES 改用使用者指定的 `KBTJI9oxcI8` 現場剪輯版，加入 15 段暫定提示：前段 7 段取自指定 Threads 三人新版空耳，中段 2 段取自 LeY0M83P7zg 黃字，後段 6 段補網路短回應與口號。LeY0M83P7zg 的舊五人開場不採用。省略原曲中本支現場未演出的段落，不貼完整歌詞。HARU HARU 維持原來源。
+- LIES 全部喊點尚未逐句聽校；開場有畫面文字及三段音訊偏移候選，後段仍有段落推估。處理與排除項目見 `video/KBTJI9oxcI8/chant-ledger.json`、`PROCESSING.md`。網站已標示暫定；自動時鐘測試與手機尺寸模擬不等於 YouTube 實播驗收。
 
 - FANTASTIC BABY 依 `5eiytN0_YR8` 教學影片的黃色提示整理 37 段；不將白色歌詞翻譯當成應援。韓文段落沿用影片所印中文空耳作為發音提示；原羅馬拼音保留於處理紀錄，不自行改稱官方版本。
 - HANDS UP 依指定的 `0o7qE6pCxI0` 紅字整理 12 段，只收錄 `HEY HO HEY HO` 與 `HANDS UP HIGH HIGH & LOW`，不加入白字歌詞或藍字舉手／移動說明。

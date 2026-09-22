@@ -958,14 +958,109 @@
     "sources": [
       {
         "kind": "應援參考",
-        "url": "https://reurl.cc/RR9z96",
-        "title": "BIGBANG - 謊言 繁中應援",
-        "resolvedUrl": "https://www.youtube.com/watch?v=LeY0M83P7zg&list=RDLeY0M83P7zg&start_radio=1",
-        "videoId": "LeY0M83P7zg",
-        "checked": "2026-09-22"
+        "url": "https://www.youtube.com/watch?v=KBTJI9oxcI8",
+        "title": "BIGBANG - LIES｜260823 高陽現場版",
+        "resolvedUrl": "https://www.youtube.com/watch?v=KBTJI9oxcI8",
+        "videoId": "KBTJI9oxcI8"
+      },
+      {
+        "kind": "前段應援詞參考",
+        "url": "https://www.threads.com/@ritalala25/post/DcfeKYIEuBv/media",
+        "title": "LIES 前段應援詞（Threads）"
+      },
+      {
+        "kind": "後段應援詞參考",
+        "url": "https://www.kpopchords.com/chant/bigbang-lies-fanchant-romanized-lyrics",
+        "title": "LIES 短回應與口號參考（非現場時間表）"
+      },
+      {
+        "kind": "黃字應援對照",
+        "url": "https://www.youtube.com/watch?v=LeY0M83P7zg",
+        "title": "BIGBANG - 謊言 繁中應援（員外皓）"
       }
     ],
-    "note": "尚未核對 2026 現場編排"
+    "note": "前段採 Threads 三人新版空耳，後段補短回應與口號；喊點暫定",
+    "chant": {
+      "videoId": "KBTJI9oxcI8",
+      "note": "前段依 Threads 新版空耳；12～64 秒已對照教學黃字，補入兩句，其他白字歌詞不列入。後段補短回應與口號。全部喊點暫定，尚未完成逐句聽校。",
+      "cues": [
+        {
+          "start": 5.62,
+          "end": 6.82,
+          "text": "寬 基 勇"
+        },
+        {
+          "start": 6.82,
+          "end": 7.72,
+          "text": "東 永 培"
+        },
+        {
+          "start": 7.72,
+          "end": 8.52,
+          "text": "康 多 送"
+        },
+        {
+          "start": 8.52,
+          "end": 9.22,
+          "text": "VIP"
+        },
+        {
+          "start": 9.42,
+          "end": 10.12,
+          "text": "永碗逆"
+        },
+        {
+          "start": 10.12,
+          "end": 10.92,
+          "text": "撒朗嘿"
+        },
+        {
+          "start": 11.32,
+          "end": 12.52,
+          "text": "屋哩 BIGBANG"
+        },
+        {
+          "start": 36.56,
+          "end": 37.32,
+          "text": "優嘎帖"
+        },
+        {
+          "start": 50.3,
+          "end": 51.3,
+          "text": "內嘎批溜嘿"
+        },
+        {
+          "start": 64.0,
+          "end": 64.5,
+          "text": "SORRY"
+        },
+        {
+          "start": 65.0,
+          "end": 66.7,
+          "text": "I LOVE YOU\nMORE MORE"
+        },
+        {
+          "start": 76.0,
+          "end": 78.0,
+          "text": "BIGBANG 撒朗嘿"
+        },
+        {
+          "start": 131.0,
+          "end": 131.5,
+          "text": "SORRY"
+        },
+        {
+          "start": 132.0,
+          "end": 133.8,
+          "text": "I LOVE YOU\nMORE MORE"
+        },
+        {
+          "start": 141.2,
+          "end": 142.6,
+          "text": "BYE BYE"
+        }
+      ]
+    }
   },
   {
     "number": 11,

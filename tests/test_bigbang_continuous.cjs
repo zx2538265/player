@@ -2,14 +2,15 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const vm = require('node:vm');
 const fs = require('node:fs');
-async function setup() {
+async function setup(catalog = null) {
   const elements = new Map(), players = [], timers = new Map();
   const element = () => ({dataset:{}, checked:false, children:[], append(...items){this.children.push(...items)}, replaceChildren(...items){this.children=items}, setAttribute(){}, removeAttribute(){}, scrollIntoView(){}});
   const get = id => {if(!elements.has(id)) elements.set(id,element());return elements.get(id)};
-  const songs = [true,false,true,true].map((video,i)=>({number:i+1,title:`Song ${i+1}`,artist:'BIGBANG',section:'Main',note:'',sources:video?[{videoId:`id${i}`,kind:'影片'}]:[]}));
+  const songs = catalog || [true,false,true,true].map((video,i)=>({number:i+1,title:`Song ${i+1}`,artist:'BIGBANG',section:'Main',note:'',sources:video?[{videoId:`id${i}`,kind:'影片'}]:[]}));
   const context = {document:{getElementById:get,createElement:element,querySelectorAll:()=>[],head:element()},location:{hash:'',origin:'http://localhost'},history:{replaceState(){}},fetch:async()=>({ok:true,json:async()=>songs}),setTimeout:fn=>{const id=timers.size+1;timers.set(id,fn);return id},clearTimeout:id=>timers.delete(id),setInterval(){},addEventListener(){}};
   context.window=context;
-  context.YT={Player:function(id,options){const p={options,state:-1,plays:0,destroy(){},getAvailablePlaybackRates:()=>[1],getPlaybackRate:()=>1,getPlayerState(){return this.state},playVideo(){this.plays++;this.state=1},pauseVideo(){this.state=2},emit(data){this.state=data;options.events.onStateChange({data})},ready(){options.events.onReady({target:this})}};players.push(p);return p}};
+  if(catalog) { context.Chant=require('../bigbang/chant.js'); get('chantEnabled').checked=true; }
+  context.YT={Player:function(id,options){const p={options,state:-1,time:0,rate:1,plays:0,destroy(){},getCurrentTime(){return this.time},seekTo(t){this.time=t},setPlaybackRate(r){this.rate=r;options.events.onPlaybackRateChange({data:r})},getAvailablePlaybackRates:()=>[0.5,1,2],getPlaybackRate(){return this.rate},getPlayerState(){return this.state},playVideo(){this.plays++;this.state=1},pauseVideo(){this.state=2},emit(data){this.state=data;options.events.onStateChange({data})},ready(){options.events.onReady({target:this})}};players.push(p);return p}};
   vm.runInNewContext(fs.readFileSync('bigbang/practice.js','utf8'),context);
   await new Promise(resolve=>setImmediate(resolve));
   return {get,players,timers,select:i=>{get('songSelect').value=i;get('songSelect').onchange()},enable:()=>{get('continuous').checked=true;get('continuous').onchange()}};
@@ -19,3 +20,27 @@ test('advance skips missing videos, autoplays and stops at end',async()=>{const 
 test('manual selection preserves playing or paused intent',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].state=1;s.select(2);s.players[1].ready();assert.equal(s.players[1].plays,1);s.players[1].state=2;s.select(3);s.players[2].ready();assert.equal(s.players[2].plays,0)});
 test('explicit error advances; slow loading and blocked autoplay do not',async()=>{const s=await setup();s.enable();for(const fn of [...s.timers.values()])fn();assert.equal(s.players.length,1);s.players[0].options.events.onError();assert.equal(s.players.length,2);s.players[1].ready();s.players[1].options.events.onAutoplayBlocked();assert.equal(s.players.length,2);assert.match(s.get('status').textContent,/請點一下播放/)});
 test('disable during loading cancels autoplay and stale callbacks cannot advance',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].emit(0);s.get('continuous').checked=false;s.get('continuous').onchange();s.players[1].ready();assert.equal(s.players[1].plays,0);s.players[0].options.events.onError();assert.equal(s.players.length,2)});
+
+test('actual chant catalog switches cleanly and controls use the current player clock',async()=>{
+  const catalog=require('../bigbang/songs.json'),s=await setup(catalog);
+  s.players[0].ready(); s.players[0].time=30;s.players[0].emit(1);
+  assert.equal(s.get('chantText').textContent,'NA NA NA NA NA');
+  for(const index of [1,2]) {
+    const old=s.players.at(-1);s.select(index);
+    assert.equal(s.get('chantLabel').textContent,'等待影片就緒');
+    assert.equal(s.get('chantCount').textContent,'');
+    const p=s.players.at(-1),cue=catalog[index].chant.cues[0];p.ready();
+    assert.equal(p.options.videoId,catalog[index].chant.videoId);
+    s.get('speed').value='0.5';s.get('speed').onchange();p.time=cue.start-1.5;p.emit(1);
+    assert.equal(s.get('chantCount').textContent,'3');
+    p.time=cue.start;p.emit(1);assert.equal(s.get('chantLabel').textContent,'現在喊！');
+    assert.equal(s.get('chantText').textContent,cue.text);
+    s.get('play').onclick();s.get('chantEnabled').onchange();
+    assert.equal(s.get('chantLabel').textContent,'已暫停');assert.equal(s.get('chantCount').textContent,'');
+    s.get('back').onclick();s.get('chantEnabled').onchange();
+    assert.equal(p.time,cue.start-5);assert.equal(s.get('chantCount').textContent,'');
+    old.emit(1);assert.equal(s.get('chantLabel').textContent,'已暫停');
+  }
+  s.select(3);assert.equal(s.get('chantDisplay').hidden,true);assert.equal(s.get('chantEnabled').disabled,true);
+  s.select(0);assert.equal(s.get('chantText').textContent,'NA NA NA NA NA');
+});

@@ -224,7 +224,73 @@
         "checked": "2026-09-22"
       }
     ],
-    "note": "尚未核對 2026 現場編排"
+    "note": "尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "0o7qE6pCxI0",
+      "note": "依本支香港應援影片的紅字整理；只喊紅字英文，白字歌詞與藍字動作說明不列入。時間依畫面提示核對，尚未完成逐句聽校或核對 2026 現場版本。",
+      "cues": [
+        {
+          "start": 14.3,
+          "end": 18,
+          "text": "HEY HO HEY HO"
+        },
+        {
+          "start": 18,
+          "end": 21.7,
+          "text": "HEY HO HEY HO"
+        },
+        {
+          "start": 21.7,
+          "end": 25.5,
+          "text": "HEY HO HEY HO"
+        },
+        {
+          "start": 25.5,
+          "end": 28.9,
+          "text": "HEY HO HEY HO"
+        },
+        {
+          "start": 36.4,
+          "end": 39.6,
+          "text": "HANDS UP HIGH HIGH & LOW"
+        },
+        {
+          "start": 84.4,
+          "end": 88.1,
+          "text": "HANDS UP HIGH HIGH & LOW"
+        },
+        {
+          "start": 150.8,
+          "end": 155,
+          "text": "HANDS UP HIGH HIGH & LOW"
+        },
+        {
+          "start": 185.4,
+          "end": 189.1,
+          "text": "HEY HO HEY HO"
+        },
+        {
+          "start": 189.1,
+          "end": 192.7,
+          "text": "HEY HO HEY HO"
+        },
+        {
+          "start": 192.7,
+          "end": 196.5,
+          "text": "HEY HO HEY HO"
+        },
+        {
+          "start": 196.6,
+          "end": 199.7,
+          "text": "HEY HO HEY HO"
+        },
+        {
+          "start": 207.6,
+          "end": 211,
+          "text": "HANDS UP HIGH HIGH & LOW"
+        }
+      ]
+    }
   },
   {
     "number": 3,
@@ -240,7 +306,203 @@
         "title": "TONIGHT（使用者指定來源）"
       }
     ],
-    "note": "使用者指定的應援來源，尚未核對 2026 現場編排"
+    "note": "使用者指定的應援來源，尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "pJGOF3l2_88",
+      "note": "依本支教學影片的黃色大字整理；na na na 沿用原片空耳「娜 娜 娜」。O A O／O A O O O 保留原片字母提示（未附中文空耳），不將白色歌詞翻譯當成應援。時間依畫面提示核對，尚未完成逐句聽校或核對 2026 現場版本。",
+      "cues": [
+        {
+          "start": 15.1,
+          "end": 15.9,
+          "text": "BIG BANG"
+        },
+        {
+          "start": 15.9,
+          "end": 17,
+          "text": "BIG BANG"
+        },
+        {
+          "start": 18.8,
+          "end": 19.5,
+          "text": "NO WAY"
+        },
+        {
+          "start": 19.5,
+          "end": 20.3,
+          "text": "NO WAY"
+        },
+        {
+          "start": 22.5,
+          "end": 23.3,
+          "text": "BIG BANG"
+        },
+        {
+          "start": 23.3,
+          "end": 24.4,
+          "text": "BIG BANG"
+        },
+        {
+          "start": 26.2,
+          "end": 27,
+          "text": "OK"
+        },
+        {
+          "start": 27,
+          "end": 27.9,
+          "text": "OK"
+        },
+        {
+          "start": 60.9,
+          "end": 61.9,
+          "text": "O A O"
+        },
+        {
+          "start": 68.3,
+          "end": 70.2,
+          "text": "O A O O O"
+        },
+        {
+          "start": 74,
+          "end": 75.8,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 75.8,
+          "end": 77.6,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 77.6,
+          "end": 79.5,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 79.5,
+          "end": 81.3,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 87.3,
+          "end": 88.9,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 90.8,
+          "end": 91.6,
+          "text": "SO WHAT"
+        },
+        {
+          "start": 91.6,
+          "end": 92.6,
+          "text": "SO WHAT"
+        },
+        {
+          "start": 94.5,
+          "end": 95.4,
+          "text": "NO MORE"
+        },
+        {
+          "start": 95.4,
+          "end": 96.3,
+          "text": "NO MORE"
+        },
+        {
+          "start": 105.7,
+          "end": 106.4,
+          "text": "NO"
+        },
+        {
+          "start": 109.5,
+          "end": 111,
+          "text": "娜 娜 娜"
+        },
+        {
+          "start": 120,
+          "end": 121.1,
+          "text": "O A O"
+        },
+        {
+          "start": 127.5,
+          "end": 129.4,
+          "text": "O A O O O"
+        },
+        {
+          "start": 133.1,
+          "end": 134.9,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 134.9,
+          "end": 136.7,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 136.7,
+          "end": 138.6,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 138.6,
+          "end": 140.4,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 146.4,
+          "end": 148,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 162.5,
+          "end": 163.0,
+          "text": "MOVIN’"
+        },
+        {
+          "start": 163.1,
+          "end": 163.7,
+          "text": "MOVIN’"
+        },
+        {
+          "start": 164.2,
+          "end": 165,
+          "text": "MOVIN’"
+        },
+        {
+          "start": 175.3,
+          "end": 176.4,
+          "text": "O A O"
+        },
+        {
+          "start": 182.8,
+          "end": 184.7,
+          "text": "O A O O O"
+        },
+        {
+          "start": 188.4,
+          "end": 190.3,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 190.3,
+          "end": 192.1,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 192.1,
+          "end": 193.9,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 193.9,
+          "end": 195.7,
+          "text": "TONIGHT"
+        },
+        {
+          "start": 201.7,
+          "end": 203.4,
+          "text": "TONIGHT"
+        }
+      ]
+    }
   },
   {
     "number": 4,
@@ -267,12 +529,12 @@
     "sources": [
       {
         "kind": "應援參考",
-        "url": "https://www.youtube.com/watch?v=GB3uMjqjvIk",
-        "videoId": "GB3uMjqjvIk",
-        "title": "MADE IN MACAO 聯合應援 - LOSER 應援口號"
+        "url": "https://www.youtube.com/watch?v=d-y_er6QS1k",
+        "videoId": "d-y_er6QS1k",
+        "title": "LOSER（使用者指定來源）"
       }
     ],
-    "note": "2015 澳門聯合應援版本（中韓字幕與應援提示），尚未核對 2026 現場編排"
+    "note": "使用者指定的應援來源，尚未核對 2026 現場編排"
   },
   {
     "number": 6,

@@ -51,7 +51,7 @@ test('preview, 3/2/1, exact start and exclusive end', () => {
 });
 test('songs 7 and 8 use absolute source clocks and isolate all provisional cues', () => {
   assert.equal(songs[3].sources[0].startSeconds,17);
-  for (const [index,id,count] of [[6,'-PCCobymTas',26],[7,'6iF7adiEHVk',11]]) {
+  for (const [index,id,count] of [[6,'-PCCobymTas',26],[7,'6iF7adiEHVk',12]]) {
     const song=songs[index], track=song.chant;
     assert.equal(song.sources[0].videoId,id);
     assert.equal(song.sources[0].startSeconds,undefined);
@@ -77,7 +77,7 @@ test('songs 7 and 8 use absolute source clocks and isolate all provisional cues'
   assert.equal(songs[7].chant.cues[0].start,7.3);
   assert.ok(!songs[6].chant.cues.some(c=>/EVERYDAY|MY LAY|니가/.test(c.text)));
   assert.ok(!songs[7].chant.cues.some(c=>/JESUS|SUNGLASS|5 X 5|찹쌀떡/.test(c.text)));
-  assert.match(songs[7].chant.note,/5 X 5.*待確認/);
+  assert.deepEqual(songs[7].chant.cues.find(c=>c.text==='喔扣趴gi喔'),{start:84.8,end:86.3,text:'喔扣趴gi喔'});
 });
 test('countdown uses actual seconds at slower and faster rates', () => {
   const t = {cues:[{start:10,end:12,text:'GO'}]};

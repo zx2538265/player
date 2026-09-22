@@ -9,7 +9,7 @@ test('track is specific to the embedded video, sorted and within its duration', 
   assert.equal(Chant.validTrack(track, 'different-version'), false);
   assert.equal(track.cues.length, 37);
   assert.ok(track.cues.every(c => c.end <= 230));
-  assert.ok(songs.slice(5).every(s => !s.chant));
+  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8].includes(s.number)).every(s => !s.chant));
   assert.equal(Chant.validTrack({...track, cues:[{start:1,end:2,text:'a'},{start:1.5,end:3,text:'b'}]},track.videoId),false);
 });
 test('songs 2 through 5 bind chant data to the specified sources', () => {
@@ -48,6 +48,36 @@ test('preview, 3/2/1, exact start and exclusive end', () => {
   assert.equal(Chant.state(t,10,1).next,'下一句：NEXT');
   assert.equal(Chant.state(t,12,1).text,'NEXT');
   assert.equal(Chant.state(t,12,1).mode,'waiting');
+});
+test('songs 7 and 8 use absolute source clocks and isolate all provisional cues', () => {
+  assert.equal(songs[3].sources[0].startSeconds,17);
+  for (const [index,id,count] of [[6,'-PCCobymTas',26],[7,'6iF7adiEHVk',11]]) {
+    const song=songs[index], track=song.chant;
+    assert.equal(song.sources[0].videoId,id);
+    assert.equal(song.sources[0].startSeconds,undefined);
+    assert.equal(Chant.validTrack(track,id),true);
+    assert.equal(track.cues.length,count);
+    assert.match(track.note,/暫定/);
+    for (const other of songs.filter(s=>s.chant && s!==song)) assert.equal(Chant.validTrack(track,other.chant.videoId),false);
+    // Reverse order models repeated backwards seeks without retaining prior state.
+    for (const cue of [...track.cues].reverse()) for (const rate of [0.5,1,2]) {
+      assert.equal(Chant.state(track,cue.start,1,rate).text,cue.text);
+      assert.equal(Chant.state(track,cue.start,1,rate).mode,'active');
+      assert.notEqual(Chant.state(track,cue.end,1,rate).mode,'active');
+      for (const state of [-1,2,3,5]) {
+        assert.equal(Chant.state(track,cue.start,state,rate).mode,'paused');
+        assert.equal(Chant.state(track,cue.start-0.1,state,rate).count,'');
+      }
+      const previous=track.cues.filter(c=>c.end<=cue.start).at(-1);
+      const time=Math.max(previous?.end||0,cue.start-3*rate);
+      assert.equal(Chant.state(track,time,1,rate).count,String(Math.ceil((cue.start-time)/rate)));
+    }
+  }
+  assert.equal(songs[6].chant.cues[0].start,59.8);
+  assert.equal(songs[7].chant.cues[0].start,7.3);
+  assert.ok(!songs[6].chant.cues.some(c=>/EVERYDAY|MY LAY|니가/.test(c.text)));
+  assert.ok(!songs[7].chant.cues.some(c=>/JESUS|SUNGLASS|5 X 5|찹쌀떡/.test(c.text)));
+  assert.match(songs[7].chant.note,/5 X 5.*待確認/);
 });
 test('countdown uses actual seconds at slower and faster rates', () => {
   const t = {cues:[{start:10,end:12,text:'GO'}]};

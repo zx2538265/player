@@ -1,6 +1,6 @@
 # BIGBANG 應援練習室
 
-依 2026/9/11 MetLife Stadium 場的觀眾歌單紀錄排列 32 首（不含 VCR、band jam 與預錄串場）。可切換單曲、播放 YouTube 教學、調整速度、倒退 5 秒，並開啟各首應援來源。FANTASTIC BABY、HANDS UP、TONIGHT、BLUE、LOSER 提供應援大字與進場倒數；不含 A–B 循環或段落儲存功能。
+依 2026/9/11 MetLife Stadium 場的觀眾歌單紀錄排列 32 首（不含 VCR、band jam 與預錄串場）。可切換單曲、播放 YouTube 教學、調整速度、倒退 5 秒，並開啟各首應援來源。FANTASTIC BABY、HANDS UP、TONIGHT、BLUE、LOSER、BAD BOY、BAE BAE 提供應援大字與進場倒數；不含 A–B 循環或段落儲存功能。
 
 ## 應援大字示範
 
@@ -16,6 +16,15 @@
 - 第二、三首的原始影片、SHA-256、候選／邊界／定稿畫面與 `chant-ledger.json`、`chant-qa.json`、`PROCESSING.md` 分別保存在 `video/0o7qE6pCxI0/`、`video/pJGOF3l2_88/`。50 段均經畫面閱讀與邊界核對；時間依教學提示動畫，不等於已完成音訊起訖聽校。沒有自行補寫中文空耳。
 - 本次實播抽查 HANDS UP 的 HEY HO、長句及半速倒數，TONIGHT 的「娜 娜 娜」、倒退及兩倍速倒數；另測切歌與暫停。手機 390px、320px 檢查，修正影片最小高度搭配寬高比在窄版撐寬的問題。這是瀏覽器尺寸模擬，非實體手機或全片逐句聽校驗收。
 - 驗證：`node tests/test_bigbang_chant.cjs`、`node tests/test_bigbang_continuous.cjs`。
+
+## 第七、八首核對狀態（2026-09-23）
+
+- BAD BOY 保留 `-PCCobymTas`，加入 26 段黃字應援；只取 MEAN、REAL、BAD BOY、GOOD GIRL、LEAVE ME、LOVE ME、LADY 及結尾接唱，不加入整行白字歌詞。結尾每頁兩次黃字接唱合併為一段，排除前面的白字主唱。
+- BAE BAE 保留 `6iF7adiEHVk`，加入 11 段；韓文使用原片粉紅空耳，最長句固定換行。`5 X 5` 下方空耳字形待確認，暫未加入提示；原片畫面與候選時間保留於 ledger。
+- 兩首整行歌詞均提前顯示，網站喊點使用音訊候選，BAD BOY 部分段落另依重複樂句暫估，全部仍待聽校。BAE BAE 最後一句的模型進場差異超過兩秒，不能當成已確認時間。
+- BAD BOY 可考慮 00:24 跳過片頭，僅列建議，未套用；BAE BAE 不建議跳過。BLUE 原有 `startSeconds: 17` 與其應援絕對時間保持不變。
+- 每首 `video/<videoId>/` 保存原片、音訊、畫面、0.1 秒邊界圖、逐段 `chant-ledger.json`、`chant-qa.json`、`PROCESSING.md` 與手機截圖。自動應援 8/8、連播 6/6 通過，包含新增兩首的模擬時鐘與控制事件。320px／390px 正式頁面及全部 37 段文字帶倒數無水平溢出；這是瀏覽器尺寸模擬。
+- 兩首 YouTube 嵌入都回報「無法播放這部影片」，因此實際進出、倒數、調速、暫停、倒退與播放中切歌未驗收；沒有換片。人工逐句聽校 0 段，模型比對不算聽校，未宣稱全片驗收。
 
 ## 連續播放
 

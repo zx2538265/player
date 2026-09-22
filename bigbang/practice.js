@@ -115,7 +115,7 @@ $('seek').oninput = () => {if(ready) player.seekTo(Number($('seek').value),true)
 $('speed').onchange = () => {if(ready) player.setPlaybackRate(Number($('speed').value));};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20260923-blue-start-17').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20260923-chants-78-r2').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   songs = data;
   let group;
   songs.forEach((song,index) => {

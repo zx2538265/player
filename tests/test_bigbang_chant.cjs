@@ -83,7 +83,10 @@ test('LIES uses the live edit clock and preserves HARU HARU', () => {
   const song=songs.find(s=>s.title==='LIES'), t=song.chant;
   assert.equal(Chant.validTrack(t,'KBTJI9oxcI8'),true);
   assert.equal(Chant.validTrack(t,'LeY0M83P7zg'),false);
-  assert.equal(t.cues.length,7);
+  assert.equal(t.cues.length,3);
+  assert.equal(Chant.state(t,6,1).text,Chant.state(t,8,1).text);
+  assert.equal(Chant.state(t,9.3,1).count,'');
+  assert.equal(Chant.state(t,11.1,1).mode,'active');
   assert.equal(t.cues.at(-1).end,12.52);
   assert.equal(song.sources.length,2);
   assert.equal(Chant.state(t,36.56,1).text,'做得好！');

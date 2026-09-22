@@ -541,18 +541,9 @@
     "title": "IF YOU",
     "artist": "BIGBANG",
     "section": "團體開場",
-    "hasChant": true,
-    "sources": [
-      {
-        "kind": "應援參考",
-        "url": "https://reurl.cc/27aOx6",
-        "title": "太陽 TAEYANG［BIGBANG］- IF YOU（演唱會版本）空耳應援教學",
-        "resolvedUrl": "https://www.youtube.com/watch?v=nBIsg9nOwRY",
-        "videoId": "nBIsg9nOwRY",
-        "checked": "2026-09-22"
-      }
-    ],
-    "note": "來源為太陽演唱會版本，尚未核對團體巡演編排"
+    "hasChant": false,
+    "sources": [],
+    "note": "應援來源待補"
   },
   {
     "number": 7,

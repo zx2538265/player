@@ -33,10 +33,10 @@
 ## 已知差異
 
 - Wings、POWER：應援為 Threads 外連
-- Look at Me, Gwisun、SOBER、FEELING：沒有應援影片，顯示應援來源待補
+- IF YOU、Look at Me, Gwisun、SOBER、FEELING：沒有應援影片，顯示應援來源待補
 - BAD、FLOWER ROAD：尚未找到應援，提供官方影片／音源
 - MY HEAVEN：表格應援實際連到韓文 Heaven（천국），已標示語言版本差異
-- IF YOU、STILL LIFE：表格收錄太陽演唱會版本，與團體巡演的適用性待核對
+- STILL LIFE：表格收錄太陽演唱會版本，與團體巡演的適用性待核對
 - 全部來源尚未逐句聽校或確認 2026 現場編排
 
 ## 驗證

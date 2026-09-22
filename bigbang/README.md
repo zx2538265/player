@@ -1,12 +1,14 @@
 # BIGBANG 應援練習室
 
-依 2026/9/11 MetLife Stadium 場的觀眾歌單紀錄排列 32 首（不含 VCR、band jam 與預錄串場）。可切換單曲、播放 YouTube 教學、調整速度、倒退 5 秒，並開啟各首應援來源。FANTASTIC BABY、HANDS UP、TONIGHT 提供應援大字與進場倒數；不含 A–B 循環或段落儲存功能。
+依 2026/9/11 MetLife Stadium 場的觀眾歌單紀錄排列 32 首（不含 VCR、band jam 與預錄串場）。可切換單曲、播放 YouTube 教學、調整速度、倒退 5 秒，並開啟各首應援來源。FANTASTIC BABY、HANDS UP、TONIGHT、BLUE、LOSER 提供應援大字與進場倒數；不含 A–B 循環或段落儲存功能。
 
 ## 應援大字示範
 
 - FANTASTIC BABY 依 `5eiytN0_YR8` 教學影片的黃色提示整理 37 段；不將白色歌詞翻譯當成應援。韓文段落沿用影片所印中文空耳作為發音提示；原羅馬拼音保留於處理紀錄，不自行改稱官方版本。
 - HANDS UP 依指定的 `0o7qE6pCxI0` 紅字整理 12 段，只收錄 `HEY HO HEY HO` 與 `HANDS UP HIGH HIGH & LOW`，不加入白字歌詞或藍字舉手／移動說明。
 - TONIGHT 依指定的 `pJGOF3l2_88` 黃色大字整理 38 段；`na na na` 使用原片中文空耳「娜 娜 娜」，不使用上排意思「我 我 我」。`O A O`／`O A O O O` 原片沒有中文空耳，保留原片字母提示並列為缺少中文空耳項目。重複的 BIG BANG、NO WAY、OK、SO WHAT、NO MORE、TONIGHT 與三次 MOVIN’ 依動畫分開記錄。
+- BLUE 依 `BaZAcJYawPI` 黃色大字及原片空耳整理 14 段，時間依提示動畫。LOSER 依 `d-y_er6QS1k` 黃字及粉紅空耳整理 13 段；整行歌詞提早出現，改用音訊候選時間，全部仍待逐句聽校，頁面明示暫定。
+- 第四、五首的影片、畫面、逐段時間與驗證紀錄保存在各自 `video/<videoId>/PROCESSING.md`、`chant-ledger.json`、`chant-qa.json`。BLUE 已抽查半速倒數、進出、暫停、倒退與切歌；LOSER 嵌入回報無法播放，實播同步未完成。320px／390px 預覽無水平溢出，不代表全片聽校或所有長句驗收。
 - `songs.json` 的 `chant.videoId` 必須符合實際嵌入影片；其他歌曲顯示尚未建立提示。`chant.js` 以目前影片時間決定提示，切歌、倒退與拖曳進度不沿用前一次狀態。
 - 進場前最多倒數 3 個實際秒數，依播放速度換算；密集應援先顯示當前句，空檔不足時從剩餘秒數接續，不硬塞完整倒數。暫停、緩衝、未播放時不顯示「現在喊」或繼續倒數。
 - 提示放在影片下方，可關閉；YouTube 自身全螢幕不包含本站提示區。

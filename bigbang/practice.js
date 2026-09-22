@@ -49,7 +49,7 @@ function mountPlayer(song, token) {
   if (!source || !window.YT?.Player || token !== generation) return;
   player = new YT.Player('player', {
     videoId:source.videoId, width:'100%', height:'100%',
-    playerVars:{playsinline:1, origin:location.origin, rel:0},
+    playerVars:{playsinline:1, origin:location.origin, rel:0, start:Number.isFinite(source.startSeconds) && source.startSeconds >= 0 ? Math.floor(source.startSeconds) : 0},
     events:{
       onReady:event => {
         if(token !== generation) return;
@@ -115,7 +115,7 @@ $('seek').oninput = () => {if(ready) player.seekTo(Number($('seek').value),true)
 $('speed').onchange = () => {if(ready) player.setPlaybackRate(Number($('speed').value));};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20260923-loser-1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20260923-blue-start-17').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   songs = data;
   let group;
   songs.forEach((song,index) => {

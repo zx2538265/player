@@ -9,11 +9,11 @@ test('track is specific to the embedded video, sorted and within its duration', 
   assert.equal(Chant.validTrack(track, 'different-version'), false);
   assert.equal(track.cues.length, 37);
   assert.ok(track.cues.every(c => c.end <= 230));
-  assert.ok(songs.slice(3).every(s => !s.chant));
+  assert.ok(songs.slice(5).every(s => !s.chant));
   assert.equal(Chant.validTrack({...track, cues:[{start:1,end:2,text:'a'},{start:1.5,end:3,text:'b'}]},track.videoId),false);
 });
-test('HANDS UP and TONIGHT bind reviewed chants to the specified sources', () => {
-  for (const [index, videoId, count, duration] of [[1,'0o7qE6pCxI0',12,232.2],[2,'pJGOF3l2_88',38,220.053]]) {
+test('songs 2 through 5 bind chant data to the specified sources', () => {
+  for (const [index, videoId, count, duration] of [[1,'0o7qE6pCxI0',12,232.2],[2,'pJGOF3l2_88',38,220.053],[3,'BaZAcJYawPI',14,251],[4,'d-y_er6QS1k',13,218]]) {
     const song = songs[index], t = song.chant;
     assert.equal(song.sources[0].videoId, videoId);
     assert.equal(Chant.validTrack(t, videoId), true);
@@ -35,6 +35,10 @@ test('HANDS UP and TONIGHT bind reviewed chants to the specified sources', () =>
   assert.deepEqual([...new Set(songs[1].chant.cues.map(c => c.text))],['HEY HO HEY HO','HANDS UP HIGH HIGH & LOW']);
   assert.equal(songs[2].chant.cues.find(c => c.start === 109.5).text,'娜 娜 娜');
   assert.ok(!songs[2].chant.cues.some(c => /去找尋|我依然|GO GO/.test(c.text)));
+  assert.deepEqual([...new Set(songs[3].chant.cues.map(c => c.text))],['Blues','麥摟','買豆','每摟','諾哇娜','內莎郎','瓦搭咖搭']);
+  assert.deepEqual([...new Set(songs[4].chant.cues.map(c => c.text))],['LOSER 威偷利','喔嗽','剖嗽','I’M COMING HOME','西素','西贈','I’M GOING HOME']);
+  assert.match(songs[4].chant.note,/暫定/);
+  assert.ok(!songs[4].chant.cues.some(c => /JUST A|상처|머저리|GOOD.?BYE/.test(c.text)));
 });
 test('preview, 3/2/1, exact start and exclusive end', () => {
   const t = {cues:[{start:10,end:12,text:'GO'},{start:20,end:22,text:'NEXT'}]};

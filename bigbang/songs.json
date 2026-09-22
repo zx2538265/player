@@ -515,10 +515,87 @@
         "kind": "應援參考",
         "url": "https://www.youtube.com/watch?v=BaZAcJYawPI",
         "videoId": "BaZAcJYawPI",
+        "startSeconds": 17,
         "title": "BLUE（使用者指定來源）"
       }
     ],
-    "note": "使用者指定的應援來源，尚未核對 2026 現場編排"
+    "note": "使用者指定的應援來源，尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "BaZAcJYawPI",
+      "note": "依指定影片的黃色大字整理，韓文沿用原片中文空耳；時間依提示動畫，尚未完成逐句聽校。",
+      "cues": [
+        {
+          "start": 42.7,
+          "end": 45.7,
+          "text": "Blues"
+        },
+        {
+          "start": 50.3,
+          "end": 53.5,
+          "text": "Blues"
+        },
+        {
+          "start": 75.5,
+          "end": 76.7,
+          "text": "麥摟"
+        },
+        {
+          "start": 77.4,
+          "end": 78.7,
+          "text": "買豆"
+        },
+        {
+          "start": 83.6,
+          "end": 84.9,
+          "text": "每摟"
+        },
+        {
+          "start": 119.5,
+          "end": 122.5,
+          "text": "Blues"
+        },
+        {
+          "start": 127.2,
+          "end": 130.1,
+          "text": "Blues"
+        },
+        {
+          "start": 141.7,
+          "end": 143.1,
+          "text": "諾哇娜"
+        },
+        {
+          "start": 149.4,
+          "end": 150.9,
+          "text": "內莎郎"
+        },
+        {
+          "start": 163.8,
+          "end": 166.1,
+          "text": "瓦搭咖搭"
+        },
+        {
+          "start": 215.4,
+          "end": 218.5,
+          "text": "Blues"
+        },
+        {
+          "start": 223.1,
+          "end": 226.1,
+          "text": "Blues"
+        },
+        {
+          "start": 230.8,
+          "end": 233.8,
+          "text": "Blues"
+        },
+        {
+          "start": 238.5,
+          "end": 241.5,
+          "text": "Blues"
+        }
+      ]
+    }
   },
   {
     "number": 5,
@@ -534,7 +611,78 @@
         "title": "LOSER（使用者指定來源）"
       }
     ],
-    "note": "使用者指定的應援來源，尚未核對 2026 現場編排"
+    "note": "使用者指定的應援來源，尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "d-y_er6QS1k",
+      "note": "只收原片黃字應援，韓文沿用粉紅空耳；進場依音訊字詞時間暫定，部分模型有差異，仍待逐句聽校，請以原曲節奏為準。",
+      "cues": [
+        {
+          "start": 11.5,
+          "end": 14.1,
+          "text": "LOSER 威偷利"
+        },
+        {
+          "start": 24.4,
+          "end": 25.0,
+          "text": "喔嗽"
+        },
+        {
+          "start": 27.0,
+          "end": 27.6,
+          "text": "剖嗽"
+        },
+        {
+          "start": 39.7,
+          "end": 40.9,
+          "text": "I’M COMING HOME"
+        },
+        {
+          "start": 64.8,
+          "end": 67.4,
+          "text": "LOSER 威偷利"
+        },
+        {
+          "start": 75.5,
+          "end": 78.0,
+          "text": "LOSER 威偷利"
+        },
+        {
+          "start": 88.2,
+          "end": 88.7,
+          "text": "西素"
+        },
+        {
+          "start": 91.0,
+          "end": 91.6,
+          "text": "西贈"
+        },
+        {
+          "start": 103.7,
+          "end": 105.0,
+          "text": "I’M GOING HOME"
+        },
+        {
+          "start": 128.9,
+          "end": 131.4,
+          "text": "LOSER 威偷利"
+        },
+        {
+          "start": 139.5,
+          "end": 142.0,
+          "text": "LOSER 威偷利"
+        },
+        {
+          "start": 171.6,
+          "end": 174.0,
+          "text": "LOSER 威偷利"
+        },
+        {
+          "start": 182.5,
+          "end": 185.0,
+          "text": "LOSER 威偷利"
+        }
+      ]
+    }
   },
   {
     "number": 6,

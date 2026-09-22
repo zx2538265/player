@@ -25,7 +25,7 @@ test('actual chant catalog switches cleanly and controls use the current player 
   const catalog=require('../bigbang/songs.json'),s=await setup(catalog);
   s.players[0].ready(); s.players[0].time=30;s.players[0].emit(1);
   assert.equal(s.get('chantText').textContent,'NA NA NA NA NA');
-  for(const index of [1,2]) {
+  for(const index of [1,2,3,4]) {
     const old=s.players.at(-1);s.select(index);
     assert.equal(s.get('chantLabel').textContent,'等待影片就緒');
     assert.equal(s.get('chantCount').textContent,'');
@@ -41,6 +41,6 @@ test('actual chant catalog switches cleanly and controls use the current player 
     assert.equal(p.time,cue.start-5);assert.equal(s.get('chantCount').textContent,'');
     old.emit(1);assert.equal(s.get('chantLabel').textContent,'已暫停');
   }
-  s.select(3);assert.equal(s.get('chantDisplay').hidden,true);assert.equal(s.get('chantEnabled').disabled,true);
+  s.select(5);assert.equal(s.get('chantDisplay').hidden,true);assert.equal(s.get('chantEnabled').disabled,true);
   s.select(0);assert.equal(s.get('chantText').textContent,'NA NA NA NA NA');
 });

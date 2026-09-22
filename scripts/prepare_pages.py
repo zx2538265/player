@@ -124,7 +124,7 @@ def prepare(root, catalog, site):
     shutil.copytree(root / "srt", site / "srt")
     if (root / "bigbang").is_dir():
         (site / "bigbang").mkdir()
-        for name in ("index.html", "practice.css", "practice.js", "songs.json"):
+        for name in ("index.html", "practice.css", "practice.js", "songs.json", "share-cover.png"):
             shutil.copy2(root / "bigbang" / name, site / "bigbang" / name)
     (site / "data/covers").mkdir(parents=True)
     payload = json.loads(catalog.read_text(encoding="utf-8"))

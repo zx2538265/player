@@ -85,8 +85,7 @@ fetch('songs.json').then(response => {if(!response.ok) throw new Error('catalog'
     const button = document.createElement('button');button.dataset.song = index;button.textContent = `${String(song.number).padStart(2,'0')}  ${song.title}`;button.onclick = () => {selectSong(index);$('songTitle').scrollIntoView({block:'start'});};
     const artist = document.createElement('span');artist.className = 'artist';artist.textContent = song.artist;
     const links = document.createElement('div');links.className = 'source-links';sourcesInto(links,song);
-    const note = document.createElement('p');note.textContent = song.note;note.className = 'version';
-    card.append(button,artist,links,note);$('songList').append(card);
+    card.append(button,artist,links);$('songList').append(card);
   });
   $('songSelect').disabled = false;fromHash();
 }).catch(() => fail('曲目資料載入失敗，請重新整理頁面。'));

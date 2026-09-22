@@ -1,5 +1,6 @@
 'use strict';
 const $ = id => document.getElementById(id);
+let pendingPlay = false;
 let songs = [], selected = 0, player, ready = false, generation = 0, loadTimer;
 const format = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
 function sourcesInto(container, song) {
@@ -13,6 +14,21 @@ function sourcesInto(container, song) {
   }
 }
 function fail(message) { ready = false; $('transport').disabled = true; $('status').textContent = message; }
+function advance(reason = '') {
+  if (!$('continuous').checked) return;
+  const skipped = reason ? [reason] : [];
+  let index = selected + 1;
+  while (index < songs.length && !songs[index].sources.some(s => s.videoId)) {
+    skipped.push(songs[index].title + '（無影片）'); index++;
+  }
+  if (index >= songs.length) {
+    pendingPlay = false;
+    $('continuousStatus').textContent = (skipped.length ? '已跳過 ' + skipped.join('、') + '；' : '') + '歌單播放完畢';
+    return;
+  }
+  selectSong(index, true, true);
+  $('continuousStatus').textContent = skipped.length ? '已跳過 ' + skipped.join('、') : '接續播放：' + songs[index].title;
+}
 function mountPlayer(song, token) {
   const source = song.sources.find(s => s.videoId);
   if (!source || !window.YT?.Player || token !== generation) return;
@@ -26,16 +42,20 @@ function mountPlayer(song, token) {
         $('status').textContent = `${source.kind} · ${source.title || song.title}`;
         $('speed').replaceChildren(...player.getAvailablePlaybackRates().map(rate => { const o = document.createElement('option'); o.value = rate; o.textContent = `${rate}×`; return o; }));
         $('speed').value = String(player.getPlaybackRate());
+        if (pendingPlay && $('continuous').checked) player.playVideo();
+        pendingPlay = false;
       },
-      onStateChange:event => { if(token === generation) $('play').textContent = event.data === 1 ? '暫停' : '播放'; },
+      onStateChange:event => { if(token !== generation) return; $('play').textContent = event.data === 1 ? '暫停' : '播放'; if(event.data === 0) advance(); },
       onPlaybackRateChange:event => { if(token === generation) $('speed').value = String(event.data); },
-      onError:() => { if(token === generation) {clearTimeout(loadTimer); fail('影片無法在這裡播放，請用上方連結開啟原影片。');} },
-      onAutoplayBlocked:() => { if(token === generation) $('status').textContent = '請點影片內的播放按鈕。'; }
+      onError:() => { if(token === generation) {clearTimeout(loadTimer); fail('影片無法在這裡播放，請用上方連結開啟原影片。'); advance(song.title + '（播放失敗）');} },
+      onAutoplayBlocked:() => { if(token === generation) $('status').textContent = '自動播放被瀏覽器阻擋，請點一下播放以繼續。'; }
     }
   });
 }
-function selectSong(index, updateHash = true) {
+function selectSong(index, updateHash = true, autoplay = null) {
   if(!Number.isInteger(index) || index < 0 || index >= songs.length) return;
+  pendingPlay = autoplay === null ? ($('continuous').checked && ready && player?.getPlayerState() === 1) : autoplay;
+  $('continuousStatus').textContent = '';
   selected = index; const song = songs[index]; const token = ++generation;
   ready = false; clearTimeout(loadTimer); if(player) {player.destroy(); player = null;}
   $('videoContainer').replaceChildren(Object.assign(document.createElement('div'),{id:'player'}));
@@ -60,12 +80,14 @@ function selectSong(index, updateHash = true) {
     loadTimer = setTimeout(() => { if(token === generation && !ready) fail('影片載入較久，可用上方連結開啟原影片。'); },15000);
   }
   if(updateHash) history.replaceState(null,'',`#song-${song.number}`);
+  if(!source && pendingPlay) advance(song.title + '（無影片）');
 }
 function fromHash() {
   const match = /^#song-(\d+)$/.exec(location.hash);
   const number = match ? Number(match[1]) : 1;
   selectSong(number >= 1 && number <= songs.length ? number - 1 : 0, false);
 }
+$('continuous').onchange = () => { pendingPlay = false; $('continuousStatus').textContent = $('continuous').checked ? '播完自動接下一首' : '已關閉連續播放'; };
 $('previous').onclick = () => selectSong(selected-1);
 $('next').onclick = () => selectSong(selected+1);
 $('songSelect').onchange = () => selectSong(Number($('songSelect').value));

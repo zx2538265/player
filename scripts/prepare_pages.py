@@ -122,6 +122,10 @@ def prepare(root, catalog, site):
     for name in ("index.html", "test.html", "library.html", "library.css", "library.js", "share.js", ".nojekyll"):
         shutil.copy2(root / name, site / name)
     shutil.copytree(root / "srt", site / "srt")
+    if (root / "bigbang").is_dir():
+        (site / "bigbang").mkdir()
+        for name in ("index.html", "practice.css", "practice.js", "songs.json"):
+            shutil.copy2(root / "bigbang" / name, site / "bigbang" / name)
     (site / "data/covers").mkdir(parents=True)
     payload = json.loads(catalog.read_text(encoding="utf-8"))
     if not payload.get("works"):

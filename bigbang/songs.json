@@ -1,0 +1,539 @@
+[
+  {
+    "number": 1,
+    "title": "FANTASTIC BABY",
+    "artist": "BIGBANG",
+    "section": "團體開場",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/omK7VQ",
+        "title": "BIGBANG - FANTASTIC BABY 繁中應援",
+        "resolvedUrl": "https://www.youtube.com/watch?v=5eiytN0_YR8&list=RD5eiytN0_YR8&start_radio=1",
+        "videoId": "5eiytN0_YR8",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 2,
+    "title": "HANDS UP",
+    "artist": "BIGBANG",
+    "section": "團體開場",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/lnaDzd",
+        "title": "BIGBANG ALIVE TOUR IN HONG KONG 2012 - Hands Up 應援口號",
+        "resolvedUrl": "https://youtu.be/0o7qE6pCxI0?si=KvsMgh2yTOAnpmZh",
+        "videoId": "0o7qE6pCxI0",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 3,
+    "title": "TONIGHT",
+    "artist": "BIGBANG",
+    "section": "團體開場",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://www.youtube.com/watch?v=pJGOF3l2_88",
+        "videoId": "pJGOF3l2_88",
+        "title": "TONIGHT（使用者指定來源）"
+      }
+    ],
+    "note": "使用者指定的應援來源，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 4,
+    "title": "BLUE",
+    "artist": "BIGBANG",
+    "section": "團體開場",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://www.youtube.com/watch?v=BaZAcJYawPI",
+        "videoId": "BaZAcJYawPI",
+        "title": "BLUE（使用者指定來源）"
+      }
+    ],
+    "note": "使用者指定的應援來源，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 5,
+    "title": "LOSER",
+    "artist": "BIGBANG",
+    "section": "團體開場",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://www.youtube.com/watch?v=GB3uMjqjvIk",
+        "videoId": "GB3uMjqjvIk",
+        "title": "MADE IN MACAO 聯合應援 - LOSER 應援口號"
+      }
+    ],
+    "note": "2015 澳門聯合應援版本（中韓字幕與應援提示），尚未核對 2026 現場編排"
+  },
+  {
+    "number": 6,
+    "title": "IF YOU",
+    "artist": "BIGBANG",
+    "section": "團體開場",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/27aOx6",
+        "title": "太陽 TAEYANG［BIGBANG］- IF YOU（演唱會版本）空耳應援教學",
+        "resolvedUrl": "https://www.youtube.com/watch?v=nBIsg9nOwRY",
+        "videoId": "nBIsg9nOwRY",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "來源為太陽演唱會版本，尚未核對團體巡演編排"
+  },
+  {
+    "number": 7,
+    "title": "BAD BOY",
+    "artist": "BIGBANG",
+    "section": "團體開場",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/27lLQE",
+        "title": "2012 BIGBANG in TW-Bad boy 應援口號",
+        "resolvedUrl": "https://www.youtube.com/watch?v=-PCCobymTas&list=PLLXWzKu6OQFSAYvR-25sakf2zPQVs4aPt",
+        "videoId": "-PCCobymTas",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 8,
+    "title": "BAE BAE",
+    "artist": "BIGBANG",
+    "section": "團體開場",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/DYbAOe",
+        "title": "2015 BIGBANG in TW-BAE BAE 應援口號",
+        "resolvedUrl": "https://www.youtube.com/watch?v=6iF7adiEHVk&list=RD6iF7adiEHVk&start_radio=1",
+        "videoId": "6iF7adiEHVk",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 9,
+    "title": "HARU HARU",
+    "artist": "BIGBANG",
+    "section": "團體開場",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/RR9zkZ",
+        "title": "BIGBANG ALIVE TOUR IN HONG KONG 2012 - HARUHARU(하루하루)應援口號",
+        "resolvedUrl": "https://www.youtube.com/watch?v=9RX6u4K4ipU&list=RD9RX6u4K4ipU&start_radio=1",
+        "videoId": "9RX6u4K4ipU",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 10,
+    "title": "LIES",
+    "artist": "BIGBANG",
+    "section": "團體開場",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/RR9z96",
+        "title": "BIGBANG - 謊言 繁中應援",
+        "resolvedUrl": "https://www.youtube.com/watch?v=LeY0M83P7zg&list=RDLeY0M83P7zg&start_radio=1",
+        "videoId": "LeY0M83P7zg",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 11,
+    "title": "Universe",
+    "artist": "DAESUNG",
+    "section": "DAESUNG",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/rkK5Kk",
+        "title": "대성(DAESUNG) 'Universe', '그 시절의 우리' Fanchant Guide",
+        "resolvedUrl": "https://www.youtube.com/watch?v=Su2kSDRdy5s",
+        "videoId": "Su2kSDRdy5s",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 12,
+    "title": "Wings",
+    "artist": "DAESUNG",
+    "section": "DAESUNG",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/LeQAQK",
+        "title": "Threads",
+        "resolvedUrl": "https://www.threads.com/@bee_eh4570/post/DcTP2J5kuTr/media",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "應援來源為 Threads，請開啟原貼文觀看"
+  },
+  {
+    "number": 13,
+    "title": "HANDO-CHOGUA",
+    "artist": "DAESUNG",
+    "section": "DAESUNG",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/eQVDpj",
+        "title": "大聲《HANDO-CHOGUA》空耳+應援_KTV跟唱版",
+        "resolvedUrl": "https://www.youtube.com/watch?v=KWWcRGfm5SQ&list=RDKWWcRGfm5SQ&start_radio=1",
+        "videoId": "KWWcRGfm5SQ",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 14,
+    "title": "Look at Me, Gwisun",
+    "artist": "DAESUNG",
+    "section": "DAESUNG",
+    "hasChant": false,
+    "sources": [],
+    "note": "應援來源待補"
+  },
+  {
+    "number": 15,
+    "title": "BAD",
+    "artist": "TAEYANG",
+    "section": "TAEYANG",
+    "hasChant": false,
+    "sources": [
+      {
+        "kind": "官方影片（非應援教學）",
+        "url": "https://www.youtube.com/watch?v=IRaaBfzswM0",
+        "title": "TAEYANG - BAD | THE QUINTESSENCE FILM",
+        "videoId": "IRaaBfzswM0"
+      }
+    ],
+    "note": "補充官方影片供熟悉歌曲，應援來源尚未找到"
+  },
+  {
+    "number": 16,
+    "title": "RINGA LINGA",
+    "artist": "TAEYANG",
+    "section": "TAEYANG",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/5XbKl7",
+        "title": "太陽 - RINGA LINGA 繁中應援",
+        "resolvedUrl": "https://youtu.be/EojU8B2DEL0?si=1JjiFIp0OIHY1dGv",
+        "videoId": "EojU8B2DEL0",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 17,
+    "title": "LIVE FAST DIE SLOW",
+    "artist": "TAEYANG",
+    "section": "TAEYANG",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/aEME2Z",
+        "title": "TAEYANG〈LIVE FAST DIE SLOW〉空耳+應援_KTV跟唱版",
+        "resolvedUrl": "https://www.youtube.com/watch?v=SUIk41CrzoY&list=RDSUIk41CrzoY&start_radio=1",
+        "videoId": "SUIk41CrzoY",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 18,
+    "title": "POWER",
+    "artist": "G-DRAGON",
+    "section": "G-DRAGON",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/6XbkAM",
+        "title": "Threads",
+        "resolvedUrl": "https://www.threads.com/@h2_ping/post/DJ3Kf8DJ55m/media?hl=zh-tw",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "應援來源為 Threads，請開啟原貼文觀看"
+  },
+  {
+    "number": 19,
+    "title": "CRAYON",
+    "artist": "G-DRAGON",
+    "section": "G-DRAGON",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/EYbvda",
+        "title": "BIGBANG ALIVE TOUR IN HONG KONG 2012 - Crayon 應援口號",
+        "resolvedUrl": "https://www.youtube.com/watch?v=FbIaV8DBl4c",
+        "videoId": "FbIaV8DBl4c",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 20,
+    "title": "CROOKED",
+    "artist": "G-DRAGON",
+    "section": "G-DRAGON",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/RR9oMG",
+        "title": "G-DRAGON - 狂放 繁中應援",
+        "resolvedUrl": "https://www.youtube.com/watch?v=H_eKri5ENwk",
+        "videoId": "H_eKri5ENwk",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 21,
+    "title": "BANG BANG BANG",
+    "artist": "BIGBANG",
+    "section": "團體後半段",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/1l8QbX",
+        "title": "2015 BIGBANG in TW-BANG  BANG BANG 應援口號",
+        "resolvedUrl": "https://www.youtube.com/watch?v=05LkUTqWiP4",
+        "videoId": "05LkUTqWiP4",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 22,
+    "title": "STUPID LIAR",
+    "artist": "BIGBANG",
+    "section": "團體後半段",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/Wzb4ox",
+        "title": "BIGBANG ALIVE TOUR IN HONG KONG 2012 - Stupid Liar 應援口號",
+        "resolvedUrl": "https://www.youtube.com/watch?v=hLRkRxx1cM4&list=RDhLRkRxx1cM4&start_radio=1",
+        "videoId": "hLRkRxx1cM4",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 23,
+    "title": "SOBER",
+    "artist": "BIGBANG",
+    "section": "團體後半段",
+    "hasChant": false,
+    "sources": [],
+    "note": "應援來源待補"
+  },
+  {
+    "number": 24,
+    "title": "WE LIKE 2 PARTY",
+    "artist": "BIGBANG",
+    "section": "團體後半段",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/qapqMy",
+        "title": "2015 BIGBANG in TW-WE LIKE 2 PARTY 應援口號",
+        "resolvedUrl": "https://www.youtube.com/watch?v=TAzEIscz-8g",
+        "videoId": "TAzEIscz-8g",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 25,
+    "title": "BiiiG",
+    "artist": "BIGBANG",
+    "section": "團體後半段",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/rk0b11",
+        "title": "BIGBANG〈BiiiG〉空耳+應援_KTV跟唱版",
+        "resolvedUrl": "https://www.youtube.com/watch?v=XhSzIknOZw8&list=RDXhSzIknOZw8&start_radio=1",
+        "videoId": "XhSzIknOZw8",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 26,
+    "title": "HOME SWEET HOME",
+    "artist": "G-DRAGON",
+    "section": "團體後半段",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/OQ6akg",
+        "title": "[HOME SWEET HOME] G-DRAGON(feat.TAEYANG & DANSUNG)繁中韓字幕 空耳應援",
+        "resolvedUrl": "https://www.youtube.com/watch?v=RneSiB721hM&list=RDRneSiB721hM&start_radio=1",
+        "videoId": "RneSiB721hM",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 27,
+    "title": "MY HEAVEN",
+    "artist": "BIGBANG",
+    "section": "安可",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/qapb1R",
+        "title": "2012 BIGBANG in TW-Heaven (천국)應援口號",
+        "resolvedUrl": "https://www.youtube.com/watch?v=SnlZgcmM4qo&list=RDSnlZgcmM4qo&start_radio=1",
+        "videoId": "SnlZgcmM4qo",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "應援影片為韓文 Heaven（천국）；與 MY HEAVEN 的語言／現場版本待核對"
+  },
+  {
+    "number": 28,
+    "title": "SUNSET GLOW",
+    "artist": "BIGBANG",
+    "section": "安可",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/MW2mbm",
+        "title": "BIGBANG ALIVE TOUR IN HONG KONG 2012 - 紅霞(붉은노을)應援口號",
+        "resolvedUrl": "https://www.youtube.com/watch?v=KJ6SwQ6megg&list=RDKJ6SwQ6megg&start_radio=1",
+        "videoId": "KJ6SwQ6megg",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 29,
+    "title": "LAST FAREWELL",
+    "artist": "BIGBANG",
+    "section": "安可",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/eQpb6R",
+        "title": "BIGBANG - 最後的問候 繁中應援",
+        "resolvedUrl": "https://www.youtube.com/watch?v=5O7rTtvejmg&list=RD5O7rTtvejmg&start_radio=1",
+        "videoId": "5O7rTtvejmg",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "表格收錄的應援參考，尚未核對 2026 現場編排"
+  },
+  {
+    "number": 30,
+    "title": "FEELING",
+    "artist": "BIGBANG",
+    "section": "安可",
+    "hasChant": false,
+    "sources": [],
+    "note": "應援來源待補"
+  },
+  {
+    "number": 31,
+    "title": "FLOWER ROAD",
+    "artist": "BIGBANG",
+    "section": "安可",
+    "hasChant": false,
+    "sources": [
+      {
+        "kind": "官方音源（非應援教學）",
+        "url": "https://www.youtube.com/watch?v=VWqxvBQKwKQ",
+        "title": "BIGBANG - Flower Road",
+        "videoId": "VWqxvBQKwKQ"
+      }
+    ],
+    "note": "補充官方音源供熟悉歌曲，應援來源尚未找到"
+  },
+  {
+    "number": 32,
+    "title": "STILL LIFE",
+    "artist": "BIGBANG",
+    "section": "安可",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://reurl.cc/0kmbpk",
+        "title": "太陽 BIGBANG - STILL LIFE （演唱會版本）空耳應援教學",
+        "resolvedUrl": "https://www.youtube.com/watch?v=qTIJSN65AvU&list=RDqTIJSN65AvU&start_radio=1",
+        "videoId": "qTIJSN65AvU",
+        "checked": "2026-09-22"
+      }
+    ],
+    "note": "來源為太陽演唱會版本，尚未核對團體巡演編排"
+  }
+]

@@ -2391,12 +2391,12 @@
     "note": "尚未核對 2026 現場編排",
     "chant": {
       "videoId": "RneSiB721hM",
-      "note": "依指定影片粉紅應援字整理，空耳與人名沿用原片用字。be back／you go／love me 依序喊兩輪，合併減少閃動。紅光白字副歌是否為應援待確認，暫不加入。時間依畫面暫定，尚未逐句聽校或 YouTube 實播驗收。",
+      "note": "依指定影片粉紅字與使用者確認的紅字應援整理，權志龍的應援空耳依使用者確認改為「寬基勇」，其餘用字沿用原片。已補入 6 段紅字 Home sweet home／Home sick home。be back／you go／love me 依序喊兩輪，合併減少閃動。時間依畫面暫定，尚未逐句聽校或 YouTube 實播驗收。",
       "cues": [
         {
           "start": 6.7,
           "end": 13.0,
-          "text": "權志龍 董詠培 姜大聲\n永握嵐\n和給哈假\nHome sweet home"
+          "text": "寬基勇 董詠培 姜大聲\n永握嵐\n和給哈假\nHome sweet home"
         },
         {
           "start": 20.1,
@@ -2429,14 +2429,24 @@
           "text": "King in the zoo"
         },
         {
+          "start": 63.16,
+          "end": 66.04,
+          "text": "Home sweet home"
+        },
+        {
           "start": 67.2,
           "end": 69.7,
-          "text": "權志龍 董詠培 姜大聲"
+          "text": "寬基勇 董詠培 姜大聲"
+        },
+        {
+          "start": 69.72,
+          "end": 71.84,
+          "text": "Home sick home"
         },
         {
           "start": 73.7,
           "end": 76.6,
-          "text": "權志龍 董詠培 姜大聲\nHome sweet home"
+          "text": "寬基勇 董詠培 姜大聲\nHome sweet home"
         },
         {
           "start": 77.9,
@@ -2469,14 +2479,24 @@
           "text": "Hook catch this\nBull as shit"
         },
         {
+          "start": 127.32,
+          "end": 130.08,
+          "text": "Home sweet home"
+        },
+        {
           "start": 131.2,
           "end": 133.7,
-          "text": "權志龍 董詠培 姜大聲"
+          "text": "寬基勇 董詠培 姜大聲"
+        },
+        {
+          "start": 133.8,
+          "end": 136.4,
+          "text": "Home sick home"
         },
         {
           "start": 137.7,
           "end": 140.9,
-          "text": "權志龍 董詠培 姜大聲\nHome sweet home"
+          "text": "寬基勇 董詠培 姜大聲\nHome sweet home"
         },
         {
           "start": 141.7,
@@ -2489,14 +2509,24 @@
           "text": "the highlight"
         },
         {
+          "start": 178.6,
+          "end": 180.8,
+          "text": "Home sweet home"
+        },
+        {
           "start": 182.7,
           "end": 184.9,
-          "text": "權志龍 董詠培 姜大聲"
+          "text": "寬基勇 董詠培 姜大聲"
+        },
+        {
+          "start": 185,
+          "end": 188.12,
+          "text": "Home sick home"
         },
         {
           "start": 189.0,
           "end": 192,
-          "text": "權志龍 董詠培 姜大聲\nHome sweet home"
+          "text": "寬基勇 董詠培 姜大聲\nHome sweet home"
         },
         {
           "start": 193,

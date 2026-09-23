@@ -150,14 +150,17 @@ test('Universe binds the complete replacement source and excludes the former exc
  }
 });
 
-test('RINGA LINGA keeps its source and isolates all 30 timed chant cards', () => {
+test('RINGA LINGA keeps its source and isolates all 32 timed chant cards', () => {
   const song=songs.find(s=>s.number===16), t=song.chant;
   assert.equal(song.sources[0].videoId,'EojU8B2DEL0');
   assert.equal(Chant.validTrack(t,song.sources[0].videoId),true);
-  assert.equal(t.cues.length,30);
+  assert.equal(t.cues.length,32);
   assert.ok(t.cues.every(c=>c.end<=229));
   assert.match(t.note,/暫定/);
   assert.match(t.note,/bulgeum/);
+  assert.deepEqual(t.cues.filter(c=>c.start>=63&&c.start<65),[{start:63.4,end:64,text:'left'},{start:64.2,end:64.9,text:'right'}]);
+  assert.equal(t.cues.find(c=>c.start===100.8).text,'噗棍');
+  assert.ok(!t.cues.some(c=>c.text==='bulgeum'));
   for (const other of songs.filter(s=>s.chant && s!==song)) assert.equal(Chant.validTrack(t,other.chant.videoId),false);
   for (const c of [...t.cues].reverse()) {
     for (const rate of [0.5,1,2]) {

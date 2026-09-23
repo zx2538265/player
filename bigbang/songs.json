@@ -1636,6 +1636,13 @@
     "hasChant": true,
     "sources": [
       {
+        "kind": "應援教學",
+        "url": "https://www.youtube.com/watch?v=LO2yJopvMH0",
+        "title": "【G-Dragon-POWER】 繁中韓字幕 空耳應援",
+        "videoId": "LO2yJopvMH0",
+        "checked": "2026-09-23"
+      },
+      {
         "kind": "應援參考",
         "url": "https://reurl.cc/6XbkAM",
         "title": "Threads",
@@ -1643,7 +1650,128 @@
         "checked": "2026-09-22"
       }
     ],
-    "note": "應援來源為 Threads，請開啟原貼文觀看"
+    "note": "指定 YouTube 空耳應援；Threads 保留參考；提示依畫面暫定，待聽校",
+    "chant": {
+      "videoId": "LO2yJopvMH0",
+      "note": "依影片粉紅大字製作；時間暫定、待逐段聽校。多行短句依序喊；結尾空耳「趴趴拉斗」已由使用者確認。",
+      "cues": [
+        {
+          "start": 3.9,
+          "end": 5.1,
+          "text": "Übermensch"
+        },
+        {
+          "start": 9.1,
+          "end": 10.4,
+          "text": "It's your boy GD"
+        },
+        {
+          "start": 15.6,
+          "end": 18.3,
+          "text": "哎嘎假泡得\n撒拉撒老得 shout out"
+        },
+        {
+          "start": 19.4,
+          "end": 21,
+          "text": "假由摟我"
+        },
+        {
+          "start": 23.4,
+          "end": 23.9,
+          "text": "me"
+        },
+        {
+          "start": 30.8,
+          "end": 31.7,
+          "text": "yep, yep"
+        },
+        {
+          "start": 40,
+          "end": 40.9,
+          "text": "Like a dragon fly"
+        },
+        {
+          "start": 45,
+          "end": 50.6,
+          "text": "Called\nlegend\nK 他喜"
+        },
+        {
+          "start": 54.9,
+          "end": 58.5,
+          "text": "ㄇ喜　我喜"
+        },
+        {
+          "start": 69.1,
+          "end": 71.7,
+          "text": "哎嘎假泡得\n撒拉撒老得 shout out"
+        },
+        {
+          "start": 72.7,
+          "end": 74.5,
+          "text": "假由摟我"
+        },
+        {
+          "start": 77.1,
+          "end": 77.6,
+          "text": "me"
+        },
+        {
+          "start": 84.1,
+          "end": 85.1,
+          "text": "yep, yep"
+        },
+        {
+          "start": 87.6,
+          "end": 90.8,
+          "text": "BANG\n‘G’ thang"
+        },
+        {
+          "start": 98,
+          "end": 101.5,
+          "text": "米爾西啊\n那錄夏"
+        },
+        {
+          "start": 103.2,
+          "end": 106.7,
+          "text": "歐搜喜優\n阿里喇"
+        },
+        {
+          "start": 108.6,
+          "end": 111.8,
+          "text": "ㄇ喜　我喜"
+        },
+        {
+          "start": 122.5,
+          "end": 125.1,
+          "text": "哎嘎假泡得\n撒拉撒老得 shout out"
+        },
+        {
+          "start": 125.9,
+          "end": 127.9,
+          "text": "假由摟我"
+        },
+        {
+          "start": 130.5,
+          "end": 131,
+          "text": "me"
+        },
+        {
+          "start": 137.9,
+          "end": 138.5,
+          "text": "yep, yep"
+        },
+        {
+          "start": 140.4,
+          "end": 142.1,
+          "text": "趴趴拉斗"
+        },
+        {
+          "start": 142.1,
+          "end": 143.9,
+          "text": "尖叫聲～～～"
+        }
+      ]
+    }
   },
   {
     "number": 19,

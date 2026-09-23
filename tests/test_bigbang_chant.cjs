@@ -9,7 +9,7 @@ test('track is specific to the embedded video, sorted and within its duration', 
   assert.equal(Chant.validTrack(track, 'different-version'), false);
   assert.equal(track.cues.length, 37);
   assert.ok(track.cues.every(c => c.end <= 230));
-  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10,11,13,16,17,19,20,21,22,24,26].includes(s.number)).every(s => !s.chant));
+  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10,11,13,16,17,18,19,20,21,22,24,26].includes(s.number)).every(s => !s.chant));
   assert.equal(Chant.validTrack({...track, cues:[{start:1,end:2,text:'a'},{start:1.5,end:3,text:'b'}]},track.videoId),false);
 });
 test('songs 2 through 5 bind chant data to the specified sources', () => {
@@ -199,4 +199,32 @@ test('HANDO-CHOGUA binds only source-marked responses and uses its absolute vide
   const remaining=(cue.start-time)/rate;
   assert.equal(Chant.state(t,time,1,rate).count,String(Math.ceil(remaining)));
  }
+});
+
+
+test('POWER uses only source-marked chants, absolute timing and readable grouped cards', () => {
+  const song=songs[17], t=song.chant;
+  assert.equal(song.title,'POWER');
+  assert.equal(song.sources[0].videoId,'LO2yJopvMH0');
+  assert.equal(song.sources[1].title,'Threads');
+  assert.equal(song.sources[0].startSeconds,undefined);
+  assert.equal(Chant.validTrack(t,'LO2yJopvMH0'),true);
+  assert.equal(t.cues.length,23);
+  assert.match(t.note,/暫定.*聽校/);
+  assert.ok(!t.cues.some(c=>/Now I got|Prove|power-up|現在我/.test(c.text)));
+  assert.equal(t.cues.find(c=>c.start===45).text,'Called\nlegend\nK 他喜');
+  assert.equal(t.cues.find(c=>c.start===87.6).text,'BANG\n‘G’ thang');
+  for (const other of songs.filter(s=>s!==song && s.chant)) assert.equal(Chant.validTrack(t,other.chant.videoId),false);
+  for (const c of [...t.cues].reverse()) for (const rate of [.5,1,2]) {
+    assert.ok(c.end<=143.921);
+    assert.equal(Chant.state(t,c.start,1,rate).text,c.text);
+    assert.equal(Chant.state(t,c.start,1,rate).mode,'active');
+    assert.equal(Chant.state(t,c.end,1,rate).mode==='active',t.cues.some(n=>n.start===c.end));
+    for(const state of [-1,2,3,5]) assert.equal(Chant.state(t,c.start,state,rate).count,'');
+  }
+  for(const rate of [.5,1,2]) {
+    assert.equal(Chant.state(t,40-3*rate,1,rate).count,'3');
+  }
+  assert.equal(Chant.state(t,45,1).next,'下一句：ㄇ喜　我喜');
+  assert.equal(Chant.state(t,0,1).text,'Übermensch');
 });

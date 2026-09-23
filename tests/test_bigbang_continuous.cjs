@@ -72,3 +72,21 @@ test('Universe replacement starts at zero and has no former 81-second cutoff',as
  p.time=3;s.get('back').onclick();assert.equal(p.time,0);
  p.time=81;p.emit(1);s.tick();assert.equal(p.state,1);
 });
+
+
+test('POWER controls, replay and continuous entry/exit bind the specified video',async()=>{
+ const catalog=require('../bigbang/songs.json'),s=await setup(catalog);
+ s.select(16);s.enable();s.players.at(-1).ready();s.players.at(-1).emit(0);
+ const p=s.players.at(-1);assert.equal(p.options.videoId,'LO2yJopvMH0');p.ready();assert.equal(p.plays,1);
+ for(const rate of [.5,1,2]) {
+   s.get('speed').value=String(rate);s.get('speed').onchange();
+   p.time=40-3*rate;p.emit(1);assert.equal(s.get('chantCount').textContent,'3');
+   s.get('seek').value=45;s.get('seek').oninput();assert.equal(s.get('chantText').textContent,'Called\nlegend\nK 他喜');
+   s.get('play').onclick();s.tick();assert.equal(s.get('chantLabel').textContent,'已暫停');
+   s.get('seek').value=0;s.get('seek').oninput();p.emit(1);assert.equal(s.get('chantText').textContent,'Übermensch');
+ }
+ s.get('continuous').checked=false;p.emit(0);assert.equal(s.get('chantLabel').textContent,'本首練習結束');
+ s.get('seek').value=0;s.get('seek').oninput();s.get('play').onclick();s.tick();assert.equal(s.get('chantText').textContent,'Übermensch');
+ s.enable();p.emit(0);assert.equal(s.players.at(-1).options.videoId,catalog[18].sources[0].videoId);
+ s.players.at(-1).ready();p.emit(1);assert.notEqual(s.get('chantText').textContent,'Übermensch');
+});

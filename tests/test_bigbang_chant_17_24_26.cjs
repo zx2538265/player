@@ -4,7 +4,7 @@ const Chant = require('../bigbang/chant.js');
 const songs = require('../bigbang/songs.json');
 
 test('three requested sources keep absolute, ordered cue clocks across seek and rate changes', () => {
-  for (const [number,id,count,duration] of [[17,'SUIk41CrzoY',26,186.767],[24,'TAzEIscz-8g',15,198.399],[26,'RneSiB721hM',22,210.48]]) {
+  for (const [number,id,count,duration] of [[17,'SUIk41CrzoY',26,186.767],[24,'TAzEIscz-8g',21,198.399],[26,'RneSiB721hM',22,210.48]]) {
     const song = songs.find(s => s.number === number), track = song.chant;
     assert.equal(song.sources[0].videoId,id);
     assert.equal(song.sources[0].startSeconds,undefined);
@@ -40,7 +40,14 @@ test('cards distinguish chants from blue/white lyrics and unresolved source mark
   assert.ok(!lf.cues.some(c => c.start>=149.7 && c.start<153.3)); // This Okay let's go is blue, not yellow.
   assert.ok(lf.cues.some(c => c.text==='key打留守'));
   assert.equal(lf.cues.filter(c => c.text==='game → pain\ncup → love').length,4);
-  assert.ok(!party.cues.some(c => /拍手|尖叫|WHATS|왔어|나갈래|죽겠어/.test(c.text)));
+  assert.ok(!party.cues.some(c => /拍手|尖叫|DJ PLAY|MAN HOW|너 없인/.test(c.text)));
+  // All six formerly withheld source-marked chants must remain represented.
+  for (const [time,text] of [[14.5,'哇嗽'],[17.3,'WHATS UP!'],[52.5,'One Two Three Four'],[81.3,'拿嘎勒'],[142.5,'YEAH'],[154,'波勾 西剖\n啾給嗽']]) {
+    assert.equal(Chant.state(party,time,1).text,text);
+    assert.equal(Chant.state(party,time,1).mode,'active');
+  }
+  assert.equal(party.cues.filter(c => c.text==='One Two Three Four').length,2);
+  assert.match(party.note,/先補入原先保留的 6 段/);
   assert.equal(party.cues.filter(c => c.text.startsWith('WE LIKE 2 PARTY')).length,12);
   assert.ok(!home.cues.some(c => /尖叫|甜蜜|想念|Home sick home/.test(c.text)));
   assert.equal(home.cues.filter(c => /重複 2 次/.test(c.text)).length,3);

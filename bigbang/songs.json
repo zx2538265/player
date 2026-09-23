@@ -2698,7 +2698,93 @@
         "checked": "2026-09-22"
       }
     ],
-    "note": "尚未核對 2026 現場編排"
+    "note": "尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "KJ6SwQ6megg",
+      "note": "依指定影片紅字製作；中文空耳沿用原片廣東話寫法，密集短句合併成卡片；時間依畫面進出場，尚未完成逐句聽校，節拍時間暫定",
+      "cues": [
+        {
+          "start": 4.2,
+          "end": 6.7,
+          "text": "困之勇 is VIP!"
+        },
+        {
+          "start": 6.7,
+          "end": 8.5,
+          "text": "東容悲 is VIP!"
+        },
+        {
+          "start": 8.5,
+          "end": 10.4,
+          "text": "崔算hyun is VIP!"
+        },
+        {
+          "start": 10.4,
+          "end": 12.4,
+          "text": "耕多宋 is VIP!"
+        },
+        {
+          "start": 12.4,
+          "end": 14.4,
+          "text": "衣算hyun is VIP!"
+        },
+        {
+          "start": 14.4,
+          "end": 16.3,
+          "text": "BIGBANG is VIP!"
+        },
+        {
+          "start": 16.3,
+          "end": 19.5,
+          "text": "VIP is BIGBANG!\nRe-mem-ber!"
+        },
+        {
+          "start": 50.2,
+          "end": 54.5,
+          "text": "I love you girl"
+        },
+        {
+          "start": 56.7,
+          "end": 58.6,
+          "text": "I love BIGBANG"
+        },
+        {
+          "start": 81,
+          "end": 112,
+          "text": "Ah- Ah- Ah- Ah"
+        },
+        {
+          "start": 112,
+          "end": 116.2,
+          "text": "I love you girl"
+        },
+        {
+          "start": 118.5,
+          "end": 119.7,
+          "text": "I love BIGBANG"
+        },
+        {
+          "start": 127.7,
+          "end": 131.7,
+          "text": "I love you girl"
+        },
+        {
+          "start": 133.9,
+          "end": 134.9,
+          "text": "I love BIGBANG"
+        },
+        {
+          "start": 142.9,
+          "end": 156.3,
+          "text": "Ah- Ah- Ah- Ah"
+        },
+        {
+          "start": 156.3,
+          "end": 157.99,
+          "text": "Bigbang"
+        }
+      ]
+    }
   },
   {
     "number": 29,
@@ -2716,7 +2802,148 @@
         "checked": "2026-09-22"
       }
     ],
-    "note": "尚未核對 2026 現場編排"
+    "note": "尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "5O7rTtvejmg",
+      "note": "依指定影片黃色大字製作；中文空耳沿用原片文字，密集短句合併成卡片；時間依畫面進出場，尚未完成逐句聽校，節拍時間暫定",
+      "cues": [
+        {
+          "start": 6.6,
+          "end": 9.2,
+          "text": "權志龍\n東永裴\n崔勝鉉"
+        },
+        {
+          "start": 9.2,
+          "end": 11.9,
+          "text": "姜大聲\n李升炫\nV.I.P"
+        },
+        {
+          "start": 11.9,
+          "end": 13.8,
+          "text": "Hot Issue GO"
+        },
+        {
+          "start": 21.6,
+          "end": 26.2,
+          "text": "bang bang\nbang bang\nbang bang"
+        },
+        {
+          "start": 30.9,
+          "end": 31.7,
+          "text": "諾"
+        },
+        {
+          "start": 34.5,
+          "end": 35.3,
+          "text": "娜"
+        },
+        {
+          "start": 54.6,
+          "end": 56.6,
+          "text": "烏哩 BIGBANG"
+        },
+        {
+          "start": 70.5,
+          "end": 72.1,
+          "text": "Baby Baby Baby"
+        },
+        {
+          "start": 74.1,
+          "end": 75.6,
+          "text": "Baby Baby Baby"
+        },
+        {
+          "start": 77.6,
+          "end": 79.4,
+          "text": "Baby Baby Baby"
+        },
+        {
+          "start": 83.5,
+          "end": 84.9,
+          "text": "Only BIGBANG"
+        },
+        {
+          "start": 97.2,
+          "end": 98.9,
+          "text": "烏哩 BIGBANG"
+        },
+        {
+          "start": 103.4,
+          "end": 106.2,
+          "text": "槍趕\n松沙趟"
+        },
+        {
+          "start": 127.4,
+          "end": 129,
+          "text": "Baby Baby Baby"
+        },
+        {
+          "start": 131.1,
+          "end": 132.6,
+          "text": "Baby Baby Baby"
+        },
+        {
+          "start": 134.6,
+          "end": 136.2,
+          "text": "Baby Baby Baby"
+        },
+        {
+          "start": 140.5,
+          "end": 141.8,
+          "text": "Only BIGBANG"
+        },
+        {
+          "start": 148.3,
+          "end": 149,
+          "text": "Ye"
+        },
+        {
+          "start": 152.7,
+          "end": 153.8,
+          "text": "you know"
+        },
+        {
+          "start": 158.1,
+          "end": 159.5,
+          "text": "Hey Hey"
+        },
+        {
+          "start": 170,
+          "end": 171.7,
+          "text": "Baby Baby Baby"
+        },
+        {
+          "start": 173.7,
+          "end": 175.3,
+          "text": "Baby Baby Baby"
+        },
+        {
+          "start": 177.2,
+          "end": 178.9,
+          "text": "Baby Baby Baby"
+        },
+        {
+          "start": 183.1,
+          "end": 184.4,
+          "text": "Only BIGBANG"
+        },
+        {
+          "start": 185.2,
+          "end": 189.9,
+          "text": "bang bang\nbang bang\nbang bang"
+        },
+        {
+          "start": 192.3,
+          "end": 195.2,
+          "text": "BIGBANG\nbang bang"
+        },
+        {
+          "start": 197.4,
+          "end": 198.8,
+          "text": "烏哩 BIGBANG"
+        }
+      ]
+    }
   },
   {
     "number": 30,

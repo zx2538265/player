@@ -9,7 +9,7 @@ test('track is specific to the embedded video, sorted and within its duration', 
   assert.equal(Chant.validTrack(track, 'different-version'), false);
   assert.equal(track.cues.length, 37);
   assert.ok(track.cues.every(c => c.end <= 230));
-  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10,11,13,16,17,18,19,20,21,22,24,26].includes(s.number)).every(s => !s.chant));
+  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10,11,13,16,17,18,19,20,21,22,24,26,28,29].includes(s.number)).every(s => !s.chant));
   assert.equal(Chant.validTrack({...track, cues:[{start:1,end:2,text:'a'},{start:1.5,end:3,text:'b'}]},track.videoId),false);
 });
 test('songs 2 through 5 bind chant data to the specified sources', () => {
@@ -227,4 +227,34 @@ test('POWER uses only source-marked chants, absolute timing and readable grouped
   }
   assert.equal(Chant.state(t,45,1).next,'下一句：ㄇ喜　我喜');
   assert.equal(Chant.state(t,0,1).text,'Übermensch');
+});
+
+
+test('SUNSET GLOW and LAST FAREWELL keep source-bound absolute clocks and grouped cards', () => {
+  for (const [number,id,count,duration] of [[28,'KJ6SwQ6megg',16,157.991],[29,'5O7rTtvejmg',27,201.135]]) {
+    const song=songs.find(s=>s.number===number), t=song.chant;
+    assert.equal(song.sources[0].videoId,id);
+    assert.equal(Chant.validTrack(t,id),true);
+    assert.equal(t.cues.length,count);
+    assert.ok(t.cues.every(c=>c.end<=duration));
+    for(const other of songs.filter(s=>s.chant && s!==song)) assert.equal(Chant.validTrack(t,other.chant.videoId),false);
+    for(const cue of [...t.cues].reverse()) for(const rate of [0.5,1,2]) {
+      assert.equal(Chant.state(t,cue.start,1,rate).text,cue.text);
+      assert.equal(Chant.state(t,cue.start,1,rate).mode,'active');
+      assert.equal(Chant.state(t,cue.end,1,rate).mode==='active',t.cues.some(c=>c.start===cue.end));
+      for(const state of [2,3,-1]) {
+        assert.equal(Chant.state(t,cue.start,state,rate).mode,'paused');
+        assert.equal(Chant.state(t,cue.start,state,rate).count,'');
+      }
+    }
+    const first=t.cues[0];
+    for(const count of [3,2,1]) assert.equal(Chant.state(t,first.start-count,1).count,String(count));
+  }
+  const a=songs.find(s=>s.number===28).chant,b=songs.find(s=>s.number===29).chant;
+  assert.equal(a.cues.at(-1).text,'Bigbang');
+  assert.equal(a.cues.find(c=>c.start===50.2).text,'I love you girl');
+  assert.equal(b.cues[0].text,'權志龍\n東永裴\n崔勝鉉');
+  assert.equal(b.cues.find(c=>c.start===103.4).text,'槍趕\n松沙趟');
+  assert.equal(b.cues.find(c=>c.start===158.1).text,'Hey Hey');
+  assert.ok(!b.cues.some(c=>/棉花糖|短暫|I don.t wanna/.test(c.text)));
 });

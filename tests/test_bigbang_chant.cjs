@@ -9,7 +9,7 @@ test('track is specific to the embedded video, sorted and within its duration', 
   assert.equal(Chant.validTrack(track, 'different-version'), false);
   assert.equal(track.cues.length, 37);
   assert.ok(track.cues.every(c => c.end <= 230));
-  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10,11,16].includes(s.number)).every(s => !s.chant));
+  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10,11,13,16].includes(s.number)).every(s => !s.chant));
   assert.equal(Chant.validTrack({...track, cues:[{start:1,end:2,text:'a'},{start:1.5,end:3,text:'b'}]},track.videoId),false);
 });
 test('songs 2 through 5 bind chant data to the specified sources', () => {
@@ -171,4 +171,29 @@ test('RINGA LINGA keeps its source and isolates all 30 timed chant cards', () =>
   assert.equal(t.cues.filter(c=>c.text==='like').length,6);
   assert.equal(t.cues.filter(c=>c.text==='RINGA LINGA').length,6);
   assert.ok(!t.cues.some(c=>/火熱|星期五|高舉雙手|女孩們/.test(c.text)));
+});
+
+
+test('HANDO-CHOGUA binds only source-marked responses and uses its absolute video clock',()=>{
+ const song=songs.find(s=>s.number===13),t=song.chant;
+ assert.equal(song.sources[0].videoId,'KWWcRGfm5SQ');
+ assert.equal(Chant.validTrack(t,song.sources[0].videoId),true);
+ assert.equal(t.cues.length,24);
+ assert.equal(t.cues[0].start,49.2);assert.equal(t.cues.at(-1).end,187.1);
+ assert.match(t.note,/暫定/);
+ for(const other of songs.filter(s=>s.number!==13&&s.chant)) assert.equal(Chant.validTrack(t,other.chant.videoId),false);
+ assert.deepEqual(t.cues.filter(c=>c.start>=146&&c.start<160).map(c=>c.text),['馬西猛','又在爽','no','韓豆湊瓜']);
+ assert.ok(!t.cues.some(c=>/安妞|心臟|空中|沙拉|為何|約翰|韓黑/.test(c.text)));
+ // Source yellow remains visible at 75s/190s, but the completed response must not stay active.
+ for(const time of [75,190]) assert.notEqual(Chant.state(t,time,1).mode,'active');
+ for(const cue of [...t.cues].reverse()) for(const rate of [.5,1,2]) {
+  assert.ok(cue.start>=0&&cue.end<=195.334);
+  assert.equal(Chant.state(t,cue.start,1,rate).text,cue.text);
+  assert.equal(Chant.state(t,cue.end,1,rate).mode==='active',t.cues.some(c=>c.start===cue.end));
+  for(const state of [-1,2,3,5]) assert.equal(Chant.state(t,cue.start-.1,state,rate).count,'');
+  const previous=t.cues.filter(c=>c.end<=cue.start).at(-1);
+  const time=Math.max(previous?.end||0,cue.start-3*rate);
+  const remaining=(cue.start-time)/rate;
+  assert.equal(Chant.state(t,time,1,rate).count,String(Math.ceil(remaining)));
+ }
 });

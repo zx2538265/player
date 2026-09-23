@@ -1490,7 +1490,143 @@
         "checked": "2026-09-22"
       }
     ],
-    "note": "尚未核對 2026 現場編排"
+    "note": "尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "SUIk41CrzoY",
+      "note": "依指定影片黃色應援動畫與原片空耳整理；藍色主唱不列入。箭頭依序喊、重複句合併為手機提示卡。時間依畫面暫定，尚未逐句聽校或完成 YouTube 實播同步驗收。",
+      "cues": [
+        {
+          "start": 28.5,
+          "end": 30.7,
+          "text": "key打留守"
+        },
+        {
+          "start": 34,
+          "end": 35.5,
+          "text": "key打六雞"
+        },
+        {
+          "start": 37.6,
+          "end": 38.7,
+          "text": "buck"
+        },
+        {
+          "start": 40.4,
+          "end": 41.2,
+          "text": "duck"
+        },
+        {
+          "start": 43.5,
+          "end": 46.5,
+          "text": "BIGBANG"
+        },
+        {
+          "start": 54.6,
+          "end": 56.8,
+          "text": "Now ×5"
+        },
+        {
+          "start": 57.5,
+          "end": 63.1,
+          "text": "game → pain\ncup → love"
+        },
+        {
+          "start": 66,
+          "end": 68,
+          "text": "永貝貝"
+        },
+        {
+          "start": 68.5,
+          "end": 73.9,
+          "text": "game → pain\ncup → love"
+        },
+        {
+          "start": 76.9,
+          "end": 80.9,
+          "text": "永翁嘿\none two three four"
+        },
+        {
+          "start": 81.9,
+          "end": 83.8,
+          "text": "Live Fast Die Slow"
+        },
+        {
+          "start": 84.7,
+          "end": 86.6,
+          "text": "Okay let's go"
+        },
+        {
+          "start": 87.5,
+          "end": 92,
+          "text": "I want it, want it all\nI want it, want it all\none two three four"
+        },
+        {
+          "start": 92.9,
+          "end": 95,
+          "text": "Live Fast Die Slow"
+        },
+        {
+          "start": 95.8,
+          "end": 97.7,
+          "text": "Okay let's go"
+        },
+        {
+          "start": 98.5,
+          "end": 101.5,
+          "text": "I want it, want it all\nI want it, want it all"
+        },
+        {
+          "start": 109.5,
+          "end": 111.6,
+          "text": "Now ×5"
+        },
+        {
+          "start": 112.4,
+          "end": 117.5,
+          "text": "game → pain\ncup → love"
+        },
+        {
+          "start": 120.7,
+          "end": 122.8,
+          "text": "永貝貝"
+        },
+        {
+          "start": 123.4,
+          "end": 128.6,
+          "text": "game → pain\ncup → love"
+        },
+        {
+          "start": 131.6,
+          "end": 135.8,
+          "text": "永翁嘿\none two three four"
+        },
+        {
+          "start": 136.7,
+          "end": 138.6,
+          "text": "Live Fast Die Slow"
+        },
+        {
+          "start": 139.6,
+          "end": 141.4,
+          "text": "Okay let's go"
+        },
+        {
+          "start": 142.5,
+          "end": 146.7,
+          "text": "I want it, want it all\nI want it, want it all\none two three four"
+        },
+        {
+          "start": 147.7,
+          "end": 149.7,
+          "text": "Live Fast Die Slow"
+        },
+        {
+          "start": 153.3,
+          "end": 157.1,
+          "text": "I want it, want it all\none two three four"
+        }
+      ]
+    }
   },
   {
     "number": 18,
@@ -2105,7 +2241,88 @@
         "checked": "2026-09-22"
       }
     ],
-    "note": "尚未核對 2026 現場編排"
+    "note": "尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "TAzEIscz-8g",
+      "note": "依原片黃色應援與桃色空耳整理，僅加入 15 張候選提示；另 6 段喊點或空耳未確認，暫不加入。整行字幕提前顯示，喊點採同片音訊模型候選，時間暫定，尚未逐句聽校及 YouTube 實播驗收。",
+      "cues": [
+        {
+          "start": 30.2,
+          "end": 31.7,
+          "text": "噗跟咪呀"
+        },
+        {
+          "start": 53.4,
+          "end": 59.2,
+          "text": "WE LIKE 2 PARTY\nYEAH YEAH YEAH YEAH"
+        },
+        {
+          "start": 59.3,
+          "end": 61.1,
+          "text": "WE LIKE 2 PARTY"
+        },
+        {
+          "start": 64.6,
+          "end": 69.6,
+          "text": "WE LIKE 2 PARTY\nYEAH YEAH YEAH YEAH"
+        },
+        {
+          "start": 69.7,
+          "end": 72,
+          "text": "WE LIKE 2 PARTY"
+        },
+        {
+          "start": 96.3,
+          "end": 97,
+          "text": "潘氣"
+        },
+        {
+          "start": 115.9,
+          "end": 117.5,
+          "text": "One Two Three Four"
+        },
+        {
+          "start": 117.5,
+          "end": 123,
+          "text": "WE LIKE 2 PARTY\nYEAH YEAH YEAH YEAH"
+        },
+        {
+          "start": 123,
+          "end": 125.3,
+          "text": "WE LIKE 2 PARTY"
+        },
+        {
+          "start": 128.1,
+          "end": 133.5,
+          "text": "WE LIKE 2 PARTY\nYEAH YEAH YEAH YEAH"
+        },
+        {
+          "start": 133.6,
+          "end": 136,
+          "text": "WE LIKE 2 PARTY"
+        },
+        {
+          "start": 160.1,
+          "end": 165.2,
+          "text": "WE LIKE 2 PARTY\nYEAH YEAH YEAH YEAH"
+        },
+        {
+          "start": 165.3,
+          "end": 168,
+          "text": "WE LIKE 2 PARTY"
+        },
+        {
+          "start": 171.3,
+          "end": 176.2,
+          "text": "WE LIKE 2 PARTY\nYEAH YEAH YEAH YEAH"
+        },
+        {
+          "start": 176.3,
+          "end": 179,
+          "text": "WE LIKE 2 PARTY"
+        }
+      ]
+    }
   },
   {
     "number": 25,
@@ -2141,7 +2358,123 @@
         "checked": "2026-09-22"
       }
     ],
-    "note": "尚未核對 2026 現場編排"
+    "note": "尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "RneSiB721hM",
+      "note": "依指定影片粉紅應援字整理，空耳與人名沿用原片用字。be back／you go／love me 依序喊兩輪，合併減少閃動。紅光白字副歌是否為應援待確認，暫不加入。時間依畫面暫定，尚未逐句聽校或 YouTube 實播驗收。",
+      "cues": [
+        {
+          "start": 6.7,
+          "end": 13.0,
+          "text": "權志龍 董詠培 姜大聲\n永握嵐\n和給哈假\nHome sweet home"
+        },
+        {
+          "start": 20.1,
+          "end": 21.5,
+          "text": "no累"
+        },
+        {
+          "start": 22.6,
+          "end": 24.9,
+          "text": "never left\nnever left"
+        },
+        {
+          "start": 26.7,
+          "end": 27.7,
+          "text": "it’s okay"
+        },
+        {
+          "start": 30.3,
+          "end": 31.1,
+          "text": "Don’t play"
+        },
+        {
+          "start": 38.3,
+          "end": 39.8,
+          "text": "came with the troops"
+        },
+        {
+          "start": 41.8,
+          "end": 43,
+          "text": "King in the zoo"
+        },
+        {
+          "start": 67.2,
+          "end": 69.7,
+          "text": "權志龍 董詠培 姜大聲"
+        },
+        {
+          "start": 73.7,
+          "end": 76.6,
+          "text": "權志龍 董詠培 姜大聲\nHome sweet home"
+        },
+        {
+          "start": 77.9,
+          "end": 89.6,
+          "text": "be back → you go\nlove me\n（重複 2 次）"
+        },
+        {
+          "start": 90.5,
+          "end": 92.5,
+          "text": "chicken killer"
+        },
+        {
+          "start": 93.6,
+          "end": 95.8,
+          "text": "One-two step"
+        },
+        {
+          "start": 106.9,
+          "end": 108.7,
+          "text": "I won! My bond!"
+        },
+        {
+          "start": 109.4,
+          "end": 110.5,
+          "text": "coup d'e shit"
+        },
+        {
+          "start": 111.4,
+          "end": 113.7,
+          "text": "Hook catch this\nBull as shit"
+        },
+        {
+          "start": 131.2,
+          "end": 133.7,
+          "text": "權志龍 董詠培 姜大聲"
+        },
+        {
+          "start": 137.7,
+          "end": 140.9,
+          "text": "權志龍 董詠培 姜大聲\nHome sweet home"
+        },
+        {
+          "start": 141.7,
+          "end": 153.9,
+          "text": "be back → you go\nlove me\n（重複 2 次）"
+        },
+        {
+          "start": 175.3,
+          "end": 176.4,
+          "text": "the highlight"
+        },
+        {
+          "start": 182.7,
+          "end": 184.9,
+          "text": "權志龍 董詠培 姜大聲"
+        },
+        {
+          "start": 189.0,
+          "end": 192,
+          "text": "權志龍 董詠培 姜大聲\nHome sweet home"
+        },
+        {
+          "start": 193,
+          "end": 205.3,
+          "text": "be back → you go\nlove me\n（重複 2 次）"
+        }
+      ]
+    }
   },
   {
     "number": 27,

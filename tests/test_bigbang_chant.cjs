@@ -9,7 +9,7 @@ test('track is specific to the embedded video, sorted and within its duration', 
   assert.equal(Chant.validTrack(track, 'different-version'), false);
   assert.equal(track.cues.length, 37);
   assert.ok(track.cues.every(c => c.end <= 230));
-  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10,11].includes(s.number)).every(s => !s.chant));
+  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10,11,16].includes(s.number)).every(s => !s.chant));
   assert.equal(Chant.validTrack({...track, cues:[{start:1,end:2,text:'a'},{start:1.5,end:3,text:'b'}]},track.videoId),false);
 });
 test('songs 2 through 5 bind chant data to the specified sources', () => {
@@ -148,4 +148,27 @@ test('Universe binds the complete replacement source and excludes the former exc
   assert.equal(Chant.state(t,cue.end,1,rate).mode==='active',t.cues.some(c=>c.start===cue.end));
   for(const state of [-1,2,3,5]) assert.equal(Chant.state(t,cue.start-.1,state,rate).count,'');
  }
+});
+
+test('RINGA LINGA keeps its source and isolates all 30 timed chant cards', () => {
+  const song=songs.find(s=>s.number===16), t=song.chant;
+  assert.equal(song.sources[0].videoId,'EojU8B2DEL0');
+  assert.equal(Chant.validTrack(t,song.sources[0].videoId),true);
+  assert.equal(t.cues.length,30);
+  assert.ok(t.cues.every(c=>c.end<=229));
+  assert.match(t.note,/暫定/);
+  assert.match(t.note,/bulgeum/);
+  for (const other of songs.filter(s=>s.chant && s!==song)) assert.equal(Chant.validTrack(t,other.chant.videoId),false);
+  for (const c of [...t.cues].reverse()) {
+    for (const rate of [0.5,1,2]) {
+      assert.equal(Chant.state(t,c.start,1,rate).text,c.text);
+      assert.equal(Chant.state(t,c.start,1,rate).mode,'active');
+      assert.equal(Chant.state(t,c.start,2,rate).mode,'paused');
+      assert.equal(Chant.state(t,c.start,2,rate).count,'');
+    }
+    assert.equal(Chant.state(t,c.end,1).mode==='active',t.cues.some(next=>next.start===c.end));
+  }
+  assert.equal(t.cues.filter(c=>c.text==='like').length,6);
+  assert.equal(t.cues.filter(c=>c.text==='RINGA LINGA').length,6);
+  assert.ok(!t.cues.some(c=>/火熱|星期五|高舉雙手|女孩們/.test(c.text)));
 });

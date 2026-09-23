@@ -1,6 +1,6 @@
 # BIGBANG 應援練習室
 
-依 2026/9/11 MetLife Stadium 場的觀眾歌單紀錄排列 32 首（不含 VCR、band jam 與預錄串場）。可切換單曲、播放 YouTube 教學、調整速度、倒退 5 秒，並開啟各首應援來源。FANTASTIC BABY、HANDS UP、TONIGHT、BLUE、LOSER、BAD BOY、BAE BAE、LIES、Universe 提供應援大字與進場倒數；不含 A–B 循環或段落儲存功能。
+依 2026/9/11 MetLife Stadium 場的觀眾歌單紀錄排列 32 首（不含 VCR、band jam 與預錄串場）。可切換單曲、播放 YouTube 教學、調整速度、倒退 5 秒，並開啟各首應援來源。FANTASTIC BABY、HANDS UP、TONIGHT、BLUE、LOSER、BAD BOY、BAE BAE、LIES、Universe、RINGA LINGA 提供應援大字與進場倒數；不含 A–B 循環或段落儲存功能。
 
 ## 應援大字示範
 
@@ -65,3 +65,10 @@
 - 依全片每秒畫面及邊界畫面核對，收錄 19 段藍色粉絲喊唱／黃色合唱提示，排除白字一般歌詞；空耳依新片畫面
 - 時間採字幕顯示區間暫定，可能早於實際喊點；逐句聽校 0/19，YouTube 實播同步尚未驗收
 - `video/DxlZVaEO9B4/` 保存原片、metadata、完整抽幀圖、邊界圖及含 SHA-256 的 chant-ledger.json；舊來源證據保留
+
+## RINGA LINGA（2026-09-23）
+
+- 沿用 `EojU8B2DEL0`，新增 30 張黃色應援提示卡；排除白字一般歌詞與片頭標題
+- 字母與密集 Jump／Bump／Yeah 合併顯示；韓文沿用原片空耳，`bulgeum` 中文空耳首字待確認，暫用原片羅馬拼音
+- 以全片每秒下方畫面、候選段落每 0.5 秒全畫面及 57 個邊界的 0.1 秒取樣人工核對，時間依動畫暫定；抽幀不代表全片逐幀或逐句聽校
+- 原片、SHA-256、抽幀與逐段資料保存在 `video/EojU8B2DEL0/chant-ledger.json`；逐句聽校 0/30，YouTube 實播同步與 2026 現場編排尚未驗收

@@ -1001,49 +1001,112 @@
     "sources": [
       {
         "kind": "應援參考",
-        "url": "https://reurl.cc/rkK5Kk",
-        "title": "대성(DAESUNG) 'Universe', '그 시절의 우리' Fanchant Guide",
-        "resolvedUrl": "https://www.youtube.com/watch?v=Su2kSDRdy5s",
-        "videoId": "Su2kSDRdy5s",
-        "checked": "2026-09-22",
-        "startSeconds": 25,
-        "endSeconds": 81
+        "url": "https://www.youtube.com/watch?v=DxlZVaEO9B4",
+        "title": "dswave universe 應援練習",
+        "resolvedUrl": "https://www.youtube.com/watch?v=DxlZVaEO9B4",
+        "videoId": "DxlZVaEO9B4",
+        "checked": "2026-09-23"
       }
     ],
     "note": "尚未核對 2026 現場編排",
     "chant": {
-      "videoId": "Su2kSDRdy5s",
-      "note": "練習範圍 00:25–01:21；只收錄原片亮黃色應援，淡黃色一般歌詞不收錄。韓文原片無中文空耳，空耳待確認，暫保留韓文。喊點與收尾依提示動畫暫定，尚未逐句聽校；不含後半首教學。",
+      "videoId": "DxlZVaEO9B4",
+      "note": "依本片藍字粉絲喊唱、黃字合唱及畫面空耳製作；白字一般歌詞不收錄。時間為字幕顯示區間暫定，可能早於實際喊點，尚未逐句聽校。",
       "cues": [
         {
-          "start": 32.4,
-          "end": 34.7,
+          "start": 32.2,
+          "end": 36.2,
+          "text": "My days"
+        },
+        {
+          "start": 41.2,
+          "end": 44.2,
           "text": "walking, walking"
         },
         {
-          "start": 37.6,
-          "end": 39.8,
-          "text": "다시 다시"
+          "start": 46.6,
+          "end": 49.8,
+          "text": "他西 他西"
         },
         {
-          "start": 43.2,
-          "end": 50.2,
-          "text": "어둠 너머"
+          "start": 52.4,
+          "end": 58,
+          "text": "歐 度 no mo"
         },
         {
-          "start": 51.8,
-          "end": 53.3,
+          "start": 60.6,
+          "end": 63.4,
           "text": "Universe"
         },
         {
-          "start": 54,
-          "end": 60.8,
-          "text": "이 밤 건너"
+          "start": 63.4,
+          "end": 68.8,
+          "text": "椅 棒 孔 no"
         },
         {
-          "start": 64.2,
-          "end": 74.5,
-          "text": "Oh- oh- Oh- oh-"
+          "start": 76,
+          "end": 84.2,
+          "text": "Oh- oh-\nOh- oh-"
+        },
+        {
+          "start": 102.4,
+          "end": 106.2,
+          "text": "so\noh-"
+        },
+        {
+          "start": 106.2,
+          "end": 109.2,
+          "text": "walking, walking"
+        },
+        {
+          "start": 111.6,
+          "end": 114.8,
+          "text": "他西 他西"
+        },
+        {
+          "start": 117.6,
+          "end": 123,
+          "text": "歐 度 no mo"
+        },
+        {
+          "start": 125.6,
+          "end": 128.4,
+          "text": "Universe"
+        },
+        {
+          "start": 128.4,
+          "end": 133.8,
+          "text": "椅 棒 孔 no"
+        },
+        {
+          "start": 142.6,
+          "end": 148,
+          "text": "Last forever"
+        },
+        {
+          "start": 173.8,
+          "end": 179.4,
+          "text": "歐 度 no mo"
+        },
+        {
+          "start": 182,
+          "end": 184.6,
+          "text": "Universe"
+        },
+        {
+          "start": 184.6,
+          "end": 190.2,
+          "text": "椅 棒 孔 no"
+        },
+        {
+          "start": 196.2,
+          "end": 205.4,
+          "text": "Oh- oh-\nOh- oh-"
+        },
+        {
+          "start": 212.4,
+          "end": 218,
+          "text": "Oh- oh-\nOh- oh-"
         }
       ]
     }

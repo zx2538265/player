@@ -31,7 +31,7 @@ test('actual chant catalog switches cleanly and controls use the current player 
     assert.equal(s.get('chantCount').textContent,'');
     const p=s.players.at(-1),cue=catalog[index].chant.cues[0];p.ready();
     assert.equal(p.options.videoId,catalog[index].chant.videoId);
-    assert.equal(p.options.playerVars.start,index===3?17:index===10?25:0);
+    assert.equal(p.options.playerVars.start,index===3?17:0);
     s.get('speed').value='0.5';s.get('speed').onchange();p.time=cue.start-1.5;p.emit(1);
     assert.equal(s.get('chantCount').textContent,'3');
     p.time=cue.start;p.emit(1);assert.equal(s.get('chantLabel').textContent,'現在喊！');
@@ -51,8 +51,10 @@ test('actual chant catalog switches cleanly and controls use the current player 
   s.select(0);assert.equal(s.get('chantText').textContent,'NA NA NA NA NA');
 });
 
-test('Universe stops at 81, replays from 25, clamps seeking and advances once',async()=>{
- const s=await setup(require('../bigbang/songs.json'));s.select(10);const p=s.players.at(-1);p.ready();
+test('bounded excerpt stops, replays, clamps seeking and advances once',async()=>{
+ const catalog=structuredClone(require('../bigbang/songs.json'));
+ catalog[10].sources[0].startSeconds=25;catalog[10].sources[0].endSeconds=81;
+ const s=await setup(catalog);s.select(10);const p=s.players.at(-1);p.ready();
  assert.equal(p.options.playerVars.end,81);
  p.time=26;s.get('back').onclick();assert.equal(p.time,25);
  p.time=80.9;p.emit(1);s.tick();assert.equal(p.state,1);
@@ -61,4 +63,12 @@ test('Universe stops at 81, replays from 25, clamps seeking and advances once',a
  s.get('seek').value=100;s.get('seek').oninput();assert.equal(p.time,81);
  s.enable();s.tick();assert.equal(s.players.at(-1).options.videoId,'KWWcRGfm5SQ');
  const count=s.players.length;p.emit(0);assert.equal(s.players.length,count);
+});
+
+test('Universe replacement starts at zero and has no former 81-second cutoff',async()=>{
+ const s=await setup(require('../bigbang/songs.json'));s.select(10);const p=s.players.at(-1);p.ready();
+ assert.equal(p.options.videoId,'DxlZVaEO9B4');
+ assert.ok(!p.options.playerVars.end);
+ p.time=3;s.get('back').onclick();assert.equal(p.time,0);
+ p.time=81;p.emit(1);s.tick();assert.equal(p.state,1);
 });

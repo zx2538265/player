@@ -132,17 +132,20 @@ test('every cue enters and exits correctly including adjacent repeated phrases',
   }
 });
 
-test('Universe keeps absolute cue clocks inside the requested excerpt',()=>{
+test('Universe binds the complete replacement source and excludes the former excerpt',()=>{
  const song=songs[10],t=song.chant;
- assert.equal(song.sources[0].startSeconds,25);assert.equal(song.sources[0].endSeconds,81);
- assert.equal(Chant.validTrack(t,'Su2kSDRdy5s'),true);
- assert.equal(t.cues.length,6);assert.equal(t.cues[0].start,32.4);
- assert.deepEqual(t.cues.map(c=>c.text),['walking, walking','다시 다시','어둠 너머','Universe','이 밤 건너','Oh- oh- Oh- oh-']);
+ assert.equal(song.sources[0].videoId,'DxlZVaEO9B4');
+ assert.equal(song.sources[0].startSeconds,undefined);assert.equal(song.sources[0].endSeconds,undefined);
+ assert.equal(Chant.validTrack(t,'DxlZVaEO9B4'),true);
+ assert.equal(Chant.validTrack(t,'Su2kSDRdy5s'),false);
+ assert.equal(t.cues.length,19);assert.equal(t.cues[0].start,32.2);
+ assert.ok(t.cues.some(c=>c.text==='Last forever'));
+ assert.equal(t.cues.at(-1).end,218);
  assert.equal(songs[3].sources[0].startSeconds,17);
  for(const cue of [...t.cues].reverse()) for(const rate of [.5,1,2]) {
-  assert.ok(cue.start>=25 && cue.end<=81);
+  assert.ok(cue.start>=0 && cue.end<=221);
   assert.equal(Chant.state(t,cue.start,1,rate).text,cue.text);
-  assert.equal(Chant.state(t,cue.end,1,rate).mode==='active',false);
+  assert.equal(Chant.state(t,cue.end,1,rate).mode==='active',t.cues.some(c=>c.start===cue.end));
   for(const state of [-1,2,3,5]) assert.equal(Chant.state(t,cue.start-.1,state,rate).count,'');
  }
 });

@@ -1005,10 +1005,48 @@
         "title": "대성(DAESUNG) 'Universe', '그 시절의 우리' Fanchant Guide",
         "resolvedUrl": "https://www.youtube.com/watch?v=Su2kSDRdy5s",
         "videoId": "Su2kSDRdy5s",
-        "checked": "2026-09-22"
+        "checked": "2026-09-22",
+        "startSeconds": 25,
+        "endSeconds": 81
       }
     ],
-    "note": "尚未核對 2026 現場編排"
+    "note": "尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "Su2kSDRdy5s",
+      "note": "練習範圍 00:25–01:21；只收錄原片亮黃色應援，淡黃色一般歌詞不收錄。韓文原片無中文空耳，空耳待確認，暫保留韓文。喊點與收尾依提示動畫暫定，尚未逐句聽校；不含後半首教學。",
+      "cues": [
+        {
+          "start": 32.4,
+          "end": 34.7,
+          "text": "walking, walking"
+        },
+        {
+          "start": 37.6,
+          "end": 39.8,
+          "text": "다시 다시"
+        },
+        {
+          "start": 43.2,
+          "end": 50.2,
+          "text": "어둠 너머"
+        },
+        {
+          "start": 51.8,
+          "end": 53.3,
+          "text": "Universe"
+        },
+        {
+          "start": 54,
+          "end": 60.8,
+          "text": "이 밤 건너"
+        },
+        {
+          "start": 64.2,
+          "end": 74.5,
+          "text": "Oh- oh- Oh- oh-"
+        }
+      ]
+    }
   },
   {
     "number": 12,

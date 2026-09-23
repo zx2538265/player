@@ -1,6 +1,20 @@
 'use strict';
 const $ = id => document.getElementById(id);
 let pendingPlay = false;
+let segmentEnded = false;
+function bounds() {
+  const source = songs[selected]?.sources.find(s => s.videoId);
+  const start = Number.isFinite(source?.startSeconds) ? Math.max(0, source.startSeconds) : 0;
+  const end = Number.isFinite(source?.endSeconds) && source.endSeconds > start ? source.endSeconds : null;
+  return {start, end};
+}
+function finishSegment() {
+  if (segmentEnded) return;
+  segmentEnded = true;
+  $('play').textContent = '播放';
+  updateChant();
+  advance();
+}
 let songs = [], selected = 0, player, ready = false, generation = 0, loadTimer;
 const format = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
 function updateChant() {
@@ -11,7 +25,7 @@ function updateChant() {
   if ($('chantNote').textContent !== note) $('chantNote').textContent = note;
   $('chantDisplay').hidden = !available || !$('chantEnabled').checked;
   if (!available) return;
-  const view = ready ? Chant.state(track, player.getCurrentTime(), player.getPlayerState(), player.getPlaybackRate()) :
+  const view = ready ? Chant.state(track, player.getCurrentTime(), segmentEnded ? 0 : player.getPlayerState(), player.getPlaybackRate()) :
     {mode:'paused',label:'等待影片就緒',text:track.cues[0].text,next:'',count:''};
   $('chantDisplay').dataset.mode = view.mode;
   for (const [id, value] of [['chantLabel',view.label],['chantText',view.text],['chantNext',view.next],['chantCount',view.count]]) {
@@ -49,7 +63,7 @@ function mountPlayer(song, token) {
   if (!source || !window.YT?.Player || token !== generation) return;
   player = new YT.Player('player', {
     videoId:source.videoId, width:'100%', height:'100%',
-    playerVars:{playsinline:1, origin:location.origin, rel:0, start:Number.isFinite(source.startSeconds) && source.startSeconds >= 0 ? Math.floor(source.startSeconds) : 0},
+    playerVars:{playsinline:1, origin:location.origin, rel:0, start:Math.floor(bounds().start), ...(bounds().end === null ? {} : {end:Math.floor(bounds().end)})},
     events:{
       onReady:event => {
         if(token !== generation) return;
@@ -61,7 +75,7 @@ function mountPlayer(song, token) {
         pendingPlay = false;
         updateChant();
       },
-      onStateChange:event => { if(token !== generation) return; $('play').textContent = event.data === 1 ? '暫停' : '播放'; updateChant(); if(event.data === 0) advance(); },
+      onStateChange:event => { if(token !== generation) return; if(event.data === 1 && (bounds().end === null || player.getCurrentTime() < bounds().end)) segmentEnded = false; $('play').textContent = event.data === 1 ? '暫停' : '播放'; updateChant(); if(event.data === 0) finishSegment(); },
       onPlaybackRateChange:event => { if(token === generation) $('speed').value = String(event.data); },
       onError:() => { if(token === generation) {clearTimeout(loadTimer); fail('影片無法在這裡播放，請用上方連結開啟原影片。'); advance(song.title + '（播放失敗）');} },
       onAutoplayBlocked:() => { if(token === generation) $('status').textContent = '自動播放被瀏覽器阻擋，請點一下播放以繼續。'; }
@@ -73,6 +87,7 @@ function selectSong(index, updateHash = true, autoplay = null) {
   pendingPlay = autoplay === null ? ($('continuous').checked && ready && player?.getPlayerState() === 1) : autoplay;
   $('continuousStatus').textContent = '';
   selected = index; const song = songs[index]; const token = ++generation;
+  segmentEnded = false;
   ready = false; clearTimeout(loadTimer); if(player) {player.destroy(); player = null;}
   $('videoContainer').replaceChildren(Object.assign(document.createElement('div'),{id:'player'}));
   $('transport').disabled = true; $('play').textContent = '播放'; $('clock').textContent = '0:00 / 0:00'; $('seek').value = 0;
@@ -109,13 +124,19 @@ $('chantEnabled').onchange = updateChant;
 $('previous').onclick = () => selectSong(selected-1);
 $('next').onclick = () => selectSong(selected+1);
 $('songSelect').onchange = () => selectSong(Number($('songSelect').value));
-$('play').onclick = () => {if(ready) player.getPlayerState() === 1 ? player.pauseVideo() : player.playVideo();};
-$('back').onclick = () => {if(ready) player.seekTo(Math.max(0,player.getCurrentTime()-5),true);};
-$('seek').oninput = () => {if(ready) player.seekTo(Number($('seek').value),true);};
+function seek(time) {
+  const {start,end} = bounds();
+  segmentEnded = false;
+  player.seekTo(Math.max(end === null ? 0 : start, Math.min(end ?? Infinity,time)),true);
+  updateChant();
+}
+$('play').onclick = () => {if(ready) { if(player.getPlayerState() === 1) player.pauseVideo(); else {if(segmentEnded || (bounds().end !== null && player.getCurrentTime() >= bounds().end)) seek(bounds().start); player.playVideo();} }};
+$('back').onclick = () => {if(ready) seek(player.getCurrentTime()-5);};
+$('seek').oninput = () => {if(ready) seek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) player.setPlaybackRate(Number($('speed').value));};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20260923-chants-78-r3').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20260923-universe-1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   songs = data;
   let group;
   songs.forEach((song,index) => {
@@ -131,8 +152,10 @@ fetch('songs.json?v=20260923-chants-78-r3').then(response => {if(!response.ok) t
 }).catch(() => fail('曲目資料載入失敗，請重新整理頁面。'));
 setInterval(() => {
   updateChant();
-  if(!ready) return; const t = player.getCurrentTime(),duration = player.getDuration();
+  if(!ready) return; const t = player.getCurrentTime(),duration = bounds().end ?? player.getDuration();
+  if(bounds().end !== null && t >= bounds().end && !segmentEnded) {player.pauseVideo(); finishSegment(); return;}
   $('clock').textContent = `${format(t)} / ${format(duration)}`;
+  $('seek').min = bounds().end === null ? 0 : bounds().start;
   $('seek').max = duration || 1;if(document.activeElement !== $('seek')) $('seek').value = t;
 },150);
 const api = document.createElement('script');api.src = 'https://www.youtube.com/iframe_api';

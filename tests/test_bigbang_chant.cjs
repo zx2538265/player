@@ -9,7 +9,7 @@ test('track is specific to the embedded video, sorted and within its duration', 
   assert.equal(Chant.validTrack(track, 'different-version'), false);
   assert.equal(track.cues.length, 37);
   assert.ok(track.cues.every(c => c.end <= 230));
-  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10].includes(s.number)).every(s => !s.chant));
+  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10,11].includes(s.number)).every(s => !s.chant));
   assert.equal(Chant.validTrack({...track, cues:[{start:1,end:2,text:'a'},{start:1.5,end:3,text:'b'}]},track.videoId),false);
 });
 test('songs 2 through 5 bind chant data to the specified sources', () => {
@@ -130,4 +130,19 @@ test('every cue enters and exits correctly including adjacent repeated phrases',
     const atEnd = Chant.state(track,cue.end,1);
     assert.equal(atEnd.mode === 'active',track.cues.some(c=>c.start === cue.end));
   }
+});
+
+test('Universe keeps absolute cue clocks inside the requested excerpt',()=>{
+ const song=songs[10],t=song.chant;
+ assert.equal(song.sources[0].startSeconds,25);assert.equal(song.sources[0].endSeconds,81);
+ assert.equal(Chant.validTrack(t,'Su2kSDRdy5s'),true);
+ assert.equal(t.cues.length,6);assert.equal(t.cues[0].start,32.4);
+ assert.deepEqual(t.cues.map(c=>c.text),['walking, walking','다시 다시','어둠 너머','Universe','이 밤 건너','Oh- oh- Oh- oh-']);
+ assert.equal(songs[3].sources[0].startSeconds,17);
+ for(const cue of [...t.cues].reverse()) for(const rate of [.5,1,2]) {
+  assert.ok(cue.start>=25 && cue.end<=81);
+  assert.equal(Chant.state(t,cue.start,1,rate).text,cue.text);
+  assert.equal(Chant.state(t,cue.end,1,rate).mode==='active',false);
+  for(const state of [-1,2,3,5]) assert.equal(Chant.state(t,cue.start-.1,state,rate).count,'');
+ }
 });

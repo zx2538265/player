@@ -1,6 +1,6 @@
 # BIGBANG 應援練習室
 
-依 2026/9/11 MetLife Stadium 場的觀眾歌單紀錄排列 32 首（不含 VCR、band jam 與預錄串場）。可切換單曲、播放 YouTube 教學、調整速度、倒退 5 秒，並開啟各首應援來源。FANTASTIC BABY、HANDS UP、TONIGHT、BLUE、LOSER、BAD BOY、BAE BAE、LIES 提供應援大字與進場倒數；不含 A–B 循環或段落儲存功能。
+依 2026/9/11 MetLife Stadium 場的觀眾歌單紀錄排列 32 首（不含 VCR、band jam 與預錄串場）。可切換單曲、播放 YouTube 教學、調整速度、倒退 5 秒，並開啟各首應援來源。FANTASTIC BABY、HANDS UP、TONIGHT、BLUE、LOSER、BAD BOY、BAE BAE、LIES、Universe 提供應援大字與進場倒數；不含 A–B 循環或段落儲存功能。
 
 ## 應援大字示範
 
@@ -58,3 +58,11 @@
 32 首編號及 29 個來源資料檢查、JavaScript 語法檢查通過。瀏覽器驗證首尾曲與 Threads／無來源／官方影片切換，來源及播放器顯示符合曲目，未出現 JavaScript console error。FANTASTIC BABY 嵌入已可載入；未逐支播放驗收所有影片。手機版面檢查無水平溢出。
 
 本頁已加入既有 Pages 建置流程，公開路徑為 `/bigbang/`；README 不包含在網站發布產物。
+
+## Universe（2026-09-23）
+
+- 保留第 11 首指定來源 `Su2kSDRdy5s`，練習範圍 00:25–01:21，加入 6 段亮黃色應援；排除淡黃色一般歌詞及後半首教學
+- 起訖採原片絕對時間；到 01:21 結束，開啟連播時接續下一個可播放曲目，再按播放從 00:25 重播。BLUE 的 00:17 與其他歌曲資料保持不變
+- 韓文原片沒有中文空耳，保留韓文並標示空耳待確認。所有喊點與收尾依動畫暫定，逐句聽校 0/6；亮字持續不等於已確認的發聲持續
+- `video/Su2kSDRdy5s/` 保存原片、SHA-256、畫面、0.1 秒邊界、ledger、QA 與 PROCESSING.md
+- 自動應援 10/10、控制及連播 7/7 通過；320px／390px 正式頁與六段文字帶倒數版面無水平溢出。YouTube 嵌入回報無法播放，實播同步與終點尚未驗收，沒有更換來源

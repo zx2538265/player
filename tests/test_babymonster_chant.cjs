@@ -80,3 +80,23 @@ test('BATTER UP uses the confirmed source and only its red chant text', () => {
   assert.deepEqual(encore.sources, []);
   assert.equal(encore.chant, undefined);
 });
+
+test('BATTER UP inline responses wait for their own entrance and retain source phonetics', () => {
+  const track = songs.find(s => s.number === 3).chant;
+  for (const [index, captionStart, entrance] of [
+    [3,30.8,32.15], [4,32.5,34], [11,75.5,76.99], [12,77.2,78.73],
+    [13,84.6,85.24], [14,88.4,88.94], [15,90,92.65], [16,93.4,96.33],
+    [17,104.6,106.01], [18,106.6,107.82],
+    [25,158.3,160], [26,160.8,161.87], [27,163.2,167.21],
+    [29,172.8,174.79], [30,175.5,176.63], [31,178.1,181.95],
+  ]) {
+    const cue = track.cues[index];
+    assert.equal(cue.start, entrance);
+    const early = Chant.state(track, captionStart, 1);
+    assert.ok(early.mode !== 'active' || early.text !== cue.text);
+    assert.equal(Chant.state(track, entrance, 1).text, cue.text);
+    assert.equal(Chant.state(track, entrance, 1).mode, 'active');
+  }
+  assert.equal(track.cues[15].text, '비켜 · bi-kyeo\n逼ㄎㄧㄜ');
+  for (const i of [27,31]) assert.equal(track.cues[i].text, '어디든 · eo-di-deun\n歐滴蹬');
+});

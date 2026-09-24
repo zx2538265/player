@@ -499,7 +499,7 @@
     "note": "依指定影片製作 34 張紅字應援提示",
     "chant": {
       "videoId": "CRSVJA-dKWo",
-      "note": "依艾倫Allen 指定影片的紅字應援整理；開場先在心中數兩個八拍，韓文保留原文。提示時間依字幕畫面，尚未完成全段聽校與 YouTube 實播驗證。",
+      "note": "依指定影片紅字應援與原有空耳整理；開場先在心中數兩個八拍。已以音訊詞語校時修正行內接唱進入點，尚未完成全段聽校與 YouTube 實播驗證。",
       "cues": [
         {
           "start": 8.6,
@@ -517,12 +517,12 @@
           "text": "BATTER UP"
         },
         {
-          "start": 30.8,
-          "end": 32.5,
+          "start": 32.15,
+          "end": 32.82,
           "text": "Me"
         },
         {
-          "start": 32.5,
+          "start": 34.0,
           "end": 34.6,
           "text": "bee"
         },
@@ -557,42 +557,42 @@
           "text": "BABYMONSTER Batter Up"
         },
         {
-          "start": 75.5,
-          "end": 77.2,
+          "start": 76.99,
+          "end": 77.3,
           "text": "stop"
         },
         {
-          "start": 77.2,
+          "start": 78.73,
           "end": 79.1,
           "text": "shot"
         },
         {
-          "start": 84.6,
+          "start": 85.24,
           "end": 86.6,
           "text": "Going going gone (gone)"
         },
         {
-          "start": 88.4,
+          "start": 88.94,
           "end": 90.0,
           "text": "Run Run Run Run"
         },
         {
-          "start": 90.0,
+          "start": 92.65,
           "end": 93.4,
-          "text": "비켜"
+          "text": "비켜 · bi-kyeo\n逼ㄎㄧㄜ"
         },
         {
-          "start": 93.4,
+          "start": 96.33,
           "end": 97.3,
           "text": "mirror"
         },
         {
-          "start": 104.6,
+          "start": 106.01,
           "end": 106.6,
           "text": "Me"
         },
         {
-          "start": 106.6,
+          "start": 107.82,
           "end": 108.4,
           "text": "bee"
         },
@@ -627,19 +627,19 @@
           "text": "BABYMONSTER Batter Up"
         },
         {
-          "start": 158.3,
+          "start": 160.0,
           "end": 160.8,
           "text": "Move on"
         },
         {
-          "start": 160.8,
+          "start": 161.87,
           "end": 163.2,
           "text": "Monsters of the world"
         },
         {
-          "start": 163.2,
+          "start": 167.21,
           "end": 168.1,
-          "text": "어디든"
+          "text": "어디든 · eo-di-deun\n歐滴蹬"
         },
         {
           "start": 170.0,
@@ -647,19 +647,19 @@
           "text": "Batter up up up up"
         },
         {
-          "start": 172.8,
-          "end": 175.5,
+          "start": 174.79,
+          "end": 175.8,
           "text": "Move on"
         },
         {
-          "start": 175.5,
+          "start": 176.63,
           "end": 178.1,
           "text": "Monsters of the world"
         },
         {
-          "start": 178.1,
+          "start": 181.95,
           "end": 182.8,
-          "text": "어디든"
+          "text": "어디든 · eo-di-deun\n歐滴蹬"
         },
         {
           "start": 184.6,

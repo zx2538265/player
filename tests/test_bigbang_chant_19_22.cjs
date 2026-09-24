@@ -5,7 +5,7 @@ const songs = require('../bigbang/songs.json');
 
 test('songs 19–22 use only their specified video clocks and valid mobile cards', () => {
   for (const [number,id,count,duration] of [
-    [19,'FbIaV8DBl4c',39,198.567], [20,'H_eKri5ENwk',29,226.327],
+    [19,'FbIaV8DBl4c',39,198.567], [20,'H_eKri5ENwk',30,226.327],
     [21,'05LkUTqWiP4',17,221.922], [22,'hLRkRxx1cM4',22,229.467]
   ]) {
     const song = songs.find(s => s.number === number), t = song.chant;
@@ -45,7 +45,16 @@ test('source colors exclude lyrics and instructions; advance display does not tr
   assert.equal(Chant.state(bb,35.9,1).text,'菩曼內');
   assert.ok(!bb.cues.some(c=>/HEY/.test(c.text)));
   assert.ok(bb.cues.every(c=>c.end<187)); // White outro lyrics are not chants.
-  assert.ok(cro.cues.some(c=>c.text==='deoreobgedojoa')); // Unclear phonetic glyph is not guessed.
+  assert.equal(Chant.state(cro,72.8,1).text,'柔摟給豆糾阿'); // Phonetic text verified against the source frame.
+  assert.equal(Chant.state(cro,48,1).text,'兄唧近');
+  assert.equal(Chant.state(cro,119.2,1).text,'虧勾');
+  for (const time of [121,125]) {
+    assert.equal(Chant.state(cro,time,1).text,'蘇勾');
+    assert.equal(Chant.state(cro,time,1).mode,'active');
+  }
+  for (const time of [121.6,122,124.4,125.3]) {
+    assert.notEqual(Chant.state(cro,time,1).mode,'active');
+  }
   assert.equal(Chant.state(cr,27,1).text,'G');
   assert.equal(Chant.state(cr,27.7,1).text,'D');
   assert.equal(Chant.state(cr,36,1).text,'咪！欸！');

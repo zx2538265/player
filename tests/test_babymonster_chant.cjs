@@ -13,7 +13,31 @@ test('WE GO UP is bound to the requested source and segment', () => {
   assert.equal(Chant.validTrack(track, 'other-source'), false);
   assert.equal(track.cues.length, 50);
   assert.ok(track.cues.every(c => c.start >= 31 && c.end <= 216));
-  assert.ok(songs.slice(1).every(s => !s.hasChant && !s.chant));
+  assert.ok(songs.slice(2).every(s => !s.hasChant && !s.chant));
+});
+
+test('CHOOM uses the requested segment and highlighted chants only', () => {
+  const song = songs[1], track = song.chant;
+  assert.equal(song.title, 'CHOOM');
+  assert.equal(song.hasChant, true);
+  assert.equal(song.sources[0].videoId, '9DlDGxKQsDg');
+  assert.deepEqual([song.sources[0].startSeconds, song.sources[0].endSeconds], [30,205]);
+  assert.equal(Chant.validTrack(track, '9DlDGxKQsDg'), true);
+  assert.equal(Chant.validTrack(track, 'x4b_9YdhT8M'), false);
+  assert.equal(track.cues.length, 37);
+  const text = track.cues.map(c => c.text).join('\n');
+  for (const phrase of ['1, 2 heat is on', '3, 4 BABYMON', 'I’m a MONSTER queen', 'Na na na', 'Watch out watch out']) assert.ok(text.includes(phrase));
+  for (const lyric of ['Own it', 'Let’s choom', 'watch me set the mood', 'We wanna ride this vibe']) assert.ok(!text.includes(lyric));
+  assert.equal(track.cues.filter(c => c.text.includes('Choom /')).length, 4);
+  for (const [i, cue] of track.cues.entries()) {
+    assert.ok(30 <= cue.start && cue.start < cue.end && cue.end <= 205);
+    assert.ok(i === 0 || track.cues[i-1].end <= cue.start);
+    for (const rate of [.5,1,2]) {
+      assert.equal(Chant.state(track,cue.start,1,rate).text,cue.text);
+      assert.equal(Chant.state(track,cue.start,2,rate).mode,'paused');
+    }
+  }
+  assert.notEqual(Chant.state(track,205,1,1).mode,'active');
 });
 
 test('source-marked chants retain rapid phrases and exclude unmarked lyrics', () => {

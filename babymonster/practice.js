@@ -241,7 +241,7 @@ $('seek').oninput = () => {if(ready) manualSeek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').value); savePreferences(); player.setPlaybackRate(preferences.speed); }};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20260924-practice-ux').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20260924-we-go-up').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   songs = data;
   songs.forEach((song,index) => {
     const option = document.createElement('option'); option.value = index; option.textContent = `${String(song.number).padStart(2,'0')} · ${song.title} / ${song.artist}`; $('songSelect').append(option);

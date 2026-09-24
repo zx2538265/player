@@ -2257,102 +2257,147 @@
     "sources": [
       {
         "kind": "應援參考",
-        "url": "https://reurl.cc/1l8QbX",
-        "title": "2015 BIGBANG in TW-BANG  BANG BANG 應援口號",
-        "resolvedUrl": "https://www.youtube.com/watch?v=05LkUTqWiP4",
-        "videoId": "05LkUTqWiP4",
-        "checked": "2026-09-22"
+        "url": "https://www.youtube.com/watch?v=sBjGoMjWppg",
+        "title": "BIGBANG - BANG BANG BANG 繁中應援",
+        "resolvedUrl": "https://www.youtube.com/watch?v=sBjGoMjWppg",
+        "videoId": "sBjGoMjWppg",
+        "checked": "2026-09-24"
       }
     ],
     "note": "尚未核對 2026 現場編排",
     "chant": {
-      "videoId": "05LkUTqWiP4",
-      "note": "依指定影片的應援顏色與原片空耳製作；畫面文字已核對，喊點暫定，尚待逐段聽校與 YouTube 實播同步驗收。 전환해 空耳首字待確認，暫留韓文；兩段 HEY 喊點未確認，暫未啟用。",
+      "videoId": "sBjGoMjWppg",
+      "note": "依新指定影片黃色應援與原片空耳重新辨識；全片 0.5 秒畫面檢查、0.1 秒邊界精掃已核對。喊點依畫面暫定，尚待逐段聽校與 YouTube 實播同步驗收。",
       "cues": [
         {
-          "start": 30.6,
-          "end": 31.4,
-          "text": "전환해"
+          "start": 16.9,
+          "end": 17.7,
+          "text": "Hey"
         },
         {
-          "start": 35.9,
-          "end": 36.6,
-          "text": "菩曼內"
+          "start": 20.4,
+          "end": 21.3,
+          "text": "Hey"
         },
         {
-          "start": 42.9,
-          "end": 44.0,
-          "text": "木蹦記"
+          "start": 29.9,
+          "end": 30.8,
+          "text": "窮納內"
         },
         {
-          "start": 50.9,
-          "end": 53.4,
-          "text": "B.I.G\nbang"
+          "start": 35.3,
+          "end": 36.1,
+          "text": "布曼內"
         },
         {
-          "start": 57.4,
-          "end": 61.2,
-          "text": "BANG! BANG!\nBANG!"
+          "start": 42.4,
+          "end": 43.8,
+          "text": "姆波基"
         },
         {
-          "start": 63.1,
-          "end": 64.8,
-          "text": "bbang-ya\nbbang-ya\nbbang-ya"
+          "start": 50.3,
+          "end": 51.9,
+          "text": "B.I.G"
         },
         {
-          "start": 64.8,
-          "end": 68.5,
-          "text": "BANG! BANG!\nBANG!"
+          "start": 52.2,
+          "end": 52.9,
+          "text": "bang"
         },
         {
-          "start": 70.5,
-          "end": 72.2,
-          "text": "bbang-ya\nbbang-ya\nbbang-ya"
+          "start": 57.0,
+          "end": 58.2,
+          "text": "BANG BANG\nBANG"
         },
         {
-          "start": 84.6,
-          "end": 87.1,
-          "text": "bbang-ya\nbbang-ya\nbbang-ya"
+          "start": 62.8,
+          "end": 64.1,
+          "text": "邦呀\n邦呀\n邦呀"
         },
         {
-          "start": 123.8,
-          "end": 126.5,
-          "text": "B.I.G\nbang"
+          "start": 64.1,
+          "end": 65.4,
+          "text": "BANG BANG\nBANG"
         },
         {
-          "start": 130.3,
-          "end": 133.4,
-          "text": "BANG! BANG!\nBANG!"
+          "start": 69.9,
+          "end": 71.7,
+          "text": "邦呀\n邦呀\n邦呀"
         },
         {
-          "start": 136.2,
-          "end": 137.8,
-          "text": "bbang-ya\nbbang-ya\nbbang-ya"
+          "start": 84.2,
+          "end": 86.1,
+          "text": "邦呀\n邦呀\n邦呀"
         },
         {
-          "start": 137.8,
-          "end": 141.1,
-          "text": "BANG! BANG!\nBANG!"
+          "start": 89.8,
+          "end": 90.5,
+          "text": "Hey"
         },
         {
-          "start": 143.3,
-          "end": 145.1,
-          "text": "bbang-ya\nbbang-ya\nbbang-ya"
+          "start": 93.3,
+          "end": 94.1,
+          "text": "Hey"
         },
         {
-          "start": 157.6,
-          "end": 159.8,
-          "text": "bbang-ya\nbbang-ya\nbbang-ya"
+          "start": 123.3,
+          "end": 124.8,
+          "text": "B.I.G"
         },
         {
-          "start": 174.9,
-          "end": 179.7,
-          "text": "Let's go\nwe漏\nget low"
+          "start": 125.1,
+          "end": 125.8,
+          "text": "bang"
         },
         {
-          "start": 184.2,
-          "end": 186.9,
-          "text": "we漏\nget low"
+          "start": 130.0,
+          "end": 131.1,
+          "text": "BANG BANG\nBANG"
+        },
+        {
+          "start": 135.7,
+          "end": 137.1,
+          "text": "邦呀\n邦呀\n邦呀"
+        },
+        {
+          "start": 137.1,
+          "end": 138.3,
+          "text": "BANG BANG\nBANG"
+        },
+        {
+          "start": 142.9,
+          "end": 144.6,
+          "text": "邦呀\n邦呀\n邦呀"
+        },
+        {
+          "start": 157.2,
+          "end": 159.0,
+          "text": "邦呀\n邦呀\n邦呀"
+        },
+        {
+          "start": 174.3,
+          "end": 175.4,
+          "text": "Let's go"
+        },
+        {
+          "start": 176.3,
+          "end": 177.2,
+          "text": "威摟"
+        },
+        {
+          "start": 178.1,
+          "end": 179.1,
+          "text": "Get low"
+        },
+        {
+          "start": 183.5,
+          "end": 184.4,
+          "text": "威摟"
+        },
+        {
+          "start": 185.4,
+          "end": 186.2,
+          "text": "Get low"
         }
       ]
     }

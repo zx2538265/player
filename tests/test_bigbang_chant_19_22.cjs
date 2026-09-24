@@ -6,10 +6,11 @@ const songs = require('../bigbang/songs.json');
 test('songs 19–22 use only their specified video clocks and valid mobile cards', () => {
   for (const [number,id,count,duration] of [
     [19,'FbIaV8DBl4c',39,198.567], [20,'H_eKri5ENwk',30,226.327],
-    [21,'05LkUTqWiP4',17,221.922], [22,'hLRkRxx1cM4',22,229.467]
+    [21,'sBjGoMjWppg',26,221.1209], [22,'hLRkRxx1cM4',22,229.467]
   ]) {
     const song = songs.find(s => s.number === number), t = song.chant;
     assert.equal(song.sources[0].videoId,id);
+    assert.equal(Chant.validTrack(t,song.sources[0].videoId),true);
     assert.equal(Chant.validTrack(t,id),true);
     assert.equal(t.cues.length,count);
     assert.match(t.note,/暫定/);
@@ -37,13 +38,19 @@ test('source colors exclude lyrics and instructions; advance display does not tr
   assert.ok(!cro.cues.some(c=>/今晚我要|別管我|鬼吼|引導我/.test(c.text)));
   assert.ok(!bb.cues.some(c=>/拍手|꼼짝|Yea|남자|여자/.test(c.text)));
   assert.ok(!st.cues.some(c=>/Monday|oh no|I am stupid|stupid liar/i.test(c.text)));
-  assert.equal(bb.cues.find(c=>c.text==='전환해').start,30.6);
-  assert.equal(bb.cues.find(c=>c.text==='菩曼內').start,35.9);
-  assert.equal(bb.cues.find(c=>c.text==='木蹦記').start,42.9);
+  assert.equal(bb.cues.find(c=>c.text==='窮納內').start,29.9);
+  assert.equal(bb.cues.find(c=>c.text==='布曼內').start,35.3);
+  assert.equal(bb.cues.find(c=>c.text==='姆波基').start,42.4);
   assert.notEqual(Chant.state(bb,33.5,1).mode,'active');
-  assert.equal(Chant.state(bb,34.9,1).count,'1');
-  assert.equal(Chant.state(bb,35.9,1).text,'菩曼內');
-  assert.ok(!bb.cues.some(c=>/HEY/.test(c.text)));
+  assert.equal(Chant.state(bb,34.3,1).count,'1');
+  assert.equal(Chant.state(bb,35.9,1).text,'布曼內');
+  assert.deepEqual(bb.cues.filter(c=>c.text==='Hey').map(c=>c.start),[16.9,20.4,89.8,93.3]);
+  assert.equal(Chant.validTrack(bb,'05LkUTqWiP4'),false);
+  for (const time of [18,21.4,31,36.2,44,52,59,66,90.6,94.2,125,132,139,175.5,177.3,184.5,187]) {
+    assert.notEqual(Chant.state(bb,time,1).mode,'active');
+  }
+  assert.equal(Chant.state(bb,176.5,1).text,'威摟');
+  assert.equal(Chant.state(bb,178.5,1).text,'Get low');
   assert.ok(bb.cues.every(c=>c.end<187)); // White outro lyrics are not chants.
   assert.equal(Chant.state(cro,72.8,1).text,'柔摟給豆糾阿'); // Phonetic text verified against the source frame.
   assert.equal(Chant.state(cro,48,1).text,'兄唧近');

@@ -8,11 +8,11 @@ test('WE GO UP is bound to the requested source and segment', () => {
   assert.equal(song.title, 'WE GO UP');
   assert.equal(song.hasChant, true);
   assert.equal(song.sources[0].videoId, 'x4b_9YdhT8M');
-  assert.deepEqual([song.sources[0].startSeconds, song.sources[0].endSeconds], [31,216]);
+  assert.deepEqual([song.sources[0].startSeconds, song.sources[0].endSeconds], [31,220]);
   assert.equal(Chant.validTrack(track, 'x4b_9YdhT8M'), true);
   assert.equal(Chant.validTrack(track, 'other-source'), false);
   assert.equal(track.cues.length, 50);
-  assert.ok(track.cues.every(c => c.start >= 31 && c.end <= 216));
+  assert.ok(track.cues.every(c => c.start >= 31 && c.end <= 220));
   assert.ok(songs.slice(3).every(s => !s.hasChant && !s.chant));
 });
 

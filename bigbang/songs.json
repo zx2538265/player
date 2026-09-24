@@ -1116,17 +1116,9 @@
     "title": "Wings",
     "artist": "DAESUNG",
     "section": "DAESUNG",
-    "hasChant": true,
-    "sources": [
-      {
-        "kind": "應援參考",
-        "url": "https://reurl.cc/LeQAQK",
-        "title": "Threads",
-        "resolvedUrl": "https://www.threads.com/@bee_eh4570/post/DcTP2J5kuTr/media",
-        "checked": "2026-09-22"
-      }
-    ],
-    "note": "應援來源為 Threads，請開啟原貼文觀看"
+    "hasChant": false,
+    "sources": [],
+    "note": "應援來源待補"
   },
   {
     "number": 13,
@@ -2960,15 +2952,8 @@
     "artist": "BIGBANG",
     "section": "安可",
     "hasChant": false,
-    "sources": [
-      {
-        "kind": "官方音源（非應援教學）",
-        "url": "https://www.youtube.com/watch?v=VWqxvBQKwKQ",
-        "title": "BIGBANG - Flower Road",
-        "videoId": "VWqxvBQKwKQ"
-      }
-    ],
-    "note": "補充官方音源供熟悉歌曲，應援來源尚未找到"
+    "sources": [],
+    "note": "應援來源待補"
   },
   {
     "number": 32,

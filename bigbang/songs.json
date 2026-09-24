@@ -1874,21 +1874,21 @@
     "note": "尚未核對 2026 現場編排",
     "chant": {
       "videoId": "FbIaV8DBl4c",
-      "note": "依指定影片畫面製作；依使用者指定補入 00:50 白字句，分開有間隔的應援；喊點暫定，尚待逐段聽校與 YouTube 實播同步驗收。",
+      "note": "依重新下載影片的全片紅字辨識與逐項畫面核對製作；僅收錄紅字應援，依新增紅字分開喊點；時間依 0.1 秒畫面掃描暫定，尚待聽校與 YouTube 實播同步驗收。",
       "cues": [
         {
-          "start": 9.3,
+          "start": 9.2,
           "end": 11.0,
           "text": "Check! Check!"
         },
         {
-          "start": 13.0,
+          "start": 12.9,
           "end": 14.4,
           "text": "Check! Check!"
         },
         {
           "start": 17.7,
-          "end": 18.4,
+          "end": 18.3,
           "text": "pretty boy!"
         },
         {
@@ -1897,7 +1897,7 @@
           "text": "拿啦哩 boy!"
         },
         {
-          "start": 26.8,
+          "start": 26.7,
           "end": 27.7,
           "text": "G"
         },
@@ -1907,7 +1907,7 @@
           "text": "D"
         },
         {
-          "start": 35.9,
+          "start": 35.8,
           "end": 36.5,
           "text": "咪！欸！"
         },
@@ -1918,22 +1918,22 @@
         },
         {
           "start": 41.3,
-          "end": 43.6,
+          "end": 43.2,
           "text": "kwi喲咪"
         },
         {
-          "start": 47.4,
-          "end": 51.0,
-          "text": "Kim Tae Hee-wa Kim Hee Sun\noh my god Jun Jihyun"
+          "start": 43.2,
+          "end": 43.6,
+          "text": "之麼咪"
         },
         {
-          "start": 52.8,
+          "start": 52.7,
           "end": 54.6,
           "text": "Why so serious"
         },
         {
-          "start": 67.5,
-          "end": 69.3,
+          "start": 67.4,
+          "end": 69.2,
           "text": "Why so serious"
         },
         {
@@ -1948,7 +1948,7 @@
         },
         {
           "start": 74.3,
-          "end": 76.3,
+          "end": 76.2,
           "text": "Get your crayon\ncrayon"
         },
         {
@@ -1978,7 +1978,7 @@
         },
         {
           "start": 104.8,
-          "end": 105.6,
+          "end": 105.5,
           "text": "Cray-on!"
         },
         {
@@ -1988,21 +1988,26 @@
         },
         {
           "start": 110.8,
-          "end": 112.9,
+          "end": 112.6,
           "text": "Four!"
         },
         {
+          "start": 112.6,
+          "end": 112.9,
+          "text": "高！"
+        },
+        {
           "start": 114.4,
-          "end": 115.3,
+          "end": 114.8,
           "text": "down!"
         },
         {
-          "start": 123.7,
-          "end": 124.6,
+          "start": 123.6,
+          "end": 124.2,
           "text": "Rock!"
         },
         {
-          "start": 125.6,
+          "start": 125.5,
           "end": 127.4,
           "text": "Why so serious"
         },
@@ -2013,7 +2018,7 @@
         },
         {
           "start": 140.2,
-          "end": 141.9,
+          "end": 141.8,
           "text": "Why so serious"
         },
         {
@@ -2023,7 +2028,7 @@
         },
         {
           "start": 145.2,
-          "end": 145.9,
+          "end": 145.8,
           "text": "boys!"
         },
         {
@@ -2032,18 +2037,18 @@
           "text": "Get your crayon\ncrayon"
         },
         {
-          "start": 150.7,
+          "start": 150.6,
           "end": 152.4,
           "text": "girls!"
         },
         {
           "start": 152.4,
-          "end": 153.1,
+          "end": 153.0,
           "text": "boys!"
         },
         {
           "start": 154.5,
-          "end": 156.3,
+          "end": 156.2,
           "text": "Get your crayon\ncrayon"
         },
         {
@@ -2057,7 +2062,7 @@
           "text": "boys!"
         },
         {
-          "start": 185.3,
+          "start": 185.2,
           "end": 186.8,
           "text": "girls!"
         },

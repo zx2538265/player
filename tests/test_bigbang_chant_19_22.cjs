@@ -5,7 +5,7 @@ const songs = require('../bigbang/songs.json');
 
 test('songs 19–22 use only their specified video clocks and valid mobile cards', () => {
   for (const [number,id,count,duration] of [
-    [19,'FbIaV8DBl4c',38,198.567], [20,'H_eKri5ENwk',29,226.327],
+    [19,'FbIaV8DBl4c',39,198.567], [20,'H_eKri5ENwk',29,226.327],
     [21,'05LkUTqWiP4',17,221.922], [22,'hLRkRxx1cM4',22,229.467]
   ]) {
     const song = songs.find(s => s.number === number), t = song.chant;
@@ -52,7 +52,14 @@ test('source colors exclude lyrics and instructions; advance display does not tr
   assert.equal(Chant.state(cr,39.6,1).text,'之勇事');
   assert.equal(Chant.state(cr,42,1).text,'kwi喲咪');
   for (const time of [37,38,40.5,106,107]) assert.notEqual(Chant.state(cr,time,1).mode,'active');
-  assert.equal(Chant.state(cr,50,1).text,'Kim Tae Hee-wa Kim Hee Sun\noh my god Jun Jihyun');
+  assert.equal(Chant.state(cr,43.1,1).text,'kwi喲咪');
+  assert.equal(Chant.state(cr,43.2,1).text,'之麼咪');
+  assert.notEqual(Chant.state(cr,43.6,1).mode,'active');
+  assert.ok(!cr.cues.some(c=>/Kim Tae Hee|Kim Hee Sun|Jun Jihyun/.test(c.text)));
+  assert.notEqual(Chant.state(cr,49,1).mode,'active');
+  assert.equal(Chant.state(cr,112.5,1).text,'Four!');
+  assert.equal(Chant.state(cr,112.6,1).text,'高！');
+  for (const time of [112.9,114.8,124.2]) assert.notEqual(Chant.state(cr,time,1).mode,'active');
   assert.equal(Chant.state(cr,71,1).text,'girls!');
   assert.equal(Chant.state(cr,72.6,1).text,'boys!');
   assert.ok(st.cues.some(c=>c.text==='啊pull打妙\n巴bull打妙'));

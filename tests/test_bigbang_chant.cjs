@@ -80,7 +80,7 @@ test('songs 7 and 8 use absolute source clocks and isolate all provisional cues'
   assert.deepEqual(songs[7].chant.cues.find(c=>c.text==='喔扣趴gi喔'),{start:84.8,end:86.3,text:'喔扣趴gi喔'});
 });
 test('HARU HARU and LIES use only confirmed pink chants from replacement videos', () => {
-  for (const [index,id,count,duration] of [[8,'MYVg4jl4AXk',3,121],[9,'kppPmFtBB70',11,149.534]]) {
+  for (const [index,id,count,duration] of [[8,'MYVg4jl4AXk',3,121],[9,'kppPmFtBB70',13,149.534]]) {
     const song=songs[index], t=song.chant;
     assert.equal(song.sources[0].videoId,id);
     assert.equal(Chant.validTrack(t,id),true);
@@ -103,8 +103,14 @@ test('HARU HARU and LIES use only confirmed pink chants from replacement videos'
   assert.deepEqual(songs[8].chant.cues.map(c=>c.text),["Don't cry cry",'Bye bye','Lie Lie']);
   const lies=songs[9].chant;
   assert.equal(lies.cues[0].text,'款基永\n東永北\n扛爹送');
-  assert.equal(lies.cues[5].text,'搜哩\nI love you\nmore more');
-  assert.ok(!lies.cues.some(c=>c.start<90.8 && c.end>88.9));
+  for (const [start,end,next,nextEnd] of [[70.3,70.9,71.9,73],[137.3,138,139,140.2]]) {
+    assert.deepEqual(lies.cues.find(c=>c.start===start),{start,end,text:'搜哩'});
+    assert.deepEqual(lies.cues.find(c=>c.start===next),{start:next,end:nextEnd,text:'I love you\nmore more'});
+    assert.equal(Chant.state(lies,end+.1,1).mode,'countdown');
+    assert.equal(Chant.state(lies,end+.1,1).text,'I love you\nmore more');
+    assert.equal(Chant.state(lies,next,1).mode,'active');
+  }
+  assert.deepEqual(lies.cues.find(c=>c.start===88.9),{start:88.9,end:93.6,text:'ㄏㄤˋ 喪\nHam Gay 嘿'});
   assert.ok(!lies.cues.some(c=>/Im so sorry|No 歐嫩/.test(c.text)));
   assert.equal(songs[9].sources.length,2);
 });

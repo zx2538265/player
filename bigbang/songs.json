@@ -989,10 +989,10 @@
         "title": "LIES 前段應援詞（Threads）"
       }
     ],
-    "note": "依指定影片粉紅字製作應援卡片；白字歌詞空耳不納入；88.9–90.8 秒字形待確認",
+    "note": "依指定影片粉紅字製作應援卡片；白字歌詞空耳不納入",
     "chant": {
       "videoId": "kppPmFtBB70",
-      "note": "僅收指定影片粉紅應援字；空耳依原片，密集短句合併。時間依畫面進出場校至 0.1 秒；尚未完成逐句聽校，節拍時間暫定。88.9–90.8 秒字形待確認，暫不納入",
+      "note": "僅收指定影片粉紅應援字；空耳依原片，密集短句合併。時間依畫面進出場校至 0.1 秒；尚未完成逐句聽校，節拍時間暫定",
       "cues": [
         {
           "start": 12,
@@ -1021,8 +1021,13 @@
         },
         {
           "start": 70.3,
+          "end": 70.9,
+          "text": "搜哩"
+        },
+        {
+          "start": 71.9,
           "end": 73,
-          "text": "搜哩\nI love you\nmore more"
+          "text": "I love you\nmore more"
         },
         {
           "start": 81.2,
@@ -1030,9 +1035,9 @@
           "text": "Big Bang\n薩 朗 嘿"
         },
         {
-          "start": 90.8,
+          "start": 88.9,
           "end": 93.6,
-          "text": "Ham Gay 嘿"
+          "text": "ㄏㄤˋ 喪\nHam Gay 嘿"
         },
         {
           "start": 95.1,
@@ -1046,8 +1051,13 @@
         },
         {
           "start": 137.3,
+          "end": 138,
+          "text": "搜哩"
+        },
+        {
+          "start": 139,
           "end": 140.2,
-          "text": "搜哩\nI love you\nmore more"
+          "text": "I love you\nmore more"
         }
       ]
     }

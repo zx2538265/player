@@ -112,7 +112,7 @@ test('POWER controls, replay and continuous entry/exit bind the specified video'
  for(const rate of [.5,1,2]) {
    s.get('speed').value=String(rate);s.get('speed').onchange();
    p.time=40-3*rate;p.emit(1);assert.equal(s.get('chantCount').textContent,'3');
-   s.get('seek').value=45;s.get('seek').oninput();assert.equal(s.get('chantText').textContent,'Called\nlegend\nK 他喜');
+   s.get('seek').value=45;s.get('seek').oninput();assert.equal(s.get('chantText').textContent,'Called');
    s.get('play').onclick();s.tick();assert.equal(s.get('chantLabel').textContent,'已暫停');
    s.get('seek').value=0;s.get('seek').oninput();p.emit(1);assert.equal(s.get('chantText').textContent,'Übermensch');
  }

@@ -222,11 +222,11 @@ test('POWER uses only source-marked chants, absolute timing and readable grouped
   assert.equal(song.sources[1].title,'Threads');
   assert.equal(song.sources[0].startSeconds,undefined);
   assert.equal(Chant.validTrack(t,'LO2yJopvMH0'),true);
-  assert.equal(t.cues.length,23);
+  assert.equal(t.cues.length,27);
   assert.match(t.note,/暫定.*聽校/);
   assert.ok(!t.cues.some(c=>/Now I got|Prove|power-up|現在我/.test(c.text)));
-  assert.equal(t.cues.find(c=>c.start===45).text,'Called\nlegend\nK 他喜');
-  assert.equal(t.cues.find(c=>c.start===87.6).text,'BANG\n‘G’ thang');
+  assert.equal(t.cues.find(c=>c.start===45).text,'Called');
+  assert.equal(t.cues.find(c=>c.start===87.6).text,'BANG');
   for (const other of songs.filter(s=>s!==song && s.chant)) assert.equal(Chant.validTrack(t,other.chant.videoId),false);
   for (const c of [...t.cues].reverse()) for (const rate of [.5,1,2]) {
     assert.ok(c.end<=143.921);
@@ -238,7 +238,14 @@ test('POWER uses only source-marked chants, absolute timing and readable grouped
   for(const rate of [.5,1,2]) {
     assert.equal(Chant.state(t,40-3*rate,1,rate).count,'3');
   }
-  assert.equal(Chant.state(t,45,1).next,'下一句：ㄇ喜　我喜');
+  assert.equal(Chant.state(t,45,1).next,'下一句：legend');
+  for (const [start,end,text] of [[45,45.5,'Called'],[47.4,48.1,'legend'],[49.8,50.6,'K 他喜'],[87.6,87.9,'BANG'],[89.9,90.8,'‘G’ thang'],[103.2,104.2,'歐搜喜優'],[105.3,106.7,'阿里喇']]) {
+    assert.deepEqual(t.cues.find(c=>c.start===start),{start,end,text});
+  }
+  for(const time of [46,49,88.5,104.5]) {
+    assert.equal(Chant.state(t,time,1).mode,'countdown');
+    assert.equal(Chant.state(t,time,2).count,'');
+  }
   assert.equal(Chant.state(t,0,1).text,'Übermensch');
 });
 

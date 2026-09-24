@@ -1754,8 +1754,18 @@
         },
         {
           "start": 45,
+          "end": 45.5,
+          "text": "Called"
+        },
+        {
+          "start": 47.4,
+          "end": 48.1,
+          "text": "legend"
+        },
+        {
+          "start": 49.8,
           "end": 50.6,
-          "text": "Called\nlegend\nK 他喜"
+          "text": "K 他喜"
         },
         {
           "start": 54.9,
@@ -1784,8 +1794,13 @@
         },
         {
           "start": 87.6,
+          "end": 87.9,
+          "text": "BANG"
+        },
+        {
+          "start": 89.9,
           "end": 90.8,
-          "text": "BANG\n‘G’ thang"
+          "text": "‘G’ thang"
         },
         {
           "start": 98,
@@ -1794,8 +1809,13 @@
         },
         {
           "start": 103.2,
+          "end": 104.2,
+          "text": "歐搜喜優"
+        },
+        {
+          "start": 105.3,
           "end": 106.7,
-          "text": "歐搜喜優\n阿里喇"
+          "text": "阿里喇"
         },
         {
           "start": 108.6,

@@ -2872,7 +2872,53 @@
         "checked": "2026-09-22"
       }
     ],
-    "note": "應援影片為韓文 Heaven（천국）；與 MY HEAVEN 的語言／現場版本待核對"
+    "note": "應援影片為韓文 Heaven（천국）；與 MY HEAVEN 的語言／現場版本待核對",
+    "chant": {
+      "videoId": "SnlZgcmM4qo",
+      "note": "依韓文 Heaven（천국）教學黃字及開頭明示合唱整理；24/7 讀作 Twenty four seven，同頁重複喊句合併顯示。時間依整頁字幕出現／消失暫定，並非逐次喊點；尚未逐句聽校。與 MY HEAVEN 語言／現場版本的適用性待核對。",
+      "cues": [
+        {
+          "start": 1.9,
+          "end": 9.1,
+          "text": "跟著合唱\n사랑해 난 널 기억해\nheaven"
+        },
+        {
+          "start": 9.1,
+          "end": 17.4,
+          "text": "BIGBANG"
+        },
+        {
+          "start": 17.4,
+          "end": 24.3,
+          "text": "V.I.P"
+        },
+        {
+          "start": 24.3,
+          "end": 31.8,
+          "text": "Twenty four seven"
+        },
+        {
+          "start": 31.8,
+          "end": 38.6,
+          "text": "Twenty four seven"
+        },
+        {
+          "start": 129.0,
+          "end": 132.6,
+          "text": "oh baby"
+        },
+        {
+          "start": 132.6,
+          "end": 136.3,
+          "text": "oh baby"
+        },
+        {
+          "start": 219.3,
+          "end": 222.7,
+          "text": "Twenty four seven"
+        }
+      ]
+    }
   },
   {
     "number": 28,

@@ -60,7 +60,7 @@ class CompareTests(unittest.TestCase):
         html = (site / "bigbang/index.html").read_text(encoding="utf-8")
         self.assertLess(html.index('src="chant.js'), html.index('src="practice.js'))
         self.assertFalse((site / "bigbang/README.md").exists())
-        for name in ("index.html", "practice.css", "practice.js", "chant.js", "songs.json"):
+        for name in ("index.html", "practice.css", "practice.js", "chant.js", "songs.json", "share-cover.png"):
             self.assertEqual((site / "ateez" / name).read_bytes(), (source / "ateez" / name).read_bytes())
         self.assertFalse((site / "ateez/README.md").exists())
         track = json.loads((site / "bigbang/songs.json").read_text(encoding="utf-8"))[0]["chant"]

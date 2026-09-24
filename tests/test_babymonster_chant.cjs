@@ -13,7 +13,7 @@ test('WE GO UP is bound to the requested source and segment', () => {
   assert.equal(Chant.validTrack(track, 'other-source'), false);
   assert.equal(track.cues.length, 50);
   assert.ok(track.cues.every(c => c.start >= 31 && c.end <= 216));
-  assert.ok(songs.slice(2).every(s => !s.hasChant && !s.chant));
+  assert.ok(songs.slice(3).every(s => !s.hasChant && !s.chant));
 });
 
 test('CHOOM uses the requested segment and highlighted chants only', () => {
@@ -48,6 +48,7 @@ test('source-marked chants retain rapid phrases and exclude unmarked lyrics', ()
 });
 
 test('every cue supports replay, exclusive ends, speed and paused states', () => {
+  for (const track of songs.filter(s => s.chant).map(s => s.chant))
   for (const cue of [...track.cues].reverse()) for (const rate of [.5,1,2]) {
     assert.equal(Chant.state(track,cue.start,1,rate).text,cue.text);
     assert.equal(Chant.state(track,cue.start,1,rate).mode,'active');
@@ -58,4 +59,24 @@ test('every cue supports replay, exclusive ends, speed and paused states', () =>
     }
   }
   assert.equal(Chant.state(track,track.cues[0].start-1.5,1,.5).count,'3');
+});
+
+test('BATTER UP uses the confirmed source and only its red chant text', () => {
+  const song = songs.find(s => s.number === 3), track = song.chant;
+  assert.equal(song.hasChant, true);
+  assert.equal(song.sources[0].videoId, 'CRSVJA-dKWo');
+  assert.equal(Chant.validTrack(track, 'CRSVJA-dKWo'), true);
+  assert.equal(Chant.validTrack(track, '9DlDGxKQsDg'), false);
+  assert.equal(track.cues.length, 34);
+  assert.ok(track.cues.every(c => c.start >= 0 && c.end <= 192));
+  const text = track.cues.map(c => c.text).join('\n');
+  for (const phrase of ['RUKA PHARITA ASA', 'AHYEON RAMI RORA CHIQUITA', 'Going going gone (gone)', '비켜', '어디든', 'Batter up up up up']) assert.ok(text.includes(phrase));
+  for (const lyric of ["I'm on a mission", 'Remember Me', 'Sting like a bee', 'We are the', 'Let me show you who we are']) assert.ok(!text.includes(lyric));
+  assert.equal(track.cues.filter(c => c.text === '（歡呼）').length, 5);
+  assert.equal(track.cues.filter(c => c.text === 'BABYMONSTER Batter Up').length, 4);
+  assert.deepEqual(track.cues.at(-1), {start:186.7,end:189,text:'（歡呼）'});
+  const encore = songs.find(s => s.number === 26);
+  assert.equal(encore.hasChant, false);
+  assert.deepEqual(encore.sources, []);
+  assert.equal(encore.chant, undefined);
 });

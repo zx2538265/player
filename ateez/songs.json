@@ -1,0 +1,478 @@
+[
+  {
+    "number": 1,
+    "title": "BAD",
+    "artist": "ATEEZ",
+    "section": "ATINY CREW",
+    "note": "右側 ATINY 應援畫面核對版；實際喊聲校時與韓文空耳聽校待完成。",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援影片",
+        "title": "ATEEZ ‘BAD’ with ATINY | Show! Music Core | Mixed by MBCSoundLab",
+        "url": "https://www.youtube.com/watch?v=bnGARWNOuRw",
+        "videoId": "bnGARWNOuRw"
+      }
+    ],
+    "chant": {
+      "videoId": "bnGARWNOuRw",
+      "status": "visual_checked_listening_pending",
+      "note": "本機校對版：僅擷取右側 ATINY 應援；韓文為空耳草稿，英文保留。時間依畫面，實際喊聲與發音仍待聽校。",
+      "cues": [
+        {
+          "start": 7,
+          "end": 8.8,
+          "text": "艾伊踢茲"
+        },
+        {
+          "start": 8.8,
+          "end": 10.6,
+          "text": "勾登阿窩"
+        },
+        {
+          "start": 18.5,
+          "end": 18.8,
+          "text": "YUP"
+        },
+        {
+          "start": 20.5,
+          "end": 21.1,
+          "text": "米搜"
+        },
+        {
+          "start": 22.4,
+          "end": 22.7,
+          "text": "halo"
+        },
+        {
+          "start": 29.1,
+          "end": 30,
+          "text": "photoshop"
+        },
+        {
+          "start": 32.9,
+          "end": 34.1,
+          "text": "She don’t stop"
+        },
+        {
+          "start": 35.5,
+          "end": 36,
+          "text": "嘿"
+        },
+        {
+          "start": 37.4,
+          "end": 37.9,
+          "text": "嘿"
+        },
+        {
+          "start": 39.3,
+          "end": 41.6,
+          "text": "堆 堆 堆"
+        },
+        {
+          "start": 41.8,
+          "end": 43.2,
+          "text": "BAD BAD BAD"
+        },
+        {
+          "start": 43.2,
+          "end": 44.9,
+          "text": "BAD BAD\nBAD BAD"
+        },
+        {
+          "start": 45.6,
+          "end": 46.1,
+          "text": "BAD"
+        },
+        {
+          "start": 49.4,
+          "end": 50.9,
+          "text": "BAD BAD BAD"
+        },
+        {
+          "start": 50.9,
+          "end": 52.7,
+          "text": "BAD BAD\nBAD BAD"
+        },
+        {
+          "start": 53.3,
+          "end": 54,
+          "text": "BAD"
+        },
+        {
+          "start": 60.6,
+          "end": 61.1,
+          "text": "tigo"
+        },
+        {
+          "start": 64.5,
+          "end": 64.9,
+          "text": "roso"
+        },
+        {
+          "start": 68.1,
+          "end": 68.8,
+          "text": "摸拉勾～？"
+        },
+        {
+          "start": 71.4,
+          "end": 73.1,
+          "text": "Olé, mi Dios,\nso BAD"
+        },
+        {
+          "start": 76,
+          "end": 76.9,
+          "text": "member"
+        },
+        {
+          "start": 80.1,
+          "end": 80.7,
+          "text": "Cuban"
+        },
+        {
+          "start": 89,
+          "end": 89.7,
+          "text": "Fuego"
+        },
+        {
+          "start": 90.1,
+          "end": 91.6,
+          "text": "BAD BAD BAD"
+        },
+        {
+          "start": 91.6,
+          "end": 93.4,
+          "text": "BAD BAD\nBAD BAD"
+        },
+        {
+          "start": 94,
+          "end": 94.6,
+          "text": "BAD"
+        },
+        {
+          "start": 97.9,
+          "end": 99.3,
+          "text": "BAD BAD BAD"
+        },
+        {
+          "start": 99.3,
+          "end": 101.2,
+          "text": "BAD BAD\nBAD BAD"
+        },
+        {
+          "start": 101.8,
+          "end": 102.2,
+          "text": "BAD"
+        },
+        {
+          "start": 105.8,
+          "end": 107.9,
+          "text": "（歡呼）"
+        },
+        {
+          "start": 121.1,
+          "end": 123,
+          "text": "艾 伊 踢 茲"
+        },
+        {
+          "start": 124.3,
+          "end": 125.5,
+          "text": "She’s so BAD"
+        },
+        {
+          "start": 128.2,
+          "end": 129.7,
+          "text": "She’s so BAD"
+        },
+        {
+          "start": 134.1,
+          "end": 134.7,
+          "text": "YEAH～"
+        },
+        {
+          "start": 138.1,
+          "end": 138.6,
+          "text": "GOOD～"
+        },
+        {
+          "start": 140.5,
+          "end": 142.3,
+          "text": "紅中 松花\n允齁 優桑"
+        },
+        {
+          "start": 142.3,
+          "end": 144.3,
+          "text": "撒尼 敏基\n屋永 鍾齁"
+        },
+        {
+          "start": 144.3,
+          "end": 146.4,
+          "text": "艾 伊 踢 茲"
+        },
+        {
+          "start": 149.9,
+          "end": 151.2,
+          "text": "YUP"
+        },
+        {
+          "start": 152.1,
+          "end": 154,
+          "text": "BAD BAD\nBAD BAD"
+        },
+        {
+          "start": 154,
+          "end": 155.7,
+          "text": "艾 伊 踢 茲"
+        }
+      ]
+    }
+  },
+  {
+    "number": 2,
+    "title": "Adrenaline",
+    "artist": "ATEEZ",
+    "section": "ATINY CREW",
+    "note": "右側 ATINY 應援畫面核對版；實際喊聲校時與韓文空耳聽校待完成。",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援影片",
+        "title": "ATEEZ ‘Adrenaline’ with ATINY | Show! Music Core | Mixed by MBCSoundLab",
+        "url": "https://www.youtube.com/watch?v=HlINJYsRw3U",
+        "videoId": "HlINJYsRw3U"
+      }
+    ],
+    "chant": {
+      "videoId": "HlINJYsRw3U",
+      "status": "visual_checked_listening_pending",
+      "note": "本機校對版：僅擷取右側 ATINY 應援；韓文為空耳草稿，英文保留。時間依畫面，實際喊聲與發音仍待聽校。",
+      "cues": [
+        {
+          "start": 16.4,
+          "end": 17,
+          "text": "Garage"
+        },
+        {
+          "start": 18.2,
+          "end": 19.8,
+          "text": "Guarantee"
+        },
+        {
+          "start": 20.8,
+          "end": 21.7,
+          "text": "Ok!"
+        },
+        {
+          "start": 27.5,
+          "end": 28.1,
+          "text": "Whoa!"
+        },
+        {
+          "start": 31.4,
+          "end": 32,
+          "text": "Whoa!"
+        },
+        {
+          "start": 44,
+          "end": 44.5,
+          "text": "go!"
+        },
+        {
+          "start": 47.7,
+          "end": 48.4,
+          "text": "華爾 華爾"
+        },
+        {
+          "start": 51.6,
+          "end": 52.2,
+          "text": "go!"
+        },
+        {
+          "start": 57.1,
+          "end": 57.7,
+          "text": "華爾 華爾"
+        },
+        {
+          "start": 59.2,
+          "end": 59.8,
+          "text": "go!"
+        },
+        {
+          "start": 62.9,
+          "end": 63.6,
+          "text": "華爾 華爾"
+        },
+        {
+          "start": 66.8,
+          "end": 67.4,
+          "text": "go!"
+        },
+        {
+          "start": 70.6,
+          "end": 72.9,
+          "text": "pumpin’\nAdrenaline"
+        },
+        {
+          "start": 76,
+          "end": 76.7,
+          "text": "Whoa-uh"
+        },
+        {
+          "start": 80.2,
+          "end": 80.8,
+          "text": "Whoa!"
+        },
+        {
+          "start": 83.7,
+          "end": 84.5,
+          "text": "Whoa-uh"
+        },
+        {
+          "start": 87.9,
+          "end": 90,
+          "text": "艾伊踢茲"
+        },
+        {
+          "start": 122.1,
+          "end": 122.6,
+          "text": "go!"
+        },
+        {
+          "start": 125.8,
+          "end": 126.5,
+          "text": "華爾 華爾"
+        },
+        {
+          "start": 129.7,
+          "end": 130.2,
+          "text": "go!"
+        },
+        {
+          "start": 135.1,
+          "end": 135.8,
+          "text": "Whoa-uh"
+        },
+        {
+          "start": 137.3,
+          "end": 137.8,
+          "text": "go!"
+        },
+        {
+          "start": 141,
+          "end": 141.7,
+          "text": "華爾 華爾"
+        },
+        {
+          "start": 144.9,
+          "end": 145.4,
+          "text": "go!"
+        },
+        {
+          "start": 148.6,
+          "end": 151.7,
+          "text": "pumpin’\nAdrenaline"
+        },
+        {
+          "start": 156.1,
+          "end": 156.8,
+          "text": "Whoa-uh"
+        },
+        {
+          "start": 160.2,
+          "end": 160.9,
+          "text": "Whoa!"
+        },
+        {
+          "start": 163.8,
+          "end": 164.6,
+          "text": "Whoa-uh"
+        },
+        {
+          "start": 184.3,
+          "end": 185.8,
+          "text": "（歡呼）"
+        },
+        {
+          "start": 187,
+          "end": 188.7,
+          "text": "金紅中\n朴松花"
+        },
+        {
+          "start": 188.7,
+          "end": 190.6,
+          "text": "鄭允齁\n康優桑"
+        },
+        {
+          "start": 190.6,
+          "end": 192.5,
+          "text": "崔傘\n松敏基"
+        },
+        {
+          "start": 192.5,
+          "end": 194.4,
+          "text": "鄭屋永\n崔鍾齁"
+        },
+        {
+          "start": 194.4,
+          "end": 196.3,
+          "text": "勾登阿窩"
+        },
+        {
+          "start": 196.3,
+          "end": 198.2,
+          "text": "阿德雷那林"
+        },
+        {
+          "start": 198.2,
+          "end": 200.1,
+          "text": "艾伊踢茲"
+        },
+        {
+          "start": 200.1,
+          "end": 202,
+          "text": "pumpin’\nAdrenaline"
+        },
+        {
+          "start": 202,
+          "end": 202.9,
+          "text": "Whoa whoa"
+        },
+        {
+          "start": 203.9,
+          "end": 204.7,
+          "text": "Whoa whoa"
+        },
+        {
+          "start": 205.8,
+          "end": 206.7,
+          "text": "Whoa whoa"
+        },
+        {
+          "start": 207.7,
+          "end": 208.6,
+          "text": "Whoa whoa"
+        },
+        {
+          "start": 209.7,
+          "end": 210.5,
+          "text": "Whoa whoa"
+        },
+        {
+          "start": 211.5,
+          "end": 212.4,
+          "text": "Whoa whoa"
+        },
+        {
+          "start": 213.4,
+          "end": 214.3,
+          "text": "Whoa whoa"
+        },
+        {
+          "start": 217.9,
+          "end": 219.9,
+          "text": "（歡呼）"
+        }
+      ]
+    }
+  }
+]

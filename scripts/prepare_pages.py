@@ -126,6 +126,10 @@ def prepare(root, catalog, site):
         (site / "bigbang").mkdir()
         for name in ("index.html", "practice.css", "practice.js", "chant.js", "songs.json", "share-cover.png"):
             shutil.copy2(root / "bigbang" / name, site / "bigbang" / name)
+    if (root / "ateez").is_dir():
+        (site / "ateez").mkdir()
+        for name in ("index.html", "practice.css", "practice.js", "chant.js", "songs.json"):
+            shutil.copy2(root / "ateez" / name, site / "ateez" / name)
     (site / "data/covers").mkdir(parents=True)
     payload = json.loads(catalog.read_text(encoding="utf-8"))
     if not payload.get("works"):

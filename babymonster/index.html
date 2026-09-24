@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>BABYMONSTER 應援練習室</title>
+  <meta name="description" content="MONSTIEZ 們一起練應援！依 CHOOM 練習歌單整理曲目，支援切歌、調整速度與連續播放，一首一首練起來。">
+  <link rel="canonical" href="https://allenka.com/babymonster/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="BABYMONSTER 應援練習室">
+  <meta property="og:title" content="BABYMONSTER 應援練習室">
+  <meta property="og:description" content="MONSTIEZ 們一起練應援！依 CHOOM 練習歌單整理曲目，支援切歌、調整速度與連續播放，一首一首練起來。">
+  <meta property="og:url" content="https://allenka.com/babymonster/">
+  <meta property="og:image" content="https://allenka.com/babymonster/share-cover.png?v=20260924-asia">
+  <meta property="og:image:width" content="640">
+  <meta property="og:image:height" content="1126">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="深藍冰霧風格的 BABYMONSTER 應援練習室封面">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BABYMONSTER 應援練習室">
+  <meta name="twitter:description" content="依 CHOOM 練習歌單整理曲目，支援切歌、調整速度與連續播放，一首一首練起來。">
+  <meta name="twitter:image" content="https://allenka.com/babymonster/share-cover.png?v=20260924-asia">
+  <meta name="twitter:image:alt" content="深藍冰霧風格的 BABYMONSTER 應援練習室封面">
+  <link rel="stylesheet" href="practice.css?v=20260924-asia-poster">
+  <script src="chant.js?v=1" defer></script>
+  <script src="practice.js?v=20260924-practice-ux" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="./">BABYMONSTER<span>MONSTIEZ PRACTICE ROOM</span></a></header>
+  <main>
+    <section class="hero"><div><p class="eyebrow">2026–27 WORLD TOUR</p><h1>CHOOM</h1><p>把每一句練熟，一起喊出我們的主場。</p></div><div class="tour-art" aria-hidden="true"></div></section>
+    <div class="layout">
+      <section class="studio" aria-label="應援練習">
+        <div class="song-heading"><div><p class="eyebrow" id="songMeta">準備曲目中</p><h2 id="songTitle" tabindex="-1">載入曲目…</h2></div><button id="focusMode" aria-pressed="false">↗ 專注練習</button></div>
+        <nav class="song-nav" aria-label="切換曲目"><button id="previous" disabled>← 上一首</button><label for="songSelect" class="sr-only">選擇曲目</label><select id="songSelect" disabled></select><button id="next" disabled>下一首 →</button></nav>
+        <div class="video-heading"><span>跟著影片練</span><a id="watchLink" target="_blank" rel="noopener" hidden>在 YouTube 開啟 ↗</a></div>
+        <div class="video" id="videoContainer"><div id="player"></div></div><p id="externalNote" hidden></p>
+        <p id="status" role="status">正在載入練習歌單…</p><button id="retry" hidden>重新載入影片</button>
+        <section class="chant-panel" aria-label="應援大字提示">
+          <div class="cue-head"><label><input id="chantEnabled" type="checkbox" checked> 顯示提示</label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>
+          <p id="chantUnavailable" hidden>本首逐句應援提示待補，加入核對過的影片後即可開始練習。</p>
+          <div id="chantDisplay" class="chant-display" data-mode="waiting"><p id="chantLabel" class="chant-label">正在載入提示…</p><div class="cue"><span id="chantCount" aria-label="進場倒數"></span><p id="chantText"></p></div><p id="chantNext" class="up-next"></p></div>
+        </section>
+        <fieldset id="transport" class="controls" disabled><legend class="sr-only">播放控制</legend>
+          <div class="timeline"><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="1" value="0" step="0.1"><output id="clock">0:00 / 0:00</output></div>
+          <div class="transport"><button id="previousCue" disabled>上一句</button><button id="play" class="primary">播放</button><button id="nextCue" disabled>下一句</button></div>
+          <div class="tools"><button id="repeatCue" disabled>↶ 重練這句</button><button id="back">↶ 5 秒</button><label><input id="loopCue" type="checkbox" disabled> 單句循環</label><label>速度 <select id="speed"><option value="1">1×</option></select></label></div>
+        </fieldset>
+        <div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label><span id="continuousStatus" role="status"></span></div>
+        <details class="source"><summary>本首來源與版本說明</summary><p id="version"></p><p id="chantNote"></p><div id="currentSources"></div></details>
+      </section>
+      <aside class="catalog" aria-labelledby="catalogTitle"><div class="catalog-heading"><div><p class="eyebrow">YOUR PRACTICE SETLIST</p><h2 id="catalogTitle">練習歌單</h2></div><span id="songCount" role="status"></span></div>
+        <input id="search" type="search" placeholder="搜尋歌曲或成員" aria-label="搜尋歌曲或成員">
+        <div class="filters" role="group" aria-label="歌單篩選"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="chant" aria-pressed="false">有提示</button><button data-filter="saved" aria-pressed="false">收藏</button></div>
+        <p class="list-hint">28 個演出項目 · 選一首，開始收藏與練習</p><div id="songList"></div>
+        <details class="catalog-note"><summary>歌單與來源說明</summary><p>歌單僅供台灣場應援練習參考，並非台灣場正式歌單。順序依 <a href="https://www.setlist.fm/setlist/babymonster/2026/jamsil-arena-seoul-south-korea-4376a3d7.html" target="_blank" rel="noopener">6/28 場次參考紀錄</a>，保留個人舞台、組曲、Remix 與安可順序，不含 VCR 與 Ment。應援影片與逐句提示尚待補齊。收錄連結與提示不代表官方應援或已完成版本校對。</p><p>收藏與偏好設定僅儲存在此瀏覽器。</p></details>
+      </aside>
+    </div><footer>BABYMONSTER / MONSTIEZ PRACTICE ROOM <span>每一句，都會成為現場的一部分。</span></footer>
+  </main>
+</body>
+</html>

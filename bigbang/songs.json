@@ -940,14 +940,34 @@
     "sources": [
       {
         "kind": "應援參考",
-        "url": "https://reurl.cc/RR9zkZ",
-        "title": "BIGBANG ALIVE TOUR IN HONG KONG 2012 - HARUHARU(하루하루)應援口號",
-        "resolvedUrl": "https://www.youtube.com/watch?v=9RX6u4K4ipU&list=RD9RX6u4K4ipU&start_radio=1",
-        "videoId": "9RX6u4K4ipU",
-        "checked": "2026-09-22"
+        "url": "https://youtu.be/MYVg4jl4AXk",
+        "title": "HARU HARU（使用者指定來源）",
+        "resolvedUrl": "https://www.youtube.com/watch?v=MYVg4jl4AXk",
+        "videoId": "MYVg4jl4AXk"
       }
     ],
-    "note": "尚未核對 2026 現場編排"
+    "note": "依指定影片粉紅字製作應援卡片；白字歌詞空耳不納入",
+    "chant": {
+      "videoId": "MYVg4jl4AXk",
+      "note": "僅收指定影片粉紅應援字；空耳依原片，密集短句合併。時間依畫面進出場校至 0.1 秒；尚未完成逐句聽校，節拍時間暫定",
+      "cues": [
+        {
+          "start": 109.7,
+          "end": 110.9,
+          "text": "Don't cry cry"
+        },
+        {
+          "start": 113.8,
+          "end": 114.6,
+          "text": "Bye bye"
+        },
+        {
+          "start": 117.9,
+          "end": 118.9,
+          "text": "Lie Lie"
+        }
+      ]
+    }
   },
   {
     "number": 10,
@@ -958,10 +978,10 @@
     "sources": [
       {
         "kind": "應援參考",
-        "url": "https://www.youtube.com/watch?v=KBTJI9oxcI8",
-        "title": "BIGBANG - LIES｜260823 高陽現場版",
-        "resolvedUrl": "https://www.youtube.com/watch?v=KBTJI9oxcI8",
-        "videoId": "KBTJI9oxcI8"
+        "url": "https://www.youtube.com/watch?v=kppPmFtBB70",
+        "title": "LIES（使用者指定來源）",
+        "resolvedUrl": "https://www.youtube.com/watch?v=kppPmFtBB70",
+        "videoId": "kppPmFtBB70"
       },
       {
         "kind": "前段應援詞參考",
@@ -969,25 +989,65 @@
         "title": "LIES 前段應援詞（Threads）"
       }
     ],
-    "note": "三人新版開場應援；後面跟著合唱",
+    "note": "依指定影片粉紅字製作應援卡片；白字歌詞空耳不納入；88.9–90.8 秒字形待確認",
     "chant": {
-      "videoId": "KBTJI9oxcI8",
-      "note": "三人新版開場 7 句分成 3 張提示，依序跟著節奏喊；後面跟著合唱。開場喊點暫定，尚未完成逐句聽校。",
+      "videoId": "kppPmFtBB70",
+      "note": "僅收指定影片粉紅應援字；空耳依原片，密集短句合併。時間依畫面進出場校至 0.1 秒；尚未完成逐句聽校，節拍時間暫定。88.9–90.8 秒字形待確認，暫不納入",
       "cues": [
         {
-          "start": 5.62,
-          "end": 8.52,
-          "text": "寬基勇\n東永培\n康多送"
+          "start": 12,
+          "end": 14.7,
+          "text": "款基永\n東永北\n扛爹送"
         },
         {
-          "start": 8.52,
-          "end": 11.32,
-          "text": "VIP\n永碗逆\n撒朗嘿"
+          "start": 14.9,
+          "end": 17.2,
+          "text": "V.I.P\n永窩ㄏ一\nHam給嘿"
         },
         {
-          "start": 11.32,
-          "end": 12.52,
-          "text": "屋哩 BIGBANG"
+          "start": 17.9,
+          "end": 19.5,
+          "text": "勿令 BIGBANG !!!"
+        },
+        {
+          "start": 43.2,
+          "end": 43.8,
+          "text": "右嘎ㄊㄟ"
+        },
+        {
+          "start": 56.9,
+          "end": 58.1,
+          "text": "你嘎 批溜嘿"
+        },
+        {
+          "start": 70.3,
+          "end": 73,
+          "text": "搜哩\nI love you\nmore more"
+        },
+        {
+          "start": 81.2,
+          "end": 85.8,
+          "text": "Big Bang\n薩 朗 嘿"
+        },
+        {
+          "start": 90.8,
+          "end": 93.6,
+          "text": "Ham Gay 嘿"
+        },
+        {
+          "start": 95.1,
+          "end": 96.3,
+          "text": "Drop that beat"
+        },
+        {
+          "start": 124,
+          "end": 125.2,
+          "text": "你嘎 批溜嘿"
+        },
+        {
+          "start": 137.3,
+          "end": 140.2,
+          "text": "搜哩\nI love you\nmore more"
         }
       ]
     }

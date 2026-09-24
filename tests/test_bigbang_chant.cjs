@@ -9,7 +9,7 @@ test('track is specific to the embedded video, sorted and within its duration', 
   assert.equal(Chant.validTrack(track, 'different-version'), false);
   assert.equal(track.cues.length, 37);
   assert.ok(track.cues.every(c => c.end <= 230));
-  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,10,11,13,16,17,18,19,20,21,22,24,26,28,29].includes(s.number)).every(s => !s.chant));
+  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,9,10,11,13,16,17,18,19,20,21,22,24,26,28,29].includes(s.number)).every(s => !s.chant));
   assert.equal(Chant.validTrack({...track, cues:[{start:1,end:2,text:'a'},{start:1.5,end:3,text:'b'}]},track.videoId),false);
 });
 test('songs 2 through 5 bind chant data to the specified sources', () => {
@@ -79,29 +79,36 @@ test('songs 7 and 8 use absolute source clocks and isolate all provisional cues'
   assert.ok(!songs[7].chant.cues.some(c=>/JESUS|SUNGLASS|5 X 5|찹쌀떡/.test(c.text)));
   assert.deepEqual(songs[7].chant.cues.find(c=>c.text==='喔扣趴gi喔'),{start:84.8,end:86.3,text:'喔扣趴gi喔'});
 });
-test('LIES uses the live edit clock and preserves HARU HARU', () => {
-  const song=songs.find(s=>s.title==='LIES'), t=song.chant;
-  assert.equal(Chant.validTrack(t,'KBTJI9oxcI8'),true);
-  assert.equal(Chant.validTrack(t,'LeY0M83P7zg'),false);
-  assert.equal(t.cues.length,3);
-  assert.equal(Chant.state(t,6,1).text,Chant.state(t,8,1).text);
-  assert.equal(Chant.state(t,9.3,1).count,'');
-  assert.equal(Chant.state(t,11.1,1).mode,'active');
-  assert.equal(t.cues.at(-1).end,12.52);
-  assert.equal(song.sources.length,2);
-  assert.equal(Chant.state(t,36.56,1).text,'做得好！');
-  assert.match(t.note,/暫定/);
-  assert.ok(t.cues.every(c=>c.end<=145.6335));
-  assert.equal(songs[8].sources[0].videoId,'9RX6u4K4ipU');
-  assert.equal(songs[8].chant,undefined);
-  for (const cue of [...t.cues].reverse()) for (const rate of [.5,1,2]) {
-    assert.equal(Chant.state(t,cue.start,1,rate).text,cue.text);
-    assert.equal(Chant.state(t,cue.start,1,rate).mode,'active');
-    assert.equal(Chant.state(t,cue.end,1,rate).mode==='active',t.cues.some(c=>c.start===cue.end));
-    for (const state of [-1,2,3,5]) assert.equal(Chant.state(t,cue.start-.1,state,rate).count,'');
+test('HARU HARU and LIES use only confirmed pink chants from replacement videos', () => {
+  for (const [index,id,count,duration] of [[8,'MYVg4jl4AXk',3,121],[9,'kppPmFtBB70',11,149.534]]) {
+    const song=songs[index], t=song.chant;
+    assert.equal(song.sources[0].videoId,id);
+    assert.equal(Chant.validTrack(t,id),true);
+    assert.equal(Chant.validTrack(t,'KBTJI9oxcI8'),false);
+    assert.equal(t.cues.length,count);
+    assert.ok(t.cues.every(c=>c.start>=0 && c.end<=duration));
+    assert.match(t.note,/暫定/);
+    for(const cue of [...t.cues].reverse()) for(const rate of [.5,1,2]) {
+      assert.equal(Chant.state(t,cue.start,1,rate).text,cue.text);
+      assert.equal(Chant.state(t,cue.start,1,rate).mode,'active');
+      assert.equal(Chant.state(t,cue.end,1,rate).mode==='active',t.cues.some(c=>c.start===cue.end));
+      for(const state of [-1,2,3,5]) {
+        assert.equal(Chant.state(t,cue.start,state,rate).mode,'paused');
+        assert.equal(Chant.state(t,cue.start-.1,state,rate).count,'');
+      }
+    }
+    assert.equal(Chant.state(t,t.cues[0].start-1.5,1,.5).count,'3');
+    assert.equal(Chant.state(t,duration,0).mode,'ended');
   }
-  assert.equal(Chant.state(t,t.cues[0].start-1.5,1,.5).count,'3');
+  assert.deepEqual(songs[8].chant.cues.map(c=>c.text),["Don't cry cry",'Bye bye','Lie Lie']);
+  const lies=songs[9].chant;
+  assert.equal(lies.cues[0].text,'款基永\n東永北\n扛爹送');
+  assert.equal(lies.cues[5].text,'搜哩\nI love you\nmore more');
+  assert.ok(!lies.cues.some(c=>c.start<90.8 && c.end>88.9));
+  assert.ok(!lies.cues.some(c=>/Im so sorry|No 歐嫩/.test(c.text)));
+  assert.equal(songs[9].sources.length,2);
 });
+
 test('countdown uses actual seconds at slower and faster rates', () => {
   const t = {cues:[{start:10,end:12,text:'GO'}]};
   assert.equal(Chant.state(t,8.5,1,0.5).count,'3');

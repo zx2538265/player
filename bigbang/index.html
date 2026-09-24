@@ -22,36 +22,41 @@
   <meta name="twitter:description" content="整理 BIGBANG 應援影片，支援切歌、調整速度與連續播放，一首一首練起來。">
   <meta name="twitter:image" content="https://allenka.com/bigbang/share-cover.png">
   <meta name="twitter:image:alt" content="黑白金風格的 BIGBANG 應援練習室封面">
-  <link rel="stylesheet" href="practice.css?v=20260922-chants-2">
+  <link rel="stylesheet" href="practice.css?v=20260924-compact-banner">
   <script src="chant.js?v=1" defer></script>
-  <script src="practice.js?v=20260923-power-2" defer></script>
+  <script src="practice.js?v=20260924-practice-ux" defer></script>
 </head>
 <body>
   <header><a class="brand" href="./">BIGBANG<span>VIP PRACTICE ROOM</span></a></header>
   <main>
-    <section class="intro"><div class="tour-art" aria-hidden="true"><span>XX : COSMOS</span><i></i><i></i><i></i></div><p class="eyebrow">BIGBANG 應援練習室 · 32 TRACKS</p><h1 id="songTitle">FANTASTIC BABY</h1><p class="lede">按演出順序，一首一首練起來。</p><p class="version" id="version">正在載入曲目來源…</p></section>
-    <nav class="song-nav" aria-label="切換曲目"><button id="previous" disabled>← 上一首</button><label for="songSelect" class="sr-only">選擇曲目</label><select id="songSelect" disabled></select><button id="next" disabled>下一首 →</button></nav>
-    <div class="workspace">
-      <section class="watch" aria-label="應援教學影片">
-        <div class="section-heading"><h2>01 / 跟著影片練</h2><a id="watchLink" href="https://www.youtube.com/watch?v=5eiytN0_YR8" target="_blank" rel="noopener">在 YouTube 開啟 ↗</a></div>
+    <section class="hero"><div><p class="eyebrow">YOUR VOICE. OUR UNIVERSE.</p><h1>下一次，一起喊。</h1><p>把不熟的那一句，練成全場最有默契的聲音。</p></div><div class="tour-art" aria-hidden="true"><span>XX : COSMOS</span><i></i><i></i><i></i></div></section>
+    <div class="layout">
+      <section class="studio" aria-label="應援練習">
+        <div class="song-heading"><div><p class="eyebrow" id="songMeta">準備曲目中</p><h2 id="songTitle" tabindex="-1">載入曲目…</h2></div><button id="focusMode" aria-pressed="false">↗ 專注練習</button></div>
+        <nav class="song-nav" aria-label="切換曲目"><button id="previous" disabled>← 上一首</button><label for="songSelect" class="sr-only">選擇曲目</label><select id="songSelect" disabled></select><button id="next" disabled>下一首 →</button></nav>
+        <div class="video-heading"><span>跟著影片練</span><a id="watchLink" target="_blank" rel="noopener" hidden>在 YouTube 開啟 ↗</a></div>
         <div class="video" id="videoContainer"><div id="player"></div></div><p id="externalNote" hidden></p>
-        <p id="status" role="status">正在載入教學影片…</p>
-        <div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label><span id="continuousStatus" role="status"></span></div>
-        <fieldset id="transport" disabled><legend class="sr-only">播放控制</legend><div class="transport"><button id="back">↶ 5 秒</button><button id="play" class="primary">播放</button><label class="speed">速度 <select id="speed"><option value="1">1×</option></select></label><output id="clock">0:00 / 0:00</output></div><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="230" value="0" step="0.1"></fieldset>
-        <section class="chant-panel" id="chantPanel" aria-labelledby="chantHeading">
-          <div class="section-heading"><h2 id="chantHeading">02 / 應援大字提示</h2><label class="chant-toggle"><input id="chantEnabled" type="checkbox" checked> 顯示提示</label></div>
-          <p id="chantNote" class="version"></p>
-          <div id="chantDisplay" class="chant-display" data-mode="waiting">
-            <p id="chantLabel" class="chant-label">正在載入提示…</p>
-            <div class="chant-line"><span id="chantCount" class="chant-count" aria-label="進場倒數"></span><p id="chantText" class="chant-text"></p></div>
-            <p id="chantNext" class="chant-next"></p>
-          </div>
+        <p id="status" role="status">正在載入教學影片…</p><button id="retry" hidden>重新載入影片</button>
+        <section class="chant-panel" aria-label="應援大字提示">
+          <div class="cue-head"><label><input id="chantEnabled" type="checkbox" checked> 顯示提示</label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>
+          <p id="chantUnavailable" hidden>本首尚未建立逐句應援提示，可先跟著來源影片練習。</p>
+          <div id="chantDisplay" class="chant-display" data-mode="waiting"><p id="chantLabel" class="chant-label">正在載入提示…</p><div class="cue"><span id="chantCount" aria-label="進場倒數"></span><p id="chantText"></p></div><p id="chantNext" class="up-next"></p></div>
         </section>
-        <div class="source"><h2>本首來源</h2><div id="currentSources"></div></div>
+        <fieldset id="transport" class="controls" disabled><legend class="sr-only">播放控制</legend>
+          <div class="timeline"><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="1" value="0" step="0.1"><output id="clock">0:00 / 0:00</output></div>
+          <div class="transport"><button id="previousCue" disabled>上一句</button><button id="play" class="primary">播放</button><button id="nextCue" disabled>下一句</button></div>
+          <div class="tools"><button id="repeatCue" disabled>↶ 重練這句</button><button id="back">↶ 5 秒</button><label><input id="loopCue" type="checkbox" disabled> 單句循環</label><label>速度 <select id="speed"><option value="1">1×</option></select></label></div>
+        </fieldset>
+        <div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label><span id="continuousStatus" role="status"></span></div>
+        <details class="source"><summary>本首來源與版本說明</summary><p id="version"></p><p id="chantNote"></p><div id="currentSources"></div></details>
       </section>
-    </div>
-    <section class="catalog" aria-labelledby="catalogTitle"><div class="section-heading"><h2 id="catalogTitle">當晚歌單與參考來源</h2><span>32 首 · 不含 VCR 與串場片段</span></div><p class="version">順序依 <a href="https://www.setlist.fm/setlist/bigbang/2026/metlife-stadium-east-rutherford-nj-1b7555fc.html" target="_blank" rel="noopener">9/11 MetLife 場觀眾紀錄</a>。收錄連結不代表官方應援或已完成版本校對。</p><div id="songList"></div></section>
-    <footer>VIP PRACTICE ROOM <span>先聽一遍 → 放慢練習 → 回到原速</span></footer>
+      <aside class="catalog" aria-labelledby="catalogTitle"><div class="catalog-heading"><div><p class="eyebrow">BUILD YOUR SETLIST</p><h2 id="catalogTitle">今天想練哪首？</h2></div><span id="songCount" role="status"></span></div>
+        <input id="search" type="search" placeholder="搜尋歌曲或成員" aria-label="搜尋歌曲或成員">
+        <div class="filters" role="group" aria-label="歌單篩選"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="chant" aria-pressed="false">有提示</button><button data-filter="saved" aria-pressed="false">收藏</button></div>
+        <p class="list-hint">選一首歌，從第一句開始練</p><div id="songList"></div>
+        <details class="catalog-note"><summary>歌單與來源說明</summary><p>順序依 <a href="https://www.setlist.fm/setlist/bigbang/2026/metlife-stadium-east-rutherford-nj-1b7555fc.html" target="_blank" rel="noopener">9/11 MetLife 場觀眾紀錄</a>，不含 VCR 與串場片段。收錄連結與提示不代表官方應援或已完成版本校對。</p><p>收藏與偏好設定僅儲存在此瀏覽器。</p></details>
+      </aside>
+    </div><footer>BIGBANG / VIP PRACTICE ROOM <span>每一句，都會成為現場的一部分。</span></footer>
   </main>
 </body>
 </html>

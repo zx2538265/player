@@ -4,7 +4,7 @@ const vm = require('node:vm');
 const fs = require('node:fs');
 async function setup(catalog = null) {
   const elements = new Map(), players = [], timers = new Map(), intervals = [];
-  const element = () => ({dataset:{}, checked:false, children:[], append(...items){this.children.push(...items)}, replaceChildren(...items){this.children=items}, setAttribute(){}, removeAttribute(){}, scrollIntoView(){}});
+  const element = () => ({style:{setProperty(){}}, focus(){}, dataset:{}, checked:false, children:[], append(...items){this.children.push(...items)}, replaceChildren(...items){this.children=items}, setAttribute(){}, removeAttribute(){}, scrollIntoView(){}});
   const get = id => {if(!elements.has(id)) elements.set(id,element());return elements.get(id)};
   const songs = catalog || [true,false,true,true].map((video,i)=>({number:i+1,title:`Song ${i+1}`,artist:'BIGBANG',section:'Main',note:'',sources:video?[{videoId:`id${i}`,kind:'影片'}]:[]}));
   const context = {document:{getElementById:get,createElement:element,querySelectorAll:()=>[],head:element()},location:{hash:'',origin:'http://localhost'},history:{replaceState(){}},fetch:async()=>({ok:true,json:async()=>songs}),setTimeout:fn=>{const id=timers.size+1;timers.set(id,fn);return id},clearTimeout:id=>timers.delete(id),setInterval(fn){intervals.push(fn)},addEventListener(){}};
@@ -71,6 +71,37 @@ test('Universe replacement starts at zero and has no former 81-second cutoff',as
  assert.ok(!p.options.playerVars.end);
  p.time=3;s.get('back').onclick();assert.equal(p.time,0);
  p.time=81;p.emit(1);s.tick();assert.equal(p.state,1);
+});
+
+test('cue navigation retains its target during lead-in and repeat starts playback',async()=>{
+ const s=await setup(require('../bigbang/songs.json')),p=s.players[0];p.ready();p.time=30;
+ s.get('nextCue').onclick();assert.equal(p.time,31.6-3);
+ s.get('repeatCue').onclick();assert.equal(p.time,31.6-3);assert.equal(p.state,1);
+ s.get('nextCue').onclick();assert.equal(p.time,33.6-3);
+ s.get('previousCue').onclick();assert.equal(p.time,31.6-3);
+});
+
+test('single cue loop takes priority over continuous playback and clears on song change or scrub',async()=>{
+ const s=await setup(require('../bigbang/songs.json')),p=s.players[0];p.ready();p.time=30;p.emit(1);s.enable();
+ s.get('loopCue').checked=true;s.get('loopCue').onchange();
+ p.time=31.6;s.tick();assert.equal(p.time,29.8-3);assert.equal(s.players.length,1);
+ p.emit(0);assert.equal(s.players.length,1);assert.equal(p.state,1);
+ s.get('seek').value=50;s.get('seek').oninput();assert.equal(s.get('loopCue').checked,false);
+ s.get('loopCue').checked=true;s.get('loopCue').onchange();s.select(1);
+ assert.equal(s.get('loopCue').checked,false);
+});
+
+test('cue controls are disabled before readiness, on failure and for missing tracks',async()=>{
+ const s=await setup(require('../bigbang/songs.json'));
+ assert.equal(s.get('repeatCue').disabled,true);s.players[0].ready();assert.equal(s.get('repeatCue').disabled,false);
+ s.players[0].options.events.onError();assert.equal(s.get('repeatCue').disabled,true);assert.equal(s.get('retry').hidden,false);
+ s.select(5);assert.equal(s.get('repeatCue').disabled,true);assert.equal(s.get('retry').hidden,true);
+});
+
+test('cue lead-in respects bounded source start',async()=>{
+ const catalog=structuredClone(require('../bigbang/songs.json'));
+ catalog[0].sources[0].startSeconds=29;catalog[0].sources[0].endSeconds=40;
+ const s=await setup(catalog);s.players[0].ready();s.get('repeatCue').onclick();assert.equal(s.players[0].time,29);
 });
 
 

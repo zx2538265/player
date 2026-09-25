@@ -1066,9 +1066,299 @@
     "title": "SUGAR HONEY ICE TEA",
     "artist": "BABYMONSTER",
     "section": "Act 3",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援教學",
+        "url": "https://www.youtube.com/watch?v=xN3X_tl4zlQ",
+        "title": "SUGAR HONEY ICE TEA（00:30～03:25）",
+        "videoId": "xN3X_tl4zlQ",
+        "startSeconds": 30,
+        "endSeconds": 205
+      }
+    ],
+    "note": "播放範圍 00:30～03:25；依指定影片製作 55 張應援提示",
+    "chant": {
+      "videoId": "xN3X_tl4zlQ",
+      "note": "依指定影片黃字應援標示整理，排除深紅色一般歌詞；短句 this / You wish 合併顯示。時間依畫面暫定，01:31.5 的 yeah you know it 在來源中提早整句轉黃；尚未完成全段聽校與 YouTube 實播驗證。",
+      "cues": [
+        {
+          "start": 34.2,
+          "end": 37.7,
+          "text": "B.A.B.Y.M.O.N\nSUGAR HONEY ICE TEA"
+        },
+        {
+          "start": 37.9,
+          "end": 41.4,
+          "text": "B.A.B.Y.M.O.N\nSUGAR HONEY ICE TEA"
+        },
+        {
+          "start": 43.7,
+          "end": 45.0,
+          "text": "and you know it"
+        },
+        {
+          "start": 47.3,
+          "end": 48.4,
+          "text": "and you know it"
+        },
+        {
+          "start": 48.6,
+          "end": 52.0,
+          "text": "Ice, ice, ice"
+        },
+        {
+          "start": 53.5,
+          "end": 55.5,
+          "text": "I, I, I’m the sugar honey"
+        },
+        {
+          "start": 56.7,
+          "end": 57.6,
+          "text": "ice cream"
+        },
+        {
+          "start": 58.4,
+          "end": 59.3,
+          "text": "icing"
+        },
+        {
+          "start": 60.2,
+          "end": 61.2,
+          "text": "pipe dream"
+        },
+        {
+          "start": 61.4,
+          "end": 62.9,
+          "text": "I know, I know, I know"
+        },
+        {
+          "start": 63.6,
+          "end": 64.7,
+          "text": "enticing"
+        },
+        {
+          "start": 65.5,
+          "end": 66.5,
+          "text": "lime green"
+        },
+        {
+          "start": 67.4,
+          "end": 68.2,
+          "text": "rising"
+        },
+        {
+          "start": 68.4,
+          "end": 70.0,
+          "text": "Let’s go, let’s go, let’s go"
+        },
+        {
+          "start": 73.5,
+          "end": 75.3,
+          "text": "Stop"
+        },
+        {
+          "start": 77.1,
+          "end": 78.8,
+          "text": "Drop"
+        },
+        {
+          "start": 80.8,
+          "end": 84.4,
+          "text": "Monster melody"
+        },
+        {
+          "start": 86.6,
+          "end": 88.0,
+          "text": "and you know it"
+        },
+        {
+          "start": 90.2,
+          "end": 91.5,
+          "text": "and you know it"
+        },
+        {
+          "start": 91.5,
+          "end": 95.1,
+          "text": "yeah you know it"
+        },
+        {
+          "start": 96.5,
+          "end": 98.5,
+          "text": "I, I’m the sugar honey ice"
+        },
+        {
+          "start": 101.3,
+          "end": 102.3,
+          "text": "Yuh yuh yuh"
+        },
+        {
+          "start": 105.0,
+          "end": 105.9,
+          "text": "Yuh yuh yuh"
+        },
+        {
+          "start": 107.1,
+          "end": 109.4,
+          "text": "this /\nYou wish"
+        },
+        {
+          "start": 113.9,
+          "end": 114.8,
+          "text": "ice cream"
+        },
+        {
+          "start": 115.7,
+          "end": 116.5,
+          "text": "icing"
+        },
+        {
+          "start": 117.4,
+          "end": 118.4,
+          "text": "pipe dream"
+        },
+        {
+          "start": 118.6,
+          "end": 120.2,
+          "text": "I know, I know, I know"
+        },
+        {
+          "start": 120.8,
+          "end": 121.9,
+          "text": "enticing"
+        },
+        {
+          "start": 122.7,
+          "end": 123.7,
+          "text": "lime green"
+        },
+        {
+          "start": 124.6,
+          "end": 125.4,
+          "text": "rising"
+        },
+        {
+          "start": 125.6,
+          "end": 127.3,
+          "text": "Let’s go, let’s go, let’s go"
+        },
+        {
+          "start": 130.8,
+          "end": 132.5,
+          "text": "Stop"
+        },
+        {
+          "start": 134.3,
+          "end": 136.0,
+          "text": "Drop"
+        },
+        {
+          "start": 138.0,
+          "end": 141.6,
+          "text": "Monster melody"
+        },
+        {
+          "start": 143.9,
+          "end": 145.2,
+          "text": "and you know it"
+        },
+        {
+          "start": 147.4,
+          "end": 148.8,
+          "text": "and you know it"
+        },
+        {
+          "start": 151.1,
+          "end": 152.4,
+          "text": "yeah you know it"
+        },
+        {
+          "start": 153.7,
+          "end": 155.7,
+          "text": "I, I’m the sugar honey ice"
+        },
+        {
+          "start": 155.9,
+          "end": 159.5,
+          "text": "Tasty"
+        },
+        {
+          "start": 159.5,
+          "end": 163.0,
+          "text": "Crazy"
+        },
+        {
+          "start": 163.1,
+          "end": 167.2,
+          "text": "Baby"
+        },
+        {
+          "start": 173.9,
+          "end": 176.3,
+          "text": "Sugar honey ice tea"
+        },
+        {
+          "start": 176.4,
+          "end": 177.4,
+          "text": "You know it, know it"
+        },
+        {
+          "start": 177.6,
+          "end": 179.2,
+          "text": "Sugar honey"
+        },
+        {
+          "start": 179.3,
+          "end": 181.1,
+          "text": "I’m the sugar, I’m the sugar"
+        },
+        {
+          "start": 181.1,
+          "end": 183.5,
+          "text": "Sugar honey ice tea"
+        },
+        {
+          "start": 183.6,
+          "end": 184.6,
+          "text": "You know it, know it"
+        },
+        {
+          "start": 184.7,
+          "end": 186.4,
+          "text": "Sugar honey"
+        },
+        {
+          "start": 186.5,
+          "end": 188.1,
+          "text": "I’m the sugar, I’m the sugar"
+        },
+        {
+          "start": 191.0,
+          "end": 191.9,
+          "text": "ice tea"
+        },
+        {
+          "start": 194.6,
+          "end": 195.4,
+          "text": "ice tea"
+        },
+        {
+          "start": 198.2,
+          "end": 199.0,
+          "text": "ice tea"
+        },
+        {
+          "start": 202.2,
+          "end": 203.3,
+          "text": "ice tea"
+        },
+        {
+          "start": 203.4,
+          "end": 205,
+          "text": "（歡呼）"
+        }
+      ]
+    }
   },
   {
     "number": 23,

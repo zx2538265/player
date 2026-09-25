@@ -13,7 +13,7 @@ test('WE GO UP is bound to the requested source and segment', () => {
   assert.equal(Chant.validTrack(track, 'other-source'), false);
   assert.equal(track.cues.length, 50);
   assert.ok(track.cues.every(c => c.start >= 31 && c.end <= 220));
-  assert.ok(songs.slice(4).every(s => !s.hasChant && !s.chant));
+  assert.ok(songs.slice(4).filter(s => s.number !== 22).every(s => !s.hasChant && !s.chant));
 });
 
 test('CHOOM uses the requested segment and highlighted chants only', () => {
@@ -116,4 +116,27 @@ test('DRIP binds its pink-only prompts to the requested 00:52–03:52 source', (
   for (const lyric of ['passion', 'ambition', 'came to conquer', 'You know we got', 'ice cream']) assert.ok(!text.includes(lyric));
   assert.equal(Chant.state(track, 60, 1).mode, 'countdown');
   assert.equal(Chant.state(track, 232, 1).mode, 'waiting');
+});
+
+test('SUGAR HONEY ICE TEA preserves source bounds and highlighted response words', () => {
+  const song = songs.find(s => s.number === 22), track = song.chant;
+  assert.equal(song.hasChant, true);
+  assert.equal(song.sources[0].videoId, 'xN3X_tl4zlQ');
+  assert.deepEqual([song.sources[0].startSeconds, song.sources[0].endSeconds], [30,205]);
+  assert.equal(Chant.validTrack(track, 'xN3X_tl4zlQ'), true);
+  assert.equal(Chant.validTrack(track, '9DlDGxKQsDg'), false);
+  assert.equal(track.cues.length, 55);
+  const text = track.cues.map(c => c.text).join('\n');
+  for (const phrase of ['B.A.B.Y.M.O.N','Ice, ice, ice','Monster melody','this /\nYou wish','Tasty','Crazy','Baby','（歡呼）']) assert.ok(text.includes(phrase));
+  for (const lyric of ['Who be sippin', 'Milk chocolate', 'make no mistake', 'Yay yeah', '난 부드럽게']) assert.ok(!text.includes(lyric));
+  assert.equal(track.cues.filter(c => c.text === 'ice tea').length, 4);
+  assert.equal(Chant.state(track,42,1,1).mode, 'countdown');
+  assert.equal(Chant.state(track,43.7,1,1).text, 'and you know it');
+  assert.equal(Chant.state(track,91.5,1,1).text, 'yeah you know it');
+  for (const [i,c] of track.cues.entries()) {
+    assert.ok(30 <= c.start && c.start < c.end && c.end <= 205);
+    assert.ok(i === 0 || track.cues[i-1].end <= c.start);
+  }
+  assert.deepEqual(track.cues.at(-1), {start:203.4,end:205,text:'（歡呼）'});
+  assert.notEqual(Chant.state(track,205,1,1).mode, 'active');
 });

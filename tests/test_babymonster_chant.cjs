@@ -13,7 +13,7 @@ test('WE GO UP is bound to the requested source and segment', () => {
   assert.equal(Chant.validTrack(track, 'other-source'), false);
   assert.equal(track.cues.length, 50);
   assert.ok(track.cues.every(c => c.start >= 31 && c.end <= 220));
-  assert.ok(songs.slice(3).every(s => !s.hasChant && !s.chant));
+  assert.ok(songs.slice(4).every(s => !s.hasChant && !s.chant));
 });
 
 test('CHOOM uses the requested segment and highlighted chants only', () => {
@@ -99,4 +99,21 @@ test('BATTER UP inline responses wait for their own entrance and retain source p
   }
   assert.equal(track.cues[15].text, '비켜 · bi-kyeo\n逼ㄎㄧㄜ');
   for (const i of [27,31]) assert.equal(track.cues[i].text, '어디든 · eo-di-deun\n歐滴蹬');
+});
+
+test('DRIP binds its pink-only prompts to the requested 00:52–03:52 source', () => {
+  const song = songs[3], track = song.chant;
+  assert.equal(song.title, 'DRIP');
+  assert.equal(song.sources[0].videoId, 'X2GfGkH-3hg');
+  assert.deepEqual([song.sources[0].startSeconds, song.sources[0].endSeconds], [52,232]);
+  assert.equal(Chant.validTrack(track, 'X2GfGkH-3hg'), true);
+  assert.equal(Chant.validTrack(track, 'CRSVJA-dKWo'), false);
+  assert.equal(track.cues.length, 42);
+  assert.ok(track.cues.every(c => c.start >= 52 && c.end <= 232));
+  assert.equal(track.cues.filter(c => c.text.includes('第 1、3、5、7 聲')).length, 4);
+  assert.ok(track.cues.some(c => c.text === '（握拳高舉）MONSTIEZ'));
+  const text = track.cues.map(c => c.text).join('\n');
+  for (const lyric of ['passion', 'ambition', 'came to conquer', 'You know we got', 'ice cream']) assert.ok(!text.includes(lyric));
+  assert.equal(Chant.state(track, 60, 1).mode, 'countdown');
+  assert.equal(Chant.state(track, 232, 1).mode, 'waiting');
 });

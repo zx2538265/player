@@ -679,9 +679,234 @@
     "title": "DRIP",
     "artist": "BABYMONSTER",
     "section": "Act 1",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援教學",
+        "url": "https://www.youtube.com/watch?v=X2GfGkH-3hg",
+        "title": "DRIP（00:52～03:52）",
+        "videoId": "X2GfGkH-3hg",
+        "startSeconds": 52,
+        "endSeconds": 232
+      }
+    ],
+    "note": "播放範圍 00:52～03:52；依指定影片製作 42 張應援提示",
+    "chant": {
+      "videoId": "X2GfGkH-3hg",
+      "note": "依影片粉紅字整理，深紫色一般歌詞不納入；副歌七聲 Drip 只喊第 1、3、5、7 聲，保留握拳高舉提示。文字與字幕邊界已做畫面核對，接唱時間經模型輔助校時，仍待全段聽校與 YouTube 實播確認。",
+      "cues": [
+        {
+          "start": 57.8,
+          "end": 59.6,
+          "text": "BABY! MONSTER!"
+        },
+        {
+          "start": 60.86,
+          "end": 61.5,
+          "text": "much"
+        },
+        {
+          "start": 62.84,
+          "end": 63.3,
+          "text": "much"
+        },
+        {
+          "start": 64.87,
+          "end": 65.4,
+          "text": "lunch"
+        },
+        {
+          "start": 66.82,
+          "end": 67.5,
+          "text": "truck"
+        },
+        {
+          "start": 67.6,
+          "end": 69.1,
+          "text": "찌릿찌릿 끼리끼리"
+        },
+        {
+          "start": 69.8,
+          "end": 70.6,
+          "text": "Kitty kitty"
+        },
+        {
+          "start": 74.85,
+          "end": 76.1,
+          "text": "hit that dance"
+        },
+        {
+          "start": 76.48,
+          "end": 77.5,
+          "text": "na-na-na"
+        },
+        {
+          "start": 80.15,
+          "end": 81.6,
+          "text": "na-na-na"
+        },
+        {
+          "start": 84.82,
+          "end": 85.4,
+          "text": "me"
+        },
+        {
+          "start": 86.8,
+          "end": 88.0,
+          "text": "me"
+        },
+        {
+          "start": 90.8,
+          "end": 91.8,
+          "text": "밤이야"
+        },
+        {
+          "start": 94.05,
+          "end": 95.7,
+          "text": "what you say"
+        },
+        {
+          "start": 101.99,
+          "end": 103.5,
+          "text": "what you say"
+        },
+        {
+          "start": 103.5,
+          "end": 104.7,
+          "text": "Are you ready?"
+        },
+        {
+          "start": 104.7,
+          "end": 107.0,
+          "text": "Set, turn on the lights"
+        },
+        {
+          "start": 107.0,
+          "end": 107.8,
+          "text": "Baby got"
+        },
+        {
+          "start": 111.2,
+          "end": 112.2,
+          "text": "Look at that"
+        },
+        {
+          "start": 115.9,
+          "end": 119.3,
+          "text": "Drip · Drip · Drip · Drip\n（第 1、3、5、7 聲）"
+        },
+        {
+          "start": 119.9,
+          "end": 123.3,
+          "text": "Drip · Drip · Drip · Drip\n（第 1、3、5、7 聲）"
+        },
+        {
+          "start": 126.0,
+          "end": 127.3,
+          "text": "Monster, monster, monster"
+        },
+        {
+          "start": 132.09,
+          "end": 133.7,
+          "text": "180도 바꿔"
+        },
+        {
+          "start": 138.0,
+          "end": 139.8,
+          "text": "（握拳高舉）MONSTIEZ"
+        },
+        {
+          "start": 140.96,
+          "end": 142.0,
+          "text": "we gon’ ride"
+        },
+        {
+          "start": 142.35,
+          "end": 143.5,
+          "text": "na-na-na"
+        },
+        {
+          "start": 146.22,
+          "end": 147.6,
+          "text": "na-na-na"
+        },
+        {
+          "start": 150.8,
+          "end": 151.2,
+          "text": "me"
+        },
+        {
+          "start": 152.8,
+          "end": 153.8,
+          "text": "me"
+        },
+        {
+          "start": 156.77,
+          "end": 157.7,
+          "text": "밤이야"
+        },
+        {
+          "start": 159.99,
+          "end": 161.6,
+          "text": "what you say"
+        },
+        {
+          "start": 167.92,
+          "end": 169.4,
+          "text": "what you say"
+        },
+        {
+          "start": 169.4,
+          "end": 170.6,
+          "text": "Are you ready?"
+        },
+        {
+          "start": 170.6,
+          "end": 172.8,
+          "text": "Set, turn on the lights"
+        },
+        {
+          "start": 172.9,
+          "end": 173.7,
+          "text": "Baby got"
+        },
+        {
+          "start": 177.1,
+          "end": 178.1,
+          "text": "Look at that"
+        },
+        {
+          "start": 181.8,
+          "end": 185.2,
+          "text": "Drip · Drip · Drip · Drip\n（第 1、3、5、7 聲）"
+        },
+        {
+          "start": 185.8,
+          "end": 189.4,
+          "text": "Drip · Drip · Drip · Drip\n（第 1、3、5、7 聲）"
+        },
+        {
+          "start": 212.706,
+          "end": 214.6,
+          "text": "drip, drip, drip"
+        },
+        {
+          "start": 216.0,
+          "end": 218.0,
+          "text": "Drip, drip, drip"
+        },
+        {
+          "start": 220.6,
+          "end": 222.4,
+          "text": "drip, drip, drip"
+        },
+        {
+          "start": 223.9,
+          "end": 225.9,
+          "text": "Drip, drip, drip"
+        }
+      ]
+    }
   },
   {
     "number": 5,

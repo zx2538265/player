@@ -55,6 +55,7 @@ class CompareTests(unittest.TestCase):
         shutil.copytree(prepare.ROOT / "bigbang", source / "bigbang")
         shutil.copytree(prepare.ROOT / "ateez", source / "ateez")
         shutil.copytree(prepare.ROOT / "babymonster", source / "babymonster")
+        shutil.copytree(prepare.ROOT / "rescene", source / "rescene")
         site = self.root / "site"
         prepare.prepare(source, self.root / "data/library.json", site)
         self.assertEqual((site / "bigbang/chant.js").read_bytes(), (source / "bigbang/chant.js").read_bytes())
@@ -67,6 +68,9 @@ class CompareTests(unittest.TestCase):
         for name in ("index.html", "practice.css", "practice.js", "chant.js", "subtitles.js", "songs.json", "share-cover.png", "share-cover-wide.png"):
             self.assertEqual((site / "babymonster" / name).read_bytes(), (source / "babymonster" / name).read_bytes())
         self.assertFalse((site / "babymonster/README.md").exists())
+        for name in ("index.html", "practice.css", "practice.js", "chant.js", "subtitles.js", "songs.json", "banner.png"):
+            self.assertEqual((site / "rescene" / name).read_bytes(), (source / "rescene" / name).read_bytes())
+        self.assertFalse((site / "rescene/README.md").exists())
         track = json.loads((site / "bigbang/songs.json").read_text(encoding="utf-8"))[0]["chant"]
         self.assertEqual(track["videoId"], "5eiytN0_YR8")
         self.assertEqual(len(track["cues"]), 37)

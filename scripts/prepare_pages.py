@@ -130,6 +130,10 @@ def prepare(root, catalog, site):
         (site / "babymonster").mkdir()
         for name in ("index.html", "practice.css", "practice.js", "chant.js", "subtitles.js", "songs.json", "share-cover.png", "share-cover-wide.png"):
             shutil.copy2(root / "babymonster" / name, site / "babymonster" / name)
+    if (root / "rescene").is_dir():
+        (site / "rescene").mkdir()
+        for name in ("index.html", "practice.css", "practice.js", "chant.js", "subtitles.js", "songs.json", "banner.png"):
+            shutil.copy2(root / "rescene" / name, site / "rescene" / name)
     if (root / "ateez").is_dir():
         (site / "ateez").mkdir()
         for name in ("index.html", "practice.css", "practice.js", "chant.js", "songs.json", "share-cover.png"):

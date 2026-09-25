@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>RESCENE 應援練習室</title>
+  <meta name="description" content="REMINE 們一起練應援！收藏喜歡的旋律，一起練習 RESCENE 應援，支援切歌、調整速度與連續播放，一首一首練起來。">
+  <link rel="canonical" href="https://allenka.com/rescene/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="RESCENE 應援練習室">
+  <meta property="og:title" content="RESCENE 應援練習室">
+  <meta property="og:description" content="REMINE 們一起練應援！收藏喜歡的旋律，一起練習 RESCENE 應援，支援切歌、調整速度與連續播放，一首一首練起來。">
+  <meta property="og:url" content="https://allenka.com/rescene/">
+  <meta property="og:image" content="https://allenka.com/rescene/banner.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="RESCENE Pretty Girl 粉紅房間官方概念照">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RESCENE 應援練習室">
+  <meta name="twitter:description" content="收藏喜歡的旋律，一起練習 RESCENE 應援，支援切歌、調整速度與連續播放，一首一首練起來。">
+  <meta name="twitter:image" content="https://allenka.com/rescene/banner.png">
+  <meta name="twitter:image:alt" content="RESCENE Pretty Girl 粉紅房間官方概念照">
+  <link rel="stylesheet" href="practice.css?v=20260925-official-banner">
+  <script src="chant.js?v=20260925-pretty-girl" defer></script>
+  <script src="subtitles.js?v=20260925-pretty-girl" defer></script>
+  <script src="practice.js?v=20260925-pretty-girl" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="./">RESCENE<span>REMINE PRACTICE ROOM</span></a></header>
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-copy"><h1 id="heroTitle">RESCENE</h1><p class="hero-subtitle">REMINE 應援練習室</p><p>把喜歡的旋律，練成我們的默契。</p></div>
+      <figure class="concept"><img src="banner.png" alt="RESCENE 五位成員在粉紅臥室中的 Pretty Girl 官方概念照" fetchpriority="high"><figcaption>RESCENE × REMINE <span>our pretty little music room ♡</span></figcaption></figure>
+    </section>
+    <div class="room-label"><span>♡ YOUR DAILY DOSE OF RESCENE</span><span>選一首喜歡的，慢慢練熟。</span></div>
+    <div class="layout">
+      <section id="practice" class="studio" aria-label="應援練習">
+        <div class="song-heading"><div><p class="eyebrow" id="songMeta">準備曲目中</p><h2 id="songTitle" tabindex="-1">載入曲目…</h2></div><button id="focusMode" aria-pressed="false">↗ 專注練習</button></div>
+        <nav class="song-nav" aria-label="切換曲目"><button id="previous" disabled>← 上一首</button><label for="songSelect" class="sr-only">選擇曲目</label><select id="songSelect" disabled></select><button id="next" disabled>下一首 →</button></nav>
+        <div class="video-heading"><span>跟著影片練</span><a id="watchLink" target="_blank" rel="noopener" hidden>在 YouTube 開啟 ↗</a></div>
+        <div class="video" id="videoContainer"><div id="player"></div><div id="subtitleDisplay" class="subtitle-display" aria-label="應援字幕" hidden><p id="subtitleText"></p></div><button id="exitVideoFullscreen" class="exit-video-fullscreen">離開全螢幕</button></div><p id="externalNote" hidden></p>
+        <section id="subtitlePanel" class="subtitle-panel" aria-label="應援字幕" hidden>
+          <div class="subtitle-head"><span>白字：歌詞 · <strong class="subtitle-chant">黃字粗體：應援</strong></span><button id="subtitleFullscreen" hidden>全螢幕（含字幕）</button></div>
+        </section>
+        <p id="status" role="status">正在載入練習歌單…</p><button id="retry" hidden>重新載入影片</button>
+        <section class="chant-panel" aria-label="應援大字提示">
+          <div class="cue-head"><label><input id="chantEnabled" type="checkbox" checked> 顯示提示</label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>
+          <p id="chantUnavailable" hidden>逐句應援提示準備中，可先跟著影片練習。</p>
+          <div id="chantDisplay" class="chant-display" data-mode="waiting"><p id="chantLabel" class="chant-label">正在載入提示…</p><div class="cue"><span id="chantCount" aria-label="進場倒數"></span><p id="chantText"></p></div><p id="chantNext" class="up-next"></p></div>
+        </section>
+        <fieldset id="transport" class="controls" disabled><legend class="sr-only">播放控制</legend>
+          <div class="timeline"><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="1" value="0" step="0.1"><output id="clock">0:00 / 0:00</output></div>
+          <div class="transport"><button id="previousCue" disabled>上一句</button><button id="play" class="primary">播放</button><button id="nextCue" disabled>下一句</button></div>
+          <div class="tools"><button id="repeatCue" disabled>↶ 重練這句</button><button id="back">↶ 5 秒</button><label><input id="loopCue" type="checkbox" disabled> 單句循環</label><label>速度 <select id="speed"><option value="1">1×</option></select></label></div>
+        </fieldset>
+        <div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label><span id="continuousStatus" role="status"></span></div>
+        <details class="source"><summary>本首來源與版本說明</summary><p id="version"></p><p id="chantNote"></p><div id="currentSources"></div></details>
+      </section>
+      <aside class="catalog" aria-labelledby="catalogTitle"><div class="catalog-heading"><div><p class="eyebrow">YOUR PRACTICE SETLIST</p><h2 id="catalogTitle">練習歌單</h2></div><span id="songCount" role="status"></span></div>
+        <input id="search" type="search" placeholder="搜尋歌曲" aria-label="搜尋歌曲">
+        <div class="filters" role="group" aria-label="歌單篩選"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="chant" aria-pressed="false">有提示</button><button data-filter="saved" aria-pressed="false">收藏</button></div>
+        <p class="list-hint">選一首喜歡的，開始收藏與練習</p><div id="songList"></div>
+        <details class="catalog-note"><summary>歌單與來源說明</summary><p>這是 REMINE 的非官方練習室，收錄官方影片供練習，並非演出歌單。逐句應援提示與字幕待核對後加入。</p><p>收藏與偏好僅儲存在此瀏覽器。</p><a href="https://x.com/RESCENEofficial/status/2071881438056820939" target="_blank" rel="noopener">Pretty Girl 概念照：RESCENE OFFICIAL ↗</a></details>
+      </aside>
+    </div><footer>RESCENE / REMINE PRACTICE ROOM <span>把每一句喜歡，唱給你聽。</span></footer>
+  </main>
+</body>
+</html>

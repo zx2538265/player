@@ -101,7 +101,16 @@ function finishSegment() {
 }
 let songs = [], selected = 0, player, ready = false, generation = 0, loadTimer;
 const format = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
+function updateSubtitles() {
+  const song = songs[selected], source = song?.sources.find(s => s.videoId), track = song?.subtitles;
+  const available = typeof Subtitles !== 'undefined' && Subtitles.validTrack(track, source?.videoId);
+  $('subtitlePanel').hidden = !available;
+  const cue = available && ready ? Subtitles.at(track, player.getCurrentTime(), segmentEnded ? 0 : player.getPlayerState()) : null;
+  $('subtitleDisplay').hidden = !cue;
+  if (typeof Subtitles !== 'undefined') Subtitles.render($('subtitleText'), cue);
+}
 function updateChant() {
+  updateSubtitles();
   const song = songs[selected], source = song?.sources.find(s => s.videoId), track = song?.chant;
   const available = typeof Chant !== 'undefined' && Chant.validTrack(track, source?.videoId);
   $('chantEnabled').disabled = !available;
@@ -178,7 +187,7 @@ function selectSong(index, updateHash = true, autoplay = null) {
   cueTarget = null; loopTarget = null; $('loopCue').checked = false; $('retry').hidden = true;
   segmentEnded = false;
   ready = false; clearTimeout(loadTimer); if(player) {player.destroy(); player = null;}
-  $('videoContainer').replaceChildren(Object.assign(document.createElement('div'),{id:'player'}));
+  $('videoContainer').replaceChildren(Object.assign(document.createElement('div'),{id:'player'}), $('subtitleDisplay'), $('exitVideoFullscreen'));
   $('transport').disabled = true; $('play').textContent = '播放'; $('clock').textContent = '0:00 / 0:00'; $('seek').value = 0;
   $('speed').replaceChildren(Object.assign(document.createElement('option'),{value:'1',textContent:'1×'}));
   $('songTitle').textContent = song.title; document.title = `${song.title} · BABYMONSTER 應援練習室`;
@@ -213,9 +222,22 @@ function fromHash() {
 $('continuous').onchange = () => { pendingPlay = false; updateContinuousStatus(); };
 $('chantEnabled').checked = preferences.chantEnabled !== false;
 $('chantEnabled').onchange = () => {preferences.chantEnabled = $('chantEnabled').checked; savePreferences(); updateChant();};
+$('subtitleFullscreen').hidden = !(document.fullscreenEnabled && $('videoContainer').requestFullscreen);
+$('subtitleFullscreen').onclick = async () => {
+  try {
+    if (document.fullscreenElement === $('videoContainer')) await document.exitFullscreen();
+    else await $('videoContainer').requestFullscreen();
+  } catch { $('status').textContent = '此瀏覽器無法切換含字幕全螢幕，可使用專注練習。'; }
+};
+$('exitVideoFullscreen').onclick = async () => {
+  if (document.fullscreenElement) {
+    try { await document.exitFullscreen(); } catch { /* Browser exit controls remain available. */ }
+  }
+};
 $('chantSize').value = ['1','1.25','1.5'].includes(preferences.size) ? preferences.size : '1';
 $('chantDisplay').style.setProperty('--scale', $('chantSize').value);
-$('chantSize').onchange = () => {preferences.size = $('chantSize').value; $('chantDisplay').style.setProperty('--scale', preferences.size); savePreferences();};
+$('subtitleDisplay').style.setProperty('--scale', $('chantSize').value);
+$('chantSize').onchange = () => {preferences.size = $('chantSize').value; $('chantDisplay').style.setProperty('--scale', preferences.size); $('subtitleDisplay').style.setProperty('--scale', preferences.size); savePreferences();};
 $('focusMode').onclick = () => {const focused = document.body.classList.toggle('focus'); $('focusMode').setAttribute('aria-pressed', String(focused)); $('focusMode').textContent = focused ? '↙ 返回歌單' : '↗ 專注練習'; $('songTitle').scrollIntoView({block:'start'});};
 window.addEventListener('keydown', event => {if (event.key === 'Escape' && document.body.classList.contains('focus')) $('focusMode').click();});
 $('search').oninput = renderCatalog;
@@ -241,7 +263,7 @@ $('seek').oninput = () => {if(ready) manualSeek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').value); savePreferences(); player.setPlaybackRate(preferences.speed); }};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20260925-sugar-honey').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20260925-clik-clak-full-lyrics').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   songs = data;
   songs.forEach((song,index) => {
     const option = document.createElement('option'); option.value = index; option.textContent = `${String(song.number).padStart(2,'0')} · ${song.title} / ${song.artist}`; $('songSelect').append(option);

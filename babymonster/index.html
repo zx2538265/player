@@ -22,9 +22,10 @@
   <meta name="twitter:description" content="依 CHOOM 練習歌單整理曲目，支援切歌、調整速度與連續播放，一首一首練起來。">
   <meta name="twitter:image" content="https://allenka.com/babymonster/share-cover-wide.png">
   <meta name="twitter:image:alt" content="深藍冰霧風格的 BABYMONSTER 應援練習室封面">
-  <link rel="stylesheet" href="practice.css?v=20260924-mobile-banner">
-  <script src="chant.js?v=1" defer></script>
-  <script src="practice.js?v=20260925-sugar-honey" defer></script>
+  <link rel="stylesheet" href="practice.css?v=20260925-clik-clak">
+  <script src="chant.js?v=20260925-clik-clak" defer></script>
+  <script src="subtitles.js?v=20260925-clik-clak" defer></script>
+  <script src="practice.js?v=20260925-clik-clak-full-lyrics" defer></script>
 </head>
 <body>
   <header><a class="brand" href="./">BABYMONSTER<span>MONSTIEZ PRACTICE ROOM</span></a></header>
@@ -35,7 +36,10 @@
         <div class="song-heading"><div><p class="eyebrow" id="songMeta">準備曲目中</p><h2 id="songTitle" tabindex="-1">載入曲目…</h2></div><button id="focusMode" aria-pressed="false">↗ 專注練習</button></div>
         <nav class="song-nav" aria-label="切換曲目"><button id="previous" disabled>← 上一首</button><label for="songSelect" class="sr-only">選擇曲目</label><select id="songSelect" disabled></select><button id="next" disabled>下一首 →</button></nav>
         <div class="video-heading"><span>跟著影片練</span><a id="watchLink" target="_blank" rel="noopener" hidden>在 YouTube 開啟 ↗</a></div>
-        <div class="video" id="videoContainer"><div id="player"></div></div><p id="externalNote" hidden></p>
+        <div class="video" id="videoContainer"><div id="player"></div><div id="subtitleDisplay" class="subtitle-display" aria-label="應援字幕" hidden><p id="subtitleText"></p></div><button id="exitVideoFullscreen" class="exit-video-fullscreen">離開全螢幕</button></div><p id="externalNote" hidden></p>
+        <section id="subtitlePanel" class="subtitle-panel" aria-label="應援字幕" hidden>
+          <div class="subtitle-head"><span>白字：歌詞 · <strong class="subtitle-chant">黃字粗體：應援</strong></span><button id="subtitleFullscreen" hidden>全螢幕（含字幕）</button></div>
+        </section>
         <p id="status" role="status">正在載入練習歌單…</p><button id="retry" hidden>重新載入影片</button>
         <section class="chant-panel" aria-label="應援大字提示">
           <div class="cue-head"><label><input id="chantEnabled" type="checkbox" checked> 顯示提示</label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>

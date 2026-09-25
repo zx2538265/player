@@ -16,7 +16,7 @@ test('CLIK CLAK plays the stage video and credits the separate chant source', ()
   assert.equal(Subtitles.validTrack(track, 'X8XeiElkI34'), false);
   assert.equal(Chant.validTrack(song.chant, 'S9JKTaTRQ1w'), true);
   assert.equal(track.cues.length, 76);
-  assert.equal(song.chant.cues.length, 49);
+  assert.equal(song.chant.cues.length, 57);
   assert.equal(marked.length,48);
   assert.equal(track.cues.filter(c => c.parts.every(p => !p.chant)).length,28);
   assert.equal(Subtitles.at(track,30,1).parts[0].text,'I need a van to hold all my bags');
@@ -34,7 +34,7 @@ test('highlight only the marked occurrence, including two separated responses', 
   assert.equal(marked[7].parts.map(p => p.text).join(''), 'You say both (both) both (both)');
   assert.equal(marked[37].parts.filter(p => p.chant).length, 2);
   assert.equal(marked[32].parts.at(-1).text, ' heels tap ×3');
-  assert.ok(song.chant.cues[32].text.includes('重複 3 次'));
+  assert.equal(song.chant.cues.filter(c => c.start > 121 && c.start < 126).length, 3);
 });
 
 test('all captions follow the clock, remain on pause, and clear at exclusive ends', () => {
@@ -50,7 +50,8 @@ test('all captions follow the clock, remain on pause, and clear at exclusive end
   assert.equal(Subtitles.at(track, 0, 1), null);
   assert.equal(Subtitles.at(track, 170, 1), null);
   assert.equal(Subtitles.at(track, NaN, 1), null);
-  assert.equal(Chant.state(song.chant, marked[2].start, 1).label, '本句應援');
+  assert.equal(Chant.state(song.chant, 12.5, 1).mode, 'countdown');
+  assert.equal(Chant.state(song.chant, song.chant.cues[2].start, 1).label, '現在喊！');
 });
 
 test('invalid subtitle shapes fail closed', () => {
@@ -131,4 +132,18 @@ test('player integration: automatic overlay, seeking, pause, rate, song changes 
   next.state=1;next.time=173.9;s.tick();assert.equal(next.state,1);
   next.time=174;s.tick();assert.equal(next.state,2);
   assert.equal(s.get('chantLabel').textContent,'本首練習結束');
+});
+
+ test('CLIK CLAK response entrances exclude preceding lyrics and gaps between responses', () => {
+  for (const time of [10.9,12.5,16,20,23,26.5,37.5,38.65,41.2,42.3,122.3,124,125.8,140.5]) {
+    assert.notEqual(Chant.state(song.chant,time,1).mode,'active',`unexpected chant at ${time}`);
+  }
+  for (const time of [11.4,13.2,17.2,20.8,24.35,27.9,38.2,39,41.8,42.65,121.2,123,124.8,139.5,141.3]) {
+    assert.equal(Chant.state(song.chant,time,1).mode,'active',`missing chant at ${time}`);
+  }
+  for (const cue of song.chant.cues) {
+    assert.equal(Chant.state(song.chant,cue.start,1).mode,'active');
+    assert.equal(Chant.state(song.chant,cue.start,2).mode,'paused');
+    assert.notEqual(Chant.state(song.chant,cue.end,1).mode,'active');
+  }
 });

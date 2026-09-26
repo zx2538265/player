@@ -4,31 +4,2961 @@
     "title": "Pretty Girl",
     "artist": "RESCENE",
     "section": "Pretty Girl",
-    "note": "官方影片；逐句應援提示尚待核對",
-    "hasChant": false,
+    "note": "官方應援教學 · 52 張提示卡 · 依畫面定位，聽校待完成",
+    "hasChant": true,
     "sources": [
+      {
+        "kind": "官方應援教學",
+        "title": "RESCENE (리센느) 'Pretty Girl' 응원법 (Fanchant Guide)",
+        "url": "https://www.youtube.com/watch?v=RX592yMx7P0",
+        "videoId": "RX592yMx7P0"
+      },
       {
         "kind": "官方 Special Video",
         "title": "RESCENE — Pretty Girl",
-        "url": "https://www.youtube.com/watch?v=qZlu2j2SiBA",
-        "videoId": "qZlu2j2SiBA"
+        "url": "https://www.youtube.com/watch?v=qZlu2j2SiBA"
       }
-    ]
+    ],
+    "chant": {
+      "videoId": "RX592yMx7P0",
+      "status": "visual_checked_listening_pending",
+      "timingBasis": "caption",
+      "note": "只收錄官方畫面標記的應援文字；依變色或字幕出現定位，尚未逐句聽校。",
+      "cues": [
+        {
+          "start": 30.6,
+          "end": 32.8,
+          "text": "정원이 진경은 미나미",
+          "sourceIds": [
+            "RX592yMx7P0-138"
+          ]
+        },
+        {
+          "start": 34.1,
+          "end": 36.2,
+          "text": "이예빈 김가영 리센느",
+          "sourceIds": [
+            "RX592yMx7P0-140"
+          ]
+        },
+        {
+          "start": 37.8,
+          "end": 39.0,
+          "text": "프리티걸 나야 나",
+          "sourceIds": [
+            "RX592yMx7P0-142"
+          ]
+        },
+        {
+          "start": 39.3,
+          "end": 40.9,
+          "text": "one twe three yeah",
+          "sourceIds": [
+            "RX592yMx7P0-143"
+          ]
+        },
+        {
+          "start": 43.0,
+          "end": 44.0,
+          "text": "every wanna pretty",
+          "sourceIds": [
+            "RX592yMx7P0-145"
+          ]
+        },
+        {
+          "start": 46.8,
+          "end": 47.8,
+          "text": "no no no no",
+          "sourceIds": [
+            "RX592yMx7P0-147"
+          ]
+        },
+        {
+          "start": 50.2,
+          "end": 51.2,
+          "text": "every wanna pretty",
+          "sourceIds": [
+            "RX592yMx7P0-149"
+          ]
+        },
+        {
+          "start": 58.3,
+          "end": 58.9,
+          "text": "리센느!",
+          "sourceIds": [
+            "RX592yMx7P0-152"
+          ]
+        },
+        {
+          "start": 70.8,
+          "end": 71.4,
+          "text": "기본",
+          "sourceIds": [
+            "RX592yMx7P0-156-1"
+          ]
+        },
+        {
+          "start": 72.4,
+          "end": 73.0,
+          "text": "선택",
+          "sourceIds": [
+            "RX592yMx7P0-156-2"
+          ]
+        },
+        {
+          "start": 77.4,
+          "end": 78.0,
+          "text": "girl!",
+          "sourceIds": [
+            "RX592yMx7P0-158-1"
+          ]
+        },
+        {
+          "start": 79.7,
+          "end": 80.5,
+          "text": "Pretty Girl",
+          "sourceIds": [
+            "RX592yMx7P0-158-2"
+          ]
+        },
+        {
+          "start": 84.6,
+          "end": 85.0,
+          "text": "넌",
+          "sourceIds": [
+            "RX592yMx7P0-159"
+          ]
+        },
+        {
+          "start": 89.6,
+          "end": 90.9,
+          "text": "yeah yeah yeah yeah",
+          "sourceIds": [
+            "RX592yMx7P0-161"
+          ]
+        },
+        {
+          "start": 91.8,
+          "end": 92.4,
+          "text": "girl!",
+          "sourceIds": [
+            "RX592yMx7P0-162-1"
+          ]
+        },
+        {
+          "start": 94.1,
+          "end": 94.9,
+          "text": "Pretty Girl",
+          "sourceIds": [
+            "RX592yMx7P0-162-2"
+          ]
+        },
+        {
+          "start": 99.0,
+          "end": 99.4,
+          "text": "넌",
+          "sourceIds": [
+            "RX592yMx7P0-163"
+          ]
+        },
+        {
+          "start": 102.1,
+          "end": 103.3,
+          "text": "Yeah yeah yeah yeah",
+          "sourceIds": [
+            "RX592yMx7P0-165"
+          ]
+        },
+        {
+          "start": 108.4,
+          "end": 109.0,
+          "text": "리마인",
+          "sourceIds": [
+            "RX592yMx7P0-167"
+          ]
+        },
+        {
+          "start": 114.5,
+          "end": 115.6,
+          "text": "every wanna pretty",
+          "sourceIds": [
+            "RX592yMx7P0-170"
+          ]
+        },
+        {
+          "start": 118.3,
+          "end": 119.4,
+          "text": "no no no no",
+          "sourceIds": [
+            "RX592yMx7P0-172"
+          ]
+        },
+        {
+          "start": 121.7,
+          "end": 122.8,
+          "text": "every wanna pretty",
+          "sourceIds": [
+            "RX592yMx7P0-174"
+          ]
+        },
+        {
+          "start": 131.2,
+          "end": 131.8,
+          "text": "girl!",
+          "sourceIds": [
+            "RX592yMx7P0-180-1"
+          ]
+        },
+        {
+          "start": 133.5,
+          "end": 134.3,
+          "text": "Pretty Girl",
+          "sourceIds": [
+            "RX592yMx7P0-180-2"
+          ]
+        },
+        {
+          "start": 138.3,
+          "end": 138.8,
+          "text": "넌",
+          "sourceIds": [
+            "RX592yMx7P0-181"
+          ]
+        },
+        {
+          "start": 143.4,
+          "end": 144.7,
+          "text": "yeah yeah yeah yeah",
+          "sourceIds": [
+            "RX592yMx7P0-183"
+          ]
+        },
+        {
+          "start": 145.6,
+          "end": 146.2,
+          "text": "girl!",
+          "sourceIds": [
+            "RX592yMx7P0-184-1"
+          ]
+        },
+        {
+          "start": 147.8,
+          "end": 148.6,
+          "text": "Pretty Girl",
+          "sourceIds": [
+            "RX592yMx7P0-184-2"
+          ]
+        },
+        {
+          "start": 152.7,
+          "end": 153.2,
+          "text": "넌",
+          "sourceIds": [
+            "RX592yMx7P0-185"
+          ]
+        },
+        {
+          "start": 156.0,
+          "end": 157.1,
+          "text": "Yeah yeah yeah yeah",
+          "sourceIds": [
+            "RX592yMx7P0-187"
+          ]
+        },
+        {
+          "start": 160.7,
+          "end": 161.1,
+          "text": "리",
+          "sourceIds": [
+            "RX592yMx7P0-189"
+          ]
+        },
+        {
+          "start": 162.5,
+          "end": 162.8,
+          "text": "센",
+          "sourceIds": [
+            "RX592yMx7P0-190"
+          ]
+        },
+        {
+          "start": 164.3,
+          "end": 164.7,
+          "text": "느",
+          "sourceIds": [
+            "RX592yMx7P0-191"
+          ]
+        },
+        {
+          "start": 166.1,
+          "end": 166.6,
+          "text": "짱",
+          "sourceIds": [
+            "RX592yMx7P0-192"
+          ]
+        },
+        {
+          "start": 172.0,
+          "end": 173.8,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "RX592yMx7P0-194"
+          ]
+        },
+        {
+          "start": 174.2,
+          "end": 174.8,
+          "text": "girl!",
+          "sourceIds": [
+            "RX592yMx7P0-195-1"
+          ]
+        },
+        {
+          "start": 176.4,
+          "end": 177.3,
+          "text": "Pretty Girl",
+          "sourceIds": [
+            "RX592yMx7P0-195-2"
+          ]
+        },
+        {
+          "start": 181.3,
+          "end": 181.8,
+          "text": "넌",
+          "sourceIds": [
+            "RX592yMx7P0-196"
+          ]
+        },
+        {
+          "start": 186.4,
+          "end": 187.5,
+          "text": "yeah yeah yeah yeah",
+          "sourceIds": [
+            "RX592yMx7P0-198"
+          ]
+        },
+        {
+          "start": 188.4,
+          "end": 189.0,
+          "text": "girl!",
+          "sourceIds": [
+            "RX592yMx7P0-199"
+          ]
+        },
+        {
+          "start": 195.6,
+          "end": 196.0,
+          "text": "넌",
+          "sourceIds": [
+            "RX592yMx7P0-200"
+          ]
+        },
+        {
+          "start": 199.2,
+          "end": 201.7,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "RX592yMx7P0-202"
+          ]
+        },
+        {
+          "start": 202.5,
+          "end": 203.4,
+          "text": "If you wanna pretty",
+          "sourceIds": [
+            "RX592yMx7P0-204"
+          ]
+        },
+        {
+          "start": 204.1,
+          "end": 205.1,
+          "text": "every wanna pretty",
+          "sourceIds": [
+            "RX592yMx7P0-205"
+          ]
+        },
+        {
+          "start": 206.0,
+          "end": 206.7,
+          "text": "안된다는 맘은",
+          "sourceIds": [
+            "RX592yMx7P0-206"
+          ]
+        },
+        {
+          "start": 207.7,
+          "end": 208.8,
+          "text": "no no no no",
+          "sourceIds": [
+            "RX592yMx7P0-207"
+          ]
+        },
+        {
+          "start": 209.7,
+          "end": 210.6,
+          "text": "If you wanna pretty",
+          "sourceIds": [
+            "RX592yMx7P0-209"
+          ]
+        },
+        {
+          "start": 211.4,
+          "end": 212.4,
+          "text": "every wanna pretty",
+          "sourceIds": [
+            "RX592yMx7P0-210"
+          ]
+        },
+        {
+          "start": 213.4,
+          "end": 216.3,
+          "text": "어디서나 당당하게 걷기",
+          "sourceIds": [
+            "RX592yMx7P0-211"
+          ]
+        },
+        {
+          "start": 220.4,
+          "end": 222.1,
+          "text": "눈부셔 빛난다 리센느",
+          "sourceIds": [
+            "RX592yMx7P0-214"
+          ]
+        },
+        {
+          "start": 224.2,
+          "end": 225.9,
+          "text": "고마워 영원해 리마인",
+          "sourceIds": [
+            "RX592yMx7P0-216"
+          ]
+        },
+        {
+          "start": 227.6,
+          "end": 228.9,
+          "text": "우리 모두 프리티걸",
+          "sourceIds": [
+            "RX592yMx7P0-218"
+          ]
+        }
+      ]
+    }
   },
   {
     "number": 2,
     "title": "LOVE ATTACK",
     "artist": "RESCENE",
     "section": "SCENEDROME",
-    "note": "官方影片；逐句應援提示尚待核對",
-    "hasChant": false,
+    "note": "官方應援教學 · 40 張提示卡 · 依畫面定位，聽校待完成",
+    "hasChant": true,
     "sources": [
+      {
+        "kind": "官方應援教學",
+        "title": "RESCENE (리센느) 'LOVE ATTACK' 응원법 (Fanchant Guide)",
+        "url": "https://www.youtube.com/watch?v=xn12KH78Dx4",
+        "videoId": "xn12KH78Dx4"
+      },
       {
         "kind": "官方 MV",
         "title": "RESCENE — LOVE ATTACK",
-        "url": "https://www.youtube.com/watch?v=9XttLI0oH0I",
-        "videoId": "9XttLI0oH0I"
+        "url": "https://www.youtube.com/watch?v=9XttLI0oH0I"
       }
-    ]
+    ],
+    "chant": {
+      "videoId": "xn12KH78Dx4",
+      "status": "visual_checked_listening_pending",
+      "timingBasis": "caption",
+      "note": "只收錄官方畫面標記的應援文字；依變色或字幕出現定位，尚未逐句聽校。",
+      "cues": [
+        {
+          "start": 22.2,
+          "end": 23.3,
+          "text": "Feeling love attack!",
+          "sourceIds": [
+            "xn12KH78Dx4-133"
+          ]
+        },
+        {
+          "start": 26.8,
+          "end": 27.4,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "xn12KH78Dx4-135"
+          ]
+        },
+        {
+          "start": 30.9,
+          "end": 31.5,
+          "text": "LOVE ATTACK!",
+          "sourceIds": [
+            "xn12KH78Dx4-137"
+          ]
+        },
+        {
+          "start": 33.8,
+          "end": 34.4,
+          "text": "너!",
+          "sourceIds": [
+            "xn12KH78Dx4-139"
+          ]
+        },
+        {
+          "start": 35.1,
+          "end": 35.7,
+          "text": "started",
+          "sourceIds": [
+            "xn12KH78Dx4-140"
+          ]
+        },
+        {
+          "start": 39.4,
+          "end": 40.0,
+          "text": "않지",
+          "sourceIds": [
+            "xn12KH78Dx4-143"
+          ]
+        },
+        {
+          "start": 43.9,
+          "end": 44.5,
+          "text": "waiting for",
+          "sourceIds": [
+            "xn12KH78Dx4-145"
+          ]
+        },
+        {
+          "start": 45.4,
+          "end": 46.0,
+          "text": "스친",
+          "sourceIds": [
+            "xn12KH78Dx4-146"
+          ]
+        },
+        {
+          "start": 46.4,
+          "end": 47.0,
+          "text": "끌림",
+          "sourceIds": [
+            "xn12KH78Dx4-147"
+          ]
+        },
+        {
+          "start": 55.8,
+          "end": 57.4,
+          "text": "1234",
+          "sourceIds": [
+            "xn12KH78Dx4-155"
+          ]
+        },
+        {
+          "start": 64.0,
+          "end": 64.6,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "xn12KH78Dx4-158"
+          ]
+        },
+        {
+          "start": 72.6,
+          "end": 73.2,
+          "text": "LOVE ATTACK!",
+          "sourceIds": [
+            "xn12KH78Dx4-161"
+          ]
+        },
+        {
+          "start": 75.3,
+          "end": 75.8,
+          "text": "SCENE!",
+          "sourceIds": [
+            "xn12KH78Dx4-162"
+          ]
+        },
+        {
+          "start": 77.0,
+          "end": 77.6,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "xn12KH78Dx4-163"
+          ]
+        },
+        {
+          "start": 83.3,
+          "end": 84.1,
+          "text": "With me, With me",
+          "sourceIds": [
+            "xn12KH78Dx4-166"
+          ]
+        },
+        {
+          "start": 90.6,
+          "end": 91.6,
+          "text": "Feeling love attack!",
+          "sourceIds": [
+            "xn12KH78Dx4-169"
+          ]
+        },
+        {
+          "start": 105.9,
+          "end": 106.5,
+          "text": "Ambergris",
+          "sourceIds": [
+            "xn12KH78Dx4-178"
+          ]
+        },
+        {
+          "start": 108.1,
+          "end": 108.7,
+          "text": "드러내",
+          "sourceIds": [
+            "xn12KH78Dx4-179"
+          ]
+        },
+        {
+          "start": 109.1,
+          "end": 109.8,
+          "text": "Beautiful",
+          "sourceIds": [
+            "xn12KH78Dx4-180"
+          ]
+        },
+        {
+          "start": 111.4,
+          "end": 112.0,
+          "text": "Fabulous",
+          "sourceIds": [
+            "xn12KH78Dx4-182"
+          ]
+        },
+        {
+          "start": 113.5,
+          "end": 114.2,
+          "text": "On and on",
+          "sourceIds": [
+            "xn12KH78Dx4-184"
+          ]
+        },
+        {
+          "start": 115.9,
+          "end": 117.3,
+          "text": "1234",
+          "sourceIds": [
+            "xn12KH78Dx4-186"
+          ]
+        },
+        {
+          "start": 124.1,
+          "end": 124.7,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "xn12KH78Dx4-189"
+          ]
+        },
+        {
+          "start": 132.7,
+          "end": 133.3,
+          "text": "LOVE ATTACK!",
+          "sourceIds": [
+            "xn12KH78Dx4-192"
+          ]
+        },
+        {
+          "start": 135.3,
+          "end": 135.8,
+          "text": "SCENE!",
+          "sourceIds": [
+            "xn12KH78Dx4-193"
+          ]
+        },
+        {
+          "start": 137.1,
+          "end": 137.7,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "xn12KH78Dx4-194"
+          ]
+        },
+        {
+          "start": 143.1,
+          "end": 144.1,
+          "text": "With me, With me",
+          "sourceIds": [
+            "xn12KH78Dx4-197"
+          ]
+        },
+        {
+          "start": 150.5,
+          "end": 151.5,
+          "text": "Feeling love attack!",
+          "sourceIds": [
+            "xn12KH78Dx4-200"
+          ]
+        },
+        {
+          "start": 152.3,
+          "end": 154.0,
+          "text": "I am all you need",
+          "sourceIds": [
+            "xn12KH78Dx4-201"
+          ]
+        },
+        {
+          "start": 156.7,
+          "end": 158.2,
+          "text": "I am all you need",
+          "sourceIds": [
+            "xn12KH78Dx4-203"
+          ]
+        },
+        {
+          "start": 160.6,
+          "end": 162.6,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "xn12KH78Dx4-205"
+          ]
+        },
+        {
+          "start": 169.0,
+          "end": 169.6,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "xn12KH78Dx4-208"
+          ]
+        },
+        {
+          "start": 177.5,
+          "end": 178.2,
+          "text": "LOVE ATTACK!",
+          "sourceIds": [
+            "xn12KH78Dx4-211"
+          ]
+        },
+        {
+          "start": 179.2,
+          "end": 179.8,
+          "text": "장면에",
+          "sourceIds": [
+            "xn12KH78Dx4-212"
+          ]
+        },
+        {
+          "start": 181.5,
+          "end": 182.1,
+          "text": "황홀해",
+          "sourceIds": [
+            "xn12KH78Dx4-214"
+          ]
+        },
+        {
+          "start": 183.6,
+          "end": 184.2,
+          "text": "잡을 땐",
+          "sourceIds": [
+            "xn12KH78Dx4-216"
+          ]
+        },
+        {
+          "start": 185.3,
+          "end": 186.4,
+          "text": "어우러질 땐",
+          "sourceIds": [
+            "xn12KH78Dx4-217"
+          ]
+        },
+        {
+          "start": 188.0,
+          "end": 189.1,
+          "text": "With me, With me",
+          "sourceIds": [
+            "xn12KH78Dx4-218"
+          ]
+        },
+        {
+          "start": 192.6,
+          "end": 194.8,
+          "text": "완벽하게 어울려",
+          "sourceIds": [
+            "xn12KH78Dx4-220"
+          ]
+        },
+        {
+          "start": 195.5,
+          "end": 196.5,
+          "text": "Feeling love attack!",
+          "sourceIds": [
+            "xn12KH78Dx4-221"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "number": 3,
+    "title": "UhUh",
+    "artist": "RESCENE",
+    "section": "Re:Scene",
+    "note": "官方應援教學 · 46 張提示卡 · 依畫面定位，聽校待完成",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "官方應援教學",
+        "title": "RESCENE (리센느) 'UhUh' 응원법 (Fanchant Guide)",
+        "url": "https://www.youtube.com/watch?v=s1S-lnU-yMI",
+        "videoId": "s1S-lnU-yMI"
+      }
+    ],
+    "chant": {
+      "videoId": "s1S-lnU-yMI",
+      "status": "visual_checked_listening_pending",
+      "timingBasis": "caption",
+      "note": "只收錄官方畫面標記的應援文字；依變色或字幕出現定位，尚未逐句聽校。",
+      "cues": [
+        {
+          "start": 28.0,
+          "end": 34.4,
+          "text": "원이 리브 미나미\n메이 제나 리센느",
+          "sourceIds": [
+            "s1S-lnU-yMI-1"
+          ]
+        },
+        {
+          "start": 37.4,
+          "end": 38.0,
+          "text": "attention",
+          "sourceIds": [
+            "s1S-lnU-yMI-5"
+          ]
+        },
+        {
+          "start": 40.4,
+          "end": 40.8,
+          "text": "ya",
+          "sourceIds": [
+            "s1S-lnU-yMI-6"
+          ]
+        },
+        {
+          "start": 46.1,
+          "end": 46.7,
+          "text": "tension",
+          "sourceIds": [
+            "s1S-lnU-yMI-9"
+          ]
+        },
+        {
+          "start": 49.0,
+          "end": 49.5,
+          "text": "ya",
+          "sourceIds": [
+            "s1S-lnU-yMI-10"
+          ]
+        },
+        {
+          "start": 68.5,
+          "end": 69.5,
+          "text": "woo baby",
+          "sourceIds": [
+            "s1S-lnU-yMI-17"
+          ]
+        },
+        {
+          "start": 73.5,
+          "end": 75.7,
+          "text": "You gonna shout it out\nUh Uh",
+          "sourceIds": [
+            "s1S-lnU-yMI-20"
+          ]
+        },
+        {
+          "start": 75.7,
+          "end": 77.3,
+          "text": "You gonna shout it out",
+          "sourceIds": [
+            "s1S-lnU-yMI-20-repeat"
+          ]
+        },
+        {
+          "start": 84.7,
+          "end": 86.4,
+          "text": "Do you wanna follow me",
+          "sourceIds": [
+            "s1S-lnU-yMI-22"
+          ]
+        },
+        {
+          "start": 88.4,
+          "end": 89.0,
+          "text": "Uh! Uh!",
+          "sourceIds": [
+            "s1S-lnU-yMI-23"
+          ]
+        },
+        {
+          "start": 92.7,
+          "end": 93.3,
+          "text": "Uh! Uh!",
+          "sourceIds": [
+            "s1S-lnU-yMI-26"
+          ]
+        },
+        {
+          "start": 96.6,
+          "end": 97.3,
+          "text": "빛 빛 빛",
+          "sourceIds": [
+            "s1S-lnU-yMI-28"
+          ]
+        },
+        {
+          "start": 98.7,
+          "end": 99.3,
+          "text": "scent of scene",
+          "sourceIds": [
+            "s1S-lnU-yMI-30"
+          ]
+        },
+        {
+          "start": 103.0,
+          "end": 103.6,
+          "text": "Flower",
+          "sourceIds": [
+            "s1S-lnU-yMI-34"
+          ]
+        },
+        {
+          "start": 104.3,
+          "end": 106.0,
+          "text": "Bararam bararam\nbararam (hey!)",
+          "sourceIds": [
+            "s1S-lnU-yMI-35"
+          ]
+        },
+        {
+          "start": 107.8,
+          "end": 108.4,
+          "text": "ride",
+          "sourceIds": [
+            "s1S-lnU-yMI-36"
+          ]
+        },
+        {
+          "start": 110.1,
+          "end": 110.7,
+          "text": "wow",
+          "sourceIds": [
+            "s1S-lnU-yMI-37"
+          ]
+        },
+        {
+          "start": 116.7,
+          "end": 117.3,
+          "text": "me",
+          "sourceIds": [
+            "s1S-lnU-yMI-40"
+          ]
+        },
+        {
+          "start": 118.9,
+          "end": 119.5,
+          "text": "Uh! Uh!",
+          "sourceIds": [
+            "s1S-lnU-yMI-41"
+          ]
+        },
+        {
+          "start": 122.3,
+          "end": 122.9,
+          "text": "UhUh",
+          "sourceIds": [
+            "s1S-lnU-yMI-44"
+          ]
+        },
+        {
+          "start": 123.3,
+          "end": 123.9,
+          "text": "UhUh",
+          "sourceIds": [
+            "s1S-lnU-yMI-45"
+          ]
+        },
+        {
+          "start": 126.1,
+          "end": 127.0,
+          "text": "Burning flower",
+          "sourceIds": [
+            "s1S-lnU-yMI-48"
+          ]
+        },
+        {
+          "start": 130.4,
+          "end": 131.7,
+          "text": "리! 센! 느!",
+          "sourceIds": [
+            "s1S-lnU-yMI-49"
+          ]
+        },
+        {
+          "start": 134.0,
+          "end": 134.8,
+          "text": "woo baby",
+          "sourceIds": [
+            "s1S-lnU-yMI-51"
+          ]
+        },
+        {
+          "start": 139.2,
+          "end": 141.4,
+          "text": "You gonna shout it out\nUh Uh",
+          "sourceIds": [
+            "s1S-lnU-yMI-53"
+          ]
+        },
+        {
+          "start": 141.4,
+          "end": 142.7,
+          "text": "You gonna shout it out",
+          "sourceIds": [
+            "s1S-lnU-yMI-53-repeat"
+          ]
+        },
+        {
+          "start": 150.0,
+          "end": 151.8,
+          "text": "Do you wanna follow me",
+          "sourceIds": [
+            "s1S-lnU-yMI-55"
+          ]
+        },
+        {
+          "start": 153.7,
+          "end": 155.4,
+          "text": "Uh! Uh!",
+          "sourceIds": [
+            "s1S-lnU-yMI-56"
+          ]
+        },
+        {
+          "start": 158.1,
+          "end": 158.7,
+          "text": "Uh! Uh!",
+          "sourceIds": [
+            "s1S-lnU-yMI-58"
+          ]
+        },
+        {
+          "start": 162.1,
+          "end": 162.9,
+          "text": "빛 빛 빛",
+          "sourceIds": [
+            "s1S-lnU-yMI-60"
+          ]
+        },
+        {
+          "start": 164.0,
+          "end": 164.6,
+          "text": "scent of scene",
+          "sourceIds": [
+            "s1S-lnU-yMI-61"
+          ]
+        },
+        {
+          "start": 168.4,
+          "end": 169.0,
+          "text": "Flower",
+          "sourceIds": [
+            "s1S-lnU-yMI-65"
+          ]
+        },
+        {
+          "start": 169.6,
+          "end": 171.4,
+          "text": "Bararam bararam\nbararam (hey!)",
+          "sourceIds": [
+            "s1S-lnU-yMI-66"
+          ]
+        },
+        {
+          "start": 173.2,
+          "end": 173.8,
+          "text": "ride",
+          "sourceIds": [
+            "s1S-lnU-yMI-67"
+          ]
+        },
+        {
+          "start": 175.4,
+          "end": 176.0,
+          "text": "wow",
+          "sourceIds": [
+            "s1S-lnU-yMI-68"
+          ]
+        },
+        {
+          "start": 177.5,
+          "end": 178.1,
+          "text": "Oh!",
+          "sourceIds": [
+            "s1S-lnU-yMI-69"
+          ]
+        },
+        {
+          "start": 182.0,
+          "end": 182.6,
+          "text": "me",
+          "sourceIds": [
+            "s1S-lnU-yMI-71"
+          ]
+        },
+        {
+          "start": 184.3,
+          "end": 184.9,
+          "text": "Uh! Uh!",
+          "sourceIds": [
+            "s1S-lnU-yMI-72"
+          ]
+        },
+        {
+          "start": 203.5,
+          "end": 204.3,
+          "text": "리! 센! 느!",
+          "sourceIds": [
+            "s1S-lnU-yMI-84"
+          ]
+        },
+        {
+          "start": 204.6,
+          "end": 207.8,
+          "text": "Uh Uh Uh Uh Uh\nUh Uh Uh Uh Uh",
+          "sourceIds": [
+            "s1S-lnU-yMI-86"
+          ]
+        },
+        {
+          "start": 209.6,
+          "end": 210.9,
+          "text": "Bararam bararam\nbararam (hey!)",
+          "sourceIds": [
+            "s1S-lnU-yMI-88"
+          ]
+        },
+        {
+          "start": 212.8,
+          "end": 213.4,
+          "text": "ride",
+          "sourceIds": [
+            "s1S-lnU-yMI-89"
+          ]
+        },
+        {
+          "start": 214.8,
+          "end": 215.4,
+          "text": "wow",
+          "sourceIds": [
+            "s1S-lnU-yMI-90"
+          ]
+        },
+        {
+          "start": 216.9,
+          "end": 217.5,
+          "text": "Oh!",
+          "sourceIds": [
+            "s1S-lnU-yMI-91"
+          ]
+        },
+        {
+          "start": 221.4,
+          "end": 222.0,
+          "text": "me",
+          "sourceIds": [
+            "s1S-lnU-yMI-93"
+          ]
+        },
+        {
+          "start": 222.1,
+          "end": 225.2,
+          "text": "Uh Uh Uh Uh Uh\nUh Uh Uh Uh Uh",
+          "sourceIds": [
+            "s1S-lnU-yMI-94"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "number": 4,
+    "title": "Pinball",
+    "artist": "RESCENE",
+    "section": "SCENEDROME",
+    "note": "官方應援教學 · 35 張提示卡 · 依畫面定位，聽校待完成",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "官方應援教學",
+        "title": "RESCENE (리센느) 'Pinball' 응원법 (Fanchant Guide)",
+        "url": "https://www.youtube.com/watch?v=YyixhiYpkkY",
+        "videoId": "YyixhiYpkkY"
+      }
+    ],
+    "chant": {
+      "videoId": "YyixhiYpkkY",
+      "status": "visual_checked_listening_pending",
+      "timingBasis": "caption",
+      "note": "只收錄官方畫面標記的應援文字；依變色或字幕出現定位，尚未逐句聽校。",
+      "cues": [
+        {
+          "start": 23.7,
+          "end": 25.9,
+          "text": "빠져들어 RESCENE!",
+          "sourceIds": [
+            "YyixhiYpkkY-178"
+          ]
+        },
+        {
+          "start": 32.6,
+          "end": 33.3,
+          "text": "떨려",
+          "sourceIds": [
+            "YyixhiYpkkY-181"
+          ]
+        },
+        {
+          "start": 35.6,
+          "end": 36.2,
+          "text": "Pinball",
+          "sourceIds": [
+            "YyixhiYpkkY-182"
+          ]
+        },
+        {
+          "start": 39.5,
+          "end": 40.1,
+          "text": "Play!",
+          "sourceIds": [
+            "YyixhiYpkkY-183"
+          ]
+        },
+        {
+          "start": 42.5,
+          "end": 43.1,
+          "text": "Wait!",
+          "sourceIds": [
+            "YyixhiYpkkY-184"
+          ]
+        },
+        {
+          "start": 47.6,
+          "end": 48.6,
+          "text": "down to play",
+          "sourceIds": [
+            "YyixhiYpkkY-187"
+          ]
+        },
+        {
+          "start": 49.2,
+          "end": 51.7,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "YyixhiYpkkY-188"
+          ]
+        },
+        {
+          "start": 58.4,
+          "end": 59.4,
+          "text": "nah nah",
+          "sourceIds": [
+            "YyixhiYpkkY-192"
+          ]
+        },
+        {
+          "start": 70.0,
+          "end": 70.8,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "YyixhiYpkkY-198"
+          ]
+        },
+        {
+          "start": 80.4,
+          "end": 81.0,
+          "text": "종일!",
+          "sourceIds": [
+            "YyixhiYpkkY-203"
+          ]
+        },
+        {
+          "start": 82.0,
+          "end": 82.6,
+          "text": "Pinball!",
+          "sourceIds": [
+            "YyixhiYpkkY-204"
+          ]
+        },
+        {
+          "start": 88.7,
+          "end": 89.3,
+          "text": "Oh oh!",
+          "sourceIds": [
+            "YyixhiYpkkY-207"
+          ]
+        },
+        {
+          "start": 91.5,
+          "end": 92.2,
+          "text": "Oh oh!",
+          "sourceIds": [
+            "YyixhiYpkkY-208"
+          ]
+        },
+        {
+          "start": 96.2,
+          "end": 96.8,
+          "text": "Flash yeah!",
+          "sourceIds": [
+            "YyixhiYpkkY-211"
+          ]
+        },
+        {
+          "start": 99.0,
+          "end": 99.7,
+          "text": "pass yeah!",
+          "sourceIds": [
+            "YyixhiYpkkY-213"
+          ]
+        },
+        {
+          "start": 104.0,
+          "end": 105.4,
+          "text": "Just like that babe",
+          "sourceIds": [
+            "YyixhiYpkkY-216"
+          ]
+        },
+        {
+          "start": 106.0,
+          "end": 108.1,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "YyixhiYpkkY-217"
+          ]
+        },
+        {
+          "start": 114.8,
+          "end": 115.8,
+          "text": "nah nah",
+          "sourceIds": [
+            "YyixhiYpkkY-221"
+          ]
+        },
+        {
+          "start": 126.4,
+          "end": 127.2,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "YyixhiYpkkY-227"
+          ]
+        },
+        {
+          "start": 136.8,
+          "end": 137.4,
+          "text": "종일!",
+          "sourceIds": [
+            "YyixhiYpkkY-232"
+          ]
+        },
+        {
+          "start": 138.4,
+          "end": 139.0,
+          "text": "Pinball!",
+          "sourceIds": [
+            "YyixhiYpkkY-233"
+          ]
+        },
+        {
+          "start": 149.2,
+          "end": 150.3,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "YyixhiYpkkY-237"
+          ]
+        },
+        {
+          "start": 152.0,
+          "end": 152.6,
+          "text": "Heartbeat",
+          "sourceIds": [
+            "YyixhiYpkkY-239"
+          ]
+        },
+        {
+          "start": 153.5,
+          "end": 154.1,
+          "text": "이지",
+          "sourceIds": [
+            "YyixhiYpkkY-240"
+          ]
+        },
+        {
+          "start": 155.6,
+          "end": 156.2,
+          "text": "Closer",
+          "sourceIds": [
+            "YyixhiYpkkY-242"
+          ]
+        },
+        {
+          "start": 159.6,
+          "end": 162.7,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "YyixhiYpkkY-244"
+          ]
+        },
+        {
+          "start": 173.1,
+          "end": 174.0,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "YyixhiYpkkY-250"
+          ]
+        },
+        {
+          "start": 183.0,
+          "end": 183.6,
+          "text": "RESCENE!",
+          "sourceIds": [
+            "YyixhiYpkkY-255"
+          ]
+        },
+        {
+          "start": 185.1,
+          "end": 185.7,
+          "text": "Pinball!",
+          "sourceIds": [
+            "YyixhiYpkkY-256"
+          ]
+        },
+        {
+          "start": 186.2,
+          "end": 187.5,
+          "text": "원이! 리브! 미나미!",
+          "sourceIds": [
+            "YyixhiYpkkY-257"
+          ]
+        },
+        {
+          "start": 193.2,
+          "end": 193.8,
+          "text": "또!",
+          "sourceIds": [
+            "YyixhiYpkkY-261"
+          ]
+        },
+        {
+          "start": 197.4,
+          "end": 199.4,
+          "text": "메이! 제나! 리마인!",
+          "sourceIds": [
+            "YyixhiYpkkY-264"
+          ]
+        },
+        {
+          "start": 205.9,
+          "end": 206.5,
+          "text": "종일!",
+          "sourceIds": [
+            "YyixhiYpkkY-267"
+          ]
+        },
+        {
+          "start": 207.7,
+          "end": 208.3,
+          "text": "Pinball!",
+          "sourceIds": [
+            "YyixhiYpkkY-268"
+          ]
+        },
+        {
+          "start": 209.5,
+          "end": 213.4,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "YyixhiYpkkY-269"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "number": 5,
+    "title": "Glow Up",
+    "artist": "RESCENE",
+    "section": "Glow Up",
+    "note": "官方應援教學 · 34 張提示卡 · 依畫面定位，聽校待完成",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "官方應援教學",
+        "title": "RESCENE (리센느) 'Glow Up' 응원법 (Fanchant Guide)",
+        "url": "https://www.youtube.com/watch?v=-55bUrG1qjg",
+        "videoId": "-55bUrG1qjg"
+      }
+    ],
+    "chant": {
+      "videoId": "-55bUrG1qjg",
+      "status": "visual_checked_listening_pending",
+      "timingBasis": "caption",
+      "note": "只收錄官方畫面標記的應援文字；依變色或字幕出現定位，尚未逐句聽校。",
+      "cues": [
+        {
+          "start": 35.1,
+          "end": 40.6,
+          "text": "원이 리브 미나미\n메이 제나 Glow Up!",
+          "sourceIds": [
+            "-55bUrG1qjg-22"
+          ]
+        },
+        {
+          "start": 45.0,
+          "end": 45.5,
+          "text": "yeah!",
+          "sourceIds": [
+            "-55bUrG1qjg-24"
+          ]
+        },
+        {
+          "start": 48.2,
+          "end": 49.1,
+          "text": "like like like",
+          "sourceIds": [
+            "-55bUrG1qjg-27"
+          ]
+        },
+        {
+          "start": 55.3,
+          "end": 56.2,
+          "text": "리마인!",
+          "sourceIds": [
+            "-55bUrG1qjg-30"
+          ]
+        },
+        {
+          "start": 64.3,
+          "end": 65.2,
+          "text": "가득해!",
+          "sourceIds": [
+            "-55bUrG1qjg-33"
+          ]
+        },
+        {
+          "start": 69.0,
+          "end": 70.3,
+          "text": "I",
+          "sourceIds": [
+            "-55bUrG1qjg-35"
+          ]
+        },
+        {
+          "start": 73.4,
+          "end": 74.1,
+          "text": "Baby",
+          "sourceIds": [
+            "-55bUrG1qjg-36"
+          ]
+        },
+        {
+          "start": 75.5,
+          "end": 76.3,
+          "text": "Lately",
+          "sourceIds": [
+            "-55bUrG1qjg-37"
+          ]
+        },
+        {
+          "start": 77.5,
+          "end": 78.2,
+          "text": "멀리",
+          "sourceIds": [
+            "-55bUrG1qjg-38"
+          ]
+        },
+        {
+          "start": 79.6,
+          "end": 81.0,
+          "text": "Keep up keep up keep up",
+          "sourceIds": [
+            "-55bUrG1qjg-39"
+          ]
+        },
+        {
+          "start": 82.1,
+          "end": 82.7,
+          "text": "더",
+          "sourceIds": [
+            "-55bUrG1qjg-40"
+          ]
+        },
+        {
+          "start": 84.3,
+          "end": 85.5,
+          "text": "I'm so curious",
+          "sourceIds": [
+            "-55bUrG1qjg-41"
+          ]
+        },
+        {
+          "start": 88.7,
+          "end": 89.7,
+          "text": "리센느!",
+          "sourceIds": [
+            "-55bUrG1qjg-43"
+          ]
+        },
+        {
+          "start": 91.3,
+          "end": 92.0,
+          "text": "Glow Up",
+          "sourceIds": [
+            "-55bUrG1qjg-44"
+          ]
+        },
+        {
+          "start": 97.4,
+          "end": 98.2,
+          "text": "Glow Up",
+          "sourceIds": [
+            "-55bUrG1qjg-45"
+          ]
+        },
+        {
+          "start": 99.4,
+          "end": 100.1,
+          "text": "Glow Up",
+          "sourceIds": [
+            "-55bUrG1qjg-46"
+          ]
+        },
+        {
+          "start": 106.2,
+          "end": 106.9,
+          "text": "너와 나",
+          "sourceIds": [
+            "-55bUrG1qjg-47"
+          ]
+        },
+        {
+          "start": 110.3,
+          "end": 111.2,
+          "text": "그 순간",
+          "sourceIds": [
+            "-55bUrG1qjg-49"
+          ]
+        },
+        {
+          "start": 115.3,
+          "end": 116.2,
+          "text": "Like it",
+          "sourceIds": [
+            "-55bUrG1qjg-51"
+          ]
+        },
+        {
+          "start": 117.4,
+          "end": 118.1,
+          "text": "Vibin’",
+          "sourceIds": [
+            "-55bUrG1qjg-52"
+          ]
+        },
+        {
+          "start": 129.6,
+          "end": 130.3,
+          "text": "뺏겼어!",
+          "sourceIds": [
+            "-55bUrG1qjg-58"
+          ]
+        },
+        {
+          "start": 138.5,
+          "end": 139.3,
+          "text": "Baby",
+          "sourceIds": [
+            "-55bUrG1qjg-61"
+          ]
+        },
+        {
+          "start": 140.6,
+          "end": 141.3,
+          "text": "Lately",
+          "sourceIds": [
+            "-55bUrG1qjg-62"
+          ]
+        },
+        {
+          "start": 142.6,
+          "end": 143.3,
+          "text": "멀리",
+          "sourceIds": [
+            "-55bUrG1qjg-63"
+          ]
+        },
+        {
+          "start": 144.8,
+          "end": 146.1,
+          "text": "Keep up keep up keep up",
+          "sourceIds": [
+            "-55bUrG1qjg-64"
+          ]
+        },
+        {
+          "start": 147.3,
+          "end": 147.9,
+          "text": "더",
+          "sourceIds": [
+            "-55bUrG1qjg-65"
+          ]
+        },
+        {
+          "start": 149.4,
+          "end": 150.7,
+          "text": "I'm so curious",
+          "sourceIds": [
+            "-55bUrG1qjg-66"
+          ]
+        },
+        {
+          "start": 153.9,
+          "end": 154.9,
+          "text": "리센느!",
+          "sourceIds": [
+            "-55bUrG1qjg-68"
+          ]
+        },
+        {
+          "start": 156.4,
+          "end": 157.1,
+          "text": "Glow Up",
+          "sourceIds": [
+            "-55bUrG1qjg-69"
+          ]
+        },
+        {
+          "start": 162.5,
+          "end": 163.2,
+          "text": "Glow Up",
+          "sourceIds": [
+            "-55bUrG1qjg-70"
+          ]
+        },
+        {
+          "start": 164.6,
+          "end": 165.2,
+          "text": "Glow Up",
+          "sourceIds": [
+            "-55bUrG1qjg-71"
+          ]
+        },
+        {
+          "start": 170.6,
+          "end": 171.3,
+          "text": "Glow Up",
+          "sourceIds": [
+            "-55bUrG1qjg-72"
+          ]
+        },
+        {
+          "start": 178.8,
+          "end": 180.1,
+          "text": "Glow Up",
+          "sourceIds": [
+            "-55bUrG1qjg-73-1"
+          ]
+        },
+        {
+          "start": 180.1,
+          "end": 182.9,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "-55bUrG1qjg-73-2"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "number": 6,
+    "title": "Deja Vu",
+    "artist": "RESCENE",
+    "section": "Dearest",
+    "note": "官方應援教學 · 46 張提示卡 · 依畫面定位，聽校待完成",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "官方應援教學",
+        "title": "RESCENE (리센느) 'Deja Vu' 응원법 (Fanchant Guide)",
+        "url": "https://www.youtube.com/watch?v=9FlQOv6-Mjc",
+        "videoId": "9FlQOv6-Mjc"
+      }
+    ],
+    "chant": {
+      "videoId": "9FlQOv6-Mjc",
+      "status": "visual_checked_listening_pending",
+      "timingBasis": "caption",
+      "note": "只收錄官方畫面標記的應援文字；依變色或字幕出現定位，尚未逐句聽校。",
+      "cues": [
+        {
+          "start": 64.9,
+          "end": 69.2,
+          "text": "원이 리브 미나미\n메이 제나",
+          "sourceIds": [
+            "9FlQOv6-Mjc-1"
+          ]
+        },
+        {
+          "start": 70.8,
+          "end": 72.4,
+          "text": "리센느 짱",
+          "sourceIds": [
+            "9FlQOv6-Mjc-3"
+          ]
+        },
+        {
+          "start": 75.4,
+          "end": 76.2,
+          "text": "I",
+          "sourceIds": [
+            "9FlQOv6-Mjc-5"
+          ]
+        },
+        {
+          "start": 79.2,
+          "end": 80.1,
+          "text": "light",
+          "sourceIds": [
+            "9FlQOv6-Mjc-6"
+          ]
+        },
+        {
+          "start": 82.7,
+          "end": 83.8,
+          "text": "그 향기에",
+          "sourceIds": [
+            "9FlQOv6-Mjc-7"
+          ]
+        },
+        {
+          "start": 86.6,
+          "end": 87.6,
+          "text": "Oh It's so bright",
+          "sourceIds": [
+            "9FlQOv6-Mjc-8"
+          ]
+        },
+        {
+          "start": 94.5,
+          "end": 95.4,
+          "text": "Deja vu!",
+          "sourceIds": [
+            "9FlQOv6-Mjc-10"
+          ]
+        },
+        {
+          "start": 98.9,
+          "end": 99.9,
+          "text": "after all",
+          "sourceIds": [
+            "9FlQOv6-Mjc-12"
+          ]
+        },
+        {
+          "start": 106.1,
+          "end": 107.0,
+          "text": "기억해줘",
+          "sourceIds": [
+            "9FlQOv6-Mjc-13"
+          ]
+        },
+        {
+          "start": 109.9,
+          "end": 110.8,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-14"
+          ]
+        },
+        {
+          "start": 112.3,
+          "end": 112.9,
+          "text": "WAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-15"
+          ]
+        },
+        {
+          "start": 114.1,
+          "end": 114.8,
+          "text": "YEAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-16"
+          ]
+        },
+        {
+          "start": 115.6,
+          "end": 116.5,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-17"
+          ]
+        },
+        {
+          "start": 116.6,
+          "end": 118.4,
+          "text": "Oh oh oh ha",
+          "sourceIds": [
+            "9FlQOv6-Mjc-18"
+          ]
+        },
+        {
+          "start": 121.4,
+          "end": 122.2,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-20"
+          ]
+        },
+        {
+          "start": 127.6,
+          "end": 128.2,
+          "text": "WAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-22"
+          ]
+        },
+        {
+          "start": 129.4,
+          "end": 130.0,
+          "text": "YEAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-23"
+          ]
+        },
+        {
+          "start": 130.9,
+          "end": 131.8,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-24"
+          ]
+        },
+        {
+          "start": 131.9,
+          "end": 133.7,
+          "text": "Oh oh oh ha",
+          "sourceIds": [
+            "9FlQOv6-Mjc-25"
+          ]
+        },
+        {
+          "start": 144.1,
+          "end": 145.3,
+          "text": "귀 기울여 봐",
+          "sourceIds": [
+            "9FlQOv6-Mjc-29"
+          ]
+        },
+        {
+          "start": 156.0,
+          "end": 156.9,
+          "text": "Deja vu!",
+          "sourceIds": [
+            "9FlQOv6-Mjc-32"
+          ]
+        },
+        {
+          "start": 160.3,
+          "end": 161.2,
+          "text": "after all",
+          "sourceIds": [
+            "9FlQOv6-Mjc-34"
+          ]
+        },
+        {
+          "start": 167.5,
+          "end": 168.4,
+          "text": "기억해줘",
+          "sourceIds": [
+            "9FlQOv6-Mjc-35"
+          ]
+        },
+        {
+          "start": 171.2,
+          "end": 172.1,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-36"
+          ]
+        },
+        {
+          "start": 173.6,
+          "end": 174.2,
+          "text": "WAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-37"
+          ]
+        },
+        {
+          "start": 175.4,
+          "end": 176.1,
+          "text": "YEAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-38"
+          ]
+        },
+        {
+          "start": 177.0,
+          "end": 177.9,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-39"
+          ]
+        },
+        {
+          "start": 178.0,
+          "end": 179.8,
+          "text": "Oh oh oh ha",
+          "sourceIds": [
+            "9FlQOv6-Mjc-40"
+          ]
+        },
+        {
+          "start": 182.7,
+          "end": 183.6,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-42"
+          ]
+        },
+        {
+          "start": 188.9,
+          "end": 189.5,
+          "text": "WAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-44"
+          ]
+        },
+        {
+          "start": 190.7,
+          "end": 191.5,
+          "text": "YEAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-45"
+          ]
+        },
+        {
+          "start": 192.3,
+          "end": 193.2,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-46"
+          ]
+        },
+        {
+          "start": 193.3,
+          "end": 195.1,
+          "text": "Oh oh oh ha",
+          "sourceIds": [
+            "9FlQOv6-Mjc-47"
+          ]
+        },
+        {
+          "start": 195.5,
+          "end": 196.9,
+          "text": "기억할게!",
+          "sourceIds": [
+            "9FlQOv6-Mjc-49"
+          ]
+        },
+        {
+          "start": 203.2,
+          "end": 204.8,
+          "text": "기억해줘!",
+          "sourceIds": [
+            "9FlQOv6-Mjc-51"
+          ]
+        },
+        {
+          "start": 219.4,
+          "end": 220.1,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-54"
+          ]
+        },
+        {
+          "start": 221.7,
+          "end": 222.3,
+          "text": "WAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-55"
+          ]
+        },
+        {
+          "start": 223.5,
+          "end": 224.2,
+          "text": "YEAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-56"
+          ]
+        },
+        {
+          "start": 225.0,
+          "end": 225.9,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-57"
+          ]
+        },
+        {
+          "start": 226.1,
+          "end": 227.8,
+          "text": "Oh oh oh ha",
+          "sourceIds": [
+            "9FlQOv6-Mjc-58"
+          ]
+        },
+        {
+          "start": 230.8,
+          "end": 231.6,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-60"
+          ]
+        },
+        {
+          "start": 237.0,
+          "end": 237.6,
+          "text": "WAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-62"
+          ]
+        },
+        {
+          "start": 238.8,
+          "end": 239.5,
+          "text": "YEAH～",
+          "sourceIds": [
+            "9FlQOv6-Mjc-63"
+          ]
+        },
+        {
+          "start": 240.3,
+          "end": 241.2,
+          "text": "deja vu",
+          "sourceIds": [
+            "9FlQOv6-Mjc-64"
+          ]
+        },
+        {
+          "start": 241.3,
+          "end": 243.2,
+          "text": "Oh oh oh ha",
+          "sourceIds": [
+            "9FlQOv6-Mjc-65-1"
+          ]
+        },
+        {
+          "start": 243.6,
+          "end": 248.9,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "9FlQOv6-Mjc-65-2"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "number": 7,
+    "title": "Heart Drop",
+    "artist": "RESCENE",
+    "section": "lip bomb",
+    "note": "官方應援教學 · 28 張提示卡 · 依畫面定位，聽校待完成",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "官方應援教學",
+        "title": "RESCENE (리센느) 'Heart Drop' 응원법 (Fanchant Guide)",
+        "url": "https://www.youtube.com/watch?v=VKlrVbgJG-g",
+        "videoId": "VKlrVbgJG-g"
+      }
+    ],
+    "chant": {
+      "videoId": "VKlrVbgJG-g",
+      "status": "visual_checked_listening_pending",
+      "timingBasis": "caption",
+      "note": "只收錄官方畫面標記的應援文字；依變色或字幕出現定位，尚未逐句聽校。",
+      "cues": [
+        {
+          "start": 42.8,
+          "end": 43.5,
+          "text": "heart drop",
+          "sourceIds": [
+            "VKlrVbgJG-g-6"
+          ]
+        },
+        {
+          "start": 49.9,
+          "end": 50.6,
+          "text": "heart drop",
+          "sourceIds": [
+            "VKlrVbgJG-g-10"
+          ]
+        },
+        {
+          "start": 53.1,
+          "end": 53.7,
+          "text": "리센느!",
+          "sourceIds": [
+            "VKlrVbgJG-g-11"
+          ]
+        },
+        {
+          "start": 57.5,
+          "end": 59.7,
+          "text": "Melt away, melt away",
+          "sourceIds": [
+            "VKlrVbgJG-g-13"
+          ]
+        },
+        {
+          "start": 64.7,
+          "end": 66.8,
+          "text": "Slip away, slip away",
+          "sourceIds": [
+            "VKlrVbgJG-g-15"
+          ]
+        },
+        {
+          "start": 70.3,
+          "end": 71.6,
+          "text": "Hypersonic",
+          "sourceIds": [
+            "VKlrVbgJG-g-16"
+          ]
+        },
+        {
+          "start": 77.5,
+          "end": 79.1,
+          "text": "느껴진 Delight",
+          "sourceIds": [
+            "VKlrVbgJG-g-18"
+          ]
+        },
+        {
+          "start": 85.5,
+          "end": 86.2,
+          "text": "heart drop",
+          "sourceIds": [
+            "VKlrVbgJG-g-21"
+          ]
+        },
+        {
+          "start": 92.6,
+          "end": 93.3,
+          "text": "heart drop",
+          "sourceIds": [
+            "VKlrVbgJG-g-25"
+          ]
+        },
+        {
+          "start": 100.3,
+          "end": 102.5,
+          "text": "빠져들어 리센느 사랑해!",
+          "sourceIds": [
+            "VKlrVbgJG-g-29"
+          ]
+        },
+        {
+          "start": 107.3,
+          "end": 108.9,
+          "text": "Can't stop, won't stop",
+          "sourceIds": [
+            "VKlrVbgJG-g-32"
+          ]
+        },
+        {
+          "start": 118.6,
+          "end": 119.2,
+          "text": "레",
+          "sourceIds": [
+            "VKlrVbgJG-g-38-1"
+          ]
+        },
+        {
+          "start": 119.9,
+          "end": 121.2,
+          "text": "끝도 없이",
+          "sourceIds": [
+            "VKlrVbgJG-g-38-2"
+          ]
+        },
+        {
+          "start": 122.2,
+          "end": 122.8,
+          "text": "게",
+          "sourceIds": [
+            "VKlrVbgJG-g-39-1"
+          ]
+        },
+        {
+          "start": 123.5,
+          "end": 124.8,
+          "text": "Melody에",
+          "sourceIds": [
+            "VKlrVbgJG-g-39-2"
+          ]
+        },
+        {
+          "start": 127.3,
+          "end": 128.8,
+          "text": "한 번 더 Delight",
+          "sourceIds": [
+            "VKlrVbgJG-g-40"
+          ]
+        },
+        {
+          "start": 135.3,
+          "end": 136.1,
+          "text": "heart drop",
+          "sourceIds": [
+            "VKlrVbgJG-g-43"
+          ]
+        },
+        {
+          "start": 142.4,
+          "end": 143.1,
+          "text": "heart drop",
+          "sourceIds": [
+            "VKlrVbgJG-g-47"
+          ]
+        },
+        {
+          "start": 150.0,
+          "end": 152.3,
+          "text": "빠져들어 리센느 사랑해!",
+          "sourceIds": [
+            "VKlrVbgJG-g-51"
+          ]
+        },
+        {
+          "start": 157.0,
+          "end": 158.7,
+          "text": "Can't stop, won't stop",
+          "sourceIds": [
+            "VKlrVbgJG-g-54"
+          ]
+        },
+        {
+          "start": 160.8,
+          "end": 162.5,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "VKlrVbgJG-g-56"
+          ]
+        },
+        {
+          "start": 173.1,
+          "end": 174.7,
+          "text": "잊지 못할 Heart drop",
+          "sourceIds": [
+            "VKlrVbgJG-g-61"
+          ]
+        },
+        {
+          "start": 178.6,
+          "end": 180.8,
+          "text": "빠져들어 리센느 사랑해!",
+          "sourceIds": [
+            "VKlrVbgJG-g-63"
+          ]
+        },
+        {
+          "start": 185.6,
+          "end": 187.3,
+          "text": "Can't stop, won't stop",
+          "sourceIds": [
+            "VKlrVbgJG-g-66"
+          ]
+        },
+        {
+          "start": 191.3,
+          "end": 192.2,
+          "text": "We can make your heart",
+          "sourceIds": [
+            "VKlrVbgJG-g-69"
+          ]
+        },
+        {
+          "start": 194.9,
+          "end": 195.9,
+          "text": "We can make your heart",
+          "sourceIds": [
+            "VKlrVbgJG-g-72"
+          ]
+        },
+        {
+          "start": 198.4,
+          "end": 199.3,
+          "text": "We can make your heart",
+          "sourceIds": [
+            "VKlrVbgJG-g-75"
+          ]
+        },
+        {
+          "start": 217.5,
+          "end": 220.7,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "VKlrVbgJG-g-85"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "number": 8,
+    "title": "Bloom",
+    "artist": "RESCENE",
+    "section": "lip bomb",
+    "note": "官方應援教學 · 30 張提示卡 · 依畫面定位，聽校待完成",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "官方應援教學",
+        "title": "RESCENE (리센느) 'Bloom' 응원법 (Fanchant Guide)",
+        "url": "https://www.youtube.com/watch?v=Ma6IENHO584",
+        "videoId": "Ma6IENHO584"
+      }
+    ],
+    "chant": {
+      "videoId": "Ma6IENHO584",
+      "status": "visual_checked_listening_pending",
+      "timingBasis": "caption",
+      "note": "只收錄官方畫面標記的應援文字；依變色或字幕出現定位，尚未逐句聽校。",
+      "cues": [
+        {
+          "start": 39.0,
+          "end": 39.6,
+          "text": "아",
+          "sourceIds": [
+            "Ma6IENHO584-5"
+          ]
+        },
+        {
+          "start": 41.3,
+          "end": 41.9,
+          "text": "난",
+          "sourceIds": [
+            "Ma6IENHO584-6"
+          ]
+        },
+        {
+          "start": 45.4,
+          "end": 46.0,
+          "text": "리센느!",
+          "sourceIds": [
+            "Ma6IENHO584-7"
+          ]
+        },
+        {
+          "start": 46.5,
+          "end": 47.1,
+          "text": "이젠",
+          "sourceIds": [
+            "Ma6IENHO584-8"
+          ]
+        },
+        {
+          "start": 48.8,
+          "end": 49.4,
+          "text": "내게",
+          "sourceIds": [
+            "Ma6IENHO584-9"
+          ]
+        },
+        {
+          "start": 63.1,
+          "end": 63.7,
+          "text": "날 깨워내",
+          "sourceIds": [
+            "Ma6IENHO584-15"
+          ]
+        },
+        {
+          "start": 74.0,
+          "end": 74.6,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-20"
+          ]
+        },
+        {
+          "start": 76.2,
+          "end": 76.8,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-21"
+          ]
+        },
+        {
+          "start": 78.4,
+          "end": 79.0,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-22"
+          ]
+        },
+        {
+          "start": 86.7,
+          "end": 87.3,
+          "text": "no",
+          "sourceIds": [
+            "Ma6IENHO584-25"
+          ]
+        },
+        {
+          "start": 89.0,
+          "end": 89.6,
+          "text": "slow",
+          "sourceIds": [
+            "Ma6IENHO584-26"
+          ]
+        },
+        {
+          "start": 97.2,
+          "end": 97.9,
+          "text": "널 위한 거야",
+          "sourceIds": [
+            "Ma6IENHO584-31"
+          ]
+        },
+        {
+          "start": 102.1,
+          "end": 102.7,
+          "text": "리센느!",
+          "sourceIds": [
+            "Ma6IENHO584-33"
+          ]
+        },
+        {
+          "start": 103.2,
+          "end": 103.8,
+          "text": "이젠",
+          "sourceIds": [
+            "Ma6IENHO584-34"
+          ]
+        },
+        {
+          "start": 105.5,
+          "end": 106.1,
+          "text": "내게",
+          "sourceIds": [
+            "Ma6IENHO584-35"
+          ]
+        },
+        {
+          "start": 119.9,
+          "end": 120.5,
+          "text": "날 깨워내",
+          "sourceIds": [
+            "Ma6IENHO584-41"
+          ]
+        },
+        {
+          "start": 130.7,
+          "end": 131.3,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-46"
+          ]
+        },
+        {
+          "start": 132.8,
+          "end": 133.4,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-47"
+          ]
+        },
+        {
+          "start": 135.1,
+          "end": 135.7,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-48"
+          ]
+        },
+        {
+          "start": 139.7,
+          "end": 141.9,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "Ma6IENHO584-50"
+          ]
+        },
+        {
+          "start": 155.3,
+          "end": 156.6,
+          "text": "너를 믿어 리센느!",
+          "sourceIds": [
+            "Ma6IENHO584-56"
+          ]
+        },
+        {
+          "start": 165.2,
+          "end": 165.8,
+          "text": "날 깨워내",
+          "sourceIds": [
+            "Ma6IENHO584-60"
+          ]
+        },
+        {
+          "start": 174.4,
+          "end": 175.0,
+          "text": "더 아름답게 피어나지",
+          "sourceIds": [
+            "Ma6IENHO584-64"
+          ]
+        },
+        {
+          "start": 175.9,
+          "end": 176.5,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-65"
+          ]
+        },
+        {
+          "start": 178.2,
+          "end": 178.8,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-66"
+          ]
+        },
+        {
+          "start": 180.4,
+          "end": 181.0,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-67"
+          ]
+        },
+        {
+          "start": 184.9,
+          "end": 185.5,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-69"
+          ]
+        },
+        {
+          "start": 187.2,
+          "end": 187.8,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-70"
+          ]
+        },
+        {
+          "start": 189.4,
+          "end": 190.0,
+          "text": "ah ah",
+          "sourceIds": [
+            "Ma6IENHO584-71"
+          ]
+        },
+        {
+          "start": 194.6,
+          "end": 197.7,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "Ma6IENHO584-73"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "number": 9,
+    "title": "Runaway",
+    "artist": "RESCENE",
+    "section": "Runaway",
+    "note": "官方應援教學 · 31 張提示卡 · 依畫面定位，聽校待完成",
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "官方應援教學",
+        "title": "RESCENE (리센느) 'Runaway' 응원법 (Fanchant Guide)",
+        "url": "https://www.youtube.com/watch?v=7DZlkZ4bMpU",
+        "videoId": "7DZlkZ4bMpU"
+      }
+    ],
+    "chant": {
+      "videoId": "7DZlkZ4bMpU",
+      "status": "visual_checked_listening_pending",
+      "timingBasis": "caption",
+      "note": "只收錄官方畫面標記的應援文字；依變色或字幕出現定位，尚未逐句聽校。",
+      "cues": [
+        {
+          "start": 39.7,
+          "end": 42.8,
+          "text": "원이 리브 미나미\n메이 제나",
+          "sourceIds": [
+            "7DZlkZ4bMpU-266"
+          ]
+        },
+        {
+          "start": 43.1,
+          "end": 45.2,
+          "text": "리센느 런!어!웨!이!",
+          "sourceIds": [
+            "7DZlkZ4bMpU-268"
+          ]
+        },
+        {
+          "start": 47.9,
+          "end": 49.2,
+          "text": "Neverland",
+          "sourceIds": [
+            "7DZlkZ4bMpU-270"
+          ]
+        },
+        {
+          "start": 53.7,
+          "end": 54.9,
+          "text": "Everyday",
+          "sourceIds": [
+            "7DZlkZ4bMpU-272"
+          ]
+        },
+        {
+          "start": 56.4,
+          "end": 57.4,
+          "text": "갈 수 없게",
+          "sourceIds": [
+            "7DZlkZ4bMpU-273"
+          ]
+        },
+        {
+          "start": 57.8,
+          "end": 58.8,
+          "text": "맴돌게 해",
+          "sourceIds": [
+            "7DZlkZ4bMpU-274"
+          ]
+        },
+        {
+          "start": 62.3,
+          "end": 63.0,
+          "text": "쳇바퀴",
+          "sourceIds": [
+            "7DZlkZ4bMpU-276"
+          ]
+        },
+        {
+          "start": 63.7,
+          "end": 64.4,
+          "text": "메아리",
+          "sourceIds": [
+            "7DZlkZ4bMpU-277"
+          ]
+        },
+        {
+          "start": 68.9,
+          "end": 69.4,
+          "text": "Heart",
+          "sourceIds": [
+            "7DZlkZ4bMpU-279"
+          ]
+        },
+        {
+          "start": 71.9,
+          "end": 73.2,
+          "text": "런!어!웨!이!",
+          "sourceIds": [
+            "7DZlkZ4bMpU-280"
+          ]
+        },
+        {
+          "start": 77.5,
+          "end": 78.6,
+          "text": "리!센!느!",
+          "sourceIds": [
+            "7DZlkZ4bMpU-282"
+          ]
+        },
+        {
+          "start": 88.6,
+          "end": 90.2,
+          "text": "I run away",
+          "sourceIds": [
+            "7DZlkZ4bMpU-287-1"
+          ]
+        },
+        {
+          "start": 90.5,
+          "end": 93.1,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "7DZlkZ4bMpU-287-2"
+          ]
+        },
+        {
+          "start": 93.3,
+          "end": 95.2,
+          "text": "끌!어!당!겨! 리!센!느!",
+          "sourceIds": [
+            "7DZlkZ4bMpU-289"
+          ]
+        },
+        {
+          "start": 100.8,
+          "end": 102.1,
+          "text": "날 두렵게 해",
+          "sourceIds": [
+            "7DZlkZ4bMpU-293"
+          ]
+        },
+        {
+          "start": 105.9,
+          "end": 107.0,
+          "text": "You and me",
+          "sourceIds": [
+            "7DZlkZ4bMpU-296"
+          ]
+        },
+        {
+          "start": 108.8,
+          "end": 109.9,
+          "text": "All night",
+          "sourceIds": [
+            "7DZlkZ4bMpU-299"
+          ]
+        },
+        {
+          "start": 117.1,
+          "end": 118.2,
+          "text": "가자～～",
+          "sourceIds": [
+            "7DZlkZ4bMpU-303"
+          ]
+        },
+        {
+          "start": 122.5,
+          "end": 123.9,
+          "text": "I run away",
+          "sourceIds": [
+            "7DZlkZ4bMpU-306"
+          ]
+        },
+        {
+          "start": 128.5,
+          "end": 129.6,
+          "text": "Hold my hand",
+          "sourceIds": [
+            "7DZlkZ4bMpU-308"
+          ]
+        },
+        {
+          "start": 139.5,
+          "end": 140.9,
+          "text": "I run away",
+          "sourceIds": [
+            "7DZlkZ4bMpU-313-1"
+          ]
+        },
+        {
+          "start": 141.3,
+          "end": 143.4,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "7DZlkZ4bMpU-313-2"
+          ]
+        },
+        {
+          "start": 146.6,
+          "end": 148.7,
+          "text": "I run, I run away",
+          "sourceIds": [
+            "7DZlkZ4bMpU-316"
+          ]
+        },
+        {
+          "start": 151.1,
+          "end": 152.3,
+          "text": "run away",
+          "sourceIds": [
+            "7DZlkZ4bMpU-318"
+          ]
+        },
+        {
+          "start": 163.9,
+          "end": 165.5,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "7DZlkZ4bMpU-325"
+          ]
+        },
+        {
+          "start": 167.6,
+          "end": 169.0,
+          "text": "I run away",
+          "sourceIds": [
+            "7DZlkZ4bMpU-326"
+          ]
+        },
+        {
+          "start": 173.3,
+          "end": 174.6,
+          "text": "I run I run",
+          "sourceIds": [
+            "7DZlkZ4bMpU-328"
+          ]
+        },
+        {
+          "start": 184.7,
+          "end": 186.2,
+          "text": "I run away",
+          "sourceIds": [
+            "7DZlkZ4bMpU-333"
+          ]
+        },
+        {
+          "start": 203.4,
+          "end": 206.1,
+          "text": "끌어당겨 넌 Now I run away",
+          "sourceIds": [
+            "7DZlkZ4bMpU-342"
+          ]
+        },
+        {
+          "start": 209.0,
+          "end": 211.4,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "7DZlkZ4bMpU-344"
+          ]
+        },
+        {
+          "start": 211.6,
+          "end": 214.1,
+          "text": "I run I run I runaway!",
+          "sourceIds": [
+            "7DZlkZ4bMpU-345"
+          ]
+        }
+      ]
+    }
   }
 ]

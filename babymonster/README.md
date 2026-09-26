@@ -6,20 +6,20 @@
 
 - 入口：`babymonster/index.html`，需透過 HTTP 靜態伺服器開啟
 - 歌單：[2026-06-28 Jamsil Arena](https://www.setlist.fm/setlist/babymonster/2026/jamsil-arena-seoul-south-korea-4376a3d7.html)，於 2026-09-24 核對
-- 28 個演出項目；不含 Ment / VCR，保留組曲、個人舞台、安可與重複版本
+- 30 個歌曲項目；第 15～17 項依序為 Stuck in the Middle、Love, Maybe、DREAM，分開列出；不含 Ment / VCR，保留個人舞台、安可與重複版本
 - `songs.json` 為獨立資料來源，收藏及偏好使用 `babymonster-practice` 儲存
 - WE GO UP 使用指定影片 `x4b_9YdhT8M`，播放範圍 00:31～03:40，已加入 50 張應援提示；依星號文字與綠色提示逐段核對，快速短句合併顯示，未加入一般歌詞或自製中文空耳
 - 提示時間依畫面暫定；已完成文字與 0.1 秒邊界畫面檢查，尚未完成全段聽校與 YouTube 實播驗證。證據、決策表及產生程式位於 `video/x4b_9YdhT8M/`
 - CHOOM 使用指定影片 `9DlDGxKQsDg`，播放範圍 00:30～03:25，已加入 37 張應援提示；依白字轉黃字標示核對，排除深藍色一般歌詞，短促 Choom 與後續 Watch out 合併顯示。已核對文字與 0.1 秒邊界候選，尚未完成全段聽校與 YouTube 實播驗證；證據位於 `video/9DlDGxKQsDg/`
 - BATTER UP（第 3 首）使用指定影片 `CRSVJA-dKWo`（艾倫Allen），已加入 34 張紅字應援提示；韓文提示保留原文與影片提供的羅馬字、中文／注音空耳，白色歌詞不納入。開場先在心中數兩個八拍
-- BATTER UP 原版已核對 8 張逐秒總覽及 204 張 0.1 秒邊界畫面；v2 以音訊詞語對齊修正 16 處行內接唱進入點，包含兩次 Move on、Monsters of the world、어디든，避免把整行字幕出現時間當成喊唱時間。完成模型交叉校時與狀態回歸測試，尚未完成全段聽校與 YouTube 實播驗證。原版證據與 v2 決策表、產生程式位於 `video/CRSVJA-dKWo/`；第 26 首 Encore Remix 保持待補
+- BATTER UP 原版已核對 8 張逐秒總覽及 204 張 0.1 秒邊界畫面；v2 以音訊詞語對齊修正 16 處行內接唱進入點，包含兩次 Move on、Monsters of the world、어디든，避免把整行字幕出現時間當成喊唱時間。完成模型交叉校時與狀態回歸測試，尚未完成全段聽校與 YouTube 實播驗證。原版證據與 v2 決策表、產生程式位於 `video/CRSVJA-dKWo/`；第 28 首 Encore Remix 保持待補
 - DRIP（第 4 首）使用指定影片 `X2GfGkH-3hg`，播放範圍 00:52～03:52，加入 42 張粉紅字應援提示；副歌七聲 Drip 只喊第 1、3、5、7 聲，保留握拳高舉指示。已核對全段逐秒畫面與 252 張邊界畫面，並以兩個模型輔助接唱校時；部分時間仍為暫定，尤其結尾第二組 Drip，尚未完成全段聽校與 YouTube 實播驗證。證據與決策表位於 `video/X2GfGkH-3hg/`
-- SUGAR HONEY ICE TEA（第 22 首）使用指定影片 `xN3X_tl4zlQ`，播放範圍 00:30～03:25，加入 55 張黃字應援提示；排除深紅色一般歌詞，保留兩次開場拼字，合併短句 this / You wish 與閃爍的結尾歡呼。已核對逐秒總覽及 216 張邊界候選畫面；01:31.5 的 yeah you know it 在來源中提早轉黃，時間依畫面暫定，尚未完成全段聽校與 YouTube 實播驗證。證據位於 `video/xN3X_tl4zlQ/`
+- SUGAR HONEY ICE TEA（第 24 首）使用指定影片 `xN3X_tl4zlQ`，播放範圍 00:30～03:25，加入 55 張黃字應援提示；排除深紅色一般歌詞，保留兩次開場拼字，合併短句 this / You wish 與閃爍的結尾歡呼。已核對逐秒總覽及 216 張邊界候選畫面；01:31.5 的 yeah you know it 在來源中提早轉黃，時間依畫面暫定，尚未完成全段聽校與 YouTube 實播驗證。證據位於 `video/xN3X_tl4zlQ/`
 - CLIK CLAK（第 6 首）播放 `S9JKTaTRQ1w`，於 02:54（174 秒）結束，應援內容來自 `X8XeiElkI34`；加入 49 段提示及 76 段字幕（48 段應援句、28 段一般歌詞）。字幕保留應援句的白色歌詞前後文，紅字應援部分改成黃色粗體，從字幕出現時就固定變色；自動疊在影片上，沒有字幕開關，一般歌詞以全白字顯示，來源沒有字幕時才隱藏。結尾歡呼另留在大字提示中
 - CLIK CLAK 已核對逐秒總覽、49 段紅字及 196 張 0.1 秒邊界畫面，另查 10 張邊界細節；16 個音訊比對視窗的偏移為 -0.02～-0.03 秒，統一對齊 -0.03 秒。提示以字幕畫面時段為準，標示「本句應援」，尚未校準各字開口點或完成全段聽校。原始資產、決策表、產生程式及 QA 位於 `video/X8XeiElkI34/`
 - 疊加字幕使用 `subtitles.js`，綁定播放影片 ID，以播放器時間更新；暫停保留、拖曳重算、切歌與結束清空，文字以 DOM textContent 安全顯示。一般影片操作不受圖層阻擋；支援 Element Fullscreen 的瀏覽器另提供「全螢幕（含字幕）」與退出按鈕，YouTube 自身的影片全螢幕不包含網頁字幕層
 - 其餘歌曲的影片來源與逐句應援提示待補，`hasChant` 仍為 false
-- HOT SAUCE（第 21 首）使用指定 `wBHKLsujSNA`，播放範圍 00:28～02:53，加入 32 張紅字應援提示。每組快速 Hot / sauce 合成一張，三輪共 12 組分開；結尾四次 Hot sauce 各自保留，白字歌詞不納入。lemonade、remedy、fire like this、vibe like this 依火焰提示進入，避免整行字幕出現時提早啟動。
+- HOT SAUCE（第 23 首）使用指定 `wBHKLsujSNA`，播放範圍 00:28～02:53，加入 32 張紅字應援提示。每組快速 Hot / sauce 合成一張，三輪共 12 組分開；結尾四次 Hot sauce 各自保留，白字歌詞不納入。lemonade、remedy、fire like this、vibe like this 依火焰提示進入，避免整行字幕出現時提早啟動。
 - HOT SAUCE 已核對全片逐秒上方字幕總覽、360 張 0.1 秒邊界候選畫面及 108 張細查畫面。時間依紅字與火焰動畫暫定，尚未完成全段人工聽校與 YouTube 實播同步驗收；來源、決策表、產生器及 QA 位於 `video/wBHKLsujSNA/`。
 - `share-cover.png` 為使用者提供的 640 × 1126 ASIA & OCEANIA 新海報原檔
 - Pages 打包包含本目錄的網站資產，不包含 README
@@ -28,7 +28,7 @@
 
 - CLIK CLAK 提示校時 v2：全數 49 段來源提示經 large-v3、medium 及 CTC 模型交叉比對，拆成 57 個進入點，修正行內接唱提早啟動及分開的重複回應；啟動時顯示「現在喊！」。76 段字幕與固定黃字、02:54 播放終點保持不變。校時決策與生成器位於 `video/X8XeiElkI34/timing-review.v2.json`、`build_chant_v2.py`；這是全段模型輔助校時，尚未完成全段人工聽校，不能視為聽感驗收
 
-- SHEESH（第 7 首）播放指定 `QHf-2xSJzYE`，歌詞與應援來自 `cvQv225_Bs0`；70 段字幕、27 段紅字應援提示。一般歌詞白色、應援字從字幕出現時即固定黃色粗體，來源空白處隱藏；相連的 High 與 Baby! Monster! 提示合併。第 27 首維持原狀
+- SHEESH（第 7 首）播放指定 `QHf-2xSJzYE`，歌詞與應援來自 `cvQv225_Bs0`；70 段字幕、27 段紅字應援提示。一般歌詞白色、應援字從字幕出現時即固定黃色粗體，來源空白處隱藏；相連的 High 與 Baby! Monster! 提示合併。第 29 首維持原狀
 - SHEESH 已核對全段 0.1 秒畫面變化、70 段文字與 280 張邊界畫面；14 個完整音訊視窗一致支持延後 3.65～3.68 秒，套用 +3.66 秒。來源 130～140 秒的局部音訊比對存在歧義，沿用前後一致偏移，不另猜測局部校時。提示依字幕時段標為「本句應援」，尚未逐字校準行內接唱或完成全段人工聽校、YouTube 實播同步驗收；原始影片、決策表、生成器與 QA 位於 `video/cvQv225_Bs0/`
 
 - SHEESH 提示校時 v2：27 段全部重新檢查，以 large-v3、medium 與英／韓 CTC 交叉證據修正 21 個進入點；`축복`、`춤춰`、`boom, boom, pow` 分別延後 1.071、0.869、0.670 秒，排除前面普通歌詞。6 段保留來源標記：額外 Baby! Monster! 呼喊，以及模型仍有分歧的短 Sheesh、High、兩次拼字與 Let’s go；保留項目仍待聽校。提示切換為「現在喊！」，70 段字幕及固定黃字不變。決策及生成器：`video/cvQv225_Bs0/timing-review.v2.json`、`build_chant_v2.py`。已做模型證據審核，尚未完成全段人工聽校與 YouTube 實播同步驗收
@@ -36,5 +36,5 @@
 - MOON（第 5 首）播放指定 `jfqBPlcBGtE`，使用官方 `453459?cd=cheer` 應援表，加入 94 段歌詞字幕與 38 張應援提示。103 行英文／韓文歌詞完整保留，快速饒舌相鄰短行合併，排除日文讀音；一般歌詞白字、紅色應援改為固定黃色粗體，句中 thickens / vision / digger / figure 另按接唱字進入，四次 If you wanna ride 分開顯示。影片連結不含 si、官方來源不含 ima。
 - MOON 已全表人工核對文字與紅字，使用 large-v3、medium 強制對齊及英文 CTC 輔助檢查。部分模型邊界差異仍超過 0.4 秒，時間為暫定，尚未完成全段人工聽校與 YouTube 實播同步驗收。原圖、影片、原始 ASR、對齊結果、決策表、QA 及產生器位於 `video/jfqBPlcBGtE/`。
 
-- Really Like You（第 17 首）播放指定 `x5iLrIZ7YPY`（MCOUNTDOWN 2026.2.5 FanCam）；依使用者上傳的官方應援表加入 75 段韓文／英文字幕與 36 段應援提示。一般歌詞白字、紅字固定黃色粗體，開場四句只顯示歌詞；日文讀音與日文歡呼註記不納入。三次副歌、三次 Okay okay／Hey 分開，moonlight 只標示 light。
+- Really Like You（第 19 首）播放指定 `x5iLrIZ7YPY`（MCOUNTDOWN 2026.2.5 FanCam）；依使用者上傳的官方應援表加入 75 段韓文／英文字幕與 36 段應援提示。一般歌詞白字、紅字固定黃色粗體，開場四句只顯示歌詞；日文讀音與日文歡呼註記不納入。三次副歌、三次 Okay okay／Hey 分開，moonlight 只標示 light。
 - Really Like You 已逐行核對文字與紅字、完成 large-v3／medium 強制對齊及英韓 CTC 輔助檢查，保留完整影片。時間仍為暫定，尤其前兩次 light 與結尾 Hey；尚未完成全段人工聽校及 YouTube 實播同步驗收。來源圖、影片、校時證據、決策表及產生器位於 `video/x5iLrIZ7YPY/`。

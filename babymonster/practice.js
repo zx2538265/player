@@ -7,10 +7,14 @@ let preferences = {}, favorites = new Set();
 try {
   const stored = JSON.parse(localStorage.getItem('babymonster-practice') || '{}');
   if (stored && typeof stored === 'object') preferences = stored;
-  if (Array.isArray(preferences.favorites)) favorites = new Set(preferences.favorites.filter(Number.isInteger));
+  if (Array.isArray(preferences.favorites)) {
+    const saved = preferences.favorites.filter(Number.isInteger);
+    favorites = new Set(preferences.catalogVersion === 2 ? saved : saved.flatMap(number =>
+      number === 15 ? [15, 16, 17] : [number > 15 ? number + 2 : number]));
+  }
 } catch { /* Storage may be unavailable in private browsing. */ }
 function savePreferences() {
-  try { localStorage.setItem('babymonster-practice', JSON.stringify({...preferences, favorites:[...favorites]})); } catch {}
+  try { localStorage.setItem('babymonster-practice', JSON.stringify({...preferences, catalogVersion:2, favorites:[...favorites]})); } catch {}
 }
 function updateContinuousStatus() {
   $('continuousStatus').textContent = $('loopCue').checked ? '單句循環中，暫不接續下一首' : $('continuous').checked ? '播完自動接下一首' : '已關閉連續播放';
@@ -263,7 +267,7 @@ $('seek').oninput = () => {if(ready) manualSeek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').value); savePreferences(); player.setPlaybackRate(preferences.speed); }};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20260926-forever-chant').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20260926-split-medley').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   songs = data;
   songs.forEach((song,index) => {
     const option = document.createElement('option'); option.value = index; option.textContent = `${String(song.number).padStart(2,'0')} · ${song.title} / ${song.artist}`; $('songSelect').append(option);

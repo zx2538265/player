@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const songs = require('../babymonster/songs.json');
 const Chant = require('../babymonster/chant.js');
 const Subtitles = require('../babymonster/subtitles.js');
-const song = songs.find(s => s.number === 17);
+const song = songs.find(s => s.number === 19);
 test('Really Like You binds supplied video and validates both tracks', () => {
  assert.equal(song.sources[0].videoId,'x5iLrIZ7YPY');
  assert.equal(song.sources[0].url,'https://www.youtube.com/watch?v=x5iLrIZ7YPY');

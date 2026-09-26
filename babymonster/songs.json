@@ -4332,16 +4332,16 @@
   },
   {
     "number": 15,
-    "title": "Stuck in the Middle / Love, Maybe / DREAM",
+    "title": "Stuck in the Middle",
     "artist": "BABYMONSTER",
     "section": "Act 3",
     "hasChant": false,
     "sources": [],
-    "note": "組曲；應援影片與逐句提示待補"
+    "note": "應援影片與逐句提示待補"
   },
   {
     "number": 16,
-    "title": "LOCKED IN",
+    "title": "Love, Maybe",
     "artist": "BABYMONSTER",
     "section": "Act 3",
     "hasChant": false,
@@ -4350,6 +4350,24 @@
   },
   {
     "number": 17,
+    "title": "DREAM",
+    "artist": "BABYMONSTER",
+    "section": "Act 3",
+    "hasChant": false,
+    "sources": [],
+    "note": "應援影片與逐句提示待補"
+  },
+  {
+    "number": 18,
+    "title": "LOCKED IN",
+    "artist": "BABYMONSTER",
+    "section": "Act 3",
+    "hasChant": false,
+    "sources": [],
+    "note": "應援影片與逐句提示待補"
+  },
+  {
+    "number": 19,
     "title": "Really Like You",
     "artist": "BABYMONSTER",
     "section": "Act 3",
@@ -5414,7 +5432,7 @@
     }
   },
   {
-    "number": 18,
+    "number": 20,
     "title": "BILLIONAIRE",
     "artist": "BABYMONSTER",
     "section": "Act 3",
@@ -5423,7 +5441,7 @@
     "note": "應援影片與逐句提示待補"
   },
   {
-    "number": 19,
+    "number": 21,
     "title": "FOREVER",
     "artist": "BABYMONSTER",
     "section": "Act 3",
@@ -5586,7 +5604,7 @@
     }
   },
   {
-    "number": 20,
+    "number": 22,
     "title": "WILD",
     "artist": "BABYMONSTER",
     "section": "Act 3",
@@ -5595,7 +5613,7 @@
     "note": "應援影片與逐句提示待補"
   },
   {
-    "number": 21,
+    "number": 23,
     "title": "HOT SAUCE",
     "artist": "BABYMONSTER",
     "section": "Act 3",
@@ -5779,7 +5797,7 @@
     }
   },
   {
-    "number": 22,
+    "number": 24,
     "title": "SUGAR HONEY ICE TEA",
     "artist": "BABYMONSTER",
     "section": "Act 3",
@@ -6078,7 +6096,7 @@
     }
   },
   {
-    "number": 23,
+    "number": 25,
     "title": "I LIKE IT",
     "artist": "BABYMONSTER",
     "section": "Act 3",
@@ -6087,7 +6105,7 @@
     "note": "應援影片與逐句提示待補"
   },
   {
-    "number": 24,
+    "number": 26,
     "title": "SUPA DUPA LUV",
     "artist": "BABYMONSTER",
     "section": "Encore",
@@ -6096,7 +6114,7 @@
     "note": "應援影片與逐句提示待補"
   },
   {
-    "number": 25,
+    "number": 27,
     "title": "Love in My Heart",
     "artist": "BABYMONSTER",
     "section": "Encore",
@@ -6105,7 +6123,7 @@
     "note": "應援影片與逐句提示待補"
   },
   {
-    "number": 26,
+    "number": 28,
     "title": "BATTER UP",
     "artist": "BABYMONSTER",
     "section": "Encore",
@@ -6114,7 +6132,7 @@
     "note": "Remix；應援影片與逐句提示待補"
   },
   {
-    "number": 27,
+    "number": 29,
     "title": "SHEESH",
     "artist": "BABYMONSTER",
     "section": "Encore",
@@ -6123,7 +6141,7 @@
     "note": "Remix；應援影片與逐句提示待補"
   },
   {
-    "number": 28,
+    "number": 30,
     "title": "I LIKE IT",
     "artist": "BABYMONSTER",
     "section": "Encore",

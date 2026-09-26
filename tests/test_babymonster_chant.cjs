@@ -13,11 +13,11 @@ test('WE GO UP is bound to the requested source and segment', () => {
   assert.equal(Chant.validTrack(track, 'other-source'), false);
   assert.equal(track.cues.length, 50);
   assert.ok(track.cues.every(c => c.start >= 31 && c.end <= 220));
-  assert.ok(songs.slice(4).filter(s => ![5,6,7,17,19,21,22].includes(s.number)).every(s => !s.hasChant && !s.chant));
+  assert.ok(songs.slice(4).filter(s => ![5,6,7,19,21,23,24].includes(s.number)).every(s => !s.hasChant && !s.chant));
 });
 
 test('HOT SAUCE follows flame entrances and preserves each response group', () => {
-  const song = songs.find(s => s.number === 21), track = song.chant;
+  const song = songs.find(s => s.number === 23), track = song.chant;
   assert.equal(song.hasChant, true);
   assert.equal(song.sources[0].videoId, 'wBHKLsujSNA');
   assert.deepEqual([song.sources[0].startSeconds, song.sources[0].endSeconds], [28,173]);
@@ -106,7 +106,7 @@ test('BATTER UP uses the confirmed source and only its red chant text', () => {
   assert.equal(track.cues.filter(c => c.text === '（歡呼）').length, 5);
   assert.equal(track.cues.filter(c => c.text === 'BABYMONSTER Batter Up').length, 4);
   assert.deepEqual(track.cues.at(-1), {start:186.7,end:189,text:'（歡呼）'});
-  const encore = songs.find(s => s.number === 26);
+  const encore = songs.find(s => s.number === 28);
   assert.equal(encore.hasChant, false);
   assert.deepEqual(encore.sources, []);
   assert.equal(encore.chant, undefined);
@@ -150,7 +150,7 @@ test('DRIP binds its pink-only prompts to the requested 00:52–03:52 source', (
 });
 
 test('SUGAR HONEY ICE TEA preserves source bounds and highlighted response words', () => {
-  const song = songs.find(s => s.number === 22), track = song.chant;
+  const song = songs.find(s => s.number === 24), track = song.chant;
   assert.equal(song.hasChant, true);
   assert.equal(song.sources[0].videoId, 'xN3X_tl4zlQ');
   assert.deepEqual([song.sources[0].startSeconds, song.sources[0].endSeconds], [30,205]);

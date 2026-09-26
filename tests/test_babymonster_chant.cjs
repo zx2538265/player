@@ -140,3 +140,49 @@ test('SUGAR HONEY ICE TEA preserves source bounds and highlighted response words
   assert.deepEqual(track.cues.at(-1), {start:203.4,end:205,text:'（歡呼）'});
   assert.notEqual(Chant.state(track,205,1,1).mode, 'active');
 });
+
+test('SHEESH enters inline responses after ordinary lyric prefixes', () => {
+  const song = songs.find(s => s.number === 7), track = song.chant;
+  assert.equal(track.timingBasis, 'word-aligned');
+  assert.equal(track.videoId, 'QHf-2xSJzYE');
+  assert.equal(track.sourceVideoId, 'cvQv225_Bs0');
+  assert.equal(track.cues.length, 27);
+  for (const [before, during, text] of [[55.6,56.45,'축복'],[57.5,58.15,'춤춰'],[59.3,59.85,'boom, boom, pow']]) {
+    assert.notEqual(Chant.state(track,before,1).mode,'active');
+    const active = Chant.state(track,during,1);
+    assert.equal(active.mode,'active');
+    assert.equal(active.label,'現在喊！');
+    assert.equal(active.text,text);
+  }
+  const Subtitles = require('../babymonster/subtitles.js');
+  assert.equal(song.subtitles.cues.length,70);
+  const caption = Subtitles.at(song.subtitles,55.6,1);
+  assert.equal(caption.parts[0].text,'이건 네 귀에 줄 ');
+  assert.equal(caption.parts[0].chant,false);
+  assert.equal(caption.parts[1].text,'축복');
+  assert.equal(caption.parts[1].chant,true);
+});
+
+test('SHEESH corrected entries support pause, replay, countdown rate and exclusive exits', () => {
+  const track = songs.find(s => s.number === 7).chant;
+  assert.equal(Chant.validTrack(track,'QHf-2xSJzYE'),true);
+  assert.equal(Chant.validTrack(track,'cvQv225_Bs0'),false);
+  for (const cue of track.cues) {
+    assert.equal(Chant.state(track,cue.start,1).text,cue.text);
+    assert.equal(Chant.state(track,cue.start,1).mode,'active');
+    assert.equal(Chant.state(track,cue.start,2).mode,'paused');
+    assert.equal(Chant.state(track,cue.start,2).text,cue.text);
+    const atEnd = Chant.state(track,cue.end,1);
+    const next = track.cues.find(c=>c.start===cue.end);
+    if (next) {
+      assert.equal(atEnd.mode,'active');
+      assert.equal(atEnd.text,next.text);
+    } else {
+      assert.notEqual(atEnd.mode,'active');
+    }
+  }
+  const cue = track.cues.find(c=>c.text==='축복');
+  assert.equal(Chant.state(track,cue.start-1.5,1,1).count,'2');
+  assert.equal(Chant.state(track,cue.start-1.5,1,0.5).count,'3');
+  assert.equal(songs.find(s=>s.number===27).hasChant,false);
+});

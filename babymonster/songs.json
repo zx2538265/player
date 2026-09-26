@@ -2203,7 +2203,6 @@
       ]
     }
   },
-
   {
     "number": 7,
     "title": "SHEESH",
@@ -2227,46 +2226,46 @@
     "chant": {
       "videoId": "QHf-2xSJzYE",
       "sourceVideoId": "cvQv225_Bs0",
-      "timingBasis": "caption",
-      "note": "只收錄指定教學紅字；提示依來源字幕時段，音訊比對後整體延後 3.66 秒。行內接唱尚未逐字校準，提示標為「本句應援」；尚未完成全段人工聽校。",
+      "timingBasis": "word-aligned",
+      "note": "27 段提示已重新核對，21 個進入點依語音模型交叉證據修正，特別排除句尾接唱前的普通歌詞；6 段保留來源標記，其中 Baby! Monster! 為額外觀眾呼喊指示，其餘模型仍有分歧。字幕時間與黃字範圍不變；尚未完成全段人工聽校與 YouTube 實播同步驗收。",
       "cues": [
         {
-          "start": 8.96,
+          "start": 8.823,
           "end": 10.56,
           "text": "Baby, I’ma monster"
         },
         {
-          "start": 36.66,
+          "start": 36.683,
           "end": 37.96,
           "text": "Got them all going"
         },
         {
-          "start": 37.96,
+          "start": 37.985,
           "end": 43.26,
           "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah"
         },
         {
-          "start": 44.86,
+          "start": 44.752,
           "end": 50.16,
           "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah"
         },
         {
-          "start": 50.16,
+          "start": 50.358,
           "end": 51.86,
           "text": "Got them all going"
         },
         {
-          "start": 55.36,
+          "start": 56.431,
           "end": 57.26,
           "text": "축복"
         },
         {
-          "start": 57.26,
+          "start": 58.129,
           "end": 59.16,
           "text": "춤춰"
         },
         {
-          "start": 59.16,
+          "start": 59.83,
           "end": 60.86,
           "text": "boom, boom, pow"
         },
@@ -2281,22 +2280,22 @@
           "text": "High, high, high, high"
         },
         {
-          "start": 94.66,
+          "start": 94.964,
           "end": 95.96,
           "text": "Got them all going"
         },
         {
-          "start": 95.96,
+          "start": 96.265,
           "end": 101.26,
           "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah"
         },
         {
-          "start": 102.86,
+          "start": 103.072,
           "end": 108.16,
           "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah"
         },
         {
-          "start": 108.16,
+          "start": 108.658,
           "end": 109.86,
           "text": "Got them all going"
         },
@@ -2306,17 +2305,17 @@
           "text": "(Baby! Monster!)"
         },
         {
-          "start": 124.36,
+          "start": 124.525,
           "end": 125.86,
           "text": "올라가 올라가 더"
         },
         {
-          "start": 125.86,
+          "start": 126.246,
           "end": 127.66,
           "text": "꼭대기 꼭대기로"
         },
         {
-          "start": 127.66,
+          "start": 127.966,
           "end": 129.36,
           "text": "하늘 위 하늘 위로"
         },
@@ -2332,36 +2331,36 @@
         },
         {
           "start": 155.16,
-          "end": 156.26,
+          "end": 155.982,
           "text": "Let’s go"
         },
         {
-          "start": 156.26,
-          "end": 158.06,
+          "start": 155.982,
+          "end": 157.965,
           "text": "Jump, jump and let it go"
         },
         {
-          "start": 158.06,
+          "start": 157.965,
           "end": 159.66,
           "text": "Watch out, we on a roll"
         },
         {
-          "start": 159.66,
+          "start": 159.707,
           "end": 161.66,
           "text": "Rum, pump, pump, pump\nit up then"
         },
         {
-          "start": 163.06,
-          "end": 164.86,
+          "start": 162.822,
+          "end": 164.814,
           "text": "Jump, jump and let it go"
         },
         {
-          "start": 164.86,
+          "start": 164.814,
           "end": 166.56,
           "text": "Watch out, we on a roll"
         },
         {
-          "start": 166.56,
+          "start": 166.576,
           "end": 168.56,
           "text": "Rum, pump, pump, pump\nit up then"
         }
@@ -3095,7 +3094,6 @@
       ]
     }
   },
-
   {
     "number": 8,
     "title": "PSYCHO",

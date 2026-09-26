@@ -17,6 +17,8 @@
 - CLIK CLAK 已核對逐秒總覽、49 段紅字及 196 張 0.1 秒邊界畫面，另查 10 張邊界細節；16 個音訊比對視窗的偏移為 -0.02～-0.03 秒，統一對齊 -0.03 秒。提示以字幕畫面時段為準，標示「本句應援」，尚未校準各字開口點或完成全段聽校。原始資產、決策表、產生程式及 QA 位於 `video/X8XeiElkI34/`
 - 疊加字幕使用 `subtitles.js`，綁定播放影片 ID，以播放器時間更新；暫停保留、拖曳重算、切歌與結束清空，文字以 DOM textContent 安全顯示。一般影片操作不受圖層阻擋；支援 Element Fullscreen 的瀏覽器另提供「全螢幕（含字幕）」與退出按鈕，YouTube 自身的影片全螢幕不包含網頁字幕層
 - 其餘歌曲的影片來源與逐句應援提示待補，`hasChant` 仍為 false
+- HOT SAUCE（第 21 首）使用指定 `wBHKLsujSNA`，播放範圍 00:28～02:53，加入 32 張紅字應援提示。每組快速 Hot / sauce 合成一張，三輪共 12 組分開；結尾四次 Hot sauce 各自保留，白字歌詞不納入。lemonade、remedy、fire like this、vibe like this 依火焰提示進入，避免整行字幕出現時提早啟動。
+- HOT SAUCE 已核對全片逐秒上方字幕總覽、360 張 0.1 秒邊界候選畫面及 108 張細查畫面。時間依紅字與火焰動畫暫定，尚未完成全段人工聽校與 YouTube 實播同步驗收；來源、決策表、產生器及 QA 位於 `video/wBHKLsujSNA/`。
 - `share-cover.png` 為使用者提供的 640 × 1126 ASIA & OCEANIA 新海報原檔
 - Pages 打包包含本目錄的網站資產，不包含 README
 

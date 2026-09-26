@@ -13,7 +13,38 @@ test('WE GO UP is bound to the requested source and segment', () => {
   assert.equal(Chant.validTrack(track, 'other-source'), false);
   assert.equal(track.cues.length, 50);
   assert.ok(track.cues.every(c => c.start >= 31 && c.end <= 220));
-  assert.ok(songs.slice(4).filter(s => ![5,6,7,17,22].includes(s.number)).every(s => !s.hasChant && !s.chant));
+  assert.ok(songs.slice(4).filter(s => ![5,6,7,17,21,22].includes(s.number)).every(s => !s.hasChant && !s.chant));
+});
+
+test('HOT SAUCE follows flame entrances and preserves each response group', () => {
+  const song = songs.find(s => s.number === 21), track = song.chant;
+  assert.equal(song.hasChant, true);
+  assert.equal(song.sources[0].videoId, 'wBHKLsujSNA');
+  assert.deepEqual([song.sources[0].startSeconds, song.sources[0].endSeconds], [28,173]);
+  assert.equal(Chant.validTrack(track, 'wBHKLsujSNA'), true);
+  assert.equal(Chant.validTrack(track, 'another-source'), false);
+  assert.equal(track.cues.length, 32);
+  assert.equal(track.cues.filter(c => c.text === 'Hot / sauce').length, 12);
+  assert.equal(track.cues.filter(c => c.text === 'Hot sauce').length, 4);
+  for (const [captionStart, entrance, text] of [
+    [37.4,37.9,'Hot / sauce'], [44.4,45.2,'Hot / sauce'],
+    [98.8,99.2,'lemonade'], [99.7,100.2,'remedy'],
+    [102.4,103.3,'fire like this'], [104.3,105.1,'vibe like this'],
+  ]) {
+    assert.notEqual(Chant.state(track,captionStart,1).mode,'active');
+    assert.equal(Chant.state(track,entrance,1).text,text);
+  }
+  for (const gap of [39.3,46.6,82.6,89.9,125.9,133.2,157.5,160.8,164.8,168.2])
+    assert.notEqual(Chant.state(track,gap,1).mode,'active');
+  const text = track.cues.map(c => c.text).join('\n');
+  for (const lyric of ['Everybody want some','Think you need a','Too hot hot','Yeah BABYMONSTER got that'])
+    assert.ok(!text.includes(lyric));
+  assert.equal(track.cues[26].text,'BABYMONSTER girls got that\nwoo woo');
+  for (const [i,cue] of track.cues.entries()) {
+    assert.ok(28 <= cue.start && cue.start < cue.end && cue.end <= 173);
+    assert.ok(i === 0 || track.cues[i-1].end <= cue.start);
+  }
+  assert.notEqual(Chant.state(track,173,1).mode,'active');
 });
 
 test('CHOOM uses the requested segment and highlighted chants only', () => {

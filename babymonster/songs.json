@@ -5445,9 +5445,184 @@
     "title": "HOT SAUCE",
     "artist": "BABYMONSTER",
     "section": "Act 3",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援教學",
+        "url": "https://www.youtube.com/watch?v=wBHKLsujSNA",
+        "title": "HOT SAUCE 官方應援教學（00:28～02:53）",
+        "videoId": "wBHKLsujSNA",
+        "startSeconds": 28,
+        "endSeconds": 173
+      }
+    ],
+    "note": "播放範圍 00:28～02:53；依指定影片製作 32 張紅字應援提示",
+    "chant": {
+      "videoId": "wBHKLsujSNA",
+      "note": "依指定影片紅字與火焰進入點整理；每組 Hot / sauce 合併顯示，12 組各自保留。白字歌詞不納入，行內接唱依火焰標記延後啟動。時間依畫面暫定，尚未完成全段人工聽校與 YouTube 實播同步驗收。",
+      "cues": [
+        {
+          "start": 30.2,
+          "end": 31.8,
+          "text": "Fire go higher"
+        },
+        {
+          "start": 31.8,
+          "end": 33.9,
+          "text": "Wherever we are"
+        },
+        {
+          "start": 33.9,
+          "end": 37.4,
+          "text": "BABYMONSTER girls got that\nwoo woo ah"
+        },
+        {
+          "start": 37.9,
+          "end": 39.2,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 39.8,
+          "end": 41.1,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 45.2,
+          "end": 46.5,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 47.0,
+          "end": 48.3,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 55.5,
+          "end": 57.1,
+          "text": "B.A.B.Y.M.O.N"
+        },
+        {
+          "start": 71.6,
+          "end": 73.6,
+          "text": "BABYMONSTER bring the party"
+        },
+        {
+          "start": 81.2,
+          "end": 82.5,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 83.0,
+          "end": 84.3,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 88.4,
+          "end": 89.9,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 90.3,
+          "end": 91.5,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 99.2,
+          "end": 99.7,
+          "text": "lemonade"
+        },
+        {
+          "start": 100.2,
+          "end": 100.6,
+          "text": "remedy"
+        },
+        {
+          "start": 103.3,
+          "end": 104.3,
+          "text": "fire like this"
+        },
+        {
+          "start": 105.1,
+          "end": 106.0,
+          "text": "vibe like this"
+        },
+        {
+          "start": 124.5,
+          "end": 125.8,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 126.3,
+          "end": 127.6,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 131.7,
+          "end": 133.1,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 133.6,
+          "end": 134.9,
+          "text": "Hot / sauce"
+        },
+        {
+          "start": 140.4,
+          "end": 141.8,
+          "text": "Fire go higher"
+        },
+        {
+          "start": 141.8,
+          "end": 143.9,
+          "text": "Wherever we are"
+        },
+        {
+          "start": 143.9,
+          "end": 147.5,
+          "text": "BABYMONSTER girls got that\nwoo woo ah"
+        },
+        {
+          "start": 147.5,
+          "end": 149.0,
+          "text": "Fire go higher"
+        },
+        {
+          "start": 149.0,
+          "end": 151.1,
+          "text": "Wherever we are"
+        },
+        {
+          "start": 151.1,
+          "end": 154.8,
+          "text": "BABYMONSTER girls got that\nwoo woo"
+        },
+        {
+          "start": 154.8,
+          "end": 157.1,
+          "text": "Hot sauce"
+        },
+        {
+          "start": 158.4,
+          "end": 160.4,
+          "text": "Hot sauce"
+        },
+        {
+          "start": 162.0,
+          "end": 164.4,
+          "text": "Hot sauce"
+        },
+        {
+          "start": 165.6,
+          "end": 167.7,
+          "text": "Hot sauce"
+        },
+        {
+          "start": 169.4,
+          "end": 173.0,
+          "text": "（歡呼）"
+        }
+      ]
+    }
   },
   {
     "number": 22,

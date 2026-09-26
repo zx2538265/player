@@ -22,16 +22,36 @@ test('explicit error advances; slow loading and blocked autoplay do not',async()
 test('disable during loading cancels autoplay and stale callbacks cannot advance',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].emit(0);s.get('continuous').checked=false;s.get('continuous').onchange();s.players[1].ready();assert.equal(s.players[1].plays,0);s.players[0].options.events.onError();assert.equal(s.players.length,2)});
 
 
-test('RESCENE catalog starts with Pretty Girl and has no unverified chant cues', async()=>{
+test('RESCENE catalog binds all nine guides to their visual chant tracks', async()=>{
   const catalog=require('../rescene/songs.json');
   assert.equal(catalog[0].title,'Pretty Girl');
+  assert.equal(catalog.length,9);
+  assert.deepEqual(catalog.map(song=>song.sources[0].videoId),['RX592yMx7P0','xn12KH78Dx4','s1S-lnU-yMI','YyixhiYpkkY','-55bUrG1qjg','9FlQOv6-Mjc','VKlrVbgJG-g','Ma6IENHO584','7DZlkZ4bMpU']);
   const s=await setup(catalog);s.players[0].ready();
-  assert.equal(s.get('chantEnabled').disabled,true);
-  assert.equal(s.get('chantDisplay').hidden,true);
-  assert.equal(s.get('loopCue').disabled,true);
-  assert.equal(s.players[0].options.videoId,'qZlu2j2SiBA');
+  assert.equal(s.get('chantEnabled').disabled,false);
+  assert.equal(s.get('chantDisplay').hidden,false);
+  assert.equal(s.get('loopCue').disabled,false);
+  assert.equal(s.players[0].options.videoId,'RX592yMx7P0');
   s.enable();s.players[0].emit(0);s.players[1].ready();
-  assert.equal(s.players[1].options.videoId,'9XttLI0oH0I');
+  assert.equal(s.players[1].options.videoId,'xn12KH78Dx4');
   assert.equal(s.players[1].plays,1);
-  assert.ok(catalog.every(song=>!song.hasChant && !song.chant && !song.subtitles));
+  const chant=require('../rescene/chant.js');
+  assert.ok(catalog.every(song=>song.hasChant && chant.validTrack(song.chant,song.sources[0].videoId)));
+});
+
+test('real cards follow seek, pause, speed, repeat and source switching',async()=>{
+  const catalog=require('../rescene/songs.json'), s=await setup(catalog), p=s.players[0];
+  p.ready(); const cue=catalog[0].chant.cues[0];
+  p.time=cue.start;p.emit(1);s.tick();
+  assert.equal(s.get('chantText').textContent,cue.text);
+  assert.equal(s.get('chantDisplay').dataset.mode,'active');
+  p.emit(2);s.tick();assert.equal(s.get('chantLabel').textContent,'已暫停');
+  p.time=cue.start-4;p.rate=2;p.emit(1);s.tick();
+  assert.equal(s.get('chantCount').textContent,'2');
+  s.get('repeatCue').onclick();assert.equal(p.time,cue.start-3);
+  s.get('loopCue').checked=true;s.get('loopCue').onchange();
+  p.time=cue.end+.1;s.tick();assert.equal(p.time,cue.start-3);
+  s.select(2);const next=s.players[1];next.ready();
+  assert.equal(next.options.videoId,'s1S-lnU-yMI');
+  assert.equal(s.get('chantText').textContent,catalog[2].chant.cues[0].text);
 });

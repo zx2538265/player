@@ -913,9 +913,1182 @@
     "title": "MOON",
     "artist": "BABYMONSTER",
     "section": "Act 1",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "舞台影片",
+        "url": "https://www.youtube.com/watch?v=jfqBPlcBGtE",
+        "title": "MOON · MBC Show! Music Core FullCam",
+        "videoId": "jfqBPlcBGtE",
+        "endSeconds": 183
+      },
+      {
+        "kind": "官方應援表",
+        "url": "https://babymonster-official.jp/s/ygbm/diary/detail/453459?cd=cheer",
+        "title": "MOON 官方應援方法"
+      }
+    ],
+    "note": "依官方應援表整理，保留英文與韓文、排除日文讀音；一般歌詞白字，紅字應援改為黃色粗體。時間經模型輔助對齊，部分進入點仍待人工聽校與 YouTube 實播確認。",
+    "chant": {
+      "videoId": "jfqBPlcBGtE",
+      "sourceUrl": "https://babymonster-official.jp/s/ygbm/diary/detail/453459?cd=cheer",
+      "timingBasis": "word-aligned",
+      "note": "依官方應援表整理，保留英文與韓文、排除日文讀音；一般歌詞白字，紅字應援改為黃色粗體。時間經模型輔助對齊，部分進入點仍待人工聽校與 YouTube 實播確認。",
+      "cues": [
+        {
+          "start": 6.24,
+          "end": 7.23,
+          "text": "I'm the moon"
+        },
+        {
+          "start": 10.39,
+          "end": 12.59,
+          "text": "Zalabim zalabam zalaboom"
+        },
+        {
+          "start": 15.13,
+          "end": 17.07,
+          "text": "I'm the moon, I'm the moon, I'm the moon"
+        },
+        {
+          "start": 18.03,
+          "end": 18.65,
+          "text": "thickens"
+        },
+        {
+          "start": 19.21,
+          "end": 19.67,
+          "text": "vision"
+        },
+        {
+          "start": 23.37,
+          "end": 23.79,
+          "text": "digger"
+        },
+        {
+          "start": 24.39,
+          "end": 24.83,
+          "text": "figure"
+        },
+        {
+          "start": 37.95,
+          "end": 39.33,
+          "text": "까만 밤 빛이나"
+        },
+        {
+          "start": 39.33,
+          "end": 40.81,
+          "text": "진짜가 나타나"
+        },
+        {
+          "start": 43.55,
+          "end": 44.77,
+          "text": "거울아 거울아"
+        },
+        {
+          "start": 44.77,
+          "end": 45.87,
+          "text": "말해봐 알잖아"
+        },
+        {
+          "start": 48.22,
+          "end": 49.07,
+          "text": "I'm the moon"
+        },
+        {
+          "start": 52.15,
+          "end": 54.31,
+          "text": "Zalabim zalabam zalaboom"
+        },
+        {
+          "start": 56.83,
+          "end": 58.77,
+          "text": "I'm the moon, I'm the moon, I'm the moon"
+        },
+        {
+          "start": 58.77,
+          "end": 59.55,
+          "text": "I'm the moon"
+        },
+        {
+          "start": 62.45,
+          "end": 64.93,
+          "text": "Zalabim zalabam zalaboom"
+        },
+        {
+          "start": 67.33,
+          "end": 69.25,
+          "text": "I'm the moon, I'm the moon, I'm the moon"
+        },
+        {
+          "start": 70.04,
+          "end": 71.53,
+          "text": "Charismatic, energetic"
+        },
+        {
+          "start": 71.53,
+          "end": 72.79,
+          "text": "It's a habit"
+        },
+        {
+          "start": 95.55,
+          "end": 96.77,
+          "text": "까만 밤 빛이나"
+        },
+        {
+          "start": 96.77,
+          "end": 98.09,
+          "text": "진짜가 나타나"
+        },
+        {
+          "start": 100.91,
+          "end": 102.13,
+          "text": "거울아 거울아"
+        },
+        {
+          "start": 102.13,
+          "end": 103.27,
+          "text": "말해봐 알잖아"
+        },
+        {
+          "start": 105.76,
+          "end": 106.43,
+          "text": "I'm the moon"
+        },
+        {
+          "start": 109.65,
+          "end": 111.69,
+          "text": "Zalabim zalabam zalaboom"
+        },
+        {
+          "start": 114.23,
+          "end": 116.17,
+          "text": "I'm the moon, I'm the moon, I'm the moon"
+        },
+        {
+          "start": 116.17,
+          "end": 116.93,
+          "text": "I'm the moon"
+        },
+        {
+          "start": 119.95,
+          "end": 122.37,
+          "text": "Zalabim zalabam zalaboom"
+        },
+        {
+          "start": 124.69,
+          "end": 126.67,
+          "text": "I'm the moon, I'm the moon, I'm the moon"
+        },
+        {
+          "start": 132.03,
+          "end": 133.45,
+          "text": "If you wanna ride"
+        },
+        {
+          "start": 133.45,
+          "end": 134.47,
+          "text": "If you wanna ride"
+        },
+        {
+          "start": 134.47,
+          "end": 136.13,
+          "text": "If you wanna ride"
+        },
+        {
+          "start": 136.13,
+          "end": 137.63,
+          "text": "If you wanna ride, let's ride"
+        },
+        {
+          "start": 153.05,
+          "end": 155.57,
+          "text": "Hut 1, 2 hut 1, 2, 3"
+        },
+        {
+          "start": 155.57,
+          "end": 158.17,
+          "text": "All eyes, all eyes on me"
+        },
+        {
+          "start": 163.51,
+          "end": 166.15,
+          "text": "Hut 1, 2 hut 1, 2, 3"
+        },
+        {
+          "start": 166.15,
+          "end": 168.61,
+          "text": "All eyes, all eyes on me"
+        },
+        {
+          "start": 169.5,
+          "end": 174.0,
+          "text": "（歡呼）"
+        }
+      ]
+    },
+    "subtitles": {
+      "videoId": "jfqBPlcBGtE",
+      "sourceUrl": "https://babymonster-official.jp/s/ygbm/diary/detail/453459?cd=cheer",
+      "cues": [
+        {
+          "start": 6.24,
+          "end": 7.23,
+          "parts": [
+            {
+              "text": "I'm the moon",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 7.23,
+          "end": 10.03,
+          "parts": [
+            {
+              "text": "보름달 뜨는 밤 On the loose",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 10.39,
+          "end": 12.59,
+          "parts": [
+            {
+              "text": "Zalabim zalabam zalaboom",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 12.59,
+          "end": 15.13,
+          "parts": [
+            {
+              "text": "I shine so bright in the gloom",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 15.13,
+          "end": 17.07,
+          "parts": [
+            {
+              "text": "I'm the moon, I'm the moon, I'm the moon",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 17.07,
+          "end": 18.65,
+          "parts": [
+            {
+              "text": "Fog ",
+              "chant": false
+            },
+            {
+              "text": "thickens",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 18.65,
+          "end": 19.67,
+          "parts": [
+            {
+              "text": "Night ",
+              "chant": false
+            },
+            {
+              "text": "vision",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 19.67,
+          "end": 22.35,
+          "parts": [
+            {
+              "text": "Where we gonna end up is unwritten",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 22.35,
+          "end": 23.79,
+          "parts": [
+            {
+              "text": "Grave ",
+              "chant": false
+            },
+            {
+              "text": "digger",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 23.79,
+          "end": 24.83,
+          "parts": [
+            {
+              "text": "Go ",
+              "chant": false
+            },
+            {
+              "text": "figure",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 24.83,
+          "end": 26.75,
+          "parts": [
+            {
+              "text": "But if you're killing my mood",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 26.75,
+          "end": 27.69,
+          "parts": [
+            {
+              "text": "Good riddance",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 27.69,
+          "end": 29.11,
+          "parts": [
+            {
+              "text": "Ice in my veins",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 29.11,
+          "end": 31.75,
+          "parts": [
+            {
+              "text": "You're gonna need to keep up with the pace",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 31.75,
+          "end": 32.95,
+          "parts": [
+            {
+              "text": "더 빨리 더 높이",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 32.95,
+          "end": 35.11,
+          "parts": [
+            {
+              "text": "When you, when you, when you at the crack of dawn",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 35.11,
+          "end": 36.35,
+          "parts": [
+            {
+              "text": "You keep on raving on",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 36.35,
+          "end": 37.87,
+          "parts": [
+            {
+              "text": "You keep on raving on uh",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 37.95,
+          "end": 39.33,
+          "parts": [
+            {
+              "text": "까만 밤 빛이나",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 39.33,
+          "end": 40.81,
+          "parts": [
+            {
+              "text": "진짜가 나타나",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 40.81,
+          "end": 42.07,
+          "parts": [
+            {
+              "text": "세상을 불태워라",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 42.07,
+          "end": 43.55,
+          "parts": [
+            {
+              "text": "(Baby do you see me now)",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 43.55,
+          "end": 44.77,
+          "parts": [
+            {
+              "text": "거울아 거울아",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 44.77,
+          "end": 45.87,
+          "parts": [
+            {
+              "text": "말해봐 알잖아",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 45.87,
+          "end": 47.57,
+          "parts": [
+            {
+              "text": "In your heart, leave a mark",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 48.22,
+          "end": 49.07,
+          "parts": [
+            {
+              "text": "I'm the moon",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 49.07,
+          "end": 51.91,
+          "parts": [
+            {
+              "text": "보름달 뜨는 밤 On the loose",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 52.15,
+          "end": 54.31,
+          "parts": [
+            {
+              "text": "Zalabim zalabam zalaboom",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 54.31,
+          "end": 56.83,
+          "parts": [
+            {
+              "text": "I'm the queen of the tide and the youth",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 56.83,
+          "end": 58.77,
+          "parts": [
+            {
+              "text": "I'm the moon, I'm the moon, I'm the moon",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 58.77,
+          "end": 59.55,
+          "parts": [
+            {
+              "text": "I'm the moon",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 59.55,
+          "end": 62.31,
+          "parts": [
+            {
+              "text": "보름달 뜨는 밤 On the loose",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 62.45,
+          "end": 64.93,
+          "parts": [
+            {
+              "text": "Zalabim zalabam zalaboom",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 64.93,
+          "end": 67.33,
+          "parts": [
+            {
+              "text": "I'm the queen of the tide and the youth",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 67.33,
+          "end": 69.37,
+          "parts": [
+            {
+              "text": "I'm the moon, I'm the moon, I'm the moon",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 70.04,
+          "end": 71.53,
+          "parts": [
+            {
+              "text": "Charismatic, energetic",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 71.53,
+          "end": 72.79,
+          "parts": [
+            {
+              "text": "It's a habit",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 72.79,
+          "end": 74.39,
+          "parts": [
+            {
+              "text": "Oh she stuntin', she stuntin'",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 74.39,
+          "end": 75.73,
+          "parts": [
+            {
+              "text": "I'm in a spaceship coupe",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 75.73,
+          "end": 77.13,
+          "parts": [
+            {
+              "text": "We 'bout to take off",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 77.13,
+          "end": 78.31,
+          "parts": [
+            {
+              "text": "Leave 'em in the dust",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 78.31,
+          "end": 79.45,
+          "parts": [
+            {
+              "text": "Yeah see you later",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 79.45,
+          "end": 80.95,
+          "parts": [
+            {
+              "text": "Outta this world",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 80.95,
+          "end": 82.13,
+          "parts": [
+            {
+              "text": "I'm off the radar",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 82.13,
+          "end": 84.87,
+          "parts": [
+            {
+              "text": "You wish on a star that you had these bars",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 84.87,
+          "end": 86.07,
+          "parts": [
+            {
+              "text": "I whoosh / Gettin' that ah",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 86.07,
+          "end": 87.41,
+          "parts": [
+            {
+              "text": "When we go strut in like woah",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 87.41,
+          "end": 88.73,
+          "parts": [
+            {
+              "text": "Setting on hot / That's what we got",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 88.73,
+          "end": 90.03,
+          "parts": [
+            {
+              "text": "That's how we baking that dough",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 90.03,
+          "end": 91.35,
+          "parts": [
+            {
+              "text": "Lock and we load / Shoot for the stars",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 91.35,
+          "end": 92.69,
+          "parts": [
+            {
+              "text": "We in the sky / Raising the bar",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 92.69,
+          "end": 93.99,
+          "parts": [
+            {
+              "text": "Eyes on the prize / Shining my light",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 93.99,
+          "end": 95.55,
+          "parts": [
+            {
+              "text": "Ready get set / S.O.S / When I flex",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 95.55,
+          "end": 96.77,
+          "parts": [
+            {
+              "text": "까만 밤 빛이나",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 96.77,
+          "end": 98.09,
+          "parts": [
+            {
+              "text": "진짜가 나타나",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 98.09,
+          "end": 99.51,
+          "parts": [
+            {
+              "text": "세상을 불태워라",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 99.51,
+          "end": 100.91,
+          "parts": [
+            {
+              "text": "(Baby do you see me now)",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 100.91,
+          "end": 102.13,
+          "parts": [
+            {
+              "text": "거울아 거울아",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 102.13,
+          "end": 103.27,
+          "parts": [
+            {
+              "text": "말해봐 알잖아",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 103.27,
+          "end": 104.91,
+          "parts": [
+            {
+              "text": "In your heart, leave a mark",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 105.76,
+          "end": 106.43,
+          "parts": [
+            {
+              "text": "I'm the moon",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 106.43,
+          "end": 109.27,
+          "parts": [
+            {
+              "text": "보름달 뜨는 밤 On the loose",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 109.65,
+          "end": 111.69,
+          "parts": [
+            {
+              "text": "Zalabim zalabam zalaboom",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 111.69,
+          "end": 114.23,
+          "parts": [
+            {
+              "text": "I'm the queen of the tide and the youth",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 114.23,
+          "end": 116.17,
+          "parts": [
+            {
+              "text": "I'm the moon, I'm the moon, I'm the moon",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 116.17,
+          "end": 116.93,
+          "parts": [
+            {
+              "text": "I'm the moon",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 116.93,
+          "end": 119.75,
+          "parts": [
+            {
+              "text": "보름달 뜨는 밤 On the loose",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 119.95,
+          "end": 122.37,
+          "parts": [
+            {
+              "text": "Zalabim zalabam zalaboom",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 122.37,
+          "end": 124.69,
+          "parts": [
+            {
+              "text": "I'm the queen of the tide and the youth",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 124.69,
+          "end": 126.67,
+          "parts": [
+            {
+              "text": "I'm the moon, I'm the moon, I'm the moon",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 126.67,
+          "end": 127.87,
+          "parts": [
+            {
+              "text": "하늘을 봐",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 127.87,
+          "end": 129.51,
+          "parts": [
+            {
+              "text": "We gonna shine bright",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 129.51,
+          "end": 130.61,
+          "parts": [
+            {
+              "text": "내 길을 가",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 130.61,
+          "end": 132.03,
+          "parts": [
+            {
+              "text": "Baby it's our time",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 132.03,
+          "end": 133.45,
+          "parts": [
+            {
+              "text": "If you wanna ride",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 133.45,
+          "end": 134.47,
+          "parts": [
+            {
+              "text": "If you wanna ride",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 134.47,
+          "end": 136.13,
+          "parts": [
+            {
+              "text": "If you wanna ride",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 136.13,
+          "end": 137.63,
+          "parts": [
+            {
+              "text": "If you wanna ride, let's ride",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 137.63,
+          "end": 138.15,
+          "parts": [
+            {
+              "text": "Give 'em all in",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 138.15,
+          "end": 139.35,
+          "parts": [
+            {
+              "text": "Give 'em all out",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 139.35,
+          "end": 140.21,
+          "parts": [
+            {
+              "text": "Give 'em all a show / Ride let's ride",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 140.21,
+          "end": 141.35,
+          "parts": [
+            {
+              "text": "Give 'em all in / Give 'em all out",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 141.35,
+          "end": 142.21,
+          "parts": [
+            {
+              "text": "Give 'em all that woah",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 142.21,
+          "end": 143.55,
+          "parts": [
+            {
+              "text": "Baby I'mma glow",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 143.55,
+          "end": 144.53,
+          "parts": [
+            {
+              "text": "It's about to blow",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 144.53,
+          "end": 145.65,
+          "parts": [
+            {
+              "text": "They don't even know",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 147.15,
+          "end": 150.59,
+          "parts": [
+            {
+              "text": "Outta this world, we be taking off, get in",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 150.59,
+          "end": 153.05,
+          "parts": [
+            {
+              "text": "Look at me, I'mma need your attention",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 153.05,
+          "end": 155.57,
+          "parts": [
+            {
+              "text": "Hut 1, 2 hut 1, 2, 3",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 155.57,
+          "end": 158.17,
+          "parts": [
+            {
+              "text": "All eyes, all eyes on me",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 158.17,
+          "end": 161.05,
+          "parts": [
+            {
+              "text": "Outta this world, we be taking off, get in",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 161.05,
+          "end": 163.51,
+          "parts": [
+            {
+              "text": "Look at me, I'mma need your attention",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 163.51,
+          "end": 166.15,
+          "parts": [
+            {
+              "text": "Hut 1, 2 hut 1, 2, 3",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 166.15,
+          "end": 168.73,
+          "parts": [
+            {
+              "text": "All eyes, all eyes on me",
+              "chant": true
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "number": 6,

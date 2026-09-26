@@ -5427,9 +5427,163 @@
     "title": "FOREVER",
     "artist": "BABYMONSTER",
     "section": "Act 3",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援教學",
+        "url": "https://www.youtube.com/watch?v=6qGzeS2zfOk",
+        "title": "FOREVER Fanchant Guide（Moon Light／非官方）",
+        "videoId": "6qGzeS2zfOk"
+      }
+    ],
+    "note": "依指定 Moon Light 影片製作 28 張藍字應援與拍手提示",
+    "chant": {
+      "videoId": "6qGzeS2zfOk",
+      "timingBasis": "caption",
+      "note": "依影片藍字、拍手圖示與結尾歡呼整理；黑字歌詞不納入。提示依字幕畫面時段顯示「本句應援」，句中接喊尚未逐字校準；尚未完成全段人工聽校與 YouTube 實播同步驗證。",
+      "cues": [
+        {
+          "start": 6.4,
+          "end": 9.7,
+          "text": "ok ok ok"
+        },
+        {
+          "start": 11.8,
+          "end": 13.3,
+          "text": "BABYMONSTER"
+        },
+        {
+          "start": 17.5,
+          "end": 20.5,
+          "text": "bye bye bye"
+        },
+        {
+          "start": 26,
+          "end": 27.9,
+          "text": "（拍手 ×4）"
+        },
+        {
+          "start": 34,
+          "end": 35.7,
+          "text": "타고났지 Like this"
+        },
+        {
+          "start": 46.4,
+          "end": 48.2,
+          "text": "Ooh ooh ooh ooh ooh ooh\n（拍手 ×4）"
+        },
+        {
+          "start": 48.2,
+          "end": 50,
+          "text": "Ooh ooh ooh ooh ay\n（拍手 ×4）"
+        },
+        {
+          "start": 72.2,
+          "end": 75.8,
+          "text": "Forever"
+        },
+        {
+          "start": 75.8,
+          "end": 79.5,
+          "text": "Forever"
+        },
+        {
+          "start": 79.5,
+          "end": 84.8,
+          "text": "Forever"
+        },
+        {
+          "start": 92.5,
+          "end": 94.6,
+          "text": "AH"
+        },
+        {
+          "start": 97.9,
+          "end": 101.8,
+          "text": "예뻐 / 바빠 / 나빠"
+        },
+        {
+          "start": 101.8,
+          "end": 104.7,
+          "text": "B A B Y M O N"
+        },
+        {
+          "start": 104.7,
+          "end": 105.7,
+          "text": "Get money"
+        },
+        {
+          "start": 110.9,
+          "end": 112.8,
+          "text": "money in the bag"
+        },
+        {
+          "start": 116.5,
+          "end": 118.3,
+          "text": "Ooh ooh ooh ooh ooh ooh\n（拍手 ×4）"
+        },
+        {
+          "start": 118.3,
+          "end": 120.1,
+          "text": "Ooh ooh ooh ooh ay\n（拍手 ×4）"
+        },
+        {
+          "start": 142.4,
+          "end": 146,
+          "text": "Forever"
+        },
+        {
+          "start": 146,
+          "end": 149.6,
+          "text": "Forever"
+        },
+        {
+          "start": 149.6,
+          "end": 153.2,
+          "text": "Forever"
+        },
+        {
+          "start": 176.9,
+          "end": 179,
+          "text": "We forever forever"
+        },
+        {
+          "start": 179,
+          "end": 180.8,
+          "text": "Forever ever ever"
+        },
+        {
+          "start": 185.5,
+          "end": 189.3,
+          "text": "착각하지는 마"
+        },
+        {
+          "start": 192.3,
+          "end": 194.4,
+          "text": "I’m spreading my wings"
+        },
+        {
+          "start": 195.8,
+          "end": 199.5,
+          "text": "Forever\n（接著拍手 ×4）"
+        },
+        {
+          "start": 199.5,
+          "end": 203.2,
+          "text": "Forever\n（接著拍手 ×4）"
+        },
+        {
+          "start": 203.2,
+          "end": 206.9,
+          "text": "Forever"
+        },
+        {
+          "start": 211.4,
+          "end": 212.8,
+          "text": "（歡呼）"
+        }
+      ]
+    }
   },
   {
     "number": 20,

@@ -11,7 +11,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) 'Pretty Girl' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=RX592yMx7P0",
-        "videoId": "RX592yMx7P0"
+        "videoId": "RX592yMx7P0",
+        "startSeconds": 26.3,
+        "endSeconds": 234.2
       },
       {
         "kind": "官方 Special Video",
@@ -456,7 +458,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) 'LOVE ATTACK' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=xn12KH78Dx4",
-        "videoId": "xn12KH78Dx4"
+        "videoId": "xn12KH78Dx4",
+        "startSeconds": 19.1,
+        "endSeconds": 201
       },
       {
         "kind": "官方 MV",
@@ -805,7 +809,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) 'UhUh' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=s1S-lnU-yMI",
-        "videoId": "s1S-lnU-yMI"
+        "videoId": "s1S-lnU-yMI",
+        "startSeconds": 25.6,
+        "endSeconds": 230
       }
     ],
     "chant": {
@@ -1197,7 +1203,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) 'Pinball' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=YyixhiYpkkY",
-        "videoId": "YyixhiYpkkY"
+        "videoId": "YyixhiYpkkY",
+        "startSeconds": 20.6,
+        "endSeconds": 214
       }
     ],
     "chant": {
@@ -1501,7 +1509,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) 'Glow Up' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=-55bUrG1qjg",
-        "videoId": "-55bUrG1qjg"
+        "videoId": "-55bUrG1qjg",
+        "startSeconds": 32.8,
+        "endSeconds": 183
       }
     ],
     "chant": {
@@ -1797,7 +1807,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) 'Deja Vu' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=9FlQOv6-Mjc",
-        "videoId": "9FlQOv6-Mjc"
+        "videoId": "9FlQOv6-Mjc",
+        "startSeconds": 63.1,
+        "endSeconds": 254
       }
     ],
     "chant": {
@@ -2189,7 +2201,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) 'Heart Drop' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=VKlrVbgJG-g",
-        "videoId": "VKlrVbgJG-g"
+        "videoId": "VKlrVbgJG-g",
+        "startSeconds": 39.4,
+        "endSeconds": 227
       }
     ],
     "chant": {
@@ -2437,7 +2451,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) 'Bloom' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=Ma6IENHO584",
-        "videoId": "Ma6IENHO584"
+        "videoId": "Ma6IENHO584",
+        "startSeconds": 24.9,
+        "endSeconds": 200
       }
     ],
     "chant": {
@@ -2701,7 +2717,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) 'Runaway' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=7DZlkZ4bMpU",
-        "videoId": "7DZlkZ4bMpU"
+        "videoId": "7DZlkZ4bMpU",
+        "startSeconds": 33.4,
+        "endSeconds": 220
       }
     ],
     "chant": {

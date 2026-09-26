@@ -2209,10 +2209,893 @@
     "title": "SHEESH",
     "artist": "BABYMONSTER",
     "section": "Act 1",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "舞台影片",
+        "url": "https://www.youtube.com/watch?v=QHf-2xSJzYE",
+        "title": "SHEESH · MCOUNTDOWN 2024.4.25 FanCam",
+        "videoId": "QHf-2xSJzYE"
+      },
+      {
+        "kind": "應援字幕來源",
+        "url": "https://www.youtube.com/watch?v=cvQv225_Bs0",
+        "title": "SHEESH 應援教學 · Ruka._.bm_320"
+      }
+    ],
+    "note": "播放指定 MCOUNTDOWN 舞台；歌詞白字、來源紅字應援以黃色粗體顯示",
+    "chant": {
+      "videoId": "QHf-2xSJzYE",
+      "sourceVideoId": "cvQv225_Bs0",
+      "timingBasis": "caption",
+      "note": "只收錄指定教學紅字；提示依來源字幕時段，音訊比對後整體延後 3.66 秒。行內接唱尚未逐字校準，提示標為「本句應援」；尚未完成全段人工聽校。",
+      "cues": [
+        {
+          "start": 8.96,
+          "end": 10.56,
+          "text": "Baby, I’ma monster"
+        },
+        {
+          "start": 36.66,
+          "end": 37.96,
+          "text": "Got them all going"
+        },
+        {
+          "start": 37.96,
+          "end": 43.26,
+          "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah"
+        },
+        {
+          "start": 44.86,
+          "end": 50.16,
+          "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah"
+        },
+        {
+          "start": 50.16,
+          "end": 51.86,
+          "text": "Got them all going"
+        },
+        {
+          "start": 55.36,
+          "end": 57.26,
+          "text": "축복"
+        },
+        {
+          "start": 57.26,
+          "end": 59.16,
+          "text": "춤춰"
+        },
+        {
+          "start": 59.16,
+          "end": 60.86,
+          "text": "boom, boom, pow"
+        },
+        {
+          "start": 70.66,
+          "end": 72.56,
+          "text": "Sheesh, sheesh, sheesh"
+        },
+        {
+          "start": 80.86,
+          "end": 82.66,
+          "text": "High, high, high, high"
+        },
+        {
+          "start": 94.66,
+          "end": 95.96,
+          "text": "Got them all going"
+        },
+        {
+          "start": 95.96,
+          "end": 101.26,
+          "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah"
+        },
+        {
+          "start": 102.86,
+          "end": 108.16,
+          "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah"
+        },
+        {
+          "start": 108.16,
+          "end": 109.86,
+          "text": "Got them all going"
+        },
+        {
+          "start": 122.06,
+          "end": 123.36,
+          "text": "(Baby! Monster!)"
+        },
+        {
+          "start": 124.36,
+          "end": 125.86,
+          "text": "올라가 올라가 더"
+        },
+        {
+          "start": 125.86,
+          "end": 127.66,
+          "text": "꼭대기 꼭대기로"
+        },
+        {
+          "start": 127.66,
+          "end": 129.36,
+          "text": "하늘 위 하늘 위로"
+        },
+        {
+          "start": 142.66,
+          "end": 145.76,
+          "text": "B-A-B-Y-M-O-N"
+        },
+        {
+          "start": 149.36,
+          "end": 152.46,
+          "text": "B-A-B-Y-M-O-N"
+        },
+        {
+          "start": 155.16,
+          "end": 156.26,
+          "text": "Let’s go"
+        },
+        {
+          "start": 156.26,
+          "end": 158.06,
+          "text": "Jump, jump and let it go"
+        },
+        {
+          "start": 158.06,
+          "end": 159.66,
+          "text": "Watch out, we on a roll"
+        },
+        {
+          "start": 159.66,
+          "end": 161.66,
+          "text": "Rum, pump, pump, pump\nit up then"
+        },
+        {
+          "start": 163.06,
+          "end": 164.86,
+          "text": "Jump, jump and let it go"
+        },
+        {
+          "start": 164.86,
+          "end": 166.56,
+          "text": "Watch out, we on a roll"
+        },
+        {
+          "start": 166.56,
+          "end": 168.56,
+          "text": "Rum, pump, pump, pump\nit up then"
+        }
+      ]
+    },
+    "subtitles": {
+      "videoId": "QHf-2xSJzYE",
+      "sourceVideoId": "cvQv225_Bs0",
+      "highlightMode": "static",
+      "cues": [
+        {
+          "start": 3.76,
+          "end": 8.96,
+          "parts": [
+            {
+              "text": "Da-la-lun-dun / Da-la-lun-dun / Da-la-lun-dun",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 8.96,
+          "end": 10.56,
+          "parts": [
+            {
+              "text": "Baby, I’ma monster",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 10.66,
+          "end": 13.86,
+          "parts": [
+            {
+              "text": "Mano, a mano\nI see you in slow-mo",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 13.86,
+          "end": 15.36,
+          "parts": [
+            {
+              "text": "You know you’re in trouble",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 15.36,
+          "end": 17.36,
+          "parts": [
+            {
+              "text": "Ooh-hoo-hoo-hoo",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 17.36,
+          "end": 18.86,
+          "parts": [
+            {
+              "text": "발버둥 쳐봐",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 18.86,
+          "end": 20.56,
+          "parts": [
+            {
+              "text": "어차피 손바닥",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 20.56,
+          "end": 22.26,
+          "parts": [
+            {
+              "text": "위에서 못 나가",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 22.26,
+          "end": 23.26,
+          "parts": [
+            {
+              "text": "You know that",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 23.26,
+          "end": 26.96,
+          "parts": [
+            {
+              "text": "눈을 뜬 순간\n피어나",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 26.96,
+          "end": 30.36,
+          "parts": [
+            {
+              "text": "All eyes on me\n불을 질러라",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 30.36,
+          "end": 34.06,
+          "parts": [
+            {
+              "text": "Do or die on my life",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 34.06,
+          "end": 36.66,
+          "parts": [
+            {
+              "text": "Yeah, you\nain’t seen nothing yet",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 36.66,
+          "end": 37.96,
+          "parts": [
+            {
+              "text": "Got them all going",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 37.96,
+          "end": 43.26,
+          "parts": [
+            {
+              "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 43.26,
+          "end": 44.86,
+          "parts": [
+            {
+              "text": "😈 B-A-B-Y-M-O-N 😈",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 44.86,
+          "end": 50.16,
+          "parts": [
+            {
+              "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 50.16,
+          "end": 51.86,
+          "parts": [
+            {
+              "text": "Got them all going",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 51.86,
+          "end": 52.96,
+          "parts": [
+            {
+              "text": "Yo, hold on 쉿",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 52.96,
+          "end": 55.36,
+          "parts": [
+            {
+              "text": "걍 들이부어라 네 달팽이관에",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 55.36,
+          "end": 57.26,
+          "parts": [
+            {
+              "text": "이건 네 귀에 줄 ",
+              "chant": false
+            },
+            {
+              "text": "축복",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 57.26,
+          "end": 59.16,
+          "parts": [
+            {
+              "text": "음악에 맞춰 걍 ",
+              "chant": false
+            },
+            {
+              "text": "춤춰",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 59.16,
+          "end": 60.86,
+          "parts": [
+            {
+              "text": "히비리 합 합 ",
+              "chant": false
+            },
+            {
+              "text": "boom, boom, pow",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 60.86,
+          "end": 62.46,
+          "parts": [
+            {
+              "text": "분위기 타올라 너네들 눈 돌아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 62.46,
+          "end": 65.16,
+          "parts": [
+            {
+              "text": "띵하니 적잖이 충격일 거야",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 65.16,
+          "end": 65.96,
+          "parts": [
+            {
+              "text": "Crown this queen",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 65.96,
+          "end": 67.56,
+          "parts": [
+            {
+              "text": "홈런은 쳤고 내 다음은 위",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 67.56,
+          "end": 69.26,
+          "parts": [
+            {
+              "text": "어중이떠중이 중간 아님",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 69.26,
+          "end": 70.66,
+          "parts": [
+            {
+              "text": "날 보고 닫혔던 입들 say",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 70.66,
+          "end": 72.56,
+          "parts": [
+            {
+              "text": "Sheesh, sheesh, sheesh",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 72.56,
+          "end": 74.66,
+          "parts": [
+            {
+              "text": "You know what it is, I be running this\npull up in a ghost",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 74.66,
+          "end": 75.56,
+          "parts": [
+            {
+              "text": "Peek a, peek a boo, hoo",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 75.56,
+          "end": 77.76,
+          "parts": [
+            {
+              "text": "Vroom, vroom\n너네 심장에 박동이",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 77.76,
+          "end": 79.06,
+          "parts": [
+            {
+              "text": "Pump, pump, pop\npedal to the metal",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 79.06,
+          "end": 80.86,
+          "parts": [
+            {
+              "text": "Click, clack, click,\nput ’em up to the sky",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 80.86,
+          "end": 81.66,
+          "parts": [
+            {
+              "text": "High, high, high, high",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 81.66,
+          "end": 82.66,
+          "parts": [
+            {
+              "text": "눈을 뜬 순간\n",
+              "chant": false
+            },
+            {
+              "text": "High, high, high, high",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 82.66,
+          "end": 83.56,
+          "parts": [
+            {
+              "text": "눈을 뜬 순간",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 83.56,
+          "end": 85.36,
+          "parts": [
+            {
+              "text": "피어나",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 85.36,
+          "end": 88.66,
+          "parts": [
+            {
+              "text": "All eyes on me\n불을 질러라",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 88.66,
+          "end": 92.06,
+          "parts": [
+            {
+              "text": "Do or die on my life",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 92.06,
+          "end": 94.66,
+          "parts": [
+            {
+              "text": "Yeah, you\nain’t seen nothing yet",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 94.66,
+          "end": 95.96,
+          "parts": [
+            {
+              "text": "Got them all going",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 95.96,
+          "end": 101.26,
+          "parts": [
+            {
+              "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 101.26,
+          "end": 102.86,
+          "parts": [
+            {
+              "text": "😈 B-A-B-Y-M-O-N 😈",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 102.86,
+          "end": 108.16,
+          "parts": [
+            {
+              "text": "Sheesh, sheesh\nSheesh, sheesh, sheesh, yeah",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 108.16,
+          "end": 109.86,
+          "parts": [
+            {
+              "text": "Got them all going",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 109.86,
+          "end": 112.86,
+          "parts": [
+            {
+              "text": "마음껏 웃어봐",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 112.86,
+          "end": 116.26,
+          "parts": [
+            {
+              "text": "이젠 내 차례니까",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 116.26,
+          "end": 122.06,
+          "parts": [
+            {
+              "text": "천천히 불태워 네가 잠든 사이",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 122.06,
+          "end": 123.06,
+          "parts": [
+            {
+              "text": "천천히 불태워 네가 잠든 사이\n",
+              "chant": false
+            },
+            {
+              "text": "(Baby! Monster!)",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 123.06,
+          "end": 123.36,
+          "parts": [
+            {
+              "text": "(Baby! Monster!)",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 123.36,
+          "end": 124.36,
+          "parts": [
+            {
+              "text": "Time’s up",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 124.36,
+          "end": 125.86,
+          "parts": [
+            {
+              "text": "올라가 올라가 더",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 125.86,
+          "end": 127.66,
+          "parts": [
+            {
+              "text": "꼭대기 꼭대기로",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 127.66,
+          "end": 129.36,
+          "parts": [
+            {
+              "text": "하늘 위 하늘 위로",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 129.36,
+          "end": 130.66,
+          "parts": [
+            {
+              "text": "Fly away",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 130.66,
+          "end": 136.16,
+          "parts": [
+            {
+              "text": "온 세상을 뒤집어\nCome on, let’s ride",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 137.66,
+          "end": 140.36,
+          "parts": [
+            {
+              "text": "Baby, I’ma monster",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 142.66,
+          "end": 145.76,
+          "parts": [
+            {
+              "text": "B-A-B-Y-M-O-N",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 145.76,
+          "end": 148.46,
+          "parts": [
+            {
+              "text": "Tell a friend / Tell a friend / Tell a friend",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 149.36,
+          "end": 152.46,
+          "parts": [
+            {
+              "text": "B-A-B-Y-M-O-N",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 152.46,
+          "end": 155.16,
+          "parts": [
+            {
+              "text": "Tell a friend / Tell a friend / Tell a friend",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 155.16,
+          "end": 156.26,
+          "parts": [
+            {
+              "text": "Let’s go",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 156.26,
+          "end": 158.06,
+          "parts": [
+            {
+              "text": "Jump, jump and let it go",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 158.06,
+          "end": 159.66,
+          "parts": [
+            {
+              "text": "Watch out, we on a roll",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 159.66,
+          "end": 161.66,
+          "parts": [
+            {
+              "text": "Rum, pump, pump, pump\nit up then",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 163.06,
+          "end": 164.86,
+          "parts": [
+            {
+              "text": "Jump, jump and let it go",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 164.86,
+          "end": 166.56,
+          "parts": [
+            {
+              "text": "Watch out, we on a roll",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 166.56,
+          "end": 168.56,
+          "parts": [
+            {
+              "text": "Rum, pump, pump, pump\nit up then",
+              "chant": true
+            }
+          ]
+        }
+      ]
+    }
   },
+
   {
     "number": 8,
     "title": "PSYCHO",

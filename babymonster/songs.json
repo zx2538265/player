@@ -5454,14 +5454,14 @@
         "videoId": "6qGzeS2zfOk"
       }
     ],
-    "note": "依指定 Moon Light 影片製作 28 張藍字應援與拍手提示",
+    "note": "依指定 Moon Light 影片製作 30 張藍字應援與拍手提示，句中進入點已作模型輔助校正",
     "chant": {
       "videoId": "6qGzeS2zfOk",
       "timingBasis": "caption",
-      "note": "依影片藍字、拍手圖示與結尾歡呼整理；黑字歌詞不納入。提示依字幕畫面時段顯示「本句應援」，句中接喊尚未逐字校準；尚未完成全段人工聽校與 YouTube 實播同步驗證。",
+      "note": "依指定影片藍字整理，已校正句中接喊並拆開三個快速韓文提示；黑字歌詞不納入。開場、副歌與部分短詞定位仍待聽校，保留「本句應援」標示；未完成全段人工聽校與 YouTube 實播同步驗證。",
       "cues": [
         {
-          "start": 6.4,
+          "start": 7.1,
           "end": 9.7,
           "text": "ok ok ok"
         },
@@ -5471,8 +5471,8 @@
           "text": "BABYMONSTER"
         },
         {
-          "start": 17.5,
-          "end": 20.5,
+          "start": 19.3,
+          "end": 20.8,
           "text": "bye bye bye"
         },
         {
@@ -5481,8 +5481,8 @@
           "text": "（拍手 ×4）"
         },
         {
-          "start": 34,
-          "end": 35.7,
+          "start": 34.1,
+          "end": 35.5,
           "text": "타고났지 Like this"
         },
         {
@@ -5511,14 +5511,24 @@
           "text": "Forever"
         },
         {
-          "start": 92.5,
-          "end": 94.6,
+          "start": 94.1,
+          "end": 94.7,
           "text": "AH"
         },
         {
-          "start": 97.9,
-          "end": 101.8,
-          "text": "예뻐 / 바빠 / 나빠"
+          "start": 98.2,
+          "end": 98.7,
+          "text": "예뻐"
+        },
+        {
+          "start": 99.2,
+          "end": 99.6,
+          "text": "바빠"
+        },
+        {
+          "start": 99.9,
+          "end": 100.3,
+          "text": "나빠"
         },
         {
           "start": 101.8,
@@ -5526,12 +5536,12 @@
           "text": "B A B Y M O N"
         },
         {
-          "start": 104.7,
+          "start": 104.9,
           "end": 105.7,
           "text": "Get money"
         },
         {
-          "start": 110.9,
+          "start": 111.7,
           "end": 112.8,
           "text": "money in the bag"
         },
@@ -5561,17 +5571,17 @@
           "text": "Forever"
         },
         {
-          "start": 176.9,
-          "end": 179,
+          "start": 177.0,
+          "end": 179.0,
           "text": "We forever forever"
         },
         {
-          "start": 179,
-          "end": 180.8,
+          "start": 179.2,
+          "end": 180.9,
           "text": "Forever ever ever"
         },
         {
-          "start": 185.5,
+          "start": 186.9,
           "end": 189.3,
           "text": "착각하지는 마"
         },

@@ -1,6 +1,6 @@
 # BABYMONSTER 應援練習室
 
-- FOREVER使用指定 Moon Light 非官方應援影片 `6qGzeS2zfOk`，完整影片播放，加入 28 張藍字應援、拍手與結尾歡呼提示；黑字歌詞與成員反應字幕不納入。三輪共九次 Forever 分開保留，快速韓文短句合併顯示。已核對 213 張逐秒畫面、132 張 0.1 秒邊界候選及 20 張拍手細查畫面；提示依字幕時段標示「本句應援」，句中接喊尚未逐字校準，未完成全段人工聽校或 YouTube 實播同步驗收。來源、決策表與產生器位於 `video/6qGzeS2zfOk/`。
+- FOREVER（第 21 首）使用指定 Moon Light 非官方應援影片 `6qGzeS2zfOk`，共 30 張藍字應援、拍手與歡呼提示。以 Whisper large-v3／medium 及英韓 CTC 輔助校正句中進入點，快速韓文三詞拆開顯示；黑字歌詞與成員反應字幕不納入。九次 Forever 與拍手保留，副歌及部分短詞的定位仍有分歧，維持「本句應援」標示。尚未完成全段人工聽校或 YouTube 實播同步驗收；原始畫面證據、模型結果及逐項決策保存於 `video/6qGzeS2zfOk/timing-review.v2.json`，以 `build_chant_v2.py` 重建。
 
 以 BIGBANG 練習室為基礎，採用使用者提供的 CHOOM 海報、深藍與冰藍配色。
 

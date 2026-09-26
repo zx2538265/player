@@ -31,3 +31,6 @@
 
 - MOON（第 5 首）播放指定 `jfqBPlcBGtE`，使用官方 `453459?cd=cheer` 應援表，加入 94 段歌詞字幕與 38 張應援提示。103 行英文／韓文歌詞完整保留，快速饒舌相鄰短行合併，排除日文讀音；一般歌詞白字、紅色應援改為固定黃色粗體，句中 thickens / vision / digger / figure 另按接唱字進入，四次 If you wanna ride 分開顯示。影片連結不含 si、官方來源不含 ima。
 - MOON 已全表人工核對文字與紅字，使用 large-v3、medium 強制對齊及英文 CTC 輔助檢查。部分模型邊界差異仍超過 0.4 秒，時間為暫定，尚未完成全段人工聽校與 YouTube 實播同步驗收。原圖、影片、原始 ASR、對齊結果、決策表、QA 及產生器位於 `video/jfqBPlcBGtE/`。
+
+- Really Like You（第 17 首）播放指定 `x5iLrIZ7YPY`（MCOUNTDOWN 2026.2.5 FanCam）；依使用者上傳的官方應援表加入 75 段韓文／英文字幕與 36 段應援提示。一般歌詞白字、紅字固定黃色粗體，開場四句只顯示歌詞；日文讀音與日文歡呼註記不納入。三次副歌、三次 Okay okay／Hey 分開，moonlight 只標示 light。
+- Really Like You 已逐行核對文字與紅字、完成 large-v3／medium 強制對齊及英韓 CTC 輔助檢查，保留完整影片。時間仍為暫定，尤其前兩次 light 與結尾 Hey；尚未完成全段人工聽校及 YouTube 實播同步驗收。來源圖、影片、校時證據、決策表及產生器位於 `video/x5iLrIZ7YPY/`。

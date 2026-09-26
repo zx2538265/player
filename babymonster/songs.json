@@ -4353,9 +4353,1065 @@
     "title": "Really Like You",
     "artist": "BABYMONSTER",
     "section": "Act 3",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "指定影片",
+        "url": "https://www.youtube.com/watch?v=x5iLrIZ7YPY",
+        "title": "Really Like You · MCOUNTDOWN 2026.2.5 FanCam",
+        "videoId": "x5iLrIZ7YPY"
+      },
+      {
+        "kind": "官方應援表",
+        "url": "https://babymonster-official.jp/images/4/562/53aa8d4c7a1d3af283e642c15e19d-01.jpg",
+        "title": "Really Like You 官方應援表"
+      }
+    ],
+    "note": "依使用者提供的官方應援表整理，韓文／英文歌詞白字，紅字應援固定黃色粗體；排除日文。時間經模型輔助校準，延音與部分接唱點仍待人工聽校及 YouTube 實播確認。",
+    "chant": {
+      "videoId": "x5iLrIZ7YPY",
+      "sourceUrl": "https://babymonster-official.jp/images/4/562/53aa8d4c7a1d3af283e642c15e19d-01.jpg",
+      "timingBasis": "word-aligned",
+      "note": "依使用者提供的官方應援表整理，韓文／英文歌詞白字，紅字應援固定黃色粗體；排除日文。時間經模型輔助校準，延音與部分接唱點仍待人工聽校及 YouTube 實播確認。",
+      "cues": [
+        {
+          "start": 12.27,
+          "end": 13.53,
+          "text": "Call back, uh"
+        },
+        {
+          "start": 14.97,
+          "end": 15.65,
+          "text": "꽁했어"
+        },
+        {
+          "start": 22.67,
+          "end": 23.11,
+          "text": "laptop"
+        },
+        {
+          "start": 25.09,
+          "end": 25.79,
+          "text": "Take out"
+        },
+        {
+          "start": 25.79,
+          "end": 28.27,
+          "text": "딩디기딩 Like a 리기딩딩"
+        },
+        {
+          "start": 28.85,
+          "end": 29.47,
+          "text": "빙빙"
+        },
+        {
+          "start": 33.91,
+          "end": 35.01,
+          "text": "I'm sick"
+        },
+        {
+          "start": 46.15,
+          "end": 48.63,
+          "text": "You make a good day better too"
+        },
+        {
+          "start": 57.83,
+          "end": 59.25,
+          "text": "아마 모를걸"
+        },
+        {
+          "start": 60.47,
+          "end": 61.75,
+          "text": "싶어"
+        },
+        {
+          "start": 63.19,
+          "end": 64.09,
+          "text": "love you"
+        },
+        {
+          "start": 66.69,
+          "end": 69.11,
+          "text": "Really really like you"
+        },
+        {
+          "start": 71.106,
+          "end": 71.506,
+          "text": "light"
+        },
+        {
+          "start": 73.37,
+          "end": 74.13,
+          "text": "highs"
+        },
+        {
+          "start": 76.55,
+          "end": 79.11,
+          "text": "Really really like you"
+        },
+        {
+          "start": 81.9,
+          "end": 83.81,
+          "text": "L.O.V.E, L.O.V.E"
+        },
+        {
+          "start": 108.59,
+          "end": 109.95,
+          "text": "아마 모를걸"
+        },
+        {
+          "start": 111.23,
+          "end": 112.33,
+          "text": "싶어"
+        },
+        {
+          "start": 113.87,
+          "end": 114.83,
+          "text": "love you"
+        },
+        {
+          "start": 117.8,
+          "end": 119.83,
+          "text": "Really really like you"
+        },
+        {
+          "start": 121.706,
+          "end": 122.106,
+          "text": "light"
+        },
+        {
+          "start": 124.11,
+          "end": 124.77,
+          "text": "highs"
+        },
+        {
+          "start": 127.7,
+          "end": 129.83,
+          "text": "Really really like you"
+        },
+        {
+          "start": 150.89,
+          "end": 152.05,
+          "text": "싶어"
+        },
+        {
+          "start": 153.51,
+          "end": 154.41,
+          "text": "love you"
+        },
+        {
+          "start": 156.97,
+          "end": 159.43,
+          "text": "Really really like you"
+        },
+        {
+          "start": 160.963,
+          "end": 161.45,
+          "text": "light"
+        },
+        {
+          "start": 163.69,
+          "end": 164.29,
+          "text": "highs"
+        },
+        {
+          "start": 166.81,
+          "end": 169.43,
+          "text": "Really really like you"
+        },
+        {
+          "start": 170.52,
+          "end": 171.43,
+          "text": "Okay okay"
+        },
+        {
+          "start": 174.73,
+          "end": 175.13,
+          "text": "(Hey)"
+        },
+        {
+          "start": 175.65,
+          "end": 176.59,
+          "text": "Okay okay"
+        },
+        {
+          "start": 179.63,
+          "end": 180.11,
+          "text": "(Hey)"
+        },
+        {
+          "start": 180.42,
+          "end": 181.35,
+          "text": "Okay okay"
+        },
+        {
+          "start": 184.61,
+          "end": 185.15,
+          "text": "(Hey)"
+        },
+        {
+          "start": 186.61,
+          "end": 189.15,
+          "text": "Really really like you"
+        }
+      ]
+    },
+    "subtitles": {
+      "videoId": "x5iLrIZ7YPY",
+      "sourceUrl": "https://babymonster-official.jp/images/4/562/53aa8d4c7a1d3af283e642c15e19d-01.jpg",
+      "cues": [
+        {
+          "start": 0.0,
+          "end": 2.52,
+          "parts": [
+            {
+              "text": "말하고 싶어",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 3.08,
+          "end": 4.82,
+          "parts": [
+            {
+              "text": "To say I love you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 4.82,
+          "end": 7.3,
+          "parts": [
+            {
+              "text": "But boy, I like you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 7.3,
+          "end": 9.9,
+          "parts": [
+            {
+              "text": "Really really like you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 10.32,
+          "end": 11.63,
+          "parts": [
+            {
+              "text": "Hey, what you doin'?",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 11.63,
+          "end": 13.53,
+          "parts": [
+            {
+              "text": "기다리잖아 ",
+              "chant": false
+            },
+            {
+              "text": "Call back, uh",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 13.53,
+          "end": 15.65,
+          "parts": [
+            {
+              "text": "온도 Check 했잖아 나 ",
+              "chant": false
+            },
+            {
+              "text": "꽁했어",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 15.65,
+          "end": 18.37,
+          "parts": [
+            {
+              "text": "추워 나 감기고 싶어",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 18.37,
+          "end": 21.12,
+          "parts": [
+            {
+              "text": "Hurry up 이불 가져와 덮어줘",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 21.12,
+          "end": 22.07,
+          "parts": [
+            {
+              "text": "I wanna touch you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 22.07,
+          "end": 23.11,
+          "parts": [
+            {
+              "text": "But you're in the ",
+              "chant": false
+            },
+            {
+              "text": "laptop",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 23.11,
+          "end": 24.41,
+          "parts": [
+            {
+              "text": "날 보러 와",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 24.41,
+          "end": 25.79,
+          "parts": [
+            {
+              "text": "커피처럼 ",
+              "chant": false
+            },
+            {
+              "text": "Take out",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 25.79,
+          "end": 28.27,
+          "parts": [
+            {
+              "text": "딩디기딩 Like a 리기딩딩",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 28.27,
+          "end": 30.83,
+          "parts": [
+            {
+              "text": "너랑 같이 ",
+              "chant": false
+            },
+            {
+              "text": "빙빙",
+              "chant": true
+            },
+            {
+              "text": " 놀고 싶어 Errtime",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 31.28,
+          "end": 35.01,
+          "parts": [
+            {
+              "text": "내 맘이 간질간질해 ",
+              "chant": false
+            },
+            {
+              "text": "I'm sick",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 35.01,
+          "end": 39.45,
+          "parts": [
+            {
+              "text": "Always you and me like a symphony",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 39.45,
+          "end": 41.22,
+          "parts": [
+            {
+              "text": "We come together",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 41.22,
+          "end": 43.43,
+          "parts": [
+            {
+              "text": "너의 넘치는 매력",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 44.16,
+          "end": 46.15,
+          "parts": [
+            {
+              "text": "You make a bad day better yeah you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 46.15,
+          "end": 48.75,
+          "parts": [
+            {
+              "text": "You make a good day better too",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 51.0,
+          "end": 53.15,
+          "parts": [
+            {
+              "text": "눈을 뜨는 아침부터",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 53.58,
+          "end": 55.57,
+          "parts": [
+            {
+              "text": "달이 지는 새벽까지",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 55.57,
+          "end": 57.83,
+          "parts": [
+            {
+              "text": "네 생각에 행복해",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 57.83,
+          "end": 59.37,
+          "parts": [
+            {
+              "text": "아마 모를걸",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 59.65,
+          "end": 61.87,
+          "parts": [
+            {
+              "text": "말하고 ",
+              "chant": false
+            },
+            {
+              "text": "싶어",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 62.24,
+          "end": 64.21,
+          "parts": [
+            {
+              "text": "To say I ",
+              "chant": false
+            },
+            {
+              "text": "love you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 64.74,
+          "end": 66.69,
+          "parts": [
+            {
+              "text": "But boy, I like you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 66.69,
+          "end": 69.23,
+          "parts": [
+            {
+              "text": "Really really like you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 69.7,
+          "end": 71.33,
+          "parts": [
+            {
+              "text": "And in this moon",
+              "chant": false
+            },
+            {
+              "text": "light",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 72.16,
+          "end": 74.25,
+          "parts": [
+            {
+              "text": "We're reaching new ",
+              "chant": false
+            },
+            {
+              "text": "highs",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 74.74,
+          "end": 76.55,
+          "parts": [
+            {
+              "text": "But boy, I like you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 76.55,
+          "end": 79.23,
+          "parts": [
+            {
+              "text": "Really really like you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 81.9,
+          "end": 83.93,
+          "parts": [
+            {
+              "text": "L.O.V.E, L.O.V.E",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 84.52,
+          "end": 86.79,
+          "parts": [
+            {
+              "text": "흐트러진 퍼즐같이",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 87.02,
+          "end": 89.29,
+          "parts": [
+            {
+              "text": "입안에 담고 있는 말",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 89.29,
+          "end": 91.95,
+          "parts": [
+            {
+              "text": "이제는 말하고 싶어",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 92.7,
+          "end": 95.87,
+          "parts": [
+            {
+              "text": "Tonight 이제 그만 고민하고",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 96.46,
+          "end": 101.59,
+          "parts": [
+            {
+              "text": "Yeah boy, I'd like 날 거부하지 마 so",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 102.06,
+          "end": 103.91,
+          "parts": [
+            {
+              "text": "눈을 뜨는 아침부터",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 104.52,
+          "end": 106.29,
+          "parts": [
+            {
+              "text": "달이 지는 새벽까지",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 106.98,
+          "end": 108.59,
+          "parts": [
+            {
+              "text": "네 생각에 행복해",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 108.59,
+          "end": 110.07,
+          "parts": [
+            {
+              "text": "아마 모를걸",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 110.15,
+          "end": 112.45,
+          "parts": [
+            {
+              "text": "말하고 ",
+              "chant": false
+            },
+            {
+              "text": "싶어",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 113.15,
+          "end": 114.95,
+          "parts": [
+            {
+              "text": "To say I ",
+              "chant": false
+            },
+            {
+              "text": "love you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 115.64,
+          "end": 117.47,
+          "parts": [
+            {
+              "text": "But boy, I like you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 117.8,
+          "end": 119.95,
+          "parts": [
+            {
+              "text": "Really really like you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 120.6,
+          "end": 122.01,
+          "parts": [
+            {
+              "text": "And in this moon",
+              "chant": false
+            },
+            {
+              "text": "light",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 123.06,
+          "end": 124.89,
+          "parts": [
+            {
+              "text": "We're reaching new ",
+              "chant": false
+            },
+            {
+              "text": "highs",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 125.54,
+          "end": 127.35,
+          "parts": [
+            {
+              "text": "But boy, I like you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 127.7,
+          "end": 129.95,
+          "parts": [
+            {
+              "text": "Really really like you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 130.65,
+          "end": 133.79,
+          "parts": [
+            {
+              "text": "오 널 처음 본 순간부터",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 134.46,
+          "end": 136.33,
+          "parts": [
+            {
+              "text": "자꾸 내 꿈에 나와",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 136.98,
+          "end": 138.71,
+          "parts": [
+            {
+              "text": "눈 뜨면 아쉬워",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 140.04,
+          "end": 140.65,
+          "parts": [
+            {
+              "text": "No need to rush",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 140.65,
+          "end": 143.49,
+          "parts": [
+            {
+              "text": "좀 더 다가갈게 난 Little",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 144.1,
+          "end": 145.75,
+          "parts": [
+            {
+              "text": "I'm waiting on you too",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 145.75,
+          "end": 147.83,
+          "parts": [
+            {
+              "text": "Every day gets better",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 148.26,
+          "end": 150.2,
+          "parts": [
+            {
+              "text": "So glad that I found you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 150.2,
+          "end": 152.05,
+          "parts": [
+            {
+              "text": "말하고 ",
+              "chant": false
+            },
+            {
+              "text": "싶어",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 152.05,
+          "end": 154.41,
+          "parts": [
+            {
+              "text": "To say I ",
+              "chant": false
+            },
+            {
+              "text": "love you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 154.41,
+          "end": 156.97,
+          "parts": [
+            {
+              "text": "But boy, I like you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 156.97,
+          "end": 159.43,
+          "parts": [
+            {
+              "text": "Really really like you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 159.43,
+          "end": 161.45,
+          "parts": [
+            {
+              "text": "And in this moon",
+              "chant": false
+            },
+            {
+              "text": "light",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 161.45,
+          "end": 164.29,
+          "parts": [
+            {
+              "text": "We're reaching new ",
+              "chant": false
+            },
+            {
+              "text": "highs",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 164.29,
+          "end": 166.81,
+          "parts": [
+            {
+              "text": "But boy, I like you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 166.81,
+          "end": 169.55,
+          "parts": [
+            {
+              "text": "Really really like you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 170.52,
+          "end": 172.75,
+          "parts": [
+            {
+              "text": "Okay okay",
+              "chant": true
+            },
+            {
+              "text": " 내가 졌으니까",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 172.75,
+          "end": 175.15,
+          "parts": [
+            {
+              "text": "오늘 너의 맘을 허락해 ",
+              "chant": false
+            },
+            {
+              "text": "(Hey)",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 175.65,
+          "end": 177.91,
+          "parts": [
+            {
+              "text": "Okay okay",
+              "chant": true
+            },
+            {
+              "text": " 별이 떴으니까",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 177.91,
+          "end": 180.23,
+          "parts": [
+            {
+              "text": "손잡고 눈을 감을게 ",
+              "chant": false
+            },
+            {
+              "text": "(Hey)",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 180.42,
+          "end": 182.67,
+          "parts": [
+            {
+              "text": "Okay okay",
+              "chant": true
+            },
+            {
+              "text": " 말을 섞으니까",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 182.67,
+          "end": 184.74,
+          "parts": [
+            {
+              "text": "말풍선이 가득해 ",
+              "chant": false
+            },
+            {
+              "text": "(Hey)",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 184.74,
+          "end": 186.61,
+          "parts": [
+            {
+              "text": "But boy, I like you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 186.61,
+          "end": 189.27,
+          "parts": [
+            {
+              "text": "Really really like you",
+              "chant": true
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "number": 18,

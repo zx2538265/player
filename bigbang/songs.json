@@ -2693,7 +2693,7 @@
     "note": "尚未核對 2026 現場編排",
     "chant": {
       "videoId": "XhSzIknOZw8",
-      "note": "依原片「黃色一起唱／喊」及空耳整理 30 段；開場口號分成 3 張，連續 big 合併顯示。時間依黃字動畫暫定，殘留黃字於下一段應援進場時切換；尚未逐句聽校、YouTube 實播同步驗收或核對 2026 現場編排。",
+      "note": "依原片黃色應援與空耳保留 30 段；全數進場已交叉比對畫面、兩模型語音及局部詞句對齊，修正 20 個起點。開場 3 段、3 次「變蹦」與兩組 ohhhh／Go 共 10 段仍沿用畫面時間，待聽校。其餘為模型輔助校時暫定，尚未人工逐句聽校、YouTube 實播同步驗收或核對 2026 現場編排。",
       "cues": [
         {
           "start": 5.7,
@@ -2707,16 +2707,16 @@
         },
         {
           "start": 9.7,
-          "end": 11.7,
+          "end": 11.45,
           "text": "屋！林！BIG BANG！"
         },
         {
-          "start": 11.7,
+          "start": 11.45,
           "end": 14.6,
           "text": "B.B G Tae 爹送衣"
         },
         {
-          "start": 16.9,
+          "start": 16.85,
           "end": 18.7,
           "text": "Bigbang"
         },
@@ -2726,22 +2726,22 @@
           "text": "變蹦"
         },
         {
-          "start": 23.5,
+          "start": 23.25,
           "end": 25.8,
           "text": "big big big big"
         },
         {
-          "start": 26.6,
+          "start": 25.95,
           "end": 28.5,
           "text": "big big"
         },
         {
-          "start": 28.9,
+          "start": 28.65,
           "end": 31.2,
           "text": "big big big big"
         },
         {
-          "start": 31.8,
+          "start": 31.37,
           "end": 33.3,
           "text": "big’z me"
         },
@@ -2756,42 +2756,42 @@
           "text": "Go"
         },
         {
-          "start": 74.7,
-          "end": 76.4,
+          "start": 74.48,
+          "end": 76.17,
           "text": "Big big big big"
         },
         {
-          "start": 76.4,
+          "start": 76.17,
           "end": 79.1,
           "text": "B.B G Tae 爹送衣"
         },
         {
-          "start": 81.6,
+          "start": 81.57,
           "end": 83.5,
           "text": "Bigbang"
         },
         {
           "start": 85.3,
-          "end": 88.3,
+          "end": 87.97,
           "text": "變蹦"
         },
         {
-          "start": 88.3,
-          "end": 91.0,
+          "start": 87.97,
+          "end": 90.67,
           "text": "big big big big"
         },
         {
-          "start": 91.0,
+          "start": 90.67,
           "end": 92.5,
           "text": "big big"
         },
         {
-          "start": 93.6,
+          "start": 93.37,
           "end": 95.6,
           "text": "big big big big"
         },
         {
-          "start": 96.4,
+          "start": 96.09,
           "end": 98.2,
           "text": "big’z me"
         },
@@ -2806,17 +2806,17 @@
           "text": "Go"
         },
         {
-          "start": 139.5,
-          "end": 141.1,
+          "start": 139.2,
+          "end": 140.89,
           "text": "Big big big big"
         },
         {
-          "start": 141.1,
+          "start": 140.89,
           "end": 144.1,
           "text": "B.B G Tae 爹送衣"
         },
         {
-          "start": 146.4,
+          "start": 146.29,
           "end": 148.3,
           "text": "bigbang"
         },
@@ -2826,22 +2826,22 @@
           "text": "變蹦"
         },
         {
-          "start": 152.6,
+          "start": 152.69,
           "end": 154.9,
           "text": "big big big big"
         },
         {
-          "start": 155.7,
+          "start": 155.39,
           "end": 157.7,
           "text": "big big"
         },
         {
-          "start": 158.4,
-          "end": 161.4,
+          "start": 158.09,
+          "end": 160.81,
           "text": "big big big big"
         },
         {
-          "start": 161.4,
+          "start": 160.81,
           "end": 164.9,
           "text": "big’z me"
         }

@@ -6110,9 +6110,969 @@
     "title": "I LIKE IT",
     "artist": "BABYMONSTER",
     "section": "Act 3",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "舞台演出",
+        "title": "I LIKE IT · 音樂中心 MBC260711 FullCam",
+        "url": "https://www.youtube.com/watch?v=lFtCnJNlGnk",
+        "videoId": "lFtCnJNlGnk"
+      }
+    ],
+    "note": "依使用者提供的應援表整理韓文／英文歌詞與紅字應援，排除日文註音及歡聲註記；時間經模型輔助對齊，仍待人工聽校與 YouTube 實播確認。",
+    "chant": {
+      "videoId": "lFtCnJNlGnk",
+      "timingBasis": "word-aligned",
+      "note": "依使用者提供的應援表整理韓文／英文歌詞與紅字應援，排除日文註音及歡聲註記；時間經模型輔助對齊，仍待人工聽校與 YouTube 實播確認。",
+      "cues": [
+        {
+          "start": 17.26,
+          "end": 18.65,
+          "text": "Hey, boy"
+        },
+        {
+          "start": 23.57,
+          "end": 25.95,
+          "text": "Mayday"
+        },
+        {
+          "start": 34.09,
+          "end": 35.97,
+          "text": "미쳤나 봐"
+        },
+        {
+          "start": 41.47,
+          "end": 43.51,
+          "text": "웃음이 나"
+        },
+        {
+          "start": 47.96,
+          "end": 49.55,
+          "text": "Tell me now"
+        },
+        {
+          "start": 60.81,
+          "end": 62.25,
+          "text": "One more chance"
+        },
+        {
+          "start": 76.65,
+          "end": 78.03,
+          "text": "Woo woo woo"
+        },
+        {
+          "start": 78.03,
+          "end": 80.21,
+          "text": "Woo woo woo"
+        },
+        {
+          "start": 80.21,
+          "end": 83.63,
+          "text": "Woo woo woo woo woo woo"
+        },
+        {
+          "start": 83.63,
+          "end": 85.65,
+          "text": "Woo woo woo"
+        },
+        {
+          "start": 85.65,
+          "end": 87.65,
+          "text": "Woo woo woo"
+        },
+        {
+          "start": 87.65,
+          "end": 90.11,
+          "text": "Woo woo woo woo woo woo"
+        },
+        {
+          "start": 110.1,
+          "end": 111.47,
+          "text": "Tell me now"
+        },
+        {
+          "start": 122.83,
+          "end": 124.13,
+          "text": "One more chance"
+        },
+        {
+          "start": 138.65,
+          "end": 139.93,
+          "text": "Woo woo woo"
+        },
+        {
+          "start": 139.93,
+          "end": 142.07,
+          "text": "Woo woo woo"
+        },
+        {
+          "start": 142.07,
+          "end": 145.47,
+          "text": "Woo woo woo woo woo woo"
+        },
+        {
+          "start": 145.47,
+          "end": 147.83,
+          "text": "Woo woo woo"
+        },
+        {
+          "start": 147.83,
+          "end": 149.51,
+          "text": "Woo woo woo"
+        },
+        {
+          "start": 149.51,
+          "end": 151.75,
+          "text": "Woo woo woo woo woo woo"
+        },
+        {
+          "start": 171.65,
+          "end": 175.07,
+          "text": "I la-la-like it"
+        },
+        {
+          "start": 175.07,
+          "end": 176.95,
+          "text": "I la-la-like it"
+        },
+        {
+          "start": 179.21,
+          "end": 180.35,
+          "text": "next to you"
+        },
+        {
+          "start": 180.35,
+          "end": 182.63,
+          "text": "I la-la-like it"
+        },
+        {
+          "start": 182.63,
+          "end": 184.57,
+          "text": "I la-la-like it"
+        },
+        {
+          "start": 186.75,
+          "end": 187.87,
+          "text": "next to you"
+        },
+        {
+          "start": 187.88,
+          "end": 190.05,
+          "text": "I la-la-like it"
+        },
+        {
+          "start": 190.05,
+          "end": 191.97,
+          "text": "I la-la-like it"
+        },
+        {
+          "start": 194.21,
+          "end": 195.45,
+          "text": "next to you"
+        },
+        {
+          "start": 196.65,
+          "end": 197.35,
+          "text": "I la-la-like it"
+        },
+        {
+          "start": 197.35,
+          "end": 199.41,
+          "text": "I la-la-like it"
+        }
+      ]
+    },
+    "subtitles": {
+      "videoId": "lFtCnJNlGnk",
+      "cues": [
+        {
+          "start": 17.26,
+          "end": 18.65,
+          "parts": [
+            {
+              "text": "Hey, boy",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 18.65,
+          "end": 19.53,
+          "parts": [
+            {
+              "text": "넌 뭔데",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 19.53,
+          "end": 21.45,
+          "parts": [
+            {
+              "text": "머릿속이 복잡해",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 21.45,
+          "end": 23.57,
+          "parts": [
+            {
+              "text": "내가 고장 나 버린 듯",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 23.57,
+          "end": 25.95,
+          "parts": [
+            {
+              "text": "Mayday",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 25.95,
+          "end": 27.13,
+          "parts": [
+            {
+              "text": "너 땜에",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 27.13,
+          "end": 29.01,
+          "parts": [
+            {
+              "text": "정신 나간 거 같애",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 29.01,
+          "end": 31.27,
+          "parts": [
+            {
+              "text": "I think I'm falling in love with you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 32.8,
+          "end": 34.09,
+          "parts": [
+            {
+              "text": "어떡해 나",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 34.09,
+          "end": 35.97,
+          "parts": [
+            {
+              "text": "미쳤나 봐",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 35.97,
+          "end": 38.67,
+          "parts": [
+            {
+              "text": "틈만 나면 네 생각을 해",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 38.67,
+          "end": 41.47,
+          "parts": [
+            {
+              "text": "자꾸 혼자",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 41.47,
+          "end": 43.51,
+          "parts": [
+            {
+              "text": "웃음이 나",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 43.51,
+          "end": 46.25,
+          "parts": [
+            {
+              "text": "이런 내가 낯설기만 해",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 47.96,
+          "end": 49.55,
+          "parts": [
+            {
+              "text": "Tell me now",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 49.55,
+          "end": 53.07,
+          "parts": [
+            {
+              "text": "너도 원하잖아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 53.07,
+          "end": 56.85,
+          "parts": [
+            {
+              "text": "더 이상 망설이지 마",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 56.85,
+          "end": 58.83,
+          "parts": [
+            {
+              "text": "용기를 좀 내봐",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 58.83,
+          "end": 60.81,
+          "parts": [
+            {
+              "text": "어둠이 끝나가기 전에",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 60.81,
+          "end": 62.37,
+          "parts": [
+            {
+              "text": "One more chance",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 63.04,
+          "end": 66.43,
+          "parts": [
+            {
+              "text": "내 맘에 불을 질러줘",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 66.43,
+          "end": 68.75,
+          "parts": [
+            {
+              "text": "I don't wanna let you go",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 68.75,
+          "end": 74.05,
+          "parts": [
+            {
+              "text": "내 귀에 매일 또 매일",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 74.05,
+          "end": 76.29,
+          "parts": [
+            {
+              "text": "보고 싶다 말을 해줘",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 76.65,
+          "end": 78.03,
+          "parts": [
+            {
+              "text": "Woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 78.03,
+          "end": 80.21,
+          "parts": [
+            {
+              "text": "Woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 80.21,
+          "end": 83.63,
+          "parts": [
+            {
+              "text": "Woo woo woo woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 83.63,
+          "end": 85.65,
+          "parts": [
+            {
+              "text": "Woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 85.65,
+          "end": 87.65,
+          "parts": [
+            {
+              "text": "Woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 87.65,
+          "end": 90.23,
+          "parts": [
+            {
+              "text": "Woo woo woo woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 94.34,
+          "end": 95.45,
+          "parts": [
+            {
+              "text": "It's a kind of love",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 95.45,
+          "end": 96.35,
+          "parts": [
+            {
+              "text": "Got me thunderstruck",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 96.35,
+          "end": 98.23,
+          "parts": [
+            {
+              "text": "I can't get enough of you ooh ah",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 98.23,
+          "end": 100.51,
+          "parts": [
+            {
+              "text": "Boy, you're really like one in a milli",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 100.51,
+          "end": 102.19,
+          "parts": [
+            {
+              "text": "Never gon let it fizzle out",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 102.19,
+          "end": 103.55,
+          "parts": [
+            {
+              "text": "You got me all in my feelings",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 103.55,
+          "end": 104.57,
+          "parts": [
+            {
+              "text": "Our love is the realest",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 104.57,
+          "end": 105.41,
+          "parts": [
+            {
+              "text": "And that's how we ride",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 105.41,
+          "end": 107.77,
+          "parts": [
+            {
+              "text": "Never alone, never wondering",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 107.77,
+          "end": 109.37,
+          "parts": [
+            {
+              "text": "Cause you forever my future",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 110.1,
+          "end": 111.47,
+          "parts": [
+            {
+              "text": "Tell me now",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 111.47,
+          "end": 115.05,
+          "parts": [
+            {
+              "text": "너도 원하잖아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 115.05,
+          "end": 118.75,
+          "parts": [
+            {
+              "text": "더 이상 망설이지 마",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 118.75,
+          "end": 120.79,
+          "parts": [
+            {
+              "text": "용기를 좀 내봐",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 120.79,
+          "end": 122.83,
+          "parts": [
+            {
+              "text": "어둠이 끝나가기 전에",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 122.83,
+          "end": 124.25,
+          "parts": [
+            {
+              "text": "One more chance",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 125.1,
+          "end": 128.29,
+          "parts": [
+            {
+              "text": "내 맘에 불을 질러줘",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 128.29,
+          "end": 130.55,
+          "parts": [
+            {
+              "text": "I don't wanna let you go",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 130.55,
+          "end": 135.95,
+          "parts": [
+            {
+              "text": "내 귀에 매일 또 매일",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 135.95,
+          "end": 138.29,
+          "parts": [
+            {
+              "text": "보고 싶다 말을 해줘",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 138.65,
+          "end": 139.93,
+          "parts": [
+            {
+              "text": "Woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 139.93,
+          "end": 142.07,
+          "parts": [
+            {
+              "text": "Woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 142.07,
+          "end": 145.47,
+          "parts": [
+            {
+              "text": "Woo woo woo woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 145.47,
+          "end": 147.83,
+          "parts": [
+            {
+              "text": "Woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 147.83,
+          "end": 149.51,
+          "parts": [
+            {
+              "text": "Woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 149.51,
+          "end": 151.87,
+          "parts": [
+            {
+              "text": "Woo woo woo woo woo woo",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 154.18,
+          "end": 155.69,
+          "parts": [
+            {
+              "text": "How you feel like that",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 155.69,
+          "end": 157.57,
+          "parts": [
+            {
+              "text": "My heart beats fast",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 157.57,
+          "end": 159.53,
+          "parts": [
+            {
+              "text": "And you love like that",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 159.53,
+          "end": 161.55,
+          "parts": [
+            {
+              "text": "기다려 온 순간",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 161.55,
+          "end": 165.17,
+          "parts": [
+            {
+              "text": "너와 함께라면 설레",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 165.17,
+          "end": 166.99,
+          "parts": [
+            {
+              "text": "And I can't get enough",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 166.99,
+          "end": 169.53,
+          "parts": [
+            {
+              "text": "Cause the light won't go down",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 171.65,
+          "end": 175.07,
+          "parts": [
+            {
+              "text": "I la-la-like it",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 175.07,
+          "end": 176.95,
+          "parts": [
+            {
+              "text": "I la-la-like it",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 176.95,
+          "end": 180.35,
+          "parts": [
+            {
+              "text": "I like it like it when I'm ",
+              "chant": false
+            },
+            {
+              "text": "next to you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 180.35,
+          "end": 182.63,
+          "parts": [
+            {
+              "text": "I la-la-like it",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 182.63,
+          "end": 184.57,
+          "parts": [
+            {
+              "text": "I la-la-like it",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 184.57,
+          "end": 187.88,
+          "parts": [
+            {
+              "text": "I like it like it when I'm ",
+              "chant": false
+            },
+            {
+              "text": "next to you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 187.88,
+          "end": 190.05,
+          "parts": [
+            {
+              "text": "Woo woo woo / ",
+              "chant": false
+            },
+            {
+              "text": "I la-la-like it",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 190.05,
+          "end": 191.97,
+          "parts": [
+            {
+              "text": "Woo woo woo / ",
+              "chant": false
+            },
+            {
+              "text": "I la-la-like it",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 191.97,
+          "end": 196.31,
+          "parts": [
+            {
+              "text": "Woo woo woo woo woo woo / ",
+              "chant": false
+            },
+            {
+              "text": "I like it like it when I'm ",
+              "chant": false
+            },
+            {
+              "text": "next to you",
+              "chant": true
+            },
+            {
+              "text": " (Crazy for you)",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 196.65,
+          "end": 197.35,
+          "parts": [
+            {
+              "text": "Woo woo woo / ",
+              "chant": false
+            },
+            {
+              "text": "I la-la-like it",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 197.35,
+          "end": 199.41,
+          "parts": [
+            {
+              "text": "Woo woo woo / ",
+              "chant": false
+            },
+            {
+              "text": "I la-la-like it",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 199.41,
+          "end": 201.91,
+          "parts": [
+            {
+              "text": "Hey, you know it's true I'm crazy for you",
+              "chant": false
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "number": 26,

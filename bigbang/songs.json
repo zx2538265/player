@@ -2683,166 +2683,161 @@
     "sources": [
       {
         "kind": "應援參考",
-        "url": "https://reurl.cc/rk0b11",
-        "title": "BIGBANG〈BiiiG〉空耳+應援_KTV跟唱版",
-        "resolvedUrl": "https://www.youtube.com/watch?v=XhSzIknOZw8&list=RDXhSzIknOZw8&start_radio=1",
-        "videoId": "XhSzIknOZw8",
-        "checked": "2026-09-22"
+        "url": "https://youtu.be/QNZyeUbnx7w",
+        "title": "【BIGBANG世巡應援】BiiiG繁中空耳應援🇹🇼｜一看就會!!（不知名用戶0819）",
+        "resolvedUrl": "https://www.youtube.com/watch?v=QNZyeUbnx7w",
+        "videoId": "QNZyeUbnx7w",
+        "checked": "2026-09-28"
       }
     ],
     "note": "尚未核對 2026 現場編排",
     "chant": {
-      "videoId": "XhSzIknOZw8",
-      "note": "依原片黃色應援與空耳保留 30 段；全數進場已交叉比對畫面、兩模型語音及局部詞句對齊，修正 20 個起點。開場 3 段、3 次「變蹦」與兩組 ohhhh／Go 共 10 段仍沿用畫面時間，待聽校。其餘為模型輔助校時暫定，尚未人工逐句聽校、YouTube 實播同步驗收或核對 2026 現場編排。",
+      "videoId": "QNZyeUbnx7w",
+      "note": "依不知名用戶0819影片的彩色應援標記與繁中空耳整理 29 段；全片每秒畫面核對，進場與換頁以 0.1 秒畫面抽樣校準。提示保留至換頁或下一段，不代表持續喊唱；時間暫定，尚未完成全曲聽校、YouTube 實播同步驗收及核對 2026 現場編排。",
       "cues": [
         {
-          "start": 5.7,
-          "end": 7.6,
-          "text": "寬雞用 東擁貝 康爹送"
+          "start": 5.8,
+          "end": 8.5,
+          "text": "寬機永 東永裴 康代松\nV.I.P"
         },
         {
-          "start": 7.6,
-          "end": 9.7,
-          "text": "VIP 衣洗粗弄 粗卡欸"
+          "start": 8.5,
+          "end": 11.4,
+          "text": "依西啾妞 秋咖黑\n嗚! 林! BIG! BANG!"
         },
         {
-          "start": 9.7,
-          "end": 11.45,
-          "text": "屋！林！BIG BANG！"
+          "start": 11.4,
+          "end": 14.1,
+          "text": "B.B G, Tae, 代松依"
         },
         {
-          "start": 11.45,
-          "end": 14.6,
-          "text": "B.B G Tae 爹送衣"
-        },
-        {
-          "start": 16.85,
-          "end": 18.7,
+          "start": 16.8,
+          "end": 19.5,
           "text": "Bigbang"
         },
         {
-          "start": 20.4,
-          "end": 23.1,
-          "text": "變蹦"
+          "start": 20.1,
+          "end": 22.5,
+          "text": "BANG繃"
         },
         {
-          "start": 23.25,
-          "end": 25.8,
+          "start": 23.3,
+          "end": 25.1,
           "text": "big big big big"
         },
         {
-          "start": 25.95,
-          "end": 28.5,
+          "start": 25.9,
+          "end": 28,
           "text": "big big"
         },
         {
-          "start": 28.65,
-          "end": 31.2,
+          "start": 28.7,
+          "end": 30.4,
           "text": "big big big big"
         },
         {
-          "start": 31.37,
-          "end": 33.3,
+          "start": 31.4,
+          "end": 33,
           "text": "big’z me"
         },
         {
-          "start": 65.3,
-          "end": 66.2,
-          "text": "ohhhh"
+          "start": 65,
+          "end": 67.8,
+          "text": "Ohhhh"
         },
         {
-          "start": 68.2,
-          "end": 69.4,
+          "start": 67.8,
+          "end": 69,
           "text": "Go"
         },
         {
-          "start": 74.48,
-          "end": 76.17,
+          "start": 74.6,
+          "end": 76.2,
           "text": "Big big big big"
         },
         {
-          "start": 76.17,
-          "end": 79.1,
-          "text": "B.B G Tae 爹送衣"
+          "start": 76.2,
+          "end": 78.9,
+          "text": "B.B G, Tae, 代松依"
         },
         {
-          "start": 81.57,
-          "end": 83.5,
+          "start": 81.5,
+          "end": 84.2,
           "text": "Bigbang"
         },
         {
-          "start": 85.3,
-          "end": 87.97,
-          "text": "變蹦"
+          "start": 84.9,
+          "end": 87.3,
+          "text": "BANG繃"
         },
         {
-          "start": 87.97,
-          "end": 90.67,
+          "start": 88,
+          "end": 89.8,
           "text": "big big big big"
         },
         {
-          "start": 90.67,
+          "start": 90.6,
           "end": 92.5,
           "text": "big big"
         },
         {
-          "start": 93.37,
-          "end": 95.6,
+          "start": 93.4,
+          "end": 95.2,
           "text": "big big big big"
         },
         {
-          "start": 96.09,
-          "end": 98.2,
+          "start": 96.1,
+          "end": 97.7,
           "text": "big’z me"
         },
         {
-          "start": 130.1,
-          "end": 131.2,
-          "text": "ohhhh"
+          "start": 129.7,
+          "end": 132.4,
+          "text": "Ohhhh"
         },
         {
-          "start": 133.0,
-          "end": 134.3,
+          "start": 132.4,
+          "end": 133.7,
           "text": "Go"
         },
         {
-          "start": 139.2,
-          "end": 140.89,
+          "start": 139.3,
+          "end": 140.8,
           "text": "Big big big big"
         },
         {
-          "start": 140.89,
-          "end": 144.1,
-          "text": "B.B G Tae 爹送衣"
+          "start": 140.8,
+          "end": 143.6,
+          "text": "B.B G, Tae, 代松依"
         },
         {
-          "start": 146.29,
-          "end": 148.3,
-          "text": "bigbang"
+          "start": 146.3,
+          "end": 148.9,
+          "text": "Bigbang"
         },
         {
-          "start": 149.8,
-          "end": 152.2,
-          "text": "變蹦"
+          "start": 149.6,
+          "end": 151.9,
+          "text": "BANG繃"
         },
         {
-          "start": 152.69,
-          "end": 154.9,
+          "start": 152.8,
+          "end": 154.6,
           "text": "big big big big"
         },
         {
-          "start": 155.39,
-          "end": 157.7,
+          "start": 155.5,
+          "end": 157.3,
           "text": "big big"
         },
         {
-          "start": 158.09,
-          "end": 160.81,
+          "start": 158,
+          "end": 159.9,
           "text": "big big big big"
         },
         {
-          "start": 160.81,
-          "end": 164.9,
+          "start": 160.9,
+          "end": 162.1,
           "text": "big’z me"
         }
       ]

@@ -4,6 +4,24 @@ const Chant = require('../bigbang/chant.js');
 const songs = require('../bigbang/songs.json');
 const track = songs[0].chant;
 
+test('BiiiG replacement preserves source phonetics and independent cue boundaries', () => {
+  const song = songs.find(s => s.number === 25), t = song.chant;
+  assert.equal(song.sources[0].videoId, 'QNZyeUbnx7w');
+  assert.equal(Chant.validTrack(t, 'QNZyeUbnx7w'), true);
+  assert.equal(Chant.validTrack(t, 'XhSzIknOZw8'), false);
+  assert.equal(t.cues.length, 29);
+  assert.equal(t.cues[0].text, '寬機永 東永裴 康代松\nV.I.P');
+  assert.equal(t.cues[1].text, '依西啾妞 秋咖黑\n嗚! 林! BIG! BANG!');
+  assert.equal(t.cues.filter(c => c.text === 'B.B G, Tae, 代松依').length, 3);
+  assert.equal(t.cues.filter(c => c.text === 'BANG繃').length, 3);
+  assert.ok(!t.cues.some(c => /週年快樂|BANG棒|Be somethin/.test(c.text)));
+  for (const cue of [...t.cues].reverse()) {
+    assert.equal(Chant.state(t, cue.start, 1).text, cue.text);
+    assert.equal(Chant.state(t, cue.start, 1).mode, 'active');
+    assert.equal(Chant.state(t, cue.end, 1).mode === 'active', t.cues.some(c => c.start === cue.end));
+  }
+});
+
 test('track is specific to the embedded video, sorted and within its duration', () => {
   assert.equal(Chant.validTrack(track, songs[0].sources[0].videoId), true);
   assert.equal(Chant.validTrack(track, 'different-version'), false);

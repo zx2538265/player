@@ -5436,9 +5436,829 @@
     "title": "BILLIONAIRE",
     "artist": "BABYMONSTER",
     "section": "Act 3",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "官方表演影片",
+        "url": "https://www.youtube.com/watch?v=MN2RlOy8y8k",
+        "title": "BILLIONAIRE · PERFORMANCE VIDEO",
+        "videoId": "MN2RlOy8y8k"
+      }
+    ],
+    "note": "依使用者附圖製作英文歌詞及紅字應援；排除日文與 Arigato。雙模型輔助校時，尚待全片人工聽校及 YouTube 實播同步確認。",
+    "chant": {
+      "videoId": "MN2RlOy8y8k",
+      "timingBasis": "word-aligned",
+      "note": "依使用者附圖製作英文歌詞及紅字應援；排除日文與 Arigato。雙模型輔助校時，尚待全片人工聽校及 YouTube 實播同步確認。",
+      "cues": [
+        {
+          "start": 4.58,
+          "end": 6.69,
+          "text": "BABY I'mma MONSTER"
+        },
+        {
+          "start": 16.09,
+          "end": 16.49,
+          "text": "click"
+        },
+        {
+          "start": 18.57,
+          "end": 18.97,
+          "text": "rich"
+        },
+        {
+          "start": 24.21,
+          "end": 25.29,
+          "text": "you (you, you, you)"
+        },
+        {
+          "start": 27.59,
+          "end": 28.13,
+          "text": "brag"
+        },
+        {
+          "start": 29.85,
+          "end": 30.35,
+          "text": "cash"
+        },
+        {
+          "start": 42.45,
+          "end": 43.25,
+          "text": "sky sky"
+        },
+        {
+          "start": 49.67,
+          "end": 50.23,
+          "text": "woah"
+        },
+        {
+          "start": 52.55,
+          "end": 52.97,
+          "text": "unfair"
+        },
+        {
+          "start": 55.03,
+          "end": 55.43,
+          "text": "compare"
+        },
+        {
+          "start": 60.67,
+          "end": 61.83,
+          "text": "BILLIONAIRE"
+        },
+        {
+          "start": 68.07,
+          "end": 70.05,
+          "text": "Pump it up, back it up, turn in up"
+        },
+        {
+          "start": 70.05,
+          "end": 70.99,
+          "text": "R.U.K.A"
+        },
+        {
+          "start": 72.59,
+          "end": 73.43,
+          "text": "Deal it out"
+        },
+        {
+          "start": 75.45,
+          "end": 77.05,
+          "text": "Who dat? who dat? who dat?"
+        },
+        {
+          "start": 79.69,
+          "end": 80.09,
+          "text": "life"
+        },
+        {
+          "start": 82.45,
+          "end": 82.87,
+          "text": "brag"
+        },
+        {
+          "start": 84.71,
+          "end": 85.31,
+          "text": "cash"
+        },
+        {
+          "start": 97.29,
+          "end": 98.11,
+          "text": "sky sky"
+        },
+        {
+          "start": 103.97,
+          "end": 105.09,
+          "text": "woah"
+        },
+        {
+          "start": 107.35,
+          "end": 107.87,
+          "text": "unfair"
+        },
+        {
+          "start": 109.87,
+          "end": 110.27,
+          "text": "compare"
+        },
+        {
+          "start": 115.55,
+          "end": 117.07,
+          "text": "BILLIONAIRE"
+        },
+        {
+          "start": 120.37,
+          "end": 121.05,
+          "text": "BILLIONAIRE"
+        },
+        {
+          "start": 121.05,
+          "end": 123.39,
+          "text": "Buh buh buh buh BILLIONAIRE"
+        },
+        {
+          "start": 124.44,
+          "end": 128.07,
+          "text": "BABYMONSTER got me feeling like a BILLIONAIRE"
+        },
+        {
+          "start": 129.52,
+          "end": 130.21,
+          "text": "BILLIONAIRE"
+        },
+        {
+          "start": 130.21,
+          "end": 132.45,
+          "text": "Buh buh buh buh BILLIONAIRE"
+        },
+        {
+          "start": 133.58,
+          "end": 137.09,
+          "text": "BABYMONSTER got me feeling like a BILLIONAIRE"
+        },
+        {
+          "start": 142.93,
+          "end": 144.03,
+          "text": "woah"
+        },
+        {
+          "start": 146.29,
+          "end": 146.77,
+          "text": "unfair"
+        },
+        {
+          "start": 148.75,
+          "end": 149.15,
+          "text": "compare"
+        },
+        {
+          "start": 154.15,
+          "end": 155.85,
+          "text": "BILLIONAIRE"
+        }
+      ]
+    },
+    "subtitles": {
+      "videoId": "MN2RlOy8y8k",
+      "cues": [
+        {
+          "start": 4.58,
+          "end": 6.81,
+          "parts": [
+            {
+              "text": "BABY I'mma MONSTER",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 7.14,
+          "end": 9.71,
+          "parts": [
+            {
+              "text": "I've never felt like this before",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 11.62,
+          "end": 14.45,
+          "parts": [
+            {
+              "text": "They stop when I walk through the door",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 15.52,
+          "end": 17.77,
+          "parts": [
+            {
+              "text": "Something ",
+              "chant": false
+            },
+            {
+              "text": "click",
+              "chant": true
+            },
+            {
+              "text": " it's a state of mind",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 17.77,
+          "end": 19.93,
+          "parts": [
+            {
+              "text": "Type of ",
+              "chant": false
+            },
+            {
+              "text": "rich",
+              "chant": true
+            },
+            {
+              "text": " can't be quantified",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 19.93,
+          "end": 22.77,
+          "parts": [
+            {
+              "text": "And it ain't my fault if you not trying to match my mood",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 22.77,
+          "end": 25.41,
+          "parts": [
+            {
+              "text": "Sorry but that's on ",
+              "chant": false
+            },
+            {
+              "text": "you (you, you, you)",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 25.88,
+          "end": 28.13,
+          "parts": [
+            {
+              "text": "Baby I don't mean to ",
+              "chant": false
+            },
+            {
+              "text": "brag",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 28.13,
+          "end": 30.35,
+          "parts": [
+            {
+              "text": "You know I'm not talking ",
+              "chant": false
+            },
+            {
+              "text": "cash",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 30.35,
+          "end": 32.71,
+          "parts": [
+            {
+              "text": "Got a thing that's only mine",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 34.98,
+          "end": 37.17,
+          "parts": [
+            {
+              "text": "And I watch your eyes go green",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 37.17,
+          "end": 39.27,
+          "parts": [
+            {
+              "text": "I can feel your jealousy",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 41.3,
+          "end": 43.15,
+          "parts": [
+            {
+              "text": "Up here in the ",
+              "chant": false
+            },
+            {
+              "text": "sky sky",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 43.15,
+          "end": 46.35,
+          "parts": [
+            {
+              "text": "Oh look at me, I woke up",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 46.35,
+          "end": 50.23,
+          "parts": [
+            {
+              "text": "Feeling like a BILLIONAIRE, ",
+              "chant": false
+            },
+            {
+              "text": "woah",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 50.23,
+          "end": 53.09,
+          "parts": [
+            {
+              "text": "World is mine, yeah life is so ",
+              "chant": false
+            },
+            {
+              "text": "unfair",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 53.68,
+          "end": 55.27,
+          "parts": [
+            {
+              "text": "Money don't ",
+              "chant": false
+            },
+            {
+              "text": "compare",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 55.72,
+          "end": 57.85,
+          "parts": [
+            {
+              "text": "I got something rare",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 58.4,
+          "end": 61.15,
+          "parts": [
+            {
+              "text": "Feeling like a ",
+              "chant": false
+            },
+            {
+              "text": "BILLIONAIRE",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 61.15,
+          "end": 63.65,
+          "parts": [
+            {
+              "text": "I got rules here to break",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 64.1,
+          "end": 65.79,
+          "parts": [
+            {
+              "text": "Say it with my chest and in your face",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 65.79,
+          "end": 68.07,
+          "parts": [
+            {
+              "text": "Hear the boom in the bass",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 68.07,
+          "end": 70.05,
+          "parts": [
+            {
+              "text": "Pump it up, back it up, turn in up",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 70.05,
+          "end": 70.96,
+          "parts": [
+            {
+              "text": "R.U.K.A",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 70.96,
+          "end": 72.59,
+          "parts": [
+            {
+              "text": "ACE-SA be the name, so cut the deck",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 72.59,
+          "end": 73.43,
+          "parts": [
+            {
+              "text": "Deal it out",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 73.43,
+          "end": 74.83,
+          "parts": [
+            {
+              "text": "Above the money power and respect",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 75.45,
+          "end": 77.17,
+          "parts": [
+            {
+              "text": "Who dat? who dat? who dat?",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 77.21,
+          "end": 77.73,
+          "parts": [
+            {
+              "text": "Got the flame",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 77.73,
+          "end": 80.11,
+          "parts": [
+            {
+              "text": "Bet it on me, double up your ",
+              "chant": false
+            },
+            {
+              "text": "life",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 81.0,
+          "end": 82.87,
+          "parts": [
+            {
+              "text": "Baby I don't mean to ",
+              "chant": false
+            },
+            {
+              "text": "brag",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 82.87,
+          "end": 85.31,
+          "parts": [
+            {
+              "text": "You know I'm not talking ",
+              "chant": false
+            },
+            {
+              "text": "cash",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 85.31,
+          "end": 87.57,
+          "parts": [
+            {
+              "text": "Got a thing that's only mine",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 89.88,
+          "end": 92.01,
+          "parts": [
+            {
+              "text": "And I watch your eyes go green",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 92.01,
+          "end": 94.13,
+          "parts": [
+            {
+              "text": "I can feel your jealousy",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 96.22,
+          "end": 98.05,
+          "parts": [
+            {
+              "text": "Up here in the ",
+              "chant": false
+            },
+            {
+              "text": "sky sky",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 98.05,
+          "end": 101.25,
+          "parts": [
+            {
+              "text": "Oh look at me, I woke up",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 101.25,
+          "end": 105.09,
+          "parts": [
+            {
+              "text": "Feeling like a BILLIONAIRE, ",
+              "chant": false
+            },
+            {
+              "text": "woah",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 105.09,
+          "end": 107.99,
+          "parts": [
+            {
+              "text": "World is mine, yeah life is so ",
+              "chant": false
+            },
+            {
+              "text": "unfair",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 108.58,
+          "end": 110.25,
+          "parts": [
+            {
+              "text": "Money don't ",
+              "chant": false
+            },
+            {
+              "text": "compare",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 110.68,
+          "end": 112.73,
+          "parts": [
+            {
+              "text": "I got something rare",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 114.14,
+          "end": 117.19,
+          "parts": [
+            {
+              "text": "Feeling like a ",
+              "chant": false
+            },
+            {
+              "text": "BILLIONAIRE",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 120.37,
+          "end": 121.05,
+          "parts": [
+            {
+              "text": "BILLIONAIRE",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 121.05,
+          "end": 123.51,
+          "parts": [
+            {
+              "text": "Buh buh buh buh BILLIONAIRE",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 124.44,
+          "end": 128.19,
+          "parts": [
+            {
+              "text": "BABYMONSTER got me feeling like a BILLIONAIRE",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 129.52,
+          "end": 130.21,
+          "parts": [
+            {
+              "text": "BILLIONAIRE",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 130.21,
+          "end": 132.57,
+          "parts": [
+            {
+              "text": "Buh buh buh buh BILLIONAIRE",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 133.58,
+          "end": 136.95,
+          "parts": [
+            {
+              "text": "BABYMONSTER got me feeling like a BILLIONAIRE",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 136.95,
+          "end": 140.21,
+          "parts": [
+            {
+              "text": "Oh look at me, I woke up",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 140.62,
+          "end": 144.03,
+          "parts": [
+            {
+              "text": "Feeling like a BILLIONAIRE, ",
+              "chant": false
+            },
+            {
+              "text": "woah",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 144.03,
+          "end": 146.89,
+          "parts": [
+            {
+              "text": "World is mine, yeah life is so ",
+              "chant": false
+            },
+            {
+              "text": "unfair",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 147.48,
+          "end": 149.03,
+          "parts": [
+            {
+              "text": "Money don't ",
+              "chant": false
+            },
+            {
+              "text": "compare",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 149.12,
+          "end": 151.55,
+          "parts": [
+            {
+              "text": "I got something rare",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 152.56,
+          "end": 155.97,
+          "parts": [
+            {
+              "text": "Feeling like a ",
+              "chant": false
+            },
+            {
+              "text": "BILLIONAIRE",
+              "chant": true
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "number": 21,

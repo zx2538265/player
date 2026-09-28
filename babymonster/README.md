@@ -38,3 +38,5 @@
 
 - Really Like You（第 19 首）播放指定 `x5iLrIZ7YPY`（MCOUNTDOWN 2026.2.5 FanCam）；依使用者上傳的官方應援表加入 75 段韓文／英文字幕與 36 段應援提示。一般歌詞白字、紅字固定黃色粗體，開場四句只顯示歌詞；日文讀音與日文歡呼註記不納入。三次副歌、三次 Okay okay／Hey 分開，moonlight 只標示 light。
 - Really Like You 已逐行核對文字與紅字、完成 large-v3／medium 強制對齊及英韓 CTC 輔助檢查，保留完整影片。時間仍為暫定，尤其前兩次 light 與結尾 Hey；尚未完成全段人工聽校及 YouTube 實播同步驗收。來源圖、影片、校時證據、決策表及產生器位於 `video/x5iLrIZ7YPY/`。
+
+- BILLIONAIRE（第 20 首）使用指定官方 PERFORMANCE VIDEO `MN2RlOy8y8k`，加入 54 段英文歌詞字幕與 33 張紅字應援提示。文字及顏色依使用者附圖，排除日文歡呼註記與 Arigato；保留原表拼法。時間使用 large-v3／medium 輔助定位，修正開頭留白，模型分歧保存於 `video/MN2RlOy8y8k/chant-qa.json`。全片人工聽校與 YouTube 實播同步仍待確認。歌詞及應援 SRT、來源圖片、音訊、生成器與紀錄位於該影片資料夾。

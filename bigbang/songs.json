@@ -977,86 +977,559 @@
     "hasChant": true,
     "sources": [
       {
-        "kind": "應援參考",
-        "url": "https://www.youtube.com/watch?v=kppPmFtBB70",
-        "title": "LIES（使用者指定來源）",
-        "resolvedUrl": "https://www.youtube.com/watch?v=kppPmFtBB70",
-        "videoId": "kppPmFtBB70"
+        "kind": "演唱會影片",
+        "title": "HARU HARU + LIES（02:06 起）",
+        "url": "https://www.youtube.com/watch?v=-3VANu3agYE&t=126s",
+        "videoId": "-3VANu3agYE",
+        "startSeconds": 126,
+        "endSeconds": 272
       },
       {
-        "kind": "前段應援詞參考",
-        "url": "https://www.threads.com/@ritalala25/post/DcfeKYIEuBv/media",
-        "title": "LIES 前段應援詞（Threads）"
+        "kind": "原應援參考",
+        "title": "LIES（使用者指定來源）",
+        "url": "https://www.youtube.com/watch?v=kppPmFtBB70"
+      },
+      {
+        "kind": "應援補充參考",
+        "title": "BIGBANG - 謊言 繁中應援",
+        "url": "https://www.youtube.com/watch?v=LeY0M83P7zg"
       }
     ],
-    "note": "依指定影片粉紅字製作應援卡片；白字歌詞空耳不納入",
-    "chant": {
-      "videoId": "kppPmFtBB70",
-      "note": "僅收指定影片粉紅應援字；空耳依原片，密集短句合併。時間依畫面進出場校至 0.1 秒；尚未完成逐句聽校，節拍時間暫定",
+    "note": "02:06 起播；保留三人開場與原應援，白字歌詞、黃字應援。歌詞校時仍暫定，應援依同源音訊對應",
+    "subtitles": {
+      "videoId": "-3VANu3agYE",
       "cues": [
         {
-          "start": 12,
-          "end": 14.7,
-          "text": "款基永\n東永北\n扛爹送"
+          "start": 139.88,
+          "end": 143.09,
+          "parts": [
+            {
+              "text": "늦은 밤 비가 내려와 널 데려와",
+              "chant": false
+            }
+          ]
         },
         {
-          "start": 14.9,
-          "end": 17.2,
-          "text": "V.I.P\n永窩ㄏ一\nHam給嘿"
+          "start": 143.09,
+          "end": 144.95,
+          "parts": [
+            {
+              "text": "젖은 기억 끝에 뒤척여 나",
+              "chant": false
+            }
+          ]
         },
         {
-          "start": 17.9,
-          "end": 19.5,
-          "text": "勿令 BIGBANG !!!"
+          "start": 144.95,
+          "end": 148.73,
+          "parts": [
+            {
+              "text": "너 없이 잘 살 수 있다고\n다짐해봐도 어쩔 수 없다고",
+              "chant": false
+            }
+          ]
         },
         {
-          "start": 43.2,
-          "end": 43.8,
+          "start": 148.73,
+          "end": 152.27,
+          "parts": [
+            {
+              "text": "못하는 술도 마시고\n속 타는 맘 밤새 채워봐도",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 152.27,
+          "end": 154.33,
+          "parts": [
+            {
+              "text": "싫어 너 없는 하루는 길어",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 154.33,
+          "end": 156.12,
+          "parts": [
+            {
+              "text": "빌어 제발 잊게 해달라고",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 156.12,
+          "end": 159.35,
+          "parts": [
+            {
+              "text": "너 없는 내겐 웃음이 보이지 않아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 159.35,
+          "end": 161.33,
+          "parts": [
+            {
+              "text": "눈물조차 고이지 않아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 161.33,
+          "end": 163.83,
+          "parts": [
+            {
+              "text": "더는 살고 싶지 않아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 163.83,
+          "end": 166.09,
+          "parts": [
+            {
+              "text": "엿 같애 열받게",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 166.09,
+          "end": 168.05,
+          "parts": [
+            {
+              "text": "니 생각에 돌아 버릴 것 같애",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 168.05,
+          "end": 169.99,
+          "parts": [
+            {
+              "text": "보고 싶은데 볼 수가 없데",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 169.99,
+          "end": 170.85,
+          "parts": [
+            {
+              "text": "모두 끝났데",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 170.85,
+          "end": 171.76,
+          "parts": [
+            {
+              "text": "I'll be right there",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 171.76,
+          "end": 173.27,
+          "parts": [
+            {
+              "text": "I'm so sorry but I love you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 173.27,
+          "end": 174.65,
+          "parts": [
+            {
+              "text": "다 거짓말이야",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 174.65,
+          "end": 179.39,
+          "parts": [
+            {
+              "text": "몰랐어 이제야 알았어 네가 필요해",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 179.39,
+          "end": 180.97,
+          "parts": [
+            {
+              "text": "I'm so sorry but I love you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 180.97,
+          "end": 182.23,
+          "parts": [
+            {
+              "text": "날카로운 말",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 182.23,
+          "end": 186.57,
+          "parts": [
+            {
+              "text": "홧김에 나도 모르게\n널 떠나보냈지만",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 186.57,
+          "end": 188.65,
+          "parts": [
+            {
+              "text": "I'm so sorry but I love you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 188.65,
+          "end": 189.59,
+          "parts": [
+            {
+              "text": "다 거짓말",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 189.59,
+          "end": 191.81,
+          "parts": [
+            {
+              "text": "I'm so sorry",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 192.43,
+          "end": 194.71,
+          "parts": [
+            {
+              "text": "But I love you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 194.71,
+          "end": 196.29,
+          "parts": [
+            {
+              "text": "I'm so sorry but I love you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 196.29,
+          "end": 199.69,
+          "parts": [
+            {
+              "text": "나를 떠나 천천히 잊어줄래",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 199.69,
+          "end": 201.85,
+          "parts": [
+            {
+              "text": "내가 아파할 수 있게",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 202.65,
+          "end": 209.83,
+          "parts": [
+            {
+              "text": "Oh oh oh oh oh\n모든 게 꿈이길",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 209.83,
+          "end": 213.39,
+          "parts": [
+            {
+              "text": "Oh oh oh oh oh",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 213.39,
+          "end": 215.93,
+          "parts": [
+            {
+              "text": "이것밖에 안 되는 나라서",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 217.36,
+          "end": 220.41,
+          "parts": [
+            {
+              "text": "아직도 너를 못 잊어",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 220.41,
+          "end": 224.65,
+          "parts": [
+            {
+              "text": "아니 평생을 가도 죽어서까지도",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 224.65,
+          "end": 228.29,
+          "parts": [
+            {
+              "text": "내가 준 상처 아물었는지",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 228.29,
+          "end": 233.13,
+          "parts": [
+            {
+              "text": "미안해 아무것도 해준 게 없는 나라서",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 238.5,
+          "end": 241.85,
+          "parts": [
+            {
+              "text": "I'm so sorry but I love you\n다 거짓말이야",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 241.85,
+          "end": 246.45,
+          "parts": [
+            {
+              "text": "몰랐어 이제야 알았어 네가 필요해",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 246.45,
+          "end": 248.11,
+          "parts": [
+            {
+              "text": "I'm so sorry but I love you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 248.11,
+          "end": 249.21,
+          "parts": [
+            {
+              "text": "날카로운 말",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 249.21,
+          "end": 253.51,
+          "parts": [
+            {
+              "text": "홧김에 나도 모르게\n널 떠나보냈지만",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 253.51,
+          "end": 255.79,
+          "parts": [
+            {
+              "text": "I'm so sorry but I love you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 255.79,
+          "end": 257.01,
+          "parts": [
+            {
+              "text": "다 거짓말",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 257.01,
+          "end": 259.05,
+          "parts": [
+            {
+              "text": "I'm so sorry",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 259.45,
+          "end": 261.89,
+          "parts": [
+            {
+              "text": "But I love you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 262.05,
+          "end": 263.31,
+          "parts": [
+            {
+              "text": "I'm so sorry but I love you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 263.31,
+          "end": 266.73,
+          "parts": [
+            {
+              "text": "나를 떠나 천천히 잊어줄래",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 266.73,
+          "end": 268.99,
+          "parts": [
+            {
+              "text": "내가 아파할 수 있게",
+              "chant": false
+            }
+          ]
+        }
+      ]
+    },
+    "chant": {
+      "videoId": "-3VANu3agYE",
+      "sourceVideoId": "kppPmFtBB70",
+      "referenceVideoId": "LeY0M83P7zg",
+      "note": "保留原三人版開場與應援；依同一段音訊的 12 個錨點統一加 121.633 秒，並核對 LeY0M83P7zg 的黃色應援字。橋段沿用原版「一直在一起」；畫面提示時間不等於已完成逐句聽校",
+      "cues": [
+        {
+          "start": 133.633,
+          "end": 136.333,
+          "text": "寬基勇\n東永培\n康爹送"
+        },
+        {
+          "start": 136.533,
+          "end": 138.833,
+          "text": "VIP\n永碗逆\n撒朗嘿"
+        },
+        {
+          "start": 139.533,
+          "end": 141.133,
+          "text": "屋哩 BIGBANG！"
+        },
+        {
+          "start": 164.833,
+          "end": 165.433,
           "text": "右嘎ㄊㄟ"
         },
         {
-          "start": 56.9,
-          "end": 58.1,
+          "start": 178.533,
+          "end": 179.733,
           "text": "你嘎 批溜嘿"
         },
         {
-          "start": 70.3,
-          "end": 70.9,
+          "start": 191.933,
+          "end": 192.533,
           "text": "搜哩"
         },
         {
-          "start": 71.9,
-          "end": 73,
+          "start": 193.533,
+          "end": 194.633,
           "text": "I love you\nmore more"
         },
         {
-          "start": 81.2,
-          "end": 85.8,
+          "start": 202.833,
+          "end": 207.433,
           "text": "Big Bang\n薩 朗 嘿"
         },
         {
-          "start": 88.9,
-          "end": 93.6,
+          "start": 210.533,
+          "end": 215.233,
           "text": "ㄏㄤˋ 喪\nHam Gay 嘿"
         },
         {
-          "start": 95.1,
-          "end": 96.3,
+          "start": 216.733,
+          "end": 217.933,
           "text": "Drop that beat"
         },
         {
-          "start": 124,
-          "end": 125.2,
+          "start": 245.633,
+          "end": 246.833,
           "text": "你嘎 批溜嘿"
         },
         {
-          "start": 137.3,
-          "end": 138,
+          "start": 258.933,
+          "end": 259.633,
           "text": "搜哩"
         },
         {
-          "start": 139,
-          "end": 140.2,
+          "start": 260.633,
+          "end": 261.833,
           "text": "I love you\nmore more"
         }
       ]

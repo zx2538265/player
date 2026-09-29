@@ -124,7 +124,7 @@ def prepare(root, catalog, site):
     shutil.copytree(root / "srt", site / "srt")
     if (root / "bigbang").is_dir():
         (site / "bigbang").mkdir()
-        for name in ("index.html", "practice.css", "practice.js", "chant.js", "songs.json", "share-cover.png"):
+        for name in ("index.html", "practice.css", "practice.js", "chant.js", "subtitles.js", "songs.json", "share-cover.png"):
             shutil.copy2(root / "bigbang" / name, site / "bigbang" / name)
     if (root / "babymonster").is_dir():
         (site / "babymonster").mkdir()

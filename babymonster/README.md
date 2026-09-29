@@ -40,3 +40,5 @@
 - Really Like You 已逐行核對文字與紅字、完成 large-v3／medium 強制對齊及英韓 CTC 輔助檢查，保留完整影片。時間仍為暫定，尤其前兩次 light 與結尾 Hey；尚未完成全段人工聽校及 YouTube 實播同步驗收。來源圖、影片、校時證據、決策表及產生器位於 `video/x5iLrIZ7YPY/`。
 
 - BILLIONAIRE（第 20 首）使用指定官方 PERFORMANCE VIDEO `MN2RlOy8y8k`，加入 54 段英文歌詞字幕與 33 張紅字應援提示。文字及顏色依使用者附圖，排除日文歡呼註記與 Arigato；保留原表拼法。時間使用 large-v3／medium 輔助定位，修正開頭留白，模型分歧保存於 `video/MN2RlOy8y8k/chant-qa.json`。全片人工聽校與 YouTube 實播同步仍待確認。歌詞及應援 SRT、來源圖片、音訊、生成器與紀錄位於該影片資料夾。
+
+- Stuck in the Middle（第 15 首）使用指定 KaM7ZxoGQuE LIVE STAGE，依使用者附圖加入 86 段英文歌詞與最後副歌 10 段紅字應援，排除日文及歡呼註記。時間經 large-v3、medium 與英文 CTC 輔助定位，仍待全曲人工聽校與 YouTube 實播同步驗收；SRT、來源圖與校時紀錄位於 video/KaM7ZxoGQuE/。

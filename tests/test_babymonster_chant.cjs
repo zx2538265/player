@@ -13,7 +13,7 @@ test('WE GO UP is bound to the requested source and segment', () => {
   assert.equal(Chant.validTrack(track, 'other-source'), false);
   assert.equal(track.cues.length, 50);
   assert.ok(track.cues.every(c => c.start >= 31 && c.end <= 220));
-  assert.ok(songs.slice(4).filter(s => ![5,6,7,19,20,21,23,24,25].includes(s.number)).every(s => !s.hasChant && !s.chant));
+  assert.ok(songs.slice(4).filter(s => ![5,6,7,15,19,20,21,23,24,25].includes(s.number)).every(s => !s.hasChant && !s.chant));
 });
 
 test('HOT SAUCE follows flame entrances and preserves each response group', () => {

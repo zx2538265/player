@@ -4335,9 +4335,938 @@
     "title": "Stuck in the Middle",
     "artist": "BABYMONSTER",
     "section": "Act 3",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "舞台演出",
+        "title": "Stuck In The Middle · LIVE STAGE",
+        "url": "https://www.youtube.com/watch?v=KaM7ZxoGQuE",
+        "videoId": "KaM7ZxoGQuE"
+      }
+    ],
+    "note": "依使用者提供的應援表整理英文歌詞與紅字應援，排除日文註音及歡聲註記；時間經模型輔助對齊，仍待人工聽校與 YouTube 實播確認。",
+    "chant": {
+      "videoId": "KaM7ZxoGQuE",
+      "timingBasis": "word-aligned",
+      "note": "依使用者提供的應援表整理英文歌詞與紅字應援，排除日文註音及歡聲註記；時間經模型輔助對齊，仍待人工聽校與 YouTube 實播確認。",
+      "cues": [
+        {
+          "start": 212.16,
+          "end": 214.79,
+          "text": "You tell me that you need me"
+        },
+        {
+          "start": 214.79,
+          "end": 216.21,
+          "text": "Then you walk away"
+        },
+        {
+          "start": 216.21,
+          "end": 218.37,
+          "text": "Keep promising forever"
+        },
+        {
+          "start": 218.37,
+          "end": 221.35,
+          "text": "With the words you say it's true"
+        },
+        {
+          "start": 222.16,
+          "end": 225.11,
+          "text": "Don't know what I'm supposed to do"
+        },
+        {
+          "start": 226.16,
+          "end": 230.95,
+          "text": "I'm stuck in the middle with you you you"
+        },
+        {
+          "start": 230.95,
+          "end": 233.95,
+          "text": "With you you"
+        },
+        {
+          "start": 233.95,
+          "end": 236.99,
+          "text": "Oh boy you got me really confused"
+        },
+        {
+          "start": 238.36,
+          "end": 240.97,
+          "text": "Don't know what I'm supposed to do"
+        },
+        {
+          "start": 243.08,
+          "end": 245.53,
+          "text": "I'm stuck in the middle with you"
+        }
+      ]
+    },
+    "subtitles": {
+      "videoId": "KaM7ZxoGQuE",
+      "cues": [
+        {
+          "start": 10.064,
+          "end": 12.83,
+          "parts": [
+            {
+              "text": "All this time we've been together",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 13.028,
+          "end": 16.33,
+          "parts": [
+            {
+              "text": "And I still don't know how you feel",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 18.235,
+          "end": 19.657,
+          "parts": [
+            {
+              "text": "Sometimes I wish you'd just",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 19.657,
+          "end": 22.0,
+          "parts": [
+            {
+              "text": "Talk to me",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 22.0,
+          "end": 23.53,
+          "parts": [
+            {
+              "text": "Maybe it's make believe",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 23.53,
+          "end": 25.73,
+          "parts": [
+            {
+              "text": "Maybe it can be true",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 25.73,
+          "end": 27.55,
+          "parts": [
+            {
+              "text": "I try to tell myself",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 27.55,
+          "end": 29.87,
+          "parts": [
+            {
+              "text": "I'm not in love with you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 30.0,
+          "end": 31.77,
+          "parts": [
+            {
+              "text": "I thought that I knew everything",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 33.18,
+          "end": 36.87,
+          "parts": [
+            {
+              "text": "I guess I don't know anything yeah",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 37.48,
+          "end": 39.23,
+          "parts": [
+            {
+              "text": "I get emotional",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 39.23,
+          "end": 41.09,
+          "parts": [
+            {
+              "text": "And hypothetical",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 41.09,
+          "end": 43.71,
+          "parts": [
+            {
+              "text": "Wondering if there are all kinds of things",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 43.71,
+          "end": 45.61,
+          "parts": [
+            {
+              "text": "I'm not supposed to know",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 45.61,
+          "end": 49.08,
+          "parts": [
+            {
+              "text": "I try my best to let it go (Let go)",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 49.08,
+          "end": 51.49,
+          "parts": [
+            {
+              "text": "Baby then you bring me back",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 51.49,
+          "end": 53.29,
+          "parts": [
+            {
+              "text": "Bring me back",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 54.02,
+          "end": 57.71,
+          "parts": [
+            {
+              "text": "You lift my feet off of the ground",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 58.12,
+          "end": 61.41,
+          "parts": [
+            {
+              "text": "Keep me spinning around and around",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 62.16,
+          "end": 65.65,
+          "parts": [
+            {
+              "text": "I don't ever wanna come down",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 66.18,
+          "end": 67.85,
+          "parts": [
+            {
+              "text": "From your arms",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 69.92,
+          "end": 72.71,
+          "parts": [
+            {
+              "text": "You tell me that you need me",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 72.71,
+          "end": 74.23,
+          "parts": [
+            {
+              "text": "Then you walk away",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 74.23,
+          "end": 76.27,
+          "parts": [
+            {
+              "text": "Keep promising forever",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 76.27,
+          "end": 79.31,
+          "parts": [
+            {
+              "text": "With the words you say it's true",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 79.31,
+          "end": 83.23,
+          "parts": [
+            {
+              "text": "Don't know what I'm supposed to do",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 83.94,
+          "end": 89.05,
+          "parts": [
+            {
+              "text": "I'm stuck in the middle with you you you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 89.05,
+          "end": 92.34,
+          "parts": [
+            {
+              "text": "With you you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 92.34,
+          "end": 95.13,
+          "parts": [
+            {
+              "text": "Oh boy you got me really confused",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 96.46,
+          "end": 99.15,
+          "parts": [
+            {
+              "text": "Don't know what I'm supposed to do",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 100.46,
+          "end": 103.55,
+          "parts": [
+            {
+              "text": "I'm stuck in the middle with you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 105.16,
+          "end": 106.27,
+          "parts": [
+            {
+              "text": "You were the spark",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 106.27,
+          "end": 107.43,
+          "parts": [
+            {
+              "text": "Light in the dark",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 107.43,
+          "end": 108.67,
+          "parts": [
+            {
+              "text": "Gave you my everything",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 109.42,
+          "end": 110.35,
+          "parts": [
+            {
+              "text": "Pulling me in",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 110.35,
+          "end": 111.41,
+          "parts": [
+            {
+              "text": "Pushing me out",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 111.41,
+          "end": 112.85,
+          "parts": [
+            {
+              "text": "Pulling me back again",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 112.85,
+          "end": 114.87,
+          "parts": [
+            {
+              "text": "Don't know if your mind is made up",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 114.87,
+          "end": 116.69,
+          "parts": [
+            {
+              "text": "But I know that nobody wanna be stuck",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 116.69,
+          "end": 118.81,
+          "parts": [
+            {
+              "text": "You are the one that I want",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 118.81,
+          "end": 121.01,
+          "parts": [
+            {
+              "text": "All I can promise you now is my love",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 121.94,
+          "end": 123.05,
+          "parts": [
+            {
+              "text": "You say you want me",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 123.05,
+          "end": 124.99,
+          "parts": [
+            {
+              "text": "You say you care",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 125.94,
+          "end": 126.83,
+          "parts": [
+            {
+              "text": "When we're together",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 127.7,
+          "end": 128.89,
+          "parts": [
+            {
+              "text": "Are you even there",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 128.89,
+          "end": 129.33,
+          "parts": [
+            {
+              "text": "And you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 129.33,
+          "end": 130.89,
+          "parts": [
+            {
+              "text": "Gave me the keys to your heart",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 130.89,
+          "end": 131.33,
+          "parts": [
+            {
+              "text": "Yeah you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 131.33,
+          "end": 132.75,
+          "parts": [
+            {
+              "text": "Made me believe from the start",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 132.75,
+          "end": 134.05,
+          "parts": [
+            {
+              "text": "Now all that I know is",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 134.05,
+          "end": 137.03,
+          "parts": [
+            {
+              "text": "I got all this love I won't take back",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 137.68,
+          "end": 138.17,
+          "parts": [
+            {
+              "text": "My love",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 138.17,
+          "end": 138.89,
+          "parts": [
+            {
+              "text": "My love",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 138.89,
+          "end": 139.83,
+          "parts": [
+            {
+              "text": "My love",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 139.83,
+          "end": 140.65,
+          "parts": [
+            {
+              "text": "My love",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 140.65,
+          "end": 143.73,
+          "parts": [
+            {
+              "text": "You lift my feet off of the ground",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 144.48,
+          "end": 147.19,
+          "parts": [
+            {
+              "text": "Keep me spinning around and around",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 147.19,
+          "end": 151.55,
+          "parts": [
+            {
+              "text": "I don't ever wanna come down",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 151.55,
+          "end": 153.79,
+          "parts": [
+            {
+              "text": "From your arms",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 156.0,
+          "end": 158.75,
+          "parts": [
+            {
+              "text": "You tell me that you need me",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 158.75,
+          "end": 160.25,
+          "parts": [
+            {
+              "text": "Then you walk away",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 160.25,
+          "end": 162.37,
+          "parts": [
+            {
+              "text": "Keep promising forever",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 162.78,
+          "end": 165.39,
+          "parts": [
+            {
+              "text": "With the words you say it's true",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 165.39,
+          "end": 169.23,
+          "parts": [
+            {
+              "text": "Don't know what I'm supposed to do",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 170.14,
+          "end": 174.97,
+          "parts": [
+            {
+              "text": "I'm stuck in the middle with you you you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 174.97,
+          "end": 178.09,
+          "parts": [
+            {
+              "text": "With you you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 178.09,
+          "end": 181.15,
+          "parts": [
+            {
+              "text": "Oh boy you got me really confused",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 182.18,
+          "end": 185.29,
+          "parts": [
+            {
+              "text": "Don't know what I'm supposed to do",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 186.18,
+          "end": 189.45,
+          "parts": [
+            {
+              "text": "I'm stuck in the middle with you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 189.45,
+          "end": 193.81,
+          "parts": [
+            {
+              "text": "I've tried and I've tried to be good to myself",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 193.81,
+          "end": 196.05,
+          "parts": [
+            {
+              "text": "Good for my health",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 196.05,
+          "end": 197.55,
+          "parts": [
+            {
+              "text": "Is it selfish",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 198.16,
+          "end": 201.33,
+          "parts": [
+            {
+              "text": "If I'm constantly turning to you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 202.16,
+          "end": 203.15,
+          "parts": [
+            {
+              "text": "To you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 204.2,
+          "end": 207.53,
+          "parts": [
+            {
+              "text": "If you knew what I'm feeling right now",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 207.53,
+          "end": 209.81,
+          "parts": [
+            {
+              "text": "You'd comfort my heart",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 212.16,
+          "end": 214.79,
+          "parts": [
+            {
+              "text": "You tell me that you need me",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 214.79,
+          "end": 216.21,
+          "parts": [
+            {
+              "text": "Then you walk away",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 216.21,
+          "end": 218.37,
+          "parts": [
+            {
+              "text": "Keep promising forever",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 218.37,
+          "end": 221.47,
+          "parts": [
+            {
+              "text": "With the words you say it's true",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 222.16,
+          "end": 225.23,
+          "parts": [
+            {
+              "text": "Don't know what I'm supposed to do",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 226.16,
+          "end": 230.95,
+          "parts": [
+            {
+              "text": "I'm stuck in the middle with you you you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 230.95,
+          "end": 233.95,
+          "parts": [
+            {
+              "text": "With you you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 233.95,
+          "end": 237.11,
+          "parts": [
+            {
+              "text": "Oh boy you got me really confused",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 238.36,
+          "end": 241.09,
+          "parts": [
+            {
+              "text": "Don't know what I'm supposed to do",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 243.08,
+          "end": 245.65,
+          "parts": [
+            {
+              "text": "I'm stuck in the middle with you",
+              "chant": true
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "number": 16,

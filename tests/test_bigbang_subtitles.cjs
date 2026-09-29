@@ -74,7 +74,7 @@ test('LIES retains the three-person intro and original bridge on the original vi
   assert.equal(Chant.validTrack(track,'-3VANu3agYE'),false);
   assert.equal(track.cues.length,13);
   assert.deepEqual(track.cues.slice(0,3).map(c=>c.text),[
-    '寬基勇\n東永培\n康爹送','VIP\n永碗逆\n撒朗嘿','屋哩 BIGBANG！'
+    '寬基勇\n東永培\n康爹送','VIP\n擁吻你\n撒朗嘿','屋哩 BIGBANG！'
   ]);
   assert.equal(track.cues[0].start,12);
   assert.equal(track.cues[0].end,14.7);

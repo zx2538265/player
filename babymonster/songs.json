@@ -4344,11 +4344,11 @@
         "videoId": "KaM7ZxoGQuE"
       }
     ],
-    "note": "依使用者提供的應援表整理英文歌詞與紅字應援，排除日文註音及歡聲註記；時間經模型輔助對齊，仍待人工聽校與 YouTube 實播確認。",
+    "note": "依使用者提供的應援表整理英文歌詞與紅字應援，排除日文註音及歡聲註記；長句依語意分成兩行。時間經模型輔助對齊，仍待人工聽校與 YouTube 實播確認。",
     "chant": {
       "videoId": "KaM7ZxoGQuE",
       "timingBasis": "word-aligned",
-      "note": "依使用者提供的應援表整理英文歌詞與紅字應援，排除日文註音及歡聲註記；時間經模型輔助對齊，仍待人工聽校與 YouTube 實播確認。",
+      "note": "依使用者提供的應援表整理英文歌詞與紅字應援，排除日文註音及歡聲註記；長句依語意分成兩行。時間經模型輔助對齊，仍待人工聽校與 YouTube 實播確認。",
       "cues": [
         {
           "start": 212.16,
@@ -4368,17 +4368,17 @@
         {
           "start": 218.37,
           "end": 221.35,
-          "text": "With the words you say it's true"
+          "text": "With the words you\nsay it's true"
         },
         {
           "start": 222.16,
           "end": 225.11,
-          "text": "Don't know what I'm supposed to do"
+          "text": "Don't know what\nI'm supposed to do"
         },
         {
           "start": 226.16,
           "end": 230.95,
-          "text": "I'm stuck in the middle with you you you"
+          "text": "I'm stuck in the middle\nwith you you you"
         },
         {
           "start": 230.95,
@@ -4388,17 +4388,17 @@
         {
           "start": 233.95,
           "end": 236.99,
-          "text": "Oh boy you got me really confused"
+          "text": "Oh boy you got\nme really confused"
         },
         {
           "start": 238.36,
           "end": 240.97,
-          "text": "Don't know what I'm supposed to do"
+          "text": "Don't know what\nI'm supposed to do"
         },
         {
           "start": 243.08,
           "end": 245.53,
-          "text": "I'm stuck in the middle with you"
+          "text": "I'm stuck in the middle\nwith you"
         }
       ]
     },
@@ -4410,7 +4410,7 @@
           "end": 12.83,
           "parts": [
             {
-              "text": "All this time we've been together",
+              "text": "All this time\nwe've been together",
               "chant": false
             }
           ]
@@ -4420,7 +4420,7 @@
           "end": 16.33,
           "parts": [
             {
-              "text": "And I still don't know how you feel",
+              "text": "And I still don't know how\nyou feel",
               "chant": false
             }
           ]
@@ -4490,7 +4490,7 @@
           "end": 31.77,
           "parts": [
             {
-              "text": "I thought that I knew everything",
+              "text": "I thought that I\nknew everything",
               "chant": false
             }
           ]
@@ -4500,7 +4500,7 @@
           "end": 36.87,
           "parts": [
             {
-              "text": "I guess I don't know anything yeah",
+              "text": "I guess I don't know\nanything yeah",
               "chant": false
             }
           ]
@@ -4530,7 +4530,7 @@
           "end": 43.71,
           "parts": [
             {
-              "text": "Wondering if there are all kinds of things",
+              "text": "Wondering if there are\nall kinds of things",
               "chant": false
             }
           ]
@@ -4550,7 +4550,7 @@
           "end": 49.08,
           "parts": [
             {
-              "text": "I try my best to let it go (Let go)",
+              "text": "I try my best to\nlet it go (Let go)",
               "chant": false
             }
           ]
@@ -4580,7 +4580,7 @@
           "end": 57.71,
           "parts": [
             {
-              "text": "You lift my feet off of the ground",
+              "text": "You lift my feet\noff of the ground",
               "chant": false
             }
           ]
@@ -4590,7 +4590,7 @@
           "end": 61.41,
           "parts": [
             {
-              "text": "Keep me spinning around and around",
+              "text": "Keep me spinning\naround and around",
               "chant": false
             }
           ]
@@ -4650,7 +4650,7 @@
           "end": 79.31,
           "parts": [
             {
-              "text": "With the words you say it's true",
+              "text": "With the words you\nsay it's true",
               "chant": false
             }
           ]
@@ -4660,7 +4660,7 @@
           "end": 83.23,
           "parts": [
             {
-              "text": "Don't know what I'm supposed to do",
+              "text": "Don't know what\nI'm supposed to do",
               "chant": false
             }
           ]
@@ -4670,7 +4670,7 @@
           "end": 89.05,
           "parts": [
             {
-              "text": "I'm stuck in the middle with you you you",
+              "text": "I'm stuck in the middle\nwith you you you",
               "chant": false
             }
           ]
@@ -4690,7 +4690,7 @@
           "end": 95.13,
           "parts": [
             {
-              "text": "Oh boy you got me really confused",
+              "text": "Oh boy you got\nme really confused",
               "chant": false
             }
           ]
@@ -4700,7 +4700,7 @@
           "end": 99.15,
           "parts": [
             {
-              "text": "Don't know what I'm supposed to do",
+              "text": "Don't know what\nI'm supposed to do",
               "chant": false
             }
           ]
@@ -4710,7 +4710,7 @@
           "end": 103.55,
           "parts": [
             {
-              "text": "I'm stuck in the middle with you",
+              "text": "I'm stuck in the middle\nwith you",
               "chant": false
             }
           ]
@@ -4780,7 +4780,7 @@
           "end": 114.87,
           "parts": [
             {
-              "text": "Don't know if your mind is made up",
+              "text": "Don't know if\nyour mind is made up",
               "chant": false
             }
           ]
@@ -4790,7 +4790,7 @@
           "end": 116.69,
           "parts": [
             {
-              "text": "But I know that nobody wanna be stuck",
+              "text": "But I know that\nnobody wanna be stuck",
               "chant": false
             }
           ]
@@ -4810,7 +4810,7 @@
           "end": 121.01,
           "parts": [
             {
-              "text": "All I can promise you now is my love",
+              "text": "All I can promise you\nnow is my love",
               "chant": false
             }
           ]
@@ -4870,7 +4870,7 @@
           "end": 130.89,
           "parts": [
             {
-              "text": "Gave me the keys to your heart",
+              "text": "Gave me the keys\nto your heart",
               "chant": false
             }
           ]
@@ -4890,7 +4890,7 @@
           "end": 132.75,
           "parts": [
             {
-              "text": "Made me believe from the start",
+              "text": "Made me believe from\nthe start",
               "chant": false
             }
           ]
@@ -4910,7 +4910,7 @@
           "end": 137.03,
           "parts": [
             {
-              "text": "I got all this love I won't take back",
+              "text": "I got all this love I\nwon't take back",
               "chant": false
             }
           ]
@@ -4960,7 +4960,7 @@
           "end": 143.73,
           "parts": [
             {
-              "text": "You lift my feet off of the ground",
+              "text": "You lift my feet\noff of the ground",
               "chant": false
             }
           ]
@@ -4970,7 +4970,7 @@
           "end": 147.19,
           "parts": [
             {
-              "text": "Keep me spinning around and around",
+              "text": "Keep me spinning\naround and around",
               "chant": false
             }
           ]
@@ -5030,7 +5030,7 @@
           "end": 165.39,
           "parts": [
             {
-              "text": "With the words you say it's true",
+              "text": "With the words you\nsay it's true",
               "chant": false
             }
           ]
@@ -5040,7 +5040,7 @@
           "end": 169.23,
           "parts": [
             {
-              "text": "Don't know what I'm supposed to do",
+              "text": "Don't know what\nI'm supposed to do",
               "chant": false
             }
           ]
@@ -5050,7 +5050,7 @@
           "end": 174.97,
           "parts": [
             {
-              "text": "I'm stuck in the middle with you you you",
+              "text": "I'm stuck in the middle\nwith you you you",
               "chant": false
             }
           ]
@@ -5070,7 +5070,7 @@
           "end": 181.15,
           "parts": [
             {
-              "text": "Oh boy you got me really confused",
+              "text": "Oh boy you got\nme really confused",
               "chant": false
             }
           ]
@@ -5080,7 +5080,7 @@
           "end": 185.29,
           "parts": [
             {
-              "text": "Don't know what I'm supposed to do",
+              "text": "Don't know what\nI'm supposed to do",
               "chant": false
             }
           ]
@@ -5090,7 +5090,7 @@
           "end": 189.45,
           "parts": [
             {
-              "text": "I'm stuck in the middle with you",
+              "text": "I'm stuck in the middle\nwith you",
               "chant": false
             }
           ]
@@ -5100,7 +5100,7 @@
           "end": 193.81,
           "parts": [
             {
-              "text": "I've tried and I've tried to be good to myself",
+              "text": "I've tried and I've tried\nto be good to myself",
               "chant": false
             }
           ]
@@ -5130,7 +5130,7 @@
           "end": 201.33,
           "parts": [
             {
-              "text": "If I'm constantly turning to you",
+              "text": "If I'm constantly\nturning to you",
               "chant": false
             }
           ]
@@ -5150,7 +5150,7 @@
           "end": 207.53,
           "parts": [
             {
-              "text": "If you knew what I'm feeling right now",
+              "text": "If you knew what I'm\nfeeling right now",
               "chant": false
             }
           ]
@@ -5200,7 +5200,7 @@
           "end": 221.47,
           "parts": [
             {
-              "text": "With the words you say it's true",
+              "text": "With the words you\nsay it's true",
               "chant": true
             }
           ]
@@ -5210,7 +5210,7 @@
           "end": 225.23,
           "parts": [
             {
-              "text": "Don't know what I'm supposed to do",
+              "text": "Don't know what\nI'm supposed to do",
               "chant": true
             }
           ]
@@ -5220,7 +5220,7 @@
           "end": 230.95,
           "parts": [
             {
-              "text": "I'm stuck in the middle with you you you",
+              "text": "I'm stuck in the middle\nwith you you you",
               "chant": true
             }
           ]
@@ -5240,7 +5240,7 @@
           "end": 237.11,
           "parts": [
             {
-              "text": "Oh boy you got me really confused",
+              "text": "Oh boy you got\nme really confused",
               "chant": true
             }
           ]
@@ -5250,7 +5250,7 @@
           "end": 241.09,
           "parts": [
             {
-              "text": "Don't know what I'm supposed to do",
+              "text": "Don't know what\nI'm supposed to do",
               "chant": true
             }
           ]
@@ -5260,7 +5260,7 @@
           "end": 245.65,
           "parts": [
             {
-              "text": "I'm stuck in the middle with you",
+              "text": "I'm stuck in the middle\nwith you",
               "chant": true
             }
           ]

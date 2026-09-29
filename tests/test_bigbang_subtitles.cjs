@@ -21,7 +21,7 @@ async function setup() {
     localStorage:{getItem:()=>'{"subtitleEnabled":false}',setItem(){}}};
   context.window=context;
   context.YT={Player:function(id,options){const p={options,state:-1,time:0,rate:1,destroy(){},
-    getDuration:()=>272,getCurrentTime(){return this.time},getPlaybackRate(){return this.rate},getPlayerState(){return this.state},
+    getDuration:()=>149.581,getCurrentTime(){return this.time},getPlaybackRate(){return this.rate},getPlayerState(){return this.state},
     seekTo(t){this.time=t},getAvailablePlaybackRates:()=>[.5,1,2],setPlaybackRate(r){this.rate=r},
     playVideo(){this.state=1},pauseVideo(){this.state=2},ready(){options.events.onReady({target:this})}};players.push(p);return p}};
   vm.createContext(context);
@@ -31,20 +31,20 @@ async function setup() {
   return {get,players,tick(){intervals.forEach(fn=>fn())},select(i){vm.runInContext(`selectSong(${i})`,context)}};
 }
 
-test('LIES uses concert lyrics on its absolute clock and excludes the omitted verse', () => {
+test('LIES uses concert lyrics on the original video clock and excludes the omitted verse', () => {
   const song=songs[9],track=song.subtitles;
-  assert.equal(song.sources[0].videoId,'-3VANu3agYE');
-  assert.equal(song.sources[0].startSeconds,126);
-  assert.equal(song.chant.videoId,'-3VANu3agYE');
-  assert.equal(Subtitles.validTrack(track,'-3VANu3agYE'),true);
-  assert.equal(Subtitles.validTrack(track,'kppPmFtBB70'),false);
-  assert.equal(Subtitles.at(track,126,1),null);
+  assert.equal(song.sources[0].videoId,'kppPmFtBB70');
+  assert.equal(song.sources[0].startSeconds,0);
+  assert.equal(song.chant.videoId,'kppPmFtBB70');
+  assert.equal(Subtitles.validTrack(track,'kppPmFtBB70'),true);
+  assert.equal(Subtitles.validTrack(track,'-3VANu3agYE'),false);
+  assert.equal(Subtitles.at(track,0,1),null);
   const text=track.cues.map(c=>c.parts.map(p=>p.text).join('')).join('\n');
   assert.ok(!text.includes('그댈 위해서'));
   assert.ok(!text.includes('love is pain'));
   assert.equal(track.cues.filter(c=>c.parts[0].text.includes('나를 떠나')).length,2);
   for(const cue of track.cues) {
-    assert.ok(cue.start>=126 && cue.end<=272);
+    assert.ok(cue.start>=0 && cue.end<=149.581);
     assert.ok(cue.parts.every(p=>p.chant===false));
     for(const state of [1,2,3]) assert.equal(Subtitles.at(track,cue.start,state),cue);
     assert.notEqual(Subtitles.at(track,cue.end,1),cue);
@@ -55,14 +55,15 @@ test('LIES uses concert lyrics on its absolute clock and excludes the omitted ve
 test('LIES overlay survives seek, pause, speed and switches without stale captions',async()=>{
   const s=await setup(),p=s.players.at(-1),cue=songs[9].subtitles.cues[0];
   p.ready();
-  assert.equal(p.options.playerVars.start,126);
-  assert.match(s.get('watchLink').href,/t=126s/);
+  s.get('chantEnabled').checked=false;
+  assert.equal(p.options.playerVars.start,0);
+  assert.match(s.get('watchLink').href,/kppPmFtBB70/);
   assert.ok(s.get('videoContainer').children.includes(s.get('subtitleDisplay')));
-  p.time=126;p.state=1;s.tick();assert.equal(s.get('subtitleDisplay').hidden,true);
+  p.time=0;p.state=1;s.tick();assert.equal(s.get('subtitleDisplay').hidden,true);
   p.time=cue.start;s.tick();assert.equal(s.get('subtitleText').textContent,cue.parts[0].text);
   p.state=2;p.rate=.5;s.tick();assert.equal(s.get('subtitleText').textContent,cue.parts[0].text);
   s.get('seek').value='0';s.get('seek').oninput();s.tick();
-  assert.equal(p.time,126);assert.equal(s.get('subtitleText').textContent,'');
+  assert.equal(p.time,0);assert.equal(s.get('subtitleText').textContent,'');
   p.time=cue.start;p.state=1;s.tick();
   s.select(0);assert.equal(s.get('subtitlePanel').hidden,true);assert.equal(s.get('subtitleText').textContent,'');
   p.options.events.onStateChange({data:1});assert.equal(s.get('subtitleText').textContent,'');
@@ -79,27 +80,44 @@ test('HTML and Pages package include the subtitle runtime and overlay controls',
   assert.ok(build.includes('"subtitles.js"'));
 });
 
-test('LIES retains the three-person intro and original bridge on the concert clock',()=>{
+test('LIES retains the three-person intro and original bridge on the original video clock',()=>{
   const Chant=require('../bigbang/chant.js'),track=songs[9].chant;
-  assert.equal(Chant.validTrack(track,'-3VANu3agYE'),true);
-  assert.equal(Chant.validTrack(track,'kppPmFtBB70'),false);
+  assert.equal(Chant.validTrack(track,'kppPmFtBB70'),true);
+  assert.equal(Chant.validTrack(track,'-3VANu3agYE'),false);
   assert.equal(track.cues.length,13);
   assert.deepEqual(track.cues.slice(0,3).map(c=>c.text),[
     '寬基勇\n東永培\n康爹送','VIP\n永碗逆\n撒朗嘿','屋哩 BIGBANG！'
   ]);
-  assert.equal(track.cues[0].start,133.633);
-  assert.equal(track.cues[0].end,136.333);
+  assert.equal(track.cues[0].start,12);
+  assert.equal(track.cues[0].end,14.7);
   assert.equal(track.cues[8].text,'ㄏㄤˋ 喪\nHam Gay 嘿');
-  assert.equal(track.cues[8].start,210.533);
-  assert.equal(track.cues.at(-1).end,261.833);
+  assert.equal(track.cues[8].start,88.9);
+  assert.equal(track.cues.at(-1).end,140.2);
   assert.equal(track.cues.filter(c=>c.text==='搜哩').length,2);
   assert.equal(track.cues.filter(c=>c.text==='I love you\nmore more').length,2);
   for(const c of track.cues) {
     assert.equal(Chant.state(track,c.start,1).text,c.text);
     assert.equal(Chant.state(track,c.start,2).count,'');
   }
-  assert.equal(Chant.state(track,132.633,1,.5).count,'2');
-  assert.equal(Chant.state(track,192.8,1).mode,'countdown');
-  assert.equal(Chant.state(track,259.9,1).mode,'countdown');
+  assert.equal(Chant.state(track,11,1,.5).count,'2');
+  assert.equal(Chant.state(track,71.167,1).mode,'countdown');
+  assert.equal(Chant.state(track,138.267,1).mode,'countdown');
   assert.ok(songs[9].sources.some(s=>s.url.endsWith('LeY0M83P7zg')));
+});
+
+ test('LIES displays yellow chants alongside white lyrics and respects the chant toggle',async()=>{
+  const s=await setup(),p=s.players.at(-1);p.ready();
+  s.get('chantEnabled').checked=true;
+  p.state=1;p.time=12;s.tick();
+  assert.equal(s.get('subtitleText').textContent,'寬基勇\n東永培\n康爹送');
+  assert.equal(s.get('subtitleText').children[0].className,'subtitle-chant');
+  p.time=57.067;s.tick();
+  const combined=s.get('subtitleText').textContent;
+  assert.ok(combined.includes('你嘎 批溜嘿'));
+  assert.ok(s.get('subtitleText').children.some(c=>c.className==='subtitle-lyric'));
+  p.state=2;s.tick();assert.equal(s.get('subtitleText').textContent,combined);
+  s.get('chantEnabled').checked=false;s.tick();
+  assert.ok(!s.get('subtitleText').textContent.includes('你嘎 批溜嘿'));
+  assert.ok(s.get('subtitleText').textContent.length>0);
+  p.state=0;s.tick();assert.equal(s.get('subtitleText').textContent,'');
 });

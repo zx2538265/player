@@ -31,37 +31,25 @@ async function setup() {
   return {get,players,tick(){intervals.forEach(fn=>fn())},select(i){vm.runInContext(`selectSong(${i})`,context)}};
 }
 
-test('LIES uses concert lyrics on the original video clock and excludes the omitted verse', () => {
-  const song=songs[9],track=song.subtitles;
+test('LIES keeps only chant overlays on the original video', () => {
+  const song=songs[9];
   assert.equal(song.sources[0].videoId,'kppPmFtBB70');
   assert.equal(song.sources[0].startSeconds,0);
-  assert.equal(song.chant.videoId,'kppPmFtBB70');
-  assert.equal(Subtitles.validTrack(track,'kppPmFtBB70'),true);
-  assert.equal(Subtitles.validTrack(track,'-3VANu3agYE'),false);
-  assert.equal(Subtitles.at(track,0,1),null);
-  const text=track.cues.map(c=>c.parts.map(p=>p.text).join('')).join('\n');
-  assert.ok(!text.includes('그댈 위해서'));
-  assert.ok(!text.includes('love is pain'));
-  assert.equal(track.cues.filter(c=>c.parts[0].text.includes('나를 떠나')).length,2);
-  for(const cue of track.cues) {
-    assert.ok(cue.start>=0 && cue.end<=149.581);
-    assert.ok(cue.parts.every(p=>p.chant===false));
-    for(const state of [1,2,3]) assert.equal(Subtitles.at(track,cue.start,state),cue);
-    assert.notEqual(Subtitles.at(track,cue.end,1),cue);
-    assert.equal(Subtitles.at(track,cue.start,0),null);
-  }
+  assert.equal(song.chantOverlay,true);
+  assert.equal(song.subtitles,undefined);
+  assert.equal(song.chant.cues.length,13);
 });
 
 test('LIES overlay survives seek, pause, speed and switches without stale captions',async()=>{
-  const s=await setup(),p=s.players.at(-1),cue=songs[9].subtitles.cues[0];
+  const s=await setup(),p=s.players.at(-1),cue=songs[9].chant.cues[0];
   p.ready();
-  s.get('chantEnabled').checked=false;
+  s.get('chantEnabled').checked=true;
   assert.equal(p.options.playerVars.start,0);
   assert.match(s.get('watchLink').href,/kppPmFtBB70/);
   assert.ok(s.get('videoContainer').children.includes(s.get('subtitleDisplay')));
   p.time=0;p.state=1;s.tick();assert.equal(s.get('subtitleDisplay').hidden,true);
-  p.time=cue.start;s.tick();assert.equal(s.get('subtitleText').textContent,cue.parts[0].text);
-  p.state=2;p.rate=.5;s.tick();assert.equal(s.get('subtitleText').textContent,cue.parts[0].text);
+  p.time=cue.start;s.tick();assert.equal(s.get('subtitleText').textContent,cue.text);
+  p.state=2;p.rate=.5;s.tick();assert.equal(s.get('subtitleText').textContent,cue.text);
   s.get('seek').value='0';s.get('seek').oninput();s.tick();
   assert.equal(p.time,0);assert.equal(s.get('subtitleText').textContent,'');
   p.time=cue.start;p.state=1;s.tick();
@@ -105,7 +93,7 @@ test('LIES retains the three-person intro and original bridge on the original vi
   assert.ok(songs[9].sources.some(s=>s.url.endsWith('LeY0M83P7zg')));
 });
 
- test('LIES displays yellow chants alongside white lyrics and respects the chant toggle',async()=>{
+ test('LIES displays only yellow chants and hides gaps and disabled overlays',async()=>{
   const s=await setup(),p=s.players.at(-1);p.ready();
   s.get('chantEnabled').checked=true;
   p.state=1;p.time=12;s.tick();
@@ -114,10 +102,14 @@ test('LIES retains the three-person intro and original bridge on the original vi
   p.time=57.067;s.tick();
   const combined=s.get('subtitleText').textContent;
   assert.ok(combined.includes('你嘎 批溜嘿'));
-  assert.ok(s.get('subtitleText').children.some(c=>c.className==='subtitle-lyric'));
+  assert.ok(s.get('subtitleText').children.every(c=>c.className==='subtitle-chant'));
   p.state=2;s.tick();assert.equal(s.get('subtitleText').textContent,combined);
   s.get('chantEnabled').checked=false;s.tick();
   assert.ok(!s.get('subtitleText').textContent.includes('你嘎 批溜嘿'));
-  assert.ok(s.get('subtitleText').textContent.length>0);
+  assert.equal(s.get('subtitleText').textContent,'');
+  assert.equal(s.get('subtitleDisplay').hidden,true);
+  s.get('chantEnabled').checked=true;p.state=1;p.time=25;s.tick();
+  assert.equal(s.get('subtitleText').textContent,'');
+  assert.equal(s.get('subtitleDisplay').hidden,true);
   p.state=0;s.tick();assert.equal(s.get('subtitleText').textContent,'');
 });

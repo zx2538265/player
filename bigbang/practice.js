@@ -103,11 +103,13 @@ let songs = [], selected = 0, player, ready = false, generation = 0, loadTimer;
 const format = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
 function updateSubtitles() {
   const song = songs[selected], source = song?.sources.find(s => s.videoId), track = song?.subtitles;
-  const available = typeof Subtitles !== 'undefined' && Subtitles.validTrack(track, source?.videoId);
+  const lyricAvailable = typeof Subtitles !== 'undefined' && Subtitles.validTrack(track, source?.videoId);
+  const available = lyricAvailable || (song?.chantOverlay === true && typeof Subtitles !== 'undefined' &&
+    typeof Chant !== 'undefined' && Chant.validTrack(song.chant, source?.videoId));
   $('subtitlePanel').hidden = !available;
   const time = ready ? player.getCurrentTime() : 0;
   const state = ready && !segmentEnded ? player.getPlayerState() : 0;
-  const lyric = available && ready ? Subtitles.at(track, time, state) : null;
+  const lyric = lyricAvailable && ready ? Subtitles.at(track, time, state) : null;
   const chant = available && ready && state !== 0 && $('chantEnabled').checked &&
     typeof Chant !== 'undefined' && Chant.validTrack(song.chant, source?.videoId) ?
     song.chant.cues.find(c => c.start <= time && time < c.end) : null;
@@ -270,7 +272,7 @@ $('seek').oninput = () => {if(ready) manualSeek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').value); savePreferences(); player.setPlaybackRate(preferences.speed); }};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20260929-lies-overlay').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20260929-lies-chant-only').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   songs = data;
   songs.forEach((song,index) => {
     const option = document.createElement('option'); option.value = index; option.textContent = `${String(song.number).padStart(2,'0')} · ${song.title} / ${song.artist}`; $('songSelect').append(option);

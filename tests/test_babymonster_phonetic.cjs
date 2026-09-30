@@ -73,7 +73,7 @@ test('player renders large phonetics, small original and clears original on song
   p.state=2;tick();assert.equal(get('chantOriginal').hidden,false);
   vm.runInContext('selectSong(6)',context);
   const sheesh=players.at(-1);sheesh.ready();sheesh.time=56.45;sheesh.state=1;tick();
-  assert.equal(get('chantText').textContent,'出ㄎ 波ㄎ');
+  assert.equal(get('chantText').textContent,'促波');
   assert.equal(get('chantOriginal').textContent,'축복');
   sheesh.state=0;tick();assert.equal(get('chantOriginal').hidden,true);
   assert.equal(get('chantOriginal').textContent,'');

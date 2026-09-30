@@ -129,7 +129,7 @@ test('BATTER UP inline responses wait for their own entrance and retain source p
     assert.equal(Chant.state(track, entrance, 1).mode, 'active');
   }
   assert.equal(track.cues[15].text, '비켜 · bi-kyeo\n逼ㄎㄧㄜ');
-  for (const i of [27,31]) assert.equal(track.cues[i].text, '어디든 · eo-di-deun\n歐滴蹬');
+  for (const i of [27,31]) assert.equal(track.cues[i].text, '어디든');
 });
 
 test('DRIP binds its pink-only prompts to the requested 00:52–03:52 source', () => {

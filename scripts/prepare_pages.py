@@ -119,7 +119,7 @@ def prepare(root, catalog, site):
     if site.exists():
         raise ValueError("Output must be a new directory")
     site.mkdir(parents=True)
-    for name in ("index.html", "test.html", "library.html", "library.css", "library.js", "share.js", ".nojekyll"):
+    for name in ("index.html", "test.html", "library.html", "library.css", "library.js", "share.js", "playback-progress.js", ".nojekyll"):
         shutil.copy2(root / name, site / name)
     shutil.copytree(root / "srt", site / "srt")
     if (root / "bigbang").is_dir():

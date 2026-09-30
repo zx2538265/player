@@ -571,6 +571,11 @@
       <input id="srtFileInput" type="file" accept=".srt" />
     </div>
    
+    <div id="resumePrompt" hidden style="margin: 0 0 12px; padding: 12px; border: 1px solid #666; border-radius: 8px;">
+      <span id="resumeMessage" role="status" aria-live="polite"></span>
+      <button id="resumePlayBtn" type="button">繼續播放</button>
+      <button id="restartPlayBtn" type="button">從頭播放</button>
+    </div>
     <div class="player-wrap">
       <div id="player"></div>
       <div id="subtitleLoading" class="subtitle-loading" hidden>
@@ -622,8 +627,23 @@
   </div>
 
   <script src="share.js"></script>
+  <script src="playback-progress.js"></script>
   <script>
     let player = null;
+    const progress = createPlaybackProgress(() => player, seconds => {
+      document.getElementById("resumePrompt").hidden = seconds === null;
+      if (seconds !== null) {
+        const total = Math.floor(seconds);
+        const hours = Math.floor(total / 3600);
+        const minutes = Math.floor(total / 60) % 60;
+        const time = (hours ? `${hours}:${String(minutes).padStart(2, "0")}` : String(minutes)) + `:${String(total % 60).padStart(2, "0")}`;
+        document.getElementById("resumeMessage").textContent = `上次看到 ${time}`;
+      }
+    });
+    document.getElementById("resumePlayBtn").addEventListener("click", () => progress.choose(false));
+    document.getElementById("restartPlayBtn").addEventListener("click", () => progress.choose(true));
+    setInterval(() => progress.save(), 5000);
+    window.addEventListener("pagehide", () => progress.save());
     let syncTimer = null;
     let subtitles = [];
     let currentSubtitleIndex = -1;
@@ -1071,6 +1091,7 @@
     }
 
     function handleVisibilityChange() {
+      if (document.hidden) progress.save();
       if (!document.hidden) {
         syncSubtitle();
       }
@@ -1093,6 +1114,7 @@
       }
 
       isSyncStateActive = isPlaying || isBuffering;
+      progress.state(state);
 
       if (!isSyncStateActive) {
         syncSubtitle();
@@ -1342,6 +1364,7 @@
         return;
       }
 
+      progress.detach();
       requestedVideoId = videoId;
       window.updateShareVideo(videoId);
       if (player && typeof player.pauseVideo === "function") player.pauseVideo();
@@ -1359,10 +1382,7 @@
       subtitleLoadingEl.hidden = true;
 
       if (player && typeof player.loadVideoById === "function") {
-        player.loadVideoById({
-          videoId,
-          suggestedQuality: "hd1080"
-        });
+        progress.load(videoId);
 
         if (typeof player.setPlaybackQuality === "function") {
           player.setPlaybackQuality("hd1080");

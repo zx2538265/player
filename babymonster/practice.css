@@ -51,7 +51,7 @@ header .tour-link span{font:10px/1.8 system-ui;letter-spacing:1px;margin:0;color
 .hero .eyebrow{font-size:10px;letter-spacing:3px}.hero p:last-child{color:#b9d1e0}
 .tour-art{inset:0;width:100%;border:0;padding:0;opacity:1;z-index:0;background:linear-gradient(90deg,#0c1724 5%,#0c1724e8 35%,#0c172430 75%),url('share-cover.png?v=20260924-asia') 100% 48%/54% auto no-repeat}
 aside{background:#101e2ce8;box-shadow:0 12px 50px #0002}.song.selected{box-shadow:inset 2px 0 #b7dce9}.song-pick:hover{background:#1c3345}
-#externalNote{min-height:170px;display:grid;place-items:center;text-align:center;border-radius:12px;background:radial-gradient(ellipse at 50% 100%,#7fbad333,transparent 70%),#101e2c;color:#bed6e6}
+#externalNote{min-height:170px;display:grid;place-items:center;text-align:center;border-radius:12px;background:radial-gradient(ellipse at 50% 100%,#7fbad333,transparent 70%),#101e2c;color:#bed6e6;font-size:clamp(20px,3vw,28px);font-weight:700;line-height:1.5}
 @media(max-width:600px){header .brand{font-size:25px}header .brand span{font-size:7px;letter-spacing:2px}header .tour-link{font-size:8px;letter-spacing:1px}header .tour-link span{font-size:8px}.hero{padding:24px 20px;min-height:225px}.hero h1{letter-spacing:-3px}.hero .eyebrow{font-size:8px;letter-spacing:1.5px}.hero p:last-child{font-size:11px}.tour-art{width:100%;opacity:1;background:linear-gradient(90deg,#0c1724f2,#0c172455),url('share-cover.png?v=20260924-asia') 100% 46%/70% auto no-repeat}}
 
 /* Frame the Asia and Oceania poster between its title and city list. */

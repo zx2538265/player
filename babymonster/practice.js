@@ -208,7 +208,7 @@ function selectSong(index, updateHash = true, autoplay = null) {
   else $('watchLink').removeAttribute('href');
   $('watchLink').textContent = source ? '在 YouTube 開啟 ↗' : '開啟參考來源 ↗';
   $('videoContainer').hidden = !source; $('transport').hidden = !source; $('externalNote').hidden = !!source;
-  $('externalNote').textContent = external ? '請開啟參考來源觀看本首應援。' : '本首應援來源待補。';
+  $('externalNote').textContent = external ? '請開啟參考來源觀看本首應援。' : '本首應援來源待補或沒有';
   $('status').textContent = source ? '正在載入影片…' : external ? '參考連結列於下方' : '尚無可播放的應援來源';
   updateChant();
   if(source) {

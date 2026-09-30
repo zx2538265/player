@@ -5929,9 +5929,620 @@
     "title": "DREAM",
     "artist": "BABYMONSTER",
     "section": "Act 3",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "指定影片",
+        "title": "BABYMONSTER - 'DREAM' (PRE-DEBUT SONG)",
+        "url": "https://www.youtube.com/watch?v=ynOtYmpZxak",
+        "videoId": "ynOtYmpZxak"
+      }
+    ],
+    "note": "依使用者提供的 DREAM 應援表加入英文歌詞與紅字提示；日文動作翻為跟著節奏拍手、歡呼。時間經 large-v3、medium 與英文 CTC 輔助定位；錄音無額外 hey／say／game 應援聲，依相應歌詞錨點暫定，結尾歡呼為演出建議。尚未完成全曲人工聽校與 YouTube 實播同步驗收。",
+    "chant": {
+      "videoId": "ynOtYmpZxak",
+      "timingBasis": "word-aligned",
+      "note": "依使用者提供的 DREAM 應援表加入英文歌詞與紅字提示；日文動作翻為跟著節奏拍手、歡呼。時間經 large-v3、medium 與英文 CTC 輔助定位；錄音無額外 hey／say／game 應援聲，依相應歌詞錨點暫定，結尾歡呼為演出建議。尚未完成全曲人工聽校與 YouTube 實播同步驗收。",
+      "cues": [
+        {
+          "start": 140.302,
+          "end": 145.808,
+          "text": "（跟著節奏拍手）"
+        },
+        {
+          "start": 145.849,
+          "end": 149.693,
+          "text": "（跟著節奏拍手）"
+        },
+        {
+          "start": 150.514,
+          "end": 152.617,
+          "text": "（跟著節奏拍手）"
+        },
+        {
+          "start": 155.814,
+          "end": 156.414,
+          "text": "hey!"
+        },
+        {
+          "start": 157.85,
+          "end": 158.39,
+          "text": "say!"
+        },
+        {
+          "start": 159.81,
+          "end": 160.43,
+          "text": "game!"
+        },
+        {
+          "start": 167.36,
+          "end": 169.2,
+          "text": "yeah! yeah! yeah!"
+        },
+        {
+          "start": 179.97,
+          "end": 183.97,
+          "text": "（歡呼）"
+        }
+      ]
+    },
+    "subtitles": {
+      "videoId": "ynOtYmpZxak",
+      "cues": [
+        {
+          "start": 6.041,
+          "end": 11.308,
+          "parts": [
+            {
+              "text": "Sometimes I don't know who I am",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 12.23,
+          "end": 15.173,
+          "parts": [
+            {
+              "text": "Doubting myself again",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 16.115,
+          "end": 18.958,
+          "parts": [
+            {
+              "text": "Can't find a light in the dark",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 21.502,
+          "end": 23.004,
+          "parts": [
+            {
+              "text": "And I'm",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 23.785,
+          "end": 26.849,
+          "parts": [
+            {
+              "text": "Finding myself in the rain",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 27.63,
+          "end": 30.354,
+          "parts": [
+            {
+              "text": "Trying to get out of the pain",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 30.694,
+          "end": 33.618,
+          "parts": [
+            {
+              "text": "Know that I've come so far",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 37.567,
+          "end": 38.77,
+          "parts": [
+            {
+              "text": "I made a promise",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 38.771,
+          "end": 41.919,
+          "parts": [
+            {
+              "text": "I'll never run and hide",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 43.322,
+          "end": 46.445,
+          "parts": [
+            {
+              "text": "I'm getting stronger",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 47.146,
+          "end": 50.41,
+          "parts": [
+            {
+              "text": "I'm getting stronger",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 51.011,
+          "end": 54.135,
+          "parts": [
+            {
+              "text": "A little longer",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 54.836,
+          "end": 57.94,
+          "parts": [
+            {
+              "text": "I'm getting stronger",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 59.782,
+          "end": 65.189,
+          "parts": [
+            {
+              "text": "Now I finally found my wings",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 65.87,
+          "end": 68.833,
+          "parts": [
+            {
+              "text": "I let go of everything",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 69.875,
+          "end": 73.9,
+          "parts": [
+            {
+              "text": "Decided to follow my heart",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 75.241,
+          "end": 76.703,
+          "parts": [
+            {
+              "text": "And I'm",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 77.564,
+          "end": 80.487,
+          "parts": [
+            {
+              "text": "Finally able to breathe",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 81.389,
+          "end": 84.112,
+          "parts": [
+            {
+              "text": "Finally able to see",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 85.013,
+          "end": 88.096,
+          "parts": [
+            {
+              "text": "Just who I was born to be",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 89.398,
+          "end": 90.98,
+          "parts": [
+            {
+              "text": "I'm waking up in my dream",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 93.664,
+          "end": 96.069,
+          "parts": [
+            {
+              "text": "Oh yeah that fires in my eyes",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 96.069,
+          "end": 97.993,
+          "parts": [
+            {
+              "text": "No sleep you keep them lullabies",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 97.993,
+          "end": 99.897,
+          "parts": [
+            {
+              "text": "Cross hearts I've been the one to ride",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 99.897,
+          "end": 100.458,
+          "parts": [
+            {
+              "text": "Vroom vroom",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 100.458,
+          "end": 101.6,
+          "parts": [
+            {
+              "text": "I'll see you later bye",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 101.961,
+          "end": 102.903,
+          "parts": [
+            {
+              "text": "I keep it a hundred",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 102.903,
+          "end": 105.289,
+          "parts": [
+            {
+              "text": "We one in a million No\nbillion No kidding No ceiling",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 105.289,
+          "end": 106.13,
+          "parts": [
+            {
+              "text": "That's limitless",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 106.371,
+          "end": 107.974,
+          "parts": [
+            {
+              "text": "Stars in the sky we infinite",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 108.235,
+          "end": 108.816,
+          "parts": [
+            {
+              "text": "Envisioned it",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 108.816,
+          "end": 109.919,
+          "parts": [
+            {
+              "text": "Just how I pictured it",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 110.48,
+          "end": 112.343,
+          "parts": [
+            {
+              "text": "Here we are all of the lights",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 112.343,
+          "end": 114.246,
+          "parts": [
+            {
+              "text": "Spotlight is blinding my eyes",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 114.346,
+          "end": 118.172,
+          "parts": [
+            {
+              "text": "Just breathe and live and let it die",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 118.172,
+          "end": 120.015,
+          "parts": [
+            {
+              "text": "Lift up my head I'mma rise",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 120.015,
+          "end": 122.92,
+          "parts": [
+            {
+              "text": "Spread out my wings I'm a fly fly high",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 123.981,
+          "end": 126.564,
+          "parts": [
+            {
+              "text": "I'm getting stronger",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 126.564,
+          "end": 130.73,
+          "parts": [
+            {
+              "text": "I'm getting stronger",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 131.651,
+          "end": 134.614,
+          "parts": [
+            {
+              "text": "A little longer",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 135.035,
+          "end": 138.019,
+          "parts": [
+            {
+              "text": "I'm getting stronger",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 140.302,
+          "end": 145.808,
+          "parts": [
+            {
+              "text": "Now I finally found my wings",
+              "chant": false
+            },
+            {
+              "text": "\n（跟著節奏拍手）",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 145.849,
+          "end": 149.693,
+          "parts": [
+            {
+              "text": "I let go of everything",
+              "chant": false
+            },
+            {
+              "text": "\n（跟著節奏拍手）",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 150.514,
+          "end": 152.617,
+          "parts": [
+            {
+              "text": "Decided to follow my heart",
+              "chant": false
+            },
+            {
+              "text": "\n（跟著節奏拍手）",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 156.264,
+          "end": 158.269,
+          "parts": [
+            {
+              "text": "hey!\n",
+              "chant": true
+            },
+            {
+              "text": "I don't care what they ",
+              "chant": false
+            },
+            {
+              "text": "say",
+              "chant": false
+            },
+            {
+              "text": " (say!)",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 158.47,
+          "end": 160.215,
+          "parts": [
+            {
+              "text": "My life is not a game ",
+              "chant": false
+            },
+            {
+              "text": "(game!)",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 160.436,
+          "end": 161.559,
+          "parts": [
+            {
+              "text": "Never gonna run away",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 162.0,
+          "end": 164.21,
+          "parts": [
+            {
+              "text": "So don't wake me up",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 164.21,
+          "end": 169.2,
+          "parts": [
+            {
+              "text": "(Finally able to breathe)\n",
+              "chant": false
+            },
+            {
+              "text": "yeah! yeah! yeah!",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 169.2,
+          "end": 171.91,
+          "parts": [
+            {
+              "text": "Can't wake me up",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 171.91,
+          "end": 175.67,
+          "parts": [
+            {
+              "text": "(Nothing can wake me up)",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 176.98,
+          "end": 179.89,
+          "parts": [
+            {
+              "text": "I'm waking up in my dream",
+              "chant": false
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "number": 18,

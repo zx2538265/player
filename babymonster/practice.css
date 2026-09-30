@@ -55,6 +55,7 @@ aside{background:#101e2ce8;box-shadow:0 12px 50px #0002}.song.selected{box-shado
 @media(max-width:600px){header .brand{font-size:25px}header .brand span{font-size:7px;letter-spacing:2px}header .tour-link{font-size:8px;letter-spacing:1px}header .tour-link span{font-size:8px}.hero{padding:24px 20px;min-height:225px}.hero h1{letter-spacing:-3px}.hero .eyebrow{font-size:8px;letter-spacing:1.5px}.hero p:last-child{font-size:11px}.tour-art{width:100%;opacity:1;background:linear-gradient(90deg,#0c1724f2,#0c172455),url('share-cover.png?v=20260924-asia') 100% 46%/70% auto no-repeat}}
 
 /* Frame the Asia and Oceania poster between its title and city list. */
+.chant-wording{min-width:0;flex:1}.chant-original{white-space:pre-line;overflow-wrap:anywhere;font-size:calc(clamp(14px,1.5vw,18px)*var(--scale,1));line-height:1.45;color:var(--muted);margin:10px 0 0}.phonetic-help{font-size:11px;line-height:1.6;color:var(--muted);margin:10px 0 0}#chantNote{white-space:pre-line}
 .tour-art{background-size:auto,auto 1200px;background-position:center,right 0 top -310px}
 /* Keep the same poster crop relative to the mobile banner height. */
 @media(max-width:600px){

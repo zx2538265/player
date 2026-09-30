@@ -1,5 +1,7 @@
 # BABYMONSTER 應援練習室
 
+- 韓文應援空耳 v1：8 首歌曲、40 張韓文提示卡新增獨立 `phoneticZh` 欄位，大字顯示中文空耳、小字保留 `text` 原文；下一句亦顯示空耳，歌詞字幕不變。BATTER UP 的 3 張沿用來源影片空耳，其餘 37 張為自製近似讀音初稿，尚未逐句聽校，非官方文字。`phoneticStatus` 區分 `source`／`draft`，`phoneticNote` 保存發音與驗證說明；原時間碼、影片 ID 與來源文字保留。中文版包含少量注音收尾提示，中文字不依國語聲調念。
+
 - FOREVER（第 21 首）使用指定 Moon Light 非官方應援影片 `6qGzeS2zfOk`，共 30 張藍字應援、拍手與歡呼提示。以 Whisper large-v3／medium 及英韓 CTC 輔助校正句中進入點，快速韓文三詞拆開顯示；黑字歌詞與成員反應字幕不納入。九次 Forever 與拍手保留，副歌及部分短詞的定位仍有分歧，維持「本句應援」標示。尚未完成全段人工聽校或 YouTube 實播同步驗收；原始畫面證據、模型結果及逐項決策保存於 `video/6qGzeS2zfOk/timing-review.v2.json`，以 `build_chant_v2.py` 重建。
 
 以 BIGBANG 練習室為基礎，採用使用者提供的 CHOOM 海報、深藍與冰藍配色。

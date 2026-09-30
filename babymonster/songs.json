@@ -579,7 +579,8 @@
         {
           "start": 92.65,
           "end": 93.4,
-          "text": "비켜 · bi-kyeo\n逼ㄎㄧㄜ"
+          "text": "비켜 · bi-kyeo\n逼ㄎㄧㄜ",
+          "phoneticZh": "逼ㄎㄧㄜ"
         },
         {
           "start": 96.33,
@@ -639,7 +640,8 @@
         {
           "start": 167.21,
           "end": 168.1,
-          "text": "어디든 · eo-di-deun\n歐滴蹬"
+          "text": "어디든 · eo-di-deun\n歐滴蹬",
+          "phoneticZh": "歐滴蹬"
         },
         {
           "start": 170.0,
@@ -659,7 +661,8 @@
         {
           "start": 181.95,
           "end": 182.8,
-          "text": "어디든 · eo-di-deun\n歐滴蹬"
+          "text": "어디든 · eo-di-deun\n歐滴蹬",
+          "phoneticZh": "歐滴蹬"
         },
         {
           "start": 184.6,
@@ -671,7 +674,9 @@
           "end": 189.0,
           "text": "（歡呼）"
         }
-      ]
+      ],
+      "phoneticStatus": "source",
+      "phoneticNote": "中文空耳沿用來源影片，僅調整為大字顯示，原文與羅馬字保留於下方。"
     }
   },
   {
@@ -723,7 +728,8 @@
         {
           "start": 67.6,
           "end": 69.1,
-          "text": "찌릿찌릿 끼리끼리"
+          "text": "찌릿찌릿 끼리끼리",
+          "phoneticZh": "基哩ㄊ 基哩ㄊ ㄎㄧ哩ㄎㄧ哩"
         },
         {
           "start": 69.8,
@@ -758,7 +764,8 @@
         {
           "start": 90.8,
           "end": 91.8,
-          "text": "밤이야"
+          "text": "밤이야",
+          "phoneticZh": "巴米呀"
         },
         {
           "start": 94.05,
@@ -808,7 +815,8 @@
         {
           "start": 132.09,
           "end": 133.7,
-          "text": "180도 바꿔"
+          "text": "180도 바꿔",
+          "phoneticZh": "呸ㄎ 趴ㄹ 西ㄆ 豆 巴闊"
         },
         {
           "start": 138.0,
@@ -843,7 +851,8 @@
         {
           "start": 156.77,
           "end": 157.7,
-          "text": "밤이야"
+          "text": "밤이야",
+          "phoneticZh": "巴米呀"
         },
         {
           "start": 159.99,
@@ -905,7 +914,9 @@
           "end": 225.9,
           "text": "Drip, drip, drip"
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為依韓文發音製作的近似讀音初稿，非官方應援文字，尚未逐句聽校；中文字不照國語聲調念，字後的ㄎ／ㄆ／ㄊ／ㄇ／ㄹ為收尾音，不另念一拍，節奏與延音請跟著影片。"
     }
   },
   {
@@ -973,22 +984,26 @@
         {
           "start": 37.95,
           "end": 39.33,
-          "text": "까만 밤 빛이나"
+          "text": "까만 밤 빛이나",
+          "phoneticZh": "嘎慢 巴ㄇ 比七那"
         },
         {
           "start": 39.33,
           "end": 40.81,
-          "text": "진짜가 나타나"
+          "text": "진짜가 나타나",
+          "phoneticZh": "金加嘎 那他那"
         },
         {
           "start": 43.55,
           "end": 44.77,
-          "text": "거울아 거울아"
+          "text": "거울아 거울아",
+          "phoneticZh": "摳嗚拉 摳嗚拉"
         },
         {
           "start": 44.77,
           "end": 45.87,
-          "text": "말해봐 알잖아"
+          "text": "말해봐 알잖아",
+          "phoneticZh": "馬ㄹ 嘿哇 阿ㄹ 加那"
         },
         {
           "start": 48.22,
@@ -1033,22 +1048,26 @@
         {
           "start": 95.55,
           "end": 96.77,
-          "text": "까만 밤 빛이나"
+          "text": "까만 밤 빛이나",
+          "phoneticZh": "嘎慢 巴ㄇ 比七那"
         },
         {
           "start": 96.77,
           "end": 98.09,
-          "text": "진짜가 나타나"
+          "text": "진짜가 나타나",
+          "phoneticZh": "金加嘎 那他那"
         },
         {
           "start": 100.91,
           "end": 102.13,
-          "text": "거울아 거울아"
+          "text": "거울아 거울아",
+          "phoneticZh": "摳嗚拉 摳嗚拉"
         },
         {
           "start": 102.13,
           "end": 103.27,
-          "text": "말해봐 알잖아"
+          "text": "말해봐 알잖아",
+          "phoneticZh": "馬ㄹ 嘿哇 阿ㄹ 加那"
         },
         {
           "start": 105.76,
@@ -1125,7 +1144,9 @@
           "end": 174.0,
           "text": "（歡呼）"
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為依韓文發音製作的近似讀音初稿，非官方應援文字，尚未逐句聽校；中文字不照國語聲調念，字後的ㄎ／ㄆ／ㄊ／ㄇ／ㄹ為收尾音，不另念一拍，節奏與延音請跟著影片。"
     },
     "subtitles": {
       "videoId": "jfqBPlcBGtE",
@@ -3430,12 +3451,14 @@
         {
           "start": 56.431,
           "end": 57.26,
-          "text": "축복"
+          "text": "축복",
+          "phoneticZh": "出ㄎ 波ㄎ"
         },
         {
           "start": 58.129,
           "end": 59.16,
-          "text": "춤춰"
+          "text": "춤춰",
+          "phoneticZh": "出ㄇ 戳"
         },
         {
           "start": 59.83,
@@ -3480,17 +3503,20 @@
         {
           "start": 124.525,
           "end": 125.86,
-          "text": "올라가 올라가 더"
+          "text": "올라가 올라가 더",
+          "phoneticZh": "歐拉嘎 歐拉嘎 豆"
         },
         {
           "start": 126.246,
           "end": 127.66,
-          "text": "꼭대기 꼭대기로"
+          "text": "꼭대기 꼭대기로",
+          "phoneticZh": "勾ㄎ ㄉㄟ基 勾ㄎ ㄉㄟ基囉"
         },
         {
           "start": 127.966,
           "end": 129.36,
-          "text": "하늘 위 하늘 위로"
+          "text": "하늘 위 하늘 위로",
+          "phoneticZh": "哈呢兒 威 哈呢兒 威囉"
         },
         {
           "start": 142.66,
@@ -3537,7 +3563,9 @@
           "end": 168.56,
           "text": "Rum, pump, pump, pump\nit up then"
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為依韓文發音製作的近似讀音初稿，非官方應援文字，尚未逐句聽校；中文字不照國語聲調念，字後的ㄎ／ㄆ／ㄊ／ㄇ／ㄹ為收尾音，不另念一拍，節奏與延音請跟著影片。"
     },
     "subtitles": {
       "videoId": "QHf-2xSJzYE",
@@ -5948,7 +5976,8 @@
         {
           "start": 14.97,
           "end": 15.65,
-          "text": "꽁했어"
+          "text": "꽁했어",
+          "phoneticZh": "貢嘿搜"
         },
         {
           "start": 22.67,
@@ -5963,12 +5992,14 @@
         {
           "start": 25.79,
           "end": 28.27,
-          "text": "딩디기딩 Like a 리기딩딩"
+          "text": "딩디기딩 Like a 리기딩딩",
+          "phoneticZh": "丁滴基丁 Like a 哩基丁丁"
         },
         {
           "start": 28.85,
           "end": 29.47,
-          "text": "빙빙"
+          "text": "빙빙",
+          "phoneticZh": "冰冰"
         },
         {
           "start": 33.91,
@@ -5983,12 +6014,14 @@
         {
           "start": 57.83,
           "end": 59.25,
-          "text": "아마 모를걸"
+          "text": "아마 모를걸",
+          "phoneticZh": "阿馬 摸勒兒 勾兒"
         },
         {
           "start": 60.47,
           "end": 61.75,
-          "text": "싶어"
+          "text": "싶어",
+          "phoneticZh": "西剖"
         },
         {
           "start": 63.19,
@@ -6023,12 +6056,14 @@
         {
           "start": 108.59,
           "end": 109.95,
-          "text": "아마 모를걸"
+          "text": "아마 모를걸",
+          "phoneticZh": "阿馬 摸勒兒 勾兒"
         },
         {
           "start": 111.23,
           "end": 112.33,
-          "text": "싶어"
+          "text": "싶어",
+          "phoneticZh": "西剖"
         },
         {
           "start": 113.87,
@@ -6058,7 +6093,8 @@
         {
           "start": 150.89,
           "end": 152.05,
-          "text": "싶어"
+          "text": "싶어",
+          "phoneticZh": "西剖"
         },
         {
           "start": 153.51,
@@ -6120,7 +6156,9 @@
           "end": 189.15,
           "text": "Really really like you"
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為依韓文發音製作的近似讀音初稿，非官方應援文字，尚未逐句聽校；中文字不照國語聲調念，字後的ㄎ／ㄆ／ㄊ／ㄇ／ㄹ為收尾音，不另念一拍，節奏與延音請跟著影片。"
     },
     "subtitles": {
       "videoId": "x5iLrIZ7YPY",
@@ -7851,7 +7889,8 @@
         {
           "start": 34.1,
           "end": 35.5,
-          "text": "타고났지 Like this"
+          "text": "타고났지 Like this",
+          "phoneticZh": "他勾那基 Like this"
         },
         {
           "start": 46.4,
@@ -7886,17 +7925,20 @@
         {
           "start": 98.2,
           "end": 98.7,
-          "text": "예뻐"
+          "text": "예뻐",
+          "phoneticZh": "耶波"
         },
         {
           "start": 99.2,
           "end": 99.6,
-          "text": "바빠"
+          "text": "바빠",
+          "phoneticZh": "巴爸"
         },
         {
           "start": 99.9,
           "end": 100.3,
-          "text": "나빠"
+          "text": "나빠",
+          "phoneticZh": "哪爸"
         },
         {
           "start": 101.8,
@@ -7951,7 +7993,8 @@
         {
           "start": 186.9,
           "end": 189.3,
-          "text": "착각하지는 마"
+          "text": "착각하지는 마",
+          "phoneticZh": "恰ㄎ 嘎卡基嫩 馬"
         },
         {
           "start": 192.3,
@@ -7978,7 +8021,9 @@
           "end": 212.8,
           "text": "（歡呼）"
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為依韓文發音製作的近似讀音初稿，非官方應援文字，尚未逐句聽校；中文字不照國語聲調念，字後的ㄎ／ㄆ／ㄊ／ㄇ／ㄹ為收尾音，不另念一拍，節奏與延音請跟著影片。"
     }
   },
   {
@@ -8506,12 +8551,14 @@
         {
           "start": 34.09,
           "end": 35.97,
-          "text": "미쳤나 봐"
+          "text": "미쳤나 봐",
+          "phoneticZh": "米千那 哇"
         },
         {
           "start": 41.47,
           "end": 43.51,
-          "text": "웃음이 나"
+          "text": "웃음이 나",
+          "phoneticZh": "嗚斯米 那"
         },
         {
           "start": 47.96,
@@ -8648,7 +8695,9 @@
           "end": 199.4,
           "text": "I la-la-like it"
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為依韓文發音製作的近似讀音初稿，非官方應援文字，尚未逐句聽校；中文字不照國語聲調念，字後的ㄎ／ㄆ／ㄊ／ㄇ／ㄹ為收尾音，不另念一拍，節奏與延音請跟著影片。"
     },
     "subtitles": {
       "videoId": "lFtCnJNlGnk",
@@ -9479,22 +9528,26 @@
         {
           "start": 24.69,
           "end": 25.63,
-          "text": "처럼"
+          "text": "처럼",
+          "phoneticZh": "戳囉ㄇ"
         },
         {
           "start": 26.87,
           "end": 27.47,
-          "text": "없어"
+          "text": "없어",
+          "phoneticZh": "歐ㄆ 搜"
         },
         {
           "start": 32.31,
           "end": 33.23,
-          "text": "질러"
+          "text": "질러",
+          "phoneticZh": "基勒"
         },
         {
           "start": 34.53,
           "end": 34.99,
-          "text": "있어"
+          "text": "있어",
+          "phoneticZh": "伊搜"
         },
         {
           "start": 51.09,
@@ -9539,7 +9592,8 @@
         {
           "start": 87.73,
           "end": 88.33,
-          "text": "매일매일"
+          "text": "매일매일",
+          "phoneticZh": "妹伊兒 妹伊兒"
         },
         {
           "start": 92.43,
@@ -9636,7 +9690,9 @@
           "end": 202.55,
           "text": "Give you all of the love in my heart"
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為依韓文發音製作的近似讀音初稿，非官方應援文字，尚未逐句聽校；中文字不照國語聲調念，字後的ㄎ／ㄆ／ㄊ／ㄇ／ㄹ為收尾音，不另念一拍，節奏與延音請跟著影片。"
     },
     "subtitles": {
       "videoId": "XtaFQ31C7OU",

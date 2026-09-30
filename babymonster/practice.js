@@ -120,14 +120,15 @@ function updateChant() {
   $('chantEnabled').disabled = !available;
   $('chantUnavailable').hidden = available;
   updatePracticeControls();
-  const note = available ? track.note : '本首尚未建立逐句應援提示，可先跟著來源影片練習。';
+  const note = available ? [track.note, track.phoneticNote].filter(Boolean).join('\n') : '本首尚未建立逐句應援提示，可先跟著來源影片練習。';
   if ($('chantNote').textContent !== note) $('chantNote').textContent = note;
   $('chantDisplay').hidden = !available || !$('chantEnabled').checked;
   if (!available) return;
   const view = ready ? Chant.state(track, player.getCurrentTime(), segmentEnded ? 0 : player.getPlayerState(), player.getPlaybackRate()) :
-    {mode:'paused',label:'等待影片就緒',text:track.cues[0].text,next:'',count:''};
+    {mode:'paused',label:'等待影片就緒',text:track.cues[0].text,phoneticZh:track.cues[0].phoneticZh || '',next:'',count:''};
   $('chantDisplay').dataset.mode = view.mode;
-  for (const [id, value] of [['chantLabel',view.label],['chantText',view.text],['chantNext',view.next],['chantCount',view.count]]) {
+  $('chantOriginal').hidden = !view.phoneticZh;
+  for (const [id, value] of [['chantLabel',view.label],['chantText',view.phoneticZh || view.text],['chantOriginal',view.phoneticZh ? view.text : ''],['chantNext',view.next],['chantCount',view.count]]) {
     if ($(id).textContent !== value) $(id).textContent = value;
   }
 }
@@ -267,7 +268,7 @@ $('seek').oninput = () => {if(ready) manualSeek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').value); savePreferences(); player.setPlaybackRate(preferences.speed); }};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20260930-love-in-my-heart-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20260930-phonetic-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   songs = data;
   songs.forEach((song,index) => {
     const option = document.createElement('option'); option.value = index; option.textContent = `${String(song.number).padStart(2,'0')} · ${song.title} / ${song.artist}`; $('songSelect').append(option);

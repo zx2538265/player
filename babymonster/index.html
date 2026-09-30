@@ -22,10 +22,10 @@
   <meta name="twitter:description" content="依 CHOOM 練習歌單整理曲目，支援切歌、調整速度與連續播放，一首一首練起來。">
   <meta name="twitter:image" content="https://allenka.com/babymonster/share-cover-wide.png">
   <meta name="twitter:image:alt" content="深藍冰霧風格的 BABYMONSTER 應援練習室封面">
-  <link rel="stylesheet" href="practice.css?v=20260930-source-note">
-  <script src="chant.js?v=20260925-clik-clak" defer></script>
+  <link rel="stylesheet" href="practice.css?v=20260930-phonetic-v1">
+  <script src="chant.js?v=20260930-phonetic-v1" defer></script>
   <script src="subtitles.js?v=20260925-clik-clak" defer></script>
-  <script src="practice.js?v=20260930-source-note-love-in-my-heart-v1" defer></script>
+  <script src="practice.js?v=20260930-phonetic-v1" defer></script>
 </head>
 <body>
   <header><a class="brand" href="./">BABYMONSTER<span>MONSTIEZ PRACTICE ROOM</span></a></header>
@@ -44,7 +44,8 @@
         <section class="chant-panel" aria-label="應援大字提示">
           <div class="cue-head"><label><input id="chantEnabled" type="checkbox" checked> 顯示提示</label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>
           <p id="chantUnavailable" hidden>本首逐句應援提示待補，加入核對過的影片後即可開始練習。</p>
-          <div id="chantDisplay" class="chant-display" data-mode="waiting"><p id="chantLabel" class="chant-label">正在載入提示…</p><div class="cue"><span id="chantCount" aria-label="進場倒數"></span><p id="chantText"></p></div><p id="chantNext" class="up-next"></p></div>
+          <div id="chantDisplay" class="chant-display" data-mode="waiting"><p id="chantLabel" class="chant-label">正在載入提示…</p><div class="cue"><span id="chantCount" aria-label="進場倒數"></span><div class="chant-wording"><p id="chantText"></p><p id="chantOriginal" class="chant-original" hidden></p></div></div><p id="chantNext" class="up-next"></p></div>
+          <p class="phonetic-help">韓文應援以中文空耳輔助跟喊，下方保留原文；中文字不照國語聲調念，收尾音與節奏請跟著影片。新增空耳為初稿，仍待逐句聽校。</p>
         </section>
         <fieldset id="transport" class="controls" disabled><legend class="sr-only">播放控制</legend>
           <div class="timeline"><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="1" value="0" step="0.1"><output id="clock">0:00 / 0:00</output></div>

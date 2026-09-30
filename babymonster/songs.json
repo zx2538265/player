@@ -9456,9 +9456,923 @@
     "title": "Love in My Heart",
     "artist": "BABYMONSTER",
     "section": "Encore",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "演唱會影片",
+        "url": "https://www.youtube.com/watch?v=XtaFQ31C7OU",
+        "title": "Love In My Heart · HELLO MONSTER WORLD TOUR KANAGAWA",
+        "videoId": "XtaFQ31C7OU"
+      }
+    ],
+    "note": "依使用者附圖製作韓文／英文歌詞及紅字應援；排除日文讀音、歡呼與揮燈註記。雙模型輔助校時，尚待全片人工聽校及 YouTube 實播同步確認。",
+    "chant": {
+      "videoId": "XtaFQ31C7OU",
+      "timingBasis": "caption",
+      "note": "依使用者附圖製作韓文／英文歌詞及紅字應援；排除日文讀音、歡呼與揮燈註記。雙模型輔助校時，尚待全片人工聽校及 YouTube 實播同步確認。",
+      "cues": [
+        {
+          "start": 20.33,
+          "end": 23.59,
+          "text": "I can't live without you"
+        },
+        {
+          "start": 24.69,
+          "end": 25.63,
+          "text": "처럼"
+        },
+        {
+          "start": 26.87,
+          "end": 27.47,
+          "text": "없어"
+        },
+        {
+          "start": 32.31,
+          "end": 33.23,
+          "text": "질러"
+        },
+        {
+          "start": 34.53,
+          "end": 34.99,
+          "text": "있어"
+        },
+        {
+          "start": 51.09,
+          "end": 53.07,
+          "text": "for all time"
+        },
+        {
+          "start": 56.79,
+          "end": 59.99,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 64.33,
+          "end": 67.55,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 68.89,
+          "end": 71.67,
+          "text": "Ay ay ay ay ay ay ay ay"
+        },
+        {
+          "start": 71.67,
+          "end": 75.05,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 76.37,
+          "end": 79.25,
+          "text": "Ay ay ay ay ay ay ay ay"
+        },
+        {
+          "start": 79.25,
+          "end": 82.49,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 84.99,
+          "end": 85.69,
+          "text": "day and night"
+        },
+        {
+          "start": 87.73,
+          "end": 88.33,
+          "text": "매일매일"
+        },
+        {
+          "start": 92.43,
+          "end": 93.11,
+          "text": "down bad"
+        },
+        {
+          "start": 97.71,
+          "end": 98.27,
+          "text": "into you"
+        },
+        {
+          "start": 110.85,
+          "end": 113.17,
+          "text": "for all time"
+        },
+        {
+          "start": 116.79,
+          "end": 119.83,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 124.31,
+          "end": 127.43,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 128.91,
+          "end": 131.75,
+          "text": "Ay ay ay ay ay ay ay ay"
+        },
+        {
+          "start": 131.75,
+          "end": 134.97,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 136.41,
+          "end": 139.19,
+          "text": "Ay ay ay ay ay ay ay ay"
+        },
+        {
+          "start": 139.19,
+          "end": 142.43,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 161.77,
+          "end": 164.81,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 169.35,
+          "end": 172.57,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 173.87,
+          "end": 176.79,
+          "text": "Ay ay ay ay ay ay ay ay"
+        },
+        {
+          "start": 176.79,
+          "end": 179.91,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 181.41,
+          "end": 184.17,
+          "text": "Ay ay ay ay ay ay ay ay"
+        },
+        {
+          "start": 184.17,
+          "end": 187.37,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 188.89,
+          "end": 191.67,
+          "text": "Ay ay ay ay ay ay ay ay"
+        },
+        {
+          "start": 191.67,
+          "end": 194.95,
+          "text": "Give you all of the love in my heart"
+        },
+        {
+          "start": 196.41,
+          "end": 199.23,
+          "text": "Ay ay ay ay ay ay ay ay"
+        },
+        {
+          "start": 199.23,
+          "end": 202.55,
+          "text": "Give you all of the love in my heart"
+        }
+      ]
+    },
+    "subtitles": {
+      "videoId": "XtaFQ31C7OU",
+      "cues": [
+        {
+          "start": 8.28,
+          "end": 12.67,
+          "parts": [
+            {
+              "text": "어떤 말도 들리질 않아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 12.67,
+          "end": 16.21,
+          "parts": [
+            {
+              "text": "내 심장 소리뿐",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 16.21,
+          "end": 20.33,
+          "parts": [
+            {
+              "text": "서둘러 날 고쳐보지만",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 20.33,
+          "end": 23.65,
+          "parts": [
+            {
+              "text": "I can't live without you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 23.65,
+          "end": 25.63,
+          "parts": [
+            {
+              "text": "내 맘은 불길",
+              "chant": false
+            },
+            {
+              "text": "처럼",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 25.63,
+          "end": 27.47,
+          "parts": [
+            {
+              "text": "걷잡을 수가 ",
+              "chant": false
+            },
+            {
+              "text": "없어",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 27.47,
+          "end": 30.09,
+          "parts": [
+            {
+              "text": "이런 나를 내버려둬",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 30.09,
+          "end": 33.23,
+          "parts": [
+            {
+              "text": "이 밤을 가로",
+              "chant": false
+            },
+            {
+              "text": "질러",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 33.23,
+          "end": 34.99,
+          "parts": [
+            {
+              "text": "너에게 가고 ",
+              "chant": false
+            },
+            {
+              "text": "있어",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 34.99,
+          "end": 36.65,
+          "parts": [
+            {
+              "text": "늘 그래왔던 것처럼",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 36.65,
+          "end": 41.45,
+          "parts": [
+            {
+              "text": "알잖아 너와 나",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 41.45,
+          "end": 45.09,
+          "parts": [
+            {
+              "text": "애써 외면하지 마",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 45.09,
+          "end": 47.89,
+          "parts": [
+            {
+              "text": "We will be beautiful",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 47.89,
+          "end": 53.15,
+          "parts": [
+            {
+              "text": "And we'll stay together ",
+              "chant": false
+            },
+            {
+              "text": "for all time",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 53.15,
+          "end": 56.79,
+          "parts": [
+            {
+              "text": "이제 더 이상 참고 싶지 않아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 56.79,
+          "end": 59.99,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 59.99,
+          "end": 64.33,
+          "parts": [
+            {
+              "text": "이제 온 세상이 다 내 것 같아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 64.33,
+          "end": 67.65,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 67.65,
+          "end": 68.89,
+          "parts": [
+            {
+              "text": "Give you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 68.89,
+          "end": 71.67,
+          "parts": [
+            {
+              "text": "Ay ay ay ay ay ay ay ay",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 71.67,
+          "end": 75.05,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 75.05,
+          "end": 76.37,
+          "parts": [
+            {
+              "text": "Give you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 76.37,
+          "end": 79.25,
+          "parts": [
+            {
+              "text": "Ay ay ay ay ay ay ay ay",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 79.25,
+          "end": 82.61,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 82.65,
+          "end": 85.69,
+          "parts": [
+            {
+              "text": "Thinking 'bout you every ",
+              "chant": false
+            },
+            {
+              "text": "day and night",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 85.69,
+          "end": 86.95,
+          "parts": [
+            {
+              "text": "우리 마음은 마치 Stars align",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 86.95,
+          "end": 88.33,
+          "parts": [
+            {
+              "text": "춤을 추게 해 ",
+              "chant": false
+            },
+            {
+              "text": "매일매일",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 88.33,
+          "end": 89.15,
+          "parts": [
+            {
+              "text": "Get lost in the twilight",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 89.15,
+          "end": 90.55,
+          "parts": [
+            {
+              "text": "You belong with me forever",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 90.55,
+          "end": 91.27,
+          "parts": [
+            {
+              "text": "Let's go whenever",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 91.27,
+          "end": 93.11,
+          "parts": [
+            {
+              "text": "Don't you know I'm ",
+              "chant": false
+            },
+            {
+              "text": "down bad",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 93.11,
+          "end": 94.35,
+          "parts": [
+            {
+              "text": "Oh babe 너 땜에 꼬여",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 94.35,
+          "end": 95.51,
+          "parts": [
+            {
+              "text": "Can't control my mind",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 95.51,
+          "end": 96.77,
+          "parts": [
+            {
+              "text": "보여줘 If your love's true",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 96.77,
+          "end": 98.05,
+          "parts": [
+            {
+              "text": "Shout it out, I'm so ",
+              "chant": false
+            },
+            {
+              "text": "into you",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 98.05,
+          "end": 100.99,
+          "parts": [
+            {
+              "text": "알잖아 너와 나",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 100.99,
+          "end": 105.13,
+          "parts": [
+            {
+              "text": "애써 외면하지 마",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 105.13,
+          "end": 107.95,
+          "parts": [
+            {
+              "text": "We will be beautiful",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 107.95,
+          "end": 113.15,
+          "parts": [
+            {
+              "text": "And we'll stay together ",
+              "chant": false
+            },
+            {
+              "text": "for all time",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 113.15,
+          "end": 116.79,
+          "parts": [
+            {
+              "text": "이제 더 이상 참고 싶지 않아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 116.79,
+          "end": 119.83,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 119.83,
+          "end": 124.31,
+          "parts": [
+            {
+              "text": "이제 온 세상이 다 내 것 같아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 124.31,
+          "end": 127.55,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 127.65,
+          "end": 128.91,
+          "parts": [
+            {
+              "text": "Give you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 128.91,
+          "end": 131.75,
+          "parts": [
+            {
+              "text": "Ay ay ay ay ay ay ay ay",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 131.75,
+          "end": 134.97,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 134.97,
+          "end": 136.41,
+          "parts": [
+            {
+              "text": "Give you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 136.41,
+          "end": 139.19,
+          "parts": [
+            {
+              "text": "Ay ay ay ay ay ay ay ay",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 139.19,
+          "end": 142.55,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 142.65,
+          "end": 146.31,
+          "parts": [
+            {
+              "text": "You and I",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 146.31,
+          "end": 150.05,
+          "parts": [
+            {
+              "text": "밤하늘 아래 등을 맞대고 앉아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 150.05,
+          "end": 154.57,
+          "parts": [
+            {
+              "text": "You have my back and I'm glad for that",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 154.57,
+          "end": 157.45,
+          "parts": [
+            {
+              "text": "별빛처럼 아름다워",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 157.65,
+          "end": 161.77,
+          "parts": [
+            {
+              "text": "이제 더 이상 참고 싶지 않아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 161.77,
+          "end": 164.81,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 164.81,
+          "end": 169.35,
+          "parts": [
+            {
+              "text": "이제 온 세상이 다 내 것 같아",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 169.35,
+          "end": 171.95,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 171.95,
+          "end": 173.87,
+          "parts": [
+            {
+              "text": "Give you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 173.87,
+          "end": 176.79,
+          "parts": [
+            {
+              "text": "Ay ay ay ay ay ay ay ay",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 176.79,
+          "end": 179.65,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 179.65,
+          "end": 181.41,
+          "parts": [
+            {
+              "text": "Give you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 181.41,
+          "end": 184.17,
+          "parts": [
+            {
+              "text": "Ay ay ay ay ay ay ay ay",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 184.17,
+          "end": 187.49,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 187.65,
+          "end": 188.89,
+          "parts": [
+            {
+              "text": "Give you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 188.89,
+          "end": 191.67,
+          "parts": [
+            {
+              "text": "Ay ay ay ay ay ay ay ay",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 191.67,
+          "end": 195.07,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 195.15,
+          "end": 196.41,
+          "parts": [
+            {
+              "text": "Give you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 196.41,
+          "end": 199.23,
+          "parts": [
+            {
+              "text": "Ay ay ay ay ay ay ay ay",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 199.23,
+          "end": 202.67,
+          "parts": [
+            {
+              "text": "Give you all of the love in my heart",
+              "chant": true
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "number": 28,

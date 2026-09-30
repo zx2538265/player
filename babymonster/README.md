@@ -42,3 +42,5 @@
 - BILLIONAIRE（第 20 首）使用指定官方 PERFORMANCE VIDEO `MN2RlOy8y8k`，加入 54 段英文歌詞字幕與 33 張紅字應援提示。文字及顏色依使用者附圖，排除日文歡呼註記與 Arigato；保留原表拼法。時間使用 large-v3／medium 輔助定位，修正開頭留白，模型分歧保存於 `video/MN2RlOy8y8k/chant-qa.json`。全片人工聽校與 YouTube 實播同步仍待確認。歌詞及應援 SRT、來源圖片、音訊、生成器與紀錄位於該影片資料夾。
 
 - Stuck in the Middle（第 15 首）使用指定 KaM7ZxoGQuE LIVE STAGE，依使用者附圖加入 86 段英文歌詞與最後副歌 10 段紅字應援，排除日文及歡呼註記。時間經 large-v3、medium 與英文 CTC 輔助定位，仍待全曲人工聽校與 YouTube 實播同步驗收；SRT、來源圖與校時紀錄位於 video/KaM7ZxoGQuE/。
+
+- Love, Maybe（第 16 首）使用指定 xPq1Oz_hzVc HELLO MONSTER WORLD TOUR KANAGAWA，依使用者附圖加入 52 段英文歌詞與 16 張紅字應援提示；一般歌詞白字、應援固定黃色粗體，最後一句非紅字歌詞保持白色，日文歡呼註記不納入。時間經 large-v3、medium 與英文 CTC 輔助定位，保留快唱段與延音分歧，仍待全曲人工聽校。本機頁面已確認曲目與來源載入，但內嵌 YouTube 回報無法播放，未完成實播同步驗收；來源圖、音訊、SRT、逐行對應與校時紀錄位於 video/xPq1Oz_hzVc/。

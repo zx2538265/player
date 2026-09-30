@@ -5273,9 +5273,628 @@
     "title": "Love, Maybe",
     "artist": "BABYMONSTER",
     "section": "Act 3",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援影片與逐句提示待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "指定影片",
+        "title": "Love, Maybe · HELLO MONSTER WORLD TOUR KANAGAWA",
+        "url": "https://www.youtube.com/watch?v=xPq1Oz_hzVc",
+        "videoId": "xPq1Oz_hzVc"
+      }
+    ],
+    "note": "依使用者提供的應援圖卡加入英文歌詞，紅字應援固定黃色粗體；日文歡呼註記不納入。時間經 large-v3、medium 與英文 CTC 輔助定位，快唱段及延音仍待全曲人工聽校與 YouTube 實播確認。",
+    "chant": {
+      "videoId": "xPq1Oz_hzVc",
+      "timingBasis": "word-aligned",
+      "note": "依使用者提供的應援圖卡加入英文歌詞，紅字應援固定黃色粗體；日文歡呼註記不納入。時間經 large-v3、medium 與英文 CTC 輔助定位，快唱段及延音仍待全曲人工聽校與 YouTube 實播確認。",
+      "cues": [
+        {
+          "start": 55.13,
+          "end": 58.732,
+          "text": "This must be love, baby"
+        },
+        {
+          "start": 58.732,
+          "end": 62.295,
+          "text": "Cause I've never\nfelt quite this way"
+        },
+        {
+          "start": 62.295,
+          "end": 66.518,
+          "text": "I think this is love, baby"
+        },
+        {
+          "start": 66.838,
+          "end": 69.62,
+          "text": "Get weak when you\ncallin' my name"
+        },
+        {
+          "start": 69.96,
+          "end": 77.05,
+          "text": "This must be love, love, love"
+        },
+        {
+          "start": 77.05,
+          "end": 81.435,
+          "text": "I think this is love, maybe?"
+        },
+        {
+          "start": 81.696,
+          "end": 84.5,
+          "text": "Cause I don't know\nwhat else to blame"
+        },
+        {
+          "start": 114.45,
+          "end": 117.632,
+          "text": "This must be love, love, baby"
+        },
+        {
+          "start": 117.632,
+          "end": 121.374,
+          "text": "Cause I've never\nfelt quite this way"
+        },
+        {
+          "start": 121.375,
+          "end": 125.937,
+          "text": "I think this is love, baby"
+        },
+        {
+          "start": 126.238,
+          "end": 128.979,
+          "text": "Get weak when you\ncallin' my name"
+        },
+        {
+          "start": 129.96,
+          "end": 135.888,
+          "text": "This must be love, love, love"
+        },
+        {
+          "start": 135.989,
+          "end": 140.335,
+          "text": "I think this is love, maybe?"
+        },
+        {
+          "start": 141.0,
+          "end": 144.12,
+          "text": "Cause I don't know\nwhat else to blame"
+        },
+        {
+          "start": 173.18,
+          "end": 181.375,
+          "text": "This must be love, love, love"
+        },
+        {
+          "start": 181.375,
+          "end": 185.638,
+          "text": "I think this is love, maybe?"
+        }
+      ]
+    },
+    "subtitles": {
+      "videoId": "xPq1Oz_hzVc",
+      "cues": [
+        {
+          "start": 26.283,
+          "end": 28.148,
+          "parts": [
+            {
+              "text": "Falling for the first time",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 28.208,
+          "end": 30.193,
+          "parts": [
+            {
+              "text": "I got feelings\nthat I can't fight",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 30.193,
+          "end": 32.458,
+          "parts": [
+            {
+              "text": "Lord, please have mercy on me",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 33.742,
+          "end": 35.086,
+          "parts": [
+            {
+              "text": "Push play then I rewind",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 35.086,
+          "end": 37.412,
+          "parts": [
+            {
+              "text": "Thinking 'bout you\nevery day and night",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 37.473,
+          "end": 39.759,
+          "parts": [
+            {
+              "text": "Boy, what'chu doing to me?",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 40.822,
+          "end": 42.084,
+          "parts": [
+            {
+              "text": "Cause ooh",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 42.084,
+          "end": 45.773,
+          "parts": [
+            {
+              "text": "Something different 'bout\nthe way you make me feel like",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 45.773,
+          "end": 49.0,
+          "parts": [
+            {
+              "text": "Something different 'bout\nthe way you make me feel like",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 49.641,
+          "end": 50.763,
+          "parts": [
+            {
+              "text": "I don't know why",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 50.763,
+          "end": 52.025,
+          "parts": [
+            {
+              "text": "Can't control it",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 52.025,
+          "end": 53.427,
+          "parts": [
+            {
+              "text": "Takes hold of me",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 53.427,
+          "end": 54.91,
+          "parts": [
+            {
+              "text": "Is this for real",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 55.13,
+          "end": 58.732,
+          "parts": [
+            {
+              "text": "This must be love, baby",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 58.732,
+          "end": 62.295,
+          "parts": [
+            {
+              "text": "Cause I've never\nfelt quite this way",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 62.295,
+          "end": 66.518,
+          "parts": [
+            {
+              "text": "I think this is love, baby",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 66.838,
+          "end": 69.62,
+          "parts": [
+            {
+              "text": "Get weak when you\ncallin' my name",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 69.96,
+          "end": 77.05,
+          "parts": [
+            {
+              "text": "This must be love, love, love",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 77.05,
+          "end": 81.435,
+          "parts": [
+            {
+              "text": "I think this is love, maybe?",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 81.696,
+          "end": 84.5,
+          "parts": [
+            {
+              "text": "Cause I don't know\nwhat else to blame",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 85.723,
+          "end": 87.246,
+          "parts": [
+            {
+              "text": "I've been going out of my mind",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 87.246,
+          "end": 89.131,
+          "parts": [
+            {
+              "text": "Got that goosebumps, butterflies",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 89.492,
+          "end": 90.996,
+          "parts": [
+            {
+              "text": "I don't even wanna play the game",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 90.996,
+          "end": 92.76,
+          "parts": [
+            {
+              "text": "Cause you read me everytime",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 92.86,
+          "end": 93.463,
+          "parts": [
+            {
+              "text": "I've been guarded",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 93.463,
+          "end": 94.73,
+          "parts": [
+            {
+              "text": "But I think you picked the lock",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 94.73,
+          "end": 96.578,
+          "parts": [
+            {
+              "text": "Picking petals saying\nlove me, love me not",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 96.84,
+          "end": 97.764,
+          "parts": [
+            {
+              "text": "Gotta keep my cool",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 97.764,
+          "end": 98.87,
+          "parts": [
+            {
+              "text": "What'chu make me do",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 98.87,
+          "end": 99.914,
+          "parts": [
+            {
+              "text": "L.O.V.E got me fallin'",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 99.914,
+          "end": 100.838,
+          "parts": [
+            {
+              "text": "I'm so into you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 101.22,
+          "end": 103.687,
+          "parts": [
+            {
+              "text": "I've been really trying to\nbe cautious with my heart",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 103.687,
+          "end": 106.835,
+          "parts": [
+            {
+              "text": "But I can't deny it,\nhow you got me caught up",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 106.835,
+          "end": 108.218,
+          "parts": [
+            {
+              "text": "And the feelings don't lie",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 108.74,
+          "end": 114.089,
+          "parts": [
+            {
+              "text": "Something 'bout you really\nmaking me feel, feel, feel",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 114.45,
+          "end": 117.632,
+          "parts": [
+            {
+              "text": "This must be love, love, baby",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 117.632,
+          "end": 121.374,
+          "parts": [
+            {
+              "text": "Cause I've never\nfelt quite this way",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 121.375,
+          "end": 125.937,
+          "parts": [
+            {
+              "text": "I think this is love, baby",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 126.238,
+          "end": 128.979,
+          "parts": [
+            {
+              "text": "Get weak when you\ncallin' my name",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 129.96,
+          "end": 135.888,
+          "parts": [
+            {
+              "text": "This must be love, love, love",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 135.989,
+          "end": 140.335,
+          "parts": [
+            {
+              "text": "I think this is love, maybe?",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 141.0,
+          "end": 144.12,
+          "parts": [
+            {
+              "text": "Cause I don't know\nwhat else to blame",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 148.06,
+          "end": 150.685,
+          "parts": [
+            {
+              "text": "Afraid to lose myself\nwhen I'm with you",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 150.685,
+          "end": 152.608,
+          "parts": [
+            {
+              "text": "There's nothing\nelse I'd rather do",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 155.62,
+          "end": 158.519,
+          "parts": [
+            {
+              "text": "Boy you really made a mess of me",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 160.08,
+          "end": 163.062,
+          "parts": [
+            {
+              "text": "This that real love",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 163.583,
+          "end": 166.945,
+          "parts": [
+            {
+              "text": "This that real, it's that real",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 166.985,
+          "end": 168.446,
+          "parts": [
+            {
+              "text": "I give up",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 169.027,
+          "end": 170.288,
+          "parts": [
+            {
+              "text": "Just take my heart",
+              "chant": false
+            }
+          ]
+        },
+        {
+          "start": 173.18,
+          "end": 181.375,
+          "parts": [
+            {
+              "text": "This must be love, love, love",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 181.375,
+          "end": 185.638,
+          "parts": [
+            {
+              "text": "I think this is love, maybe?",
+              "chant": true
+            }
+          ]
+        },
+        {
+          "start": 185.638,
+          "end": 189.02,
+          "parts": [
+            {
+              "text": "Cause I don't know\nwhat else to blame",
+              "chant": false
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "number": 17,

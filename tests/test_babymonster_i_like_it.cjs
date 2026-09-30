@@ -35,3 +35,21 @@ test('clock seeking, pause, speed and ending work for every new cue',()=>{
   }
   assert.equal(Subtitles.at(song.subtitles,219,1),null);
 });
+
+test('chorus entrances exclude the lead-in and mixed next-to-you waits for its own words',()=>{
+  const chorus=song.chant.cues.filter(c=>c.text==='I la-la-like it');
+  assert.notEqual(Chant.state(song.chant,172,1).mode,'active');
+  assert.equal(Chant.state(song.chant,174.5,1).text,'I la-la-like it');
+  assert.notEqual(Chant.state(song.chant,180.8,1).mode,'active');
+  assert.equal(Chant.state(song.chant,181.5,1).text,'I la-la-like it');
+  const mixed=song.subtitles.cues.find(c=>c.parts.some(p=>p.text==='next to you'));
+  const response=song.chant.cues.find(c=>c.text==='next to you');
+  assert.ok(response.start>mixed.start);
+  assert.notEqual(Chant.state(song.chant,179.3,1).mode,'active');
+  assert.equal(Chant.state(song.chant,179.65,1).text,'next to you');
+  for(const c of chorus){
+    const caption=song.subtitles.cues.find(s=>s.start<=c.start && c.start<s.end);
+    assert.ok(caption?.parts.some(p=>p.chant && p.text===c.text));
+    assert.ok(c.end<=caption.end);
+  }
+});

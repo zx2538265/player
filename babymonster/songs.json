@@ -8487,11 +8487,11 @@
         "videoId": "lFtCnJNlGnk"
       }
     ],
-    "note": "依使用者提供的應援表整理韓文／英文歌詞與紅字應援，排除日文註音及歡聲註記；時間經模型輔助對齊，仍待人工聽校與 YouTube 實播確認。",
+    "note": "依使用者應援表保留韓文／英文與紅字應援，排除日文；全曲已做模型校時重查，副歌進場已修訂，重複 Woo 與尾奏配對仍待人工聽校及 YouTube 實播確認。",
     "chant": {
       "videoId": "lFtCnJNlGnk",
       "timingBasis": "word-aligned",
-      "note": "依使用者提供的應援表整理韓文／英文歌詞與紅字應援，排除日文註音及歡聲註記；時間經模型輔助對齊，仍待人工聽校與 YouTube 實播確認。",
+      "note": "依使用者應援表保留韓文／英文與紅字應援，排除日文；全曲已做模型校時重查，副歌進場已修訂，重複 Woo 與尾奏配對仍待人工聽校及 YouTube 實播確認。",
       "cues": [
         {
           "start": 17.26,
@@ -8594,42 +8594,42 @@
           "text": "Woo woo woo woo woo woo"
         },
         {
-          "start": 171.65,
-          "end": 175.07,
+          "start": 174.38,
+          "end": 175.76,
           "text": "I la-la-like it"
         },
         {
-          "start": 175.07,
+          "start": 175.76,
           "end": 176.95,
           "text": "I la-la-like it"
         },
         {
-          "start": 179.21,
-          "end": 180.35,
+          "start": 179.6,
+          "end": 180.56,
           "text": "next to you"
         },
         {
-          "start": 180.35,
-          "end": 182.63,
+          "start": 181.38,
+          "end": 183.2,
           "text": "I la-la-like it"
         },
         {
-          "start": 182.63,
-          "end": 184.57,
+          "start": 183.2,
+          "end": 184.9,
           "text": "I la-la-like it"
         },
         {
           "start": 186.75,
-          "end": 187.87,
+          "end": 188.38,
           "text": "next to you"
         },
         {
-          "start": 187.88,
-          "end": 190.05,
+          "start": 188.94,
+          "end": 190.8,
           "text": "I la-la-like it"
         },
         {
-          "start": 190.05,
+          "start": 190.8,
           "end": 191.97,
           "text": "I la-la-like it"
         },
@@ -8644,8 +8644,8 @@
           "text": "I la-la-like it"
         },
         {
-          "start": 197.35,
-          "end": 199.41,
+          "start": 198.02,
+          "end": 199.4,
           "text": "I la-la-like it"
         }
       ]
@@ -9284,8 +9284,8 @@
           ]
         },
         {
-          "start": 171.65,
-          "end": 175.07,
+          "start": 174.38,
+          "end": 175.76,
           "parts": [
             {
               "text": "I la-la-like it",
@@ -9294,7 +9294,7 @@
           ]
         },
         {
-          "start": 175.07,
+          "start": 175.76,
           "end": 176.95,
           "parts": [
             {
@@ -9305,7 +9305,7 @@
         },
         {
           "start": 176.95,
-          "end": 180.35,
+          "end": 180.68,
           "parts": [
             {
               "text": "I like it like it when I'm ",
@@ -9318,8 +9318,8 @@
           ]
         },
         {
-          "start": 180.35,
-          "end": 182.63,
+          "start": 181.38,
+          "end": 183.2,
           "parts": [
             {
               "text": "I la-la-like it",
@@ -9328,8 +9328,8 @@
           ]
         },
         {
-          "start": 182.63,
-          "end": 184.57,
+          "start": 183.2,
+          "end": 184.9,
           "parts": [
             {
               "text": "I la-la-like it",
@@ -9338,8 +9338,8 @@
           ]
         },
         {
-          "start": 184.57,
-          "end": 187.88,
+          "start": 184.9,
+          "end": 188.5,
           "parts": [
             {
               "text": "I like it like it when I'm ",
@@ -9352,8 +9352,8 @@
           ]
         },
         {
-          "start": 187.88,
-          "end": 190.05,
+          "start": 188.94,
+          "end": 190.8,
           "parts": [
             {
               "text": "Woo woo woo / ",
@@ -9366,7 +9366,7 @@
           ]
         },
         {
-          "start": 190.05,
+          "start": 190.8,
           "end": 191.97,
           "parts": [
             {
@@ -9403,7 +9403,7 @@
         },
         {
           "start": 196.65,
-          "end": 197.35,
+          "end": 197.47,
           "parts": [
             {
               "text": "Woo woo woo / ",
@@ -9416,7 +9416,7 @@
           ]
         },
         {
-          "start": 197.35,
+          "start": 198.02,
           "end": 199.41,
           "parts": [
             {

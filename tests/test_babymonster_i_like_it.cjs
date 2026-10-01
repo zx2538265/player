@@ -53,3 +53,13 @@ test('chorus entrances exclude the lead-in and mixed next-to-you waits for its o
     assert.ok(c.end<=caption.end);
   }
 });
+
+test('first three prompts wait through the rejected early entrances',()=>{
+  for(const [early,start,end,text] of [[17.5,18.01,18.83,'Hey, boy'],[24.5,25.61,26.4,'Mayday'],[34.5,35.17,36.61,'미쳤나 봐']]){
+    assert.notEqual(Chant.state(song.chant,early,1).mode,'active');
+    assert.equal(Chant.state(song.chant,start,1).mode,'active');
+    assert.equal(Chant.state(song.chant,start,1).text,text);
+    assert.ok(Subtitles.at(song.subtitles,start,1).parts.some(p=>p.chant&&p.text===text));
+    assert.notEqual(Chant.state(song.chant,end,1).text,text);
+  }
+});

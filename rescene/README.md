@@ -4,8 +4,8 @@
 
 - 奶油白、柔粉紅、莓果粉為本網站設計配色，並非官方應援色。
 - `songs.json` 為獨立歌單，收藏與偏好儲存在 `rescene-practice`。
-- 收錄 9 首官方應援教學影片；非演出歌單。Pretty Girl 與 LOVE ATTACK 保留原編號，一般官方影片保留為參考連結。
-- 保留搜尋、收藏、切歌、速度、連續播放、專注模式與應援／字幕引擎。9 首已加入共 342 張應援提示，依官方畫面定位，逐句聽校待完成；未加入整首歌詞字幕。
+- 收錄 10 首應援教學影片，包含 9 首官方教學與使用者指定的 YoYo 教學；非演出歌單。Pretty Girl 與 LOVE ATTACK 保留原編號，一般官方影片保留為參考連結。
+- 保留搜尋、收藏、切歌、速度、連續播放、專注模式與應援／字幕引擎。10 首已加入共 371 張應援提示，依來源畫面定位，逐句聽校待完成；未加入整首歌詞字幕。
 - Pretty Girl 影片：https://www.youtube.com/watch?v=qZlu2j2SiBA
 - LOVE ATTACK 影片：https://www.youtube.com/watch?v=9XttLI0oH0I
 - `pretty-girl.jpg` 為官方概念照原檔：https://pbs.twimg.com/media/HMCiE2DW4AAcDaQ.jpg
@@ -99,3 +99,14 @@
 | Runaway | 33.4 | 220 |
 
 依本機來源音訊的波形、頻譜與片尾抽樣畫面設定；尚未完成逐段聽校與實際 YouTube 裁切驗收。結尾以保留歡呼為優先，可能包含緊接歡呼的少量談話。所有 342 張應援卡均完整落在播放範圍內。
+
+## YoYo 應援提示（2026-10-01）
+
+- 第 10 首 YoYo 使用指定影片 [ykVJo0wFlQ4](https://www.youtube.com/watch?v=ykVJo0wFlQ4)，發布者為ゆっぴー，非 RESCENE 官方頻道。原有 9 首來源、順序與提示均未變。
+- 新增 29 張提示，總計 371 張。只擷取藍色應援文字，排除黑色普通歌詞；韓文與英文保留原文，日文「歓声」顯示為「（歡呼）」。未製作中文諧音。
+- 原片與證據保存在 `video/ykVJo0wFlQ4/`。全片 0.1 秒畫面取樣，99 個候選區間及 5 張 review sheets 全部檢視；GPU OCR 99/99，裝置 `gpu:0`，無辨識執行錯誤。執行時有 cuDNN 9.9/9.5 版本警告，未視為已修復。
+- 29 個接受事件另存 290 筆全幅邊界畫面參照，檢視 3 張邊界裁切對照表。提示依字幕顯示區間定位，最後歡呼卡止於片尾淡出前 217.4 秒；尚未逐句聽校，不宣稱喊聲已同步。保留完整指定影片，不設定未驗證裁切。
+- `node tests/test_rescene_chant.cjs` 5 項、`node tests/test_rescene_practice.cjs` 8 項、Pages 打包測試 9 項全部通過。skill OCR／SRT audit 通過：29 區塊、連續編號、有效時間、無空白、無重疊。
+- 瀏覽器確認切換 YoYo 與首張提示；首張名字卡在 320px、390px、1280px 可讀且無橫向溢出。這是代表性版面檢查，不是 29 張卡的逐張瀏覽器驗收。內嵌 YouTube 回報無法播放，實際播放同步與全曲聽校待完成。
+- YoYo 單獨重建：`python scripts/build_rescene_yoyo.py --prepare`，再執行 `python scripts/rescene_chant_boundaries.py --id ykVJo0wFlQ4 --revision=-yoyo-v2`，最後 `python scripts/build_rescene_yoyo.py`。既有 v1 邊界清單保留，v2 為最終清單。既有全歌單 finalizer 亦會委派此 builder 處理 YoYo。
+- 本次僅本機製作，未 commit、push 或部署。本機預覽：`http://127.0.0.1:8765/rescene/#song-10`。

@@ -22,11 +22,11 @@ test('explicit error advances; slow loading and blocked autoplay do not',async()
 test('disable during loading cancels autoplay and stale callbacks cannot advance',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].emit(0);s.get('continuous').checked=false;s.get('continuous').onchange();s.players[1].ready();assert.equal(s.players[1].plays,0);s.players[0].options.events.onError();assert.equal(s.players.length,2)});
 
 
-test('RESCENE catalog binds all nine guides to their visual chant tracks', async()=>{
+test('RESCENE catalog binds all ten guides to their visual chant tracks', async()=>{
   const catalog=require('../rescene/songs.json');
   assert.equal(catalog[0].title,'Pretty Girl');
-  assert.equal(catalog.length,9);
-  assert.deepEqual(catalog.map(song=>song.sources[0].videoId),['RX592yMx7P0','xn12KH78Dx4','s1S-lnU-yMI','YyixhiYpkkY','-55bUrG1qjg','9FlQOv6-Mjc','VKlrVbgJG-g','Ma6IENHO584','7DZlkZ4bMpU']);
+  assert.equal(catalog.length,10);
+  assert.deepEqual(catalog.map(song=>song.sources[0].videoId),['RX592yMx7P0','xn12KH78Dx4','s1S-lnU-yMI','YyixhiYpkkY','-55bUrG1qjg','9FlQOv6-Mjc','VKlrVbgJG-g','Ma6IENHO584','7DZlkZ4bMpU','ykVJo0wFlQ4']);
   const s=await setup(catalog);s.players[0].ready();
   assert.equal(s.get('chantEnabled').disabled,false);
   assert.equal(s.get('chantDisplay').hidden,false);
@@ -37,6 +37,20 @@ test('RESCENE catalog binds all nine guides to their visual chant tracks', async
   assert.equal(s.players[1].plays,1);
   const chant=require('../rescene/chant.js');
   assert.ok(catalog.every(song=>song.hasChant && chant.validTrack(song.chant,song.sources[0].videoId)));
+});
+
+test('YoYo switches its own video, captions and replay without carrying old cues',async()=>{
+  const catalog=require('../rescene/songs.json'),s=await setup(catalog);
+  s.players[0].ready();s.select(9);
+  const p=s.players[1],cue=catalog[9].chant.cues[1];p.ready();
+  assert.equal(p.options.videoId,'ykVJo0wFlQ4');
+  p.time=cue.start;p.emit(1);s.tick();
+  assert.equal(s.get('chantText').textContent,'찾아내');
+  assert.equal(s.get('chantLabel').textContent,'本句應援');
+  p.emit(2);s.tick();assert.equal(s.get('chantLabel').textContent,'已暫停');
+  s.get('repeatCue').onclick();assert.equal(p.time,cue.start-3);
+  s.select(0);s.players[2].ready();
+  assert.equal(s.get('chantText').textContent,catalog[0].chant.cues[0].text);
 });
 
 test('real cards follow seek, pause, speed, repeat and source switching',async()=>{

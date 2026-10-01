@@ -83,6 +83,10 @@ def reviewed_events(folder):
 def prepare():
     """Freeze reviewed times before generating the matching boundary manifest."""
     for song in read(ROOT / 'rescene/songs.json'):
+        if song['sources'][0]['videoId'] == 'ykVJo0wFlQ4':
+            from build_rescene_yoyo import prepare as prepare_yoyo
+            prepare_yoyo()
+            continue
         folder = ROOT / 'video' / song['sources'][0]['videoId']
         write(folder / 'chant-refined.json', {'videoId': folder.name, 'events': reviewed_events(folder)})
 
@@ -91,6 +95,10 @@ def finalize():
     catalog = read(ROOT / 'rescene/songs.json')
     for song in catalog:
         video_id = song['sources'][0]['videoId']
+        if video_id == 'ykVJo0wFlQ4':
+            # This requested fan guide uses static blue captions and its own
+            # reviewed ledger builder, not the nine official karaoke guides.
+            continue
         folder = ROOT / 'video' / video_id
         events = read(folder / 'chant-refined.json')['events']
         info = read(folder / 'source.info.json')
@@ -149,6 +157,9 @@ def finalize():
         (folder / 'PROCESSING.md').write_text(f"# {song['title']} 官方應援製作\n\n來源：{song['sources'][0]['url']}\n\n## 產物\n\n- chant-ledger.json：{len(cues)} 個逐一看圖確認的應援事件、原文、卡片、畫面證據及時間修訂\n- chant-timeline.json：從 ledger 產生的播放器資料\n- chant.gpu-rescan.srt：應援原文，非整首歌詞或中文字幕\n- chant.gpu-rescan.qa.json、chant.gpu-rescan.diff.md：結構檢查與新增紀錄\n\n## 驗證範圍\n\n- 原片 source.mp4 SHA-256：`{source_hash}`\n- 全片以 0.1 秒畫面取樣建立候選；GPU OCR {len(rows)} 筆，執行裝置 gpu:0，JSONL 只追加\n- 已逐一檢視接受文字的 review sheets，另檢查 0.1 秒邊界圖與必要的連續畫面\n- 官方淺色轉深色／黑色定位起點；沒有可辨識變色的事件使用字幕出現時間\n- 最短顯示 0.6 秒，受字幕消失及下一卡限制；歡呼到字幕結束，這是閱讀區間，不是量測喊聲尾音\n- 保留原始與 v2 邊界清單；最終使用 chant-boundary-tasks-final2.json，共 {len(boundaries['tasks'])} 筆邊界參照\n- 結構檢查：來源綁定、有效起訖、排序、無重疊、所有證據檔案存在\n- 尚未全曲聽校或完成實際 YouTube 同步驗收，詳見 UNRESOLVED.md\n\n## 重建\n\n在專案根目錄執行 `python scripts/finalize_rescene_chants.py`，由保存的 reviewed events 重建 ledger 與網站資料\n修改時間後先用 `--prepare` 固定顯示區間，再建立不同版本的邊界清單；不得覆寫原始 OCR 或邊界 manifest\n", encoding='utf-8')
         print(song['title'], len(cues), flush=True)
     write(ROOT / 'rescene/songs.json', catalog)
+    if any(s['sources'][0]['videoId'] == 'ykVJo0wFlQ4' for s in catalog):
+        from build_rescene_yoyo import finalize as finalize_yoyo
+        finalize_yoyo()
 
 
 if __name__ == '__main__':

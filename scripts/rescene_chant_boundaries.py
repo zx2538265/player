@@ -32,7 +32,7 @@ def main(song, revision=''):
             i+=1
         proc.wait();assert proc.returncode==0
     assert all((root/t['image']).exists() for t in tasks)
-    crop=(100,505,1180,675) if vid=='s1S-lnU-yMI' else (0,35,1280,135)
+    crop=(60,610,1220,710) if vid=='ykVJo0wFlQ4' else ((100,505,1180,675) if vid=='s1S-lnU-yMI' else (0,35,1280,135))
     thumbh=85 if vid=='s1S-lnU-yMI' else 50
     rowh=thumbh+42
     for base in range(0,len(events),12):
@@ -47,5 +47,9 @@ def main(song, revision=''):
     print(vid,len(tasks),'full-frame boundary references',flush=True)
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--id');parser.add_argument('--revision',default='');args=parser.parse_args()
+    if args.id and not any(s['sources'][0]['videoId']==args.id for s in SONGS):
+        info=json.loads((ROOT/'video'/args.id/'source.info.json').read_text(encoding='utf-8'))
+        assert info['id']==args.id
+        SONGS=[{'sources':[{'videoId':args.id}]}]
     for song in SONGS:
         if not args.id or song['sources'][0]['videoId']==args.id:main(song,args.revision)

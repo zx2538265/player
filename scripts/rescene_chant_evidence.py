@@ -14,8 +14,8 @@ def dump(path, data):
 def prepare(song):
     vid=song['sources'][0]['videoId']; root=ROOT/'video'/vid
     if (root/'chant-ocr-tasks.json').exists(): return
-    bottom=vid=='s1S-lnU-yMI'
-    crop=(120,510,1040,160) if bottom else (60,40,1080,90)
+    bottom=vid in ('s1S-lnU-yMI', 'ykVJo0wFlQ4')
+    crop=(60,610,1160,100) if vid=='ykVJo0wFlQ4' else ((120,510,1040,160) if bottom else (60,40,1080,90))
     x,y,w,h=crop
     frames=root/'chant-frames';frames.mkdir(exist_ok=True)
     cmd=['ffmpeg','-v','error','-i',str(root/'source.mp4'),'-vf',f'fps=10,crop={w}:{h}:{x}:{y}', '-f','rawvideo','-pix_fmt','bgr24','-']
@@ -80,7 +80,12 @@ def ocr():
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('mode',choices=['prepare','ocr']);p.add_argument('--id');args=p.parse_args()
-    if args.id:SONGS=[s for s in SONGS if s['sources'][0]['videoId']==args.id]
+    if args.id:
+        SONGS=[s for s in SONGS if s['sources'][0]['videoId']==args.id]
+        if not SONGS:
+            info=json.loads((ROOT/'video'/args.id/'source.info.json').read_text(encoding='utf-8'))
+            assert info['id']==args.id
+            SONGS=[{'sources':[{'videoId':args.id}]}]
     if args.mode=='prepare':
         for song in SONGS:prepare(song)
     else:ocr()

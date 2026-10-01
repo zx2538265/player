@@ -4,8 +4,8 @@ const assert=require('node:assert/strict');
 const Chant=require('../rescene/chant.js');
 const songs=require('../rescene/songs.json');
 
-test('342 source-bound cards have unique provenance and valid boundaries',()=>{
-  assert.deepEqual(songs.map(s=>s.chant.cues.length),[52,40,46,35,34,46,28,30,31]);
+test('371 source-bound cards have unique provenance and valid boundaries',()=>{
+  assert.deepEqual(songs.map(s=>s.chant.cues.length),[52,40,46,35,34,46,28,30,31,29]);
   const ids=new Set();
   for(const song of songs){
     const track=song.chant,id=song.sources[0].videoId;
@@ -19,7 +19,22 @@ test('342 source-bound cards have unique provenance and valid boundaries',()=>{
       assert.ok(!cue.text.includes(' / '));
     }
   }
-  assert.equal(ids.size,342);
+  assert.equal(ids.size,371);
+});
+
+test('YoYo retains requested fan source and excludes ordinary lyrics',()=>{
+  const song=songs.find(s=>s.title==='YoYo');
+  assert.equal(song.number,10);
+  assert.equal(song.sources[0].videoId,'ykVJo0wFlQ4');
+  assert.match(song.sources[0].kind,/ゆっぴー/);
+  assert.ok(!song.sources[0].kind.includes('官方'));
+  assert.equal(song.sources[0].startSeconds,undefined);
+  const cues=song.chant.cues;
+  assert.ok(!cues.some(c=>/We're going|Swing me like|Lead me|Find/.test(c.text)));
+  assert.equal(cues.filter(c=>c.text==='Up down, up down, up down').length,8);
+  assert.equal(cues.filter(c=>c.text==='（歡呼）').length,3);
+  assert.equal(cues.find(c=>c.sourceIds[0]==='ykVJo0wFlQ4-3').text,'찾아내');
+  assert.equal(cues.find(c=>c.sourceIds[0]==='ykVJo0wFlQ4-48').text,'소나기');
 });
 
 test('every cue has half-open active bounds and survives backward seeking',()=>{

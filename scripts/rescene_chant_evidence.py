@@ -14,8 +14,8 @@ def dump(path, data):
 def prepare(song):
     vid=song['sources'][0]['videoId']; root=ROOT/'video'/vid
     if (root/'chant-ocr-tasks.json').exists(): return
-    bottom=vid in ('s1S-lnU-yMI', 'ykVJo0wFlQ4')
-    crop=(60,610,1160,100) if vid=='ykVJo0wFlQ4' else ((120,510,1040,160) if bottom else (60,40,1080,90))
+    bottom=vid in ('s1S-lnU-yMI', 'ykVJo0wFlQ4', 'hc1HS71j6oY')
+    crop=(60,610,1160,100) if vid in ('ykVJo0wFlQ4', 'hc1HS71j6oY') else ((120,510,1040,160) if bottom else (60,40,1080,90))
     x,y,w,h=crop
     frames=root/'chant-frames';frames.mkdir(exist_ok=True)
     cmd=['ffmpeg','-v','error','-i',str(root/'source.mp4'),'-vf',f'fps=10,crop={w}:{h}:{x}:{y}', '-f','rawvideo','-pix_fmt','bgr24','-']
@@ -54,7 +54,7 @@ def prepare(song):
         sheet.save(root/f'chant-review-{base//24:02d}.jpg')
     print(vid,len(spans),'spans',flush=True)
 
-def ocr():
+def ocr(manifest='chant-ocr-tasks.json', results='chant-ocr-results.jsonl'):
     os.environ['PADDLE_PDX_MODEL_SOURCE']='bos'
     shim=types.ModuleType('modelscope')
     def no_download(*args,**kwargs): raise RuntimeError('Use cached Paddle models only')
@@ -65,8 +65,8 @@ def ocr():
     engine=PaddleOCR(lang='korean',device='gpu:0',use_doc_orientation_classify=False,use_doc_unwarping=False,use_textline_orientation=False,text_recognition_batch_size=32,text_rec_score_thresh=0.0)
     for song in SONGS:
         root=ROOT/'video'/song['sources'][0]['videoId']
-        tasks=json.loads((root/'chant-ocr-tasks.json').read_text())['tasks']
-        path=root/'chant-ocr-results.jsonl'
+        tasks=json.loads((root/manifest).read_text())['tasks']
+        path=root/results
         done=[json.loads(l) for l in path.read_text(encoding='utf-8').splitlines()] if path.exists() else []
         assert [r['task_index'] for r in done]==list(range(len(done))) and len(done)<=len(tasks)
         assert not any('error' in r for r in done)
@@ -79,7 +79,7 @@ def ocr():
                 if task['task_index']%50==0: print(root.name,task['task_index'],len(tasks),'device='+paddle.get_device(),flush=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['prepare','ocr']);p.add_argument('--id');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['prepare','ocr']);p.add_argument('--id');p.add_argument('--manifest',default='chant-ocr-tasks.json');p.add_argument('--results',default='chant-ocr-results.jsonl');args=p.parse_args()
     if args.id:
         SONGS=[s for s in SONGS if s['sources'][0]['videoId']==args.id]
         if not SONGS:
@@ -88,4 +88,4 @@ if __name__=='__main__':
             SONGS=[{'sources':[{'videoId':args.id}]}]
     if args.mode=='prepare':
         for song in SONGS:prepare(song)
-    else:ocr()
+    else:ocr(args.manifest,args.results)

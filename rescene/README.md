@@ -4,8 +4,8 @@
 
 - 奶油白、柔粉紅、莓果粉為本網站設計配色，並非官方應援色。
 - `songs.json` 為獨立歌單，收藏與偏好儲存在 `rescene-practice`。
-- 收錄 10 首應援教學影片，包含 9 首官方教學與使用者指定的 YoYo 教學；非演出歌單。Pretty Girl 與 LOVE ATTACK 保留原編號，一般官方影片保留為參考連結。
-- 保留搜尋、收藏、切歌、速度、連續播放、專注模式與應援／字幕引擎。10 首已加入共 371 張應援提示，依來源畫面定位，逐句聽校待完成；未加入整首歌詞字幕。
+- 收錄 11 首應援教學影片，包含 9 首官方教學與使用者指定的 YoYo、Busy Boy 教學；非演出歌單。Pretty Girl 與 LOVE ATTACK 保留原編號，一般官方影片保留為參考連結。
+- 保留搜尋、收藏、切歌、速度、連續播放、專注模式與應援／字幕引擎。11 首已加入共 419 張應援提示，依來源畫面定位或詞句校時，逐句聽校待完成；未加入整首歌詞字幕。
 - Pretty Girl 影片：https://www.youtube.com/watch?v=qZlu2j2SiBA
 - LOVE ATTACK 影片：https://www.youtube.com/watch?v=9XttLI0oH0I
 - `pretty-girl.jpg` 為官方概念照原檔：https://pbs.twimg.com/media/HMCiE2DW4AAcDaQ.jpg
@@ -110,3 +110,31 @@
 - 瀏覽器確認切換 YoYo 與首張提示；首張名字卡在 320px、390px、1280px 可讀且無橫向溢出。這是代表性版面檢查，不是 29 張卡的逐張瀏覽器驗收。內嵌 YouTube 回報無法播放，實際播放同步與全曲聽校待完成。
 - YoYo 單獨重建：`python scripts/build_rescene_yoyo.py --prepare`，再執行 `python scripts/rescene_chant_boundaries.py --id ykVJo0wFlQ4 --revision=-yoyo-v2`，最後 `python scripts/build_rescene_yoyo.py`。既有 v1 邊界清單保留，v2 為最終清單。既有全歌單 finalizer 亦會委派此 builder 處理 YoYo。
 - 本次僅本機製作，未 commit、push 或部署。本機預覽：`http://127.0.0.1:8765/rescene/#song-10`。
+
+## Busy Boy 應援提示（2026-10-01）
+
+- 第 11 首使用指定影片 [hc1HS71j6oY](https://www.youtube.com/watch?v=hc1HS71j6oY)，發布者為농담곰탕탕후루，非官方頻道。新增 36 張提示，歌單總計 407 張；原有 10 首順序與資料保留。
+- 只收錄粉紅應援文字，排除黑白普通歌詞；韓文／英文保留原文，`함성` 顯示「（歡呼）」，共 4 張。名字依畫面保留韓文，未加入中文諧音。
+- 全片粉紅文字層 0.1 秒取樣，52 個候選、3 張候選對照表及 3 張邊界對照表全部檢視。GPU OCR 52/52，gpu:0，0 錯誤；cuDNN 9.9/9.5 警告保留，未宣稱修復。
+- 36 個事件有 357 筆全幅邊界參照；v1 清單保留，v2 排除片尾超出解碼取樣範圍的參照。提示使用絕對字幕區間；同句兩個粉紅 busy 保留為 `busy busy`，兩次喊聲的個別起點未量測。保留完整來源，不設定未聽校的裁切。
+- `node tests/test_rescene_chant.cjs` 6 項、`node tests/test_rescene_practice.cjs` 9 項及 Pages 打包測試 9 項通過；OCR／SRT audit 通過，36 區塊，連續編號、有效時間、無空白或重疊。
+- 瀏覽器確認切換 Busy Boy、影片來源與首張提示；320px、390px、1280px 名字卡可讀且無橫向溢出。實際 YouTube 已成功播放，抽查 42 秒的歡呼提示與 8.5 秒名字卡；尚未完成全曲逐句聽校、所有卡片逐張版面或全曲同步驗收。
+- 證據及產物在 `video/hc1HS71j6oY/`，包含原片、ledger、原文 SRT、QA、diff、待驗證清單及桌機／手機截圖。單曲重建：`python scripts/build_rescene_busy_boy.py --prepare`，`python scripts/rescene_chant_boundaries.py --id hc1HS71j6oY --revision=-busy-boy-v2`，`python scripts/build_rescene_busy_boy.py`；全歌單 finalizer 亦會委派此 builder。
+- 本次僅本機製作，未 commit、push 或部署。[本機預覽](http://127.0.0.1:8765/rescene/#song-11)。
+
+### Busy Boy 進入時間修正 v3（2026-10-01）
+
+- 初版把整句字幕時間當成應援進入點，並在等待期間以大字預覽下一句，造成提早感。Busy Boy 現改為 entry-only：等待或倒數時，大字區留白，下一句只在小字區預告
+- 36 個原事件全部有決策：19 個調整進入時間、12 個 busy busy 拆成第二／第四個 busy、5 個保留；修正後 48 張提示，歌單共 419 張
+- 例如 behind 16.7 → 19.0、dream 29.0 → 30.1、Busy boy 56.5 → 58.1 秒；每個事件按本次詞位置修正，未做整首固定平移
+- 校時證據：Whisper large-v3／medium 全曲 ASR與各 32 個局部對齊視窗、英文 CTC 24 個及韓文 CTC 17 個視窗、5 個重複段落波形比對。ASR 幻覺、零長度重複及 CTC 錯配不採用；韓文短音節與歡呼仍為候選，並非完整人工聽校
+- 477 筆新邊界畫面與 4 張對照表完成檢視，確認原應援內容；原 caption-v2 ledger、SRT 與處理紀錄保留。新時間由 entry-timing-reviewed.v3.json → chant-refined.v3.json → ledger／SRT／songs.json 產生
+- 應援測試 7 項、播放器測試 9 項及 Pages 打包測試 9 項通過；新 SRT 結構 audit 通過
+- 重建：python scripts/build_rescene_busy_boy.py --prepare，python scripts/rescene_chant_boundaries.py --id hc1HS71j6oY --revision=-busy-boy-v3 --events chant-refined.v3.json，python scripts/build_rescene_busy_boy.py
+- 未 commit、push 或部署；全曲逐句聽校及全曲 YouTube 同步待完成
+
+- 瀏覽器修正版抽查：16.7 秒為等待、19.1 秒顯示 behind、53.2 秒為等待、53.7 秒顯示單次 busy；截圖 browser-entry-v3.png。這是指定時點行為驗證，不是全曲聽校或全曲同步驗收
+
+### 大字預告恢復（2026-10-01）
+
+依使用者要求恢復原本提示邏輯：未進場時先以大字顯示下一句，進入前 3 秒顯示倍速換算倒數，到達 cue.start 才切換正式應援狀態。移除 entry-only 設定，沒有「等待進場」文字；Busy Boy 的 48 張卡片及 v3 校正時間保留

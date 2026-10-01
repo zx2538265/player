@@ -22,11 +22,11 @@ test('explicit error advances; slow loading and blocked autoplay do not',async()
 test('disable during loading cancels autoplay and stale callbacks cannot advance',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].emit(0);s.get('continuous').checked=false;s.get('continuous').onchange();s.players[1].ready();assert.equal(s.players[1].plays,0);s.players[0].options.events.onError();assert.equal(s.players.length,2)});
 
 
-test('RESCENE catalog binds all ten guides to their visual chant tracks', async()=>{
+test('RESCENE catalog binds all eleven guides to their visual chant tracks', async()=>{
   const catalog=require('../rescene/songs.json');
   assert.equal(catalog[0].title,'Pretty Girl');
-  assert.equal(catalog.length,10);
-  assert.deepEqual(catalog.map(song=>song.sources[0].videoId),['RX592yMx7P0','xn12KH78Dx4','s1S-lnU-yMI','YyixhiYpkkY','-55bUrG1qjg','9FlQOv6-Mjc','VKlrVbgJG-g','Ma6IENHO584','7DZlkZ4bMpU','ykVJo0wFlQ4']);
+  assert.equal(catalog.length,11);
+  assert.deepEqual(catalog.map(song=>song.sources[0].videoId),['RX592yMx7P0','xn12KH78Dx4','s1S-lnU-yMI','YyixhiYpkkY','-55bUrG1qjg','9FlQOv6-Mjc','VKlrVbgJG-g','Ma6IENHO584','7DZlkZ4bMpU','ykVJo0wFlQ4','hc1HS71j6oY']);
   const s=await setup(catalog);s.players[0].ready();
   assert.equal(s.get('chantEnabled').disabled,false);
   assert.equal(s.get('chantDisplay').hidden,false);
@@ -51,6 +51,24 @@ test('YoYo switches its own video, captions and replay without carrying old cues
   s.get('repeatCue').onclick();assert.equal(p.time,cue.start-3);
   s.select(0);s.players[2].ready();
   assert.equal(s.get('chantText').textContent,catalog[0].chant.cues[0].text);
+});
+
+test('Busy Boy selection and replay use its absolute captions and clear them on switching',async()=>{
+  const catalog=require('../rescene/songs.json'),s=await setup(catalog);
+  s.players[0].ready();s.select(catalog.findIndex(song=>song.title==='Busy Boy'));
+  const p=s.players.at(-1);
+  assert.equal(s.get('chantText').textContent,catalog.at(-1).chant.cues[0].text);
+  p.ready();
+  assert.equal(p.options.videoId,'hc1HS71j6oY');
+  p.time=26.7;p.state=1;s.tick();
+  assert.equal(s.get('chantText').textContent,'치');
+  assert.equal(s.get('chantDisplay').dataset.mode,'countdown');
+  p.time=28.7;s.tick();
+  assert.equal(s.get('chantText').textContent,'치');
+  s.get('repeatCue').onclick();
+  assert.ok(p.time<28.6);
+  s.select(0);s.players.at(-1).ready();s.tick();
+  assert.notEqual(s.get('chantText').textContent,'치');
 });
 
 test('real cards follow seek, pause, speed, repeat and source switching',async()=>{

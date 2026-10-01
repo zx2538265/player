@@ -3234,5 +3234,413 @@
         }
       ]
     }
+  },
+  {
+    "number": 11,
+    "title": "Busy Boy",
+    "artist": "RESCENE",
+    "section": "Busy Boy",
+    "hasChant": true,
+    "note": "指定應援教學 · 48 張提示卡 · 進入時間已逐句校時，聽校待完成",
+    "sources": [
+      {
+        "kind": "應援教學（농담곰탕탕후루）",
+        "title": "rescene (리센느) 'Busy Boy' 응원법",
+        "url": "https://www.youtube.com/watch?v=hc1HS71j6oY",
+        "videoId": "hc1HS71j6oY"
+      }
+    ],
+    "chant": {
+      "videoId": "hc1HS71j6oY",
+      "status": "model_aligned_listening_pending",
+      "timingBasis": "word-aligned",
+      "note": "指定來源為농담곰탕탕후루頻道；粉紅應援依逐句詞位置校時，短音節／歡呼仍屬候選，完整聽校待完成。",
+      "cues": [
+        {
+          "start": 8.5,
+          "end": 13.1,
+          "text": "정원이 진경은 미나미\n이예빈 김가영 리센느",
+          "sourceIds": [
+            "hc1HS71j6oY-1"
+          ]
+        },
+        {
+          "start": 13.5,
+          "end": 14.4,
+          "text": "비! 지! 보! 이!",
+          "sourceIds": [
+            "hc1HS71j6oY-2"
+          ]
+        },
+        {
+          "start": 19.0,
+          "end": 20.2,
+          "text": "behind",
+          "sourceIds": [
+            "hc1HS71j6oY-4"
+          ]
+        },
+        {
+          "start": 23.7,
+          "end": 24.4,
+          "text": "바빠",
+          "sourceIds": [
+            "hc1HS71j6oY-6"
+          ]
+        },
+        {
+          "start": 28.6,
+          "end": 29.0,
+          "text": "치",
+          "sourceIds": [
+            "hc1HS71j6oY-8"
+          ]
+        },
+        {
+          "start": 30.1,
+          "end": 30.8,
+          "text": "dream",
+          "sourceIds": [
+            "hc1HS71j6oY-9"
+          ]
+        },
+        {
+          "start": 34.7,
+          "end": 35.4,
+          "text": "지",
+          "sourceIds": [
+            "hc1HS71j6oY-11"
+          ]
+        },
+        {
+          "start": 36.2,
+          "end": 37.1,
+          "text": "emoji",
+          "sourceIds": [
+            "hc1HS71j6oY-12"
+          ]
+        },
+        {
+          "start": 43.9,
+          "end": 45.7,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "hc1HS71j6oY-14"
+          ]
+        },
+        {
+          "start": 53.6,
+          "end": 54.0,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-16-word-2"
+          ]
+        },
+        {
+          "start": 54.5,
+          "end": 54.8,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-16-word-4"
+          ]
+        },
+        {
+          "start": 55.2,
+          "end": 55.6,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-17-word-2"
+          ]
+        },
+        {
+          "start": 56.1,
+          "end": 56.5,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-17-word-4"
+          ]
+        },
+        {
+          "start": 58.1,
+          "end": 58.7,
+          "text": "Busy boy",
+          "sourceIds": [
+            "hc1HS71j6oY-18"
+          ]
+        },
+        {
+          "start": 60.1,
+          "end": 60.5,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-20-word-2"
+          ]
+        },
+        {
+          "start": 60.9,
+          "end": 61.2,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-20-word-4"
+          ]
+        },
+        {
+          "start": 61.7,
+          "end": 62.1,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-21-word-2"
+          ]
+        },
+        {
+          "start": 62.5,
+          "end": 62.8,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-21-word-4"
+          ]
+        },
+        {
+          "start": 64.5,
+          "end": 65.8,
+          "text": "Busy boy",
+          "sourceIds": [
+            "hc1HS71j6oY-22"
+          ]
+        },
+        {
+          "start": 74.5,
+          "end": 75.9,
+          "text": "이럴거면 왜",
+          "sourceIds": [
+            "hc1HS71j6oY-24"
+          ]
+        },
+        {
+          "start": 77.7,
+          "end": 78.2,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "hc1HS71j6oY-25"
+          ]
+        },
+        {
+          "start": 80.4,
+          "end": 81.4,
+          "text": "시험해",
+          "sourceIds": [
+            "hc1HS71j6oY-27"
+          ]
+        },
+        {
+          "start": 83.4,
+          "end": 84.4,
+          "text": "늘어놔 왜",
+          "sourceIds": [
+            "hc1HS71j6oY-28"
+          ]
+        },
+        {
+          "start": 92.1,
+          "end": 92.5,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-30-word-2"
+          ]
+        },
+        {
+          "start": 92.9,
+          "end": 93.3,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-30-word-4"
+          ]
+        },
+        {
+          "start": 93.6,
+          "end": 94.0,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-31-word-2"
+          ]
+        },
+        {
+          "start": 94.5,
+          "end": 94.9,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-31-word-4"
+          ]
+        },
+        {
+          "start": 96.5,
+          "end": 97.2,
+          "text": "Busy boy",
+          "sourceIds": [
+            "hc1HS71j6oY-32"
+          ]
+        },
+        {
+          "start": 98.4,
+          "end": 98.8,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-34-word-2"
+          ]
+        },
+        {
+          "start": 99.3,
+          "end": 99.6,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-34-word-4"
+          ]
+        },
+        {
+          "start": 100.1,
+          "end": 100.5,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-35-word-2"
+          ]
+        },
+        {
+          "start": 100.9,
+          "end": 101.3,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-35-word-4"
+          ]
+        },
+        {
+          "start": 102.9,
+          "end": 103.5,
+          "text": "Busy boy",
+          "sourceIds": [
+            "hc1HS71j6oY-36"
+          ]
+        },
+        {
+          "start": 103.5,
+          "end": 105.8,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "hc1HS71j6oY-37"
+          ]
+        },
+        {
+          "start": 109.8,
+          "end": 112.2,
+          "text": "내 머리 속은 Dizzy",
+          "sourceIds": [
+            "hc1HS71j6oY-39"
+          ]
+        },
+        {
+          "start": 117.7,
+          "end": 118.1,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-41-word-2"
+          ]
+        },
+        {
+          "start": 118.5,
+          "end": 118.8,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-41-word-4"
+          ]
+        },
+        {
+          "start": 119.3,
+          "end": 119.7,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-42-word-2"
+          ]
+        },
+        {
+          "start": 120.1,
+          "end": 120.5,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-42-word-4"
+          ]
+        },
+        {
+          "start": 122.1,
+          "end": 122.7,
+          "text": "Busy boy",
+          "sourceIds": [
+            "hc1HS71j6oY-43"
+          ]
+        },
+        {
+          "start": 124.1,
+          "end": 124.5,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-45-word-2"
+          ]
+        },
+        {
+          "start": 124.9,
+          "end": 125.2,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-45-word-4"
+          ]
+        },
+        {
+          "start": 125.7,
+          "end": 126.1,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-46-word-2"
+          ]
+        },
+        {
+          "start": 126.5,
+          "end": 126.8,
+          "text": "busy",
+          "sourceIds": [
+            "hc1HS71j6oY-46-word-4"
+          ]
+        },
+        {
+          "start": 128.5,
+          "end": 129.0,
+          "text": "Busy boy",
+          "sourceIds": [
+            "hc1HS71j6oY-47"
+          ]
+        },
+        {
+          "start": 141.3,
+          "end": 142.5,
+          "text": "Busy boy",
+          "sourceIds": [
+            "hc1HS71j6oY-49"
+          ]
+        },
+        {
+          "start": 142.5,
+          "end": 146.0,
+          "text": "（歡呼）",
+          "sourceIds": [
+            "hc1HS71j6oY-50"
+          ]
+        },
+        {
+          "start": 146.0,
+          "end": 150.8,
+          "text": "네! 가! 좋! 아!\n리! 센! 느!",
+          "sourceIds": [
+            "hc1HS71j6oY-51"
+          ]
+        }
+      ]
+    }
   }
 ]

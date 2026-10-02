@@ -24,16 +24,16 @@ test('disable during loading cancels autoplay and stale callbacks cannot advance
 
 test('RESCENE catalog binds all eleven guides to their visual chant tracks', async()=>{
   const catalog=require('../rescene/songs.json');
-  assert.equal(catalog[0].title,'Pretty Girl');
+  assert.deepEqual(catalog.slice(0,5).map(song=>song.title),['LOVE ATTACK','Runaway','Deja Vu','Pinball','Pretty Girl']);
   assert.equal(catalog.length,11);
-  assert.deepEqual(catalog.map(song=>song.sources[0].videoId),['RX592yMx7P0','xn12KH78Dx4','s1S-lnU-yMI','YyixhiYpkkY','-55bUrG1qjg','9FlQOv6-Mjc','VKlrVbgJG-g','Ma6IENHO584','7DZlkZ4bMpU','ykVJo0wFlQ4','hc1HS71j6oY']);
+  assert.deepEqual(catalog.map(song=>song.sources[0].videoId),['xn12KH78Dx4','7DZlkZ4bMpU','9FlQOv6-Mjc','YyixhiYpkkY','RX592yMx7P0','s1S-lnU-yMI','-55bUrG1qjg','VKlrVbgJG-g','Ma6IENHO584','ykVJo0wFlQ4','hc1HS71j6oY']);
   const s=await setup(catalog);s.players[0].ready();
   assert.equal(s.get('chantEnabled').disabled,false);
   assert.equal(s.get('chantDisplay').hidden,false);
   assert.equal(s.get('loopCue').disabled,false);
-  assert.equal(s.players[0].options.videoId,'RX592yMx7P0');
+  assert.equal(s.players[0].options.videoId,'xn12KH78Dx4');
   s.enable();s.players[0].emit(0);s.players[1].ready();
-  assert.equal(s.players[1].options.videoId,'xn12KH78Dx4');
+  assert.equal(s.players[1].options.videoId,'7DZlkZ4bMpU');
   assert.equal(s.players[1].plays,1);
   const chant=require('../rescene/chant.js');
   assert.ok(catalog.every(song=>song.hasChant && chant.validTrack(song.chant,song.sources[0].videoId)));
@@ -83,7 +83,8 @@ test('real cards follow seek, pause, speed, repeat and source switching',async()
   s.get('repeatCue').onclick();assert.equal(p.time,cue.start-3);
   s.get('loopCue').checked=true;s.get('loopCue').onchange();
   p.time=cue.end+.1;s.tick();assert.equal(p.time,cue.start-3);
-  s.select(2);const next=s.players[1];next.ready();
+  const nextIndex=catalog.findIndex(song=>song.title==='UhUh');
+  s.select(nextIndex);const next=s.players[1];next.ready();
   assert.equal(next.options.videoId,'s1S-lnU-yMI');
-  assert.equal(s.get('chantText').textContent,catalog[2].chant.cues[0].text);
+  assert.equal(s.get('chantText').textContent,catalog[nextIndex].chant.cues[0].text);
 });

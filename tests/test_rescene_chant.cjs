@@ -5,7 +5,7 @@ const Chant=require('../rescene/chant.js');
 const songs=require('../rescene/songs.json');
 
 test('419 source-bound cards have unique provenance and valid boundaries',()=>{
-  assert.deepEqual(songs.map(s=>s.chant.cues.length),[52,40,46,35,34,46,28,30,31,29,48]);
+  assert.deepEqual(songs.map(s=>s.chant.cues.length),[40,31,46,35,52,46,34,28,30,29,48]);
   const ids=new Set();
   for(const song of songs){
     const track=song.chant,id=song.sources[0].videoId;
@@ -94,16 +94,16 @@ test('every cue has half-open active bounds and survives backward seeking',()=>{
 });
 
 test('visual source corrections retain ordinary-lyric exclusions and repeated phrases',()=>{
-  const pretty=songs[0].chant.cues;
+  const pretty=songs.find(song=>song.title==='Pretty Girl').chant.cues;
   assert.ok(!pretty.some(c=>c.text.includes('카라선배')));
   const finalGirl=pretty.filter(c=>c.sourceIds.some(id=>id.startsWith('RX592yMx7P0-199')));
   assert.ok(finalGirl.length);assert.ok(finalGirl.every(c=>!c.text.includes('Pretty Girl')));
-  const uh=songs[2].chant.cues;
+  const uh=songs.find(song=>song.title==='UhUh').chant.cues;
   assert.equal(uh.filter(c=>c.text==='You gonna shout it out').length,2);
   assert.equal(uh.find(c=>c.sourceIds[0]==='s1S-lnU-yMI-1').start,28);
-  const heart=songs[6].chant.cues.filter(c=>c.sourceIds[0].startsWith('VKlrVbgJG-g-38-'));
+  const heart=songs.find(song=>song.title==='Heart Drop').chant.cues.filter(c=>c.sourceIds[0].startsWith('VKlrVbgJG-g-38-'));
   assert.equal(heart.length,2);assert.equal(heart[0].text,'레');assert.ok(heart[0].end<heart[1].start);
-  assert.equal(songs[4].chant.cues.find(c=>c.sourceIds[0]==='-55bUrG1qjg-35').text,'I');
+  assert.equal(songs.find(song=>song.title==='Glow Up').chant.cues.find(c=>c.sourceIds[0]==='-55bUrG1qjg-35').text,'I');
 });
 
 test('invalid and overlapping tracks remain disabled',()=>{

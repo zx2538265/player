@@ -25,7 +25,7 @@ test('actual chant catalog switches cleanly and controls use the current player 
   const catalog=require('../bigbang/songs.json'),s=await setup(catalog);
   s.players[0].ready(); s.players[0].time=30;s.players[0].emit(1);
   assert.equal(s.get('chantText').textContent,'NA NA NA NA NA');
-  for(const index of [1,2,3,4,6,7,10,11,12,16,18,19,20,21,23,25]) {
+  for(const index of [1,2,3,4,6,7,10,11,12,16,18,19,20,21,22,23,25]) {
     const old=s.players.at(-1);s.select(index);
     assert.equal(s.get('chantLabel').textContent,'等待影片就緒');
     assert.equal(s.get('chantCount').textContent,'');
@@ -61,13 +61,16 @@ test('bounded excerpt stops, replays, clamps seeking and advances once',async()=
  p.time=81;s.tick();assert.equal(p.state,2);assert.equal(s.get('chantLabel').textContent,'本首練習結束');
  s.get('play').onclick();assert.equal(p.time,25);assert.equal(p.state,1);
  s.get('seek').value=100;s.get('seek').oninput();assert.equal(p.time,81);
- s.enable();s.tick();assert.equal(s.players.at(-1).options.videoId,'VeJ8j4ZoHLE');
+ s.enable();s.tick();assert.equal(s.players.at(-1).options.videoId,'Ax6jJiKsdr8');
  const count=s.players.length;p.emit(0);assert.equal(s.players.length,count);
 });
 
 test('Universe replacement starts at zero and has no former 81-second cutoff',async()=>{
  const s=await setup(require('../bigbang/songs.json'));s.select(10);const p=s.players.at(-1);p.ready();
- assert.equal(p.options.videoId,'DxlZVaEO9B4');
+ assert.equal(p.options.videoId,'mM82OFLj-hE');
+ assert.equal(s.get('chantDisplay').hidden,false);
+ assert.equal(s.get('chantEnabled').disabled,false);
+ assert.equal(s.get('nextCue').disabled,false);
  assert.ok(!p.options.playerVars.end);
  p.time=3;s.get('back').onclick();assert.equal(p.time,0);
  p.time=81;p.emit(1);s.tick();assert.equal(p.state,1);

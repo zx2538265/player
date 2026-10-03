@@ -1086,112 +1086,122 @@
     "sources": [
       {
         "kind": "應援參考",
-        "url": "https://www.youtube.com/watch?v=DxlZVaEO9B4",
-        "title": "dswave universe 應援練習",
-        "resolvedUrl": "https://www.youtube.com/watch?v=DxlZVaEO9B4",
-        "videoId": "DxlZVaEO9B4",
-        "checked": "2026-09-23"
+        "url": "https://www.youtube.com/watch?v=mM82OFLj-hE",
+        "title": "大聲〈Universe〉空耳+應援_KTV跟唱版",
+        "resolvedUrl": "https://www.youtube.com/watch?v=mM82OFLj-hE",
+        "videoId": "mM82OFLj-hE",
+        "checked": "2026-10-03"
       }
     ],
-    "note": "尚未核對 2026 現場編排",
+    "note": "依指定 KTV 跟唱版製作應援；尚未核對 2026 現場編排",
     "chant": {
-      "videoId": "DxlZVaEO9B4",
-      "note": "依本片藍字粉絲喊唱、黃字合唱及畫面空耳製作；白字一般歌詞不收錄。時間為字幕顯示區間暫定，可能早於實際喊點，尚未逐句聽校。",
+      "videoId": "mM82OFLj-hE",
+      "note": "依本片底線及黃色應援標記製作，保留畫面空耳；一般藍字 KTV 歌詞不收錄。連續回應合併顯示，時間依 0.1 秒黃字畫面核對暫定，尚未逐句聽校。",
       "cues": [
         {
-          "start": 32.2,
-          "end": 36.2,
-          "text": "My days"
-        },
-        {
-          "start": 41.2,
-          "end": 44.2,
+          "start": 52.6,
+          "end": 54.9,
           "text": "walking, walking"
         },
         {
-          "start": 46.6,
-          "end": 49.8,
-          "text": "他西 他西"
+          "start": 58.1,
+          "end": 60.3,
+          "text": "他洗 他洗"
         },
         {
-          "start": 52.4,
-          "end": 58,
-          "text": "歐 度 no mo"
+          "start": 63.5,
+          "end": 65.9,
+          "text": "歐 蹲"
         },
         {
-          "start": 60.6,
-          "end": 63.4,
+          "start": 66.3,
+          "end": 68.5,
+          "text": "No 摸~"
+        },
+        {
+          "start": 72.3,
+          "end": 74.1,
           "text": "Universe"
         },
         {
-          "start": 63.4,
-          "end": 68.8,
-          "text": "椅 棒 孔 no"
+          "start": 74.3,
+          "end": 76.7,
+          "text": "衣 班"
         },
         {
-          "start": 76,
-          "end": 84.2,
-          "text": "Oh- oh-\nOh- oh-"
+          "start": 77,
+          "end": 79.7,
+          "text": "公 No~"
         },
         {
-          "start": 102.4,
-          "end": 106.2,
-          "text": "so\noh-"
+          "start": 84.9,
+          "end": 92.4,
+          "text": "oh~ oh~"
         },
         {
-          "start": 106.2,
-          "end": 109.2,
+          "start": 117.4,
+          "end": 119.9,
           "text": "walking, walking"
         },
         {
-          "start": 111.6,
-          "end": 114.8,
-          "text": "他西 他西"
+          "start": 122.8,
+          "end": 125.1,
+          "text": "他洗 他洗"
         },
         {
-          "start": 117.6,
-          "end": 123,
-          "text": "歐 度 no mo"
+          "start": 128.2,
+          "end": 130.3,
+          "text": "歐 蹲"
         },
         {
-          "start": 125.6,
-          "end": 128.4,
+          "start": 130.8,
+          "end": 133.6,
+          "text": "No 摸~"
+        },
+        {
+          "start": 137,
+          "end": 138.5,
           "text": "Universe"
         },
         {
-          "start": 128.4,
-          "end": 133.8,
-          "text": "椅 棒 孔 no"
+          "start": 138.9,
+          "end": 141.7,
+          "text": "衣 班"
         },
         {
-          "start": 142.6,
-          "end": 148,
-          "text": "Last forever"
+          "start": 141.8,
+          "end": 144,
+          "text": "公 No~"
         },
         {
-          "start": 173.8,
-          "end": 179.4,
-          "text": "歐 度 no mo"
+          "start": 184.8,
+          "end": 187.7,
+          "text": "歐 蹲"
         },
         {
-          "start": 182,
-          "end": 184.6,
+          "start": 187.8,
+          "end": 189.8,
+          "text": "No 摸~"
+        },
+        {
+          "start": 193.7,
+          "end": 195.7,
           "text": "Universe"
         },
         {
-          "start": 184.6,
-          "end": 190.2,
-          "text": "椅 棒 孔 no"
+          "start": 195.7,
+          "end": 198.5,
+          "text": "衣 班"
         },
         {
-          "start": 196.2,
-          "end": 205.4,
-          "text": "Oh- oh-\nOh- oh-"
+          "start": 198.5,
+          "end": 201,
+          "text": "公 No~"
         },
         {
-          "start": 212.4,
-          "end": 218,
-          "text": "Oh- oh-\nOh- oh-"
+          "start": 206.3,
+          "end": 212.2,
+          "text": "oh~ oh~"
         }
       ]
     }
@@ -1205,117 +1215,117 @@
     "sources": [
       {
         "kind": "應援參考",
-        "url": "https://www.youtube.com/watch?v=VeJ8j4ZoHLE",
-        "title": "Fanchant '날개 (Wings)'",
-        "resolvedUrl": "https://www.youtube.com/watch?v=VeJ8j4ZoHLE",
-        "videoId": "VeJ8j4ZoHLE",
+        "url": "https://www.youtube.com/watch?v=Ax6jJiKsdr8",
+        "title": "大聲〈Wings〉空耳+應援_KTV跟唱版",
+        "resolvedUrl": "https://www.youtube.com/watch?v=Ax6jJiKsdr8",
+        "videoId": "Ax6jJiKsdr8",
         "checked": "2026-10-03"
       }
     ],
-    "note": "使用指定 Wings 應援影片；尚未核對 2026 現場編排",
+    "note": "使用指定 Wings 空耳＋應援 KTV 影片；尚未核對 2026 現場編排",
     "chant": {
-      "videoId": "VeJ8j4ZoHLE",
-      "note": "依本片綠字整理 20 段應援，保留來源羅馬拼法；原片沒有中文空耳，不自行補寫。時間依綠字顯示與 0.1 秒邊界畫面暫定，尚未逐句聽校或核對 2026 現場編排。",
+      "videoId": "Ax6jJiKsdr8",
+      "note": "依本片黃色字整理 20 段應援，保留來源空耳文字；Okay 只收錄標黃的 kay，排除藍字一般歌詞。時間依黃色填字動畫及 0.1 秒邊界畫面暫定，尚未逐句聽校或核對 2026 現場編排。",
       "cues": [
         {
-          "start": 36.1,
-          "end": 36.7,
+          "start": 30.1,
+          "end": 30.7,
           "text": "Today"
         },
         {
-          "start": 50.4,
-          "end": 51.4,
+          "start": 44.6,
+          "end": 45.2,
           "text": "Today"
         },
         {
-          "start": 64.7,
-          "end": 66.0,
-          "text": "keiyee—"
+          "start": 58.8,
+          "end": 59.8,
+          "text": "kay"
         },
         {
-          "start": 68.3,
-          "end": 69.8,
-          "text": "yeiyee—"
+          "start": 62.6,
+          "end": 63.4,
+          "text": "ye"
         },
         {
-          "start": 79.1,
-          "end": 80.4,
-          "text": "deiyee—"
+          "start": 73.4,
+          "end": 74.1,
+          "text": "爹"
         },
         {
-          "start": 82.7,
-          "end": 84.1,
-          "text": "doeyee—"
+          "start": 77.3,
+          "end": 77.8,
+          "text": "推"
         },
         {
-          "start": 95.7,
-          "end": 97.2,
-          "text": "OaDaDaDaDaDa"
+          "start": 90.2,
+          "end": 91.4,
+          "text": "打打打打打打"
+        },
+        {
+          "start": 97.1,
+          "end": 98.7,
+          "text": "呀呀呀呀呀呀"
         },
         {
           "start": 102.8,
-          "end": 104.3,
-          "text": "YaYaYaYaYaYa"
-        },
-        {
-          "start": 108.7,
-          "end": 109.6,
+          "end": 103.4,
           "text": "Today"
         },
         {
-          "start": 123.3,
-          "end": 124.2,
+          "start": 117.4,
+          "end": 118.1,
           "text": "Today"
         },
         {
-          "start": 137.0,
-          "end": 138.6,
-          "text": "keiyee—"
+          "start": 131.6,
+          "end": 132.5,
+          "text": "kay"
         },
         {
-          "start": 140.8,
-          "end": 142.3,
-          "text": "yeiyee—"
+          "start": 135.4,
+          "end": 136.3,
+          "text": "ye"
         },
         {
-          "start": 151.7,
-          "end": 153.3,
-          "text": "deiyee—"
+          "start": 146.5,
+          "end": 147.2,
+          "text": "爹"
         },
         {
-          "start": 155.4,
-          "end": 156.9,
-          "text": "doeyee—"
+          "start": 150,
+          "end": 150.7,
+          "text": "推"
         },
         {
-          "start": 195.6,
-          "end": 196.7,
-          "text": "keiyee—"
+          "start": 190.1,
+          "end": 191.3,
+          "text": "kay"
         },
         {
-          "start": 199.1,
-          "end": 200.3,
-          "text": "yeiyee—"
+          "start": 193.5,
+          "end": 194.3,
+          "text": "ye"
         },
         {
-          "start": 209.8,
-          "end": 211.5,
-          "text": "deiyee—"
+          "start": 204.6,
+          "end": 205.2,
+          "text": "爹"
         },
         {
-          "start": 213.7,
-          "end": 215.0,
-          "text": "doeyee—"
+          "start": 208.2,
+          "end": 208.7,
+          "text": "推"
         },
         {
-          "start": 226.5,
-          "end": 228.1,
-          "text": "OaDaDaDaDaDa"
+          "start": 221.1,
+          "end": 222.4,
+          "text": "打打打打打打"
         },
         {
-          "start": 233.9,
-          "end": 235.4,
-          "text": "YaYaYaYaYaYa"
+          "start": 228.2,
+          "end": 229.8,
+          "text": "呀呀呀呀呀呀"
         }
       ]
     }
@@ -2678,9 +2688,115 @@
     "title": "SOBER",
     "artist": "BIGBANG",
     "section": "團體後半段",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援來源待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://www.youtube.com/watch?v=LWh9xW1A744",
+        "title": "BIGBANG〈SOBER〉空耳+應援_KTV跟唱版",
+        "videoId": "LWh9xW1A744",
+        "checked": "2026-10-03"
+      }
+    ],
+    "note": "使用者指定空耳＋應援跟唱版，非官方；尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "LWh9xW1A744",
+      "status": "visual_checked_listening_pending",
+      "timingBasis": "caption-color",
+      "note": "依指定影片黃色加底線應援整理 18 張提示，空耳沿用原片；片尾啦啦啦合唱跟著節奏拍手。進場時間依 0.1 秒畫面變色暫定，尚未逐句聽校及 YouTube 實播同步驗收；2026 現場編排待核對。",
+      "cues": [
+        {
+          "start": 158.5,
+          "end": 161.7,
+          "text": "Without you"
+        },
+        {
+          "start": 173.4,
+          "end": 176.5,
+          "text": "Without you"
+        },
+        {
+          "start": 187.2,
+          "end": 190.7,
+          "text": "No no no"
+        },
+        {
+          "start": 190.7,
+          "end": 193.2,
+          "text": "Man 重新你男"
+        },
+        {
+          "start": 193.2,
+          "end": 196.3,
+          "text": "亨敦囉阿母狗豆"
+        },
+        {
+          "start": 196.3,
+          "end": 198.1,
+          "text": "還速嘎偶說"
+        },
+        {
+          "start": 198.1,
+          "end": 200.6,
+          "text": "Man 重新你男"
+        },
+        {
+          "start": 200.6,
+          "end": 203.7,
+          "text": "切洗囉no偶心臟"
+        },
+        {
+          "start": 203.7,
+          "end": 205.6,
+          "text": "的速嘎偶說"
+        },
+        {
+          "start": 205.6,
+          "end": 208.0,
+          "text": "啦 啦啦啦啦"
+        },
+        {
+          "start": 208.0,
+          "end": 211.7,
+          "text": "啦啦啦啦\n啦啦啦啦"
+        },
+        {
+          "start": 211.7,
+          "end": 215.4,
+          "text": "啦啦啦 啦\n啦啦啦啦啦"
+        },
+        {
+          "start": 215.4,
+          "end": 219.2,
+          "text": "啦啦啦啦\n啦啦啦啦"
+        },
+        {
+          "start": 219.2,
+          "end": 222.7,
+          "text": "啦啦啦 啦\n啦啦啦啦啦"
+        },
+        {
+          "start": 222.7,
+          "end": 226.5,
+          "text": "啦啦啦啦\n啦啦啦啦"
+        },
+        {
+          "start": 226.5,
+          "end": 230.2,
+          "text": "啦啦啦 啦\n啦啦啦啦啦"
+        },
+        {
+          "start": 230.2,
+          "end": 234.0,
+          "text": "啦啦啦啦\n啦啦啦啦"
+        },
+        {
+          "start": 234.0,
+          "end": 235.8,
+          "text": "啦啦啦"
+        }
+      ]
+    }
   },
   {
     "number": 24,

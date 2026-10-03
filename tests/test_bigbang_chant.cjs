@@ -6,14 +6,14 @@ const track = songs[0].chant;
 
 test('Wings uses only the specified visual chants and keeps each repeat separate', () => {
   const song=songs.find(s=>s.number===12), t=song.chant;
-  assert.equal(song.sources[0].videoId,'VeJ8j4ZoHLE');
-  assert.equal(Chant.validTrack(t,'VeJ8j4ZoHLE'),true);
-  assert.equal(Chant.validTrack(t,'DxlZVaEO9B4'),false);
+  assert.equal(song.sources[0].videoId,'Ax6jJiKsdr8');
+  assert.equal(Chant.validTrack(t,'Ax6jJiKsdr8'),true);
+  assert.equal(Chant.validTrack(t,'VeJ8j4ZoHLE'),false);
   assert.equal(t.cues.length,20);
   assert.deepEqual(Object.fromEntries([...new Set(t.cues.map(c=>c.text))].map(text=>[text,t.cues.filter(c=>c.text===text).length])),
-    {Today:4,'keiyee—':3,'yeiyee—':3,'deiyee—':3,'doeyee—':3,OaDaDaDaDaDa:2,YaYaYaYaYaYa:2});
+    {Today:4,kay:3,ye:3,'爹':3,'推':3,'打打打打打打':2,'呀呀呀呀呀呀':2});
   assert.match(t.note,/暫定/);assert.match(t.note,/尚未逐句聽校/);
-  assert.equal(t.cues[0].start,36.1);assert.equal(t.cues.at(-1).end,235.4);
+  assert.equal(t.cues[0].start,30.1);assert.equal(t.cues.at(-1).end,229.8);
   for(const cue of [...t.cues].reverse()) {
     assert.equal(Chant.state(t,cue.start,1).text,cue.text);
     assert.equal(Chant.state(t,cue.start,1).mode,'active');
@@ -44,7 +44,7 @@ test('track is specific to the embedded video, sorted and within its duration', 
   assert.equal(Chant.validTrack(track, 'different-version'), false);
   assert.equal(track.cues.length, 37);
   assert.ok(track.cues.every(c => c.end <= 230));
-  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,9,10,11,12,13,16,17,18,19,20,21,22,24,25,26,27,28,29].includes(s.number)).every(s => !s.chant));
+  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29].includes(s.number)).every(s => !s.chant));
   assert.equal(Chant.validTrack({...track, cues:[{start:1,end:2,text:'a'},{start:1.5,end:3,text:'b'}]},track.videoId),false);
 });
 test('songs 2 through 5 bind chant data to the specified sources', () => {
@@ -169,18 +169,22 @@ test('every cue enters and exits correctly including adjacent repeated phrases',
   }
 });
 
-test('Universe binds the complete replacement source and excludes the former excerpt',()=>{
+test('Universe binds visually marked responses to the new KTV source',()=>{
  const song=songs[10],t=song.chant;
- assert.equal(song.sources[0].videoId,'DxlZVaEO9B4');
+ assert.equal(song.sources[0].videoId,'mM82OFLj-hE');
+ assert.equal(song.sources[0].url,'https://www.youtube.com/watch?v=mM82OFLj-hE');
+ assert.equal(Chant.validTrack(t,song.sources[0].videoId),true);
  assert.equal(song.sources[0].startSeconds,undefined);assert.equal(song.sources[0].endSeconds,undefined);
- assert.equal(Chant.validTrack(t,'DxlZVaEO9B4'),true);
+ assert.equal(Chant.validTrack(t,'DxlZVaEO9B4'),false);
  assert.equal(Chant.validTrack(t,'Su2kSDRdy5s'),false);
- assert.equal(t.cues.length,19);assert.equal(t.cues[0].start,32.2);
- assert.ok(t.cues.some(c=>c.text==='Last forever'));
- assert.equal(t.cues.at(-1).end,218);
+ assert.equal(t.cues.length,21);assert.equal(t.cues[0].start,52.6);
+ assert.ok(!t.cues.some(c=>c.text==='Last forever'));
+ assert.equal(t.cues.filter(c=>c.text==='Universe').length,3);
+ assert.equal(t.cues.filter(c=>c.text==='衣 班').length,3);
+ assert.equal(t.cues.at(-1).end,212.2);
  assert.equal(songs[3].sources[0].startSeconds,17);
  for(const cue of [...t.cues].reverse()) for(const rate of [.5,1,2]) {
-  assert.ok(cue.start>=0 && cue.end<=221);
+  assert.ok(cue.start>=0 && cue.end<=236);
   assert.equal(Chant.state(t,cue.start,1,rate).text,cue.text);
   assert.equal(Chant.state(t,cue.end,1,rate).mode==='active',t.cues.some(c=>c.start===cue.end));
   for(const state of [-1,2,3,5]) assert.equal(Chant.state(t,cue.start-.1,state,rate).count,'');

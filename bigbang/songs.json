@@ -1463,8 +1463,15 @@
     "artist": "DAESUNG",
     "section": "DAESUNG",
     "hasChant": false,
-    "sources": [],
-    "note": "應援來源待補"
+    "sources": [
+      {
+        "kind": "現場跟唱參考",
+        "url": "https://www.youtube.com/watch?v=tS_7XrSAtt0",
+        "title": "2026 D’s WAVE 首爾安可場｜GENIEBANG 飯拍",
+        "videoId": "tS_7XrSAtt0"
+      }
+    ],
+    "note": "現場跟唱參考｜2026 D’s WAVE 首爾安可場；未附歌詞與應援提示，尚未核對 BIGBANG 巡演編排"
   },
   {
     "number": 15,

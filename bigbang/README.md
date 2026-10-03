@@ -45,7 +45,8 @@
 
 ## 已知差異
 
-- Wings、POWER：應援為 Threads 外連
+- Wings：使用指定影片 `VeJ8j4ZoHLE`，提供 20 段綠字應援提示；保留原片羅馬拼法，時間依畫面暫定，尚未逐句聽校
+- POWER：應援為 Threads 外連
 - IF YOU、Look at Me, Gwisun、BAD、SOBER、FEELING：沒有應援影片，顯示應援來源待補
 - FLOWER ROAD：尚未找到應援，提供官方影片／音源
 - MY HEAVEN：表格應援實際連到韓文 Heaven（천국），已標示語言版本差異

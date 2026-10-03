@@ -4,6 +4,23 @@ const Chant = require('../bigbang/chant.js');
 const songs = require('../bigbang/songs.json');
 const track = songs[0].chant;
 
+test('Wings uses only the specified visual chants and keeps each repeat separate', () => {
+  const song=songs.find(s=>s.number===12), t=song.chant;
+  assert.equal(song.sources[0].videoId,'VeJ8j4ZoHLE');
+  assert.equal(Chant.validTrack(t,'VeJ8j4ZoHLE'),true);
+  assert.equal(Chant.validTrack(t,'DxlZVaEO9B4'),false);
+  assert.equal(t.cues.length,20);
+  assert.deepEqual(Object.fromEntries([...new Set(t.cues.map(c=>c.text))].map(text=>[text,t.cues.filter(c=>c.text===text).length])),
+    {Today:4,'keiyee—':3,'yeiyee—':3,'deiyee—':3,'doeyee—':3,OaDaDaDaDaDa:2,YaYaYaYaYaYa:2});
+  assert.match(t.note,/暫定/);assert.match(t.note,/尚未逐句聽校/);
+  assert.equal(t.cues[0].start,36.1);assert.equal(t.cues.at(-1).end,235.4);
+  for(const cue of [...t.cues].reverse()) {
+    assert.equal(Chant.state(t,cue.start,1).text,cue.text);
+    assert.equal(Chant.state(t,cue.start,1).mode,'active');
+    assert.notEqual(Chant.state(t,cue.end,1).mode,'active');
+  }
+});
+
 test('BiiiG replacement preserves source phonetics and independent cue boundaries', () => {
   const song = songs.find(s => s.number === 25), t = song.chant;
   assert.equal(song.sources[0].videoId, 'QNZyeUbnx7w');
@@ -27,7 +44,7 @@ test('track is specific to the embedded video, sorted and within its duration', 
   assert.equal(Chant.validTrack(track, 'different-version'), false);
   assert.equal(track.cues.length, 37);
   assert.ok(track.cues.every(c => c.end <= 230));
-  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,9,10,11,13,16,17,18,19,20,21,22,24,25,26,27,28,29].includes(s.number)).every(s => !s.chant));
+  assert.ok(songs.filter(s => ![1,2,3,4,5,7,8,9,10,11,12,13,16,17,18,19,20,21,22,24,25,26,27,28,29].includes(s.number)).every(s => !s.chant));
   assert.equal(Chant.validTrack({...track, cues:[{start:1,end:2,text:'a'},{start:1.5,end:3,text:'b'}]},track.videoId),false);
 });
 test('songs 2 through 5 bind chant data to the specified sources', () => {

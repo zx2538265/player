@@ -1194,9 +1194,124 @@
     "title": "Wings",
     "artist": "DAESUNG",
     "section": "DAESUNG",
-    "hasChant": false,
-    "sources": [],
-    "note": "應援來源待補"
+    "hasChant": true,
+    "sources": [
+      {
+        "kind": "應援參考",
+        "url": "https://www.youtube.com/watch?v=VeJ8j4ZoHLE",
+        "title": "Fanchant '날개 (Wings)'",
+        "resolvedUrl": "https://www.youtube.com/watch?v=VeJ8j4ZoHLE",
+        "videoId": "VeJ8j4ZoHLE",
+        "checked": "2026-10-03"
+      }
+    ],
+    "note": "使用指定 Wings 應援影片；尚未核對 2026 現場編排",
+    "chant": {
+      "videoId": "VeJ8j4ZoHLE",
+      "note": "依本片綠字整理 20 段應援，保留來源羅馬拼法；原片沒有中文空耳，不自行補寫。時間依綠字顯示與 0.1 秒邊界畫面暫定，尚未逐句聽校或核對 2026 現場編排。",
+      "cues": [
+        {
+          "start": 36.1,
+          "end": 36.7,
+          "text": "Today"
+        },
+        {
+          "start": 50.4,
+          "end": 51.4,
+          "text": "Today"
+        },
+        {
+          "start": 64.7,
+          "end": 66.0,
+          "text": "keiyee—"
+        },
+        {
+          "start": 68.3,
+          "end": 69.8,
+          "text": "yeiyee—"
+        },
+        {
+          "start": 79.1,
+          "end": 80.4,
+          "text": "deiyee—"
+        },
+        {
+          "start": 82.7,
+          "end": 84.1,
+          "text": "doeyee—"
+        },
+        {
+          "start": 95.7,
+          "end": 97.2,
+          "text": "OaDaDaDaDaDa"
+        },
+        {
+          "start": 102.8,
+          "end": 104.3,
+          "text": "YaYaYaYaYaYa"
+        },
+        {
+          "start": 108.7,
+          "end": 109.6,
+          "text": "Today"
+        },
+        {
+          "start": 123.3,
+          "end": 124.2,
+          "text": "Today"
+        },
+        {
+          "start": 137.0,
+          "end": 138.6,
+          "text": "keiyee—"
+        },
+        {
+          "start": 140.8,
+          "end": 142.3,
+          "text": "yeiyee—"
+        },
+        {
+          "start": 151.7,
+          "end": 153.3,
+          "text": "deiyee—"
+        },
+        {
+          "start": 155.4,
+          "end": 156.9,
+          "text": "doeyee—"
+        },
+        {
+          "start": 195.6,
+          "end": 196.7,
+          "text": "keiyee—"
+        },
+        {
+          "start": 199.1,
+          "end": 200.3,
+          "text": "yeiyee—"
+        },
+        {
+          "start": 209.8,
+          "end": 211.5,
+          "text": "deiyee—"
+        },
+        {
+          "start": 213.7,
+          "end": 215.0,
+          "text": "doeyee—"
+        },
+        {
+          "start": 226.5,
+          "end": 228.1,
+          "text": "OaDaDaDaDaDa"
+        },
+        {
+          "start": 233.9,
+          "end": 235.4,
+          "text": "YaYaYaYaYaYa"
+        }
+      ]
+    }
   },
   {
     "number": 13,

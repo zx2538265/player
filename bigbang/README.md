@@ -47,8 +47,9 @@
 
 - Wings：使用指定影片 `VeJ8j4ZoHLE`，提供 20 段綠字應援提示；保留原片羅馬拼法，時間依畫面暫定，尚未逐句聽校
 - POWER：應援為 Threads 外連
+- IF YOU：使用指定影片 `nBIsg9nOwRY`，應援提示待整理，YouTube 實播尚未驗收
 - Look at Me, Gwisun：使用 `tS_7XrSAtt0` 的 2026 D’s WAVE 首爾安可場飯拍，標示現場跟唱參考；未附歌詞與應援提示，尚未核對 BIGBANG 巡演編排或驗收 YouTube 嵌入實播
-- IF YOU、BAD、SOBER、FEELING：沒有應援影片，顯示應援來源待補
+- BAD、SOBER、FEELING：沒有應援影片，顯示應援來源待補
 - FLOWER ROAD：尚未找到應援，提供官方影片／音源
 - MY HEAVEN：表格應援實際連到韓文 Heaven（천국），已標示語言版本差異
 - STILL LIFE：表格收錄太陽演唱會版本，與團體巡演的適用性待核對

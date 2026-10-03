@@ -95,7 +95,8 @@ test('cue controls are disabled before readiness, on failure and for missing tra
  const s=await setup(require('../bigbang/songs.json'));
  assert.equal(s.get('repeatCue').disabled,true);s.players[0].ready();assert.equal(s.get('repeatCue').disabled,false);
  s.players[0].options.events.onError();assert.equal(s.get('repeatCue').disabled,true);assert.equal(s.get('retry').hidden,false);
- s.select(5);assert.equal(s.get('repeatCue').disabled,true);assert.equal(s.get('retry').hidden,true);
+ s.select(5);assert.equal(s.players.at(-1).options.videoId,'nBIsg9nOwRY');assert.equal(s.get('repeatCue').disabled,true);assert.equal(s.get('retry').hidden,true);
+ s.players.at(-1).options.events.onError();assert.equal(s.get('retry').hidden,false);
 });
 
 test('cue lead-in respects bounded source start',async()=>{

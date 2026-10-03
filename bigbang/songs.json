@@ -690,8 +690,15 @@
     "artist": "BIGBANG",
     "section": "團體開場",
     "hasChant": false,
-    "sources": [],
-    "note": "應援來源待補"
+    "sources": [
+      {
+        "kind": "使用者指定影片",
+        "url": "https://www.youtube.com/watch?v=nBIsg9nOwRY",
+        "title": "IF YOU",
+        "videoId": "nBIsg9nOwRY"
+      }
+    ],
+    "note": "使用指定影片練習；應援提示待整理，尚未核對 2026 現場編排"
   },
   {
     "number": 7,

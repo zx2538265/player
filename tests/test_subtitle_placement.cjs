@@ -77,8 +77,9 @@ test('missing or malformed placement file does not prevent subtitle loading', as
   for (const layoutResponse of [() => ({ok:false}), () => {throw Error('offline');},
     () => ({ok:true,json:async()=>{throw Error('invalid JSON');}})]) {
     const app=loader(async url => url.endsWith('.srt') ? {ok:true,text:async()=>srt} : layoutResponse());
+    const expected = app.parseSrt(srt).sort((a, b) => a.start - b.start || a.end - b.end);
     assert.equal(await app.loadSubtitleFromSrtFolder('8e0FfuwOI9M'),true);
-    assert.equal(app.subtitles.length,780);
+    assert.deepEqual(app.subtitles, expected);
     assert.ok(app.subtitles.every(c=>c.topText===''));
   }
 });

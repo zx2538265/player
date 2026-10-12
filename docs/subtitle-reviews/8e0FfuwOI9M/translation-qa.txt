@@ -1,9 +1,0 @@
-PASS
-- blocks: 780
-- numbering: continuous and source-matched
-- timestamps: exact match
-- blank blocks: 0
-- malformed timecodes: 0
-- Korean residue: 0
-- Gendered pronouns (妳/她): 0
-- Chinese full stops: 0

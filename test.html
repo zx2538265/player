@@ -4,7 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>影片撥放器</title>
+  <title>中文字幕播放器｜翻譯收藏室</title>
+  <script>
+    if (!new URLSearchParams(window.location.search).get("v")?.trim()) {
+      window.location.replace("library.html");
+    }
+  </script>
   <style>
     body {
       margin: 0;
@@ -35,6 +40,20 @@
       gap: 12px;
       margin-bottom: 20px;
       align-items: center;
+    }
+
+    .library-back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-right: auto;
+      color: #d7e6ff;
+      text-decoration: none;
+    }
+
+    .library-back-link:hover,
+    .library-back-link:focus-visible {
+      text-decoration: underline;
     }
 
     .toolbar input[type="text"] {
@@ -97,6 +116,43 @@
     #player {
       width: 100%;
       height: 100%;
+    }
+
+    .subtitle-loading {
+      position: absolute;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: rgba(0, 0, 0, 0.88);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .subtitle-loading[hidden], .subtitle-loading [hidden] { display: none; }
+    .subtitle-loading-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #555;
+      border-top-color: #d7e6ff;
+      border-radius: 50%;
+      animation: subtitle-loading-spin 1s linear infinite;
+    }
+    .subtitle-loading button {
+      padding: 12px 20px;
+      border: 1px solid #777;
+      border-radius: 8px;
+      background: #252525;
+      color: #fff;
+      cursor: pointer;
+      font: inherit;
+    }
+    @keyframes subtitle-loading-spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      .subtitle-loading-spinner { animation: none; }
     }
 
     .player-activity-catcher {
@@ -309,6 +365,34 @@
       pointer-events: none;
     }
 
+    .subtitle-top-layer {
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      top: max(5%, env(safe-area-inset-top));
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .subtitle-text:empty { display: none; }
+
+    #positionedSubtitles { position: absolute; inset: 0; pointer-events: none; }
+    .positioned-subtitle {
+      position: absolute;
+      width: max-content;
+      max-width: 94%;
+      box-sizing: border-box;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    /* The test video is landscape, even in portrait fullscreen. */
+    .player-wrap.has-positioned-subtitles .video-content-guide {
+      inset: 50% auto auto 50%;
+      width: var(--test-video-width, 100%);
+      height: var(--test-video-height, 100%);
+      transform: translate(-50%, -50%);
+    }
+
     .subtitle-text {
       display: inline-block;
       max-width: 90%;
@@ -460,9 +544,6 @@
         margin-top: 12px;
       }
 
-      .notion-link-wrap {
-        margin-top: 16px;
-      }
     }
 
     .info {
@@ -478,23 +559,6 @@
       padding: 12px;
       max-height: 280px;
       overflow: auto;
-    }
-
-    .notion-link-wrap {
-      margin-top: 24px;
-      text-align: center;
-    }
-
-    .notion-link {
-      color: #9ecbff;
-      font-size: 16px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .notion-link:hover,
-    .notion-link:focus-visible {
-      text-decoration: underline;
     }
 
     .item {
@@ -527,16 +591,32 @@
 <body>
   <div class="container">
     <div class="toolbar">
+      <a class="library-back-link" href="library.html">← 翻譯清單</a>
       <input id="videoIdInput" type="text" placeholder="請輸入 YouTube 影片 ID，例如 dqNMWaT9mog" />
       <button id="loadVideoBtn">載入影片</button>
+      <button id="copyShareBtn" type="button" hidden>複製分享連結</button>
+      <span id="shareStatus" role="status" aria-live="polite"></span>
       <input id="srtFileInput" type="file" accept=".srt" />
     </div>
-    <div class="info" id="info">尚未載入字幕</div>
-    <div class="list" id="subtitleList"></div>
+
+    <div id="resumePrompt" hidden style="margin: 0 0 12px; padding: 12px; border: 1px solid #666; border-radius: 8px;">
+      <span id="resumeMessage" role="status" aria-live="polite"></span>
+      <button id="resumePlayBtn" type="button">繼續播放</button>
+      <button id="restartPlayBtn" type="button">從頭播放</button>
+    </div>
     <div class="player-wrap">
       <div id="player"></div>
+      <div id="subtitleLoading" class="subtitle-loading" hidden>
+        <span id="subtitleLoadingSpinner" class="subtitle-loading-spinner" aria-hidden="true"></span>
+        <span id="subtitleLoadingMessage" role="status" aria-live="polite">字幕載入中，請稍候…</span>
+        <button id="retrySubtitlesBtn" type="button" hidden>重新載入字幕</button>
+      </div>
       <div class="player-activity-catcher" id="playerActivityCatcher" aria-hidden="true"></div>
       <div class="video-content-guide">
+        <div id="positionedSubtitles"></div>
+        <div class="subtitle-top-layer">
+          <div id="subtitleTop" class="subtitle-text"></div>
+        </div>
         <div class="subtitle-layer">
           <div id="subtitle" class="subtitle-text"></div>
         </div>
@@ -573,26 +653,36 @@
         </div>
       </div>
     </div>
+    <div class="info" id="info">尚未載入字幕</div>
+    <div class="list" id="subtitleList"></div>
 
-
-    <div class="notion-link-wrap">
-      <a
-        class="notion-link"
-        href="https://allenkaka.notion.site/358f1640416380ce9943cb914b0409f1?v=372f16404163804c947b000c5be27931"
-        target="_blank"
-        rel="noopener noreferrer"
-      >更多翻譯影片 請點這裡</a>
-    </div>
   </div>
 
+  <script src="share.js"></script>
+  <script src="playback-progress.js"></script>
   <script>
     let player = null;
+    const progress = createPlaybackProgress(() => player, seconds => {
+      document.getElementById("resumePrompt").hidden = seconds === null;
+      if (seconds !== null) {
+        const total = Math.floor(seconds);
+        const hours = Math.floor(total / 3600);
+        const minutes = Math.floor(total / 60) % 60;
+        const time = (hours ? `${hours}:${String(minutes).padStart(2, "0")}` : String(minutes)) + `:${String(total % 60).padStart(2, "0")}`;
+        document.getElementById("resumeMessage").textContent = `上次看到 ${time}`;
+      }
+    });
+    document.getElementById("resumePlayBtn").addEventListener("click", () => progress.choose(false));
+    document.getElementById("restartPlayBtn").addEventListener("click", () => progress.choose(true));
+    setInterval(() => progress.save(), 5000);
+    window.addEventListener("pagehide", () => progress.save());
     let syncTimer = null;
     let subtitles = [];
     let currentSubtitleIndex = -1;
     let subtitleItemElements = [];
     let subtitleSearchHintIndex = -1;
     let subtitleRequestToken = 0;
+    let requestedVideoId = "";
     let isPseudoFullscreen = false;
     let isSyncStateActive = false;
     let isSubtitleListClickBound = false;
@@ -604,12 +694,59 @@
 
     const videoIdInput = document.getElementById("videoIdInput");
     const infoEl = document.getElementById("info");
+    const subtitleLoadingEl = document.getElementById("subtitleLoading");
+    const subtitleLoadingSpinnerEl = document.getElementById("subtitleLoadingSpinner");
+    const subtitleLoadingMessageEl = document.getElementById("subtitleLoadingMessage");
+    const retrySubtitlesBtnEl = document.getElementById("retrySubtitlesBtn");
     const containerEl = document.querySelector(".container");
     const playerWrapEl = document.querySelector(".player-wrap");
     const playerSideToolsEl = document.querySelector(".player-side-tools");
     const playerActivityCatcherEl = document.getElementById("playerActivityCatcher");
     const orientationHintEl = document.getElementById("orientationHint");
     const subtitleEl = document.getElementById("subtitle");
+    const subtitleTopEl = document.getElementById("subtitleTop");
+    const positionedSubtitlesEl = document.getElementById("positionedSubtitles");
+    let positionedAspectRatio = 16 / 9;
+    const positionedResizeObserver = new ResizeObserver(() => {
+      resizePositionedGuide();
+      placePositionedSubtitles();
+    });
+    positionedResizeObserver.observe(document.querySelector('.player-wrap'));
+    positionedResizeObserver.observe(positionedSubtitlesEl);
+
+    function resizePositionedGuide() {
+      const wrap = document.querySelector('.player-wrap');
+      const w = wrap.clientWidth, h = wrap.clientHeight;
+      const width = Math.min(w, h * positionedAspectRatio);
+      wrap.style.setProperty('--test-video-width', `${width}px`);
+      wrap.style.setProperty('--test-video-height', `${width / positionedAspectRatio}px`);
+    }
+
+    function placePositionedSubtitles() {
+      const bounds = positionedSubtitlesEl.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+      const occupied = [];
+      if (subtitleEl.textContent) {
+        const r = subtitleEl.getBoundingClientRect();
+        occupied.push({left:r.left-bounds.left,top:r.top-bounds.top,right:r.right-bounds.left,bottom:r.bottom-bounds.top});
+      }
+      for (const el of positionedSubtitlesEl.children) {
+        const x = Number(el.dataset.x), y = Number(el.dataset.y);
+        const below = el.dataset.side !== 'above';
+        const w = el.offsetWidth, h = el.offsetHeight;
+        let left = Math.max(0, Math.min(bounds.width - w, x * bounds.width - w / 2));
+        let top = y * bounds.height + (below ? 5 : -h - 5);
+        top = Math.max(0, Math.min(bounds.height - h, top));
+        for (const other of occupied) {
+          if (left < other.right && left + w > other.left && top < other.bottom && top + h > other.top) {
+            top = Math.max(0, Math.min(bounds.height - h, other.top - h - 5));
+          }
+        }
+        el.style.left = `${left}px`;
+        el.style.top = `${top}px`;
+        occupied.push({left, top, right:left+w, bottom:top+h});
+      }
+    }
     const subtitleListEl = document.getElementById("subtitleList");
     const subtitleSettingsEl = document.getElementById("subtitleSettings");
     const subtitleScaleRangeEl = document.getElementById("subtitleScaleRange");
@@ -637,6 +774,7 @@
     if (initialVideoId) {
       videoIdInput.value = initialVideoId;
       infoEl.textContent = `已從網址讀取影片 ID：${initialVideoId}`;
+      window.updateShareVideo(initialVideoId);
     }
 
     function updateFullscreenButtonState(isFullscreen) {
@@ -763,6 +901,7 @@
       if (subtitleBottomFsValueEl) {
         subtitleBottomFsValueEl.textContent = `${subtitleSettings.bottomFs}%`;
       }
+      requestAnimationFrame(placePositionedSubtitles);
     }
 
     function saveSubtitleSettings() {
@@ -826,7 +965,10 @@
       );
     }
 
-    function parseSrt(srtText) {
+    function parseSrt(srtText, layout = null) {
+      const positionedCues = layout?.version === 2 && Array.isArray(layout.cues) ? layout.cues : null;
+      const topCaptions = new Set(Array.isArray(layout?.topCaptions)
+        ? layout.topCaptions.filter(text => typeof text === "string") : []);
       // 處理 BOM
       srtText = srtText.replace(/^\uFEFF/, "");
 
@@ -856,10 +998,22 @@
 
         if (!text) continue;
 
+        const textLines = text.split("\n");
+        const topLines = textLines.filter(line => topCaptions.has(line.trim()));
+        const bottomLines = textLines.filter(line => !topCaptions.has(line.trim()));
+        const positioning = positionedCues?.[results.length];
+        const placementItems = positioning && positioning.text === text
+          && Math.abs(positioning.start - srtTimeToSeconds(startStr)) < 0.002
+          && Math.abs(positioning.end - srtTimeToSeconds(endStr)) < 0.002
+          && Array.isArray(positioning.items) ? positioning.items : null;
+
         results.push({
           start: srtTimeToSeconds(startStr),
           end: srtTimeToSeconds(endStr),
-          text
+          text,
+          placementItems,
+          topText: topLines.join("\n"),
+          bottomText: bottomLines.join("\n")
         });
       }
 
@@ -958,11 +1112,35 @@
     function updateActiveSubtitle(index) {
       const prevIndex = currentSubtitleIndex;
       currentSubtitleIndex = index;
+      positionedSubtitlesEl.replaceChildren();
 
       if (index >= 0) {
-        subtitleEl.textContent = subtitles[index].text;
+        subtitleEl.textContent = subtitles[index].bottomText ?? subtitles[index].text;
+        subtitleTopEl.textContent = subtitles[index].topText ?? "";
+        const items = subtitles[index].placementItems;
+        if (items) {
+          subtitleTopEl.textContent = '';
+          const bottom = [];
+          for (const item of items) {
+            if (item.kind !== 'visual' || !Number.isFinite(item.x) || !Number.isFinite(item.y)
+              || item.x < 0 || item.x > 1 || item.y < 0 || item.y > 1) {
+              bottom.push(item.text);
+              continue;
+            }
+            const el = document.createElement('div');
+            el.className = 'subtitle-text positioned-subtitle';
+            el.textContent = item.text;
+            el.dataset.x = item.x;
+            el.dataset.y = item.y;
+            el.dataset.side = item.side;
+            positionedSubtitlesEl.appendChild(el);
+          }
+          subtitleEl.textContent = bottom.join('\n');
+          placePositionedSubtitles();
+        }
       } else {
         subtitleEl.textContent = "";
+        subtitleTopEl.textContent = "";
       }
 
       if (prevIndex >= 0 && subtitleItemElements[prevIndex]) {
@@ -1028,6 +1206,7 @@
     }
 
     function handleVisibilityChange() {
+      if (document.hidden) progress.save();
       if (!document.hidden) {
         syncSubtitle();
       }
@@ -1042,7 +1221,15 @@
       const isPlaying = state === (playerState ? playerState.PLAYING : 1);
       const isBuffering = state === (playerState ? playerState.BUFFERING : 3);
 
+      if (!subtitleLoadingEl.hidden && (isPlaying || isBuffering)) {
+        player.pauseVideo();
+        isSyncStateActive = false;
+        stopSyncTimer();
+        return;
+      }
+
       isSyncStateActive = isPlaying || isBuffering;
+      progress.state(state);
 
       if (!isSyncStateActive) {
         syncSubtitle();
@@ -1070,9 +1257,14 @@
 
     function setSubtitles(nextSubtitles) {
       subtitles = nextSubtitles;
+      document.querySelector('.player-wrap').classList.toggle('has-positioned-subtitles',
+        nextSubtitles.some(sub => sub.placementItems));
+      resizePositionedGuide();
+      positionedSubtitlesEl.replaceChildren();
       currentSubtitleIndex = -1;
       subtitleSearchHintIndex = subtitles.length > 0 ? 0 : -1;
       subtitleEl.textContent = "";
+      subtitleTopEl.textContent = "";
       renderSubtitleList();
     }
 
@@ -1258,56 +1450,76 @@
 
     async function loadSubtitleFromSrtFolder(videoId) {
       const requestToken = ++subtitleRequestToken;
-      const srtPath = `srt/${encodeURIComponent(videoId)}.srt`;
+      const isPositionTest = videoId === '8e0FfuwOI9M';
+      const srtPath = isPositionTest ? `srt/test/${videoId}/zh.srt` : `srt/${encodeURIComponent(videoId)}.srt`;
+      const layoutPath = isPositionTest ? `srt/test/${videoId}/layout.json` : `srt/${encodeURIComponent(videoId)}.layout.json`;
+      const layoutRequest = fetch(layoutPath,
+        { cache: "no-store", signal: AbortSignal.timeout(3000) })
+        .then(response => response.ok ? response.json() : null)
+        .catch(() => null);
 
-      infoEl.textContent = `嘗試載入字幕：${srtPath}`;
+      infoEl.textContent = "字幕載入中，請稍候…";
 
       try {
-        const response = await fetch(srtPath, { cache: "no-store" });
+        const response = await fetch(srtPath, { cache: "no-store", signal: AbortSignal.timeout(20000) });
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
         }
 
         const text = await response.text();
+        const layout = await layoutRequest;
+        positionedAspectRatio = Number.isFinite(layout?.aspectRatio) && layout.aspectRatio > 0 ? layout.aspectRatio : 16 / 9;
         if (requestToken !== subtitleRequestToken) return;
 
-        const parsedSubtitles = parseSrt(text);
+        const parsedSubtitles = parseSrt(text, layout);
+        if (!parsedSubtitles.length) throw new Error("Empty subtitles");
         parsedSubtitles.sort((a, b) => a.start - b.start || a.end - b.end);
         setSubtitles(parsedSubtitles);
-        infoEl.textContent =
-          subtitles.length > 0
-            ? `已自動載入字幕，共 ${subtitles.length} 段`
-            : `已讀取 ，但解析不到字幕內容`;
+        infoEl.textContent = `已自動載入字幕，共 ${subtitles.length} 段${isPositionTest ? '（硬字幕位置測試；部分位置待核對）' : ''}`;
+        return true;
       } catch (err) {
         if (requestToken !== subtitleRequestToken) return;
 
         setSubtitles([]);
-        infoEl.textContent = `找不到對應字幕檔：${srtPath}`;
+        infoEl.textContent = "字幕載入失敗，仍可播放影片。";
+        return false;
       }
     }
 
-    function loadVideoById(videoId) {
+    async function loadVideoById(videoId) {
       if (!videoId) {
         alert("請輸入 YouTube 影片 ID");
         return;
       }
 
-      // 切換影片時先清空舊字幕，避免等待新字幕期間持續進行舊資料比對。
+      progress.detach();
+      requestedVideoId = videoId;
+      window.updateShareVideo(videoId);
+      if (player && typeof player.pauseVideo === "function") player.pauseVideo();
+      subtitleLoadingEl.hidden = false;
+      subtitleLoadingSpinnerEl.hidden = false;
+      retrySubtitlesBtnEl.hidden = true;
+      subtitleLoadingMessageEl.textContent = "字幕載入中，請稍候…";
+      playerWrapEl.setAttribute("aria-busy", "true");
+      // 等待字幕載入完成；即使失敗，仍繼續載入影片。
       setSubtitles([]);
 
+      const ready = await loadSubtitleFromSrtFolder(videoId);
+      if (ready === undefined) return;
+      playerWrapEl.setAttribute("aria-busy", "false");
+      subtitleLoadingEl.hidden = true;
+
       if (player && typeof player.loadVideoById === "function") {
-        player.loadVideoById({
-          videoId,
-          suggestedQuality: "hd1080"
-        });
+        progress.load(videoId);
 
         if (typeof player.setPlaybackQuality === "function") {
           player.setPlaybackQuality("hd1080");
         }
       }
 
-      loadSubtitleFromSrtFolder(videoId);
     }
+
+    retrySubtitlesBtnEl.addEventListener("click", () => loadVideoById(requestedVideoId));
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player("player", {
@@ -1384,7 +1596,7 @@
 
         infoEl.textContent =
           subtitles.length > 0
-            ? `已載入字幕，共 ${subtitles.length} 段`
+            ? `已載入字幕`
             : "字幕解析失敗或沒有讀到資料";
       };
 

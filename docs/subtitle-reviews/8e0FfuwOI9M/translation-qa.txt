@@ -1,5 +1,5 @@
 PASS
-- blocks: 783
+- blocks: 780
 - numbering: continuous and source-matched
 - timestamps: exact match
 - blank blocks: 0

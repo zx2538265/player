@@ -365,6 +365,17 @@
       pointer-events: none;
     }
 
+    .subtitle-top-layer {
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      top: max(5%, env(safe-area-inset-top));
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .subtitle-text:empty { display: none; }
+
     .subtitle-text {
       display: inline-block;
       max-width: 90%;
@@ -585,6 +596,9 @@
       </div>
       <div class="player-activity-catcher" id="playerActivityCatcher" aria-hidden="true"></div>
       <div class="video-content-guide">
+        <div class="subtitle-top-layer">
+          <div id="subtitleTop" class="subtitle-text"></div>
+        </div>
         <div class="subtitle-layer">
           <div id="subtitle" class="subtitle-text"></div>
         </div>
@@ -672,6 +686,7 @@
     const playerActivityCatcherEl = document.getElementById("playerActivityCatcher");
     const orientationHintEl = document.getElementById("orientationHint");
     const subtitleEl = document.getElementById("subtitle");
+    const subtitleTopEl = document.getElementById("subtitleTop");
     const subtitleListEl = document.getElementById("subtitleList");
     const subtitleSettingsEl = document.getElementById("subtitleSettings");
     const subtitleScaleRangeEl = document.getElementById("subtitleScaleRange");
@@ -889,7 +904,9 @@
       );
     }
 
-    function parseSrt(srtText) {
+    function parseSrt(srtText, layout = null) {
+      const topCaptions = new Set(Array.isArray(layout?.topCaptions)
+        ? layout.topCaptions.filter(text => typeof text === "string") : []);
       // 處理 BOM
       srtText = srtText.replace(/^\uFEFF/, "");
 
@@ -919,10 +936,16 @@
 
         if (!text) continue;
 
+        const textLines = text.split("\n");
+        const topLines = textLines.filter(line => topCaptions.has(line.trim()));
+        const bottomLines = textLines.filter(line => !topCaptions.has(line.trim()));
+
         results.push({
           start: srtTimeToSeconds(startStr),
           end: srtTimeToSeconds(endStr),
-          text
+          text,
+          topText: topLines.join("\n"),
+          bottomText: bottomLines.join("\n")
         });
       }
 
@@ -1023,9 +1046,11 @@
       currentSubtitleIndex = index;
 
       if (index >= 0) {
-        subtitleEl.textContent = subtitles[index].text;
+        subtitleEl.textContent = subtitles[index].bottomText ?? subtitles[index].text;
+        subtitleTopEl.textContent = subtitles[index].topText ?? "";
       } else {
         subtitleEl.textContent = "";
+        subtitleTopEl.textContent = "";
       }
 
       if (prevIndex >= 0 && subtitleItemElements[prevIndex]) {
@@ -1145,6 +1170,7 @@
       currentSubtitleIndex = -1;
       subtitleSearchHintIndex = subtitles.length > 0 ? 0 : -1;
       subtitleEl.textContent = "";
+      subtitleTopEl.textContent = "";
       renderSubtitleList();
     }
 
@@ -1331,6 +1357,10 @@
     async function loadSubtitleFromSrtFolder(videoId) {
       const requestToken = ++subtitleRequestToken;
       const srtPath = `srt/${encodeURIComponent(videoId)}.srt`;
+      const layoutRequest = fetch(`srt/${encodeURIComponent(videoId)}.layout.json`,
+        { cache: "no-store", signal: AbortSignal.timeout(3000) })
+        .then(response => response.ok ? response.json() : null)
+        .catch(() => null);
 
       infoEl.textContent = "字幕載入中，請稍候…";
 
@@ -1341,9 +1371,10 @@
         }
 
         const text = await response.text();
+        const layout = await layoutRequest;
         if (requestToken !== subtitleRequestToken) return;
 
-        const parsedSubtitles = parseSrt(text);
+        const parsedSubtitles = parseSrt(text, layout);
         if (!parsedSubtitles.length) throw new Error("Empty subtitles");
         parsedSubtitles.sort((a, b) => a.start - b.start || a.end - b.end);
         setSubtitles(parsedSubtitles);

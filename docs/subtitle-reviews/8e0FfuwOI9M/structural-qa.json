@@ -2,8 +2,8 @@
   "ok": true,
   "source_srt": {
     "path": "video\\8e0FfuwOI9M\\ko.reviewed.srt",
-    "sha256": "46db197d50d45778bf7099451da294115fb46b523123c7f6fba572e5791657f2",
-    "block_count": 783,
+    "sha256": "d84850132c27473401838868762bc1cb12435fd5cdcbac670a01de6fec66528c",
+    "block_count": 780,
     "numbering_continuous": true,
     "timestamps_valid": true,
     "blank_blocks": 0,
@@ -14,8 +14,8 @@
   },
   "output_srt": {
     "path": "video\\8e0FfuwOI9M\\zh.srt",
-    "sha256": "bcceb4b97fba0d010348fd7b74f84b6bd4255f033528f644e99dc803b8e15fa9",
-    "block_count": 783,
+    "sha256": "11da00c1443c069a6ba3a55d10eb50b6078e05bd29c62717d66627fbafae29bd",
+    "block_count": 780,
     "numbering_continuous": true,
     "timestamps_valid": true,
     "blank_blocks": 0,

@@ -1,3 +1,5 @@
 /video/
 __pycache__/
 /.notion-preview/
+AGENTS.md
+.agents

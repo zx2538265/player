@@ -196,15 +196,17 @@ def collect_pages(api, limit=None):
 
 def published_asset(path):
     """Read public assets without Notion credentials."""
-    request = Request(SITE + path, headers={"Cache-Control": "no-cache"})
+    request = Request(SITE + path, headers={
+        "Cache-Control": "no-cache", "User-Agent": "player-notion-sync/1.0"})
     try:
         with urlopen(request, timeout=30) as response:
             content = response.read(10 * 1024 * 1024 + 1)
         if len(content) > 10 * 1024 * 1024:
             raise ValueError()
         return content
-    except (OSError, HTTPException, ValueError):
-        raise SyncError("無法讀取已發布資料或封面；未更新清單，請重試或手動全量同步。") from None
+    except (OSError, HTTPException, ValueError) as error:
+        reason = f"HTTP {error.code}" if isinstance(error, HTTPError) else type(error).__name__
+        raise SyncError(f"無法讀取已發布檔案 {path}（{reason}）；未更新清單，請重試或手動全量同步。") from None
 
 
 def published_works(fetch):

@@ -168,7 +168,8 @@ def main():
     digest = prepare(ROOT, args.catalog, args.site)
     previous = None
     try:
-        request = Request(SITE + "release.json", headers={"Cache-Control": "no-cache"})
+        request = Request(SITE + "release.json", headers={
+            "Cache-Control": "no-cache", "User-Agent": "player-notion-sync/1.0"})
         with urlopen(request, timeout=30) as response:
             previous = json.load(response)["digest"]
             if (not isinstance(previous, str) or len(previous) != 64

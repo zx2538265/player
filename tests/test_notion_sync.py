@@ -153,6 +153,21 @@ class SyncTests(unittest.TestCase):
                 sync.sync(self.api([]), output, self.root, limit=5)
         self.assertEqual(output.read_text(), "previous")
 
+    def test_published_assets_use_explicit_user_agent_without_notion_token(self):
+        with patch.object(sync, "urlopen", return_value=io.BytesIO(b"public content")) as request:
+            self.assertEqual(sync.published_asset("data/library.json"), b"public content")
+        headers = dict((key.lower(), value) for key, value in request.call_args.args[0].header_items())
+        self.assertEqual(headers["user-agent"], "player-notion-sync/1.0")
+        self.assertNotIn("authorization", headers)
+
+    def test_published_asset_failure_identifies_http_status_and_path(self):
+        with patch.object(sync, "urlopen", side_effect=HTTPError("private", 403, "Forbidden", {}, None)):
+            with self.assertRaises(sync.SyncError) as error:
+                sync.published_asset("data/library.json")
+        self.assertIn("HTTP 403", str(error.exception))
+        self.assertIn("data/library.json", str(error.exception))
+        self.assertNotIn("private", str(error.exception))
+
     def test_full_sync_needs_no_baseline_and_reads_all_pages(self):
         records = [page(f"{index:032x}") for index in range(1, 8)]
         output = self.root / "library.json"

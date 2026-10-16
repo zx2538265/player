@@ -122,6 +122,11 @@ class CompareTests(unittest.TestCase):
                 self.assertEqual(output, f"changed={changed}\n")
                 self.assertNotIn("::warning::", log)
 
+    def test_release_comparison_uses_explicit_user_agent(self):
+        with patch.object(prepare, "Request", wraps=prepare.Request) as request:
+            self.run_main(response=json.dumps({"digest": "a" * 64}).encode())
+        self.assertEqual(request.call_args.kwargs["headers"]["User-Agent"], "player-notion-sync/1.0")
+
     def test_local_build_failure_still_fails(self):
         with self.assertRaisesRegex(ValueError, "Invalid cover"):
             self.run_main(build_error=ValueError("Invalid cover"))

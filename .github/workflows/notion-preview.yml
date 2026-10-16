@@ -2,6 +2,11 @@ name: Notion 同步與網站發布
 
 on:
   workflow_dispatch:
+    inputs:
+      full_sync:
+        description: '全量同步 Notion（不勾選時只更新前五筆，其餘沿用已發布資料）'
+        type: boolean
+        default: false
   schedule:
     - cron: '17 0 * * *' # 每天台灣時間 08:17（UTC 00:17）
   push:
@@ -39,7 +44,11 @@ jobs:
       - name: 讀取 Notion
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-        run: python scripts/sync_notion.py --output "${{ runner.temp }}/notion-preview/library.json"
+          FULL_SYNC: ${{ inputs.full_sync == true }}
+        run: |
+          args=()
+          if [ "$FULL_SYNC" = "true" ]; then args+=(--full-sync); fi
+          python scripts/sync_notion.py "${args[@]}" --output "${{ runner.temp }}/notion-preview/library.json"
       - name: 與正式網站比較
         id: compare
         run: python scripts/prepare_pages.py --catalog "${{ runner.temp }}/notion-preview/library.json" --site "${{ runner.temp }}/site"

@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import importlib.util
 import json
 import io
@@ -71,10 +72,10 @@ class SyncTests(unittest.TestCase):
             self.assertEqual(sync.request_api("secret", "pages/abc"), {"ok": True})
             self.assertEqual([call.args[0] for call in sleep.call_args_list], [5, 2])
 
-    def api(self, batches):
+    def api(self, batches, total=None):
         self.calls = []
         records = {p["id"]: p for batch in batches for p in batch["results"]}
-        batches = [dict(batch, id="c" * 32, total_count=sum(len(b["results"]) for b in batches)) for batch in batches]
+        batches = [dict(batch, id="c" * 32, total_count=total if total is not None else sum(len(b["results"]) for b in batches)) for batch in batches]
         remaining = iter(batches)
         def request(endpoint, body=None):
             self.calls.append((endpoint, body))
@@ -87,6 +88,125 @@ class SyncTests(unittest.TestCase):
             result = next(remaining)
             return dict(result, results=[{"object": p["object"], "id": p["id"]} for p in result["results"]])
         return request
+
+    def baseline(self, records):
+        works = [dict(sync.convert_page(record, self.root), shareImage="", shareImageSource="none") for record in records]
+        return {"version": 1, "source": "notion", "viewId": sync.VIEW_ID, "works": works}
+
+    def test_incremental_reads_only_first_five_and_retains_published_covers(self):
+        records = [page(f"{index:032x}") for index in range(1, 8)]
+        baseline = self.baseline(records)
+        # A formerly newer entry moves behind the newly queried top five.
+        baseline["works"] = baseline["works"][5:] + baseline["works"][:5]
+        content = io.BytesIO()
+        Image.new("RGB", (12, 8)).save(content, format="JPEG")
+        cover = content.getvalue()
+        cover_path = "data/covers/" + hashlib.sha256(cover).hexdigest() + ".jpg"
+        baseline["works"][0].update(shareImage=cover_path, shareImageWidth=12,
+                                    shareImageHeight=8, shareImageType="image/jpeg", shareImageSource="notion")
+        baseline["works"][0]["title"] = "沿用已發布標題"
+        records[0]["properties"]["名稱"]["title"][0]["plain_text"] = "更新的標題"
+        requested = []
+        def fetch(path):
+            requested.append(path)
+            return cover if path == cover_path else json.dumps(baseline).encode()
+        output = self.root / "library.json"
+        api = self.api([{"results": records[:5], "has_more": True}], total=7)
+        self.assertEqual(sync.sync(api, output, self.root, limit=5, fetch=fetch), (5, 7))
+        works = json.loads(output.read_text(encoding="utf-8"))["works"]
+        self.assertEqual([work["id"] for work in works], [record["id"] for record in records])
+        self.assertEqual(works[0]["title"], "更新的標題")
+        self.assertEqual(works[5:], baseline["works"][:2])
+        self.assertEqual((self.root / "covers" / Path(cover_path).name).read_bytes(), cover)
+        self.assertCountEqual(requested, ["data/library.json", cover_path])
+        self.assertEqual(sum(endpoint.startswith("pages/") for endpoint, _ in self.calls), 5)
+        self.assertEqual(sum(endpoint.startswith("blocks/") for endpoint, _ in self.calls), 5)
+        self.assertIn((f"views/{sync.VIEW_ID}/queries", {"page_size": 5}), self.calls)
+        self.assertFalse(any("start_cursor" in endpoint for endpoint, _ in self.calls))
+
+    def test_incremental_adds_new_work_and_removes_refreshed_opt_out(self):
+        old, hidden, new = page("a" * 32), page("b" * 32), page("c" * 32)
+        baseline = self.baseline([old, hidden])
+        hidden["properties"]["公開"] = {"type": "checkbox", "checkbox": False}
+        output = self.root / "library.json"
+        sync.sync(self.api([{"results": [new, hidden], "has_more": False}]), output, self.root,
+                  limit=5, fetch=lambda _: json.dumps(baseline).encode())
+        works = json.loads(output.read_text(encoding="utf-8"))["works"]
+        self.assertEqual([work["id"] for work in works], [new["id"], old["id"]])
+
+    def test_incremental_bad_baseline_or_cover_preserves_catalog(self):
+        baseline = self.baseline([page("b" * 32)])
+        baseline["works"][0]["shareImage"] = "data/covers/" + "0" * 64 + ".jpg"
+        output = self.root / "library.json"
+        for catalog in (b"not json", b"{}", json.dumps(baseline).encode()):
+            output.write_text("previous")
+            with self.subTest(catalog=catalog), self.assertRaises(sync.SyncError):
+                sync.sync(self.api([{"results": [page()], "has_more": False}]), output, self.root,
+                          limit=5, fetch=lambda path: catalog if path == "data/library.json" else b"wrong cover")
+            self.assertEqual(output.read_text(), "previous")
+
+    def test_incremental_unavailable_baseline_preserves_catalog(self):
+        output = self.root / "library.json"
+        output.write_text("previous")
+        with patch.object(sync, "urlopen", side_effect=URLError("offline")):
+            with self.assertRaises(sync.SyncError):
+                sync.sync(self.api([]), output, self.root, limit=5)
+        self.assertEqual(output.read_text(), "previous")
+
+    def test_full_sync_needs_no_baseline_and_reads_all_pages(self):
+        records = [page(f"{index:032x}") for index in range(1, 8)]
+        output = self.root / "library.json"
+        api = self.api([{"results": records[:5], "has_more": True, "next_cursor": "next"},
+                        {"results": records[5:], "has_more": False}])
+        def no_fetch(_):
+            self.fail("Full sync must not fetch published data")
+        self.assertEqual(sync.sync(api, output, self.root, fetch=no_fetch), (7, 7))
+        self.assertEqual(sum(endpoint.startswith("pages/") for endpoint, _ in self.calls), 7)
+
+    def test_incremental_incomplete_first_batch_preserves_catalog(self):
+        baseline = self.baseline([page()])
+        output = self.root / "library.json"
+        output.write_text("previous")
+        with self.assertRaises(sync.SyncError):
+            sync.sync(self.api([{"results": [page()], "has_more": True}], total=10), output, self.root,
+                      limit=5, fetch=lambda _: json.dumps(baseline).encode())
+        self.assertEqual(output.read_text(), "previous")
+
+    def test_cli_defaults_to_five_and_supports_full_sync(self):
+        for flags, limit in (([], 5), (["--full-sync"], None)):
+            with self.subTest(flags=flags), patch("sys.argv", ["sync_notion.py", *flags]), \
+                    patch.dict(sync.os.environ, NOTION_TOKEN="test-token"), \
+                    patch.object(sync, "sync", return_value=(5, 7)) as run, \
+                    patch("sys.stdout", new_callable=io.StringIO):
+                sync.main()
+                self.assertEqual(run.call_args.kwargs["limit"], limit)
+
+    def test_retained_cover_and_share_page_survive_site_build(self):
+        old, new = page(), page("b" * 32)
+        new["properties"]["翻譯連結"]["url"] = "https://example.com/new"
+        baseline = self.baseline([old])
+        content = io.BytesIO()
+        Image.new("RGB", (20, 10)).save(content, format="PNG")
+        image = sync.save_share_image(content.getvalue(), self.root / "original-covers")
+        baseline["works"][0].update(image)
+        cover = (self.root / "original-covers" / Path(image["shareImage"]).name).read_bytes()
+        output = self.root / "library.json"
+        sync.sync(self.api([{"results": [new], "has_more": False}]), output, self.root, limit=5,
+                  fetch=lambda path: json.dumps(baseline).encode() if path == "data/library.json" else cover)
+        build_spec = importlib.util.spec_from_file_location("prepare", sync.ROOT / "scripts/prepare_pages.py")
+        build = importlib.util.module_from_spec(build_spec)
+        build_spec.loader.exec_module(build)
+        source = self.root / "source"
+        source.mkdir()
+        for name in ("index.html", "test.html", "library.html", "library.css", "library.js", "share.js", "playback-progress.js", ".nojekyll"):
+            (source / name).write_text("")
+        (source / "srt").mkdir()
+        shutil.copy2(self.root / "r0aBwvfiNjY.srt", source / "srt/r0aBwvfiNjY.srt")
+        site = self.root / "site"
+        build.prepare(source, output, site)
+        self.assertEqual((site / image["shareImage"]).read_bytes(), cover)
+        self.assertIn(image["shareImage"], (site / "share/r0aBwvfiNjY/index.html").read_text(encoding="utf-8"))
+        self.assertEqual(len(json.loads((site / "data/library.json").read_text(encoding="utf-8"))["works"]), 2)
 
     def test_projection_and_multiple_tags(self):
         source = page()

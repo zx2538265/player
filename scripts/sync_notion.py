@@ -1,5 +1,6 @@
 """Read the authorized Notion database; write only the public catalog projection."""
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import io
 from http.client import HTTPException
@@ -19,6 +20,7 @@ from PIL import Image, ImageOps
 DATABASE_ID = "358f1640416380ce9943cb914b0409f1"
 VIEW_ID = "372f16404163804c947b000c5be27931"
 ROOT = Path(__file__).resolve().parents[1]
+SITE = "https://allenka.com/"
 
 
 class SyncError(Exception):
@@ -147,12 +149,13 @@ def request_api(token, endpoint, body=None):
         time.sleep(delay)
 
 
-def collect_pages(api):
+def collect_pages(api, limit=None):
     view = api(f"views/{VIEW_ID}")
     if view.get("parent", {}).get("database_id", "").replace("-", "") != DATABASE_ID:
         raise SyncError("Gallery 不屬於指定資料庫；未更新清單。")
     pages, seen, cursors = [], set(), set()
-    result = api(f"views/{VIEW_ID}/queries", {"page_size": 100})
+    page_size = min(limit, 100) if limit else 100
+    result = api(f"views/{VIEW_ID}/queries", {"page_size": page_size})
     query_id = result.get("id", "")
     total = result.get("total_count")
     while True:
@@ -167,14 +170,17 @@ def collect_pages(api):
             pages.append(page)
         if not result["has_more"]:
             break
+        if limit and len(pages) >= limit:
+            break
         cursor = result.get("next_cursor")
         if not cursor or cursor in cursors or len(pages) >= 10000:
             raise SyncError("Notion 分頁未完整結束；未更新清單。")
         cursors.add(cursor)
         if not re.fullmatch(r"[0-9a-fA-F-]{32,36}", query_id):
             raise SyncError("無效檢視查詢 ID。")
-        result = api(f"views/{VIEW_ID}/queries/{query_id}?start_cursor={quote(cursor, safe='')}&page_size=100")
-    if not isinstance(total, int) or total != len(pages):
+        result = api(f"views/{VIEW_ID}/queries/{query_id}?start_cursor={quote(cursor, safe='')}&page_size={page_size}")
+    expected = min(total, limit) if isinstance(total, int) and limit else total
+    if not isinstance(total, int) or total < 0 or expected != len(pages) or (not result["has_more"] and total != len(pages)):
         raise SyncError("Notion 檢視筆數不完整；保留原清單。")
     # View queries return page references. Hydrate in exactly the saved view order.
     for index, reference in enumerate(pages):
@@ -186,6 +192,61 @@ def collect_pages(api):
             raise SyncError("Notion 作品回應不完整；保留原清單。")
         pages[index] = page
     return pages
+
+
+def published_asset(path):
+    """Read public assets without Notion credentials."""
+    request = Request(SITE + path, headers={"Cache-Control": "no-cache"})
+    try:
+        with urlopen(request, timeout=30) as response:
+            content = response.read(10 * 1024 * 1024 + 1)
+        if len(content) > 10 * 1024 * 1024:
+            raise ValueError()
+        return content
+    except (OSError, HTTPException, ValueError):
+        raise SyncError("無法讀取已發布資料或封面；未更新清單，請重試或手動全量同步。") from None
+
+
+def published_works(fetch):
+    try:
+        payload = json.loads(fetch("data/library.json"))
+        if (payload.get("version") != 1 or payload.get("source") != "notion"
+                or payload.get("viewId") != VIEW_ID or not payload.get("works")):
+            raise ValueError()
+        works, seen = payload["works"], set()
+        for work in works:
+            identifier = work["id"]
+            if not re.fullmatch(r"[0-9a-fA-F-]{32,36}", identifier) or identifier in seen:
+                raise ValueError()
+            seen.add(identifier)
+            if not work["title"].strip() or not https_url(work["url"]):
+                raise ValueError()
+        return works
+    except (ValueError, TypeError, KeyError, AttributeError):
+        raise SyncError("已發布清單無效；未更新清單，請手動全量同步。") from None
+
+
+def restore_covers(works, folder, fetch):
+    paths = set()
+    for work in works:
+        for field in ("image", "shareImage"):
+            path = work.get(field, "")
+            if path.startswith("data/covers/"):
+                if not re.fullmatch(r"data/covers/[a-f0-9]{64}\.(jpg|png|webp|gif)", path):
+                    raise SyncError("已發布封面路徑無效；未更新清單。")
+                paths.add(path)
+
+    def restore(path):
+        content = fetch(path)
+        if hashlib.sha256(content).hexdigest() != Path(path).stem:
+            raise SyncError("已發布封面雜湊不符；未更新清單，請重試或手動全量同步。")
+        (folder / Path(path).name).write_bytes(content)
+
+    if paths:
+        folder.mkdir(parents=True, exist_ok=True)
+        # Public static files can be fetched in parallel, unlike rate-limited Notion calls.
+        with ThreadPoolExecutor(max_workers=8) as executor:
+            list(executor.map(restore, sorted(paths)))
 
 
 def uploaded_image_url(api, page):
@@ -281,8 +342,9 @@ def save_share_image(content, folder):
             "shareImageHeight": height, "shareImageType": mime, "shareImageSource": "notion"}
 
 
-def sync(api, output, subtitle_dir, download=download_uploaded_image):
-    pages = collect_pages(api)
+def sync(api, output, subtitle_dir, download=download_uploaded_image, *, limit=None, fetch=published_asset):
+    previous = published_works(fetch) if limit else []
+    pages = collect_pages(api, limit=limit)
     works = []
     for page in pages:
         work = convert_page(page, subtitle_dir)
@@ -296,6 +358,12 @@ def sync(api, output, subtitle_dir, download=download_uploaded_image):
             if image_url:
                 work.update(save_share_image(download(image_url), output.parent / "covers"))
         works.append(work)
+    if limit:
+        # Remove all refreshed IDs first, including works now explicitly opted out.
+        refreshed = {page["id"] for page in pages}
+        retained = [work for work in previous if work["id"] not in refreshed]
+        restore_covers(retained, output.parent / "covers", fetch)
+        works.extend(retained)
     if not works:
         raise SyncError("未取得可公開作品；保留原清單。")
     payload = {"version": 1, "source": "notion", "orderSource": "notion-view", "viewId": VIEW_ID, "syncedAt": datetime.now(timezone.utc).isoformat(), "works": works}
@@ -309,6 +377,7 @@ def sync(api, output, subtitle_dir, download=download_uploaded_image):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, default=ROOT / "data/library.json")
+    parser.add_argument("--full-sync", action="store_true", help="重新同步全部 Notion 作品與封面；預設只更新檢視前五筆")
     args = parser.parse_args()
     token = os.environ.get("NOTION_TOKEN", "").strip()
     if not token:
@@ -316,8 +385,9 @@ def main():
     def api(endpoint, body=None):
         time.sleep(0.35)
         return request_api(token, endpoint, body)
-    total, published = sync(api, args.output, ROOT / "srt")
-    print(f"已讀取 {total} 筆，輸出 {published} 筆作品。未修改 Notion 或發布網站。")
+    total, published = sync(api, args.output, ROOT / "srt", limit=None if args.full_sync else 5)
+    mode = "全量同步" if args.full_sync else "前五筆同步，其餘沿用已發布資料"
+    print(f"{mode}：已讀取 {total} 筆，輸出 {published} 筆作品。未修改 Notion 或發布網站。")
 
 
 if __name__ == "__main__":

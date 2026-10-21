@@ -11,8 +11,8 @@ test('419 source-bound cards have unique provenance and valid boundaries',()=>{
     const track=song.chant,id=song.sources[0].videoId;
     assert.equal(Chant.validTrack(track,id),true);
     assert.equal(Chant.validTrack(track,'unrelated-video'),false);
-    assert.equal(track.status,song.title==='Busy Boy'?'model_aligned_listening_pending':'visual_checked_listening_pending');
-    assert.equal(track.timingBasis,song.title==='Busy Boy'?'word-aligned':'caption');
+    assert.equal(track.status,['Busy Boy','YoYo'].includes(song.title)?'model_aligned_listening_pending':'visual_checked_listening_pending');
+    assert.equal(track.timingBasis,['Busy Boy','YoYo'].includes(song.title)?'word-aligned':'caption');
     for(const cue of track.cues){
       assert.ok(cue.sourceIds.length);
       for(const source of cue.sourceIds){assert.ok(source.startsWith(id+'-'));assert.ok(!ids.has(source));ids.add(source);}
@@ -79,6 +79,24 @@ test('YoYo retains requested fan source and excludes ordinary lyrics',()=>{
   assert.equal(cues.filter(c=>c.text==='（歡呼）').length,3);
   assert.equal(cues.find(c=>c.sourceIds[0]==='ykVJo0wFlQ4-3').text,'찾아내');
   assert.equal(cues.find(c=>c.sourceIds[0]==='ykVJo0wFlQ4-48').text,'소나기');
+});
+
+test('YoYo waits through the preceding lyrics before the response words enter',()=>{
+  const track=songs.find(s=>s.title==='YoYo').chant;
+  // Source says "Find 자 어서 날 찾아내": only the final word is blue.
+  assert.notEqual(Chant.state(track,11,1).mode,'active');
+  assert.equal(Chant.state(track,13.4,1).mode,'active');
+  assert.equal(Chant.state(track,13.4,1).text,'찾아내');
+  // "눈 가린 다음 그 감각에" must not activate 집중해 yet.
+  assert.notEqual(Chant.state(track,15,1).mode,'active');
+  assert.equal(Chant.state(track,18,1).mode,'active');
+  assert.equal(Chant.state(track,18,1).text,'집중해');
+  // Each "We're going" remains a preview, even in later repeated choruses.
+  for (const [before,entry] of [[51.6,52],[60.7,61.2],[127,127.4],[136.1,136.6],[183.1,183.5]]) {
+    assert.notEqual(Chant.state(track,before,1).mode,'active');
+    assert.equal(Chant.state(track,entry,1).mode,'active');
+    assert.equal(Chant.state(track,entry,1).text,'Up down, up down, up down');
+  }
 });
 
 test('every cue has half-open active bounds and survives backward seeking',()=>{

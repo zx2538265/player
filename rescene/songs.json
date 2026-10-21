@@ -2985,7 +2985,7 @@
     "artist": "RESCENE",
     "section": "YoYo",
     "hasChant": true,
-    "note": "指定應援教學 · 29 張提示卡 · 依畫面定位，聽校待完成",
+    "note": "指定應援教學 · 29 張提示卡 · 詞句校時，聽校待完成",
     "sources": [
       {
         "kind": "應援教學（ゆっぴー）",
@@ -2996,9 +2996,9 @@
     ],
     "chant": {
       "videoId": "ykVJo0wFlQ4",
-      "status": "visual_checked_listening_pending",
-      "timingBasis": "caption",
-      "note": "指定來源為ゆっぴー頻道；只收錄藍色應援標記，時間依字幕顯示區間，尚未逐句聽校。",
+      "status": "model_aligned_listening_pending",
+      "timingBasis": "word-aligned",
+      "note": "指定來源為ゆっぴー頻道；29 張已比對畫面，12 張依詞位置校時、17 張保留畫面時間；歡呼與全曲逐句聽校待完成。",
       "cues": [
         {
           "start": 4.0,
@@ -3006,39 +3006,44 @@
           "text": "원이 리브 미나미\n메이 제나 리센느!",
           "sourceIds": [
             "ykVJo0wFlQ4-1"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
-          "start": 10.8,
+          "start": 13.1,
           "end": 14.5,
           "text": "찾아내",
           "sourceIds": [
             "ykVJo0wFlQ4-3"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
-          "start": 14.6,
+          "start": 17.6,
           "end": 19.2,
           "text": "집중해",
           "sourceIds": [
             "ykVJo0wFlQ4-5"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
-          "start": 21.6,
-          "end": 24.3,
+          "start": 23.9,
+          "end": 24.7,
           "text": "리센느!",
           "sourceIds": [
             "ykVJo0wFlQ4-8"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
-          "start": 28.3,
+          "start": 31.4,
           "end": 33.3,
           "text": "날리면",
           "sourceIds": [
             "ykVJo0wFlQ4-10"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
           "start": 35.8,
@@ -3046,7 +3051,8 @@
           "text": "이건 One and only",
           "sourceIds": [
             "ykVJo0wFlQ4-13"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
           "start": 45.7,
@@ -3054,23 +3060,26 @@
           "text": "Let's play Go!",
           "sourceIds": [
             "ykVJo0wFlQ4-16"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
-          "start": 51.5,
+          "start": 52.0,
           "end": 55.3,
           "text": "Up down, up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-19"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
-          "start": 60.5,
+          "start": 61.2,
           "end": 64.3,
           "text": "Up down, up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-24"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
           "start": 70.3,
@@ -3078,7 +3087,8 @@
           "text": "Up down, up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-28"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
           "start": 79.4,
@@ -3086,7 +3096,8 @@
           "text": "Up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-32"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
           "start": 82.6,
@@ -3094,23 +3105,26 @@
           "text": "（歡呼）",
           "sourceIds": [
             "ykVJo0wFlQ4-34"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
-          "start": 84.7,
+          "start": 86.7,
           "end": 87.2,
           "text": "yeah",
           "sourceIds": [
             "ykVJo0wFlQ4-35"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
-          "start": 93.7,
+          "start": 94.2,
           "end": 95.9,
           "text": "C-R-A-Z-Y",
           "sourceIds": [
             "ykVJo0wFlQ4-42"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
           "start": 103.6,
@@ -3118,15 +3132,17 @@
           "text": "Oh Yeah",
           "sourceIds": [
             "ykVJo0wFlQ4-47"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
-          "start": 104.3,
+          "start": 106.8,
           "end": 108.4,
           "text": "소나기",
           "sourceIds": [
             "ykVJo0wFlQ4-48"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
           "start": 111.2,
@@ -3134,7 +3150,8 @@
           "text": "내 정체는 Secret",
           "sourceIds": [
             "ykVJo0wFlQ4-52"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
           "start": 121.3,
@@ -3142,23 +3159,26 @@
           "text": "Let's play Go!",
           "sourceIds": [
             "ykVJo0wFlQ4-56"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
-          "start": 126.9,
+          "start": 127.4,
           "end": 130.7,
           "text": "Up down, up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-59"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
-          "start": 135.9,
+          "start": 136.6,
           "end": 139.6,
           "text": "Up down, up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-63"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
           "start": 145.7,
@@ -3166,7 +3186,8 @@
           "text": "Up down, up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-67"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
           "start": 154.7,
@@ -3174,7 +3195,8 @@
           "text": "Up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-71"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
           "start": 158.2,
@@ -3182,7 +3204,8 @@
           "text": "（歡呼）",
           "sourceIds": [
             "ykVJo0wFlQ4-73"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
           "start": 172.8,
@@ -3190,15 +3213,17 @@
           "text": "우린 환상적인 Chemistry",
           "sourceIds": [
             "ykVJo0wFlQ4-81"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
-          "start": 182.9,
+          "start": 183.5,
           "end": 186.7,
           "text": "Up down, up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-85"
-          ]
+          ],
+          "timingBasis": "word-aligned"
         },
         {
           "start": 187.8,
@@ -3206,7 +3231,8 @@
           "text": "I like you",
           "sourceIds": [
             "ykVJo0wFlQ4-87"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
           "start": 193.9,
@@ -3214,7 +3240,8 @@
           "text": "Up down, up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-90"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
           "start": 202.9,
@@ -3222,7 +3249,8 @@
           "text": "Up down, up down",
           "sourceIds": [
             "ykVJo0wFlQ4-94"
-          ]
+          ],
+          "timingBasis": "caption"
         },
         {
           "start": 208.4,
@@ -3230,9 +3258,11 @@
           "text": "（歡呼）",
           "sourceIds": [
             "ykVJo0wFlQ4-97"
-          ]
+          ],
+          "timingBasis": "caption"
         }
-      ]
+      ],
+      "timingRevision": "entry-v3"
     }
   },
   {

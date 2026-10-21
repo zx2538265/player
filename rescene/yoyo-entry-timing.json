@@ -1,0 +1,618 @@
+{
+  "videoId": "ykVJo0wFlQ4",
+  "revision": "entry-v3",
+  "date": "2026-10-21",
+  "sourceSha256": "74c3cb36e3ea96c51119de25ab49f25f4ec76820f75edcd66a257328d1616157",
+  "status": "model_aligned_listening_pending",
+  "visualReview": "All 29 response cards inspected in source frames; blue response text retained",
+  "audioReview": "Whisper large-v3 and medium each cover 9 overlapping chunks; 56 local DTW alignments and 27 Qwen alignments. Hallucinated text, zero-length words and boundary-pinned onsets rejected.",
+  "manualListeningComplete": false,
+  "liveYoutubeSyncVerified": false,
+  "events": [
+    {
+      "index": 0,
+      "sourceId": "ykVJo0wFlQ4-1",
+      "text": "원이 리브 미나미\n메이 제나 리센느!",
+      "original": {
+        "start": 4.0,
+        "end": 10.7
+      },
+      "corrected": {
+        "start": 4.0,
+        "end": 10.7
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-00.jpg"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 1,
+      "sourceId": "ykVJo0wFlQ4-3",
+      "text": "찾아내",
+      "original": {
+        "start": 10.8,
+        "end": 14.5
+      },
+      "corrected": {
+        "start": 13.1,
+        "end": 14.5
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-01.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 2,
+      "sourceId": "ykVJo0wFlQ4-5",
+      "text": "집중해",
+      "original": {
+        "start": 14.6,
+        "end": 19.2
+      },
+      "corrected": {
+        "start": 17.6,
+        "end": 19.2
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-02.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 3,
+      "sourceId": "ykVJo0wFlQ4-8",
+      "text": "리센느!",
+      "original": {
+        "start": 21.6,
+        "end": 24.3
+      },
+      "corrected": {
+        "start": 23.9,
+        "end": 24.7
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞；三模型估計 23.58–24.16 秒，採 23.9 秒候選，需人工聽校",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-03.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 4,
+      "sourceId": "ykVJo0wFlQ4-10",
+      "text": "날리면",
+      "original": {
+        "start": 28.3,
+        "end": 33.3
+      },
+      "corrected": {
+        "start": 31.4,
+        "end": 33.3
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞；Qwen 把末詞推到字幕區間外且前詞零長度，拒絕該結果，採兩套 Whisper 局部對齊",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-04.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 5,
+      "sourceId": "ykVJo0wFlQ4-13",
+      "text": "이건 One and only",
+      "original": {
+        "start": 35.8,
+        "end": 37.6
+      },
+      "corrected": {
+        "start": 35.8,
+        "end": 37.6
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-05.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 6,
+      "sourceId": "ykVJo0wFlQ4-16",
+      "text": "Let's play Go!",
+      "original": {
+        "start": 45.7,
+        "end": 47.3
+      },
+      "corrected": {
+        "start": 45.7,
+        "end": 47.3
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-06.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 7,
+      "sourceId": "ykVJo0wFlQ4-19",
+      "text": "Up down, up down, up down",
+      "original": {
+        "start": 51.5,
+        "end": 55.3
+      },
+      "corrected": {
+        "start": 52.0,
+        "end": 55.3
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-07.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 8,
+      "sourceId": "ykVJo0wFlQ4-24",
+      "text": "Up down, up down, up down",
+      "original": {
+        "start": 60.5,
+        "end": 64.3
+      },
+      "corrected": {
+        "start": 61.2,
+        "end": 64.3
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-08.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 9,
+      "sourceId": "ykVJo0wFlQ4-28",
+      "text": "Up down, up down, up down",
+      "original": {
+        "start": 70.3,
+        "end": 73.5
+      },
+      "corrected": {
+        "start": 70.3,
+        "end": 73.5
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-09.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 10,
+      "sourceId": "ykVJo0wFlQ4-32",
+      "text": "Up down, up down",
+      "original": {
+        "start": 79.4,
+        "end": 81.6
+      },
+      "corrected": {
+        "start": 79.4,
+        "end": 81.6
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-10.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 11,
+      "sourceId": "ykVJo0wFlQ4-34",
+      "text": "（歡呼）",
+      "original": {
+        "start": 82.6,
+        "end": 84.7
+      },
+      "corrected": {
+        "start": 82.6,
+        "end": 84.7
+      },
+      "decision": "retain_pending_listening",
+      "reason": "歡呼無可可靠對齊的詞；保留原時間，實際歡呼起點待人工聽校",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-11.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 12,
+      "sourceId": "ykVJo0wFlQ4-35",
+      "text": "yeah",
+      "original": {
+        "start": 84.7,
+        "end": 87.2
+      },
+      "corrected": {
+        "start": 86.7,
+        "end": 87.2
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-12.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 13,
+      "sourceId": "ykVJo0wFlQ4-42",
+      "text": "C-R-A-Z-Y",
+      "original": {
+        "start": 93.7,
+        "end": 95.9
+      },
+      "corrected": {
+        "start": 94.2,
+        "end": 95.9
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-13.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 14,
+      "sourceId": "ykVJo0wFlQ4-47",
+      "text": "Oh Yeah",
+      "original": {
+        "start": 103.6,
+        "end": 104.3
+      },
+      "corrected": {
+        "start": 103.6,
+        "end": 104.3
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-14.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 15,
+      "sourceId": "ykVJo0wFlQ4-48",
+      "text": "소나기",
+      "original": {
+        "start": 104.3,
+        "end": 108.4
+      },
+      "corrected": {
+        "start": 106.8,
+        "end": 108.4
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-15.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 16,
+      "sourceId": "ykVJo0wFlQ4-52",
+      "text": "내 정체는 Secret",
+      "original": {
+        "start": 111.2,
+        "end": 113.0
+      },
+      "corrected": {
+        "start": 111.2,
+        "end": 113.0
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-16.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 17,
+      "sourceId": "ykVJo0wFlQ4-56",
+      "text": "Let's play Go!",
+      "original": {
+        "start": 121.3,
+        "end": 122.9
+      },
+      "corrected": {
+        "start": 121.3,
+        "end": 122.9
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-17.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 18,
+      "sourceId": "ykVJo0wFlQ4-59",
+      "text": "Up down, up down, up down",
+      "original": {
+        "start": 126.9,
+        "end": 130.7
+      },
+      "corrected": {
+        "start": 127.4,
+        "end": 130.7
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-18.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 19,
+      "sourceId": "ykVJo0wFlQ4-63",
+      "text": "Up down, up down, up down",
+      "original": {
+        "start": 135.9,
+        "end": 139.6
+      },
+      "corrected": {
+        "start": 136.6,
+        "end": 139.6
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-19.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 20,
+      "sourceId": "ykVJo0wFlQ4-67",
+      "text": "Up down, up down, up down",
+      "original": {
+        "start": 145.7,
+        "end": 148.9
+      },
+      "corrected": {
+        "start": 145.7,
+        "end": 148.9
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-20.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 21,
+      "sourceId": "ykVJo0wFlQ4-71",
+      "text": "Up down, up down",
+      "original": {
+        "start": 154.7,
+        "end": 156.9
+      },
+      "corrected": {
+        "start": 154.7,
+        "end": 156.9
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-21.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 22,
+      "sourceId": "ykVJo0wFlQ4-73",
+      "text": "（歡呼）",
+      "original": {
+        "start": 158.2,
+        "end": 160.0
+      },
+      "corrected": {
+        "start": 158.2,
+        "end": 160.0
+      },
+      "decision": "retain_pending_listening",
+      "reason": "歡呼無可可靠對齊的詞；保留原時間，實際歡呼起點待人工聽校",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-22.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 23,
+      "sourceId": "ykVJo0wFlQ4-81",
+      "text": "우린 환상적인 Chemistry",
+      "original": {
+        "start": 172.8,
+        "end": 175.1
+      },
+      "corrected": {
+        "start": 172.8,
+        "end": 175.1
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-23.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 24,
+      "sourceId": "ykVJo0wFlQ4-85",
+      "text": "Up down, up down, up down",
+      "original": {
+        "start": 182.9,
+        "end": 186.7
+      },
+      "corrected": {
+        "start": 183.5,
+        "end": 186.7
+      },
+      "decision": "retime",
+      "reason": "畫面同時顯示普通歌詞與藍色應援詞；依本次詞位置校正，排除前置普通歌詞",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-24.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 25,
+      "sourceId": "ykVJo0wFlQ4-87",
+      "text": "I like you",
+      "original": {
+        "start": 187.8,
+        "end": 188.8
+      },
+      "corrected": {
+        "start": 187.8,
+        "end": 188.8
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-25.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 26,
+      "sourceId": "ykVJo0wFlQ4-90",
+      "text": "Up down, up down, up down",
+      "original": {
+        "start": 193.9,
+        "end": 197.0
+      },
+      "corrected": {
+        "start": 193.9,
+        "end": 197.0
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-26.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 27,
+      "sourceId": "ykVJo0wFlQ4-94",
+      "text": "Up down, up down",
+      "original": {
+        "start": 202.9,
+        "end": 205.1
+      },
+      "corrected": {
+        "start": 202.9,
+        "end": 205.1
+      },
+      "decision": "retain_pending_listening",
+      "reason": "整張都是應援文字；模型首詞貼齊局部視窗邊界或有分歧，沒有足夠證據改動原進入點",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-27.jpg",
+        "video/ykVJo0wFlQ4/dtw-timing-v3.jsonl",
+        "video/ykVJo0wFlQ4/qwen-timing-v3.jsonl"
+      ],
+      "listeningReview": "pending"
+    },
+    {
+      "index": 28,
+      "sourceId": "ykVJo0wFlQ4-97",
+      "text": "（歡呼）",
+      "original": {
+        "start": 208.4,
+        "end": 217.4
+      },
+      "corrected": {
+        "start": 208.4,
+        "end": 217.4
+      },
+      "decision": "retain_pending_listening",
+      "reason": "歡呼無可可靠對齊的詞；保留原時間，實際歡呼起點待人工聽校",
+      "evidence": [
+        "video/ykVJo0wFlQ4/cue-28.jpg"
+      ],
+      "listeningReview": "pending"
+    }
+  ]
+}

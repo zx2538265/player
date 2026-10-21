@@ -26,6 +26,35 @@ REVIEW = {
 }
 
 
+def apply_entry_timing(track):
+    """Apply the versioned review, including explicit decisions to retain cues."""
+    review = read(ROOT / 'rescene/yoyo-entry-timing.json')
+    assert track['videoId'] == review['videoId'] == VID
+    decisions = {e['sourceId']: e for e in review['events']}
+    assert len(decisions) == len(track['cues'])
+    for cue in track['cues']:
+        assert len(cue['sourceIds']) == 1
+        event = decisions[cue['sourceIds'][0]]
+        assert cue['text'] == event['text']
+        assert dict(start=cue['start'], end=cue['end']) in (event['original'], event['corrected'])
+        cue.update(event['corrected'])
+        cue['timingBasis'] = 'word-aligned' if event['decision'] == 'retime' else 'caption'
+    assert all(c['start'] < c['end'] and (i == 0 or track['cues'][i-1]['end'] <= c['start'])
+               for i, c in enumerate(track['cues']))
+    track.update(status='model_aligned_listening_pending', timingBasis='word-aligned',
+                 timingRevision=review['revision'],
+                 note='指定來源為ゆっぴー頻道；29 張已比對畫面，12 張依詞位置校時、17 張保留畫面時間；歡呼與全曲逐句聽校待完成。')
+    return track
+
+
+def retime_catalog():
+    catalog = read(ROOT / 'rescene/songs.json')
+    song = next(s for s in catalog if s['title'] == 'YoYo')
+    song['chant'] = apply_entry_timing(song['chant'])
+    song['note'] = '指定應援教學 · 29 張提示卡 · 詞句校時，聽校待完成'
+    write(ROOT / 'rescene/songs.json', catalog)
+
+
 def prepare():
     tasks = read(FOLDER / 'chant-ocr-tasks.json')['tasks']
     events = []
@@ -86,11 +115,12 @@ def finalize():
     cues=[dict(start=e['start'], end=e['end'], text=e['card_text'], sourceIds=[e['id']]) for e in ledger['events']]
     track=dict(videoId=VID, status=ledger['status'], timingBasis='caption',
                note='指定來源為ゆっぴー頻道；只收錄藍色應援標記，時間依字幕顯示區間，尚未逐句聽校。', cues=cues)
+    track = apply_entry_timing(track)
     catalog=read(ROOT / 'rescene/songs.json')
     existing=next((s for s in catalog if s['title']=='YoYo'), None)
     song=dict(number=existing['number'] if existing else max(s['number'] for s in catalog)+1,
               title='YoYo', artist='RESCENE', section='YoYo', hasChant=True,
-              note=f'指定應援教學 · {len(cues)} 張提示卡 · 依畫面定位，聽校待完成',
+              note=f'指定應援教學 · {len(cues)} 張提示卡 · 詞句校時，聽校待完成',
               sources=[dict(kind='應援教學（ゆっぴー）', title=info['title'], url=URL, videoId=VID)], chant=track)
     if existing: catalog[catalog.index(existing)]=song
     else: catalog.append(song)
@@ -115,5 +145,6 @@ def finalize():
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--prepare', action='store_true')
+    parser.add_argument('--retime', action='store_true', help='Apply saved entry review to the catalog without re-running OCR')
     args=parser.parse_args()
-    prepare() if args.prepare else finalize()
+    retime_catalog() if args.retime else prepare() if args.prepare else finalize()

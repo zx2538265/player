@@ -46,7 +46,7 @@ test('YoYo switches its own video, captions and replay without carrying old cues
   assert.equal(p.options.videoId,'ykVJo0wFlQ4');
   p.time=cue.start;p.emit(1);s.tick();
   assert.equal(s.get('chantText').textContent,'찾아내');
-  assert.equal(s.get('chantLabel').textContent,'本句應援');
+  assert.equal(s.get('chantLabel').textContent,'現在喊！');
   p.emit(2);s.tick();assert.equal(s.get('chantLabel').textContent,'已暫停');
   s.get('repeatCue').onclick();assert.equal(p.time,cue.start-3);
   s.select(0);s.players[2].ready();

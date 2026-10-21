@@ -4,7 +4,7 @@
     "title": "LOVE ATTACK",
     "artist": "RESCENE",
     "section": "SCENEDROME",
-    "note": "官方應援教學 · 40 張提示卡 · 依畫面定位，聽校待完成",
+    "note": "官方應援教學 · 42 張提示卡 · 依畫面定位，聽校待完成",
     "hasChant": true,
     "sources": [
       {
@@ -260,11 +260,27 @@
           ]
         },
         {
+          "start": 154.1,
+          "end": 155.4,
+          "text": "I am all you need",
+          "sourceIds": [
+            "xn12KH78Dx4-201-repeat"
+          ]
+        },
+        {
           "start": 156.7,
           "end": 158.2,
           "text": "I am all you need",
           "sourceIds": [
             "xn12KH78Dx4-203"
+          ]
+        },
+        {
+          "start": 158.5,
+          "end": 159.7,
+          "text": "I am all you need",
+          "sourceIds": [
+            "xn12KH78Dx4-203-repeat"
           ]
         },
         {

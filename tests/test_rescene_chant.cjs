@@ -4,8 +4,8 @@ const assert=require('node:assert/strict');
 const Chant=require('../rescene/chant.js');
 const songs=require('../rescene/songs.json');
 
-test('419 source-bound cards have unique provenance and valid boundaries',()=>{
-  assert.deepEqual(songs.map(s=>s.chant.cues.length),[40,31,46,35,52,46,34,28,30,29,48]);
+test('421 source-bound cards have unique provenance and valid boundaries',()=>{
+  assert.deepEqual(songs.map(s=>s.chant.cues.length),[42,31,46,35,52,46,34,28,30,29,48]);
   const ids=new Set();
   for(const song of songs){
     const track=song.chant,id=song.sources[0].videoId;
@@ -19,7 +19,17 @@ test('419 source-bound cards have unique provenance and valid boundaries',()=>{
       assert.ok(!cue.text.includes(' / '));
     }
   }
-  assert.equal(ids.size,419);
+  assert.equal(ids.size,421);
+});
+
+test('LOVE ATTACK retains both fills of each repeated phrase, including replay',()=>{
+  const track=songs.find(s=>s.title==='LOVE ATTACK').chant;
+  assert.equal(track.cues.filter(c=>c.text==='I am all you need').length,4);
+  for(const t of [152.5,154.5,157,159,154.5]){
+    assert.equal(Chant.state(track,t,1).mode,'active');
+    assert.equal(Chant.state(track,t,1).text,'I am all you need');
+  }
+  for(const t of [155.5,159.8]) assert.notEqual(Chant.state(track,t,1).mode,'active');
 });
 
 test('Busy Boy binds only pink responses to the requested fan source',()=>{

@@ -1,0 +1,10 @@
+{
+  "videoId": "xn12KH78Dx4",
+  "reviewDate": "2026-10-21",
+  "basis": "Sequential official-source frames at 0.1-second intervals; pink fill resets within unchanged text. Audio and live playback not verified.",
+  "evidence": "video/xn12KH78Dx4/repeat-boundaries.jpg: row-major, 5 columns, first sample 151.5s, step 0.1s",
+  "cues": [
+    {"start": 154.1, "end": 155.4, "text": "I am all you need", "sourceIds": ["xn12KH78Dx4-201-repeat"]},
+    {"start": 158.5, "end": 159.7, "text": "I am all you need", "sourceIds": ["xn12KH78Dx4-203-repeat"]}
+  ]
+}

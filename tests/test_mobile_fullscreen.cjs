@@ -18,6 +18,7 @@ function setup() {
     } } },
     toggleRotationBtnEl: button, videoOrientationEl: {}, localStorage: { getItem: () => null },
     isPseudoFullscreen: true, rotationPreference: null, videoOrientation: 'landscape',
+    videoOrientationSource: 'verified',
     videoAspectRatio: 16 / 9, playerSurfaceEl: { clientWidth: 390, clientHeight: 844 },
     getSubtitlePreset: () => ({ key: 'horizontal' }), subtitleRatioBucket: 'horizontal',
     subtitleSettings: { fontSizePercent: 5, bottom: 8 },
@@ -45,10 +46,10 @@ test('portrait fullscreen captions use the letterboxed video height, not the ful
 test('only a known landscape video auto-rotates in a portrait touch in-app browser', () => {
   const { context: app } = setup();
   const base = { fullscreen: true, touch: true, portrait: true, inApp: true,
-    orientation: 'landscape', preference: null };
+    orientation: 'landscape', preference: null, source: 'verified' };
   assert.equal(app.shouldRotatePlayer(base), true);
   for (const change of [{ fullscreen: false }, { touch: false }, { portrait: false },
-    { inApp: false }, { orientation: 'portrait' }, { orientation: 'unknown' }]) {
+    { inApp: false }, { orientation: 'portrait' }, { orientation: 'unknown' }, { source: 'embed' }, { source: 'unknown' }]) {
     assert.equal(app.shouldRotatePlayer({ ...base, ...change }), false);
   }
 });
@@ -99,13 +100,46 @@ test('late ratio results cannot rotate a different video or override a newer man
   assert.equal(app.videoOrientation, 'portrait');
   assert.equal(classes.has('is-rotated'), false);
 });
-test('detected landscape enables automatic rotation without changing the auto selection', async () => {
+test('verified landscape enables automatic rotation without changing the auto selection', async () => {
   const { context: app, classes } = setup();
-  app.youtubeRatio.get = async () => ({ orientation: 'landscape' });
+  app.youtubeRatio.get = async () => ({ orientation: 'landscape', source: 'verified' });
   app.loadVideoOrientation('new-video');
   await Promise.resolve();
   assert.equal(app.videoOrientation, 'landscape');
   assert.equal(app.videoOrientationEl.value, 'unknown');
+  assert.equal(classes.has('is-rotated'), true);
+});
+test('misleading horizontal oEmbed does not automatically rotate a vertical video in any in-app browser', async () => {
+  for (const userAgent of ['Instagram', 'Threads', 'FBAN/FBIOS']) {
+    const { context: app, classes } = setup();
+    app.navigator.userAgent = userAgent;
+    app.youtubeRatio.get = async () => ({ orientation: 'landscape', ratio: 200/113, source: 'embed' });
+    app.loadVideoOrientation('lkHYRzXyGnk');
+    await Promise.resolve();
+    assert.equal(classes.has('is-rotated'), false, userAgent);
+    app.togglePlayerRotation();
+    assert.equal(classes.has('is-rotated'), true, 'manual rotation remains available');
+  }
+});
+test('legacy landscape preference cannot bypass verified vertical dimensions', async () => {
+  for (const userAgent of ['Instagram', 'Threads', 'FBAN/FBIOS']) {
+    const { context: app, classes } = setup();
+    app.navigator.userAgent = userAgent;
+    app.localStorage.getItem = () => 'landscape';
+    app.youtubeRatio.get = async () => ({ orientation: 'portrait', ratio: 9/16, source: 'verified' });
+    app.loadVideoOrientation('lkHYRzXyGnk');
+    assert.equal(classes.has('is-rotated'), false, 'must wait without rotating');
+    await Promise.resolve();
+    assert.equal(app.videoOrientation, 'portrait');
+    assert.equal(classes.has('is-rotated'), false, userAgent);
+  }
+});
+test('new explicit landscape preference remains available and does not require network', () => {
+  const { context: app, classes } = setup();
+  app.localStorage.getItem = () => JSON.stringify({ version: 2, orientation: 'landscape' });
+  app.youtubeRatio.get = () => { throw Error('should not fetch for explicit manual choice'); };
+  app.loadVideoOrientation('another-video');
+  assert.equal(app.videoOrientationSource, 'manual');
   assert.equal(classes.has('is-rotated'), true);
 });
 test('native fullscreen rejection enters the existing pseudo fullscreen fallback', async () => {

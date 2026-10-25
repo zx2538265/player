@@ -681,6 +681,7 @@
     let isPseudoFullscreen = false;
     let rotationPreference = null;
     let videoOrientation = "unknown";
+    let videoOrientationSource = "unknown";
     let videoAspectRatio = 16 / 9;
     let isPlayerPlaying = false;
     let orientationRequestToken = 0;
@@ -1262,9 +1263,10 @@
       return window.matchMedia("(any-pointer: coarse)").matches;
     }
 
-    function shouldRotatePlayer({ fullscreen, touch, portrait, inApp, orientation, preference }) {
+    function shouldRotatePlayer({ fullscreen, touch, portrait, inApp, orientation, preference, source }) {
       return fullscreen && portrait &&
-        (preference === null ? touch && inApp && orientation === "landscape" : preference);
+        (preference === null ? touch && inApp && orientation === "landscape" &&
+          (source === "verified" || source === "manual") : preference);
     }
 
     function syncPlayerContentGeometry() {
@@ -1291,7 +1293,7 @@
       const fullscreen = isPseudoFullscreen || getFullscreenElement() === playerWrapEl;
       const inApp = /FBAN|FBAV|Instagram|Threads|Barcelona|FB_IAB|FBSS/i.test(navigator.userAgent || "");
       const rotated = shouldRotatePlayer({ fullscreen, touch: isTouchDevice(), portrait,
-        inApp, orientation: videoOrientation, preference: rotationPreference });
+        inApp, orientation: videoOrientation, preference: rotationPreference, source: videoOrientationSource });
       playerWrapEl.classList.toggle("is-rotated", rotated);
       syncPlayerContentGeometry();
       syncSubtitleSettingsPlacement();
@@ -1316,9 +1318,20 @@
     function loadVideoOrientation(videoId) {
       const token = ++orientationRequestToken;
       videoOrientation = "unknown";
+      videoOrientationSource = "unknown";
       try {
         const stored = localStorage.getItem(`player-test-orientation:${videoId}`);
-        if (["landscape", "portrait"].includes(stored)) videoOrientation = stored;
+        if (stored === "portrait") {
+          videoOrientation = "portrait";
+          videoOrientationSource = "manual";
+        } else if (stored && stored !== "landscape" && stored !== "unknown") {
+          const saved = JSON.parse(stored);
+          if (saved.version === 2 && ["landscape", "portrait"].includes(saved.orientation)) {
+            videoOrientation = saved.orientation;
+            videoOrientationSource = "manual";
+          }
+        }
+        // Legacy landscape choices may have been made while oEmbed misclassified vertical videos.
       } catch { /* Playback remains available when storage is blocked. */ }
       videoOrientationEl.value = videoOrientation;
       videoAspectRatio = videoOrientation === "portrait" ? 9 / 16 : 16 / 9;
@@ -1336,6 +1349,7 @@
           return;
         }
         videoOrientation = result.orientation;
+        videoOrientationSource = result.source === "verified" ? "verified" : "embed";
         videoAspectRatio = result.ratio || (result.orientation === "portrait" ? 9 / 16 : result.orientation === "square" ? 1 : 16 / 9);
         const label = { landscape: "橫式", portrait: "直式", square: "方形" }[videoOrientation];
         videoOrientationStatusEl.textContent = result.source === "verified" ?
@@ -1623,13 +1637,15 @@
       ++orientationRequestToken;
       const selected = videoOrientationEl.value;
       try {
-        localStorage.setItem(`player-test-orientation:${requestedVideoId || initialVideoId}`, selected);
+        localStorage.setItem(`player-test-orientation:${requestedVideoId || initialVideoId}`,
+          JSON.stringify({ version: 2, orientation: selected }));
       } catch { /* The current selection still works without storage. */ }
       if (selected === "unknown") {
         loadVideoOrientation(requestedVideoId || initialVideoId);
         return;
       }
       videoOrientation = selected;
+      videoOrientationSource = "manual";
       videoAspectRatio = selected === "portrait" ? 9 / 16 : 16 / 9;
       videoOrientationStatusEl.textContent = "使用手動設定";
       rotationPreference = null;

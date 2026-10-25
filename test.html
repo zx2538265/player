@@ -277,7 +277,7 @@
       z-index: 30;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
       align-items: flex-end;
       pointer-events: auto;
       opacity: 1;
@@ -291,11 +291,11 @@
     }
 
     .player-icon-btn {
-      width: 48px;
-      min-height: 52px;
-      padding: 5px 2px;
+      width: 40px;
+      min-height: 44px;
+      padding: 3px 2px;
       box-sizing: border-box;
-      border-radius: 12px;
+      border-radius: 10px;
       background: rgba(0, 0, 0, 0.55);
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.18);
@@ -304,7 +304,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
       transition: background 0.18s ease, border-color 0.18s ease;
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
@@ -313,8 +313,8 @@
       pointer-events: auto;
     }
 
-    .player-icon-btn svg { width: 22px; height: 22px; flex: 0 0 auto; }
-    .control-label { font-size: 11px; line-height: 1.2; white-space: nowrap; }
+    .player-icon-btn svg { width: 18px; height: 18px; flex: 0 0 auto; }
+    .control-label { font-size: 10px; line-height: 1.2; white-space: nowrap; }
     .fullscreen-btn .exit-icon { display: none; }
     .fullscreen-btn.is-active .enter-icon { display: none; }
     .fullscreen-btn.is-active .exit-icon { display: block; }
@@ -335,9 +335,9 @@
 
     .floating-subtitle-settings {
       position: absolute;
-      right: 76px;
+      right: 64px;
       top: 12px;
-      width: min(300px, calc(100% - 96px));
+      width: min(300px, calc(100% - 80px));
       max-height: calc(var(--player-surface-height, 100dvh) - 24px);
       overflow-y: auto;
       overscroll-behavior: contain;
@@ -434,21 +434,21 @@
       }
 
       .player-icon-btn {
-        width: 44px;
-        min-height: 48px;
+        width: 38px;
+        min-height: 42px;
       }
 
       .floating-subtitle-settings {
-        right: 64px;
-        width: min(300px, calc(100% - 80px));
+        right: 56px;
+        width: min(300px, calc(100% - 72px));
       }
     }
 
     .player-wrap.is-rotated .orientation-hint { display: none; }
     .player-wrap.is-rotated .player-side-tools { right: max(12px, env(safe-area-inset-bottom)); }
     .player-wrap.is-rotated .floating-subtitle-settings {
-      right: max(76px, calc(env(safe-area-inset-bottom) + 64px));
-      width: min(300px, calc(100% - 96px));
+      right: max(64px, calc(env(safe-area-inset-bottom) + 52px));
+      width: min(300px, calc(100% - 80px));
     }
     .video-orientation-setting { display: grid; gap: 6px; }
     .video-orientation-setting select { color: #fff; background: #252525; padding: 8px; width: 100%; }

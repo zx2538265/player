@@ -20,6 +20,7 @@ function setup() {
     isPseudoFullscreen: true, rotationPreference: null, videoOrientation: 'landscape',
     videoAspectRatio: 16 / 9, playerSurfaceEl: { clientWidth: 390, clientHeight: 844 },
     syncFullscreenViewportSize() {},
+    syncSubtitleSettingsPlacement() {},
     orientationRequestToken: 0, videoOrientationStatusEl: {}, youtubeRatio: { get: async () => null },
     getFullscreenElement: () => null, revealPlayerSideTools() {},
   };
@@ -125,4 +126,30 @@ test('paused player and open settings keep controls visible; playing schedules h
   app.schedulePlayerSideToolsAutoHide(); assert.equal(scheduled, 1);
   app.subtitleSettingsEl.classList.contains = () => true;
   app.schedulePlayerSideToolsAutoHide(); assert.equal(scheduled, 1);
+});
+test('settings move outside the clipped video inline and inside its surface in fullscreen', () => {
+  const classes = new Set();
+  const panel = { parentElement: null };
+  function host() { return { appendChild(node) { node.parentElement = this; } }; }
+  const app = { playerWrapEl: { classList: { contains: c => classes.has(c) } },
+    subtitleSettingsEl: panel, inlineSubtitleSettingsEl: host(), playerSurfaceEl: host() };
+  vm.createContext(app);
+  vm.runInContext(section('    function syncSubtitleSettingsPlacement()', '    function setSubtitleSettingsOpen('), app);
+  app.syncSubtitleSettingsPlacement();
+  assert.equal(panel.parentElement, app.inlineSubtitleSettingsEl);
+  classes.add('is-fullscreen'); app.syncSubtitleSettingsPlacement();
+  assert.equal(panel.parentElement, app.playerSurfaceEl);
+  classes.clear(); app.syncSubtitleSettingsPlacement();
+  assert.equal(panel.parentElement, app.inlineSubtitleSettingsEl);
+});
+test('interacting with the relocated settings panel does not close it', () => {
+  let closed = false;
+  const app = { playerSideToolsEl: { contains: () => false }, subtitleSettingsEl: { contains: () => true },
+    setSubtitleSettingsOpen() { closed = true; }, revealPlayerSideTools() {} };
+  vm.createContext(app);
+  vm.runInContext(section('    function handleDocumentClick(', '    async function loadSubtitleFromSrtFolder('), app);
+  app.handleDocumentClick({ target: {} });
+  assert.equal(closed, false);
+  app.subtitleSettingsEl.contains = () => false;
+  app.handleDocumentClick({ target: {} }); assert.equal(closed, true);
 });

@@ -110,8 +110,6 @@
       transform: translate(-50%, -50%) rotate(90deg);
     }
     .player-wrap .rotate-btn { display: none; }
-    .rotate-btn::before { content: "↻"; font-size: 24px; }
-    .rotate-btn[aria-pressed="true"]::before { content: "↺"; }
     @media (any-pointer: coarse) {
       .player-wrap.is-fullscreen .rotate-btn { display: flex; }
     }
@@ -294,9 +292,11 @@
     }
 
     .player-icon-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
+      width: 48px;
+      min-height: 52px;
+      padding: 5px 2px;
+      box-sizing: border-box;
+      border-radius: 12px;
       background: rgba(0, 0, 0, 0.55);
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.18);
@@ -304,6 +304,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      gap: 3px;
       transition: background 0.18s ease, border-color 0.18s ease;
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
@@ -312,21 +314,13 @@
       pointer-events: auto;
     }
 
-    .fullscreen-btn::before {
-      content: "⤢";
-      font-size: 18px;
-      line-height: 1;
-    }
-
-    .fullscreen-btn.is-active::before {
-      content: "⤡";
-    }
-
-    .subtitle-setting-btn::before {
-      content: "⚙";
-      font-size: 17px;
-      line-height: 1;
-    }
+    .player-icon-btn svg { width: 22px; height: 22px; flex: 0 0 auto; }
+    .control-label { font-size: 11px; line-height: 1.2; white-space: nowrap; }
+    .fullscreen-btn .exit-icon { display: none; }
+    .fullscreen-btn.is-active .enter-icon { display: none; }
+    .fullscreen-btn.is-active .exit-icon { display: block; }
+    .rotate-btn[aria-pressed="true"] svg { transform: rotate(-90deg); }
+    .player-icon-btn:disabled { opacity: 0.5; cursor: default; }
 
     .player-icon-btn:hover {
       background: rgba(255, 255, 255, 0.16);
@@ -340,10 +334,13 @@
 
     .floating-subtitle-settings {
       position: absolute;
-      right: 48px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 260px;
+      right: 76px;
+      top: 12px;
+      width: min(300px, calc(100% - 96px));
+      max-height: calc(var(--player-surface-height, 100dvh) - 24px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      box-sizing: border-box;
       display: none;
       grid-template-columns: 1fr;
       gap: 10px;
@@ -360,6 +357,16 @@
     .floating-subtitle-settings.is-open {
       display: grid;
     }
+
+    .inline-subtitle-settings .floating-subtitle-settings {
+      position: static;
+      width: 100%;
+      max-height: none;
+      margin-top: 12px;
+    }
+    .settings-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .settings-heading strong { font-size: 14px; }
+    .settings-close { color: #fff; background: transparent; border: 1px solid #666; border-radius: 8px; min-height: 36px; padding: 4px 12px; cursor: pointer; }
 
     .subtitle-layer {
       position: absolute;
@@ -453,13 +460,13 @@
       }
 
       .player-icon-btn {
-        width: 36px;
-        height: 36px;
+        width: 44px;
+        min-height: 48px;
       }
 
       .floating-subtitle-settings {
-        right: 44px;
-        width: min(240px, calc(100vw - 72px));
+        right: 64px;
+        width: min(300px, calc(100% - 80px));
       }
     }
 
@@ -476,9 +483,8 @@
     .player-wrap.is-rotated .orientation-hint { display: none; }
     .player-wrap.is-rotated .player-side-tools { right: max(12px, env(safe-area-inset-bottom)); }
     .player-wrap.is-rotated .floating-subtitle-settings {
-      width: min(240px, calc(var(--fullscreen-viewport-height) - 72px));
-      max-height: calc(var(--fullscreen-viewport-width) - 24px);
-      overflow-y: auto;
+      right: max(76px, calc(env(safe-area-inset-bottom) + 64px));
+      width: min(300px, calc(100% - 96px));
     }
     .video-orientation-setting { display: grid; gap: 6px; }
     .video-orientation-setting select { color: #fff; background: #252525; padding: 8px; width: 100%; }
@@ -624,18 +630,29 @@
       </div>
       <div id="orientationHint" class="orientation-hint" role="status" aria-live="polite" aria-hidden="true">
         <span class="orientation-hint-icon" aria-hidden="true"></span>
-        <span>若為橫式影片，可將手機轉成橫向觀看</span>
+        <span>想橫向觀看？轉動手機，或點右側「轉橫」</span>
       </div>
       <div class="player-side-tools">
         <button id="toggleRotationBtn" class="player-icon-btn rotate-btn" type="button"
-          aria-label="旋轉播放畫面" title="旋轉播放畫面" aria-pressed="false"></button>
+          aria-label="旋轉播放畫面" title="旋轉播放畫面" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="9" height="15" rx="2"/><path d="M10 17h1M16 3a7 7 0 0 1 5 7m0-5v5h-5"/></svg>
+          <span class="control-label">轉橫</span>
+        </button>
         <button id="toggleFullscreenBtn" class="player-icon-btn fullscreen-btn" type="button" aria-label="進入全螢幕"
-          title="進入全螢幕"></button>
+          title="進入全螢幕">
+          <svg class="enter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>
+          <svg class="exit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h5V3m8 0v5h5M8 21v-5H3m13 5v-5h5"/></svg>
+          <span class="control-label">放大</span>
+        </button>
 
         <button id="toggleSubtitleSettingsBtn" class="player-icon-btn subtitle-setting-btn" type="button"
-          aria-label="開啟字幕設定" aria-expanded="false" title="開啟字幕設定"></button>
+          aria-label="開啟字幕設定" aria-expanded="false" aria-controls="subtitleSettings" title="開啟字幕設定">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M6 9h5m3 0h4M6 14h3m3 0h6"/></svg>
+          <span class="control-label">字幕</span>
+        </button>
 
         <div class="subtitle-settings floating-subtitle-settings" id="subtitleSettings">
+          <div class="settings-heading"><strong>字幕設定</strong><button id="closeSubtitleSettingsBtn" class="settings-close" type="button">關閉</button></div>
           <label class="video-orientation-setting" for="videoOrientation">
             <span class="setting-label">這支影片的方向</span>
             <select id="videoOrientation">
@@ -666,6 +683,7 @@
       </div>
     </div>
     </div>
+    <div id="inlineSubtitleSettings" class="inline-subtitle-settings"></div>
     <div class="info" id="info">尚未載入字幕</div>
     <div class="list" id="subtitleList"></div>
 
@@ -731,6 +749,7 @@
     const subtitleTopEl = document.getElementById("subtitleTop");
     const subtitleListEl = document.getElementById("subtitleList");
     const subtitleSettingsEl = document.getElementById("subtitleSettings");
+    const inlineSubtitleSettingsEl = document.getElementById("inlineSubtitleSettings");
     const subtitleScaleRangeEl = document.getElementById("subtitleScaleRange");
     const subtitleBottomRangeEl = document.getElementById("subtitleBottomRange");
     const subtitleBottomFsRangeEl = document.getElementById("subtitleBottomFsRange");
@@ -764,9 +783,17 @@
       toggleFullscreenBtnEl.classList.toggle("is-active", isFullscreen);
       toggleFullscreenBtnEl.setAttribute("aria-label", label);
       toggleFullscreenBtnEl.setAttribute("title", label);
+      const text = toggleFullscreenBtnEl.querySelector(".control-label");
+      if (text) text.textContent = isFullscreen ? "縮小" : "放大";
+    }
+
+    function syncSubtitleSettingsPlacement() {
+      const host = playerWrapEl.classList.contains("is-fullscreen") ? playerSurfaceEl : inlineSubtitleSettingsEl;
+      if (subtitleSettingsEl.parentElement !== host) host.appendChild(subtitleSettingsEl);
     }
 
     function setSubtitleSettingsOpen(isOpen) {
+      syncSubtitleSettingsPlacement();
       const label = isOpen ? "關閉字幕設定" : "開啟字幕設定";
       subtitleSettingsEl.classList.toggle("is-open", isOpen);
       toggleSubtitleSettingsBtnEl.setAttribute("aria-expanded", isOpen ? "true" : "false");
@@ -774,6 +801,7 @@
       toggleSubtitleSettingsBtnEl.setAttribute("title", label);
 
       if (isOpen) {
+        hideOrientationHint();
         revealPlayerSideTools();
         clearPlayerControlsHideTimer();
       } else {
@@ -1278,6 +1306,7 @@
       const width = Math.min(availableWidth, availableHeight * videoAspectRatio);
       playerWrapEl.style.setProperty("--video-content-width", `${width}px`);
       playerWrapEl.style.setProperty("--video-content-height", `${width / videoAspectRatio}px`);
+      playerWrapEl.style.setProperty("--player-surface-height", `${availableHeight}px`);
     }
 
     function syncPlayerRotation() {
@@ -1289,11 +1318,14 @@
         inApp, orientation: videoOrientation, preference: rotationPreference });
       playerWrapEl.classList.toggle("is-rotated", rotated);
       syncPlayerContentGeometry();
+      syncSubtitleSettingsPlacement();
       toggleRotationBtnEl.setAttribute("aria-pressed", String(rotated));
       toggleRotationBtnEl.disabled = !portrait;
       const label = !portrait ? "手機直向時可旋轉播放畫面" : rotated ? "還原播放畫面" : "旋轉播放畫面";
       toggleRotationBtnEl.title = label;
       toggleRotationBtnEl.setAttribute("aria-label", label);
+      const text = toggleRotationBtnEl.querySelector?.(".control-label");
+      if (text) text.textContent = rotated ? "還原" : "轉橫";
       if (!fullscreen) rotationPreference = null;
     }
 
@@ -1360,9 +1392,13 @@
     }
 
     function syncOrientationHintState(isFullscreen) {
-      if (isFullscreen && !wasPlayerFullscreen) {
+      const viewport = window.visualViewport;
+      const portrait = (viewport?.height || window.innerHeight) > (viewport?.width || window.innerWidth);
+      const helpful = isFullscreen && isTouchDevice() && portrait && videoOrientation !== "portrait" &&
+        !subtitleSettingsEl.classList.contains("is-open");
+      if (helpful && !wasPlayerFullscreen) {
         showOrientationHintTemporarily();
-      } else if (!isFullscreen) {
+      } else if (!helpful) {
         hideOrientationHint();
       }
 
@@ -1469,7 +1505,7 @@
     }
 
     function handleDocumentClick(e) {
-      if (!playerSideToolsEl.contains(e.target)) {
+      if (!playerSideToolsEl.contains(e.target) && !subtitleSettingsEl.contains(e.target)) {
         setSubtitleSettingsOpen(false);
       }
 
@@ -1602,6 +1638,7 @@
     playerSideToolsEl.addEventListener("focusout", handleSideToolsFocusOut);
 
     toggleFullscreenBtnEl.addEventListener("click", togglePlayerFullscreen);
+    document.getElementById("closeSubtitleSettingsBtn").addEventListener("click", () => setSubtitleSettingsOpen(false));
     toggleRotationBtnEl.addEventListener("click", togglePlayerRotation);
     videoOrientationEl.addEventListener("change", () => {
       ++orientationRequestToken;

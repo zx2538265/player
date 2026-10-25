@@ -64,3 +64,44 @@ test('missing verified metadata keeps oEmbed fallback available', async () => {
   assert.equal(result.orientation, 'landscape');
   assert.equal(result.source, 'embed');
 });
+test('a transient metadata failure retries before misclassifying the known portrait video', async () => {
+  let metadataCalls = 0, embedCalls = 0;
+  const api = createLookup({ fetch: async url => {
+    if (url === 'test-video-geometry.json') {
+      metadataCalls++;
+      return { ok: metadataCalls > 1, json: async () => require('../test-video-geometry.json') };
+    }
+    embedCalls++; return { ok: true, json: async () => ({ width: 200, height: 113 }) };
+  } });
+  const result = await api.get('lkHYRzXyGnk');
+  assert.equal(result.orientation, 'portrait');
+  assert.equal(result.source, 'verified');
+  assert.equal(metadataCalls, 2); assert.equal(embedCalls, 0);
+});
+test('after a metadata outage, a subsequent lookup recovers instead of caching the wrong fallback', async () => {
+  let healthy = false, metadataCalls = 0;
+  const api = createLookup({ fetch: async url => {
+    if (url === 'test-video-geometry.json') {
+      metadataCalls++; return { ok: healthy, json: async () => require('../test-video-geometry.json') };
+    }
+    return { ok: true, json: async () => ({ width: 200, height: 113 }) };
+  } });
+  assert.equal((await api.get('lkHYRzXyGnk')).source, 'embed');
+  healthy = true;
+  const recovered = await api.get('lkHYRzXyGnk');
+  assert.equal(recovered.orientation, 'portrait');
+  assert.equal(metadataCalls, 3);
+});
+test('Safari without AbortSignal.timeout can still load the verified geometry', async () => {
+  const fs = require('node:fs'), vm = require('node:vm');
+  const context = { module: { exports: {} }, URL, AbortController, setTimeout, clearTimeout };
+  vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname, '../test-youtube-ratio.js'), 'utf8'), context);
+  let receivedSignal = false;
+  const api = context.module.exports.createYouTubeRatioLookup({ fetch: async (url, settings) => {
+    receivedSignal = !!settings.signal;
+    return { ok: true, json: async () => require('../test-video-geometry.json') };
+  } });
+  const result = await api.get('lkHYRzXyGnk');
+  assert.equal(result.orientation, 'portrait');
+  assert.equal(receivedSignal, true);
+});

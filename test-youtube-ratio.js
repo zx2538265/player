@@ -7,18 +7,42 @@
     const now = options.now || Date.now;
     const ttl = 24 * 60 * 60 * 1000;
     let verifiedRequest;
+    let verifiedLoaded = false;
+
+    function fetchWithTimeout(url, settings, milliseconds) {
+      if (typeof root.AbortSignal?.timeout === 'function') {
+        return request(url, { ...settings, signal: root.AbortSignal.timeout(milliseconds) });
+      }
+      const controller = new root.AbortController();
+      const timer = root.setTimeout(() => controller.abort(), milliseconds);
+      try {
+        return Promise.resolve(request(url, { ...settings, signal: controller.signal }))
+          .finally(() => root.clearTimeout(timer));
+      } catch (error) {
+        root.clearTimeout(timer);
+        return Promise.reject(error);
+      }
+    }
 
     async function verifiedGeometry() {
       if (options.verifiedGeometry) return options.verifiedGeometry;
       if (!verifiedRequest) verifiedRequest = (async () => {
-        try {
-          const response = await request('test-video-geometry.json', { cache: 'no-cache', signal: AbortSignal.timeout(3000) });
-          if (!response.ok) return {};
-          const data = await response.json();
-          return data.version === 1 && data.videos && typeof data.videos === 'object' ? data.videos : {};
-        } catch { return {}; }
+        for (let attempt = 0; attempt < 2; attempt++) {
+          try {
+            const response = await fetchWithTimeout('test-video-geometry.json', { cache: 'no-cache' }, 3000);
+            if (!response.ok) continue;
+            const data = await response.json();
+            if (data.version === 1 && data.videos && typeof data.videos === 'object' && !Array.isArray(data.videos)) {
+              verifiedLoaded = true;
+              return data.videos;
+            }
+          } catch { /* Retry a transient failure before using inferred geometry. */ }
+        }
+        return {};
       })();
-      return verifiedRequest;
+      const records = await verifiedRequest;
+      if (!verifiedLoaded) verifiedRequest = null;
+      return records;
     }
 
     function parse(data) {
@@ -48,11 +72,11 @@
             cache.set(videoId, { value, time: now() });
             return value;
           }
-          const response = await request(url.href, { signal: AbortSignal.timeout(5000) });
+          const response = await fetchWithTimeout(url.href, {}, 5000);
           if (!response.ok) return null;
           const geometry = parse(await response.json());
           const value = geometry ? { ...geometry, source: 'embed' } : null;
-          if (value) cache.set(videoId, { value, time: now() });
+          if (value && (options.verifiedGeometry || verifiedLoaded)) cache.set(videoId, { value, time: now() });
           return value;
         } catch {
           return null;

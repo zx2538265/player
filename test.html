@@ -654,7 +654,7 @@
 
   <script src="share.js"></script>
   <script src="playback-progress.js"></script>
-  <script src="test-youtube-ratio.js"></script>
+  <script src="test-youtube-ratio.js?v=20261026-1"></script>
   <script>
     let player = null;
     const progress = createPlaybackProgress(() => player, seconds => {
@@ -1328,7 +1328,7 @@
       rotationPreference = null;
       syncPlayerRotation();
       if (videoOrientation !== "unknown") {
-        videoOrientationStatusEl.textContent = "使用手動設定";
+        videoOrientationStatusEl.textContent = `手動設定：${videoOrientation === "portrait" ? "直式" : "橫式"}（可選自動偵測）`;
         return;
       }
       videoOrientationStatusEl.textContent = "正在偵測影片方向…";
@@ -1638,7 +1638,7 @@
       }
       videoOrientation = selected;
       videoAspectRatio = selected === "portrait" ? 9 / 16 : 16 / 9;
-      videoOrientationStatusEl.textContent = "使用手動設定";
+      videoOrientationStatusEl.textContent = `手動設定：${selected === "portrait" ? "直式" : "橫式"}（可選自動偵測）`;
       rotationPreference = null;
       syncPlayerRotation();
     });

@@ -19,6 +19,8 @@ function setup() {
     toggleRotationBtnEl: button, videoOrientationEl: {}, localStorage: { getItem: () => null },
     isPseudoFullscreen: true, rotationPreference: null, videoOrientation: 'landscape',
     videoAspectRatio: 16 / 9, playerSurfaceEl: { clientWidth: 390, clientHeight: 844 },
+    getSubtitlePreset: () => ({ key: 'horizontal' }), subtitleRatioBucket: 'horizontal',
+    subtitleSettings: { fontSizePercent: 5, bottom: 8 },
     syncFullscreenViewportSize() {},
     syncSubtitleSettingsPlacement() {},
     orientationRequestToken: 0, videoOrientationStatusEl: {}, youtubeRatio: { get: async () => null },
@@ -127,20 +129,20 @@ test('paused player and open settings keep controls visible; playing schedules h
   app.subtitleSettingsEl.classList.contains = () => true;
   app.schedulePlayerSideToolsAutoHide(); assert.equal(scheduled, 1);
 });
-test('settings move outside the clipped video inline and inside its surface in fullscreen', () => {
+test('settings stay in the video surface in both inline and fullscreen modes', () => {
   const classes = new Set();
   const panel = { parentElement: null };
   function host() { return { appendChild(node) { node.parentElement = this; } }; }
   const app = { playerWrapEl: { classList: { contains: c => classes.has(c) } },
-    subtitleSettingsEl: panel, inlineSubtitleSettingsEl: host(), playerSurfaceEl: host() };
+    subtitleSettingsEl: panel, playerSurfaceEl: host() };
   vm.createContext(app);
   vm.runInContext(section('    function syncSubtitleSettingsPlacement()', '    function setSubtitleSettingsOpen('), app);
   app.syncSubtitleSettingsPlacement();
-  assert.equal(panel.parentElement, app.inlineSubtitleSettingsEl);
+  assert.equal(panel.parentElement, app.playerSurfaceEl);
   classes.add('is-fullscreen'); app.syncSubtitleSettingsPlacement();
   assert.equal(panel.parentElement, app.playerSurfaceEl);
   classes.clear(); app.syncSubtitleSettingsPlacement();
-  assert.equal(panel.parentElement, app.inlineSubtitleSettingsEl);
+  assert.equal(panel.parentElement, app.playerSurfaceEl);
 });
 test('interacting with the relocated settings panel does not close it', () => {
   let closed = false;
@@ -152,4 +154,61 @@ test('interacting with the relocated settings panel does not close it', () => {
   assert.equal(closed, false);
   app.subtitleSettingsEl.contains = () => false;
   app.handleDocumentClick({ target: {} }); assert.equal(closed, true);
+});
+
+function scalingSetup() {
+  const storage = new Map(), styles = {};
+  const app = { videoAspectRatio: 16 / 9, subtitleRatioBucket: 'horizontal', subtitleSettings: {},
+    subtitleSettingsStorageKey: 'ratio-test',
+    localStorage: { getItem: key => storage.get(key) || null, setItem: (key, value) => storage.set(key, value) },
+    containerEl: { style: { setProperty() {} } },
+    playerWrapEl: { style: { setProperty: (key, value) => { styles[key] = value; } } },
+    playerSurfaceEl: { clientWidth: 1280, clientHeight: 720 },
+    subtitleScaleRangeEl: {}, subtitleBottomRangeEl: {}, subtitleScaleValueEl: {}, subtitleBottomValueEl: {} };
+  vm.createContext(app);
+  vm.runInContext(section('    function getSubtitlePreset(', '    loadSubtitleSettings();'), app);
+  vm.runInContext(section('    function syncPlayerContentGeometry()', '    function syncPlayerRotation()'), app);
+  app.loadSubtitleSettings();
+  return { app, storage, styles };
+}
+test('subtitle size tracks actual video height across inline, portrait fullscreen and rotation', () => {
+  const { app, styles } = scalingSetup();
+  for (const [width, height, expected] of [[1280, 720, 36], [390, 844, 13], [844, 390, 19.5]]) {
+    app.playerSurfaceEl.clientWidth = width; app.playerSurfaceEl.clientHeight = height;
+    app.syncPlayerContentGeometry();
+    assert.equal(parseFloat(styles['--subtitle-font-size']), expected);
+  }
+  app.subtitleSettings.fontSizePercent = 10;
+  app.syncPlayerContentGeometry();
+  assert.equal(parseFloat(styles['--subtitle-font-size']), 39);
+});
+test('all five ratio presets match their font and bottom defaults', () => {
+  const { app } = scalingSetup();
+  for (const [ratio, size, bottom] of [[16/9,5,8], [4/3,4.5,10], [1,4,14], [3/4,3.8,16], [9/16,3.5,18]]) {
+    app.videoAspectRatio = ratio; app.syncPlayerContentGeometry();
+    assert.equal(app.subtitleSettings.fontSizePercent, size);
+    assert.equal(app.subtitleSettings.bottom, bottom);
+  }
+});
+test('ratio-specific preferences survive switching; reset affects only the active ratio', () => {
+  const { app, storage } = scalingSetup();
+  app.subtitleSettings = { fontSizePercent: 7, bottom: 12 }; app.saveSubtitleSettings();
+  app.videoAspectRatio = 9/16; app.syncPlayerContentGeometry();
+  assert.equal(app.subtitleSettings.fontSizePercent, 3.5);
+  app.subtitleSettings = { fontSizePercent: 4, bottom: 22 }; app.saveSubtitleSettings();
+  app.resetCurrentRatioSettings();
+  assert.equal(app.subtitleSettings.fontSizePercent, 3.5);
+  app.videoAspectRatio = 16/9; app.syncPlayerContentGeometry();
+  assert.equal(app.subtitleSettings.fontSizePercent, 7);
+  assert.equal(app.subtitleSettings.bottom, 12);
+  assert.equal(JSON.parse(storage.get('ratio-test')).vertical, undefined);
+});
+test('corrupt or blocked preference storage falls back without stopping sizing', () => {
+  const { app, storage, styles } = scalingSetup();
+  storage.set('ratio-test', '{bad json'); app.loadSubtitleSettings();
+  assert.equal(app.subtitleSettings.fontSizePercent, 5);
+  app.localStorage.getItem = () => { throw Error('blocked'); };
+  app.localStorage.setItem = () => { throw Error('blocked'); };
+  app.saveSubtitleSettings(); app.loadSubtitleSettings(); app.syncPlayerContentGeometry();
+  assert.equal(parseFloat(styles['--subtitle-font-size']), 36);
 });

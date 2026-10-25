@@ -26,7 +26,6 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      --subtitle-scale: 1;
       --subtitle-bottom: 8%;
       --subtitle-bottom-fs: 6%;
       --fullscreen-viewport-width: 100dvw;
@@ -358,12 +357,6 @@
       display: grid;
     }
 
-    .inline-subtitle-settings .floating-subtitle-settings {
-      position: static;
-      width: 100%;
-      max-height: none;
-      margin-top: 12px;
-    }
     .settings-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .settings-heading strong { font-size: 14px; }
     .settings-close { color: #fff; background: transparent; border: 1px solid #666; border-radius: 8px; min-height: 36px; padding: 4px 12px; cursor: pointer; }
@@ -394,7 +387,8 @@
       padding: 3px 14px;
       border-radius: 14px;
       background: rgba(0, 0, 0, 0.7);
-      font-size: calc(clamp(24px, 1.9vw, 32px) * var(--subtitle-scale));
+
+      font-size: var(--subtitle-font-size, 13px);
       line-height: 1.45;
       white-space: pre-wrap;
       word-break: break-word;
@@ -413,20 +407,6 @@
       bottom: var(--subtitle-bottom-fs);
     }
 
-    .player-wrap.is-fullscreen .subtitle-text {
-      font-size: calc(clamp(24px, 1.9vh + 0.6vw, 46px) * var(--subtitle-scale));
-    }
-
-    .player-wrap.is-pseudo-fullscreen .subtitle-text {
-      font-size: calc(clamp(24px, 1.9vh + 0.6vw, 46px) * var(--subtitle-scale));
-    }
-
-    @media (max-width: 1024px) {
-      .subtitle-text {
-        font-size: calc(clamp(20px, 2.8vw, 28px) * var(--subtitle-scale));
-      }
-    }
-
     @media (max-width: 768px) {
       .subtitle-layer {
         left: 4%;
@@ -435,7 +415,7 @@
 
       .subtitle-text {
         max-width: 100%;
-        font-size: calc(clamp(15px, 3.8vw, 24px) * var(--subtitle-scale));
+
         line-height: 1.5;
       }
 
@@ -445,14 +425,6 @@
 
       .player-wrap.is-pseudo-fullscreen .subtitle-layer {
         bottom: max(var(--subtitle-bottom-fs), env(safe-area-inset-bottom));
-      }
-
-      .player-wrap.is-fullscreen .subtitle-text {
-        font-size: calc(clamp(15px, 3.8vw, 24px) * var(--subtitle-scale));
-      }
-
-      .player-wrap.is-pseudo-fullscreen .subtitle-text {
-        font-size: calc(clamp(15px, 3.8vw, 24px) * var(--subtitle-scale));
       }
 
       .player-side-tools {
@@ -470,16 +442,6 @@
       }
     }
 
-    @media (max-width: 768px) and (orientation: portrait) {
-      .player-wrap.is-fullscreen .subtitle-text,
-      .player-wrap.is-pseudo-fullscreen .subtitle-text {
-        font-size: calc(clamp(20px, 5.2vw, 28px) * var(--subtitle-scale));
-      }
-    }
-
-    .player-wrap.is-rotated .subtitle-text {
-      font-size: calc(clamp(15px, 3.8vh, 28px) * var(--subtitle-scale));
-    }
     .player-wrap.is-rotated .orientation-hint { display: none; }
     .player-wrap.is-rotated .player-side-tools { right: max(12px, env(safe-area-inset-bottom)); }
     .player-wrap.is-rotated .floating-subtitle-settings {
@@ -663,27 +625,26 @@
             <span id="videoOrientationStatus" class="setting-label" role="status">尚未偵測</span>
           </label>
           <div class="setting-field">
-            <label class="setting-label" for="subtitleScaleRange">字幕大小</label>
-            <input id="subtitleScaleRange" type="range" min="80" max="160" step="1" value="100" />
-            <div class="setting-value" id="subtitleScaleValue">100%</div>
+            <label class="setting-label" for="subtitleScaleRange">字幕大小（占影片高度）</label>
+            <input id="subtitleScaleRange" type="range" min="3" max="20" step="0.5" value="5" />
+            <div class="setting-value" id="subtitleScaleValue">5%</div>
           </div>
 
           <div class="setting-field">
-            <label class="setting-label" for="subtitleBottomRange">一般位置（底部）</label>
-            <input id="subtitleBottomRange" type="range" min="2" max="20" step="1" value="8" />
+            <label class="setting-label" for="subtitleBottomRange">垂直位置（距影片底部）</label>
+            <input id="subtitleBottomRange" type="range" min="0" max="60" step="1" value="8" />
             <div class="setting-value" id="subtitleBottomValue">8%</div>
           </div>
 
           <div class="setting-field">
             <button id="resetSubtitleSettingsBtn" type="button" class="setting-reset">
-              重設字幕設定
+              重設目前影片比例
             </button>
           </div>
         </div>
       </div>
     </div>
     </div>
-    <div id="inlineSubtitleSettings" class="inline-subtitle-settings"></div>
     <div class="info" id="info">尚未載入字幕</div>
     <div class="list" id="subtitleList"></div>
 
@@ -749,28 +710,20 @@
     const subtitleTopEl = document.getElementById("subtitleTop");
     const subtitleListEl = document.getElementById("subtitleList");
     const subtitleSettingsEl = document.getElementById("subtitleSettings");
-    const inlineSubtitleSettingsEl = document.getElementById("inlineSubtitleSettings");
     const subtitleScaleRangeEl = document.getElementById("subtitleScaleRange");
     const subtitleBottomRangeEl = document.getElementById("subtitleBottomRange");
-    const subtitleBottomFsRangeEl = document.getElementById("subtitleBottomFsRange");
     const subtitleScaleValueEl = document.getElementById("subtitleScaleValue");
     const subtitleBottomValueEl = document.getElementById("subtitleBottomValue");
-    const subtitleBottomFsValueEl = document.getElementById("subtitleBottomFsValue");
     const resetSubtitleSettingsBtnEl = document.getElementById("resetSubtitleSettingsBtn");
     const toggleFullscreenBtnEl = document.getElementById("toggleFullscreenBtn");
     const toggleSubtitleSettingsBtnEl = document.getElementById("toggleSubtitleSettingsBtn");
     const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
-    const subtitleSettingsStorageKey = "yt-srt-subtitle-settings";
+    const subtitleSettingsStorageKey = "player-test-subtitle-ratio-prefs-v1";
     const playerControlsAutoHideDelay = 2200;
     const orientationHintDuration = 5000;
 
-    const defaultSubtitleSettings = {
-      scale: 80,
-      bottom: 8,
-      bottomFs: 6
-    };
-
-    let subtitleSettings = { ...defaultSubtitleSettings };
+    let subtitleRatioBucket = "horizontal";
+    let subtitleSettings = { fontSizePercent: 5, bottom: 8 };
 
     if (initialVideoId) {
       videoIdInput.value = initialVideoId;
@@ -788,8 +741,7 @@
     }
 
     function syncSubtitleSettingsPlacement() {
-      const host = playerWrapEl.classList.contains("is-fullscreen") ? playerSurfaceEl : inlineSubtitleSettingsEl;
-      if (subtitleSettingsEl.parentElement !== host) host.appendChild(subtitleSettingsEl);
+      if (subtitleSettingsEl.parentElement !== playerSurfaceEl) playerSurfaceEl.appendChild(subtitleSettingsEl);
     }
 
     function setSubtitleSettingsOpen(isOpen) {
@@ -881,78 +833,80 @@
       revealPlayerSideTools();
     }
 
-    function normalizeSubtitleSettings(raw) {
-      const scale = Number(raw?.scale);
-      const bottom = Number(raw?.bottom);
-      const bottomFs = Number(raw?.bottomFs);
+    function getSubtitlePreset(ratio) {
+      const presets = {
+        horizontal: { key: "horizontal", fontSizePercent: 5, bottom: 8 },
+        "ratio-4-3": { key: "ratio-4-3", fontSizePercent: 4.5, bottom: 10 },
+        square: { key: "square", fontSizePercent: 4, bottom: 14 },
+        "vertical-3-4": { key: "vertical-3-4", fontSizePercent: 3.8, bottom: 16 },
+        vertical: { key: "vertical", fontSizePercent: 3.5, bottom: 18 }
+      };
+      return presets[ratio >= 1.5 ? "horizontal" : ratio >= 1.15 ? "ratio-4-3" :
+        ratio >= 0.88 ? "square" : ratio >= 0.65 ? "vertical-3-4" : "vertical"];
+    }
 
+    function readSubtitlePreferences() {
+      try {
+        const value = JSON.parse(localStorage.getItem(subtitleSettingsStorageKey) || "{}");
+        return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+      } catch { return {}; }
+    }
+
+    function normalizeSubtitleSettings(raw) {
+      const preset = getSubtitlePreset(videoAspectRatio);
       return {
-        scale: Number.isFinite(scale) ? Math.min(160, Math.max(80, Math.round(scale))) : defaultSubtitleSettings.scale,
-        bottom: Number.isFinite(bottom) ? Math.min(20, Math.max(2, Math.round(bottom))) : defaultSubtitleSettings.bottom,
-        bottomFs: Number.isFinite(bottomFs) ? Math.min(20, Math.max(2, Math.round(bottomFs))) : defaultSubtitleSettings.bottomFs
+        fontSizePercent: typeof raw?.fontSizePercent === "number" && Number.isFinite(raw.fontSizePercent) ?
+          Math.min(20, Math.max(3, raw.fontSizePercent)) : preset.fontSizePercent,
+        bottom: typeof raw?.bottom === "number" && Number.isFinite(raw.bottom) ?
+          Math.min(60, Math.max(0, raw.bottom)) : preset.bottom
       };
     }
 
-    function applySubtitleSettings() {
-      const fullscreenBottom = subtitleBottomFsRangeEl ? subtitleSettings.bottomFs : subtitleSettings.bottom;
-
-      containerEl.style.setProperty("--subtitle-scale", (subtitleSettings.scale / 100).toString());
-      containerEl.style.setProperty("--subtitle-bottom", `${subtitleSettings.bottom}%`);
-      containerEl.style.setProperty("--subtitle-bottom-fs", `${fullscreenBottom}%`);
-
-      subtitleScaleRangeEl.value = String(subtitleSettings.scale);
+    function renderSubtitleSettings() {
+      containerEl.style.setProperty("--subtitle-bottom", subtitleSettings.bottom + "%");
+      containerEl.style.setProperty("--subtitle-bottom-fs", subtitleSettings.bottom + "%");
+      subtitleScaleRangeEl.value = String(subtitleSettings.fontSizePercent);
       subtitleBottomRangeEl.value = String(subtitleSettings.bottom);
-      if (subtitleBottomFsRangeEl) {
-        subtitleBottomFsRangeEl.value = String(subtitleSettings.bottomFs);
-      }
+      subtitleScaleValueEl.textContent = subtitleSettings.fontSizePercent + "%";
+      subtitleBottomValueEl.textContent = subtitleSettings.bottom + "%";
+    }
 
-      subtitleScaleValueEl.textContent = `${subtitleSettings.scale}%`;
-      subtitleBottomValueEl.textContent = `${subtitleSettings.bottom}%`;
-      if (subtitleBottomFsValueEl) {
-        subtitleBottomFsValueEl.textContent = `${subtitleSettings.bottomFs}%`;
-      }
+    function applySubtitleSettings() {
+      renderSubtitleSettings();
+      syncPlayerContentGeometry();
     }
 
     function saveSubtitleSettings() {
-      localStorage.setItem(subtitleSettingsStorageKey, JSON.stringify(subtitleSettings));
+      const preferences = readSubtitlePreferences();
+      preferences[subtitleRatioBucket] = { ...subtitleSettings };
+      try { localStorage.setItem(subtitleSettingsStorageKey, JSON.stringify(preferences)); } catch {}
     }
 
     function loadSubtitleSettings() {
-      try {
-        const raw = localStorage.getItem(subtitleSettingsStorageKey);
-        if (!raw) return;
-        subtitleSettings = normalizeSubtitleSettings(JSON.parse(raw));
-      } catch (err) {
-        subtitleSettings = { ...defaultSubtitleSettings };
-      }
+      subtitleRatioBucket = getSubtitlePreset(videoAspectRatio).key;
+      subtitleSettings = normalizeSubtitleSettings(readSubtitlePreferences()[subtitleRatioBucket]);
+    }
+
+    function resetCurrentRatioSettings() {
+      const preferences = readSubtitlePreferences();
+      delete preferences[subtitleRatioBucket];
+      try { localStorage.setItem(subtitleSettingsStorageKey, JSON.stringify(preferences)); } catch {}
+      subtitleSettings = normalizeSubtitleSettings(null);
+      applySubtitleSettings();
     }
 
     function bindSubtitleSettingEvents() {
       subtitleScaleRangeEl.addEventListener("input", () => {
-        subtitleSettings.scale = Number(subtitleScaleRangeEl.value);
+        subtitleSettings.fontSizePercent = Number(subtitleScaleRangeEl.value);
         applySubtitleSettings();
         saveSubtitleSettings();
       });
-
       subtitleBottomRangeEl.addEventListener("input", () => {
         subtitleSettings.bottom = Number(subtitleBottomRangeEl.value);
         applySubtitleSettings();
         saveSubtitleSettings();
       });
-
-      if (subtitleBottomFsRangeEl) {
-        subtitleBottomFsRangeEl.addEventListener("input", () => {
-          subtitleSettings.bottomFs = Number(subtitleBottomFsRangeEl.value);
-          applySubtitleSettings();
-          saveSubtitleSettings();
-        });
-      }
-
-      resetSubtitleSettingsBtnEl.addEventListener("click", () => {
-        subtitleSettings = { ...defaultSubtitleSettings };
-        applySubtitleSettings();
-        saveSubtitleSettings();
-      });
+      resetSubtitleSettingsBtnEl.addEventListener("click", resetCurrentRatioSettings);
     }
 
     loadSubtitleSettings();
@@ -1300,12 +1254,20 @@
     }
 
     function syncPlayerContentGeometry() {
+      const preset = getSubtitlePreset(videoAspectRatio);
+      if (subtitleRatioBucket !== preset.key) {
+        loadSubtitleSettings();
+        renderSubtitleSettings();
+      }
       const availableWidth = playerSurfaceEl.clientWidth;
       const availableHeight = playerSurfaceEl.clientHeight;
       if (!availableWidth || !availableHeight) return;
       const width = Math.min(availableWidth, availableHeight * videoAspectRatio);
+      const height = width / videoAspectRatio;
+      const fontSize = Math.max(13, height * subtitleSettings.fontSizePercent / 100);
       playerWrapEl.style.setProperty("--video-content-width", `${width}px`);
-      playerWrapEl.style.setProperty("--video-content-height", `${width / videoAspectRatio}px`);
+      playerWrapEl.style.setProperty("--video-content-height", `${height}px`);
+      playerWrapEl.style.setProperty("--subtitle-font-size", `${fontSize}px`);
       playerWrapEl.style.setProperty("--player-surface-height", `${availableHeight}px`);
     }
 

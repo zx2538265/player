@@ -843,10 +843,6 @@
       schedulePlayerSideToolsAutoHide();
     }
 
-    function handleGlobalPointerActivity() {
-      revealPlayerSideTools();
-    }
-
     function getSubtitlePreset(ratio) {
       const presets = {
         horizontal: { key: "horizontal", fontSizePercent: 5, bottom: 8 },
@@ -1500,8 +1496,6 @@
       if (!playerSideToolsEl.contains(e.target) && !subtitleSettingsEl.contains(e.target)) {
         setSubtitleSettingsOpen(false);
       }
-
-      revealPlayerSideTools();
     }
 
     async function loadSubtitleFromSrtFolder(videoId) {
@@ -1622,8 +1616,6 @@
     playerActivityCatcherEl.addEventListener("mousemove", handlePlayerWrapInteraction);
     playerActivityCatcherEl.addEventListener("click", handlePlayerWrapInteraction);
     playerActivityCatcherEl.addEventListener("touchstart", handlePlayerWrapInteraction, { passive: true });
-    document.addEventListener("mousemove", handleGlobalPointerActivity);
-    document.addEventListener("click", handleGlobalPointerActivity);
     playerSideToolsEl.addEventListener("pointerenter", handleSideToolsPointerEnter);
     playerSideToolsEl.addEventListener("pointerleave", handleSideToolsPointerLeave);
     playerSideToolsEl.addEventListener("pointerdown", handleSideToolsPointerDown);
@@ -1716,8 +1708,6 @@
         screen.orientation.removeEventListener("change", handleViewportOrientationChange);
       }
       document.removeEventListener("click", handleDocumentClick);
-      document.removeEventListener("mousemove", handleGlobalPointerActivity);
-      document.removeEventListener("click", handleGlobalPointerActivity);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       playerWrapEl.removeEventListener("mousemove", handlePlayerWrapInteraction);
       playerWrapEl.removeEventListener("click", handlePlayerWrapInteraction);

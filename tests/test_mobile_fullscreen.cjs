@@ -229,6 +229,33 @@ test('interacting with the relocated settings panel does not close it', () => {
   app.subtitleSettingsEl.contains = () => false;
   app.handleDocumentClick({ target: {} }); assert.equal(closed, true);
 });
+test('activity outside the player never reveals controls, while an outside click can close settings', () => {
+  const listeners = {}; let reveals = 0, closes = 0;
+  const app = { document: { addEventListener(name, callback) { (listeners[name] ||= []).push(callback); } },
+    playerSideToolsEl: { contains: () => false }, subtitleSettingsEl: { contains: () => false },
+    setSubtitleSettingsOpen: () => { closes++; }, revealPlayerSideTools: () => { reveals++; } };
+  vm.createContext(app);
+  if (html.includes('    function handleGlobalPointerActivity()')) {
+    vm.runInContext(section('    function handleGlobalPointerActivity()', '    function getSubtitlePreset('), app);
+  }
+  vm.runInContext(section('    function handleDocumentClick(', '    async function loadSubtitleFromSrtFolder('), app);
+  vm.runInContext(html.split('\n').filter(line => /document\.addEventListener\("(?:mousemove|click)"/.test(line)).join('\n'), app);
+  for (const name of ['mousemove', 'click']) for (const callback of listeners[name] || []) callback({ target: {} });
+  assert.equal(reveals, 0);
+  assert.equal(closes, 1);
+});
+test('mouse, click and touch interactions inside the player still reveal controls', () => {
+  let reveals = 0;
+  const listeners = {};
+  class Element { closest() { return null; } }
+  const app = { Element, revealPlayerSideTools: () => { reveals++; },
+    playerWrapEl: { addEventListener(name, callback) { listeners[name] = callback; } } };
+  vm.createContext(app);
+  vm.runInContext(section('    function handlePlayerWrapInteraction(', '    function handleSideToolsPointerEnter('), app);
+  vm.runInContext(html.split('\n').filter(line => /playerWrapEl\.addEventListener\("(?:mousemove|click|touchstart)"/.test(line)).join('\n'), app);
+  for (const name of ['mousemove', 'click', 'touchstart']) listeners[name]({ target: new Element() });
+  assert.equal(reveals, 3);
+});
 
 function scalingSetup() {
   const storage = new Map(), styles = {};
@@ -256,7 +283,7 @@ function controlsSetup() {
     setTimeout: callback => { timers.set(++serial, callback); return serial; },
     clearTimeout: id => timers.delete(id) };
   vm.createContext(app);
-  vm.runInContext(section('    function clearPlayerControlsHideTimer()', '    function handleGlobalPointerActivity()'), app);
+  vm.runInContext(section('    function clearPlayerControlsHideTimer()', '    function getSubtitlePreset('), app);
   const bindings = html.split('\n').filter(line => line.includes('playerSideToolsEl.addEventListener(')).join('\n');
   vm.runInContext(bindings, app);
   function dispatch(name, event = {}) { listeners[name]?.(event); }

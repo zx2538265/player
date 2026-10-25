@@ -321,9 +321,11 @@
     .rotate-btn[aria-pressed="true"] svg { transform: rotate(-90deg); }
     .player-icon-btn:disabled { opacity: 0.5; cursor: default; }
 
-    .player-icon-btn:hover {
-      background: rgba(255, 255, 255, 0.16);
-      border-color: rgba(255, 255, 255, 0.4);
+    @media (hover: hover) and (pointer: fine) {
+      .player-icon-btn:hover {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.4);
+      }
     }
 
     .player-icon-btn:focus-visible {
@@ -689,6 +691,8 @@
     let orientationHintTimer = null;
     let wasPlayerFullscreen = false;
     let isPointerInsideSideTools = false;
+    let isSideToolsKeyboardFocus = false;
+    let lastSideToolsPointerType = null;
     let arePlayerSideToolsHidden = false;
 
     const videoIdInput = document.getElementById("videoIdInput");
@@ -781,7 +785,7 @@
     function schedulePlayerSideToolsAutoHide() {
       clearPlayerControlsHideTimer();
 
-      if (!isPlayerPlaying || subtitleSettingsEl.classList.contains("is-open") || isPointerInsideSideTools) {
+      if (!isPlayerPlaying || subtitleSettingsEl.classList.contains("is-open") || isPointerInsideSideTools || isSideToolsKeyboardFocus) {
         return;
       }
 
@@ -808,24 +812,34 @@
       revealPlayerSideTools();
     }
 
-    function handleSideToolsMouseEnter() {
+    function handleSideToolsPointerEnter(e) {
+      if (e.pointerType !== "mouse") return;
       isPointerInsideSideTools = true;
       clearPlayerControlsHideTimer();
       setPlayerSideToolsHidden(false);
     }
 
-    function handleSideToolsMouseLeave() {
+    function handleSideToolsPointerLeave(e) {
+      if (e.pointerType !== "mouse") return;
       isPointerInsideSideTools = false;
       schedulePlayerSideToolsAutoHide();
     }
 
-    function handleSideToolsFocusIn() {
-      clearPlayerControlsHideTimer();
-      setPlayerSideToolsHidden(false);
+    function handleSideToolsPointerDown(e) {
+      lastSideToolsPointerType = e.pointerType;
+      isSideToolsKeyboardFocus = false;
+      if (e.pointerType !== "mouse") isPointerInsideSideTools = false;
+      revealPlayerSideTools();
+    }
+
+    function handleSideToolsFocusIn(e) {
+      isSideToolsKeyboardFocus = lastSideToolsPointerType === null && e.target.matches(":focus-visible");
+      revealPlayerSideTools();
     }
 
     function handleSideToolsFocusOut(e) {
       if (playerSideToolsEl.contains(e.relatedTarget)) return;
+      isSideToolsKeyboardFocus = false;
       schedulePlayerSideToolsAutoHide();
     }
 
@@ -1324,7 +1338,8 @@
         videoOrientation = result.orientation;
         videoAspectRatio = result.ratio || (result.orientation === "portrait" ? 9 / 16 : result.orientation === "square" ? 1 : 16 / 9);
         const label = { landscape: "橫式", portrait: "直式", square: "方形" }[videoOrientation];
-        videoOrientationStatusEl.textContent = `自動偵測：${label}（可手動修正）`;
+        videoOrientationStatusEl.textContent = result.source === "verified" ?
+          `已確認影片比例：${label}` : `嵌入比例推估：${label}（可手動修正）`;
         syncPlayerRotation();
       });
     }
@@ -1446,6 +1461,7 @@
     }
 
     function handleKeydown(e) {
+      if (e.key === "Tab") lastSideToolsPointerType = null;
       const target = e.target;
       const isTyping = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target?.isContentEditable;
 
@@ -1594,8 +1610,9 @@
     playerActivityCatcherEl.addEventListener("touchstart", handlePlayerWrapInteraction, { passive: true });
     document.addEventListener("mousemove", handleGlobalPointerActivity);
     document.addEventListener("click", handleGlobalPointerActivity);
-    playerSideToolsEl.addEventListener("mouseenter", handleSideToolsMouseEnter);
-    playerSideToolsEl.addEventListener("mouseleave", handleSideToolsMouseLeave);
+    playerSideToolsEl.addEventListener("pointerenter", handleSideToolsPointerEnter);
+    playerSideToolsEl.addEventListener("pointerleave", handleSideToolsPointerLeave);
+    playerSideToolsEl.addEventListener("pointerdown", handleSideToolsPointerDown);
     playerSideToolsEl.addEventListener("focusin", handleSideToolsFocusIn);
     playerSideToolsEl.addEventListener("focusout", handleSideToolsFocusOut);
 
@@ -1693,8 +1710,9 @@
       playerActivityCatcherEl.removeEventListener("mousemove", handlePlayerWrapInteraction);
       playerActivityCatcherEl.removeEventListener("click", handlePlayerWrapInteraction);
       playerActivityCatcherEl.removeEventListener("touchstart", handlePlayerWrapInteraction);
-      playerSideToolsEl.removeEventListener("mouseenter", handleSideToolsMouseEnter);
-      playerSideToolsEl.removeEventListener("mouseleave", handleSideToolsMouseLeave);
+      playerSideToolsEl.removeEventListener("pointerenter", handleSideToolsPointerEnter);
+      playerSideToolsEl.removeEventListener("pointerleave", handleSideToolsPointerLeave);
+      playerSideToolsEl.removeEventListener("pointerdown", handleSideToolsPointerDown);
       playerSideToolsEl.removeEventListener("focusin", handleSideToolsFocusIn);
       playerSideToolsEl.removeEventListener("focusout", handleSideToolsFocusOut);
       subtitleListEl.removeEventListener("click", handleSubtitleListClick);

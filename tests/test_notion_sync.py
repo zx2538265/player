@@ -213,7 +213,7 @@ class SyncTests(unittest.TestCase):
         build_spec.loader.exec_module(build)
         source = self.root / "source"
         source.mkdir()
-        for name in ("index.html", "test.html", "test-youtube-ratio.js", "library.html", "library.css", "library.js", "share.js", "playback-progress.js", ".nojekyll"):
+        for name in ("index.html", "test.html", "test-youtube-ratio.js", "test-video-geometry.json", "library.html", "library.css", "library.js", "share.js", "playback-progress.js", ".nojekyll"):
             (source / name).write_text("")
         (source / "srt").mkdir()
         shutil.copy2(self.root / "r0aBwvfiNjY.srt", source / "srt/r0aBwvfiNjY.srt")

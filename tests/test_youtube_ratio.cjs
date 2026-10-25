@@ -1,6 +1,7 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { createYouTubeRatioLookup } = require('../test-youtube-ratio.js');
+const { createYouTubeRatioLookup: createLookup } = require('../test-youtube-ratio.js');
+const createYouTubeRatioLookup = options => createLookup({ verifiedGeometry: {}, ...options });
 test('keyless oEmbed lookup uses Shorts URL, classifies dimensions and reuses cache', async () => {
   let calls = 0;
   const api = createYouTubeRatioLookup({ fetch: async url => {
@@ -42,4 +43,24 @@ test('concurrent requests share a fetch and cached results expire', async () => 
   time = 24 * 60 * 60 * 1000 + 1;
   const third = api.get('5-JZp1F3JvM'); assert.equal(count, 2);
   resolve({ ok: false }); assert.equal(await third, null);
+});
+test('verified vertical video overrides misleading landscape oEmbed dimensions', async () => {
+  const geometry = require('../test-video-geometry.json');
+  const calls = [];
+  const api = createLookup({ fetch: async url => {
+    calls.push(url);
+    return { ok: true, json: async () => url === 'test-video-geometry.json' ? geometry : { width: 200, height: 113 } };
+  } });
+  const result = await api.get('lkHYRzXyGnk');
+  assert.equal(result.orientation, 'portrait');
+  assert.equal(result.ratio, 9 / 16);
+  assert.equal(result.source, 'verified');
+  assert.deepEqual(calls, ['test-video-geometry.json']);
+});
+test('missing verified metadata keeps oEmbed fallback available', async () => {
+  const api = createLookup({ fetch: async url => url === 'test-video-geometry.json' ?
+    { ok: false } : { ok: true, json: async () => ({ width: 200, height: 113 }) } });
+  const result = await api.get('5-JZp1F3JvM');
+  assert.equal(result.orientation, 'landscape');
+  assert.equal(result.source, 'embed');
 });

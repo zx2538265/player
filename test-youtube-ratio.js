@@ -6,6 +6,20 @@
     const pending = new Map();
     const now = options.now || Date.now;
     const ttl = 24 * 60 * 60 * 1000;
+    let verifiedRequest;
+
+    async function verifiedGeometry() {
+      if (options.verifiedGeometry) return options.verifiedGeometry;
+      if (!verifiedRequest) verifiedRequest = (async () => {
+        try {
+          const response = await request('test-video-geometry.json', { cache: 'no-cache', signal: AbortSignal.timeout(3000) });
+          if (!response.ok) return {};
+          const data = await response.json();
+          return data.version === 1 && data.videos && typeof data.videos === 'object' ? data.videos : {};
+        } catch { return {}; }
+      })();
+      return verifiedRequest;
+    }
 
     function parse(data) {
       const width = Number(data?.width), height = Number(data?.height);
@@ -27,9 +41,17 @@
       url.searchParams.set('format', 'json');
       const task = (async () => {
         try {
+          const records = options.verifiedGeometry || await verifiedGeometry();
+          const verified = parse(records[videoId]);
+          if (verified) {
+            const value = { ...verified, source: 'verified' };
+            cache.set(videoId, { value, time: now() });
+            return value;
+          }
           const response = await request(url.href, { signal: AbortSignal.timeout(5000) });
           if (!response.ok) return null;
-          const value = parse(await response.json());
+          const geometry = parse(await response.json());
+          const value = geometry ? { ...geometry, source: 'embed' } : null;
           if (value) cache.set(videoId, { value, time: now() });
           return value;
         } catch {

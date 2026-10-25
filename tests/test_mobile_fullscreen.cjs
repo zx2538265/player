@@ -119,7 +119,7 @@ test('native fullscreen rejection enters the existing pseudo fullscreen fallback
 test('paused player and open settings keep controls visible; playing schedules hiding', () => {
   let scheduled = 0;
   const app = { clearPlayerControlsHideTimer() {}, isPlayerPlaying: false,
-    subtitleSettingsEl: { classList: { contains: () => false } }, isPointerInsideSideTools: false,
+    subtitleSettingsEl: { classList: { contains: () => false } }, isPointerInsideSideTools: false, isSideToolsKeyboardFocus: false,
     setTimeout() { scheduled++; }, playerControlsAutoHideDelay: 2200 };
   vm.createContext(app);
   vm.runInContext(section('    function schedulePlayerSideToolsAutoHide()', '    function revealPlayerSideTools()'), app);
@@ -171,6 +171,47 @@ function scalingSetup() {
   app.loadSubtitleSettings();
   return { app, storage, styles };
 }
+
+function controlsSetup() {
+  const listeners = {}, timers = new Map(); let serial = 0, hidden = false;
+  const app = { controlsHideTimer: null, isPlayerPlaying: true, isPointerInsideSideTools: false,
+    isSideToolsKeyboardFocus: false, lastSideToolsPointerType: null,
+    subtitleSettingsEl: { classList: { contains: () => false } }, playerControlsAutoHideDelay: 2200,
+    playerSideToolsEl: { contains: () => false, addEventListener: (name, callback) => { listeners[name] = callback; } },
+    setPlayerSideToolsHidden: value => { hidden = value; },
+    setTimeout: callback => { timers.set(++serial, callback); return serial; },
+    clearTimeout: id => timers.delete(id) };
+  vm.createContext(app);
+  vm.runInContext(section('    function clearPlayerControlsHideTimer()', '    function handleGlobalPointerActivity()'), app);
+  const bindings = html.split('\n').filter(line => line.includes('playerSideToolsEl.addEventListener(')).join('\n');
+  vm.runInContext(bindings, app);
+  function dispatch(name, event = {}) { listeners[name]?.(event); }
+  return { app, dispatch, timers, get hidden() { return hidden; } };
+}
+test('touch tap with Safari compatibility mouse events still hides controls after idle', () => {
+  const run = controlsSetup();
+  const target = { matches: () => false };
+  run.dispatch('pointerenter', { pointerType: 'touch' });
+  run.dispatch('mouseenter'); // Compatibility events must not pin touch controls.
+  run.dispatch('pointerdown', { pointerType: 'touch' });
+  run.dispatch('focusin', { target });
+  run.app.revealPlayerSideTools();
+  assert.equal(run.timers.size, 1);
+  for (const callback of run.timers.values()) callback();
+  assert.equal(run.hidden, true);
+});
+test('mouse hover and keyboard focus retain controls, then resume hiding on leave', () => {
+  const run = controlsSetup();
+  run.dispatch('pointerenter', { pointerType: 'mouse' });
+  run.dispatch('mouseenter');
+  run.app.revealPlayerSideTools(); assert.equal(run.timers.size, 0);
+  run.dispatch('pointerleave', { pointerType: 'mouse' });
+  run.dispatch('mouseleave'); assert.equal(run.timers.size, 1);
+  run.app.lastSideToolsPointerType = null;
+  run.dispatch('focusin', { target: { matches: () => true } });
+  run.app.revealPlayerSideTools(); assert.equal(run.timers.size, 0);
+  run.dispatch('focusout', { relatedTarget: null }); assert.equal(run.timers.size, 1);
+});
 test('subtitle size tracks actual video height across inline, portrait fullscreen and rotation', () => {
   const { app, styles } = scalingSetup();
   for (const [width, height, expected] of [[1280, 720, 36], [390, 844, 13], [844, 390, 19.5]]) {

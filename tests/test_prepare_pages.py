@@ -49,10 +49,11 @@ class CompareTests(unittest.TestCase):
     def test_bigbang_chant_runtime_is_in_public_artifact(self):
         source = self.root / "source"
         source.mkdir()
-        for name in ("index.html", "test.html", "test-youtube-ratio.js", "library.html", "library.css", "library.js", "share.js", "playback-progress.js", ".nojekyll"):
+        for name in ("index.html", "test.html", "test-youtube-ratio.js", "test-video-geometry.json", "library.html", "library.css", "library.js", "share.js", "playback-progress.js", ".nojekyll"):
             (source / name).write_text("")
         shutil.copy2(prepare.ROOT / "playback-progress.js", source / "playback-progress.js")
         shutil.copy2(prepare.ROOT / "test-youtube-ratio.js", source / "test-youtube-ratio.js")
+        shutil.copy2(prepare.ROOT / "test-video-geometry.json", source / "test-video-geometry.json")
         (source / "srt").mkdir()
         shutil.copytree(prepare.ROOT / "bigbang", source / "bigbang")
         shutil.copytree(prepare.ROOT / "ateez", source / "ateez")
@@ -62,6 +63,7 @@ class CompareTests(unittest.TestCase):
         prepare.prepare(source, self.root / "data/library.json", site)
         self.assertEqual((site / "playback-progress.js").read_bytes(), (source / "playback-progress.js").read_bytes())
         self.assertEqual((site / "test-youtube-ratio.js").read_bytes(), (source / "test-youtube-ratio.js").read_bytes())
+        self.assertEqual((site / "test-video-geometry.json").read_bytes(), (source / "test-video-geometry.json").read_bytes())
         self.assertEqual((site / "bigbang/chant.js").read_bytes(), (source / "bigbang/chant.js").read_bytes())
         html = (site / "bigbang/index.html").read_text(encoding="utf-8")
         self.assertLess(html.index('src="chant.js'), html.index('src="practice.js'))

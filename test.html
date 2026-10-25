@@ -109,7 +109,7 @@
       height: var(--fullscreen-viewport-width);
       transform: translate(-50%, -50%) rotate(90deg);
     }
-    .rotate-btn { display: none; }
+    .player-wrap .rotate-btn { display: none; }
     .rotate-btn::before { content: "↻"; font-size: 24px; }
     .rotate-btn[aria-pressed="true"]::before { content: "↺"; }
     @media (any-pointer: coarse) {
@@ -195,22 +195,12 @@
       z-index: 10;
     }
 
-    /* 橫向全螢幕以 16:9 guide 定位字幕，避免字幕落到影片上下黑邊。 */
-    .player-wrap.is-fullscreen .video-content-guide {
+    /* Keep captions inside the contained video, including portrait fullscreen letterboxing. */
+    .player-wrap .video-content-guide {
       inset: 50% auto auto 50%;
-      width: min(100%, calc(var(--fullscreen-viewport-height) * 16 / 9));
-      height: min(100%, calc(var(--fullscreen-viewport-width) * 9 / 16));
+      width: var(--video-content-width, 100%);
+      height: var(--video-content-height, 100%);
       transform: translate(-50%, -50%);
-    }
-
-    /* 手機保持直向放大時，讓直式影片與字幕共用完整的直向畫面。 */
-    @media (max-width: 1024px) and (orientation: portrait) {
-      .player-wrap.is-fullscreen .video-content-guide {
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        transform: none;
-      }
     }
 
     .orientation-hint {
@@ -480,13 +470,6 @@
       }
     }
 
-    /* Rotated layout follows the available video area, not the phone's portrait CSS viewport. */
-    .player-wrap.is-rotated .video-content-guide {
-      inset: 50% auto auto 50%;
-      width: min(100%, calc(var(--fullscreen-viewport-width) * 16 / 9));
-      height: min(100%, calc(var(--fullscreen-viewport-height) * 9 / 16));
-      transform: translate(-50%, -50%);
-    }
     .player-wrap.is-rotated .subtitle-text {
       font-size: calc(clamp(15px, 3.8vh, 28px) * var(--subtitle-scale));
     }
@@ -717,6 +700,7 @@
     let isPseudoFullscreen = false;
     let rotationPreference = null;
     let videoOrientation = "unknown";
+    let videoAspectRatio = 16 / 9;
     let isPlayerPlaying = false;
     let orientationRequestToken = 0;
     const youtubeRatio = createYouTubeRatioLookup();
@@ -736,6 +720,7 @@
     const retrySubtitlesBtnEl = document.getElementById("retrySubtitlesBtn");
     const containerEl = document.querySelector(".container");
     const playerWrapEl = document.querySelector(".player-wrap");
+    const playerSurfaceEl = document.querySelector(".player-surface");
     const toggleRotationBtnEl = document.getElementById("toggleRotationBtn");
     const videoOrientationEl = document.getElementById("videoOrientation");
     const videoOrientationStatusEl = document.getElementById("videoOrientationStatus");
@@ -1282,8 +1267,17 @@
     }
 
     function shouldRotatePlayer({ fullscreen, touch, portrait, inApp, orientation, preference }) {
-      return fullscreen && touch && portrait &&
-        (preference === null ? inApp && orientation === "landscape" : preference);
+      return fullscreen && portrait &&
+        (preference === null ? touch && inApp && orientation === "landscape" : preference);
+    }
+
+    function syncPlayerContentGeometry() {
+      const availableWidth = playerSurfaceEl.clientWidth;
+      const availableHeight = playerSurfaceEl.clientHeight;
+      if (!availableWidth || !availableHeight) return;
+      const width = Math.min(availableWidth, availableHeight * videoAspectRatio);
+      playerWrapEl.style.setProperty("--video-content-width", `${width}px`);
+      playerWrapEl.style.setProperty("--video-content-height", `${width / videoAspectRatio}px`);
     }
 
     function syncPlayerRotation() {
@@ -1294,6 +1288,7 @@
       const rotated = shouldRotatePlayer({ fullscreen, touch: isTouchDevice(), portrait,
         inApp, orientation: videoOrientation, preference: rotationPreference });
       playerWrapEl.classList.toggle("is-rotated", rotated);
+      syncPlayerContentGeometry();
       toggleRotationBtnEl.setAttribute("aria-pressed", String(rotated));
       toggleRotationBtnEl.disabled = !portrait;
       const label = !portrait ? "手機直向時可旋轉播放畫面" : rotated ? "還原播放畫面" : "旋轉播放畫面";
@@ -1303,7 +1298,8 @@
     }
 
     function togglePlayerRotation() {
-      if (!isTouchDevice() || !playerWrapEl.classList.contains("is-fullscreen")) return;
+      if (!playerWrapEl.classList.contains("is-fullscreen")) return;
+      syncFullscreenViewportSize();
       rotationPreference = !playerWrapEl.classList.contains("is-rotated");
       syncPlayerRotation();
       revealPlayerSideTools();
@@ -1317,6 +1313,7 @@
         if (["landscape", "portrait"].includes(stored)) videoOrientation = stored;
       } catch { /* Playback remains available when storage is blocked. */ }
       videoOrientationEl.value = videoOrientation;
+      videoAspectRatio = videoOrientation === "portrait" ? 9 / 16 : 16 / 9;
       rotationPreference = null;
       syncPlayerRotation();
       if (videoOrientation !== "unknown") {
@@ -1331,6 +1328,7 @@
           return;
         }
         videoOrientation = result.orientation;
+        videoAspectRatio = result.ratio || (result.orientation === "portrait" ? 9 / 16 : result.orientation === "square" ? 1 : 16 / 9);
         const label = { landscape: "橫式", portrait: "直式", square: "方形" }[videoOrientation];
         videoOrientationStatusEl.textContent = `自動偵測：${label}（可手動修正）`;
         syncPlayerRotation();
@@ -1616,6 +1614,7 @@
         return;
       }
       videoOrientation = selected;
+      videoAspectRatio = selected === "portrait" ? 9 / 16 : 16 / 9;
       videoOrientationStatusEl.textContent = "使用手動設定";
       rotationPreference = null;
       syncPlayerRotation();
@@ -1658,6 +1657,8 @@
     document.head.appendChild(tag);
 
     document.addEventListener("fullscreenchange", syncPlayerFullscreenState);
+    const playerGeometryObserver = new ResizeObserver(syncPlayerContentGeometry);
+    playerGeometryObserver.observe(playerSurfaceEl);
     document.addEventListener("webkitfullscreenchange", syncPlayerFullscreenState);
     document.addEventListener("msfullscreenchange", syncPlayerFullscreenState);
     document.addEventListener("keydown", handleKeydown);
@@ -1669,6 +1670,7 @@
     }
 
     window.addEventListener("beforeunload", () => {
+      playerGeometryObserver.disconnect();
       stopSyncTimer();
       clearPlayerControlsHideTimer();
       clearOrientationHintTimer();

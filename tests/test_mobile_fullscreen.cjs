@@ -9,21 +9,36 @@ function section(start, end) {
 function setup() {
   const classes = new Set(['is-fullscreen']);
   const button = { setAttribute() {} };
+  const styles = {};
   const context = {
     window: { innerWidth: 390, innerHeight: 844, matchMedia: () => ({ matches: true }) },
     navigator: { userAgent: 'Instagram' },
-    playerWrapEl: { classList: { contains: x => classes.has(x), toggle(x, active) {
+    playerWrapEl: { style: { setProperty: (name, value) => { styles[name] = value; } }, classList: { contains: x => classes.has(x), toggle(x, active) {
       active ? classes.add(x) : classes.delete(x);
     } } },
     toggleRotationBtnEl: button, videoOrientationEl: {}, localStorage: { getItem: () => null },
     isPseudoFullscreen: true, rotationPreference: null, videoOrientation: 'landscape',
+    videoAspectRatio: 16 / 9, playerSurfaceEl: { clientWidth: 390, clientHeight: 844 },
+    syncFullscreenViewportSize() {},
     orientationRequestToken: 0, videoOrientationStatusEl: {}, youtubeRatio: { get: async () => null },
     getFullscreenElement: () => null, revealPlayerSideTools() {},
   };
   vm.createContext(context);
   vm.runInContext(section('    function isTouchDevice()', '    function clearOrientationHintTimer()'), context);
-  return { context, classes };
+  return { context, classes, styles };
 }
+test('portrait fullscreen captions use the letterboxed video height, not the full phone height', () => {
+  const { context: app, styles } = setup();
+  app.syncPlayerRotation();
+  assert.equal(parseFloat(styles['--video-content-width']), 390);
+  assert.equal(parseFloat(styles['--video-content-height']), 219.375);
+  // Caption baseline is above the video bottom, rather than in the lower black bar.
+  const captionBottom = (844 - 219.375) / 2 + 219.375 * 0.94;
+  assert.ok(captionBottom < (844 + 219.375) / 2);
+  app.playerSurfaceEl.clientWidth = 844; app.playerSurfaceEl.clientHeight = 390;
+  app.syncPlayerContentGeometry();
+  assert.equal(parseFloat(styles['--video-content-height']), 390);
+});
 test('only a known landscape video auto-rotates in a portrait touch in-app browser', () => {
   const { context: app } = setup();
   const base = { fullscreen: true, touch: true, portrait: true, inApp: true,
@@ -53,6 +68,13 @@ test('ordinary browser and unknown video allow manual rotation; exiting resets t
   app.isPseudoFullscreen = false; classes.delete('is-fullscreen');
   app.syncPlayerRotation(); assert.equal(classes.has('is-rotated'), false);
   assert.equal(app.rotationPreference, null);
+});
+test('an explicit rotation click does not depend on pointer media detection', () => {
+  const { context: app, classes } = setup();
+  app.navigator.userAgent = 'Safari';
+  app.window.matchMedia = () => ({ matches: false });
+  app.togglePlayerRotation();
+  assert.equal(classes.has('is-rotated'), true);
 });
 test('video switch and blocked storage reset stale orientation safely', () => {
   const { context: app, classes } = setup();

@@ -594,7 +594,7 @@
       </div>
       <div id="orientationHint" class="orientation-hint" role="status" aria-live="polite" aria-hidden="true">
         <span class="orientation-hint-icon" aria-hidden="true"></span>
-        <span>想橫向觀看？轉動手機，或點右側「轉橫」</span>
+        <span>這是橫式影片，可轉動手機或點右側「轉橫」</span>
       </div>
       <div class="player-side-tools">
         <button id="toggleRotationBtn" class="player-icon-btn rotate-btn" type="button"
@@ -681,7 +681,6 @@
     let isPseudoFullscreen = false;
     let rotationPreference = null;
     let videoOrientation = "unknown";
-    let videoOrientationSource = "unknown";
     let videoAspectRatio = 16 / 9;
     let isPlayerPlaying = false;
     let orientationRequestToken = 0;
@@ -690,7 +689,7 @@
     let isSubtitleListClickBound = false;
     let controlsHideTimer = null;
     let orientationHintTimer = null;
-    let wasPlayerFullscreen = false;
+    let hasShownOrientationHint = false;
     let isPointerInsideSideTools = false;
     let isSideToolsKeyboardFocus = false;
     let lastSideToolsPointerType = null;
@@ -1263,10 +1262,8 @@
       return window.matchMedia("(any-pointer: coarse)").matches;
     }
 
-    function shouldRotatePlayer({ fullscreen, touch, portrait, inApp, orientation, preference, source }) {
-      return fullscreen && portrait &&
-        (preference === null ? touch && inApp && orientation === "landscape" &&
-          (source === "verified" || source === "manual" || source === "embed") : preference);
+    function shouldRotatePlayer({ fullscreen, portrait, preference }) {
+      return fullscreen && portrait && preference === true;
     }
 
     function syncPlayerContentGeometry() {
@@ -1291,9 +1288,7 @@
       const viewport = window.visualViewport;
       const portrait = (viewport?.height || window.innerHeight) > (viewport?.width || window.innerWidth);
       const fullscreen = isPseudoFullscreen || getFullscreenElement() === playerWrapEl;
-      const inApp = /FBAN|FBAV|Instagram|Threads|Barcelona|FB_IAB|FBSS/i.test(navigator.userAgent || "");
-      const rotated = shouldRotatePlayer({ fullscreen, touch: isTouchDevice(), portrait,
-        inApp, orientation: videoOrientation, preference: rotationPreference, source: videoOrientationSource });
+      const rotated = shouldRotatePlayer({ fullscreen, portrait, preference: rotationPreference });
       playerWrapEl.classList.toggle("is-rotated", rotated);
       syncPlayerContentGeometry();
       syncSubtitleSettingsPlacement();
@@ -1305,6 +1300,7 @@
       const text = toggleRotationBtnEl.querySelector?.(".control-label");
       if (text) text.textContent = rotated ? "還原" : "轉橫";
       if (!fullscreen) rotationPreference = null;
+      syncOrientationHintState(fullscreen);
     }
 
     function togglePlayerRotation() {
@@ -1317,18 +1313,16 @@
 
     function loadVideoOrientation(videoId) {
       const token = ++orientationRequestToken;
+      hasShownOrientationHint = false;
       videoOrientation = "unknown";
-      videoOrientationSource = "unknown";
       try {
         const stored = localStorage.getItem(`player-test-orientation:${videoId}`);
         if (stored === "portrait") {
           videoOrientation = "portrait";
-          videoOrientationSource = "manual";
         } else if (stored && stored !== "landscape" && stored !== "unknown") {
           const saved = JSON.parse(stored);
           if (saved.version === 2 && ["landscape", "portrait"].includes(saved.orientation)) {
             videoOrientation = saved.orientation;
-            videoOrientationSource = "manual";
           }
         }
         // Legacy landscape choices may have been made while oEmbed misclassified vertical videos.
@@ -1349,7 +1343,6 @@
           return;
         }
         videoOrientation = result.orientation;
-        videoOrientationSource = result.source === "verified" ? "verified" : "embed";
         videoAspectRatio = result.ratio || (result.orientation === "portrait" ? 9 / 16 : result.orientation === "square" ? 1 : 16 / 9);
         const label = { landscape: "橫式", portrait: "直式", square: "方形" }[videoOrientation];
         videoOrientationStatusEl.textContent = result.source === "verified" ?
@@ -1385,15 +1378,17 @@
     function syncOrientationHintState(isFullscreen) {
       const viewport = window.visualViewport;
       const portrait = (viewport?.height || window.innerHeight) > (viewport?.width || window.innerWidth);
-      const helpful = isFullscreen && isTouchDevice() && portrait && videoOrientation !== "portrait" &&
+      const helpful = isFullscreen && isTouchDevice() && portrait && videoOrientation === "landscape" &&
+        rotationPreference !== true && !playerWrapEl.classList.contains("is-rotated") &&
         !subtitleSettingsEl.classList.contains("is-open");
-      if (helpful && !wasPlayerFullscreen) {
+      if (!isFullscreen) hasShownOrientationHint = false;
+      if (helpful && !hasShownOrientationHint) {
         showOrientationHintTemporarily();
+        hasShownOrientationHint = true;
       } else if (!helpful) {
         hideOrientationHint();
       }
 
-      wasPlayerFullscreen = isFullscreen;
     }
 
     function enterPseudoFullscreen() {
@@ -1650,7 +1645,6 @@
         return;
       }
       videoOrientation = selected;
-      videoOrientationSource = "manual";
       videoAspectRatio = selected === "portrait" ? 9 / 16 : 16 / 9;
       videoOrientationStatusEl.textContent = "使用手動設定";
       rotationPreference = null;

@@ -18,12 +18,12 @@ function setup() {
     } } },
     toggleRotationBtnEl: button, videoOrientationEl: {}, localStorage: { getItem: () => null },
     isPseudoFullscreen: true, rotationPreference: null, videoOrientation: 'landscape',
-    videoOrientationSource: 'verified',
     videoAspectRatio: 16 / 9, playerSurfaceEl: { clientWidth: 390, clientHeight: 844 },
     getSubtitlePreset: () => ({ key: 'horizontal' }), subtitleRatioBucket: 'horizontal',
     subtitleSettings: { fontSizePercent: 5, bottom: 8 },
     syncFullscreenViewportSize() {},
     syncSubtitleSettingsPlacement() {},
+    syncOrientationHintState() {}, hasShownOrientationHint: false,
     orientationRequestToken: 0, videoOrientationStatusEl: {}, youtubeRatio: { get: async () => null },
     getFullscreenElement: () => null, revealPlayerSideTools() {},
   };
@@ -43,19 +43,18 @@ test('portrait fullscreen captions use the letterboxed video height, not the ful
   app.syncPlayerContentGeometry();
   assert.equal(parseFloat(styles['--video-content-height']), 390);
 });
-test('only a known landscape video auto-rotates in a portrait touch in-app browser', () => {
+test('rotation requires an explicit manual request in portrait fullscreen', () => {
   const { context: app } = setup();
-  const base = { fullscreen: true, touch: true, portrait: true, inApp: true,
-    orientation: 'landscape', preference: null, source: 'verified' };
+  const base = { fullscreen: true, portrait: true, preference: true };
   assert.equal(app.shouldRotatePlayer(base), true);
-  for (const change of [{ fullscreen: false }, { touch: false }, { portrait: false },
-    { inApp: false }, { orientation: 'portrait' }, { orientation: 'unknown' }, { source: 'unknown' }]) {
+  for (const change of [{ fullscreen: false }, { portrait: false }, { preference: false }, { preference: null }]) {
     assert.equal(app.shouldRotatePlayer({ ...base, ...change }), false);
   }
 });
-test('manual restore overrides automatic rotation; physical landscape avoids double rotation', () => {
+test('manual rotate and restore work; physical landscape avoids double rotation', () => {
   const { context: app, classes } = setup();
-  app.syncPlayerRotation(); assert.ok(classes.has('is-rotated'));
+  app.syncPlayerRotation(); assert.equal(classes.has('is-rotated'), false);
+  app.togglePlayerRotation(); assert.ok(classes.has('is-rotated'));
   app.togglePlayerRotation(); assert.equal(classes.has('is-rotated'), false);
   app.togglePlayerRotation(); assert.ok(classes.has('is-rotated'));
   app.window.innerWidth = 844; app.window.innerHeight = 390;
@@ -72,6 +71,8 @@ test('ordinary browser and unknown video allow manual rotation; exiting resets t
   app.isPseudoFullscreen = false; classes.delete('is-fullscreen');
   app.syncPlayerRotation(); assert.equal(classes.has('is-rotated'), false);
   assert.equal(app.rotationPreference, null);
+  app.isPseudoFullscreen = true; classes.add('is-fullscreen');
+  app.syncPlayerRotation(); assert.equal(classes.has('is-rotated'), false, 're-entry must not retain rotation');
 });
 test('an explicit rotation click does not depend on pointer media detection', () => {
   const { context: app, classes } = setup();
@@ -100,25 +101,30 @@ test('late ratio results cannot rotate a different video or override a newer man
   assert.equal(app.videoOrientation, 'portrait');
   assert.equal(classes.has('is-rotated'), false);
 });
-test('verified landscape enables automatic rotation without changing the auto selection', async () => {
+test('verified landscape updates geometry without rotating the picture', async () => {
   const { context: app, classes } = setup();
   app.youtubeRatio.get = async () => ({ orientation: 'landscape', source: 'verified' });
   app.loadVideoOrientation('new-video');
   await Promise.resolve();
   assert.equal(app.videoOrientation, 'landscape');
   assert.equal(app.videoOrientationEl.value, 'unknown');
-  assert.equal(classes.has('is-rotated'), true);
+  assert.equal(classes.has('is-rotated'), false);
 });
-test('oEmbed landscape videos still auto-rotate in all three in-app browsers', async () => {
-  for (const userAgent of ['Instagram', 'Threads', 'FBAN/FBIOS']) {
+test('all browsers keep landscape, portrait and unknown videos unrotated until a manual tap', async () => {
+  for (const userAgent of ['Safari', 'Chrome', 'Instagram', 'Threads', 'FBAN/FBIOS']) {
+   for (const orientation of ['landscape', 'portrait', 'unknown']) {
     const { context: app, classes } = setup();
     app.navigator.userAgent = userAgent;
-    app.youtubeRatio.get = async () => ({ orientation: 'landscape', ratio: 200/113, source: 'embed' });
+    app.youtubeRatio.get = async () => orientation === 'unknown' ? null : ({ orientation,
+      ratio: orientation === 'portrait' ? 9/16 : 16/9, source: 'embed' });
     app.loadVideoOrientation('5-JZp1F3JvM');
     await Promise.resolve();
-    assert.equal(classes.has('is-rotated'), true, userAgent);
+    assert.equal(classes.has('is-rotated'), false, userAgent + ':' + orientation);
+    app.togglePlayerRotation();
+    assert.equal(classes.has('is-rotated'), true, 'manual rotation remains available');
     app.togglePlayerRotation();
     assert.equal(classes.has('is-rotated'), false, 'manual restore remains available');
+   }
   }
 });
 test('legacy landscape preference cannot bypass verified vertical dimensions', async () => {
@@ -139,7 +145,17 @@ test('new explicit landscape preference remains available and does not require n
   app.localStorage.getItem = () => JSON.stringify({ version: 2, orientation: 'landscape' });
   app.youtubeRatio.get = () => { throw Error('should not fetch for explicit manual choice'); };
   app.loadVideoOrientation('another-video');
-  assert.equal(app.videoOrientationSource, 'manual');
+  assert.equal(app.videoOrientation, 'landscape');
+  assert.equal(classes.has('is-rotated'), false);
+});
+test('delayed ratio detection does not override a manual rotation', async () => {
+  const { context: app, classes } = setup();
+  let resolve;
+  app.youtubeRatio.get = () => new Promise(r => { resolve = r; });
+  app.loadVideoOrientation('5-JZp1F3JvM');
+  app.togglePlayerRotation();
+  resolve({ orientation: 'portrait', ratio: 9/16, source: 'verified' });
+  await Promise.resolve();
   assert.equal(classes.has('is-rotated'), true);
 });
 test('native fullscreen rejection enters the existing pseudo fullscreen fallback', async () => {
@@ -246,6 +262,46 @@ function controlsSetup() {
   function dispatch(name, event = {}) { listeners[name]?.(event); }
   return { app, dispatch, timers, get hidden() { return hidden; } };
 }
+
+function hintSetup() {
+  const run = setup(), app = run.context;
+  const hints = new Set(), timers = new Map(); let serial = 0;
+  app.orientationHintEl = { classList: { add: x => hints.add(x), remove: x => hints.delete(x) }, setAttribute() {} };
+  app.subtitleSettingsEl = { classList: { contains: () => false } };
+  app.orientationHintTimer = null; app.orientationHintDuration = 5000;
+  app.setTimeout = callback => { timers.set(++serial, callback); return serial; };
+  app.clearTimeout = id => timers.delete(id);
+  vm.runInContext(section('    function clearOrientationHintTimer()', '    function enterPseudoFullscreen()'), app);
+  return { ...run, hints, timers };
+}
+test('only landscape videos prompt rotation; delayed detection prompts once without rotating', async () => {
+  const { context: app, classes, hints, timers } = hintSetup();
+  let resolve;
+  app.youtubeRatio.get = () => new Promise(r => { resolve = r; });
+  app.loadVideoOrientation('5-JZp1F3JvM');
+  assert.equal(hints.has('is-visible'), false, 'unknown direction must not prompt');
+  resolve({ orientation: 'landscape', ratio: 16/9, source: 'embed' });
+  await Promise.resolve();
+  assert.equal(hints.has('is-visible'), true);
+  assert.equal(classes.has('is-rotated'), false);
+  const callback = [...timers.values()][0]; callback();
+  app.syncPlayerRotation();
+  assert.equal(hints.has('is-visible'), false, 'viewport events must not repeat a dismissed hint');
+});
+test('portrait and square videos never prompt; manual rotation and fullscreen exit dismiss the hint', () => {
+  const { context: app, classes, hints } = hintSetup();
+  for (const orientation of ['portrait', 'square', 'unknown']) {
+    app.videoOrientation = orientation; app.syncPlayerRotation();
+    assert.equal(hints.has('is-visible'), false, orientation);
+  }
+  app.videoOrientation = 'landscape'; app.syncPlayerRotation();
+  assert.equal(hints.has('is-visible'), true);
+  app.togglePlayerRotation(); assert.equal(hints.has('is-visible'), false);
+  app.isPseudoFullscreen = false; classes.delete('is-fullscreen'); app.syncPlayerRotation();
+  assert.equal(app.hasShownOrientationHint, false);
+  app.isPseudoFullscreen = true; classes.add('is-fullscreen'); app.syncPlayerRotation();
+  assert.equal(hints.has('is-visible'), true, 'a new fullscreen session may prompt again');
+});
 test('touch tap with Safari compatibility mouse events still hides controls after idle', () => {
   const run = controlsSetup();
   const target = { matches: () => false };

@@ -26,7 +26,6 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      --subtitle-scale: 1;
       --subtitle-bottom: 8%;
       --subtitle-bottom-fs: 6%;
       --fullscreen-viewport-width: 100dvw;
@@ -99,6 +98,19 @@
       background: #000;
       overflow: hidden;
       border-radius: 16px;
+    }
+
+    .player-surface { position: relative; width: 100%; height: 100%; }
+    .player-wrap.is-rotated .player-surface {
+      position: absolute;
+      left: 50%; top: 50%;
+      width: var(--fullscreen-viewport-height);
+      height: var(--fullscreen-viewport-width);
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+    .player-wrap .rotate-btn { display: none; }
+    @media (any-pointer: coarse) {
+      .player-wrap.is-fullscreen .rotate-btn { display: flex; }
     }
 
     .player-wrap:fullscreen,
@@ -180,22 +192,12 @@
       z-index: 10;
     }
 
-    /* 橫向全螢幕以 16:9 guide 定位字幕，避免字幕落到影片上下黑邊。 */
-    .player-wrap.is-fullscreen .video-content-guide {
+    /* Keep captions inside the contained video, including portrait fullscreen letterboxing. */
+    .player-wrap .video-content-guide {
       inset: 50% auto auto 50%;
-      width: min(100%, calc(var(--fullscreen-viewport-height) * 16 / 9));
-      height: min(100%, calc(var(--fullscreen-viewport-width) * 9 / 16));
+      width: var(--video-content-width, 100%);
+      height: var(--video-content-height, 100%);
       transform: translate(-50%, -50%);
-    }
-
-    /* 手機保持直向放大時，讓直式影片與字幕共用完整的直向畫面。 */
-    @media (max-width: 1024px) and (orientation: portrait) {
-      .player-wrap.is-fullscreen .video-content-guide {
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        transform: none;
-      }
     }
 
     .orientation-hint {
@@ -275,7 +277,7 @@
       z-index: 30;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
       align-items: flex-end;
       pointer-events: auto;
       opacity: 1;
@@ -290,8 +292,10 @@
 
     .player-icon-btn {
       width: 40px;
-      height: 40px;
-      border-radius: 999px;
+      min-height: 44px;
+      padding: 3px 2px;
+      box-sizing: border-box;
+      border-radius: 10px;
       background: rgba(0, 0, 0, 0.55);
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.18);
@@ -299,6 +303,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      gap: 2px;
       transition: background 0.18s ease, border-color 0.18s ease;
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
@@ -307,25 +313,19 @@
       pointer-events: auto;
     }
 
-    .fullscreen-btn::before {
-      content: "⤢";
-      font-size: 18px;
-      line-height: 1;
-    }
+    .player-icon-btn svg { width: 18px; height: 18px; flex: 0 0 auto; }
+    .control-label { font-size: 10px; line-height: 1.2; white-space: nowrap; }
+    .fullscreen-btn .exit-icon { display: none; }
+    .fullscreen-btn.is-active .enter-icon { display: none; }
+    .fullscreen-btn.is-active .exit-icon { display: block; }
+    .rotate-btn[aria-pressed="true"] svg { transform: rotate(-90deg); }
+    .player-icon-btn:disabled { opacity: 0.5; cursor: default; }
 
-    .fullscreen-btn.is-active::before {
-      content: "⤡";
-    }
-
-    .subtitle-setting-btn::before {
-      content: "⚙";
-      font-size: 17px;
-      line-height: 1;
-    }
-
-    .player-icon-btn:hover {
-      background: rgba(255, 255, 255, 0.16);
-      border-color: rgba(255, 255, 255, 0.4);
+    @media (hover: hover) and (pointer: fine) {
+      .player-icon-btn:hover {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.4);
+      }
     }
 
     .player-icon-btn:focus-visible {
@@ -335,10 +335,13 @@
 
     .floating-subtitle-settings {
       position: absolute;
-      right: 48px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 260px;
+      right: 64px;
+      top: 12px;
+      width: min(300px, calc(100% - 80px));
+      max-height: calc(var(--player-surface-height, 100dvh) - 24px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      box-sizing: border-box;
       display: none;
       grid-template-columns: 1fr;
       gap: 10px;
@@ -355,6 +358,10 @@
     .floating-subtitle-settings.is-open {
       display: grid;
     }
+
+    .settings-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .settings-heading strong { font-size: 14px; }
+    .settings-close { color: #fff; background: transparent; border: 1px solid #666; border-radius: 8px; min-height: 36px; padding: 4px 12px; cursor: pointer; }
 
     .subtitle-layer {
       position: absolute;
@@ -382,7 +389,8 @@
       padding: 3px 14px;
       border-radius: 14px;
       background: rgba(0, 0, 0, 0.7);
-      font-size: calc(clamp(24px, 1.9vw, 32px) * var(--subtitle-scale));
+
+      font-size: var(--subtitle-font-size, 13px);
       line-height: 1.45;
       white-space: pre-wrap;
       word-break: break-word;
@@ -401,20 +409,6 @@
       bottom: var(--subtitle-bottom-fs);
     }
 
-    .player-wrap.is-fullscreen .subtitle-text {
-      font-size: calc(clamp(24px, 1.9vh + 0.6vw, 46px) * var(--subtitle-scale));
-    }
-
-    .player-wrap.is-pseudo-fullscreen .subtitle-text {
-      font-size: calc(clamp(24px, 1.9vh + 0.6vw, 46px) * var(--subtitle-scale));
-    }
-
-    @media (max-width: 1024px) {
-      .subtitle-text {
-        font-size: calc(clamp(20px, 2.8vw, 28px) * var(--subtitle-scale));
-      }
-    }
-
     @media (max-width: 768px) {
       .subtitle-layer {
         left: 4%;
@@ -423,7 +417,7 @@
 
       .subtitle-text {
         max-width: 100%;
-        font-size: calc(clamp(15px, 3.8vw, 24px) * var(--subtitle-scale));
+
         line-height: 1.5;
       }
 
@@ -435,35 +429,29 @@
         bottom: max(var(--subtitle-bottom-fs), env(safe-area-inset-bottom));
       }
 
-      .player-wrap.is-fullscreen .subtitle-text {
-        font-size: calc(clamp(15px, 3.8vw, 24px) * var(--subtitle-scale));
-      }
-
-      .player-wrap.is-pseudo-fullscreen .subtitle-text {
-        font-size: calc(clamp(15px, 3.8vw, 24px) * var(--subtitle-scale));
-      }
-
       .player-side-tools {
         right: 8px;
       }
 
       .player-icon-btn {
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        min-height: 42px;
       }
 
       .floating-subtitle-settings {
-        right: 44px;
-        width: min(240px, calc(100vw - 72px));
+        right: 56px;
+        width: min(300px, calc(100% - 72px));
       }
     }
 
-    @media (max-width: 768px) and (orientation: portrait) {
-      .player-wrap.is-fullscreen .subtitle-text,
-      .player-wrap.is-pseudo-fullscreen .subtitle-text {
-        font-size: calc(clamp(20px, 5.2vw, 28px) * var(--subtitle-scale));
-      }
+    .player-wrap.is-rotated .orientation-hint { display: none; }
+    .player-wrap.is-rotated .player-side-tools { right: max(12px, env(safe-area-inset-bottom)); }
+    .player-wrap.is-rotated .floating-subtitle-settings {
+      right: max(64px, calc(env(safe-area-inset-bottom) + 52px));
+      width: min(300px, calc(100% - 80px));
     }
+    .video-orientation-setting { display: grid; gap: 6px; }
+    .video-orientation-setting select { color: #fff; background: #252525; padding: 8px; width: 100%; }
 
     .subtitle-settings {
       align-items: end;
@@ -581,13 +569,14 @@
       <span id="shareStatus" role="status" aria-live="polite"></span>
       <input id="srtFileInput" type="file" accept=".srt" />
     </div>
-   
+
     <div id="resumePrompt" hidden style="margin: 0 0 12px; padding: 12px; border: 1px solid #666; border-radius: 8px;">
       <span id="resumeMessage" role="status" aria-live="polite"></span>
       <button id="resumePlayBtn" type="button">繼續播放</button>
       <button id="restartPlayBtn" type="button">從頭播放</button>
     </div>
     <div class="player-wrap">
+      <div class="player-surface">
       <div id="player"></div>
       <div id="subtitleLoading" class="subtitle-loading" hidden>
         <span id="subtitleLoadingSpinner" class="subtitle-loading-spinner" aria-hidden="true"></span>
@@ -605,35 +594,58 @@
       </div>
       <div id="orientationHint" class="orientation-hint" role="status" aria-live="polite" aria-hidden="true">
         <span class="orientation-hint-icon" aria-hidden="true"></span>
-        <span>若為橫式影片，可將手機轉成橫向觀看</span>
+        <span>這是橫式影片，可轉動手機或點右側「轉橫」</span>
       </div>
       <div class="player-side-tools">
+        <button id="toggleRotationBtn" class="player-icon-btn rotate-btn" type="button"
+          aria-label="旋轉播放畫面" title="旋轉播放畫面" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="9" height="15" rx="2"/><path d="M10 17h1M16 3a7 7 0 0 1 5 7m0-5v5h-5"/></svg>
+          <span class="control-label">轉橫</span>
+        </button>
         <button id="toggleFullscreenBtn" class="player-icon-btn fullscreen-btn" type="button" aria-label="進入全螢幕"
-          title="進入全螢幕"></button>
+          title="進入全螢幕">
+          <svg class="enter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>
+          <svg class="exit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h5V3m8 0v5h5M8 21v-5H3m13 5v-5h5"/></svg>
+          <span class="control-label">放大</span>
+        </button>
 
         <button id="toggleSubtitleSettingsBtn" class="player-icon-btn subtitle-setting-btn" type="button"
-          aria-label="開啟字幕設定" aria-expanded="false" title="開啟字幕設定"></button>
+          aria-label="開啟字幕設定" aria-expanded="false" aria-controls="subtitleSettings" title="開啟字幕設定">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M6 9h5m3 0h4M6 14h3m3 0h6"/></svg>
+          <span class="control-label">字幕</span>
+        </button>
 
         <div class="subtitle-settings floating-subtitle-settings" id="subtitleSettings">
+          <div class="settings-heading"><strong>字幕設定</strong><button id="closeSubtitleSettingsBtn" class="settings-close" type="button">關閉</button></div>
+          <label class="video-orientation-setting" for="videoOrientation">
+            <span class="setting-label">這支影片的方向</span>
+            <select id="videoOrientation">
+              <option value="unknown">自動偵測</option>
+              <option value="landscape">橫式</option>
+              <option value="portrait">直式</option>
+            </select>
+            <span id="videoOrientationStatus" class="setting-label" role="status">尚未偵測</span>
+          </label>
           <div class="setting-field">
-            <label class="setting-label" for="subtitleScaleRange">字幕大小</label>
-            <input id="subtitleScaleRange" type="range" min="80" max="160" step="1" value="100" />
-            <div class="setting-value" id="subtitleScaleValue">100%</div>
+            <label class="setting-label" for="subtitleScaleRange">字幕大小（占影片高度）</label>
+            <input id="subtitleScaleRange" type="range" min="3" max="20" step="0.5" value="5" />
+            <div class="setting-value" id="subtitleScaleValue">5%</div>
           </div>
 
           <div class="setting-field">
-            <label class="setting-label" for="subtitleBottomRange">一般位置（底部）</label>
-            <input id="subtitleBottomRange" type="range" min="2" max="20" step="1" value="8" />
+            <label class="setting-label" for="subtitleBottomRange">垂直位置（距影片底部）</label>
+            <input id="subtitleBottomRange" type="range" min="0" max="60" step="1" value="8" />
             <div class="setting-value" id="subtitleBottomValue">8%</div>
           </div>
 
           <div class="setting-field">
             <button id="resetSubtitleSettingsBtn" type="button" class="setting-reset">
-              重設字幕設定
+              重設目前影片比例
             </button>
           </div>
         </div>
       </div>
+    </div>
     </div>
     <div class="info" id="info">尚未載入字幕</div>
     <div class="list" id="subtitleList"></div>
@@ -642,6 +654,7 @@
 
   <script src="share.js"></script>
   <script src="playback-progress.js"></script>
+  <script src="test-youtube-ratio.js?v=20261026-1"></script>
   <script>
     let player = null;
     const progress = createPlaybackProgress(() => player, seconds => {
@@ -666,12 +679,20 @@
     let subtitleRequestToken = 0;
     let requestedVideoId = "";
     let isPseudoFullscreen = false;
+    let rotationPreference = null;
+    let videoOrientation = "unknown";
+    let videoAspectRatio = 16 / 9;
+    let isPlayerPlaying = false;
+    let orientationRequestToken = 0;
+    const youtubeRatio = createYouTubeRatioLookup();
     let isSyncStateActive = false;
     let isSubtitleListClickBound = false;
     let controlsHideTimer = null;
     let orientationHintTimer = null;
-    let wasPlayerFullscreen = false;
+    let hasShownOrientationHint = false;
     let isPointerInsideSideTools = false;
+    let isSideToolsKeyboardFocus = false;
+    let lastSideToolsPointerType = null;
     let arePlayerSideToolsHidden = false;
 
     const videoIdInput = document.getElementById("videoIdInput");
@@ -682,6 +703,10 @@
     const retrySubtitlesBtnEl = document.getElementById("retrySubtitlesBtn");
     const containerEl = document.querySelector(".container");
     const playerWrapEl = document.querySelector(".player-wrap");
+    const playerSurfaceEl = document.querySelector(".player-surface");
+    const toggleRotationBtnEl = document.getElementById("toggleRotationBtn");
+    const videoOrientationEl = document.getElementById("videoOrientation");
+    const videoOrientationStatusEl = document.getElementById("videoOrientationStatus");
     const playerSideToolsEl = document.querySelector(".player-side-tools");
     const playerActivityCatcherEl = document.getElementById("playerActivityCatcher");
     const orientationHintEl = document.getElementById("orientationHint");
@@ -691,25 +716,18 @@
     const subtitleSettingsEl = document.getElementById("subtitleSettings");
     const subtitleScaleRangeEl = document.getElementById("subtitleScaleRange");
     const subtitleBottomRangeEl = document.getElementById("subtitleBottomRange");
-    const subtitleBottomFsRangeEl = document.getElementById("subtitleBottomFsRange");
     const subtitleScaleValueEl = document.getElementById("subtitleScaleValue");
     const subtitleBottomValueEl = document.getElementById("subtitleBottomValue");
-    const subtitleBottomFsValueEl = document.getElementById("subtitleBottomFsValue");
     const resetSubtitleSettingsBtnEl = document.getElementById("resetSubtitleSettingsBtn");
     const toggleFullscreenBtnEl = document.getElementById("toggleFullscreenBtn");
     const toggleSubtitleSettingsBtnEl = document.getElementById("toggleSubtitleSettingsBtn");
     const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
-    const subtitleSettingsStorageKey = "yt-srt-subtitle-settings";
+    const subtitleSettingsStorageKey = "player-test-subtitle-ratio-prefs-v1";
     const playerControlsAutoHideDelay = 2200;
     const orientationHintDuration = 5000;
 
-    const defaultSubtitleSettings = {
-      scale: 80,
-      bottom: 8,
-      bottomFs: 6
-    };
-
-    let subtitleSettings = { ...defaultSubtitleSettings };
+    let subtitleRatioBucket = "horizontal";
+    let subtitleSettings = { fontSizePercent: 5, bottom: 8 };
 
     if (initialVideoId) {
       videoIdInput.value = initialVideoId;
@@ -722,9 +740,16 @@
       toggleFullscreenBtnEl.classList.toggle("is-active", isFullscreen);
       toggleFullscreenBtnEl.setAttribute("aria-label", label);
       toggleFullscreenBtnEl.setAttribute("title", label);
+      const text = toggleFullscreenBtnEl.querySelector(".control-label");
+      if (text) text.textContent = isFullscreen ? "縮小" : "放大";
+    }
+
+    function syncSubtitleSettingsPlacement() {
+      if (subtitleSettingsEl.parentElement !== playerSurfaceEl) playerSurfaceEl.appendChild(subtitleSettingsEl);
     }
 
     function setSubtitleSettingsOpen(isOpen) {
+      syncSubtitleSettingsPlacement();
       const label = isOpen ? "關閉字幕設定" : "開啟字幕設定";
       subtitleSettingsEl.classList.toggle("is-open", isOpen);
       toggleSubtitleSettingsBtnEl.setAttribute("aria-expanded", isOpen ? "true" : "false");
@@ -732,6 +757,7 @@
       toggleSubtitleSettingsBtnEl.setAttribute("title", label);
 
       if (isOpen) {
+        hideOrientationHint();
         revealPlayerSideTools();
         clearPlayerControlsHideTimer();
       } else {
@@ -759,7 +785,7 @@
     function schedulePlayerSideToolsAutoHide() {
       clearPlayerControlsHideTimer();
 
-      if (subtitleSettingsEl.classList.contains("is-open") || isPointerInsideSideTools) {
+      if (!isPlayerPlaying || subtitleSettingsEl.classList.contains("is-open") || isPointerInsideSideTools || isSideToolsKeyboardFocus) {
         return;
       }
 
@@ -786,103 +812,111 @@
       revealPlayerSideTools();
     }
 
-    function handleSideToolsMouseEnter() {
+    function handleSideToolsPointerEnter(e) {
+      if (e.pointerType !== "mouse") return;
       isPointerInsideSideTools = true;
       clearPlayerControlsHideTimer();
       setPlayerSideToolsHidden(false);
     }
 
-    function handleSideToolsMouseLeave() {
+    function handleSideToolsPointerLeave(e) {
+      if (e.pointerType !== "mouse") return;
       isPointerInsideSideTools = false;
       schedulePlayerSideToolsAutoHide();
     }
 
-    function handleSideToolsFocusIn() {
-      clearPlayerControlsHideTimer();
-      setPlayerSideToolsHidden(false);
+    function handleSideToolsPointerDown(e) {
+      lastSideToolsPointerType = e.pointerType;
+      isSideToolsKeyboardFocus = false;
+      if (e.pointerType !== "mouse") isPointerInsideSideTools = false;
+      revealPlayerSideTools();
+    }
+
+    function handleSideToolsFocusIn(e) {
+      isSideToolsKeyboardFocus = lastSideToolsPointerType === null && e.target.matches(":focus-visible");
+      revealPlayerSideTools();
     }
 
     function handleSideToolsFocusOut(e) {
       if (playerSideToolsEl.contains(e.relatedTarget)) return;
+      isSideToolsKeyboardFocus = false;
       schedulePlayerSideToolsAutoHide();
     }
 
-    function handleGlobalPointerActivity() {
-      revealPlayerSideTools();
+    function getSubtitlePreset(ratio) {
+      const presets = {
+        horizontal: { key: "horizontal", fontSizePercent: 5, bottom: 8 },
+        "ratio-4-3": { key: "ratio-4-3", fontSizePercent: 4.5, bottom: 10 },
+        square: { key: "square", fontSizePercent: 4, bottom: 14 },
+        "vertical-3-4": { key: "vertical-3-4", fontSizePercent: 3.8, bottom: 16 },
+        vertical: { key: "vertical", fontSizePercent: 3.5, bottom: 18 }
+      };
+      return presets[ratio >= 1.5 ? "horizontal" : ratio >= 1.15 ? "ratio-4-3" :
+        ratio >= 0.88 ? "square" : ratio >= 0.65 ? "vertical-3-4" : "vertical"];
+    }
+
+    function readSubtitlePreferences() {
+      try {
+        const value = JSON.parse(localStorage.getItem(subtitleSettingsStorageKey) || "{}");
+        return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+      } catch { return {}; }
     }
 
     function normalizeSubtitleSettings(raw) {
-      const scale = Number(raw?.scale);
-      const bottom = Number(raw?.bottom);
-      const bottomFs = Number(raw?.bottomFs);
-
+      const preset = getSubtitlePreset(videoAspectRatio);
       return {
-        scale: Number.isFinite(scale) ? Math.min(160, Math.max(80, Math.round(scale))) : defaultSubtitleSettings.scale,
-        bottom: Number.isFinite(bottom) ? Math.min(20, Math.max(2, Math.round(bottom))) : defaultSubtitleSettings.bottom,
-        bottomFs: Number.isFinite(bottomFs) ? Math.min(20, Math.max(2, Math.round(bottomFs))) : defaultSubtitleSettings.bottomFs
+        fontSizePercent: typeof raw?.fontSizePercent === "number" && Number.isFinite(raw.fontSizePercent) ?
+          Math.min(20, Math.max(3, raw.fontSizePercent)) : preset.fontSizePercent,
+        bottom: typeof raw?.bottom === "number" && Number.isFinite(raw.bottom) ?
+          Math.min(60, Math.max(0, raw.bottom)) : preset.bottom
       };
     }
 
-    function applySubtitleSettings() {
-      const fullscreenBottom = subtitleBottomFsRangeEl ? subtitleSettings.bottomFs : subtitleSettings.bottom;
-
-      containerEl.style.setProperty("--subtitle-scale", (subtitleSettings.scale / 100).toString());
-      containerEl.style.setProperty("--subtitle-bottom", `${subtitleSettings.bottom}%`);
-      containerEl.style.setProperty("--subtitle-bottom-fs", `${fullscreenBottom}%`);
-
-      subtitleScaleRangeEl.value = String(subtitleSettings.scale);
+    function renderSubtitleSettings() {
+      containerEl.style.setProperty("--subtitle-bottom", subtitleSettings.bottom + "%");
+      containerEl.style.setProperty("--subtitle-bottom-fs", subtitleSettings.bottom + "%");
+      subtitleScaleRangeEl.value = String(subtitleSettings.fontSizePercent);
       subtitleBottomRangeEl.value = String(subtitleSettings.bottom);
-      if (subtitleBottomFsRangeEl) {
-        subtitleBottomFsRangeEl.value = String(subtitleSettings.bottomFs);
-      }
+      subtitleScaleValueEl.textContent = subtitleSettings.fontSizePercent + "%";
+      subtitleBottomValueEl.textContent = subtitleSettings.bottom + "%";
+    }
 
-      subtitleScaleValueEl.textContent = `${subtitleSettings.scale}%`;
-      subtitleBottomValueEl.textContent = `${subtitleSettings.bottom}%`;
-      if (subtitleBottomFsValueEl) {
-        subtitleBottomFsValueEl.textContent = `${subtitleSettings.bottomFs}%`;
-      }
+    function applySubtitleSettings() {
+      renderSubtitleSettings();
+      syncPlayerContentGeometry();
     }
 
     function saveSubtitleSettings() {
-      localStorage.setItem(subtitleSettingsStorageKey, JSON.stringify(subtitleSettings));
+      const preferences = readSubtitlePreferences();
+      preferences[subtitleRatioBucket] = { ...subtitleSettings };
+      try { localStorage.setItem(subtitleSettingsStorageKey, JSON.stringify(preferences)); } catch {}
     }
 
     function loadSubtitleSettings() {
-      try {
-        const raw = localStorage.getItem(subtitleSettingsStorageKey);
-        if (!raw) return;
-        subtitleSettings = normalizeSubtitleSettings(JSON.parse(raw));
-      } catch (err) {
-        subtitleSettings = { ...defaultSubtitleSettings };
-      }
+      subtitleRatioBucket = getSubtitlePreset(videoAspectRatio).key;
+      subtitleSettings = normalizeSubtitleSettings(readSubtitlePreferences()[subtitleRatioBucket]);
+    }
+
+    function resetCurrentRatioSettings() {
+      const preferences = readSubtitlePreferences();
+      delete preferences[subtitleRatioBucket];
+      try { localStorage.setItem(subtitleSettingsStorageKey, JSON.stringify(preferences)); } catch {}
+      subtitleSettings = normalizeSubtitleSettings(null);
+      applySubtitleSettings();
     }
 
     function bindSubtitleSettingEvents() {
       subtitleScaleRangeEl.addEventListener("input", () => {
-        subtitleSettings.scale = Number(subtitleScaleRangeEl.value);
+        subtitleSettings.fontSizePercent = Number(subtitleScaleRangeEl.value);
         applySubtitleSettings();
         saveSubtitleSettings();
       });
-
       subtitleBottomRangeEl.addEventListener("input", () => {
         subtitleSettings.bottom = Number(subtitleBottomRangeEl.value);
         applySubtitleSettings();
         saveSubtitleSettings();
       });
-
-      if (subtitleBottomFsRangeEl) {
-        subtitleBottomFsRangeEl.addEventListener("input", () => {
-          subtitleSettings.bottomFs = Number(subtitleBottomFsRangeEl.value);
-          applySubtitleSettings();
-          saveSubtitleSettings();
-        });
-      }
-
-      resetSubtitleSettingsBtnEl.addEventListener("click", () => {
-        subtitleSettings = { ...defaultSubtitleSettings };
-        applySubtitleSettings();
-        saveSubtitleSettings();
-      });
+      resetSubtitleSettingsBtnEl.addEventListener("click", resetCurrentRatioSettings);
     }
 
     loadSubtitleSettings();
@@ -1130,6 +1164,8 @@
 
       const isPlaying = state === (playerState ? playerState.PLAYING : 1);
       const isBuffering = state === (playerState ? playerState.BUFFERING : 3);
+      isPlayerPlaying = isPlaying;
+      revealPlayerSideTools();
 
       if (!subtitleLoadingEl.hidden && (isPlaying || isBuffering)) {
         player.pauseVideo();
@@ -1218,6 +1254,99 @@
       containerEl.style.setProperty("--fullscreen-viewport-height", `${height}px`);
     }
 
+    function isTouchDevice() {
+      return window.matchMedia("(any-pointer: coarse)").matches;
+    }
+
+    function shouldRotatePlayer({ fullscreen, portrait, preference }) {
+      return fullscreen && portrait && preference === true;
+    }
+
+    function syncPlayerContentGeometry() {
+      const preset = getSubtitlePreset(videoAspectRatio);
+      if (subtitleRatioBucket !== preset.key) {
+        loadSubtitleSettings();
+        renderSubtitleSettings();
+      }
+      const availableWidth = playerSurfaceEl.clientWidth;
+      const availableHeight = playerSurfaceEl.clientHeight;
+      if (!availableWidth || !availableHeight) return;
+      const width = Math.min(availableWidth, availableHeight * videoAspectRatio);
+      const height = width / videoAspectRatio;
+      const fontSize = Math.max(13, height * subtitleSettings.fontSizePercent / 100);
+      playerWrapEl.style.setProperty("--video-content-width", `${width}px`);
+      playerWrapEl.style.setProperty("--video-content-height", `${height}px`);
+      playerWrapEl.style.setProperty("--subtitle-font-size", `${fontSize}px`);
+      playerWrapEl.style.setProperty("--player-surface-height", `${availableHeight}px`);
+    }
+
+    function syncPlayerRotation() {
+      const viewport = window.visualViewport;
+      const portrait = (viewport?.height || window.innerHeight) > (viewport?.width || window.innerWidth);
+      const fullscreen = isPseudoFullscreen || getFullscreenElement() === playerWrapEl;
+      const rotated = shouldRotatePlayer({ fullscreen, portrait, preference: rotationPreference });
+      playerWrapEl.classList.toggle("is-rotated", rotated);
+      syncPlayerContentGeometry();
+      syncSubtitleSettingsPlacement();
+      toggleRotationBtnEl.setAttribute("aria-pressed", String(rotated));
+      toggleRotationBtnEl.disabled = !portrait;
+      const label = !portrait ? "手機直向時可旋轉播放畫面" : rotated ? "還原播放畫面" : "旋轉播放畫面";
+      toggleRotationBtnEl.title = label;
+      toggleRotationBtnEl.setAttribute("aria-label", label);
+      const text = toggleRotationBtnEl.querySelector?.(".control-label");
+      if (text) text.textContent = rotated ? "還原" : "轉橫";
+      if (!fullscreen) rotationPreference = null;
+      syncOrientationHintState(fullscreen);
+    }
+
+    function togglePlayerRotation() {
+      if (!playerWrapEl.classList.contains("is-fullscreen")) return;
+      syncFullscreenViewportSize();
+      rotationPreference = !playerWrapEl.classList.contains("is-rotated");
+      syncPlayerRotation();
+      revealPlayerSideTools();
+    }
+
+    function loadVideoOrientation(videoId) {
+      const token = ++orientationRequestToken;
+      hasShownOrientationHint = false;
+      videoOrientation = "unknown";
+      try {
+        const stored = localStorage.getItem(`player-test-orientation:${videoId}`);
+        if (stored === "portrait") {
+          videoOrientation = "portrait";
+        } else if (stored && stored !== "landscape" && stored !== "unknown") {
+          const saved = JSON.parse(stored);
+          if (saved.version === 2 && ["landscape", "portrait"].includes(saved.orientation)) {
+            videoOrientation = saved.orientation;
+          }
+        }
+        // Legacy landscape choices may have been made while oEmbed misclassified vertical videos.
+      } catch { /* Playback remains available when storage is blocked. */ }
+      videoOrientationEl.value = videoOrientation;
+      videoAspectRatio = videoOrientation === "portrait" ? 9 / 16 : 16 / 9;
+      rotationPreference = null;
+      syncPlayerRotation();
+      if (videoOrientation !== "unknown") {
+        videoOrientationStatusEl.textContent = `手動設定：${videoOrientation === "portrait" ? "直式" : "橫式"}（可選自動偵測）`;
+        return;
+      }
+      videoOrientationStatusEl.textContent = "正在偵測影片方向…";
+      youtubeRatio.get(videoId).then(result => {
+        if (token !== orientationRequestToken) return;
+        if (!result) {
+          videoOrientationStatusEl.textContent = "無法偵測，仍可手動旋轉或指定方向";
+          return;
+        }
+        videoOrientation = result.orientation;
+        videoAspectRatio = result.ratio || (result.orientation === "portrait" ? 9 / 16 : result.orientation === "square" ? 1 : 16 / 9);
+        const label = { landscape: "橫式", portrait: "直式", square: "方形" }[videoOrientation];
+        videoOrientationStatusEl.textContent = result.source === "verified" ?
+          `已確認影片比例：${label}` : `嵌入比例推估：${label}（可手動修正）`;
+        syncPlayerRotation();
+      });
+    }
+
     function clearOrientationHintTimer() {
       if (!orientationHintTimer) return;
       clearTimeout(orientationHintTimer);
@@ -1243,13 +1372,19 @@
     }
 
     function syncOrientationHintState(isFullscreen) {
-      if (isFullscreen && !wasPlayerFullscreen) {
+      const viewport = window.visualViewport;
+      const portrait = (viewport?.height || window.innerHeight) > (viewport?.width || window.innerWidth);
+      const helpful = isFullscreen && isTouchDevice() && portrait && videoOrientation === "landscape" &&
+        rotationPreference !== true && !playerWrapEl.classList.contains("is-rotated") &&
+        !subtitleSettingsEl.classList.contains("is-open");
+      if (!isFullscreen) hasShownOrientationHint = false;
+      if (helpful && !hasShownOrientationHint) {
         showOrientationHintTemporarily();
-      } else if (!isFullscreen) {
+        hasShownOrientationHint = true;
+      } else if (!helpful) {
         hideOrientationHint();
       }
 
-      wasPlayerFullscreen = isFullscreen;
     }
 
     function enterPseudoFullscreen() {
@@ -1260,6 +1395,7 @@
       document.body.classList.add("no-scroll");
       updateFullscreenButtonState(true);
       syncOrientationHintState(true);
+      syncPlayerRotation();
     }
 
     function exitPseudoFullscreen() {
@@ -1269,6 +1405,7 @@
       document.body.classList.remove("no-scroll");
       updateFullscreenButtonState(false);
       syncOrientationHintState(false);
+      syncPlayerRotation();
     }
 
     function syncPlayerFullscreenState() {
@@ -1281,6 +1418,7 @@
         document.body.classList.add("no-scroll");
         updateFullscreenButtonState(true);
         syncOrientationHintState(true);
+        syncPlayerRotation();
         return;
       }
 
@@ -1296,6 +1434,7 @@
         updateFullscreenButtonState(false);
         syncOrientationHintState(false);
       }
+      syncPlayerRotation();
     }
 
     // 因 YouTube iframe 內建全螢幕在跨網域文件內，外層頁面的字幕層無法覆蓋。
@@ -1312,6 +1451,11 @@
       if (isPlayerFullscreen) {
         await exitFullscreen();
       } else {
+        // Keep IG orientation under page control; preserve the native path in other browsers.
+        if (/Instagram/i.test(navigator.userAgent || "") && isTouchDevice()) {
+          enterPseudoFullscreen();
+          return;
+        }
         try {
           await Promise.resolve(requestElementFullscreen(playerWrapEl));
         } catch {
@@ -1323,9 +1467,11 @@
 
     function handleViewportOrientationChange() {
       syncFullscreenViewportSize();
+      syncPlayerRotation();
     }
 
     function handleKeydown(e) {
+      if (e.key === "Tab") lastSideToolsPointerType = null;
       const target = e.target;
       const isTyping = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target?.isContentEditable;
 
@@ -1347,11 +1493,9 @@
     }
 
     function handleDocumentClick(e) {
-      if (!playerSideToolsEl.contains(e.target)) {
+      if (!playerSideToolsEl.contains(e.target) && !subtitleSettingsEl.contains(e.target)) {
         setSubtitleSettingsOpen(false);
       }
-
-      revealPlayerSideTools();
     }
 
     async function loadSubtitleFromSrtFolder(videoId) {
@@ -1397,6 +1541,9 @@
 
       progress.detach();
       requestedVideoId = videoId;
+      isPlayerPlaying = false;
+      revealPlayerSideTools();
+      loadVideoOrientation(videoId);
       window.updateShareVideo(videoId);
       if (player && typeof player.pauseVideo === "function") player.pauseVideo();
       subtitleLoadingEl.hidden = false;
@@ -1469,14 +1616,32 @@
     playerActivityCatcherEl.addEventListener("mousemove", handlePlayerWrapInteraction);
     playerActivityCatcherEl.addEventListener("click", handlePlayerWrapInteraction);
     playerActivityCatcherEl.addEventListener("touchstart", handlePlayerWrapInteraction, { passive: true });
-    document.addEventListener("mousemove", handleGlobalPointerActivity);
-    document.addEventListener("click", handleGlobalPointerActivity);
-    playerSideToolsEl.addEventListener("mouseenter", handleSideToolsMouseEnter);
-    playerSideToolsEl.addEventListener("mouseleave", handleSideToolsMouseLeave);
+    playerSideToolsEl.addEventListener("pointerenter", handleSideToolsPointerEnter);
+    playerSideToolsEl.addEventListener("pointerleave", handleSideToolsPointerLeave);
+    playerSideToolsEl.addEventListener("pointerdown", handleSideToolsPointerDown);
     playerSideToolsEl.addEventListener("focusin", handleSideToolsFocusIn);
     playerSideToolsEl.addEventListener("focusout", handleSideToolsFocusOut);
 
     toggleFullscreenBtnEl.addEventListener("click", togglePlayerFullscreen);
+    document.getElementById("closeSubtitleSettingsBtn").addEventListener("click", () => setSubtitleSettingsOpen(false));
+    toggleRotationBtnEl.addEventListener("click", togglePlayerRotation);
+    videoOrientationEl.addEventListener("change", () => {
+      ++orientationRequestToken;
+      const selected = videoOrientationEl.value;
+      try {
+        localStorage.setItem(`player-test-orientation:${requestedVideoId || initialVideoId}`,
+          JSON.stringify({ version: 2, orientation: selected }));
+      } catch { /* The current selection still works without storage. */ }
+      if (selected === "unknown") {
+        loadVideoOrientation(requestedVideoId || initialVideoId);
+        return;
+      }
+      videoOrientation = selected;
+      videoAspectRatio = selected === "portrait" ? 9 / 16 : 16 / 9;
+      videoOrientationStatusEl.textContent = `手動設定：${selected === "portrait" ? "直式" : "橫式"}（可選自動偵測）`;
+      rotationPreference = null;
+      syncPlayerRotation();
+    });
 
     toggleSubtitleSettingsBtnEl.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -1515,6 +1680,8 @@
     document.head.appendChild(tag);
 
     document.addEventListener("fullscreenchange", syncPlayerFullscreenState);
+    const playerGeometryObserver = new ResizeObserver(syncPlayerContentGeometry);
+    playerGeometryObserver.observe(playerSurfaceEl);
     document.addEventListener("webkitfullscreenchange", syncPlayerFullscreenState);
     document.addEventListener("msfullscreenchange", syncPlayerFullscreenState);
     document.addEventListener("keydown", handleKeydown);
@@ -1526,6 +1693,7 @@
     }
 
     window.addEventListener("beforeunload", () => {
+      playerGeometryObserver.disconnect();
       stopSyncTimer();
       clearPlayerControlsHideTimer();
       clearOrientationHintTimer();
@@ -1540,8 +1708,6 @@
         screen.orientation.removeEventListener("change", handleViewportOrientationChange);
       }
       document.removeEventListener("click", handleDocumentClick);
-      document.removeEventListener("mousemove", handleGlobalPointerActivity);
-      document.removeEventListener("click", handleGlobalPointerActivity);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       playerWrapEl.removeEventListener("mousemove", handlePlayerWrapInteraction);
       playerWrapEl.removeEventListener("click", handlePlayerWrapInteraction);
@@ -1549,8 +1715,9 @@
       playerActivityCatcherEl.removeEventListener("mousemove", handlePlayerWrapInteraction);
       playerActivityCatcherEl.removeEventListener("click", handlePlayerWrapInteraction);
       playerActivityCatcherEl.removeEventListener("touchstart", handlePlayerWrapInteraction);
-      playerSideToolsEl.removeEventListener("mouseenter", handleSideToolsMouseEnter);
-      playerSideToolsEl.removeEventListener("mouseleave", handleSideToolsMouseLeave);
+      playerSideToolsEl.removeEventListener("pointerenter", handleSideToolsPointerEnter);
+      playerSideToolsEl.removeEventListener("pointerleave", handleSideToolsPointerLeave);
+      playerSideToolsEl.removeEventListener("pointerdown", handleSideToolsPointerDown);
       playerSideToolsEl.removeEventListener("focusin", handleSideToolsFocusIn);
       playerSideToolsEl.removeEventListener("focusout", handleSideToolsFocusOut);
       subtitleListEl.removeEventListener("click", handleSubtitleListClick);

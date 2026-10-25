@@ -49,7 +49,7 @@ test('only a known landscape video auto-rotates in a portrait touch in-app brows
     orientation: 'landscape', preference: null, source: 'verified' };
   assert.equal(app.shouldRotatePlayer(base), true);
   for (const change of [{ fullscreen: false }, { touch: false }, { portrait: false },
-    { inApp: false }, { orientation: 'portrait' }, { orientation: 'unknown' }, { source: 'embed' }, { source: 'unknown' }]) {
+    { inApp: false }, { orientation: 'portrait' }, { orientation: 'unknown' }, { source: 'unknown' }]) {
     assert.equal(app.shouldRotatePlayer({ ...base, ...change }), false);
   }
 });
@@ -109,16 +109,16 @@ test('verified landscape enables automatic rotation without changing the auto se
   assert.equal(app.videoOrientationEl.value, 'unknown');
   assert.equal(classes.has('is-rotated'), true);
 });
-test('misleading horizontal oEmbed does not automatically rotate a vertical video in any in-app browser', async () => {
+test('oEmbed landscape videos still auto-rotate in all three in-app browsers', async () => {
   for (const userAgent of ['Instagram', 'Threads', 'FBAN/FBIOS']) {
     const { context: app, classes } = setup();
     app.navigator.userAgent = userAgent;
     app.youtubeRatio.get = async () => ({ orientation: 'landscape', ratio: 200/113, source: 'embed' });
-    app.loadVideoOrientation('lkHYRzXyGnk');
+    app.loadVideoOrientation('5-JZp1F3JvM');
     await Promise.resolve();
-    assert.equal(classes.has('is-rotated'), false, userAgent);
+    assert.equal(classes.has('is-rotated'), true, userAgent);
     app.togglePlayerRotation();
-    assert.equal(classes.has('is-rotated'), true, 'manual rotation remains available');
+    assert.equal(classes.has('is-rotated'), false, 'manual restore remains available');
   }
 });
 test('legacy landscape preference cannot bypass verified vertical dimensions', async () => {
@@ -144,11 +144,35 @@ test('new explicit landscape preference remains available and does not require n
 });
 test('native fullscreen rejection enters the existing pseudo fullscreen fallback', async () => {
   const context = { getFullscreenElement: () => null, playerWrapEl: {}, isPseudoFullscreen: false,
+    navigator: { userAgent: 'Safari' },
     requestElementFullscreen: () => Promise.reject(Error('denied')),
     enterPseudoFullscreen() { context.fallback = true; } };
   vm.createContext(context);
   vm.runInContext(section('    async function togglePlayerFullscreen()', '    function handleViewportOrientationChange()'), context);
   await context.togglePlayerFullscreen(); assert.equal(context.fallback, true);
+});
+test('IG uses webpage fullscreen so the browser does not choose the video orientation', async () => {
+  let nativeCalls = 0, webpageCalls = 0;
+  const app = { getFullscreenElement: () => null, playerWrapEl: {}, isPseudoFullscreen: false,
+    navigator: { userAgent: 'Instagram' }, isTouchDevice: () => true,
+    requestElementFullscreen: async () => { nativeCalls++; },
+    enterPseudoFullscreen() { webpageCalls++; } };
+  vm.createContext(app);
+  vm.runInContext(section('    async function togglePlayerFullscreen()', '    function handleViewportOrientationChange()'), app);
+  await app.togglePlayerFullscreen();
+  assert.equal(nativeCalls, 0); assert.equal(webpageCalls, 1);
+});
+test('Safari, FB and Threads retain native fullscreen when available', async () => {
+  for (const userAgent of ['Safari', 'FBAN/FBIOS', 'Threads']) {
+    let nativeCalls = 0;
+    const app = { getFullscreenElement: () => null, playerWrapEl: {}, isPseudoFullscreen: false,
+      navigator: { userAgent }, isTouchDevice: () => true,
+      requestElementFullscreen: async () => { nativeCalls++; },
+      enterPseudoFullscreen() { throw Error('should preserve native path'); } };
+    vm.createContext(app);
+    vm.runInContext(section('    async function togglePlayerFullscreen()', '    function handleViewportOrientationChange()'), app);
+    await app.togglePlayerFullscreen(); assert.equal(nativeCalls, 1, userAgent);
+  }
 });
 test('paused player and open settings keep controls visible; playing schedules hiding', () => {
   let scheduled = 0;

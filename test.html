@@ -1266,7 +1266,7 @@
     function shouldRotatePlayer({ fullscreen, touch, portrait, inApp, orientation, preference, source }) {
       return fullscreen && portrait &&
         (preference === null ? touch && inApp && orientation === "landscape" &&
-          (source === "verified" || source === "manual") : preference);
+          (source === "verified" || source === "manual" || source === "embed") : preference);
     }
 
     function syncPlayerContentGeometry() {
@@ -1460,6 +1460,11 @@
       if (isPlayerFullscreen) {
         await exitFullscreen();
       } else {
+        // Keep IG orientation under page control; preserve the native path in other browsers.
+        if (/Instagram/i.test(navigator.userAgent || "") && isTouchDevice()) {
+          enterPseudoFullscreen();
+          return;
+        }
         try {
           await Promise.resolve(requestElementFullscreen(playerWrapEl));
         } catch {

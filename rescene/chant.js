@@ -5,6 +5,7 @@ const Chant = (() => {
     return !!track && track.videoId === videoId && Array.isArray(track.cues) && track.cues.length > 0 &&
       track.cues.every((cue, i, all) => cue && Number.isFinite(cue.start) && Number.isFinite(cue.end) &&
         cue.start >= 0 && cue.end > cue.start && typeof cue.text === 'string' && cue.text.trim() &&
+        (cue.phoneticZh === undefined || (typeof cue.phoneticZh === 'string' && cue.phoneticZh.trim())) &&
         (i === 0 || cue.start >= all[i - 1].end));
   }
   function state(track, time, playbackState, rate = 1) {
@@ -18,7 +19,8 @@ const Chant = (() => {
       playbackState === 3 ? '影片緩衝中' : playbackState === 2 ? '已暫停' : '按播放開始練習';
     return {mode:playing ? current ? 'active' : countdown ? 'countdown' : 'waiting' : 'paused', label,
       text:current?.text || next?.text || '做得好！',
-      next:current && next ? `下一句：${next.text}` : '',
+      phoneticZh:(current || next)?.phoneticZh || '',
+      next:current && next ? `下一句：${next.phoneticZh || next.text}` : '',
       count:playing && countdown ? String(countdown) : ''};
   }
   return {validTrack, state};

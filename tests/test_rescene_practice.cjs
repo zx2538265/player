@@ -45,7 +45,7 @@ test('YoYo switches its own video, captions and replay without carrying old cues
   const p=s.players[1],cue=catalog[9].chant.cues[1];p.ready();
   assert.equal(p.options.videoId,'ykVJo0wFlQ4');
   p.time=cue.start;p.emit(1);s.tick();
-  assert.equal(s.get('chantText').textContent,'찾아내');
+  assert.equal(s.get('chantText').textContent,'叉加內');
   assert.equal(s.get('chantLabel').textContent,'現在喊！');
   p.emit(2);s.tick();assert.equal(s.get('chantLabel').textContent,'已暫停');
   s.get('repeatCue').onclick();assert.equal(p.time,cue.start-3);
@@ -57,18 +57,18 @@ test('Busy Boy selection and replay use its absolute captions and clear them on 
   const catalog=require('../rescene/songs.json'),s=await setup(catalog);
   s.players[0].ready();s.select(catalog.findIndex(song=>song.title==='Busy Boy'));
   const p=s.players.at(-1);
-  assert.equal(s.get('chantText').textContent,catalog.at(-1).chant.cues[0].text);
+  assert.equal(s.get('chantText').textContent,catalog.at(-1).chant.cues[0].phoneticZh);
   p.ready();
   assert.equal(p.options.videoId,'hc1HS71j6oY');
   p.time=26.7;p.state=1;s.tick();
-  assert.equal(s.get('chantText').textContent,'치');
+  assert.equal(s.get('chantText').textContent,'七');
   assert.equal(s.get('chantDisplay').dataset.mode,'countdown');
   p.time=28.7;s.tick();
-  assert.equal(s.get('chantText').textContent,'치');
+  assert.equal(s.get('chantText').textContent,'七');
   s.get('repeatCue').onclick();
   assert.ok(p.time<28.6);
   s.select(0);s.players.at(-1).ready();s.tick();
-  assert.notEqual(s.get('chantText').textContent,'치');
+  assert.notEqual(s.get('chantText').textContent,'七');
 });
 
 test('real cards follow seek, pause, speed, repeat and source switching',async()=>{
@@ -86,5 +86,24 @@ test('real cards follow seek, pause, speed, repeat and source switching',async()
   const nextIndex=catalog.findIndex(song=>song.title==='UhUh');
   s.select(nextIndex);const next=s.players[1];next.ready();
   assert.equal(next.options.videoId,'s1S-lnU-yMI');
-  assert.equal(s.get('chantText').textContent,catalog[nextIndex].chant.cues[0].text);
+  assert.equal(s.get('chantText').textContent,(catalog[nextIndex].chant.cues[0].phoneticZh || catalog[nextIndex].chant.cues[0].text));
+});
+
+test('phonetics show original Korean and clear it on Latin cards, switching and end',async()=>{
+  const catalog=require('../rescene/songs.json'),s=await setup(catalog);
+  s.select(9);const p=s.players.at(-1);p.ready();
+  const cue=catalog[9].chant.cues[1];p.time=cue.start;p.emit(1);s.tick();
+  assert.equal(s.get('chantText').textContent,'叉加內');
+  assert.equal(s.get('chantOriginal').textContent,'찾아내');
+  assert.equal(s.get('chantOriginal').hidden,false);
+  p.emit(2);s.tick();assert.equal(s.get('chantOriginal').textContent,'찾아내');
+  p.time=catalog[9].chant.cues.find(c=>!c.phoneticZh).start;p.emit(1);s.tick();
+  assert.equal(s.get('chantOriginal').textContent,'');
+  assert.equal(s.get('chantOriginal').hidden,true);
+  s.select(10);
+  assert.match(s.get('chantText').textContent,/Jeong Won-i Jin Gyeong-eun/);
+  assert.equal(s.get('chantOriginal').hidden,false);
+  const last=s.players.at(-1);last.ready();last.emit(0);s.tick();
+  assert.equal(s.get('chantOriginal').textContent,'');
+  assert.equal(s.get('chantOriginal').hidden,true);
 });

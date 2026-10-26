@@ -12,6 +12,9 @@ def read(path):
 
 
 def write(path, value):
+    if path == ROOT / 'rescene/songs.json':
+        from apply_rescene_phonetics import apply_phonetics
+        apply_phonetics(value)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
 

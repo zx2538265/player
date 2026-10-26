@@ -57,7 +57,8 @@
           "text": "너!",
           "sourceIds": [
             "xn12KH78Dx4-139"
-          ]
+          ],
+          "phoneticZh": "no!"
         },
         {
           "start": 35.1,
@@ -73,7 +74,8 @@
           "text": "않지",
           "sourceIds": [
             "xn12KH78Dx4-143"
-          ]
+          ],
+          "phoneticZh": "安七"
         },
         {
           "start": 43.9,
@@ -89,7 +91,8 @@
           "text": "스친",
           "sourceIds": [
             "xn12KH78Dx4-146"
-          ]
+          ],
+          "phoneticZh": "斯親"
         },
         {
           "start": 46.4,
@@ -97,7 +100,8 @@
           "text": "끌림",
           "sourceIds": [
             "xn12KH78Dx4-147"
-          ]
+          ],
+          "phoneticZh": "哥ㄹ林"
         },
         {
           "start": 55.8,
@@ -169,7 +173,8 @@
           "text": "드러내",
           "sourceIds": [
             "xn12KH78Dx4-179"
-          ]
+          ],
+          "phoneticZh": "德囉內"
         },
         {
           "start": 109.1,
@@ -313,7 +318,8 @@
           "text": "장면에",
           "sourceIds": [
             "xn12KH78Dx4-212"
-          ]
+          ],
+          "phoneticZh": "將謬內"
         },
         {
           "start": 181.5,
@@ -321,7 +327,8 @@
           "text": "황홀해",
           "sourceIds": [
             "xn12KH78Dx4-214"
-          ]
+          ],
+          "phoneticZh": "晃厚ㄹ嘿"
         },
         {
           "start": 183.6,
@@ -329,7 +336,8 @@
           "text": "잡을 땐",
           "sourceIds": [
             "xn12KH78Dx4-216"
-          ]
+          ],
+          "phoneticZh": "加不ㄹ 店"
         },
         {
           "start": 185.3,
@@ -337,7 +345,8 @@
           "text": "어우러질 땐",
           "sourceIds": [
             "xn12KH78Dx4-217"
-          ]
+          ],
+          "phoneticZh": "喔嗚囉吉ㄹ 店"
         },
         {
           "start": 188.0,
@@ -353,7 +362,8 @@
           "text": "완벽하게 어울려",
           "sourceIds": [
             "xn12KH78Dx4-220"
-          ]
+          ],
+          "phoneticZh": "完謬卡給 喔嗚ㄹ聊"
         },
         {
           "start": 195.5,
@@ -363,7 +373,9 @@
             "xn12KH78Dx4-221"
           ]
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   },
   {
@@ -395,7 +407,8 @@
           "text": "원이 리브 미나미\n메이 제나",
           "sourceIds": [
             "7DZlkZ4bMpU-266"
-          ]
+          ],
+          "phoneticZh": "Woni Liv Minami\nMay Zena"
         },
         {
           "start": 43.1,
@@ -403,7 +416,8 @@
           "text": "리센느 런!어!웨!이!",
           "sourceIds": [
             "7DZlkZ4bMpU-268"
-          ]
+          ],
+          "phoneticZh": "RESCENE Run! A! We! I!"
         },
         {
           "start": 47.9,
@@ -427,7 +441,8 @@
           "text": "갈 수 없게",
           "sourceIds": [
             "7DZlkZ4bMpU-273"
-          ]
+          ],
+          "phoneticZh": "嘎ㄹ 蘇 喔ㄆ給"
         },
         {
           "start": 57.8,
@@ -435,7 +450,8 @@
           "text": "맴돌게 해",
           "sourceIds": [
             "7DZlkZ4bMpU-274"
-          ]
+          ],
+          "phoneticZh": "咩ㄇ豆ㄹ給 嘿"
         },
         {
           "start": 62.3,
@@ -443,7 +459,8 @@
           "text": "쳇바퀴",
           "sourceIds": [
             "7DZlkZ4bMpU-276"
-          ]
+          ],
+          "phoneticZh": "切ㄊ巴ㄎㄨㄧ"
         },
         {
           "start": 63.7,
@@ -451,7 +468,8 @@
           "text": "메아리",
           "sourceIds": [
             "7DZlkZ4bMpU-277"
-          ]
+          ],
+          "phoneticZh": "妹阿哩"
         },
         {
           "start": 68.9,
@@ -467,7 +485,8 @@
           "text": "런!어!웨!이!",
           "sourceIds": [
             "7DZlkZ4bMpU-280"
-          ]
+          ],
+          "phoneticZh": "Run! A! We! I!"
         },
         {
           "start": 77.5,
@@ -475,7 +494,8 @@
           "text": "리!센!느!",
           "sourceIds": [
             "7DZlkZ4bMpU-282"
-          ]
+          ],
+          "phoneticZh": "RE! SCE! NE!"
         },
         {
           "start": 88.6,
@@ -499,7 +519,8 @@
           "text": "끌!어!당!겨! 리!센!느!",
           "sourceIds": [
             "7DZlkZ4bMpU-289"
-          ]
+          ],
+          "phoneticZh": "哥! 囉! 當! ㄍㄧㄜ! RE! SCE! NE!"
         },
         {
           "start": 100.8,
@@ -507,7 +528,8 @@
           "text": "날 두렵게 해",
           "sourceIds": [
             "7DZlkZ4bMpU-293"
-          ]
+          ],
+          "phoneticZh": "那ㄹ 嘟聊ㄆ給 嘿"
         },
         {
           "start": 105.9,
@@ -531,7 +553,8 @@
           "text": "가자～～",
           "sourceIds": [
             "7DZlkZ4bMpU-303"
-          ]
+          ],
+          "phoneticZh": "嘎加～～"
         },
         {
           "start": 122.5,
@@ -619,7 +642,8 @@
           "text": "끌어당겨 넌 Now I run away",
           "sourceIds": [
             "7DZlkZ4bMpU-342"
-          ]
+          ],
+          "phoneticZh": "哥囉當ㄍㄧㄜ 嫩 Now I run away"
         },
         {
           "start": 209.0,
@@ -637,7 +661,9 @@
             "7DZlkZ4bMpU-345"
           ]
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   },
   {
@@ -669,7 +695,8 @@
           "text": "원이 리브 미나미\n메이 제나",
           "sourceIds": [
             "9FlQOv6-Mjc-1"
-          ]
+          ],
+          "phoneticZh": "Woni Liv Minami\nMay Zena"
         },
         {
           "start": 70.8,
@@ -677,7 +704,8 @@
           "text": "리센느 짱",
           "sourceIds": [
             "9FlQOv6-Mjc-3"
-          ]
+          ],
+          "phoneticZh": "RESCENE 將"
         },
         {
           "start": 75.4,
@@ -701,7 +729,8 @@
           "text": "그 향기에",
           "sourceIds": [
             "9FlQOv6-Mjc-7"
-          ]
+          ],
+          "phoneticZh": "哥 hyang ㄍㄧ耶"
         },
         {
           "start": 86.6,
@@ -733,7 +762,8 @@
           "text": "기억해줘",
           "sourceIds": [
             "9FlQOv6-Mjc-13"
-          ]
+          ],
+          "phoneticZh": "記喔ㄎ嘿啾"
         },
         {
           "start": 109.9,
@@ -821,7 +851,8 @@
           "text": "귀 기울여 봐",
           "sourceIds": [
             "9FlQOv6-Mjc-29"
-          ]
+          ],
+          "phoneticZh": "ㄍㄨㄧ ㄍㄧ嗚聊 吧"
         },
         {
           "start": 156.0,
@@ -845,7 +876,8 @@
           "text": "기억해줘",
           "sourceIds": [
             "9FlQOv6-Mjc-35"
-          ]
+          ],
+          "phoneticZh": "記喔ㄎ嘿啾"
         },
         {
           "start": 171.2,
@@ -933,7 +965,8 @@
           "text": "기억할게!",
           "sourceIds": [
             "9FlQOv6-Mjc-49"
-          ]
+          ],
+          "phoneticZh": "記喔卡ㄹ給!"
         },
         {
           "start": 203.2,
@@ -941,7 +974,8 @@
           "text": "기억해줘!",
           "sourceIds": [
             "9FlQOv6-Mjc-51"
-          ]
+          ],
+          "phoneticZh": "記喔ㄎ嘿啾!"
         },
         {
           "start": 219.4,
@@ -1031,7 +1065,9 @@
             "9FlQOv6-Mjc-65-2"
           ]
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   },
   {
@@ -1063,7 +1099,8 @@
           "text": "빠져들어 RESCENE!",
           "sourceIds": [
             "YyixhiYpkkY-178"
-          ]
+          ],
+          "phoneticZh": "巴揪德囉 RESCENE!"
         },
         {
           "start": 32.6,
@@ -1071,7 +1108,8 @@
           "text": "떨려",
           "sourceIds": [
             "YyixhiYpkkY-181"
-          ]
+          ],
+          "phoneticZh": "兜ㄹ聊"
         },
         {
           "start": 35.6,
@@ -1135,7 +1173,8 @@
           "text": "종일!",
           "sourceIds": [
             "YyixhiYpkkY-203"
-          ]
+          ],
+          "phoneticZh": "終伊ㄹ!"
         },
         {
           "start": 82.0,
@@ -1215,7 +1254,8 @@
           "text": "종일!",
           "sourceIds": [
             "YyixhiYpkkY-232"
-          ]
+          ],
+          "phoneticZh": "終伊ㄹ!"
         },
         {
           "start": 138.4,
@@ -1247,7 +1287,8 @@
           "text": "이지",
           "sourceIds": [
             "YyixhiYpkkY-240"
-          ]
+          ],
+          "phoneticZh": "伊ㄐㄧ"
         },
         {
           "start": 155.6,
@@ -1295,7 +1336,8 @@
           "text": "원이! 리브! 미나미!",
           "sourceIds": [
             "YyixhiYpkkY-257"
-          ]
+          ],
+          "phoneticZh": "Woni! Liv! Minami!"
         },
         {
           "start": 193.2,
@@ -1303,7 +1345,8 @@
           "text": "또!",
           "sourceIds": [
             "YyixhiYpkkY-261"
-          ]
+          ],
+          "phoneticZh": "兜!"
         },
         {
           "start": 197.4,
@@ -1311,7 +1354,8 @@
           "text": "메이! 제나! 리마인!",
           "sourceIds": [
             "YyixhiYpkkY-264"
-          ]
+          ],
+          "phoneticZh": "May! Zena! REMINE!"
         },
         {
           "start": 205.9,
@@ -1319,7 +1363,8 @@
           "text": "종일!",
           "sourceIds": [
             "YyixhiYpkkY-267"
-          ]
+          ],
+          "phoneticZh": "終伊ㄹ!"
         },
         {
           "start": 207.7,
@@ -1337,7 +1382,9 @@
             "YyixhiYpkkY-269"
           ]
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   },
   {
@@ -1374,7 +1421,8 @@
           "text": "정원이 진경은 미나미",
           "sourceIds": [
             "RX592yMx7P0-138"
-          ]
+          ],
+          "phoneticZh": "Jeong Won-i Jin Gyeong-eun Minami"
         },
         {
           "start": 34.1,
@@ -1382,7 +1430,8 @@
           "text": "이예빈 김가영 리센느",
           "sourceIds": [
             "RX592yMx7P0-140"
-          ]
+          ],
+          "phoneticZh": "Lee Ye-bin Kim Ga-young RESCENE"
         },
         {
           "start": 37.8,
@@ -1390,7 +1439,8 @@
           "text": "프리티걸 나야 나",
           "sourceIds": [
             "RX592yMx7P0-142"
-          ]
+          ],
+          "phoneticZh": "Pretty Girl 那呀 那"
         },
         {
           "start": 39.3,
@@ -1430,7 +1480,8 @@
           "text": "리센느!",
           "sourceIds": [
             "RX592yMx7P0-152"
-          ]
+          ],
+          "phoneticZh": "RESCENE!"
         },
         {
           "start": 70.8,
@@ -1438,7 +1489,8 @@
           "text": "기본",
           "sourceIds": [
             "RX592yMx7P0-156-1"
-          ]
+          ],
+          "phoneticZh": "ㄍㄧ崩"
         },
         {
           "start": 72.4,
@@ -1446,7 +1498,8 @@
           "text": "선택",
           "sourceIds": [
             "RX592yMx7P0-156-2"
-          ]
+          ],
+          "phoneticZh": "松 teㄎ"
         },
         {
           "start": 77.4,
@@ -1470,7 +1523,8 @@
           "text": "넌",
           "sourceIds": [
             "RX592yMx7P0-159"
-          ]
+          ],
+          "phoneticZh": "嫩"
         },
         {
           "start": 89.6,
@@ -1502,7 +1556,8 @@
           "text": "넌",
           "sourceIds": [
             "RX592yMx7P0-163"
-          ]
+          ],
+          "phoneticZh": "嫩"
         },
         {
           "start": 102.1,
@@ -1518,7 +1573,8 @@
           "text": "리마인",
           "sourceIds": [
             "RX592yMx7P0-167"
-          ]
+          ],
+          "phoneticZh": "REMINE"
         },
         {
           "start": 114.5,
@@ -1566,7 +1622,8 @@
           "text": "넌",
           "sourceIds": [
             "RX592yMx7P0-181"
-          ]
+          ],
+          "phoneticZh": "嫩"
         },
         {
           "start": 143.4,
@@ -1598,7 +1655,8 @@
           "text": "넌",
           "sourceIds": [
             "RX592yMx7P0-185"
-          ]
+          ],
+          "phoneticZh": "嫩"
         },
         {
           "start": 156.0,
@@ -1614,7 +1672,8 @@
           "text": "리",
           "sourceIds": [
             "RX592yMx7P0-189"
-          ]
+          ],
+          "phoneticZh": "RE"
         },
         {
           "start": 162.5,
@@ -1622,7 +1681,8 @@
           "text": "센",
           "sourceIds": [
             "RX592yMx7P0-190"
-          ]
+          ],
+          "phoneticZh": "SCE"
         },
         {
           "start": 164.3,
@@ -1630,7 +1690,8 @@
           "text": "느",
           "sourceIds": [
             "RX592yMx7P0-191"
-          ]
+          ],
+          "phoneticZh": "NE"
         },
         {
           "start": 166.1,
@@ -1638,7 +1699,8 @@
           "text": "짱",
           "sourceIds": [
             "RX592yMx7P0-192"
-          ]
+          ],
+          "phoneticZh": "將"
         },
         {
           "start": 172.0,
@@ -1670,7 +1732,8 @@
           "text": "넌",
           "sourceIds": [
             "RX592yMx7P0-196"
-          ]
+          ],
+          "phoneticZh": "嫩"
         },
         {
           "start": 186.4,
@@ -1694,7 +1757,8 @@
           "text": "넌",
           "sourceIds": [
             "RX592yMx7P0-200"
-          ]
+          ],
+          "phoneticZh": "嫩"
         },
         {
           "start": 199.2,
@@ -1726,7 +1790,8 @@
           "text": "안된다는 맘은",
           "sourceIds": [
             "RX592yMx7P0-206"
-          ]
+          ],
+          "phoneticZh": "安堆噠嫩 馬門"
         },
         {
           "start": 207.7,
@@ -1758,7 +1823,8 @@
           "text": "어디서나 당당하게 걷기",
           "sourceIds": [
             "RX592yMx7P0-211"
-          ]
+          ],
+          "phoneticZh": "喔滴搜那 當當哈給 勾ㄊㄍㄧ"
         },
         {
           "start": 220.4,
@@ -1766,7 +1832,8 @@
           "text": "눈부셔 빛난다 리센느",
           "sourceIds": [
             "RX592yMx7P0-214"
-          ]
+          ],
+          "phoneticZh": "嫩不修 彬南噠 RESCENE"
         },
         {
           "start": 224.2,
@@ -1774,7 +1841,8 @@
           "text": "고마워 영원해 리마인",
           "sourceIds": [
             "RX592yMx7P0-216"
-          ]
+          ],
+          "phoneticZh": "摳馬窩 永窩ㄣ嘿 REMINE"
         },
         {
           "start": 227.6,
@@ -1782,9 +1850,12 @@
           "text": "우리 모두 프리티걸",
           "sourceIds": [
             "RX592yMx7P0-218"
-          ]
+          ],
+          "phoneticZh": "嗚哩 摸嘟 Pretty Girl"
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   },
   {
@@ -1816,7 +1887,8 @@
           "text": "원이 리브 미나미\n메이 제나 리센느",
           "sourceIds": [
             "s1S-lnU-yMI-1"
-          ]
+          ],
+          "phoneticZh": "Woni Liv Minami\nMay Zena RESCENE"
         },
         {
           "start": 37.4,
@@ -1904,7 +1976,8 @@
           "text": "빛 빛 빛",
           "sourceIds": [
             "s1S-lnU-yMI-28"
-          ]
+          ],
+          "phoneticZh": "比ㄊ 比ㄊ 比ㄊ"
         },
         {
           "start": 98.7,
@@ -1992,7 +2065,8 @@
           "text": "리! 센! 느!",
           "sourceIds": [
             "s1S-lnU-yMI-49"
-          ]
+          ],
+          "phoneticZh": "RE! SCE! NE!"
         },
         {
           "start": 134.0,
@@ -2048,7 +2122,8 @@
           "text": "빛 빛 빛",
           "sourceIds": [
             "s1S-lnU-yMI-60"
-          ]
+          ],
+          "phoneticZh": "比ㄊ 比ㄊ 比ㄊ"
         },
         {
           "start": 164.0,
@@ -2120,7 +2195,8 @@
           "text": "리! 센! 느!",
           "sourceIds": [
             "s1S-lnU-yMI-84"
-          ]
+          ],
+          "phoneticZh": "RE! SCE! NE!"
         },
         {
           "start": 204.6,
@@ -2178,7 +2254,9 @@
             "s1S-lnU-yMI-94"
           ]
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   },
   {
@@ -2210,7 +2288,8 @@
           "text": "원이 리브 미나미\n메이 제나 Glow Up!",
           "sourceIds": [
             "-55bUrG1qjg-22"
-          ]
+          ],
+          "phoneticZh": "Woni Liv Minami\nMay Zena Glow Up!"
         },
         {
           "start": 45.0,
@@ -2234,7 +2313,8 @@
           "text": "리마인!",
           "sourceIds": [
             "-55bUrG1qjg-30"
-          ]
+          ],
+          "phoneticZh": "REMINE!"
         },
         {
           "start": 64.3,
@@ -2242,7 +2322,8 @@
           "text": "가득해!",
           "sourceIds": [
             "-55bUrG1qjg-33"
-          ]
+          ],
+          "phoneticZh": "嘎德ㄎ嘿!"
         },
         {
           "start": 69.0,
@@ -2274,7 +2355,8 @@
           "text": "멀리",
           "sourceIds": [
             "-55bUrG1qjg-38"
-          ]
+          ],
+          "phoneticZh": "摸ㄹ哩"
         },
         {
           "start": 79.6,
@@ -2290,7 +2372,8 @@
           "text": "더",
           "sourceIds": [
             "-55bUrG1qjg-40"
-          ]
+          ],
+          "phoneticZh": "兜"
         },
         {
           "start": 84.3,
@@ -2306,7 +2389,8 @@
           "text": "리센느!",
           "sourceIds": [
             "-55bUrG1qjg-43"
-          ]
+          ],
+          "phoneticZh": "RESCENE!"
         },
         {
           "start": 91.3,
@@ -2338,7 +2422,8 @@
           "text": "너와 나",
           "sourceIds": [
             "-55bUrG1qjg-47"
-          ]
+          ],
+          "phoneticZh": "no 哇 那"
         },
         {
           "start": 110.3,
@@ -2346,7 +2431,8 @@
           "text": "그 순간",
           "sourceIds": [
             "-55bUrG1qjg-49"
-          ]
+          ],
+          "phoneticZh": "哥 孫 gan"
         },
         {
           "start": 115.3,
@@ -2370,7 +2456,8 @@
           "text": "뺏겼어!",
           "sourceIds": [
             "-55bUrG1qjg-58"
-          ]
+          ],
+          "phoneticZh": "貝ㄊㄍㄧㄜ搜!"
         },
         {
           "start": 138.5,
@@ -2394,7 +2481,8 @@
           "text": "멀리",
           "sourceIds": [
             "-55bUrG1qjg-63"
-          ]
+          ],
+          "phoneticZh": "摸ㄹ哩"
         },
         {
           "start": 144.8,
@@ -2410,7 +2498,8 @@
           "text": "더",
           "sourceIds": [
             "-55bUrG1qjg-65"
-          ]
+          ],
+          "phoneticZh": "兜"
         },
         {
           "start": 149.4,
@@ -2426,7 +2515,8 @@
           "text": "리센느!",
           "sourceIds": [
             "-55bUrG1qjg-68"
-          ]
+          ],
+          "phoneticZh": "RESCENE!"
         },
         {
           "start": 156.4,
@@ -2476,7 +2566,9 @@
             "-55bUrG1qjg-73-2"
           ]
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   },
   {
@@ -2524,7 +2616,8 @@
           "text": "리센느!",
           "sourceIds": [
             "VKlrVbgJG-g-11"
-          ]
+          ],
+          "phoneticZh": "RESCENE!"
         },
         {
           "start": 57.5,
@@ -2556,7 +2649,8 @@
           "text": "느껴진 Delight",
           "sourceIds": [
             "VKlrVbgJG-g-18"
-          ]
+          ],
+          "phoneticZh": "呢ㄍㄧㄜ gin Delight"
         },
         {
           "start": 85.5,
@@ -2580,7 +2674,8 @@
           "text": "빠져들어 리센느 사랑해!",
           "sourceIds": [
             "VKlrVbgJG-g-29"
-          ]
+          ],
+          "phoneticZh": "巴揪德囉 RESCENE 撒浪嘿!"
         },
         {
           "start": 107.3,
@@ -2596,7 +2691,8 @@
           "text": "레",
           "sourceIds": [
             "VKlrVbgJG-g-38-1"
-          ]
+          ],
+          "phoneticZh": "雷"
         },
         {
           "start": 119.9,
@@ -2604,7 +2700,8 @@
           "text": "끝도 없이",
           "sourceIds": [
             "VKlrVbgJG-g-38-2"
-          ]
+          ],
+          "phoneticZh": "哥ㄊ兜 喔ㄆ西"
         },
         {
           "start": 122.2,
@@ -2612,7 +2709,8 @@
           "text": "게",
           "sourceIds": [
             "VKlrVbgJG-g-39-1"
-          ]
+          ],
+          "phoneticZh": "給"
         },
         {
           "start": 123.5,
@@ -2620,7 +2718,8 @@
           "text": "Melody에",
           "sourceIds": [
             "VKlrVbgJG-g-39-2"
-          ]
+          ],
+          "phoneticZh": "Melody 耶"
         },
         {
           "start": 127.3,
@@ -2628,7 +2727,8 @@
           "text": "한 번 더 Delight",
           "sourceIds": [
             "VKlrVbgJG-g-40"
-          ]
+          ],
+          "phoneticZh": "含 崩 兜 Delight"
         },
         {
           "start": 135.3,
@@ -2652,7 +2752,8 @@
           "text": "빠져들어 리센느 사랑해!",
           "sourceIds": [
             "VKlrVbgJG-g-51"
-          ]
+          ],
+          "phoneticZh": "巴揪德囉 RESCENE 撒浪嘿!"
         },
         {
           "start": 157.0,
@@ -2676,7 +2777,8 @@
           "text": "잊지 못할 Heart drop",
           "sourceIds": [
             "VKlrVbgJG-g-61"
-          ]
+          ],
+          "phoneticZh": "伊ㄊ七 摸他ㄹ Heart drop"
         },
         {
           "start": 178.6,
@@ -2684,7 +2786,8 @@
           "text": "빠져들어 리센느 사랑해!",
           "sourceIds": [
             "VKlrVbgJG-g-63"
-          ]
+          ],
+          "phoneticZh": "巴揪德囉 RESCENE 撒浪嘿!"
         },
         {
           "start": 185.6,
@@ -2726,7 +2829,9 @@
             "VKlrVbgJG-g-85"
           ]
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   },
   {
@@ -2758,7 +2863,8 @@
           "text": "아",
           "sourceIds": [
             "Ma6IENHO584-5"
-          ]
+          ],
+          "phoneticZh": "阿"
         },
         {
           "start": 41.3,
@@ -2766,7 +2872,8 @@
           "text": "난",
           "sourceIds": [
             "Ma6IENHO584-6"
-          ]
+          ],
+          "phoneticZh": "南"
         },
         {
           "start": 45.4,
@@ -2774,7 +2881,8 @@
           "text": "리센느!",
           "sourceIds": [
             "Ma6IENHO584-7"
-          ]
+          ],
+          "phoneticZh": "RESCENE!"
         },
         {
           "start": 46.5,
@@ -2782,7 +2890,8 @@
           "text": "이젠",
           "sourceIds": [
             "Ma6IENHO584-8"
-          ]
+          ],
+          "phoneticZh": "伊間"
         },
         {
           "start": 48.8,
@@ -2790,7 +2899,8 @@
           "text": "내게",
           "sourceIds": [
             "Ma6IENHO584-9"
-          ]
+          ],
+          "phoneticZh": "內給"
         },
         {
           "start": 63.1,
@@ -2798,7 +2908,8 @@
           "text": "날 깨워내",
           "sourceIds": [
             "Ma6IENHO584-15"
-          ]
+          ],
+          "phoneticZh": "那ㄹ 給窩內"
         },
         {
           "start": 74.0,
@@ -2846,7 +2957,8 @@
           "text": "널 위한 거야",
           "sourceIds": [
             "Ma6IENHO584-31"
-          ]
+          ],
+          "phoneticZh": "no ㄹ wi 含 勾呀"
         },
         {
           "start": 102.1,
@@ -2854,7 +2966,8 @@
           "text": "리센느!",
           "sourceIds": [
             "Ma6IENHO584-33"
-          ]
+          ],
+          "phoneticZh": "RESCENE!"
         },
         {
           "start": 103.2,
@@ -2862,7 +2975,8 @@
           "text": "이젠",
           "sourceIds": [
             "Ma6IENHO584-34"
-          ]
+          ],
+          "phoneticZh": "伊間"
         },
         {
           "start": 105.5,
@@ -2870,7 +2984,8 @@
           "text": "내게",
           "sourceIds": [
             "Ma6IENHO584-35"
-          ]
+          ],
+          "phoneticZh": "內給"
         },
         {
           "start": 119.9,
@@ -2878,7 +2993,8 @@
           "text": "날 깨워내",
           "sourceIds": [
             "Ma6IENHO584-41"
-          ]
+          ],
+          "phoneticZh": "那ㄹ 給窩內"
         },
         {
           "start": 130.7,
@@ -2918,7 +3034,8 @@
           "text": "너를 믿어 리센느!",
           "sourceIds": [
             "Ma6IENHO584-56"
-          ]
+          ],
+          "phoneticZh": "no 哩ㄹ 米兜 RESCENE!"
         },
         {
           "start": 165.2,
@@ -2926,7 +3043,8 @@
           "text": "날 깨워내",
           "sourceIds": [
             "Ma6IENHO584-60"
-          ]
+          ],
+          "phoneticZh": "那ㄹ 給窩內"
         },
         {
           "start": 174.4,
@@ -2934,7 +3052,8 @@
           "text": "더 아름답게 피어나지",
           "sourceIds": [
             "Ma6IENHO584-64"
-          ]
+          ],
+          "phoneticZh": "兜 阿冷搭ㄆ給 批喔那ㄐㄧ"
         },
         {
           "start": 175.9,
@@ -2992,7 +3111,9 @@
             "Ma6IENHO584-73"
           ]
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   },
   {
@@ -3023,7 +3144,8 @@
           "sourceIds": [
             "ykVJo0wFlQ4-1"
           ],
-          "timingBasis": "caption"
+          "timingBasis": "caption",
+          "phoneticZh": "Woni Liv Minami\nMay Zena RESCENE!"
         },
         {
           "start": 13.1,
@@ -3032,7 +3154,8 @@
           "sourceIds": [
             "ykVJo0wFlQ4-3"
           ],
-          "timingBasis": "word-aligned"
+          "timingBasis": "word-aligned",
+          "phoneticZh": "叉加內"
         },
         {
           "start": 17.6,
@@ -3041,7 +3164,8 @@
           "sourceIds": [
             "ykVJo0wFlQ4-5"
           ],
-          "timingBasis": "word-aligned"
+          "timingBasis": "word-aligned",
+          "phoneticZh": "吉ㄆ中嘿"
         },
         {
           "start": 23.9,
@@ -3050,7 +3174,8 @@
           "sourceIds": [
             "ykVJo0wFlQ4-8"
           ],
-          "timingBasis": "word-aligned"
+          "timingBasis": "word-aligned",
+          "phoneticZh": "RESCENE!"
         },
         {
           "start": 31.4,
@@ -3059,7 +3184,8 @@
           "sourceIds": [
             "ykVJo0wFlQ4-10"
           ],
-          "timingBasis": "word-aligned"
+          "timingBasis": "word-aligned",
+          "phoneticZh": "那ㄹ哩謬ㄣ"
         },
         {
           "start": 35.8,
@@ -3068,7 +3194,8 @@
           "sourceIds": [
             "ykVJo0wFlQ4-13"
           ],
-          "timingBasis": "caption"
+          "timingBasis": "caption",
+          "phoneticZh": "伊 gon One and only"
         },
         {
           "start": 45.7,
@@ -3158,7 +3285,8 @@
           "sourceIds": [
             "ykVJo0wFlQ4-48"
           ],
-          "timingBasis": "word-aligned"
+          "timingBasis": "word-aligned",
+          "phoneticZh": "搜那ㄍㄧ"
         },
         {
           "start": 111.2,
@@ -3167,7 +3295,8 @@
           "sourceIds": [
             "ykVJo0wFlQ4-52"
           ],
-          "timingBasis": "caption"
+          "timingBasis": "caption",
+          "phoneticZh": "內 中切嫩 Secret"
         },
         {
           "start": 121.3,
@@ -3230,7 +3359,8 @@
           "sourceIds": [
             "ykVJo0wFlQ4-81"
           ],
-          "timingBasis": "caption"
+          "timingBasis": "caption",
+          "phoneticZh": "嗚林 換桑揪 gin Chemistry"
         },
         {
           "start": 183.5,
@@ -3278,7 +3408,9 @@
           "timingBasis": "caption"
         }
       ],
-      "timingRevision": "entry-v3"
+      "timingRevision": "entry-v3",
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   },
   {
@@ -3308,7 +3440,8 @@
           "text": "정원이 진경은 미나미\n이예빈 김가영 리센느",
           "sourceIds": [
             "hc1HS71j6oY-1"
-          ]
+          ],
+          "phoneticZh": "Jeong Won-i Jin Gyeong-eun Minami\nLee Ye-bin Kim Ga-young RESCENE"
         },
         {
           "start": 13.5,
@@ -3316,7 +3449,8 @@
           "text": "비! 지! 보! 이!",
           "sourceIds": [
             "hc1HS71j6oY-2"
-          ]
+          ],
+          "phoneticZh": "Bi! Ji! Bo! I!"
         },
         {
           "start": 19.0,
@@ -3332,7 +3466,8 @@
           "text": "바빠",
           "sourceIds": [
             "hc1HS71j6oY-6"
-          ]
+          ],
+          "phoneticZh": "巴爸"
         },
         {
           "start": 28.6,
@@ -3340,7 +3475,8 @@
           "text": "치",
           "sourceIds": [
             "hc1HS71j6oY-8"
-          ]
+          ],
+          "phoneticZh": "七"
         },
         {
           "start": 30.1,
@@ -3356,7 +3492,8 @@
           "text": "지",
           "sourceIds": [
             "hc1HS71j6oY-11"
-          ]
+          ],
+          "phoneticZh": "Ji"
         },
         {
           "start": 36.2,
@@ -3460,7 +3597,8 @@
           "text": "이럴거면 왜",
           "sourceIds": [
             "hc1HS71j6oY-24"
-          ]
+          ],
+          "phoneticZh": "伊囉ㄹ勾謬ㄣ 威"
         },
         {
           "start": 77.7,
@@ -3476,7 +3614,8 @@
           "text": "시험해",
           "sourceIds": [
             "hc1HS71j6oY-27"
-          ]
+          ],
+          "phoneticZh": "西喝ㄇ嘿"
         },
         {
           "start": 83.4,
@@ -3484,7 +3623,8 @@
           "text": "늘어놔 왜",
           "sourceIds": [
             "hc1HS71j6oY-28"
-          ]
+          ],
+          "phoneticZh": "呢囉 nwa 威"
         },
         {
           "start": 92.1,
@@ -3580,7 +3720,8 @@
           "text": "내 머리 속은 Dizzy",
           "sourceIds": [
             "hc1HS71j6oY-39"
-          ]
+          ],
+          "phoneticZh": "內 摸哩 搜根 Dizzy"
         },
         {
           "start": 117.7,
@@ -3684,9 +3825,12 @@
           "text": "네! 가! 좋! 아!\n리! 센! 느!",
           "sourceIds": [
             "hc1HS71j6oY-51"
-          ]
+          ],
+          "phoneticZh": "內! 嘎! 揪! 阿!\nRE! SCE! NE!"
         }
-      ]
+      ],
+      "phoneticStatus": "draft",
+      "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ／ㄹ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名使用讀音羅馬字，非官方英文姓名。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。"
     }
   }
 ]

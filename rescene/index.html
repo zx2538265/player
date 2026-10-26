@@ -20,10 +20,10 @@
   <meta name="twitter:description" content="收藏喜歡的旋律，一起練習 RESCENE 應援，支援切歌、調整速度與連續播放，一首一首練起來。">
   <meta name="twitter:image" content="https://allenka.com/rescene/banner.png">
   <meta name="twitter:image:alt" content="RESCENE Pretty Girl 粉紅房間官方概念照">
-  <link rel="stylesheet" href="practice.css?v=20260926-chant-cards">
-  <script src="chant.js?v=20261001-busy-boy-preview-v5" defer></script>
+  <link rel="stylesheet" href="practice.css?v=20261026-phonetic-v1">
+  <script src="chant.js?v=20261026-phonetic-v1" defer></script>
   <script src="subtitles.js?v=20260925-pretty-girl" defer></script>
-  <script src="practice.js?v=20261021-yoyo-entry-v3" defer></script>
+  <script src="practice.js?v=20261026-phonetic-v1" defer></script>
 </head>
 <body>
   <header><a class="brand" href="./">RESCENE<span>REMINE PRACTICE ROOM</span></a></header>
@@ -46,7 +46,8 @@
         <section class="chant-panel" aria-label="應援大字提示">
           <div class="cue-head"><label><input id="chantEnabled" type="checkbox" checked> 顯示提示</label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>
           <p id="chantUnavailable" hidden>逐句應援提示準備中，可先跟著影片練習。</p>
-          <div id="chantDisplay" class="chant-display" data-mode="waiting"><p id="chantLabel" class="chant-label">正在載入提示…</p><div class="cue"><span id="chantCount" aria-label="進場倒數"></span><p id="chantText"></p></div><p id="chantNext" class="up-next"></p></div>
+          <div id="chantDisplay" class="chant-display" data-mode="waiting"><p id="chantLabel" class="chant-label">正在載入提示…</p><div class="cue"><span id="chantCount" aria-label="進場倒數"></span><div class="chant-wording"><p id="chantText"></p><p id="chantOriginal" class="chant-original" hidden></p></div></div><p id="chantNext" class="up-next"></p></div>
+          <p class="phonetic-help">韓文空耳初稿，待逐句聽校；名字用英文，下方保留韓文，收尾注音不另喊一拍</p>
         </section>
         <fieldset id="transport" class="controls" disabled><legend class="sr-only">播放控制</legend>
           <div class="timeline"><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="1" value="0" step="0.1"><output id="clock">0:00 / 0:00</output></div>

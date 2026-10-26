@@ -1,5 +1,13 @@
 # RESCENE 應援練習室
 
+## 韓文應援空耳初稿（2026-10-26）
+
+- 11 首、122 張含韓文卡片（97 種完整卡片文字）新增 `phoneticZh`：大字英文名字／空耳，小字保留韓文原文，預覽與下一句同步套用。原文、來源 ID、421 張卡片及時間軸保留。
+- 藝名用 Woni、Liv、Minami、May、Zena，團名用 RESCENE，粉絲名用 REMINE。本名保留讀音羅馬字 Jeong Won-i、Jin Gyeong-eun、Lee Ye-bin、Kim Ga-young，非官方英文姓名；不替換成音節不同的藝名。拆拍團名使用 RE! SCE! NE!，依韓文喊三拍。
+- 全部為 `draft`，依韓文文字讀音製作，尚未逐句直接聽校；不能視為正式讀音、同步或全卡版面驗收。中文字不依國語聲調念，收尾注音不另喊一拍；保留少量拉丁音節輔助近似發音。
+- 用字維護於 [phonetics.zh.json](phonetics.zh.json)，逐卡對照為 [phonetic-review.tsv](phonetic-review.tsv)。執行 `python scripts/apply_rescene_phonetics.py` 更新網站與對照表。全歌單、YoYo、Busy Boy builder 共用的 catalog 寫入程序也會重新套用對照；原 OCR ledger 與 SRT 仍是韓文證據，不改成空耳。
+- 本次驗證涵蓋資料覆蓋率、來源與時間軸不變、重套一致性、倒數／暫停／切歌／結束顯示。內嵌瀏覽器無法連線本機預覽，320px／390px／桌機實際版面、YouTube 實播及全曲聽校待完成。
+
 以 BABYMONSTER 練習室為基礎，建立獨立 `/rescene/`，主題為 Pretty Girl 粉紅音樂房。
 
 - 奶油白、柔粉紅、莓果粉為本網站設計配色，並非官方應援色。

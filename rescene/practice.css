@@ -70,3 +70,4 @@ header{padding-top:18px;padding-bottom:16px}header .brand{font-size:20px;letter-
 .hero-copy{order:1;display:flex;align-items:center;gap:24px;width:100%;padding:18px 26px}
 .hero h1{font-size:30px;letter-spacing:2px;line-height:1.2;margin:0}.hero .hero-subtitle{font-size:13px;letter-spacing:1px;margin:0}.hero-copy>p:last-of-type{font-size:12px;margin:0 0 0 auto;max-width:none}
 @media(max-width:600px){.concept{height:290px;aspect-ratio:auto}.hero-copy{display:grid;grid-template-columns:1fr;gap:5px;padding:14px 18px}.hero h1{font-size:25px;letter-spacing:2px;margin:0}.hero .hero-subtitle{font-size:11px;margin:0}.hero-copy>p:last-of-type{display:none}}
+.chant-wording{min-width:0;flex:1}.chant-original{white-space:pre-line;overflow-wrap:anywhere;font-size:calc(clamp(14px,1.5vw,18px)*var(--scale,1));line-height:1.45;color:var(--muted);margin:10px 0 0}.phonetic-help{font-size:11px;line-height:1.6;color:var(--muted);margin:10px 0 0}#chantNote{white-space:pre-line}

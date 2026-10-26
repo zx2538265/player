@@ -14,7 +14,7 @@ def apply_phonetics(catalog):
         if not track:
             continue
         for cue in track['cues']:
-            if re.search('[가-힣]', cue['text']):
+            if cue['text'] in decisions['cards'] or re.search('[가-힣]', cue['text']):
                 cue['phoneticZh'] = decisions['cards'][cue['text']]
             else:
                 cue.pop('phoneticZh', None)
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     with (ROOT / 'rescene/phonetic-review.tsv').open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream, delimiter='\t')
-        writer.writerow(['歌曲', '卡片編號', '開始秒數', '結束秒數', '韓文原文', '英文名字／空耳初稿', '狀態'])
+        writer.writerow(['歌曲', '卡片編號', '開始秒數', '結束秒數', '原文', '英文名字／空耳初稿', '狀態'])
         for song in catalog:
             for index, cue in enumerate(song['chant']['cues'], 1):
                 if 'phoneticZh' in cue:

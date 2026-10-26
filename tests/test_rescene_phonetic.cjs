@@ -13,6 +13,7 @@ test('all Korean chant cards have phonetics while sources and raw text remain av
   for (const song of tracks) {
     assert.equal(Chant.validTrack(song.chant, song.chant.videoId), true);
     for (const cue of song.chant.cues) {
+      if (cue.text === '1234') {assert.equal(cue.phoneticZh, 'One, two, three, four');continue;}
       if (!/[가-힣]/u.test(cue.text)) {assert.equal(cue.phoneticZh, undefined);continue;}
       count++;
       assert.ok(cue.phoneticZh.trim());

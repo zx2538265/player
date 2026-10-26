@@ -8,9 +8,9 @@
 - 用字維護於 [phonetics.zh.json](phonetics.zh.json)，逐卡對照為 [phonetic-review.tsv](phonetic-review.tsv)。執行 `python scripts/apply_rescene_phonetics.py` 更新網站與對照表。全歌單、YoYo、Busy Boy builder 共用的 catalog 寫入程序也會重新套用對照；原 OCR ledger 與 SRT 仍是韓文證據，不改成空耳。
 - 本次驗證涵蓋資料覆蓋率、來源與時間軸不變、重套一致性、倒數／暫停／切歌／結束顯示。內嵌瀏覽器無法連線本機預覽，320px／390px／桌機實際版面、YouTube 實播及全曲聽校待完成。
 
-以 BABYMONSTER 練習室為基礎，建立獨立 `/rescene/`，主題為 Pretty Girl 粉紅音樂房。
+以 BABYMONSTER 練習室為基礎，建立獨立 `/rescene/`，主題為 Pulse 霧藍應援練習室。
 
-- 奶油白、柔粉紅、莓果粉為本網站設計配色，並非官方應援色。
+- 霧藍、紙白與石墨灰為本網站設計配色，並非官方應援色。
 - `songs.json` 為獨立歌單，收藏與偏好儲存在 `rescene-practice`。
 - 收錄 11 首應援教學影片，包含 9 首官方教學與使用者指定的 YoYo、Busy Boy 教學；非演出歌單。Pretty Girl 與 LOVE ATTACK 保留原編號，一般官方影片保留為參考連結。
 - 保留搜尋、收藏、切歌、速度、連續播放、專注模式與應援／字幕引擎。11 首已加入共 421 張應援提示，依來源畫面定位或詞句校時，逐句聽校待完成；未加入整首歌詞字幕。
@@ -40,7 +40,7 @@
 - 本機內嵌瀏覽器中，兩支 YouTube 影片均回報無法播放，已確認錯誤提示及外部連結顯示；不視為實際影片播放驗收。
 - 尚未提交、推送或部署。
 
-- Banner 改用 Mnet Plus 官方橫向素材 `banner.png`，滿版照片下方獨立標題色帶，手機照片高度 290px、置中裁切。來源：https://artist.mnetplus.world/main/stg/rescene-official/home
+- Banner 使用使用者提供的 Pulse 團體照 `pulse-banner.webp`（2640×1056），保留滿版照片下方獨立標題色帶；桌面與手機均按原始比例完整顯示五位成員。霧藍樣式由 `pulse.css` 覆寫共用的 `practice.css`，頁首維持原本架構。官方網站：https://artist.mnetplus.world/main/stg/rescene-official
 
 ## 官方應援教學來源（2026-09-26）
 

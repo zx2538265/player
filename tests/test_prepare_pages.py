@@ -74,7 +74,7 @@ class CompareTests(unittest.TestCase):
         for name in ("index.html", "practice.css", "practice.js", "chant.js", "subtitles.js", "songs.json", "share-cover.png", "share-cover-wide.png"):
             self.assertEqual((site / "babymonster" / name).read_bytes(), (source / "babymonster" / name).read_bytes())
         self.assertFalse((site / "babymonster/README.md").exists())
-        for name in ("index.html", "practice.css", "practice.js", "chant.js", "subtitles.js", "songs.json", "banner.png"):
+        for name in ("index.html", "practice.css", "pulse.css", "practice.js", "chant.js", "subtitles.js", "songs.json", "banner.png", "pulse-banner.webp"):
             self.assertEqual((site / "rescene" / name).read_bytes(), (source / "rescene" / name).read_bytes())
         self.assertFalse((site / "rescene/README.md").exists())
         track = json.loads((site / "bigbang/songs.json").read_text(encoding="utf-8"))[0]["chant"]

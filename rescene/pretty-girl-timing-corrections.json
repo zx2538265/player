@@ -1,0 +1,23 @@
+{
+  "videoId": "RX592yMx7P0",
+  "sourceUrl": "https://www.youtube.com/watch?v=RX592yMx7P0",
+  "basis": "Official video paused-frame review, approximately 0.1-second boundary resolution; vocal tails not measured",
+  "corrections": [
+    {
+      "sourceId": "RX592yMx7P0-206",
+      "text": "안된다는 맘은",
+      "start": 206.0,
+      "previousEnd": 206.7,
+      "end": 207.7,
+      "evidence": "Caption visible at 206.818 and 207.618; next caption no no no no at 207.718"
+    },
+    {
+      "sourceId": "RX592yMx7P0-211",
+      "text": "어디서나 당당하게 걷기",
+      "start": 213.4,
+      "previousEnd": 216.3,
+      "end": 217.9,
+      "evidence": "Caption still visible at 216.418, 217.418 and 217.818; absent at 217.918"
+    }
+  ]
+}

@@ -4,8 +4,59 @@ const assert=require('node:assert/strict');
 const Chant=require('../rescene/chant.js');
 const songs=require('../rescene/songs.json');
 
-test('421 source-bound cards have unique provenance and valid boundaries',()=>{
-  assert.deepEqual(songs.map(s=>s.chant.cues.length),[42,31,46,35,52,46,34,28,30,29,48]);
+test('all reviewed caption tails stay active without changing entry times or crossing the next card',()=>{
+  const review=require('../rescene/cue-end-review.json');
+  assert.equal(review.songs.reduce((n,s)=>n+s.cues.length,0),424);
+  for(const reviewedSong of review.songs){
+    const track=songs.find(s=>s.chant.videoId===reviewedSong.videoId).chant;
+    for(const decision of reviewedSong.cues){
+      const cue=track.cues.find(c=>c.sourceIds.join('|')===decision.sourceIds.join('|'));
+      assert.equal(cue.start,decision.start);
+      assert.equal(cue.text,decision.text);
+      if(decision.status!=='extended_to_caption_boundary') continue;
+      const time=(decision.previousEnd+decision.end)/2;
+      for(const state of [Chant.state(track,time,1),Chant.state(track,time,1,0.5),Chant.state(track,time,1,2)]){
+        assert.equal(state.mode,'active',`${reviewedSong.title} #${decision.index} at ${time}`);
+        assert.equal(state.text,decision.text);
+      }
+      assert.equal(Chant.state(track,time,2).text,decision.text);
+    }
+    assert.equal(Chant.validTrack(track,track.videoId),true);
+  }
+});
+
+test('UhUh retains both even know that responses and the reported Oh fill',()=>{
+  const track=songs.find(s=>s.title==='UhUh').chant;
+  const repeats=track.cues.filter(c=>c.text==='even know that');
+  assert.equal(repeats.length,2);
+  for(const time of [57,58.8,60,57]){
+    const state=Chant.state(track,time,1);
+    assert.equal(state.mode,'active');
+    assert.equal(state.text,'even know that');
+  }
+  assert.equal(track.cues.filter(c=>c.sourceIds.includes('s1S-lnU-yMI-omission-oh-1122')).length,1);
+  for(const time of [112.3,113,112.3]){
+    assert.equal(Chant.state(track,time,1).mode,'active');
+    assert.equal(Chant.state(track,time,1).text,'Oh!');
+  }
+  for(const time of [56.4,60.8,111.5,113.2]) assert.notEqual(Chant.state(track,time,1).mode,'active');
+});
+
+test('Pretty Girl keeps both reported phrases visible through their official caption tails',()=>{
+  const track=songs.find(s=>s.title==='Pretty Girl').chant;
+  for(const [text, times] of [['안된다는 맘은',[206.8,207.6,206.8]],['어디서나 당당하게 걷기',[216.4,217.8,216.4]]]){
+    for(const time of times){
+      const state=Chant.state(track,time,1);
+      assert.equal(state.mode,'active',`${text} at ${time}`);
+      assert.equal(state.text,text);
+    }
+  }
+  assert.equal(Chant.state(track,207.7,1).text,'no no no no');
+  assert.notEqual(Chant.state(track,217.9,1).mode,'active');
+});
+
+test('424 source-bound cards have unique provenance and valid boundaries',()=>{
+  assert.deepEqual(songs.map(s=>s.chant.cues.length),[42,31,46,35,52,49,34,28,30,29,48]);
   const ids=new Set();
   for(const song of songs){
     const track=song.chant,id=song.sources[0].videoId;
@@ -19,7 +70,7 @@ test('421 source-bound cards have unique provenance and valid boundaries',()=>{
       assert.ok(!cue.text.includes(' / '));
     }
   }
-  assert.equal(ids.size,421);
+  assert.equal(ids.size,424);
 });
 
 test('LOVE ATTACK retains both fills of each repeated phrase, including replay',()=>{
@@ -67,7 +118,7 @@ test('Busy Boy previews the next cue with countdown while retaining corrected ac
   assert.equal(Chant.state(track,53.2,1).text,'busy');
   assert.equal(Chant.state(track,53.6,1).text,'busy');
   assert.equal(Chant.state(track,54.2,1).text,'busy');
-  assert.equal(Chant.state(track,54.2,1).mode,'countdown');
+  assert.equal(Chant.state(track,54.2,1).mode,'active');
   assert.equal(Chant.state(track,54.5,1).text,'busy');
   assert.equal(Chant.state(track,56.5,1).text,'Busy boy');
   assert.equal(Chant.state(track,56.5,1).mode,'countdown');
@@ -130,7 +181,7 @@ test('visual source corrections retain ordinary-lyric exclusions and repeated ph
   assert.equal(uh.filter(c=>c.text==='You gonna shout it out').length,2);
   assert.equal(uh.find(c=>c.sourceIds[0]==='s1S-lnU-yMI-1').start,28);
   const heart=songs.find(song=>song.title==='Heart Drop').chant.cues.filter(c=>c.sourceIds[0].startsWith('VKlrVbgJG-g-38-'));
-  assert.equal(heart.length,2);assert.equal(heart[0].text,'레');assert.ok(heart[0].end<heart[1].start);
+  assert.equal(heart.length,2);assert.equal(heart[0].text,'레');assert.ok(heart[0].end<=heart[1].start);
   assert.equal(songs.find(song=>song.title==='Glow Up').chant.cues.find(c=>c.sourceIds[0]==='-55bUrG1qjg-35').text,'I');
 });
 

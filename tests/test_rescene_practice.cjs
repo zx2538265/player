@@ -101,7 +101,7 @@ test('phonetics show original Korean and clear it on Latin cards, switching and 
   assert.equal(s.get('chantOriginal').textContent,'');
   assert.equal(s.get('chantOriginal').hidden,true);
   s.select(10);
-  assert.match(s.get('chantText').textContent,/Jeong Won-i Jin Gyeong-eun/);
+  assert.match(s.get('chantText').textContent,/衝丸妮 金ㄍㄧㄛ恩 Minami\n伊耶彬 金嘎勇 RESCENE/);
   assert.equal(s.get('chantOriginal').hidden,false);
   const last=s.players.at(-1);last.ready();last.emit(0);s.tick();
   assert.equal(s.get('chantOriginal').textContent,'');

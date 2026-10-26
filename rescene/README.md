@@ -1,9 +1,30 @@
 # RESCENE 應援練習室
 
+## 全歌單句尾顯示比對（2026-10-26）
+
+- 依使用者確認，以來源字幕顯示為結束依據；同一行的分段提示仍在下一張卡的起點切換。11 首、424 張均檢視句尾對照圖，延長 273 張，起點、韓文原文、來源 ID 與核定空耳不變。
+- 決策與全部卡片前後時間保存在 `cue-end-review.json`；摘要及逐卡表見 [CUE-END-REVIEW.md](CUE-END-REVIEW.md)。`python scripts/fix_rescene_cue_ends.py` 重套結束時間，之後執行 `python scripts/apply_rescene_phonetics.py` 更新空耳對照表。
+- 官方、YoYo、Busy Boy builder 共用的 catalog 寫入程序會重新套用句尾決策；保留原始辨識與對齊證據，網站的 `displayEndBasis` 標記為 `reviewed-source-caption`。
+- YoYo 第 4 張 `RESCENE!` 的現有時間與來源畫面不一致，保留原時間並列入起點待核對，不延長到後續一般歌詞。完整聽校、正常速度全卡可讀性與正式網站部署未驗收。
+
+## UhUh 漏詞補回（2026-10-26）
+
+- 官方影片 56.5–58.7、58.7–60.7 秒各補一張 `even know that`；112.2–113.1 秒補 `Oh!`，UhUh 現為 49 張，全歌單 424 張。
+- 已以官方影片暫停逐格核對兩次重複字幕及 Oh! 的變黑；`Don't` 與前面的白色一般歌詞不加入。時間為約 0.1 秒畫面邊界精度，未量測喊聲尾音或完成正常速度聽校。
+- 決策及畫面觀察保存於 `uhuh-omission-corrections.json`；執行 `python scripts/fix_rescene_uhuh_omissions.py` 可重套，官方歌單 finalizer 亦套用，重複執行不增加卡片。
+- 本次為人工官方畫面檢查，未執行 GPU OCR；本機舊 OCR／ledger／SRT 未重建，網站資料為此次修正版。
+
+## Pretty Girl 句尾顯示修正（2026-10-26）
+
+- `안된다는 맘은` 結束由 206.7 改為 207.7 秒；`어디서나 당당하게 걷기` 由 216.3 改為 217.9 秒，起點、原文及來源 ID 保留。
+- 依官方影片暫停逐格畫面核對字幕切換，邊界約 0.1 秒精度；未量測喊聲尾音，未完成全曲聽校或正常速度同步驗收。
+- 決策保存於 `pretty-girl-timing-corrections.json`，執行 `python scripts/fix_rescene_pretty_girl_timing.py` 重套，再執行 `python scripts/apply_rescene_phonetics.py` 同步空耳對照表；官方歌單 finalizer 也會套用。
+- 本機舊 OCR／ledger／SRT 未重建，本次更新網站提示與空耳對照表。
+
 ## 韓文應援空耳初稿（2026-10-26）
 
 - 11 首、122 張含韓文卡片（97 種完整卡片文字）新增 `phoneticZh`：大字英文名字／空耳，小字保留韓文原文，預覽與下一句同步套用。原文、來源 ID、421 張卡片及時間軸保留。
-- 藝名用 Woni、Liv、Minami、May、Zena，團名用 RESCENE，粉絲名用 REMINE。本名保留讀音羅馬字 Jeong Won-i、Jin Gyeong-eun、Lee Ye-bin、Kim Ga-young，非官方英文姓名；不替換成音節不同的藝名。拆拍團名使用 RE! SCE! NE!，依韓文喊三拍。
+- 藝名用 Woni、Liv、Minami、May、Zena，團名用 RESCENE，粉絲名用 REMINE。依使用者校訂，정원이 使用「衝丸妮」、진경은 使用「金ㄍㄧㄛ恩」、미나미 使用 Minami；이예빈 使用「伊耶彬」、김가영 使用「金嘎勇」，皆為使用者指定的空耳寫法。拆拍團名使用 RE! SCE! NE!，依韓文喊三拍。
 - 全部為 `draft`，依韓文文字讀音製作，尚未逐句直接聽校；不能視為正式讀音、同步或全卡版面驗收。中文字不依國語聲調念，收尾注音不另喊一拍；保留少量拉丁音節輔助近似發音。
 - 用字維護於 [phonetics.zh.json](phonetics.zh.json)，逐卡對照為 [phonetic-review.tsv](phonetic-review.tsv)。執行 `python scripts/apply_rescene_phonetics.py` 更新網站與對照表。全歌單、YoYo、Busy Boy builder 共用的 catalog 寫入程序也會重新套用對照；原 OCR ledger 與 SRT 仍是韓文證據，不改成空耳。
 - 本次驗證涵蓋資料覆蓋率、來源與時間軸不變、重套一致性、倒數／暫停／切歌／結束顯示。內嵌瀏覽器無法連線本機預覽，320px／390px／桌機實際版面、YouTube 實播及全曲聽校待完成。
@@ -13,7 +34,7 @@
 - 霧藍、紙白與石墨灰為本網站設計配色，並非官方應援色。
 - `songs.json` 為獨立歌單，收藏與偏好儲存在 `rescene-practice`。
 - 收錄 11 首應援教學影片，包含 9 首官方教學與使用者指定的 YoYo、Busy Boy 教學；非演出歌單。Pretty Girl 與 LOVE ATTACK 保留原編號，一般官方影片保留為參考連結。
-- 保留搜尋、收藏、切歌、速度、連續播放、專注模式與應援／字幕引擎。11 首已加入共 421 張應援提示，依來源畫面定位或詞句校時，逐句聽校待完成；未加入整首歌詞字幕。
+- 保留搜尋、收藏、切歌、速度、連續播放、專注模式與應援／字幕引擎。11 首已加入共 424 張應援提示，依來源畫面定位或詞句校時，逐句聽校待完成；未加入整首歌詞字幕。
 
 ## LOVE ATTACK 重複應援修正（2026-10-21）
 
@@ -66,7 +87,7 @@
 | --- | ---: |
 | Pretty Girl | 52 |
 | LOVE ATTACK | 40 |
-| UhUh | 46 |
+| UhUh | 49 |
 | Pinball | 35 |
 | Glow Up | 34 |
 | Deja Vu | 46 |

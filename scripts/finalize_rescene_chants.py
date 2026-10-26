@@ -13,6 +13,8 @@ def read(path):
 
 def write(path, value):
     if path == ROOT / 'rescene/songs.json':
+        from fix_rescene_cue_ends import apply_corrections as apply_cue_ends
+        apply_cue_ends(value)
         from apply_rescene_phonetics import apply_phonetics
         apply_phonetics(value)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
@@ -165,6 +167,10 @@ def finalize():
         print(song['title'], len(cues), flush=True)
     from fix_rescene_love_attack_repeats import apply_corrections
     apply_corrections(catalog)
+    from fix_rescene_pretty_girl_timing import apply_corrections as apply_pretty_girl_timing
+    apply_pretty_girl_timing(catalog)
+    from fix_rescene_uhuh_omissions import apply_corrections as apply_uhuh_omissions
+    apply_uhuh_omissions(catalog)
     write(ROOT / 'rescene/songs.json', catalog)
     if any(s['sources'][0]['videoId'] == 'ykVJo0wFlQ4' for s in catalog):
         from build_rescene_yoyo import finalize as finalize_yoyo

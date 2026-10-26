@@ -1,0 +1,16 @@
+{
+  "videoId": "s1S-lnU-yMI",
+  "sourceUrl": "https://www.youtube.com/watch?v=s1S-lnU-yMI",
+  "review": "Manual full-frame official-video review; paused frame stepping; approximately 0.1-second boundary resolution. No GPU OCR or vocal-tail measurement performed.",
+  "evidence": [
+    "56.386: preceding ordinary lyric; 56.486: 몰랐겠지 넌 / Don't even know that, with only even know that black. Still present at 58.586.",
+    "58.686: 꿈에서도 넌 / Don't even know that, again only even know that black. Still present at 60.586; ordinary next lyric at 60.686.",
+    "111.0 and 112.1: Imagine that when you find out Oh!, with Oh! still unfilled. Oh! black at 112.2, 112.4 and 113.0. Next ordinary lyric at 113.1."
+  ],
+  "excluded": ["Don't", "몰랐겠지 넌", "꿈에서도 넌", "Imagine that when you find out"],
+  "cues": [
+    {"start": 56.5, "end": 58.7, "text": "even know that", "sourceIds": ["s1S-lnU-yMI-omission-even-565"]},
+    {"start": 58.7, "end": 60.7, "text": "even know that", "sourceIds": ["s1S-lnU-yMI-omission-even-587"]},
+    {"start": 112.2, "end": 113.1, "text": "Oh!", "sourceIds": ["s1S-lnU-yMI-omission-oh-1122"]}
+  ]
+}

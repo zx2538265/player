@@ -1,0 +1,5208 @@
+{
+  "version": "20261026-caption-ends-v1",
+  "rule": "Keep approved entry times and user phonetics; display each existing cue until source caption disappears or the next cue starts. Only extend ends; do not shorten existing cues.",
+  "basis": "manual review of all 424 cards using mid/old-tail/post-old-tail/proposed-tail/post-proposed-tail source frames; candidate boundary scan at 0.1 seconds",
+  "scope": {
+    "songs": 11,
+    "cues": 424,
+    "reviewedSheets": 47,
+    "extended": 273,
+    "needsEntryReview": 1
+  },
+  "notVerified": [
+    "full-song direct listening",
+    "normal-speed readability for every changed card",
+    "GPU OCR not run; reviewed existing Korean text and visible source frames"
+  ],
+  "songs": [
+    {
+      "title": "LOVE ATTACK",
+      "videoId": "xn12KH78Dx4",
+      "sourceUrl": "https://www.youtube.com/watch?v=xn12KH78Dx4",
+      "sourceSha256": "5c75cd99f7015ab637233cd497026b919d3890b6f22607da201bef833049c8eb",
+      "reviewedCount": 42,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "xn12KH78Dx4-133"
+          ],
+          "text": "Feeling love attack!",
+          "start": 22.2,
+          "previousEnd": 23.3,
+          "end": 23.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "xn12KH78Dx4-135"
+          ],
+          "text": "RESCENE!",
+          "start": 26.8,
+          "previousEnd": 27.4,
+          "end": 27.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "xn12KH78Dx4-137"
+          ],
+          "text": "LOVE ATTACK!",
+          "start": 30.9,
+          "previousEnd": 31.5,
+          "end": 32.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "xn12KH78Dx4-139"
+          ],
+          "text": "너!",
+          "start": 33.8,
+          "previousEnd": 34.4,
+          "end": 34.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-00.jpg"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "xn12KH78Dx4-140"
+          ],
+          "text": "started",
+          "start": 35.1,
+          "previousEnd": 35.7,
+          "end": 36.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "xn12KH78Dx4-143"
+          ],
+          "text": "않지",
+          "start": 39.4,
+          "previousEnd": 40.0,
+          "end": 40.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "xn12KH78Dx4-145"
+          ],
+          "text": "waiting for",
+          "start": 43.9,
+          "previousEnd": 44.5,
+          "end": 45.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "xn12KH78Dx4-146"
+          ],
+          "text": "스친",
+          "start": 45.4,
+          "previousEnd": 46.0,
+          "end": 46.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "xn12KH78Dx4-147"
+          ],
+          "text": "끌림",
+          "start": 46.4,
+          "previousEnd": 47.0,
+          "end": 47.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "xn12KH78Dx4-155"
+          ],
+          "text": "1234",
+          "start": 55.8,
+          "previousEnd": 57.4,
+          "end": 57.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "xn12KH78Dx4-158"
+          ],
+          "text": "RESCENE!",
+          "start": 64.0,
+          "previousEnd": 64.6,
+          "end": 65.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "xn12KH78Dx4-161"
+          ],
+          "text": "LOVE ATTACK!",
+          "start": 72.6,
+          "previousEnd": 73.2,
+          "end": 73.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "xn12KH78Dx4-162"
+          ],
+          "text": "SCENE!",
+          "start": 75.3,
+          "previousEnd": 75.8,
+          "end": 75.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "xn12KH78Dx4-163"
+          ],
+          "text": "RESCENE!",
+          "start": 77.0,
+          "previousEnd": 77.6,
+          "end": 78.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "xn12KH78Dx4-166"
+          ],
+          "text": "With me, With me",
+          "start": 83.3,
+          "previousEnd": 84.1,
+          "end": 84.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "xn12KH78Dx4-169"
+          ],
+          "text": "Feeling love attack!",
+          "start": 90.6,
+          "previousEnd": 91.6,
+          "end": 91.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "xn12KH78Dx4-178"
+          ],
+          "text": "Ambergris",
+          "start": 105.9,
+          "previousEnd": 106.5,
+          "end": 107.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "xn12KH78Dx4-179"
+          ],
+          "text": "드러내",
+          "start": 108.1,
+          "previousEnd": 108.7,
+          "end": 109.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "xn12KH78Dx4-180"
+          ],
+          "text": "Beautiful",
+          "start": 109.1,
+          "previousEnd": 109.8,
+          "end": 110.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "xn12KH78Dx4-182"
+          ],
+          "text": "Fabulous",
+          "start": 111.4,
+          "previousEnd": 112.0,
+          "end": 112.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "xn12KH78Dx4-184"
+          ],
+          "text": "On and on",
+          "start": 113.5,
+          "previousEnd": 114.2,
+          "end": 114.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "xn12KH78Dx4-186"
+          ],
+          "text": "1234",
+          "start": 115.9,
+          "previousEnd": 117.3,
+          "end": 117.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "xn12KH78Dx4-189"
+          ],
+          "text": "RESCENE!",
+          "start": 124.1,
+          "previousEnd": 124.7,
+          "end": 125.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "xn12KH78Dx4-192"
+          ],
+          "text": "LOVE ATTACK!",
+          "start": 132.7,
+          "previousEnd": 133.3,
+          "end": 133.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "xn12KH78Dx4-193"
+          ],
+          "text": "SCENE!",
+          "start": 135.3,
+          "previousEnd": 135.8,
+          "end": 135.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "xn12KH78Dx4-194"
+          ],
+          "text": "RESCENE!",
+          "start": 137.1,
+          "previousEnd": 137.7,
+          "end": 137.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "xn12KH78Dx4-197"
+          ],
+          "text": "With me, With me",
+          "start": 143.1,
+          "previousEnd": 144.1,
+          "end": 144.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "xn12KH78Dx4-200"
+          ],
+          "text": "Feeling love attack!",
+          "start": 150.5,
+          "previousEnd": 151.5,
+          "end": 151.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-02.jpg"
+        },
+        {
+          "index": 29,
+          "sourceIds": [
+            "xn12KH78Dx4-201"
+          ],
+          "text": "I am all you need",
+          "start": 152.3,
+          "previousEnd": 154.0,
+          "end": 154.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-02.jpg"
+        },
+        {
+          "index": 30,
+          "sourceIds": [
+            "xn12KH78Dx4-201-repeat"
+          ],
+          "text": "I am all you need",
+          "start": 154.1,
+          "previousEnd": 155.4,
+          "end": 155.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-02.jpg"
+        },
+        {
+          "index": 31,
+          "sourceIds": [
+            "xn12KH78Dx4-203"
+          ],
+          "text": "I am all you need",
+          "start": 156.7,
+          "previousEnd": 158.2,
+          "end": 158.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-03.jpg"
+        },
+        {
+          "index": 32,
+          "sourceIds": [
+            "xn12KH78Dx4-203-repeat"
+          ],
+          "text": "I am all you need",
+          "start": 158.5,
+          "previousEnd": 159.7,
+          "end": 159.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-03.jpg"
+        },
+        {
+          "index": 33,
+          "sourceIds": [
+            "xn12KH78Dx4-205"
+          ],
+          "text": "（歡呼）",
+          "start": 160.6,
+          "previousEnd": 162.6,
+          "end": 162.6,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-03.jpg"
+        },
+        {
+          "index": 34,
+          "sourceIds": [
+            "xn12KH78Dx4-208"
+          ],
+          "text": "RESCENE!",
+          "start": 169.0,
+          "previousEnd": 169.6,
+          "end": 170.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-03.jpg"
+        },
+        {
+          "index": 35,
+          "sourceIds": [
+            "xn12KH78Dx4-211"
+          ],
+          "text": "LOVE ATTACK!",
+          "start": 177.5,
+          "previousEnd": 178.2,
+          "end": 178.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-03.jpg"
+        },
+        {
+          "index": 36,
+          "sourceIds": [
+            "xn12KH78Dx4-212"
+          ],
+          "text": "장면에",
+          "start": 179.2,
+          "previousEnd": 179.8,
+          "end": 180.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-03.jpg"
+        },
+        {
+          "index": 37,
+          "sourceIds": [
+            "xn12KH78Dx4-214"
+          ],
+          "text": "황홀해",
+          "start": 181.5,
+          "previousEnd": 182.1,
+          "end": 182.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-03.jpg"
+        },
+        {
+          "index": 38,
+          "sourceIds": [
+            "xn12KH78Dx4-216"
+          ],
+          "text": "잡을 땐",
+          "start": 183.6,
+          "previousEnd": 184.2,
+          "end": 184.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-03.jpg"
+        },
+        {
+          "index": 39,
+          "sourceIds": [
+            "xn12KH78Dx4-217"
+          ],
+          "text": "어우러질 땐",
+          "start": 185.3,
+          "previousEnd": 186.4,
+          "end": 186.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-03.jpg"
+        },
+        {
+          "index": 40,
+          "sourceIds": [
+            "xn12KH78Dx4-218"
+          ],
+          "text": "With me, With me",
+          "start": 188.0,
+          "previousEnd": 189.1,
+          "end": 189.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-03.jpg"
+        },
+        {
+          "index": 41,
+          "sourceIds": [
+            "xn12KH78Dx4-220"
+          ],
+          "text": "완벽하게 어울려",
+          "start": 192.6,
+          "previousEnd": 194.8,
+          "end": 195.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-04.jpg"
+        },
+        {
+          "index": 42,
+          "sourceIds": [
+            "xn12KH78Dx4-221"
+          ],
+          "text": "Feeling love attack!",
+          "start": 195.5,
+          "previousEnd": 196.5,
+          "end": 197.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/xn12KH78Dx4-sheet-04.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Runaway",
+      "videoId": "7DZlkZ4bMpU",
+      "sourceUrl": "https://www.youtube.com/watch?v=7DZlkZ4bMpU",
+      "sourceSha256": "76c3f431572f0a23e938c90678d4eb754271b352dfbdd781675cfe79180628da",
+      "reviewedCount": 31,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "7DZlkZ4bMpU-266"
+          ],
+          "text": "원이 리브 미나미\n메이 제나",
+          "start": 39.7,
+          "previousEnd": 42.8,
+          "end": 43.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "7DZlkZ4bMpU-268"
+          ],
+          "text": "리센느 런!어!웨!이!",
+          "start": 43.1,
+          "previousEnd": 45.2,
+          "end": 45.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "7DZlkZ4bMpU-270"
+          ],
+          "text": "Neverland",
+          "start": 47.9,
+          "previousEnd": 49.2,
+          "end": 49.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "7DZlkZ4bMpU-272"
+          ],
+          "text": "Everyday",
+          "start": 53.7,
+          "previousEnd": 54.9,
+          "end": 55.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-00.jpg"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "7DZlkZ4bMpU-273"
+          ],
+          "text": "갈 수 없게",
+          "start": 56.4,
+          "previousEnd": 57.4,
+          "end": 57.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "7DZlkZ4bMpU-274"
+          ],
+          "text": "맴돌게 해",
+          "start": 57.8,
+          "previousEnd": 58.8,
+          "end": 58.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "7DZlkZ4bMpU-276"
+          ],
+          "text": "쳇바퀴",
+          "start": 62.3,
+          "previousEnd": 63.0,
+          "end": 63.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "7DZlkZ4bMpU-277"
+          ],
+          "text": "메아리",
+          "start": 63.7,
+          "previousEnd": 64.4,
+          "end": 64.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "7DZlkZ4bMpU-279"
+          ],
+          "text": "Heart",
+          "start": 68.9,
+          "previousEnd": 69.4,
+          "end": 69.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "7DZlkZ4bMpU-280"
+          ],
+          "text": "런!어!웨!이!",
+          "start": 71.9,
+          "previousEnd": 73.2,
+          "end": 73.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "7DZlkZ4bMpU-282"
+          ],
+          "text": "리!센!느!",
+          "start": 77.5,
+          "previousEnd": 78.6,
+          "end": 78.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "7DZlkZ4bMpU-287-1"
+          ],
+          "text": "I run away",
+          "start": 88.6,
+          "previousEnd": 90.2,
+          "end": 90.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "7DZlkZ4bMpU-287-2"
+          ],
+          "text": "（歡呼）",
+          "start": 90.5,
+          "previousEnd": 93.1,
+          "end": 93.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "7DZlkZ4bMpU-289"
+          ],
+          "text": "끌!어!당!겨! 리!센!느!",
+          "start": 93.3,
+          "previousEnd": 95.2,
+          "end": 96.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "7DZlkZ4bMpU-293"
+          ],
+          "text": "날 두렵게 해",
+          "start": 100.8,
+          "previousEnd": 102.1,
+          "end": 102.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "7DZlkZ4bMpU-296"
+          ],
+          "text": "You and me",
+          "start": 105.9,
+          "previousEnd": 107.0,
+          "end": 107.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "7DZlkZ4bMpU-299"
+          ],
+          "text": "All night",
+          "start": 108.8,
+          "previousEnd": 109.9,
+          "end": 110.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "7DZlkZ4bMpU-303"
+          ],
+          "text": "가자～～",
+          "start": 117.1,
+          "previousEnd": 118.2,
+          "end": 118.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "7DZlkZ4bMpU-306"
+          ],
+          "text": "I run away",
+          "start": 122.5,
+          "previousEnd": 123.9,
+          "end": 124.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "7DZlkZ4bMpU-308"
+          ],
+          "text": "Hold my hand",
+          "start": 128.5,
+          "previousEnd": 129.6,
+          "end": 129.6,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "7DZlkZ4bMpU-313-1"
+          ],
+          "text": "I run away",
+          "start": 139.5,
+          "previousEnd": 140.9,
+          "end": 141.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "7DZlkZ4bMpU-313-2"
+          ],
+          "text": "（歡呼）",
+          "start": 141.3,
+          "previousEnd": 143.4,
+          "end": 143.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "7DZlkZ4bMpU-316"
+          ],
+          "text": "I run, I run away",
+          "start": 146.6,
+          "previousEnd": 148.7,
+          "end": 149.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "7DZlkZ4bMpU-318"
+          ],
+          "text": "run away",
+          "start": 151.1,
+          "previousEnd": 152.3,
+          "end": 152.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "7DZlkZ4bMpU-325"
+          ],
+          "text": "（歡呼）",
+          "start": 163.9,
+          "previousEnd": 165.5,
+          "end": 165.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "7DZlkZ4bMpU-326"
+          ],
+          "text": "I run away",
+          "start": 167.6,
+          "previousEnd": 169.0,
+          "end": 169.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "7DZlkZ4bMpU-328"
+          ],
+          "text": "I run I run",
+          "start": 173.3,
+          "previousEnd": 174.6,
+          "end": 174.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "7DZlkZ4bMpU-333"
+          ],
+          "text": "I run away",
+          "start": 184.7,
+          "previousEnd": 186.2,
+          "end": 186.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-02.jpg"
+        },
+        {
+          "index": 29,
+          "sourceIds": [
+            "7DZlkZ4bMpU-342"
+          ],
+          "text": "끌어당겨 넌 Now I run away",
+          "start": 203.4,
+          "previousEnd": 206.1,
+          "end": 207.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-02.jpg"
+        },
+        {
+          "index": 30,
+          "sourceIds": [
+            "7DZlkZ4bMpU-344"
+          ],
+          "text": "（歡呼）",
+          "start": 209.0,
+          "previousEnd": 211.4,
+          "end": 211.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-02.jpg"
+        },
+        {
+          "index": 31,
+          "sourceIds": [
+            "7DZlkZ4bMpU-345"
+          ],
+          "text": "I run I run I runaway!",
+          "start": 211.6,
+          "previousEnd": 214.1,
+          "end": 215.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/7DZlkZ4bMpU-sheet-03.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Deja Vu",
+      "videoId": "9FlQOv6-Mjc",
+      "sourceUrl": "https://www.youtube.com/watch?v=9FlQOv6-Mjc",
+      "sourceSha256": "8db4aa24289ee7ff2008ef7c11d8f931f1b8f5850405e3f543c295c3c634461b",
+      "reviewedCount": 46,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "9FlQOv6-Mjc-1"
+          ],
+          "text": "원이 리브 미나미\n메이 제나",
+          "start": 64.9,
+          "previousEnd": 69.2,
+          "end": 69.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "9FlQOv6-Mjc-3"
+          ],
+          "text": "리센느 짱",
+          "start": 70.8,
+          "previousEnd": 72.4,
+          "end": 72.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "9FlQOv6-Mjc-5"
+          ],
+          "text": "I",
+          "start": 75.4,
+          "previousEnd": 76.2,
+          "end": 76.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "9FlQOv6-Mjc-6"
+          ],
+          "text": "light",
+          "start": 79.2,
+          "previousEnd": 80.1,
+          "end": 80.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-00.jpg"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "9FlQOv6-Mjc-7"
+          ],
+          "text": "그 향기에",
+          "start": 82.7,
+          "previousEnd": 83.8,
+          "end": 84.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "9FlQOv6-Mjc-8"
+          ],
+          "text": "Oh It's so bright",
+          "start": 86.6,
+          "previousEnd": 87.6,
+          "end": 87.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "9FlQOv6-Mjc-10"
+          ],
+          "text": "Deja vu!",
+          "start": 94.5,
+          "previousEnd": 95.4,
+          "end": 95.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "9FlQOv6-Mjc-12"
+          ],
+          "text": "after all",
+          "start": 98.9,
+          "previousEnd": 99.9,
+          "end": 101.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "9FlQOv6-Mjc-13"
+          ],
+          "text": "기억해줘",
+          "start": 106.1,
+          "previousEnd": 107.0,
+          "end": 107.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "9FlQOv6-Mjc-14"
+          ],
+          "text": "deja vu",
+          "start": 109.9,
+          "previousEnd": 110.8,
+          "end": 111.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "9FlQOv6-Mjc-15"
+          ],
+          "text": "WAH～",
+          "start": 112.3,
+          "previousEnd": 112.9,
+          "end": 112.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "9FlQOv6-Mjc-16"
+          ],
+          "text": "YEAH～",
+          "start": 114.1,
+          "previousEnd": 114.8,
+          "end": 114.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "9FlQOv6-Mjc-17"
+          ],
+          "text": "deja vu",
+          "start": 115.6,
+          "previousEnd": 116.5,
+          "end": 116.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "9FlQOv6-Mjc-18"
+          ],
+          "text": "Oh oh oh ha",
+          "start": 116.6,
+          "previousEnd": 118.4,
+          "end": 118.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "9FlQOv6-Mjc-20"
+          ],
+          "text": "deja vu",
+          "start": 121.4,
+          "previousEnd": 122.2,
+          "end": 122.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "9FlQOv6-Mjc-22"
+          ],
+          "text": "WAH～",
+          "start": 127.6,
+          "previousEnd": 128.2,
+          "end": 128.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "9FlQOv6-Mjc-23"
+          ],
+          "text": "YEAH～",
+          "start": 129.4,
+          "previousEnd": 130.0,
+          "end": 130.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "9FlQOv6-Mjc-24"
+          ],
+          "text": "deja vu",
+          "start": 130.9,
+          "previousEnd": 131.8,
+          "end": 131.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "9FlQOv6-Mjc-25"
+          ],
+          "text": "Oh oh oh ha",
+          "start": 131.9,
+          "previousEnd": 133.7,
+          "end": 134.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "9FlQOv6-Mjc-29"
+          ],
+          "text": "귀 기울여 봐",
+          "start": 144.1,
+          "previousEnd": 145.3,
+          "end": 145.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "9FlQOv6-Mjc-32"
+          ],
+          "text": "Deja vu!",
+          "start": 156.0,
+          "previousEnd": 156.9,
+          "end": 157.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "9FlQOv6-Mjc-34"
+          ],
+          "text": "after all",
+          "start": 160.3,
+          "previousEnd": 161.2,
+          "end": 162.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "9FlQOv6-Mjc-35"
+          ],
+          "text": "기억해줘",
+          "start": 167.5,
+          "previousEnd": 168.4,
+          "end": 168.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "9FlQOv6-Mjc-36"
+          ],
+          "text": "deja vu",
+          "start": 171.2,
+          "previousEnd": 172.1,
+          "end": 172.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "9FlQOv6-Mjc-37"
+          ],
+          "text": "WAH～",
+          "start": 173.6,
+          "previousEnd": 174.2,
+          "end": 174.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "9FlQOv6-Mjc-38"
+          ],
+          "text": "YEAH～",
+          "start": 175.4,
+          "previousEnd": 176.1,
+          "end": 176.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "9FlQOv6-Mjc-39"
+          ],
+          "text": "deja vu",
+          "start": 177.0,
+          "previousEnd": 177.9,
+          "end": 177.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "9FlQOv6-Mjc-40"
+          ],
+          "text": "Oh oh oh ha",
+          "start": 178.0,
+          "previousEnd": 179.8,
+          "end": 180.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-02.jpg"
+        },
+        {
+          "index": 29,
+          "sourceIds": [
+            "9FlQOv6-Mjc-42"
+          ],
+          "text": "deja vu",
+          "start": 182.7,
+          "previousEnd": 183.6,
+          "end": 183.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-02.jpg"
+        },
+        {
+          "index": 30,
+          "sourceIds": [
+            "9FlQOv6-Mjc-44"
+          ],
+          "text": "WAH～",
+          "start": 188.9,
+          "previousEnd": 189.5,
+          "end": 189.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-02.jpg"
+        },
+        {
+          "index": 31,
+          "sourceIds": [
+            "9FlQOv6-Mjc-45"
+          ],
+          "text": "YEAH～",
+          "start": 190.7,
+          "previousEnd": 191.5,
+          "end": 191.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-03.jpg"
+        },
+        {
+          "index": 32,
+          "sourceIds": [
+            "9FlQOv6-Mjc-46"
+          ],
+          "text": "deja vu",
+          "start": 192.3,
+          "previousEnd": 193.2,
+          "end": 193.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-03.jpg"
+        },
+        {
+          "index": 33,
+          "sourceIds": [
+            "9FlQOv6-Mjc-47"
+          ],
+          "text": "Oh oh oh ha",
+          "start": 193.3,
+          "previousEnd": 195.1,
+          "end": 195.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-03.jpg"
+        },
+        {
+          "index": 34,
+          "sourceIds": [
+            "9FlQOv6-Mjc-49"
+          ],
+          "text": "기억할게!",
+          "start": 195.5,
+          "previousEnd": 196.9,
+          "end": 198.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-03.jpg"
+        },
+        {
+          "index": 35,
+          "sourceIds": [
+            "9FlQOv6-Mjc-51"
+          ],
+          "text": "기억해줘!",
+          "start": 203.2,
+          "previousEnd": 204.8,
+          "end": 206.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-03.jpg"
+        },
+        {
+          "index": 36,
+          "sourceIds": [
+            "9FlQOv6-Mjc-54"
+          ],
+          "text": "deja vu",
+          "start": 219.4,
+          "previousEnd": 220.1,
+          "end": 220.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-03.jpg"
+        },
+        {
+          "index": 37,
+          "sourceIds": [
+            "9FlQOv6-Mjc-55"
+          ],
+          "text": "WAH～",
+          "start": 221.7,
+          "previousEnd": 222.3,
+          "end": 222.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-03.jpg"
+        },
+        {
+          "index": 38,
+          "sourceIds": [
+            "9FlQOv6-Mjc-56"
+          ],
+          "text": "YEAH～",
+          "start": 223.5,
+          "previousEnd": 224.2,
+          "end": 224.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-03.jpg"
+        },
+        {
+          "index": 39,
+          "sourceIds": [
+            "9FlQOv6-Mjc-57"
+          ],
+          "text": "deja vu",
+          "start": 225.0,
+          "previousEnd": 225.9,
+          "end": 226.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-03.jpg"
+        },
+        {
+          "index": 40,
+          "sourceIds": [
+            "9FlQOv6-Mjc-58"
+          ],
+          "text": "Oh oh oh ha",
+          "start": 226.1,
+          "previousEnd": 227.8,
+          "end": 228.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-03.jpg"
+        },
+        {
+          "index": 41,
+          "sourceIds": [
+            "9FlQOv6-Mjc-60"
+          ],
+          "text": "deja vu",
+          "start": 230.8,
+          "previousEnd": 231.6,
+          "end": 231.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-04.jpg"
+        },
+        {
+          "index": 42,
+          "sourceIds": [
+            "9FlQOv6-Mjc-62"
+          ],
+          "text": "WAH～",
+          "start": 237.0,
+          "previousEnd": 237.6,
+          "end": 237.6,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-04.jpg"
+        },
+        {
+          "index": 43,
+          "sourceIds": [
+            "9FlQOv6-Mjc-63"
+          ],
+          "text": "YEAH～",
+          "start": 238.8,
+          "previousEnd": 239.5,
+          "end": 239.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-04.jpg"
+        },
+        {
+          "index": 44,
+          "sourceIds": [
+            "9FlQOv6-Mjc-64"
+          ],
+          "text": "deja vu",
+          "start": 240.3,
+          "previousEnd": 241.2,
+          "end": 241.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-04.jpg"
+        },
+        {
+          "index": 45,
+          "sourceIds": [
+            "9FlQOv6-Mjc-65-1"
+          ],
+          "text": "Oh oh oh ha",
+          "start": 241.3,
+          "previousEnd": 243.2,
+          "end": 243.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-04.jpg"
+        },
+        {
+          "index": 46,
+          "sourceIds": [
+            "9FlQOv6-Mjc-65-2"
+          ],
+          "text": "（歡呼）",
+          "start": 243.6,
+          "previousEnd": 248.9,
+          "end": 248.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/9FlQOv6-Mjc-sheet-04.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Pinball",
+      "videoId": "YyixhiYpkkY",
+      "sourceUrl": "https://www.youtube.com/watch?v=YyixhiYpkkY",
+      "sourceSha256": "07aa8f77809adbb98a4b58cf733f4959d2fabf726247aabdfd50704fa1b7fa7c",
+      "reviewedCount": 35,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "YyixhiYpkkY-178"
+          ],
+          "text": "빠져들어 RESCENE!",
+          "start": 23.7,
+          "previousEnd": 25.9,
+          "end": 26.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "YyixhiYpkkY-181"
+          ],
+          "text": "떨려",
+          "start": 32.6,
+          "previousEnd": 33.3,
+          "end": 34.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "YyixhiYpkkY-182"
+          ],
+          "text": "Pinball",
+          "start": 35.6,
+          "previousEnd": 36.2,
+          "end": 37.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "YyixhiYpkkY-183"
+          ],
+          "text": "Play!",
+          "start": 39.5,
+          "previousEnd": 40.1,
+          "end": 40.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-00.jpg"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "YyixhiYpkkY-184"
+          ],
+          "text": "Wait!",
+          "start": 42.5,
+          "previousEnd": 43.1,
+          "end": 43.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "YyixhiYpkkY-187"
+          ],
+          "text": "down to play",
+          "start": 47.6,
+          "previousEnd": 48.6,
+          "end": 49.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "YyixhiYpkkY-188"
+          ],
+          "text": "（歡呼）",
+          "start": 49.2,
+          "previousEnd": 51.7,
+          "end": 51.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "YyixhiYpkkY-192"
+          ],
+          "text": "nah nah",
+          "start": 58.4,
+          "previousEnd": 59.4,
+          "end": 59.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "YyixhiYpkkY-198"
+          ],
+          "text": "RESCENE!",
+          "start": 70.0,
+          "previousEnd": 70.8,
+          "end": 71.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "YyixhiYpkkY-203"
+          ],
+          "text": "종일!",
+          "start": 80.4,
+          "previousEnd": 81.0,
+          "end": 81.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "YyixhiYpkkY-204"
+          ],
+          "text": "Pinball!",
+          "start": 82.0,
+          "previousEnd": 82.6,
+          "end": 83.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "YyixhiYpkkY-207"
+          ],
+          "text": "Oh oh!",
+          "start": 88.7,
+          "previousEnd": 89.3,
+          "end": 89.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "YyixhiYpkkY-208"
+          ],
+          "text": "Oh oh!",
+          "start": 91.5,
+          "previousEnd": 92.2,
+          "end": 92.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "YyixhiYpkkY-211"
+          ],
+          "text": "Flash yeah!",
+          "start": 96.2,
+          "previousEnd": 96.8,
+          "end": 96.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "YyixhiYpkkY-213"
+          ],
+          "text": "pass yeah!",
+          "start": 99.0,
+          "previousEnd": 99.7,
+          "end": 99.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "YyixhiYpkkY-216"
+          ],
+          "text": "Just like that babe",
+          "start": 104.0,
+          "previousEnd": 105.4,
+          "end": 105.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "YyixhiYpkkY-217"
+          ],
+          "text": "（歡呼）",
+          "start": 106.0,
+          "previousEnd": 108.1,
+          "end": 108.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "YyixhiYpkkY-221"
+          ],
+          "text": "nah nah",
+          "start": 114.8,
+          "previousEnd": 115.8,
+          "end": 116.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "YyixhiYpkkY-227"
+          ],
+          "text": "RESCENE!",
+          "start": 126.4,
+          "previousEnd": 127.2,
+          "end": 128.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "YyixhiYpkkY-232"
+          ],
+          "text": "종일!",
+          "start": 136.8,
+          "previousEnd": 137.4,
+          "end": 137.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "YyixhiYpkkY-233"
+          ],
+          "text": "Pinball!",
+          "start": 138.4,
+          "previousEnd": 139.0,
+          "end": 139.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "YyixhiYpkkY-237"
+          ],
+          "text": "RESCENE!",
+          "start": 149.2,
+          "previousEnd": 150.3,
+          "end": 150.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "YyixhiYpkkY-239"
+          ],
+          "text": "Heartbeat",
+          "start": 152.0,
+          "previousEnd": 152.6,
+          "end": 152.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "YyixhiYpkkY-240"
+          ],
+          "text": "이지",
+          "start": 153.5,
+          "previousEnd": 154.1,
+          "end": 154.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "YyixhiYpkkY-242"
+          ],
+          "text": "Closer",
+          "start": 155.6,
+          "previousEnd": 156.2,
+          "end": 156.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "YyixhiYpkkY-244"
+          ],
+          "text": "（歡呼）",
+          "start": 159.6,
+          "previousEnd": 162.7,
+          "end": 162.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "YyixhiYpkkY-250"
+          ],
+          "text": "RESCENE!",
+          "start": 173.1,
+          "previousEnd": 174.0,
+          "end": 174.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "YyixhiYpkkY-255"
+          ],
+          "text": "RESCENE!",
+          "start": 183.0,
+          "previousEnd": 183.6,
+          "end": 184.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-02.jpg"
+        },
+        {
+          "index": 29,
+          "sourceIds": [
+            "YyixhiYpkkY-256"
+          ],
+          "text": "Pinball!",
+          "start": 185.1,
+          "previousEnd": 185.7,
+          "end": 186.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-02.jpg"
+        },
+        {
+          "index": 30,
+          "sourceIds": [
+            "YyixhiYpkkY-257"
+          ],
+          "text": "원이! 리브! 미나미!",
+          "start": 186.2,
+          "previousEnd": 187.5,
+          "end": 187.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-02.jpg"
+        },
+        {
+          "index": 31,
+          "sourceIds": [
+            "YyixhiYpkkY-261"
+          ],
+          "text": "또!",
+          "start": 193.2,
+          "previousEnd": 193.8,
+          "end": 193.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-03.jpg"
+        },
+        {
+          "index": 32,
+          "sourceIds": [
+            "YyixhiYpkkY-264"
+          ],
+          "text": "메이! 제나! 리마인!",
+          "start": 197.4,
+          "previousEnd": 199.4,
+          "end": 199.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-03.jpg"
+        },
+        {
+          "index": 33,
+          "sourceIds": [
+            "YyixhiYpkkY-267"
+          ],
+          "text": "종일!",
+          "start": 205.9,
+          "previousEnd": 206.5,
+          "end": 206.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-03.jpg"
+        },
+        {
+          "index": 34,
+          "sourceIds": [
+            "YyixhiYpkkY-268"
+          ],
+          "text": "Pinball!",
+          "start": 207.7,
+          "previousEnd": 208.3,
+          "end": 209.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-03.jpg"
+        },
+        {
+          "index": 35,
+          "sourceIds": [
+            "YyixhiYpkkY-269"
+          ],
+          "text": "（歡呼）",
+          "start": 209.5,
+          "previousEnd": 213.4,
+          "end": 213.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/YyixhiYpkkY-sheet-03.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Pretty Girl",
+      "videoId": "RX592yMx7P0",
+      "sourceUrl": "https://www.youtube.com/watch?v=RX592yMx7P0",
+      "sourceSha256": "07cd33ac72dfb861357ee39a9e491e98f9907eeeb0deda0561226420fcf72090",
+      "reviewedCount": 52,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "RX592yMx7P0-138"
+          ],
+          "text": "정원이 진경은 미나미",
+          "start": 30.6,
+          "previousEnd": 32.8,
+          "end": 33.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "RX592yMx7P0-140"
+          ],
+          "text": "이예빈 김가영 리센느",
+          "start": 34.1,
+          "previousEnd": 36.2,
+          "end": 36.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "RX592yMx7P0-142"
+          ],
+          "text": "프리티걸 나야 나",
+          "start": 37.8,
+          "previousEnd": 39.0,
+          "end": 39.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "RX592yMx7P0-143"
+          ],
+          "text": "one twe three yeah",
+          "start": 39.3,
+          "previousEnd": 40.9,
+          "end": 41.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-00.jpg"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "RX592yMx7P0-145"
+          ],
+          "text": "every wanna pretty",
+          "start": 43.0,
+          "previousEnd": 44.0,
+          "end": 44.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "RX592yMx7P0-147"
+          ],
+          "text": "no no no no",
+          "start": 46.8,
+          "previousEnd": 47.8,
+          "end": 48.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "RX592yMx7P0-149"
+          ],
+          "text": "every wanna pretty",
+          "start": 50.2,
+          "previousEnd": 51.2,
+          "end": 51.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "RX592yMx7P0-152"
+          ],
+          "text": "리센느!",
+          "start": 58.3,
+          "previousEnd": 58.9,
+          "end": 60.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "RX592yMx7P0-156-1"
+          ],
+          "text": "기본",
+          "start": 70.8,
+          "previousEnd": 71.4,
+          "end": 72.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "RX592yMx7P0-156-2"
+          ],
+          "text": "선택",
+          "start": 72.4,
+          "previousEnd": 73.0,
+          "end": 73.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "RX592yMx7P0-158-1"
+          ],
+          "text": "girl!",
+          "start": 77.4,
+          "previousEnd": 78.0,
+          "end": 79.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "RX592yMx7P0-158-2"
+          ],
+          "text": "Pretty Girl",
+          "start": 79.7,
+          "previousEnd": 80.5,
+          "end": 81.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "RX592yMx7P0-159"
+          ],
+          "text": "넌",
+          "start": 84.6,
+          "previousEnd": 85.0,
+          "end": 85.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "RX592yMx7P0-161"
+          ],
+          "text": "yeah yeah yeah yeah",
+          "start": 89.6,
+          "previousEnd": 90.9,
+          "end": 91.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "RX592yMx7P0-162-1"
+          ],
+          "text": "girl!",
+          "start": 91.8,
+          "previousEnd": 92.4,
+          "end": 94.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "RX592yMx7P0-162-2"
+          ],
+          "text": "Pretty Girl",
+          "start": 94.1,
+          "previousEnd": 94.9,
+          "end": 95.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "RX592yMx7P0-163"
+          ],
+          "text": "넌",
+          "start": 99.0,
+          "previousEnd": 99.4,
+          "end": 99.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "RX592yMx7P0-165"
+          ],
+          "text": "Yeah yeah yeah yeah",
+          "start": 102.1,
+          "previousEnd": 103.3,
+          "end": 103.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "RX592yMx7P0-167"
+          ],
+          "text": "리마인",
+          "start": 108.4,
+          "previousEnd": 109.0,
+          "end": 109.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "RX592yMx7P0-170"
+          ],
+          "text": "every wanna pretty",
+          "start": 114.5,
+          "previousEnd": 115.6,
+          "end": 116.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "RX592yMx7P0-172"
+          ],
+          "text": "no no no no",
+          "start": 118.3,
+          "previousEnd": 119.4,
+          "end": 120.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "RX592yMx7P0-174"
+          ],
+          "text": "every wanna pretty",
+          "start": 121.7,
+          "previousEnd": 122.8,
+          "end": 123.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "RX592yMx7P0-180-1"
+          ],
+          "text": "girl!",
+          "start": 131.2,
+          "previousEnd": 131.8,
+          "end": 133.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "RX592yMx7P0-180-2"
+          ],
+          "text": "Pretty Girl",
+          "start": 133.5,
+          "previousEnd": 134.3,
+          "end": 135.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "RX592yMx7P0-181"
+          ],
+          "text": "넌",
+          "start": 138.3,
+          "previousEnd": 138.8,
+          "end": 138.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "RX592yMx7P0-183"
+          ],
+          "text": "yeah yeah yeah yeah",
+          "start": 143.4,
+          "previousEnd": 144.7,
+          "end": 145.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "RX592yMx7P0-184-1"
+          ],
+          "text": "girl!",
+          "start": 145.6,
+          "previousEnd": 146.2,
+          "end": 147.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "RX592yMx7P0-184-2"
+          ],
+          "text": "Pretty Girl",
+          "start": 147.8,
+          "previousEnd": 148.6,
+          "end": 149.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-02.jpg"
+        },
+        {
+          "index": 29,
+          "sourceIds": [
+            "RX592yMx7P0-185"
+          ],
+          "text": "넌",
+          "start": 152.7,
+          "previousEnd": 153.2,
+          "end": 153.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-02.jpg"
+        },
+        {
+          "index": 30,
+          "sourceIds": [
+            "RX592yMx7P0-187"
+          ],
+          "text": "Yeah yeah yeah yeah",
+          "start": 156.0,
+          "previousEnd": 157.1,
+          "end": 157.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-02.jpg"
+        },
+        {
+          "index": 31,
+          "sourceIds": [
+            "RX592yMx7P0-189"
+          ],
+          "text": "리",
+          "start": 160.7,
+          "previousEnd": 161.1,
+          "end": 161.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-03.jpg"
+        },
+        {
+          "index": 32,
+          "sourceIds": [
+            "RX592yMx7P0-190"
+          ],
+          "text": "센",
+          "start": 162.5,
+          "previousEnd": 162.8,
+          "end": 162.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-03.jpg"
+        },
+        {
+          "index": 33,
+          "sourceIds": [
+            "RX592yMx7P0-191"
+          ],
+          "text": "느",
+          "start": 164.3,
+          "previousEnd": 164.7,
+          "end": 164.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-03.jpg"
+        },
+        {
+          "index": 34,
+          "sourceIds": [
+            "RX592yMx7P0-192"
+          ],
+          "text": "짱",
+          "start": 166.1,
+          "previousEnd": 166.6,
+          "end": 166.6,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-03.jpg"
+        },
+        {
+          "index": 35,
+          "sourceIds": [
+            "RX592yMx7P0-194"
+          ],
+          "text": "（歡呼）",
+          "start": 172.0,
+          "previousEnd": 173.8,
+          "end": 173.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-03.jpg"
+        },
+        {
+          "index": 36,
+          "sourceIds": [
+            "RX592yMx7P0-195-1"
+          ],
+          "text": "girl!",
+          "start": 174.2,
+          "previousEnd": 174.8,
+          "end": 176.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-03.jpg"
+        },
+        {
+          "index": 37,
+          "sourceIds": [
+            "RX592yMx7P0-195-2"
+          ],
+          "text": "Pretty Girl",
+          "start": 176.4,
+          "previousEnd": 177.3,
+          "end": 178.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-03.jpg"
+        },
+        {
+          "index": 38,
+          "sourceIds": [
+            "RX592yMx7P0-196"
+          ],
+          "text": "넌",
+          "start": 181.3,
+          "previousEnd": 181.8,
+          "end": 181.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-03.jpg"
+        },
+        {
+          "index": 39,
+          "sourceIds": [
+            "RX592yMx7P0-198"
+          ],
+          "text": "yeah yeah yeah yeah",
+          "start": 186.4,
+          "previousEnd": 187.5,
+          "end": 188.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-03.jpg"
+        },
+        {
+          "index": 40,
+          "sourceIds": [
+            "RX592yMx7P0-199"
+          ],
+          "text": "girl!",
+          "start": 188.4,
+          "previousEnd": 189.0,
+          "end": 192.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-03.jpg"
+        },
+        {
+          "index": 41,
+          "sourceIds": [
+            "RX592yMx7P0-200"
+          ],
+          "text": "넌",
+          "start": 195.6,
+          "previousEnd": 196.0,
+          "end": 196.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-04.jpg"
+        },
+        {
+          "index": 42,
+          "sourceIds": [
+            "RX592yMx7P0-202"
+          ],
+          "text": "（歡呼）",
+          "start": 199.2,
+          "previousEnd": 201.7,
+          "end": 201.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-04.jpg"
+        },
+        {
+          "index": 43,
+          "sourceIds": [
+            "RX592yMx7P0-204"
+          ],
+          "text": "If you wanna pretty",
+          "start": 202.5,
+          "previousEnd": 203.4,
+          "end": 203.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-04.jpg"
+        },
+        {
+          "index": 44,
+          "sourceIds": [
+            "RX592yMx7P0-205"
+          ],
+          "text": "every wanna pretty",
+          "start": 204.1,
+          "previousEnd": 205.1,
+          "end": 205.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-04.jpg"
+        },
+        {
+          "index": 45,
+          "sourceIds": [
+            "RX592yMx7P0-206"
+          ],
+          "text": "안된다는 맘은",
+          "start": 206.0,
+          "previousEnd": 207.7,
+          "end": 207.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-04.jpg"
+        },
+        {
+          "index": 46,
+          "sourceIds": [
+            "RX592yMx7P0-207"
+          ],
+          "text": "no no no no",
+          "start": 207.7,
+          "previousEnd": 208.8,
+          "end": 209.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-04.jpg"
+        },
+        {
+          "index": 47,
+          "sourceIds": [
+            "RX592yMx7P0-209"
+          ],
+          "text": "If you wanna pretty",
+          "start": 209.7,
+          "previousEnd": 210.6,
+          "end": 211.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-04.jpg"
+        },
+        {
+          "index": 48,
+          "sourceIds": [
+            "RX592yMx7P0-210"
+          ],
+          "text": "every wanna pretty",
+          "start": 211.4,
+          "previousEnd": 212.4,
+          "end": 213.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-04.jpg"
+        },
+        {
+          "index": 49,
+          "sourceIds": [
+            "RX592yMx7P0-211"
+          ],
+          "text": "어디서나 당당하게 걷기",
+          "start": 213.4,
+          "previousEnd": 217.9,
+          "end": 217.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-04.jpg"
+        },
+        {
+          "index": 50,
+          "sourceIds": [
+            "RX592yMx7P0-214"
+          ],
+          "text": "눈부셔 빛난다 리센느",
+          "start": 220.4,
+          "previousEnd": 222.1,
+          "end": 223.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-04.jpg"
+        },
+        {
+          "index": 51,
+          "sourceIds": [
+            "RX592yMx7P0-216"
+          ],
+          "text": "고마워 영원해 리마인",
+          "start": 224.2,
+          "previousEnd": 225.9,
+          "end": 226.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-05.jpg"
+        },
+        {
+          "index": 52,
+          "sourceIds": [
+            "RX592yMx7P0-218"
+          ],
+          "text": "우리 모두 프리티걸",
+          "start": 227.6,
+          "previousEnd": 228.9,
+          "end": 229.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/RX592yMx7P0-sheet-05.jpg"
+        }
+      ]
+    },
+    {
+      "title": "UhUh",
+      "videoId": "s1S-lnU-yMI",
+      "sourceUrl": "https://www.youtube.com/watch?v=s1S-lnU-yMI",
+      "sourceSha256": "6757a7dc3eeb013b4d95f2abf273162fb88a9c7cdec7731506efd4a85d59e266",
+      "reviewedCount": 49,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "s1S-lnU-yMI-1"
+          ],
+          "text": "원이 리브 미나미\n메이 제나 리센느",
+          "start": 28.0,
+          "previousEnd": 34.4,
+          "end": 34.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "s1S-lnU-yMI-5"
+          ],
+          "text": "attention",
+          "start": 37.4,
+          "previousEnd": 38.0,
+          "end": 38.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "s1S-lnU-yMI-6"
+          ],
+          "text": "ya",
+          "start": 40.4,
+          "previousEnd": 40.8,
+          "end": 40.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "s1S-lnU-yMI-9"
+          ],
+          "text": "tension",
+          "start": 46.1,
+          "previousEnd": 46.7,
+          "end": 47.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-00.jpg"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "s1S-lnU-yMI-10"
+          ],
+          "text": "ya",
+          "start": 49.0,
+          "previousEnd": 49.5,
+          "end": 49.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "s1S-lnU-yMI-omission-even-565"
+          ],
+          "text": "even know that",
+          "start": 56.5,
+          "previousEnd": 58.7,
+          "end": 58.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "s1S-lnU-yMI-omission-even-587"
+          ],
+          "text": "even know that",
+          "start": 58.7,
+          "previousEnd": 60.7,
+          "end": 60.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "s1S-lnU-yMI-17"
+          ],
+          "text": "woo baby",
+          "start": 68.5,
+          "previousEnd": 69.5,
+          "end": 69.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "s1S-lnU-yMI-20"
+          ],
+          "text": "You gonna shout it out\nUh Uh",
+          "start": 73.5,
+          "previousEnd": 75.7,
+          "end": 75.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "s1S-lnU-yMI-20-repeat"
+          ],
+          "text": "You gonna shout it out",
+          "start": 75.7,
+          "previousEnd": 77.3,
+          "end": 77.3,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "s1S-lnU-yMI-22"
+          ],
+          "text": "Do you wanna follow me",
+          "start": 84.7,
+          "previousEnd": 86.4,
+          "end": 87.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "s1S-lnU-yMI-23"
+          ],
+          "text": "Uh! Uh!",
+          "start": 88.4,
+          "previousEnd": 89.0,
+          "end": 89.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "s1S-lnU-yMI-26"
+          ],
+          "text": "Uh! Uh!",
+          "start": 92.7,
+          "previousEnd": 93.3,
+          "end": 93.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "s1S-lnU-yMI-28"
+          ],
+          "text": "빛 빛 빛",
+          "start": 96.6,
+          "previousEnd": 97.3,
+          "end": 97.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "s1S-lnU-yMI-30"
+          ],
+          "text": "scent of scene",
+          "start": 98.7,
+          "previousEnd": 99.3,
+          "end": 99.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "s1S-lnU-yMI-34"
+          ],
+          "text": "Flower",
+          "start": 103.0,
+          "previousEnd": 103.6,
+          "end": 103.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "s1S-lnU-yMI-35"
+          ],
+          "text": "Bararam bararam\nbararam (hey!)",
+          "start": 104.3,
+          "previousEnd": 106.0,
+          "end": 106.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "s1S-lnU-yMI-36"
+          ],
+          "text": "ride",
+          "start": 107.8,
+          "previousEnd": 108.4,
+          "end": 108.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "s1S-lnU-yMI-37"
+          ],
+          "text": "wow",
+          "start": 110.1,
+          "previousEnd": 110.7,
+          "end": 110.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "s1S-lnU-yMI-omission-oh-1122"
+          ],
+          "text": "Oh!",
+          "start": 112.2,
+          "previousEnd": 113.1,
+          "end": 113.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "s1S-lnU-yMI-40"
+          ],
+          "text": "me",
+          "start": 116.7,
+          "previousEnd": 117.3,
+          "end": 117.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "s1S-lnU-yMI-41"
+          ],
+          "text": "Uh! Uh!",
+          "start": 118.9,
+          "previousEnd": 119.5,
+          "end": 119.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "s1S-lnU-yMI-44"
+          ],
+          "text": "UhUh",
+          "start": 122.3,
+          "previousEnd": 122.9,
+          "end": 122.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "s1S-lnU-yMI-45"
+          ],
+          "text": "UhUh",
+          "start": 123.3,
+          "previousEnd": 123.9,
+          "end": 123.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "s1S-lnU-yMI-48"
+          ],
+          "text": "Burning flower",
+          "start": 126.1,
+          "previousEnd": 127.0,
+          "end": 127.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "s1S-lnU-yMI-49"
+          ],
+          "text": "리! 센! 느!",
+          "start": 130.4,
+          "previousEnd": 131.7,
+          "end": 132.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "s1S-lnU-yMI-51"
+          ],
+          "text": "woo baby",
+          "start": 134.0,
+          "previousEnd": 134.8,
+          "end": 135.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "s1S-lnU-yMI-53"
+          ],
+          "text": "You gonna shout it out\nUh Uh",
+          "start": 139.2,
+          "previousEnd": 141.4,
+          "end": 141.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-02.jpg"
+        },
+        {
+          "index": 29,
+          "sourceIds": [
+            "s1S-lnU-yMI-53-repeat"
+          ],
+          "text": "You gonna shout it out",
+          "start": 141.4,
+          "previousEnd": 142.7,
+          "end": 142.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-02.jpg"
+        },
+        {
+          "index": 30,
+          "sourceIds": [
+            "s1S-lnU-yMI-55"
+          ],
+          "text": "Do you wanna follow me",
+          "start": 150.0,
+          "previousEnd": 151.8,
+          "end": 152.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-02.jpg"
+        },
+        {
+          "index": 31,
+          "sourceIds": [
+            "s1S-lnU-yMI-56"
+          ],
+          "text": "Uh! Uh!",
+          "start": 153.7,
+          "previousEnd": 155.4,
+          "end": 155.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-03.jpg"
+        },
+        {
+          "index": 32,
+          "sourceIds": [
+            "s1S-lnU-yMI-58"
+          ],
+          "text": "Uh! Uh!",
+          "start": 158.1,
+          "previousEnd": 158.7,
+          "end": 158.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-03.jpg"
+        },
+        {
+          "index": 33,
+          "sourceIds": [
+            "s1S-lnU-yMI-60"
+          ],
+          "text": "빛 빛 빛",
+          "start": 162.1,
+          "previousEnd": 162.9,
+          "end": 163.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-03.jpg"
+        },
+        {
+          "index": 34,
+          "sourceIds": [
+            "s1S-lnU-yMI-61"
+          ],
+          "text": "scent of scene",
+          "start": 164.0,
+          "previousEnd": 164.6,
+          "end": 165.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-03.jpg"
+        },
+        {
+          "index": 35,
+          "sourceIds": [
+            "s1S-lnU-yMI-65"
+          ],
+          "text": "Flower",
+          "start": 168.4,
+          "previousEnd": 169.0,
+          "end": 169.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-03.jpg"
+        },
+        {
+          "index": 36,
+          "sourceIds": [
+            "s1S-lnU-yMI-66"
+          ],
+          "text": "Bararam bararam\nbararam (hey!)",
+          "start": 169.6,
+          "previousEnd": 171.4,
+          "end": 171.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-03.jpg"
+        },
+        {
+          "index": 37,
+          "sourceIds": [
+            "s1S-lnU-yMI-67"
+          ],
+          "text": "ride",
+          "start": 173.2,
+          "previousEnd": 173.8,
+          "end": 174.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-03.jpg"
+        },
+        {
+          "index": 38,
+          "sourceIds": [
+            "s1S-lnU-yMI-68"
+          ],
+          "text": "wow",
+          "start": 175.4,
+          "previousEnd": 176.0,
+          "end": 176.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-03.jpg"
+        },
+        {
+          "index": 39,
+          "sourceIds": [
+            "s1S-lnU-yMI-69"
+          ],
+          "text": "Oh!",
+          "start": 177.5,
+          "previousEnd": 178.1,
+          "end": 178.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-03.jpg"
+        },
+        {
+          "index": 40,
+          "sourceIds": [
+            "s1S-lnU-yMI-71"
+          ],
+          "text": "me",
+          "start": 182.0,
+          "previousEnd": 182.6,
+          "end": 182.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-03.jpg"
+        },
+        {
+          "index": 41,
+          "sourceIds": [
+            "s1S-lnU-yMI-72"
+          ],
+          "text": "Uh! Uh!",
+          "start": 184.3,
+          "previousEnd": 184.9,
+          "end": 185.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-04.jpg"
+        },
+        {
+          "index": 42,
+          "sourceIds": [
+            "s1S-lnU-yMI-84"
+          ],
+          "text": "리! 센! 느!",
+          "start": 203.5,
+          "previousEnd": 204.3,
+          "end": 204.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-04.jpg"
+        },
+        {
+          "index": 43,
+          "sourceIds": [
+            "s1S-lnU-yMI-86"
+          ],
+          "text": "Uh Uh Uh Uh Uh\nUh Uh Uh Uh Uh",
+          "start": 204.6,
+          "previousEnd": 207.8,
+          "end": 207.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-04.jpg"
+        },
+        {
+          "index": 44,
+          "sourceIds": [
+            "s1S-lnU-yMI-88"
+          ],
+          "text": "Bararam bararam\nbararam (hey!)",
+          "start": 209.6,
+          "previousEnd": 210.9,
+          "end": 211.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-04.jpg"
+        },
+        {
+          "index": 45,
+          "sourceIds": [
+            "s1S-lnU-yMI-89"
+          ],
+          "text": "ride",
+          "start": 212.8,
+          "previousEnd": 213.4,
+          "end": 213.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-04.jpg"
+        },
+        {
+          "index": 46,
+          "sourceIds": [
+            "s1S-lnU-yMI-90"
+          ],
+          "text": "wow",
+          "start": 214.8,
+          "previousEnd": 215.4,
+          "end": 215.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-04.jpg"
+        },
+        {
+          "index": 47,
+          "sourceIds": [
+            "s1S-lnU-yMI-91"
+          ],
+          "text": "Oh!",
+          "start": 216.9,
+          "previousEnd": 217.5,
+          "end": 217.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-04.jpg"
+        },
+        {
+          "index": 48,
+          "sourceIds": [
+            "s1S-lnU-yMI-93"
+          ],
+          "text": "me",
+          "start": 221.4,
+          "previousEnd": 222.0,
+          "end": 222.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-04.jpg"
+        },
+        {
+          "index": 49,
+          "sourceIds": [
+            "s1S-lnU-yMI-94"
+          ],
+          "text": "Uh Uh Uh Uh Uh\nUh Uh Uh Uh Uh",
+          "start": 222.1,
+          "previousEnd": 225.2,
+          "end": 225.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/s1S-lnU-yMI-sheet-04.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Glow Up",
+      "videoId": "-55bUrG1qjg",
+      "sourceUrl": "https://www.youtube.com/watch?v=-55bUrG1qjg",
+      "sourceSha256": "63bc2dabfdebff52e0119310a58938f88a7a0851cfd857d252b89d02e181931a",
+      "reviewedCount": 34,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "-55bUrG1qjg-22"
+          ],
+          "text": "원이 리브 미나미\n메이 제나 Glow Up!",
+          "start": 35.1,
+          "previousEnd": 40.6,
+          "end": 40.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "-55bUrG1qjg-24"
+          ],
+          "text": "yeah!",
+          "start": 45.0,
+          "previousEnd": 45.5,
+          "end": 45.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "-55bUrG1qjg-27"
+          ],
+          "text": "like like like",
+          "start": 48.2,
+          "previousEnd": 49.1,
+          "end": 49.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "-55bUrG1qjg-30"
+          ],
+          "text": "리마인!",
+          "start": 55.3,
+          "previousEnd": 56.2,
+          "end": 56.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-00.jpg"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "-55bUrG1qjg-33"
+          ],
+          "text": "가득해!",
+          "start": 64.3,
+          "previousEnd": 65.2,
+          "end": 65.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "-55bUrG1qjg-35"
+          ],
+          "text": "I",
+          "start": 69.0,
+          "previousEnd": 70.3,
+          "end": 73.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "-55bUrG1qjg-36"
+          ],
+          "text": "Baby",
+          "start": 73.4,
+          "previousEnd": 74.1,
+          "end": 75.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "-55bUrG1qjg-37"
+          ],
+          "text": "Lately",
+          "start": 75.5,
+          "previousEnd": 76.3,
+          "end": 77.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "-55bUrG1qjg-38"
+          ],
+          "text": "멀리",
+          "start": 77.5,
+          "previousEnd": 78.2,
+          "end": 79.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "-55bUrG1qjg-39"
+          ],
+          "text": "Keep up keep up keep up",
+          "start": 79.6,
+          "previousEnd": 81.0,
+          "end": 81.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "-55bUrG1qjg-40"
+          ],
+          "text": "더",
+          "start": 82.1,
+          "previousEnd": 82.7,
+          "end": 83.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "-55bUrG1qjg-41"
+          ],
+          "text": "I'm so curious",
+          "start": 84.3,
+          "previousEnd": 85.5,
+          "end": 85.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "-55bUrG1qjg-43"
+          ],
+          "text": "리센느!",
+          "start": 88.7,
+          "previousEnd": 89.7,
+          "end": 89.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "-55bUrG1qjg-44"
+          ],
+          "text": "Glow Up",
+          "start": 91.3,
+          "previousEnd": 92.0,
+          "end": 96.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "-55bUrG1qjg-45"
+          ],
+          "text": "Glow Up",
+          "start": 97.4,
+          "previousEnd": 98.2,
+          "end": 98.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "-55bUrG1qjg-46"
+          ],
+          "text": "Glow Up",
+          "start": 99.4,
+          "previousEnd": 100.1,
+          "end": 104.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "-55bUrG1qjg-47"
+          ],
+          "text": "너와 나",
+          "start": 106.2,
+          "previousEnd": 106.9,
+          "end": 107.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "-55bUrG1qjg-49"
+          ],
+          "text": "그 순간",
+          "start": 110.3,
+          "previousEnd": 111.2,
+          "end": 111.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "-55bUrG1qjg-51"
+          ],
+          "text": "Like it",
+          "start": 115.3,
+          "previousEnd": 116.2,
+          "end": 116.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "-55bUrG1qjg-52"
+          ],
+          "text": "Vibin’",
+          "start": 117.4,
+          "previousEnd": 118.1,
+          "end": 118.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "-55bUrG1qjg-58"
+          ],
+          "text": "뺏겼어!",
+          "start": 129.6,
+          "previousEnd": 130.3,
+          "end": 130.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "-55bUrG1qjg-61"
+          ],
+          "text": "Baby",
+          "start": 138.5,
+          "previousEnd": 139.3,
+          "end": 140.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "-55bUrG1qjg-62"
+          ],
+          "text": "Lately",
+          "start": 140.6,
+          "previousEnd": 141.3,
+          "end": 142.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "-55bUrG1qjg-63"
+          ],
+          "text": "멀리",
+          "start": 142.6,
+          "previousEnd": 143.3,
+          "end": 144.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "-55bUrG1qjg-64"
+          ],
+          "text": "Keep up keep up keep up",
+          "start": 144.8,
+          "previousEnd": 146.1,
+          "end": 146.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "-55bUrG1qjg-65"
+          ],
+          "text": "더",
+          "start": 147.3,
+          "previousEnd": 147.9,
+          "end": 148.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "-55bUrG1qjg-66"
+          ],
+          "text": "I'm so curious",
+          "start": 149.4,
+          "previousEnd": 150.7,
+          "end": 150.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "-55bUrG1qjg-68"
+          ],
+          "text": "리센느!",
+          "start": 153.9,
+          "previousEnd": 154.9,
+          "end": 154.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-02.jpg"
+        },
+        {
+          "index": 29,
+          "sourceIds": [
+            "-55bUrG1qjg-69"
+          ],
+          "text": "Glow Up",
+          "start": 156.4,
+          "previousEnd": 157.1,
+          "end": 161.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-02.jpg"
+        },
+        {
+          "index": 30,
+          "sourceIds": [
+            "-55bUrG1qjg-70"
+          ],
+          "text": "Glow Up",
+          "start": 162.5,
+          "previousEnd": 163.2,
+          "end": 163.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-02.jpg"
+        },
+        {
+          "index": 31,
+          "sourceIds": [
+            "-55bUrG1qjg-71"
+          ],
+          "text": "Glow Up",
+          "start": 164.6,
+          "previousEnd": 165.2,
+          "end": 169.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-03.jpg"
+        },
+        {
+          "index": 32,
+          "sourceIds": [
+            "-55bUrG1qjg-72"
+          ],
+          "text": "Glow Up",
+          "start": 170.6,
+          "previousEnd": 171.3,
+          "end": 171.3,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-03.jpg"
+        },
+        {
+          "index": 33,
+          "sourceIds": [
+            "-55bUrG1qjg-73-1"
+          ],
+          "text": "Glow Up",
+          "start": 178.8,
+          "previousEnd": 180.1,
+          "end": 180.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-03.jpg"
+        },
+        {
+          "index": 34,
+          "sourceIds": [
+            "-55bUrG1qjg-73-2"
+          ],
+          "text": "（歡呼）",
+          "start": 180.1,
+          "previousEnd": 182.9,
+          "end": 182.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/-55bUrG1qjg-white-sheet-03.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Heart Drop",
+      "videoId": "VKlrVbgJG-g",
+      "sourceUrl": "https://www.youtube.com/watch?v=VKlrVbgJG-g",
+      "sourceSha256": "64d03feea468ba79d8829cac3eec65e4234173074300a6f803284b1c2fe055be",
+      "reviewedCount": 28,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "VKlrVbgJG-g-6"
+          ],
+          "text": "heart drop",
+          "start": 42.8,
+          "previousEnd": 43.5,
+          "end": 43.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "VKlrVbgJG-g-10"
+          ],
+          "text": "heart drop",
+          "start": 49.9,
+          "previousEnd": 50.6,
+          "end": 50.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "VKlrVbgJG-g-11"
+          ],
+          "text": "리센느!",
+          "start": 53.1,
+          "previousEnd": 53.7,
+          "end": 53.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "VKlrVbgJG-g-13"
+          ],
+          "text": "Melt away, melt away",
+          "start": 57.5,
+          "previousEnd": 59.7,
+          "end": 61.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-00.jpg"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "VKlrVbgJG-g-15"
+          ],
+          "text": "Slip away, slip away",
+          "start": 64.7,
+          "previousEnd": 66.8,
+          "end": 68.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "VKlrVbgJG-g-16"
+          ],
+          "text": "Hypersonic",
+          "start": 70.3,
+          "previousEnd": 71.6,
+          "end": 71.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "VKlrVbgJG-g-18"
+          ],
+          "text": "느껴진 Delight",
+          "start": 77.5,
+          "previousEnd": 79.1,
+          "end": 80.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "VKlrVbgJG-g-21"
+          ],
+          "text": "heart drop",
+          "start": 85.5,
+          "previousEnd": 86.2,
+          "end": 86.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "VKlrVbgJG-g-25"
+          ],
+          "text": "heart drop",
+          "start": 92.6,
+          "previousEnd": 93.3,
+          "end": 93.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "VKlrVbgJG-g-29"
+          ],
+          "text": "빠져들어 리센느 사랑해!",
+          "start": 100.3,
+          "previousEnd": 102.5,
+          "end": 102.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "VKlrVbgJG-g-32"
+          ],
+          "text": "Can't stop, won't stop",
+          "start": 107.3,
+          "previousEnd": 108.9,
+          "end": 109.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "VKlrVbgJG-g-38-1"
+          ],
+          "text": "레",
+          "start": 118.6,
+          "previousEnd": 119.2,
+          "end": 119.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "VKlrVbgJG-g-38-2"
+          ],
+          "text": "끝도 없이",
+          "start": 119.9,
+          "previousEnd": 121.2,
+          "end": 121.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "VKlrVbgJG-g-39-1"
+          ],
+          "text": "게",
+          "start": 122.2,
+          "previousEnd": 122.8,
+          "end": 123.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "VKlrVbgJG-g-39-2"
+          ],
+          "text": "Melody에",
+          "start": 123.5,
+          "previousEnd": 124.8,
+          "end": 125.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "VKlrVbgJG-g-40"
+          ],
+          "text": "한 번 더 Delight",
+          "start": 127.3,
+          "previousEnd": 128.8,
+          "end": 130.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "VKlrVbgJG-g-43"
+          ],
+          "text": "heart drop",
+          "start": 135.3,
+          "previousEnd": 136.1,
+          "end": 136.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "VKlrVbgJG-g-47"
+          ],
+          "text": "heart drop",
+          "start": 142.4,
+          "previousEnd": 143.1,
+          "end": 143.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "VKlrVbgJG-g-51"
+          ],
+          "text": "빠져들어 리센느 사랑해!",
+          "start": 150.0,
+          "previousEnd": 152.3,
+          "end": 152.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "VKlrVbgJG-g-54"
+          ],
+          "text": "Can't stop, won't stop",
+          "start": 157.0,
+          "previousEnd": 158.7,
+          "end": 159.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "VKlrVbgJG-g-56"
+          ],
+          "text": "（歡呼）",
+          "start": 160.8,
+          "previousEnd": 162.5,
+          "end": 162.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "VKlrVbgJG-g-61"
+          ],
+          "text": "잊지 못할 Heart drop",
+          "start": 173.1,
+          "previousEnd": 174.7,
+          "end": 175.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "VKlrVbgJG-g-63"
+          ],
+          "text": "빠져들어 리센느 사랑해!",
+          "start": 178.6,
+          "previousEnd": 180.8,
+          "end": 181.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "VKlrVbgJG-g-66"
+          ],
+          "text": "Can't stop, won't stop",
+          "start": 185.6,
+          "previousEnd": 187.3,
+          "end": 188.0,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "VKlrVbgJG-g-69"
+          ],
+          "text": "We can make your heart",
+          "start": 191.3,
+          "previousEnd": 192.2,
+          "end": 192.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "VKlrVbgJG-g-72"
+          ],
+          "text": "We can make your heart",
+          "start": 194.9,
+          "previousEnd": 195.9,
+          "end": 196.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "VKlrVbgJG-g-75"
+          ],
+          "text": "We can make your heart",
+          "start": 198.4,
+          "previousEnd": 199.3,
+          "end": 199.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "VKlrVbgJG-g-85"
+          ],
+          "text": "（歡呼）",
+          "start": 217.5,
+          "previousEnd": 220.7,
+          "end": 220.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/VKlrVbgJG-g-sheet-02.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Bloom",
+      "videoId": "Ma6IENHO584",
+      "sourceUrl": "https://www.youtube.com/watch?v=Ma6IENHO584",
+      "sourceSha256": "1dbd49023a4f80f6c89a66099e8c8d207aed7d0a4a9e7943075980eab7432c56",
+      "reviewedCount": 30,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "Ma6IENHO584-5"
+          ],
+          "text": "아",
+          "start": 39.0,
+          "previousEnd": 39.6,
+          "end": 39.6,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "Ma6IENHO584-6"
+          ],
+          "text": "난",
+          "start": 41.3,
+          "previousEnd": 41.9,
+          "end": 41.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "Ma6IENHO584-7"
+          ],
+          "text": "리센느!",
+          "start": 45.4,
+          "previousEnd": 46.0,
+          "end": 46.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "Ma6IENHO584-8"
+          ],
+          "text": "이젠",
+          "start": 46.5,
+          "previousEnd": 47.1,
+          "end": 48.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-00.jpg"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "Ma6IENHO584-9"
+          ],
+          "text": "내게",
+          "start": 48.8,
+          "previousEnd": 49.4,
+          "end": 51.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "Ma6IENHO584-15"
+          ],
+          "text": "날 깨워내",
+          "start": 63.1,
+          "previousEnd": 63.7,
+          "end": 64.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "Ma6IENHO584-20"
+          ],
+          "text": "ah ah",
+          "start": 74.0,
+          "previousEnd": 74.6,
+          "end": 75.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "Ma6IENHO584-21"
+          ],
+          "text": "ah ah",
+          "start": 76.2,
+          "previousEnd": 76.8,
+          "end": 78.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "Ma6IENHO584-22"
+          ],
+          "text": "ah ah",
+          "start": 78.4,
+          "previousEnd": 79.0,
+          "end": 81.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "Ma6IENHO584-25"
+          ],
+          "text": "no",
+          "start": 86.7,
+          "previousEnd": 87.3,
+          "end": 87.3,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "Ma6IENHO584-26"
+          ],
+          "text": "slow",
+          "start": 89.0,
+          "previousEnd": 89.6,
+          "end": 89.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "Ma6IENHO584-31"
+          ],
+          "text": "널 위한 거야",
+          "start": 97.2,
+          "previousEnd": 97.9,
+          "end": 98.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "Ma6IENHO584-33"
+          ],
+          "text": "리센느!",
+          "start": 102.1,
+          "previousEnd": 102.7,
+          "end": 103.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "Ma6IENHO584-34"
+          ],
+          "text": "이젠",
+          "start": 103.2,
+          "previousEnd": 103.8,
+          "end": 105.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "Ma6IENHO584-35"
+          ],
+          "text": "내게",
+          "start": 105.5,
+          "previousEnd": 106.1,
+          "end": 107.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "Ma6IENHO584-41"
+          ],
+          "text": "날 깨워내",
+          "start": 119.9,
+          "previousEnd": 120.5,
+          "end": 121.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "Ma6IENHO584-46"
+          ],
+          "text": "ah ah",
+          "start": 130.7,
+          "previousEnd": 131.3,
+          "end": 132.6,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "Ma6IENHO584-47"
+          ],
+          "text": "ah ah",
+          "start": 132.8,
+          "previousEnd": 133.4,
+          "end": 134.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "Ma6IENHO584-48"
+          ],
+          "text": "ah ah",
+          "start": 135.1,
+          "previousEnd": 135.7,
+          "end": 138.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "Ma6IENHO584-50"
+          ],
+          "text": "（歡呼）",
+          "start": 139.7,
+          "previousEnd": 141.9,
+          "end": 141.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "Ma6IENHO584-56"
+          ],
+          "text": "너를 믿어 리센느!",
+          "start": 155.3,
+          "previousEnd": 156.6,
+          "end": 157.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "Ma6IENHO584-60"
+          ],
+          "text": "날 깨워내",
+          "start": 165.2,
+          "previousEnd": 165.8,
+          "end": 166.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "Ma6IENHO584-64"
+          ],
+          "text": "더 아름답게 피어나지",
+          "start": 174.4,
+          "previousEnd": 175.0,
+          "end": 175.8,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "Ma6IENHO584-65"
+          ],
+          "text": "ah ah",
+          "start": 175.9,
+          "previousEnd": 176.5,
+          "end": 178.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "Ma6IENHO584-66"
+          ],
+          "text": "ah ah",
+          "start": 178.2,
+          "previousEnd": 178.8,
+          "end": 180.2,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "Ma6IENHO584-67"
+          ],
+          "text": "ah ah",
+          "start": 180.4,
+          "previousEnd": 181.0,
+          "end": 183.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "Ma6IENHO584-69"
+          ],
+          "text": "ah ah",
+          "start": 184.9,
+          "previousEnd": 185.5,
+          "end": 187.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "Ma6IENHO584-70"
+          ],
+          "text": "ah ah",
+          "start": 187.2,
+          "previousEnd": 187.8,
+          "end": 189.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-02.jpg"
+        },
+        {
+          "index": 29,
+          "sourceIds": [
+            "Ma6IENHO584-71"
+          ],
+          "text": "ah ah",
+          "start": 189.4,
+          "previousEnd": 190.0,
+          "end": 192.4,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-02.jpg"
+        },
+        {
+          "index": 30,
+          "sourceIds": [
+            "Ma6IENHO584-73"
+          ],
+          "text": "（歡呼）",
+          "start": 194.6,
+          "previousEnd": 197.7,
+          "end": 197.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/Ma6IENHO584-sheet-02.jpg"
+        }
+      ]
+    },
+    {
+      "title": "YoYo",
+      "videoId": "ykVJo0wFlQ4",
+      "sourceUrl": "https://www.youtube.com/watch?v=ykVJo0wFlQ4",
+      "sourceSha256": "74c3cb36e3ea96c51119de25ab49f25f4ec76820f75edcd66a257328d1616157",
+      "reviewedCount": 29,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "ykVJo0wFlQ4-1"
+          ],
+          "text": "원이 리브 미나미\n메이 제나 리센느!",
+          "start": 4.0,
+          "previousEnd": 10.7,
+          "end": 10.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "ykVJo0wFlQ4-3"
+          ],
+          "text": "찾아내",
+          "start": 13.1,
+          "previousEnd": 14.5,
+          "end": 14.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "ykVJo0wFlQ4-5"
+          ],
+          "text": "집중해",
+          "start": 17.6,
+          "previousEnd": 19.2,
+          "end": 19.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "ykVJo0wFlQ4-8"
+          ],
+          "text": "리센느!",
+          "start": 23.9,
+          "previousEnd": 24.7,
+          "end": 24.7,
+          "status": "needs_entry_review",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-00.jpg",
+          "note": "At current cue midpoint source already shows the following ordinary lyric; do not extend RESCENE over unrelated later captions"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "ykVJo0wFlQ4-10"
+          ],
+          "text": "날리면",
+          "start": 31.4,
+          "previousEnd": 33.3,
+          "end": 33.3,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "ykVJo0wFlQ4-13"
+          ],
+          "text": "이건 One and only",
+          "start": 35.8,
+          "previousEnd": 37.6,
+          "end": 37.6,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "ykVJo0wFlQ4-16"
+          ],
+          "text": "Let's play Go!",
+          "start": 45.7,
+          "previousEnd": 47.3,
+          "end": 47.3,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "ykVJo0wFlQ4-19"
+          ],
+          "text": "Up down, up down, up down",
+          "start": 52.0,
+          "previousEnd": 55.3,
+          "end": 55.3,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "ykVJo0wFlQ4-24"
+          ],
+          "text": "Up down, up down, up down",
+          "start": 61.2,
+          "previousEnd": 64.3,
+          "end": 64.3,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "ykVJo0wFlQ4-28"
+          ],
+          "text": "Up down, up down, up down",
+          "start": 70.3,
+          "previousEnd": 73.5,
+          "end": 73.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "ykVJo0wFlQ4-32"
+          ],
+          "text": "Up down, up down",
+          "start": 79.4,
+          "previousEnd": 81.6,
+          "end": 81.6,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "ykVJo0wFlQ4-34"
+          ],
+          "text": "（歡呼）",
+          "start": 82.6,
+          "previousEnd": 84.7,
+          "end": 84.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "ykVJo0wFlQ4-35"
+          ],
+          "text": "yeah",
+          "start": 86.7,
+          "previousEnd": 87.2,
+          "end": 87.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "ykVJo0wFlQ4-42"
+          ],
+          "text": "C-R-A-Z-Y",
+          "start": 94.2,
+          "previousEnd": 95.9,
+          "end": 95.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "ykVJo0wFlQ4-47"
+          ],
+          "text": "Oh Yeah",
+          "start": 103.6,
+          "previousEnd": 104.3,
+          "end": 104.3,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "ykVJo0wFlQ4-48"
+          ],
+          "text": "소나기",
+          "start": 106.8,
+          "previousEnd": 108.4,
+          "end": 108.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "ykVJo0wFlQ4-52"
+          ],
+          "text": "내 정체는 Secret",
+          "start": 111.2,
+          "previousEnd": 113.0,
+          "end": 113.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "ykVJo0wFlQ4-56"
+          ],
+          "text": "Let's play Go!",
+          "start": 121.3,
+          "previousEnd": 122.9,
+          "end": 122.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "ykVJo0wFlQ4-59"
+          ],
+          "text": "Up down, up down, up down",
+          "start": 127.4,
+          "previousEnd": 130.7,
+          "end": 130.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "ykVJo0wFlQ4-63"
+          ],
+          "text": "Up down, up down, up down",
+          "start": 136.6,
+          "previousEnd": 139.6,
+          "end": 139.6,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "ykVJo0wFlQ4-67"
+          ],
+          "text": "Up down, up down, up down",
+          "start": 145.7,
+          "previousEnd": 148.9,
+          "end": 148.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "ykVJo0wFlQ4-71"
+          ],
+          "text": "Up down, up down",
+          "start": 154.7,
+          "previousEnd": 156.9,
+          "end": 156.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "ykVJo0wFlQ4-73"
+          ],
+          "text": "（歡呼）",
+          "start": 158.2,
+          "previousEnd": 160.0,
+          "end": 160.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "ykVJo0wFlQ4-81"
+          ],
+          "text": "우린 환상적인 Chemistry",
+          "start": 172.8,
+          "previousEnd": 175.1,
+          "end": 175.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "ykVJo0wFlQ4-85"
+          ],
+          "text": "Up down, up down, up down",
+          "start": 183.5,
+          "previousEnd": 186.7,
+          "end": 186.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "ykVJo0wFlQ4-87"
+          ],
+          "text": "I like you",
+          "start": 187.8,
+          "previousEnd": 188.8,
+          "end": 188.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "ykVJo0wFlQ4-90"
+          ],
+          "text": "Up down, up down, up down",
+          "start": 193.9,
+          "previousEnd": 197.0,
+          "end": 197.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "ykVJo0wFlQ4-94"
+          ],
+          "text": "Up down, up down",
+          "start": 202.9,
+          "previousEnd": 205.1,
+          "end": 205.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/ykVJo0wFlQ4-fans-sheet-02.jpg"
+        },
+        {
+          "index": 29,
+          "sourceIds": [
+            "ykVJo0wFlQ4-97"
+          ],
+          "text": "（歡呼）",
+          "start": 208.4,
+          "previousEnd": 217.4,
+          "end": 217.7,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/yoyo-fade-detail.jpg",
+          "note": "Final cheering caption remains visible while fading at 217.6; source duration 217.733 seconds"
+        }
+      ]
+    },
+    {
+      "title": "Busy Boy",
+      "videoId": "hc1HS71j6oY",
+      "sourceUrl": "https://www.youtube.com/watch?v=hc1HS71j6oY",
+      "sourceSha256": "a8190640376b6b311fca3f5ab2eff16998c898530ba817d1d1977ca592a77111",
+      "reviewedCount": 48,
+      "cues": [
+        {
+          "index": 1,
+          "sourceIds": [
+            "hc1HS71j6oY-1"
+          ],
+          "text": "정원이 진경은 미나미\n이예빈 김가영 리센느",
+          "start": 8.5,
+          "previousEnd": 13.1,
+          "end": 13.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-00.jpg"
+        },
+        {
+          "index": 2,
+          "sourceIds": [
+            "hc1HS71j6oY-2"
+          ],
+          "text": "비! 지! 보! 이!",
+          "start": 13.5,
+          "previousEnd": 14.4,
+          "end": 14.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-00.jpg"
+        },
+        {
+          "index": 3,
+          "sourceIds": [
+            "hc1HS71j6oY-4"
+          ],
+          "text": "behind",
+          "start": 19.0,
+          "previousEnd": 20.2,
+          "end": 20.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-00.jpg"
+        },
+        {
+          "index": 4,
+          "sourceIds": [
+            "hc1HS71j6oY-6"
+          ],
+          "text": "바빠",
+          "start": 23.7,
+          "previousEnd": 24.4,
+          "end": 24.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-00.jpg"
+        },
+        {
+          "index": 5,
+          "sourceIds": [
+            "hc1HS71j6oY-8"
+          ],
+          "text": "치",
+          "start": 28.6,
+          "previousEnd": 29.0,
+          "end": 29.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-00.jpg"
+        },
+        {
+          "index": 6,
+          "sourceIds": [
+            "hc1HS71j6oY-9"
+          ],
+          "text": "dream",
+          "start": 30.1,
+          "previousEnd": 30.8,
+          "end": 30.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-00.jpg"
+        },
+        {
+          "index": 7,
+          "sourceIds": [
+            "hc1HS71j6oY-11"
+          ],
+          "text": "지",
+          "start": 34.7,
+          "previousEnd": 35.4,
+          "end": 35.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-00.jpg"
+        },
+        {
+          "index": 8,
+          "sourceIds": [
+            "hc1HS71j6oY-12"
+          ],
+          "text": "emoji",
+          "start": 36.2,
+          "previousEnd": 37.1,
+          "end": 37.1,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-00.jpg"
+        },
+        {
+          "index": 9,
+          "sourceIds": [
+            "hc1HS71j6oY-14"
+          ],
+          "text": "（歡呼）",
+          "start": 43.9,
+          "previousEnd": 45.7,
+          "end": 45.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-00.jpg"
+        },
+        {
+          "index": 10,
+          "sourceIds": [
+            "hc1HS71j6oY-16-word-2"
+          ],
+          "text": "busy",
+          "start": 53.6,
+          "previousEnd": 54.0,
+          "end": 54.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-00.jpg"
+        },
+        {
+          "index": 11,
+          "sourceIds": [
+            "hc1HS71j6oY-16-word-4"
+          ],
+          "text": "busy",
+          "start": 54.5,
+          "previousEnd": 54.8,
+          "end": 54.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-01.jpg"
+        },
+        {
+          "index": 12,
+          "sourceIds": [
+            "hc1HS71j6oY-17-word-2"
+          ],
+          "text": "busy",
+          "start": 55.2,
+          "previousEnd": 55.6,
+          "end": 56.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-01.jpg"
+        },
+        {
+          "index": 13,
+          "sourceIds": [
+            "hc1HS71j6oY-17-word-4"
+          ],
+          "text": "busy",
+          "start": 56.1,
+          "previousEnd": 56.5,
+          "end": 56.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-01.jpg"
+        },
+        {
+          "index": 14,
+          "sourceIds": [
+            "hc1HS71j6oY-18"
+          ],
+          "text": "Busy boy",
+          "start": 58.1,
+          "previousEnd": 58.7,
+          "end": 58.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-01.jpg"
+        },
+        {
+          "index": 15,
+          "sourceIds": [
+            "hc1HS71j6oY-20-word-2"
+          ],
+          "text": "busy",
+          "start": 60.1,
+          "previousEnd": 60.5,
+          "end": 60.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-01.jpg"
+        },
+        {
+          "index": 16,
+          "sourceIds": [
+            "hc1HS71j6oY-20-word-4"
+          ],
+          "text": "busy",
+          "start": 60.9,
+          "previousEnd": 61.2,
+          "end": 61.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-01.jpg"
+        },
+        {
+          "index": 17,
+          "sourceIds": [
+            "hc1HS71j6oY-21-word-2"
+          ],
+          "text": "busy",
+          "start": 61.7,
+          "previousEnd": 62.1,
+          "end": 62.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-01.jpg"
+        },
+        {
+          "index": 18,
+          "sourceIds": [
+            "hc1HS71j6oY-21-word-4"
+          ],
+          "text": "busy",
+          "start": 62.5,
+          "previousEnd": 62.8,
+          "end": 62.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-01.jpg"
+        },
+        {
+          "index": 19,
+          "sourceIds": [
+            "hc1HS71j6oY-22"
+          ],
+          "text": "Busy boy",
+          "start": 64.5,
+          "previousEnd": 65.8,
+          "end": 65.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-01.jpg"
+        },
+        {
+          "index": 20,
+          "sourceIds": [
+            "hc1HS71j6oY-24"
+          ],
+          "text": "이럴거면 왜",
+          "start": 74.5,
+          "previousEnd": 75.9,
+          "end": 75.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-01.jpg"
+        },
+        {
+          "index": 21,
+          "sourceIds": [
+            "hc1HS71j6oY-25"
+          ],
+          "text": "（歡呼）",
+          "start": 77.7,
+          "previousEnd": 78.2,
+          "end": 78.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-02.jpg"
+        },
+        {
+          "index": 22,
+          "sourceIds": [
+            "hc1HS71j6oY-27"
+          ],
+          "text": "시험해",
+          "start": 80.4,
+          "previousEnd": 81.4,
+          "end": 81.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-02.jpg"
+        },
+        {
+          "index": 23,
+          "sourceIds": [
+            "hc1HS71j6oY-28"
+          ],
+          "text": "늘어놔 왜",
+          "start": 83.4,
+          "previousEnd": 84.4,
+          "end": 84.4,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-02.jpg"
+        },
+        {
+          "index": 24,
+          "sourceIds": [
+            "hc1HS71j6oY-30-word-2"
+          ],
+          "text": "busy",
+          "start": 92.1,
+          "previousEnd": 92.5,
+          "end": 92.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-02.jpg"
+        },
+        {
+          "index": 25,
+          "sourceIds": [
+            "hc1HS71j6oY-30-word-4"
+          ],
+          "text": "busy",
+          "start": 92.9,
+          "previousEnd": 93.3,
+          "end": 93.3,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-02.jpg"
+        },
+        {
+          "index": 26,
+          "sourceIds": [
+            "hc1HS71j6oY-31-word-2"
+          ],
+          "text": "busy",
+          "start": 93.6,
+          "previousEnd": 94.0,
+          "end": 94.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-02.jpg"
+        },
+        {
+          "index": 27,
+          "sourceIds": [
+            "hc1HS71j6oY-31-word-4"
+          ],
+          "text": "busy",
+          "start": 94.5,
+          "previousEnd": 94.9,
+          "end": 94.9,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-02.jpg"
+        },
+        {
+          "index": 28,
+          "sourceIds": [
+            "hc1HS71j6oY-32"
+          ],
+          "text": "Busy boy",
+          "start": 96.5,
+          "previousEnd": 97.2,
+          "end": 97.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-02.jpg"
+        },
+        {
+          "index": 29,
+          "sourceIds": [
+            "hc1HS71j6oY-34-word-2"
+          ],
+          "text": "busy",
+          "start": 98.4,
+          "previousEnd": 98.8,
+          "end": 99.3,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-02.jpg"
+        },
+        {
+          "index": 30,
+          "sourceIds": [
+            "hc1HS71j6oY-34-word-4"
+          ],
+          "text": "busy",
+          "start": 99.3,
+          "previousEnd": 99.6,
+          "end": 99.6,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-02.jpg"
+        },
+        {
+          "index": 31,
+          "sourceIds": [
+            "hc1HS71j6oY-35-word-2"
+          ],
+          "text": "busy",
+          "start": 100.1,
+          "previousEnd": 100.5,
+          "end": 100.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-03.jpg"
+        },
+        {
+          "index": 32,
+          "sourceIds": [
+            "hc1HS71j6oY-35-word-4"
+          ],
+          "text": "busy",
+          "start": 100.9,
+          "previousEnd": 101.3,
+          "end": 101.3,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-03.jpg"
+        },
+        {
+          "index": 33,
+          "sourceIds": [
+            "hc1HS71j6oY-36"
+          ],
+          "text": "Busy boy",
+          "start": 102.9,
+          "previousEnd": 103.5,
+          "end": 103.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-03.jpg"
+        },
+        {
+          "index": 34,
+          "sourceIds": [
+            "hc1HS71j6oY-37"
+          ],
+          "text": "（歡呼）",
+          "start": 103.5,
+          "previousEnd": 105.8,
+          "end": 105.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-03.jpg"
+        },
+        {
+          "index": 35,
+          "sourceIds": [
+            "hc1HS71j6oY-39"
+          ],
+          "text": "내 머리 속은 Dizzy",
+          "start": 109.8,
+          "previousEnd": 112.2,
+          "end": 112.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-03.jpg"
+        },
+        {
+          "index": 36,
+          "sourceIds": [
+            "hc1HS71j6oY-41-word-2"
+          ],
+          "text": "busy",
+          "start": 117.7,
+          "previousEnd": 118.1,
+          "end": 118.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-03.jpg"
+        },
+        {
+          "index": 37,
+          "sourceIds": [
+            "hc1HS71j6oY-41-word-4"
+          ],
+          "text": "busy",
+          "start": 118.5,
+          "previousEnd": 118.8,
+          "end": 118.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-03.jpg"
+        },
+        {
+          "index": 38,
+          "sourceIds": [
+            "hc1HS71j6oY-42-word-2"
+          ],
+          "text": "busy",
+          "start": 119.3,
+          "previousEnd": 119.7,
+          "end": 120.1,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-03.jpg"
+        },
+        {
+          "index": 39,
+          "sourceIds": [
+            "hc1HS71j6oY-42-word-4"
+          ],
+          "text": "busy",
+          "start": 120.1,
+          "previousEnd": 120.5,
+          "end": 120.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-03.jpg"
+        },
+        {
+          "index": 40,
+          "sourceIds": [
+            "hc1HS71j6oY-43"
+          ],
+          "text": "Busy boy",
+          "start": 122.1,
+          "previousEnd": 122.7,
+          "end": 122.7,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-03.jpg"
+        },
+        {
+          "index": 41,
+          "sourceIds": [
+            "hc1HS71j6oY-45-word-2"
+          ],
+          "text": "busy",
+          "start": 124.1,
+          "previousEnd": 124.5,
+          "end": 124.9,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-04.jpg"
+        },
+        {
+          "index": 42,
+          "sourceIds": [
+            "hc1HS71j6oY-45-word-4"
+          ],
+          "text": "busy",
+          "start": 124.9,
+          "previousEnd": 125.2,
+          "end": 125.2,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-04.jpg"
+        },
+        {
+          "index": 43,
+          "sourceIds": [
+            "hc1HS71j6oY-46-word-2"
+          ],
+          "text": "busy",
+          "start": 125.7,
+          "previousEnd": 126.1,
+          "end": 126.5,
+          "status": "extended_to_caption_boundary",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-04.jpg"
+        },
+        {
+          "index": 44,
+          "sourceIds": [
+            "hc1HS71j6oY-46-word-4"
+          ],
+          "text": "busy",
+          "start": 126.5,
+          "previousEnd": 126.8,
+          "end": 126.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-04.jpg"
+        },
+        {
+          "index": 45,
+          "sourceIds": [
+            "hc1HS71j6oY-47"
+          ],
+          "text": "Busy boy",
+          "start": 128.5,
+          "previousEnd": 129.0,
+          "end": 129.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-04.jpg"
+        },
+        {
+          "index": 46,
+          "sourceIds": [
+            "hc1HS71j6oY-49"
+          ],
+          "text": "Busy boy",
+          "start": 141.3,
+          "previousEnd": 142.5,
+          "end": 142.5,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-04.jpg"
+        },
+        {
+          "index": 47,
+          "sourceIds": [
+            "hc1HS71j6oY-50"
+          ],
+          "text": "（歡呼）",
+          "start": 142.5,
+          "previousEnd": 146.0,
+          "end": 146.0,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-04.jpg"
+        },
+        {
+          "index": 48,
+          "sourceIds": [
+            "hc1HS71j6oY-51"
+          ],
+          "text": "네! 가! 좋! 아!\n리! 센! 느!",
+          "start": 146.0,
+          "previousEnd": 150.8,
+          "end": 150.8,
+          "status": "unchanged",
+          "evidenceSheet": "video/.end-audit/hc1HS71j6oY-fans-sheet-04.jpg"
+        }
+      ]
+    }
+  ]
+}

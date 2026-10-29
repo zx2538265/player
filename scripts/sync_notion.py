@@ -322,12 +322,11 @@ def save_share_image(content, folder):
             if width * height > 40_000_000:
                 raise ValueError()
             image.verify()
-        # Keep the complete image within a safe area even when a 1200x630
-        # card is centre-cropped to 2:1 (15 pixels removed at each edge).
+        # Fill the share card without padding; crop centrally rather than stretch.
         with Image.open(io.BytesIO(content)) as source:
             source.seek(0)
             oriented = ImageOps.exif_transpose(source).convert("RGBA")
-            fitted = ImageOps.contain(oriented, (1080, 540), Image.Resampling.LANCZOS)
+            fitted = ImageOps.fit(oriented, (1200, 630), Image.Resampling.LANCZOS)
             canvas = Image.new("RGB", (1200, 630), (24, 24, 24))
             canvas.paste(fitted, ((1200 - fitted.width) // 2, (630 - fitted.height) // 2), fitted)
             encoded = io.BytesIO()

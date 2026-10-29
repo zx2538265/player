@@ -406,11 +406,11 @@ class SyncTests(unittest.TestCase):
         with self.assertRaises(sync.SyncError):
             sync.download_uploaded_image("https://127.0.0.1/image")
 
-    def test_share_canvas_preserves_edges_in_two_to_one_crop(self):
+    def test_share_canvas_fills_card_without_padding(self):
         for size in ((1672, 941), (600, 1200), (1800, 400)):
             with self.subTest(size=size):
                 source = Image.new("RGB", size, "white")
-                # Distinct top and bottom bands expose accidental cropping.
+                # Different aspect ratios must fill the canvas, including corners.
                 source.paste((255, 0, 0), (0, 0, size[0], size[1] // 5))
                 source.paste((0, 0, 255), (0, size[1] * 4 // 5, size[0], size[1]))
                 data = io.BytesIO()
@@ -418,12 +418,9 @@ class SyncTests(unittest.TestCase):
                 result = sync.save_share_image(data.getvalue(), self.root / "covers")
                 with Image.open(self.root / "covers" / Path(result["shareImage"]).name) as image:
                     self.assertEqual(image.size, (1200, 630))
-                    cropped = image.crop((0, 15, 1200, 615))
-                    colors = list(cropped.getdata())
-                    self.assertTrue(any(r > 220 and b < 30 for r, g, b in colors))
-                    self.assertTrue(any(b > 220 and r < 30 for r, g, b in colors))
-                    self.assertLess(max(image.getpixel((600, 30))), 30)
-                    self.assertLess(max(image.getpixel((600, 600))), 30)
+                    for point in ((0, 0), (1199, 0), (0, 629), (1199, 629)):
+                        self.assertGreater(max(image.getpixel(point)), 220)
+                    self.assertTrue(all(c > 220 for c in image.getpixel((600, 315))))
 
     def test_external_translation_uses_youtube_source_cover(self):
         source = page()

@@ -89,7 +89,7 @@ def finalize():
     catalog=read(ROOT/'rescene/songs.json')
     existing=next((s for s in catalog if s['title']=='Busy Boy'),None)
     song=dict(number=existing['number'] if existing else max(s['number'] for s in catalog)+1,
-        title='Busy Boy',artist='RESCENE',section='Busy Boy',hasChant=True,
+        title='Busy Boy',slug='busy-boy',artist='RESCENE',section='Busy Boy',hasChant=True,
         note=f'指定應援教學 · {len(cues)} 張提示卡 · '+('進入時間已逐句校時，聽校待完成' if aligned else '依畫面定位，聽校待完成'),
         sources=[dict(kind='應援教學（농담곰탕탕후루）',title=info['title'],url=URL,videoId=VID)],chant=track)
     if existing:catalog[catalog.index(existing)]=song

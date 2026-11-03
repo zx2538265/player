@@ -38,6 +38,9 @@ def main(song, revision='', events_file='chant-refined.json'):
     assert all((root/t['image']).exists() for t in tasks)
     crop=(60,610,1220,710) if vid in ('ykVJo0wFlQ4','hc1HS71j6oY') else ((100,505,1180,675) if vid=='s1S-lnU-yMI' else (0,35,1280,135))
     thumbh=85 if vid=='s1S-lnU-yMI' else 50
+    if vid in ('cLtl2aFq_6M','cL_B5W4gBRU'):
+        crop=(0,20,1280,180)
+        thumbh=70
     rowh=thumbh+42
     for base in range(0,len(events),12):
         sheet=Image.new('RGB',(1920,12*rowh),'#ddd');draw=ImageDraw.Draw(sheet)

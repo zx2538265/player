@@ -119,7 +119,7 @@ def finalize():
     catalog=read(ROOT / 'rescene/songs.json')
     existing=next((s for s in catalog if s['title']=='YoYo'), None)
     song=dict(number=existing['number'] if existing else max(s['number'] for s in catalog)+1,
-              title='YoYo', artist='RESCENE', section='YoYo', hasChant=True,
+              title='YoYo', slug='yoyo', artist='RESCENE', section='YoYo', hasChant=True,
               note=f'指定應援教學 · {len(cues)} 張提示卡 · 詞句校時，聽校待完成',
               sources=[dict(kind='應援教學（ゆっぴー）', title=info['title'], url=URL, videoId=VID)], chant=track)
     if existing: catalog[catalog.index(existing)]=song

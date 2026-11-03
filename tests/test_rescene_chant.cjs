@@ -55,22 +55,22 @@ test('Pretty Girl keeps both reported phrases visible through their official cap
   assert.notEqual(Chant.state(track,217.9,1).mode,'active');
 });
 
-test('424 source-bound cards have unique provenance and valid boundaries',()=>{
-  assert.deepEqual(songs.map(s=>s.chant.cues.length),[42,31,46,35,52,49,34,28,30,29,48]);
+test('482 source-bound cards have unique provenance and valid boundaries',()=>{
+  assert.deepEqual(songs.map(s=>s.chant.cues.length),[42,31,46,35,52,49,34,28,30,29,48,25,33]);
   const ids=new Set();
   for(const song of songs){
     const track=song.chant,id=song.sources[0].videoId;
     assert.equal(Chant.validTrack(track,id),true);
     assert.equal(Chant.validTrack(track,'unrelated-video'),false);
     assert.equal(track.status,['Busy Boy','YoYo'].includes(song.title)?'model_aligned_listening_pending':'visual_checked_listening_pending');
-    assert.equal(track.timingBasis,['Busy Boy','YoYo'].includes(song.title)?'word-aligned':'caption');
+    assert.equal(track.timingBasis,['Busy Boy','YoYo'].includes(song.title)?'word-aligned':['with','inside-out'].includes(song.slug)?'visual_karaoke_fill':'caption');
     for(const cue of track.cues){
       assert.ok(cue.sourceIds.length);
       for(const source of cue.sourceIds){assert.ok(source.startsWith(id+'-'));assert.ok(!ids.has(source));ids.add(source);}
       assert.ok(!cue.text.includes(' / '));
     }
   }
-  assert.equal(ids.size,424);
+  assert.equal(ids.size,482);
 });
 
 test('LOVE ATTACK retains both fills of each repeated phrase, including replay',()=>{

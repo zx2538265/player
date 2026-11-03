@@ -88,6 +88,10 @@ def reviewed_events(folder):
 def prepare():
     """Freeze reviewed times before generating the matching boundary manifest."""
     for song in read(ROOT / 'rescene/songs.json'):
+        if song['sources'][0]['videoId'] in ('cLtl2aFq_6M','cL_B5W4gBRU'):
+            from build_rescene_with_inside_out import prepare as prepare_blue
+            prepare_blue(song['sources'][0]['videoId'])
+            continue
         if song['sources'][0]['videoId'] == 'hc1HS71j6oY':
             from build_rescene_busy_boy import prepare as prepare_busy_boy
             prepare_busy_boy()
@@ -104,7 +108,7 @@ def finalize():
     catalog = read(ROOT / 'rescene/songs.json')
     for song in catalog:
         video_id = song['sources'][0]['videoId']
-        if video_id in ('ykVJo0wFlQ4', 'hc1HS71j6oY'):
+        if video_id in ('ykVJo0wFlQ4', 'hc1HS71j6oY','cLtl2aFq_6M','cL_B5W4gBRU'):
             # This requested fan guide uses static blue captions and its own
             # reviewed ledger builder, not the nine official karaoke guides.
             continue
@@ -178,6 +182,10 @@ def finalize():
     if any(s['sources'][0]['videoId'] == 'hc1HS71j6oY' for s in catalog):
         from build_rescene_busy_boy import finalize as finalize_busy_boy
         finalize_busy_boy()
+    from build_rescene_with_inside_out import finalize as finalize_blue
+    for song in catalog:
+        if song['sources'][0]['videoId'] in ('cLtl2aFq_6M','cL_B5W4gBRU'):
+            finalize_blue(song['sources'][0]['videoId'])
 
 
 if __name__ == '__main__':

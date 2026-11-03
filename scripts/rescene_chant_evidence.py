@@ -11,13 +11,15 @@ SONGS = json.loads((ROOT/'rescene/songs.json').read_text(encoding='utf-8'))
 def dump(path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
 
-def prepare(song):
+def prepare(song, crop_override=None, revision=''):
     vid=song['sources'][0]['videoId']; root=ROOT/'video'/vid
-    if (root/'chant-ocr-tasks.json').exists(): return
+    if (root/f'chant-ocr-tasks{revision}.json').exists(): return
     bottom=vid in ('s1S-lnU-yMI', 'ykVJo0wFlQ4', 'hc1HS71j6oY')
     crop=(60,610,1160,100) if vid in ('ykVJo0wFlQ4', 'hc1HS71j6oY') else ((120,510,1040,160) if bottom else (60,40,1080,90))
+    if crop_override is not None: crop=tuple(crop_override)
     x,y,w,h=crop
-    frames=root/'chant-frames';frames.mkdir(exist_ok=True)
+    if any(n % 2 for n in crop): raise ValueError('Use even crop coordinates and dimensions for YUV420 sources')
+    frames=root/f'chant-frames{revision}';frames.mkdir(exist_ok=True)
     cmd=['ffmpeg','-v','error','-i',str(root/'source.mp4'),'-vf',f'fps=10,crop={w}:{h}:{x}:{y}', '-f','rawvideo','-pix_fmt','bgr24','-']
     proc=subprocess.Popen(cmd,stdout=subprocess.PIPE)
     spans=[]; previous=None; best=None; bestscore=0; index=0
@@ -38,20 +40,20 @@ def prepare(song):
         score=np.count_nonzero((hsv[:,:,1]>65)&(hsv[:,:,2]>110))
         if changed:
             finish(index/10)
-            spans.append(dict(task_index=len(spans),start=round(index/10,1),end=None,time=round(index/10,1),image=f'chant-frames/{len(spans):04d}.png',crop=list(crop)))
+            spans.append(dict(task_index=len(spans),start=round(index/10,1),end=None,time=round(index/10,1),image=f'chant-frames{revision}/{len(spans):04d}.png',crop=list(crop)))
             previous=small;best=frame.copy();bestscore=score
         elif score>bestscore:
             best=frame.copy();bestscore=score;spans[-1]['time']=round(index/10,1)
         index+=1
     finish(index/10);proc.wait();assert proc.returncode==0
-    dump(root/'chant-ocr-tasks.json',dict(step=.1,videoId=vid,tasks=spans))
+    dump(root/f'chant-ocr-tasks{revision}.json',dict(step=.1,videoId=vid,tasks=spans))
     for base in range(0,len(spans),24):
-        height=110 if not bottom else 170
-        sheet=Image.new('RGB',(1080,24*height),'#ddd');draw=ImageDraw.Draw(sheet)
+        height=h+20
+        sheet=Image.new('RGB',(max(1080,w),24*height),'#ddd');draw=ImageDraw.Draw(sheet)
         for i,t in enumerate(spans[base:base+24]):
             draw.text((4,i*height+2),f"{t['task_index']:03d} {t['start']:.1f}-{t['end']:.1f} sample={t['time']:.1f}",fill='black')
             sheet.paste(Image.open(root/t['image']),(0,i*height+20))
-        sheet.save(root/f'chant-review-{base//24:02d}.jpg')
+        sheet.save(root/f'chant-review{revision}-{base//24:02d}.jpg')
     print(vid,len(spans),'spans',flush=True)
 
 def ocr(manifest='chant-ocr-tasks.json', results='chant-ocr-results.jsonl'):
@@ -79,7 +81,7 @@ def ocr(manifest='chant-ocr-tasks.json', results='chant-ocr-results.jsonl'):
                 if task['task_index']%50==0: print(root.name,task['task_index'],len(tasks),'device='+paddle.get_device(),flush=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['prepare','ocr']);p.add_argument('--id');p.add_argument('--manifest',default='chant-ocr-tasks.json');p.add_argument('--results',default='chant-ocr-results.jsonl');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['prepare','ocr']);p.add_argument('--id');p.add_argument('--revision',default='');p.add_argument('--crop',nargs=4,type=int);p.add_argument('--manifest',default='chant-ocr-tasks.json');p.add_argument('--results',default='chant-ocr-results.jsonl');args=p.parse_args()
     if args.id:
         SONGS=[s for s in SONGS if s['sources'][0]['videoId']==args.id]
         if not SONGS:
@@ -87,5 +89,5 @@ if __name__=='__main__':
             assert info['id']==args.id
             SONGS=[{'sources':[{'videoId':args.id}]}]
     if args.mode=='prepare':
-        for song in SONGS:prepare(song)
+        for song in SONGS:prepare(song,args.crop,args.revision)
     else:ocr(args.manifest,args.results)

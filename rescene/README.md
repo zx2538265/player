@@ -1,5 +1,17 @@
 # RESCENE 應援練習室
 
+## 新增 With、Inside Out 與固定歌曲網址（2026-11-03）
+
+- 新增官方〈With〉（`cLtl2aFq_6M`，25 張）及〈백화요란 (Inside Out)〉（`cL_B5W4gBRU`，33 張）；目前 13 首、482 張。保留原歌單順序，新歌附於末尾
+- 每首保存固定 `slug`，分享網址使用 `#with`、`#inside-out`、`#love-attack` 等歌名，不依顯示編號或陣列位置定位。調整排序或編號時保留 slug；歌名日後修改也保留既有 slug
+- 舊 `#song-1` 至 `#song-11` 依原歌曲對照轉成歌名網址，重排後仍連到原曲。未知或無效片段回到歌單首曲；`#practice` 保留原本頁內練習定位行為
+- 新歌僅收錄藍色應援，排除白色一般歌詞、括號內一般伴唱、片尾聊天與人物旁的小字；`노래 부르듯이` 為演唱指示，不列為要喊的文字。`함성` 在歌詞中的藍字保留韓文，有括號的歡呼標記顯示「（歡呼）」
+- 兩首有效 GPU OCR 共 178 筆、零辨識執行錯誤。逐張檢視來源卡片及完整畫面 0.1 秒邊界；可辨識變黑時依變黑定位，Inside Out 的「보여줘」無變黑，依字幕出現。With 4 張另用連續畫面人工修正進入時間
+- 原未標版本 inventory 因奇數裁切高度發生 YUV420 錯位，僅保留供追溯，沒有採用；有效來源是 `chant-ocr-tasks-v2.json`、`chant-ocr-results-v2.jsonl`。Paddle cuDNN 版本警告仍存在，但有效辨識完整完成且無 row error
+- 本機證據保存在各自 `video/<id>/`，含原片、metadata、append-only OCR、ledger、原文 SRT、QA、diff 與邊界圖。新韓文卡片同步空耳初稿，仍待直接聽校
+- 重建：`python scripts/build_rescene_with_inside_out.py --prepare`，再對 With 執行 `python scripts/rescene_chant_boundaries.py --id cLtl2aFq_6M --revision=-blue-v3`，Inside Out 使用 `--id cL_B5W4gBRU --revision=-blue-v2`；最後執行 `python scripts/build_rescene_with_inside_out.py` 與 `python scripts/apply_rescene_phonetics.py`。一般 finalizer 已委派新 builder；修改時間需另立邊界 revision
+- 26 項播放器／應援／空耳測試、10 項 Pages 打包測試及兩首 SRT／OCR audit 通過；尚未完整逐句直接聽校、正常速度全卡可讀性／同步與實際 YouTube 播放驗收。未 commit、push 或部署
+
 ## 全歌單句尾顯示比對（2026-10-26）
 
 - 依使用者確認，以來源字幕顯示為結束依據；同一行的分段提示仍在下一張卡的起點切換。11 首、424 張均檢視句尾對照圖，延長 273 張，起點、韓文原文、來源 ID 與核定空耳不變。
@@ -33,8 +45,8 @@
 
 - 霧藍、紙白與石墨灰為本網站設計配色，並非官方應援色。
 - `songs.json` 為獨立歌單，收藏與偏好儲存在 `rescene-practice`。
-- 收錄 11 首應援教學影片，包含 9 首官方教學與使用者指定的 YoYo、Busy Boy 教學；非演出歌單。Pretty Girl 與 LOVE ATTACK 保留原編號，一般官方影片保留為參考連結。
-- 保留搜尋、收藏、切歌、速度、連續播放、專注模式與應援／字幕引擎。11 首已加入共 424 張應援提示，依來源畫面定位或詞句校時，逐句聽校待完成；未加入整首歌詞字幕。
+- 收錄 13 首應援教學影片，包含 11 首官方教學與使用者指定的 YoYo、Busy Boy 教學；非演出歌單。Pretty Girl 與 LOVE ATTACK 保留原編號，一般官方影片保留為參考連結。
+- 保留搜尋、收藏、切歌、速度、連續播放、專注模式與應援／字幕引擎。13 首已加入共 482 張應援提示，依來源畫面定位或詞句校時，逐句聽校待完成；未加入整首歌詞字幕。
 
 ## LOVE ATTACK 重複應援修正（2026-10-21）
 

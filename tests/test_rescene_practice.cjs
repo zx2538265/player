@@ -2,19 +2,37 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const vm = require('node:vm');
 const fs = require('node:fs');
-async function setup(catalog = null) {
+async function setup(catalog = null, hash = '') {
   const elements = new Map(), players = [], timers = new Map(), intervals = [];
   const element = () => ({style:{setProperty(){}}, focus(){}, dataset:{}, checked:false, children:[], append(...items){this.children.push(...items)}, replaceChildren(...items){this.children=items}, setAttribute(){}, removeAttribute(){}, scrollIntoView(){}});
   const get = id => {if(!elements.has(id)) elements.set(id,element());return elements.get(id)};
   const songs = catalog || [true,false,true,true].map((video,i)=>({number:i+1,title:`Song ${i+1}`,artist:'RESCENE',section:'Main',note:'',sources:video?[{videoId:`id${i}`,kind:'影片'}]:[]}));
-  const context = {document:{getElementById:get,createElement:element,querySelectorAll:()=>[],head:element()},location:{hash:'',origin:'http://localhost'},history:{replaceState(){}},fetch:async()=>({ok:true,json:async()=>songs}),setTimeout:fn=>{const id=timers.size+1;timers.set(id,fn);return id},clearTimeout:id=>timers.delete(id),setInterval(fn){intervals.push(fn)},addEventListener(){}};
+  const location = {hash,origin:'http://localhost'}, listeners = {};
+  const context = {document:{getElementById:get,createElement:element,querySelectorAll:()=>[],head:element()},location,history:{replaceState(a,b,hash){location.hash=hash;}},fetch:async()=>({ok:true,json:async()=>songs}),setTimeout:fn=>{const id=timers.size+1;timers.set(id,fn);return id},clearTimeout:id=>timers.delete(id),setInterval(fn){intervals.push(fn)},addEventListener(name,fn){listeners[name]=fn;}};
   context.window=context;
   if(catalog) { context.Chant=require('../rescene/chant.js'); get('chantEnabled').checked=true; }
   context.YT={Player:function(id,options){const p={options,state:-1,time:0,rate:1,plays:0,destroy(){},getDuration(){return 183},getCurrentTime(){return this.time},seekTo(t){this.time=t},setPlaybackRate(r){this.rate=r;options.events.onPlaybackRateChange({data:r})},getAvailablePlaybackRates:()=>[0.5,1,2],getPlaybackRate(){return this.rate},getPlayerState(){return this.state},playVideo(){this.plays++;this.state=1},pauseVideo(){this.state=2},emit(data){this.state=data;options.events.onStateChange({data})},ready(){options.events.onReady({target:this})}};players.push(p);return p}};
   vm.runInNewContext(fs.readFileSync('rescene/practice.js','utf8'),context);
   await new Promise(resolve=>setImmediate(resolve));
-  return {get,players,timers,tick:()=>intervals.forEach(fn=>fn()),select:i=>{get('songSelect').value=i;get('songSelect').onchange()},enable:()=>{get('continuous').checked=true;get('continuous').onchange()}};
+  return {get,players,timers,location,navigate:hash=>{location.hash=hash;listeners.hashchange();},tick:()=>intervals.forEach(fn=>fn()),select:i=>{get('songSelect').value=i;get('songSelect').onchange()},enable:()=>{get('continuous').checked=true;get('continuous').onchange()}};
 }
+
+test('song URLs and legacy links survive catalog reordering and renumbering',async()=>{
+  const catalog=JSON.parse(JSON.stringify(require('../rescene/songs.json'))).reverse();
+  catalog.forEach((song,i)=>song.number=i+1);
+  const s=await setup(catalog,'#pretty-girl');
+  assert.equal(s.get('songTitle').textContent,'Pretty Girl');
+  s.navigate('#song-1');
+  assert.equal(s.get('songTitle').textContent,'LOVE ATTACK');
+  assert.equal(s.location.hash,'#love-attack');
+  s.select(catalog.findIndex(song=>song.title==='Busy Boy'));
+  assert.equal(s.location.hash,'#busy-boy');
+  for(const hash of ['#no-such-song','#%E0%A4%A','#song-999']) {
+    s.navigate(hash);assert.equal(s.get('songTitle').textContent,catalog[0].title);
+  }
+  s.navigate('#%70retty-girl');assert.equal(s.get('songTitle').textContent,'Pretty Girl');
+  const count=s.players.length;s.navigate('#practice');assert.equal(s.players.length,count);
+});
 test('off by default; ended stays on current song',async()=>{const s=await setup();s.players[0].ready();s.players[0].emit(0);assert.equal(s.players.length,1);assert.equal(s.get('continuous').checked,false)});
 test('advance skips missing videos, autoplays and stops at end',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].emit(0);assert.equal(s.players[1].options.videoId,'id2');s.players[1].ready();assert.equal(s.players[1].plays,1);s.players[1].emit(0);s.players[2].ready();s.players[2].emit(0);assert.equal(s.players.length,3);assert.match(s.get('continuousStatus').textContent,/歌單播放完畢/)});
 test('manual selection preserves playing or paused intent',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].state=1;s.select(2);s.players[1].ready();assert.equal(s.players[1].plays,1);s.players[1].state=2;s.select(3);s.players[2].ready();assert.equal(s.players[2].plays,0)});
@@ -22,11 +40,13 @@ test('explicit error advances; slow loading and blocked autoplay do not',async()
 test('disable during loading cancels autoplay and stale callbacks cannot advance',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].emit(0);s.get('continuous').checked=false;s.get('continuous').onchange();s.players[1].ready();assert.equal(s.players[1].plays,0);s.players[0].options.events.onError();assert.equal(s.players.length,2)});
 
 
-test('RESCENE catalog binds all eleven guides to their visual chant tracks', async()=>{
+test('RESCENE catalog binds all thirteen guides to their visual chant tracks', async()=>{
   const catalog=require('../rescene/songs.json');
   assert.deepEqual(catalog.slice(0,5).map(song=>song.title),['LOVE ATTACK','Runaway','Deja Vu','Pinball','Pretty Girl']);
-  assert.equal(catalog.length,11);
-  assert.deepEqual(catalog.map(song=>song.sources[0].videoId),['xn12KH78Dx4','7DZlkZ4bMpU','9FlQOv6-Mjc','YyixhiYpkkY','RX592yMx7P0','s1S-lnU-yMI','-55bUrG1qjg','VKlrVbgJG-g','Ma6IENHO584','ykVJo0wFlQ4','hc1HS71j6oY']);
+  assert.equal(catalog.length,13);
+  assert.equal(new Set(catalog.map(song=>song.slug)).size,13);
+  assert.ok(catalog.every(song=>/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(song.slug)));
+  assert.deepEqual(catalog.map(song=>song.sources[0].videoId),['xn12KH78Dx4','7DZlkZ4bMpU','9FlQOv6-Mjc','YyixhiYpkkY','RX592yMx7P0','s1S-lnU-yMI','-55bUrG1qjg','VKlrVbgJG-g','Ma6IENHO584','ykVJo0wFlQ4','hc1HS71j6oY','cLtl2aFq_6M','cL_B5W4gBRU']);
   const s=await setup(catalog);s.players[0].ready();
   assert.equal(s.get('chantEnabled').disabled,false);
   assert.equal(s.get('chantDisplay').hidden,false);
@@ -57,7 +77,7 @@ test('Busy Boy selection and replay use its absolute captions and clear them on 
   const catalog=require('../rescene/songs.json'),s=await setup(catalog);
   s.players[0].ready();s.select(catalog.findIndex(song=>song.title==='Busy Boy'));
   const p=s.players.at(-1);
-  assert.equal(s.get('chantText').textContent,catalog.at(-1).chant.cues[0].phoneticZh);
+  assert.equal(s.get('chantText').textContent,catalog.find(song=>song.title==='Busy Boy').chant.cues[0].phoneticZh);
   p.ready();
   assert.equal(p.options.videoId,'hc1HS71j6oY');
   p.time=26.7;p.state=1;s.tick();
@@ -69,6 +89,19 @@ test('Busy Boy selection and replay use its absolute captions and clear them on 
   assert.ok(p.time<28.6);
   s.select(0);s.players.at(-1).ready();s.tick();
   assert.notEqual(s.get('chantText').textContent,'七');
+});
+
+test('new official guides load by song name and use their own response cards',async()=>{
+  const catalog=require('../rescene/songs.json');
+  for(const [slug,id,count] of [['with','cLtl2aFq_6M',25],['inside-out','cL_B5W4gBRU',33]]) {
+    const song=catalog.find(s=>s.slug===slug),s=await setup(catalog,`#${slug}`),p=s.players[0];
+    assert.equal(p.options.videoId,id);assert.equal(song.chant.cues.length,count);
+    p.ready();const cue=song.chant.cues.find(c=>c.phoneticZh);
+    p.time=cue.start;p.emit(1);s.tick();assert.equal(s.get('chantText').textContent,cue.phoneticZh);
+    assert.equal(s.get('chantOriginal').textContent,cue.text);
+    s.get('repeatCue').onclick();assert.equal(p.time,cue.start-3);
+    s.select(0);assert.equal(s.location.hash,'#love-attack');
+  }
 });
 
 test('real cards follow seek, pause, speed, repeat and source switching',async()=>{

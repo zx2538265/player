@@ -212,14 +212,19 @@ function selectSong(index, updateHash = true, autoplay = null) {
     mountPlayer(song,token);
     loadTimer = setTimeout(() => { if(token === generation && !ready) fail('影片載入較久，可用上方連結開啟原影片。'); },15000);
   }
-  if(updateHash) history.replaceState(null,'',`#song-${song.number}`);
+  if(updateHash) history.replaceState(null,'',`#${encodeURIComponent(song.slug)}`);
   if(!source && pendingPlay) advance(song.title + '（無影片）');
 }
 function fromHash() {
   if (location.hash === '#practice' && songs.length && player) return;
-  const match = /^#song-(\d+)$/.exec(location.hash);
-  const number = match ? Number(match[1]) : 1;
-  selectSong(number >= 1 && number <= songs.length ? number - 1 : 0, false);
+  // Freeze the old public links: display numbers and catalog order may change.
+  const legacySlugs = ['love-attack','runaway','deja-vu','pinball','pretty-girl','uhuh','glow-up','heart-drop','bloom','yoyo','busy-boy'];
+  let slug;
+  try { slug = decodeURIComponent(location.hash.slice(1)).toLowerCase(); } catch { slug = ''; }
+  const legacy = /^song-(\d+)$/.exec(slug);
+  if (legacy) slug = legacySlugs[Number(legacy[1]) - 1];
+  const index = songs.findIndex(song => song.slug === slug);
+  selectSong(index < 0 ? 0 : index, index >= 0);
 }
 $('continuous').onchange = () => { pendingPlay = false; updateContinuousStatus(); };
 $('chantEnabled').checked = preferences.chantEnabled !== false;
@@ -265,7 +270,7 @@ $('seek').oninput = () => {if(ready) manualSeek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').value); savePreferences(); player.setPlaybackRate(preferences.speed); }};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20261026-caption-ends-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20261103-song-slugs-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   songs = data;
   songs.forEach((song,index) => {
     const option = document.createElement('option'); option.value = index; option.textContent = `${String(song.number).padStart(2,'0')} · ${song.title} / ${song.artist}`; $('songSelect').append(option);

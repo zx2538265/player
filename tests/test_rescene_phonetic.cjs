@@ -8,7 +8,7 @@ const songs = require('../rescene/songs.json');
 
 test('all Korean chant cards have phonetics while sources and raw text remain available', () => {
   const tracks = songs.filter(s => s.chant?.phoneticStatus);
-  assert.equal(tracks.length, 11);
+  assert.equal(tracks.length, 13);
   let count = 0;
   for (const song of tracks) {
     assert.equal(Chant.validTrack(song.chant, song.chant.videoId), true);
@@ -20,7 +20,7 @@ test('all Korean chant cards have phonetics while sources and raw text remain av
       assert.ok(!/[가-힣]/u.test(cue.phoneticZh));
     }
   }
-  assert.equal(count, 122);
+  assert.equal(count, 148);
   assert.ok(tracks.every(s => s.chant.phoneticStatus === 'draft'));
 });
 

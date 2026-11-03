@@ -104,6 +104,21 @@ test('new official guides load by song name and use their own response cards',as
   }
 });
 
+test('With and Inside Out start at music and stop after the final response',async()=>{
+  const catalog=require('../rescene/songs.json');
+  for(const [slug,start,end] of [['with',32,221],['inside-out',24,237]]) {
+    const song=catalog.find(s=>s.slug===slug),source=song.sources[0];
+    assert.equal(source.startSeconds,start);assert.equal(source.endSeconds,end);
+    assert.ok(song.chant.cues.every(c=>c.start>=start && c.end<=end));
+    const s=await setup(catalog,`#${slug}`),p=s.players[0];
+    assert.equal(p.options.playerVars.start,start);assert.equal(p.options.playerVars.end,end);
+    p.ready();p.time=end;p.state=1;s.tick();
+    assert.equal(p.state,2);assert.equal(s.get('chantLabel').textContent,'本首練習結束');
+    assert.equal(s.players.length,1);
+    s.get('play').onclick();assert.equal(p.time,start);assert.equal(p.state,1);
+  }
+});
+
 test('real cards follow seek, pause, speed, repeat and source switching',async()=>{
   const catalog=require('../rescene/songs.json'), s=await setup(catalog), p=s.players[0];
   p.ready(); const cue=catalog[0].chant.cues[0];

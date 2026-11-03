@@ -7,7 +7,7 @@ import numpy as np
 from finalize_rescene_chants import ROOT, read, write, sha, timestamp
 
 GUIDES = {
-    'cLtl2aFq_6M': dict(title='With', slug='with', review={
+    'cLtl2aFq_6M': dict(title='With', slug='with', startSeconds=32, endSeconds=221, review={
         1:'（歡呼）', 2:'리! 센! 느!', 4:'oh oh oh nah', 5:'（歡呼）',
         6:'oh oh yeah', 8:'맘을 던져', 15:'리센느', 19:"It's all", 20:'You',
         22:'네게 난', 26:'우릴 부를 때', 27:'감정', 28:'함성', 30:'맘을 던져',
@@ -15,7 +15,7 @@ GUIDES = {
         48:"Nothin’ b-b-breaks", 49:'（歡呼）',
         54:'정원이 진경은 미나미\n이예빈 김가영', 55:'리마인 함! 께! 해! 줘!',
         57:'네게 난', 65:'네게 난', 72:'（歡呼）'}, merge={49:50}),
-    'cL_B5W4gBRU': dict(title='백화요란 (Inside Out)', slug='inside-out', review={
+    'cL_B5W4gBRU': dict(title='백화요란 (Inside Out)', slug='inside-out', startSeconds=24, endSeconds=237, review={
         4:'백! 화! 요! 란! Inside out!', 6:'너!', 11:'나!', 16:'꽃처럼',
         17:'눈부셔', 20:'Do you?', 23:'Flower, flower', 25:'higher, higher',
         28:'oh my', 30:'Inside out', 32:'더 더', 37:'더 더', 40:'Yeah yeah',
@@ -101,6 +101,8 @@ def finalize(vid):
         assert read(folder/'chant-ledger.json')['source_sha256']==source_hash
     ledger = dict(**reviewed,source_url=info['webpage_url'],source_title=info['title'],
         source_sha256=source_hash,official_source=True,
+        practice_range=dict(startSeconds=guide['startSeconds'],endSeconds=guide['endSeconds'],
+            reason='Music entrance and final cheer tail, before post-song talk; waveform/stereo analysis and source frames; direct listening pending'),
         primary_manifest='chant-ocr-tasks-v2.json',boundary_manifest=boundary_file,
         status='visual_checked_listening_pending',
         excluded_inventory='Unversioned inventory has odd-height YUV420 crop corruption; preserved, not used')
@@ -113,7 +115,8 @@ def finalize(vid):
     song = dict(number=existing['number'] if existing else max(s['number'] for s in catalog)+1,
         title=guide['title'],slug=guide['slug'],artist='RESCENE',section=guide['title'],hasChant=True,
         note=f"官方應援教學 · {len(track['cues'])} 張提示卡 · 依畫面校時，聽校待完成",
-        sources=[dict(kind='官方應援教學',title=info['title'],url=info['webpage_url'],videoId=vid)],chant=track)
+        sources=[dict(kind='官方應援教學',title=info['title'],url=info['webpage_url'],videoId=vid,
+            startSeconds=guide['startSeconds'],endSeconds=guide['endSeconds'])],chant=track)
     if existing: catalog[catalog.index(existing)]=song
     else: catalog.append(song)
     write(ROOT/'rescene/songs.json',catalog)
@@ -126,6 +129,7 @@ def finalize(vid):
         runtime_warning='Paddle cuDNN 9.9 vs installed 9.5; OCR completed without row errors',
         boundary_references=len(boundaries['tasks']),boundary_step=.1,overlaps=0,blank_blocks=0,
         continuous_numbering=True,source_sha256=ledger['source_sha256'],source_preserved=True,
+        practice_range=ledger['practice_range'],
         srt_sha256=sha(srt),manual_visual_review='All accepted responses and 0.1s entrance/end sheets',
         direct_listening='pending',normal_speed_playback='pending'))
     (folder/'chant.gpu-rescan.diff.md').write_text(f"# {guide['title']} 應援擷取\n\n新增 {len(track['cues'])} 張應援卡；未修改來源影片\n\n僅藍色應援文字，白色歌詞與片尾聊天排除；來源含韓文、英文及歡呼標記\n\n起點依畫面變黑，句尾依字幕切換；0.1 秒完整畫面邊界證據另存\n\n原未標版本裁切高度造成錯位，未採用；有效辨識使用 v2\n\n聽校、正常速度播放及實際 YouTube 同步驗收待完成\n",encoding='utf-8')

@@ -42,3 +42,19 @@ test('clock selects phonetics on countdown, entry, pause, rewind and next cue', 
   assert.equal(Chant.state(track,5,0).phoneticZh,undefined);
   assert.equal(Chant.validTrack({...track,cues:[{...track.cues[0],phoneticZh:42}]},'demo'),false);
 });
+
+test('new guides use existing name readings and shared Korean phrase spellings', () => {
+  const cards = require('../rescene/phonetics.zh.json').cards;
+  const withTrack = songs.find(s => s.slug === 'with').chant;
+  const insideTrack = songs.find(s => s.slug === 'inside-out').chant;
+  const korean = track => track.cues.filter(c => /[가-힣]/u.test(c.text));
+  assert.equal(korean(withTrack).length, 14);
+  assert.equal(korean(insideTrack).length, 12);
+  for (const track of [withTrack, insideTrack]) {
+    for (const cue of korean(track)) assert.equal(cue.phoneticZh, cards[cue.text]);
+  }
+  assert.ok(cards['눈부셔 빛난다 리센느'].startsWith(cards['눈부셔'] + ' '));
+  assert.equal(cards['그 순간'].split(' ').slice(1).join(' '), cards['순간']);
+  assert.equal(cards['정원이 진경은 미나미\n이예빈 김가영'],
+    cards['정원이 진경은 미나미\n이예빈 김가영 리센느'].replace(/ RESCENE$/, ''));
+});

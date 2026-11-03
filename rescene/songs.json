@@ -3894,7 +3894,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) 'With' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=cLtl2aFq_6M",
-        "videoId": "cLtl2aFq_6M"
+        "videoId": "cLtl2aFq_6M",
+        "startSeconds": 32,
+        "endSeconds": 221
       }
     ],
     "chant": {
@@ -4135,7 +4137,9 @@
         "kind": "官方應援教學",
         "title": "RESCENE (리센느) '백화요란(Inside Out)' 응원법 (Fanchant Guide)",
         "url": "https://www.youtube.com/watch?v=cL_B5W4gBRU",
-        "videoId": "cL_B5W4gBRU"
+        "videoId": "cL_B5W4gBRU",
+        "startSeconds": 24,
+        "endSeconds": 237
       }
     ],
     "chant": {
@@ -4187,7 +4191,7 @@
           "sourceIds": [
             "cL_B5W4gBRU-17"
           ],
-          "phoneticZh": "嫩布修"
+          "phoneticZh": "嫩不修"
         },
         {
           "start": 70.6,
@@ -4287,7 +4291,7 @@
           "sourceIds": [
             "cL_B5W4gBRU-54"
           ],
-          "phoneticZh": "順甘"
+          "phoneticZh": "孫甘"
         },
         {
           "start": 142.5,

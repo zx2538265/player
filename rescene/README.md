@@ -1,5 +1,12 @@
 # RESCENE 應援練習室
 
+## With、Inside Out 音樂播放區間（2026-11-03）
+
+- 依本次指定，沿用 LOVE ATTACK 的 `startSeconds`／`endSeconds` 播放限制：With 32–221 秒（0:32–3:41），Inside Out 24–237 秒（0:24–3:57）
+- With 前奏從約 32 秒淡入，Inside Out 音樂約 24.1 秒進入；起點稍留餘裕。結束保留最後應援及歡呼尾巴，於後續聊天前停止；未更動 58 張提示、原文及絕對時間碼，也未重剪來源影片
+- 判斷依來源畫面、0.1 秒音訊 RMS 與立體聲差分分析；分析保存在各影片 `music-boundary-analysis.json`，不宣稱已完成直接聽校
+- 播放範圍同步於兩首 builder、來源資料及本機 ledger／QA，重建會保留。新增模擬測試確認起點、結束、再播放與提示全數落在區間內
+
 ## 新增 With、Inside Out 與固定歌曲網址（2026-11-03）
 
 - 新增官方〈With〉（`cLtl2aFq_6M`，25 張）及〈백화요란 (Inside Out)〉（`cL_B5W4gBRU`，33 張）；目前 13 首、482 張。保留原歌單順序，新歌附於末尾

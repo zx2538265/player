@@ -43,6 +43,31 @@ test('restart clears previous progress and starts at zero', () => {
   assert.equal(a.calls.at(-1)[1].startSeconds, 0);
 });
 
+test('showcase starts at 52:47 and switching videos uses each video default', () => {
+  const a = setup();
+  a.progress.load('1BC-953eVP4');
+  assert.equal(a.calls.at(-1)[0], 'load');
+  assert.equal(a.calls.at(-1)[1].startSeconds, 3167);
+  assert.equal(a.prompts.at(-1), null);
+  a.progress.detach();
+  a.progress.load('A');
+  assert.equal(a.calls.at(-1)[1].startSeconds, 0);
+});
+
+test('showcase can resume saved progress or restart from 52:47', () => {
+  const a = setup();
+  a.data.set(key('1BC-953eVP4'), JSON.stringify({ seconds: 4000, duration: 8349 }));
+  a.progress.load('1BC-953eVP4');
+  assert.equal(a.calls.at(-1)[0], 'cue');
+  assert.equal(a.calls.at(-1)[1].startSeconds, 4000);
+  a.progress.choose(false);
+  assert.equal(a.calls.at(-1)[1].startSeconds, 4000);
+  a.progress.load('1BC-953eVP4');
+  a.progress.choose(true);
+  assert.equal(a.calls.at(-1)[1].startSeconds, 3167);
+  assert.equal(a.data.has(key('1BC-953eVP4')), false);
+});
+
 test('switching saves A before detaching; stale A events cannot write B', () => {
   const a = setup(); a.progress.load('A'); a.state('A', 1, 40);
   a.progress.detach();
@@ -106,7 +131,7 @@ test('actual page load flow saves before pausing and only loads the latest subti
   const events = [], pending = {};
   let request = 0;
   const context = {
-    requestedVideoId: '', alert() {},
+    requestedVideoId: '', alert() {}, revealPlayerSideTools() {}, loadVideoOrientation() {},
     progress: { detach: () => events.push('save/detach'), load: id => events.push('load:' + id) },
     window: { updateShareVideo() {} },
     player: { pauseVideo: () => events.push('pause'), loadVideoById() {} },
@@ -132,7 +157,7 @@ test('actual page state and visibility hooks forward saves without loaded subtit
   const context = {
     document: { hidden: true }, window: {}, subtitleLoadingEl: { hidden: true },
     progress: { save: () => events.push('save'), state: state => events.push(state) },
-    syncSubtitle() {}, refreshSyncTimerState() {}, stopSyncTimer() {},
+    syncSubtitle() {}, refreshSyncTimerState() {}, stopSyncTimer() {}, revealPlayerSideTools() {},
     player: { pauseVideo() {} }, isSyncStateActive: false
   };
   vm.runInNewContext(handlers, context);

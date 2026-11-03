@@ -1,5 +1,6 @@
 (function (root) {
   'use strict';
+  const videoStartSeconds = { '1BC-953eVP4': 3167 }; // SHOWCASE starts at 52:47.
   // Keep progress independent of subtitle loading and its refresh timer.
   root.createPlaybackProgress = function (getPlayer, showResume, getStorage = () => localStorage) {
     const prefix = 'yt-srt-progress-v1:';
@@ -34,7 +35,7 @@
       videoId = id; played = false;
       resumeAt = read(id); waiting = resumeAt > 0;
       showResume(waiting ? resumeAt : null);
-      const options = { videoId: id, startSeconds: resumeAt, suggestedQuality: 'hd1080' };
+      const options = { videoId: id, startSeconds: waiting ? resumeAt : (videoStartSeconds[id] || 0), suggestedQuality: 'hd1080' };
       if (waiting) getPlayer().cueVideoById(options);
       else getPlayer().loadVideoById(options);
     }
@@ -43,7 +44,7 @@
       if (restart) clear();
       waiting = false;
       showResume(null);
-      getPlayer().loadVideoById({ videoId, startSeconds: restart ? 0 : resumeAt, suggestedQuality: 'hd1080' });
+      getPlayer().loadVideoById({ videoId, startSeconds: restart ? (videoStartSeconds[videoId] || 0) : resumeAt, suggestedQuality: 'hd1080' });
     }
     function state(value) {
       if (!matches()) return;

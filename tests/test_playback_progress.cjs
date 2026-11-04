@@ -43,29 +43,42 @@ test('restart clears previous progress and starts at zero', () => {
   assert.equal(a.calls.at(-1)[1].startSeconds, 0);
 });
 
-test('showcase starts at 52:47 and switching videos uses each video default', () => {
+test('edited showcase starts at zero and switching videos also starts at zero', () => {
   const a = setup();
   a.progress.load('1BC-953eVP4');
   assert.equal(a.calls.at(-1)[0], 'load');
-  assert.equal(a.calls.at(-1)[1].startSeconds, 3167);
+  assert.equal(a.calls.at(-1)[1].startSeconds, 0);
   assert.equal(a.prompts.at(-1), null);
   a.progress.detach();
   a.progress.load('A');
   assert.equal(a.calls.at(-1)[1].startSeconds, 0);
 });
 
-test('showcase can resume saved progress or restart from 52:47', () => {
+test('showcase migrates original-upload progress and restarts at zero', () => {
   const a = setup();
   a.data.set(key('1BC-953eVP4'), JSON.stringify({ seconds: 4000, duration: 8349 }));
   a.progress.load('1BC-953eVP4');
   assert.equal(a.calls.at(-1)[0], 'cue');
-  assert.equal(a.calls.at(-1)[1].startSeconds, 4000);
+  assert.equal(a.calls.at(-1)[1].startSeconds, 901.52);
   a.progress.choose(false);
-  assert.equal(a.calls.at(-1)[1].startSeconds, 4000);
+  assert.equal(a.calls.at(-1)[1].startSeconds, 901.52);
   a.progress.load('1BC-953eVP4');
   a.progress.choose(true);
-  assert.equal(a.calls.at(-1)[1].startSeconds, 3167);
+  assert.equal(a.calls.at(-1)[1].startSeconds, 0);
   assert.equal(a.data.has(key('1BC-953eVP4')), false);
+});
+
+test('edited showcase progress is not shifted again; removed portions restart safely', () => {
+  const a = setup();
+  a.data.set(key('1BC-953eVP4'), JSON.stringify({ seconds: 1200, duration: 5144.451 }));
+  a.progress.load('1BC-953eVP4');
+  assert.equal(a.calls.at(-1)[1].startSeconds, 1200);
+  for (const seconds of [100, 8300]) {
+    a.data.set(key('1BC-953eVP4'), JSON.stringify({ seconds, duration: 8349 }));
+    a.progress.load('1BC-953eVP4');
+    assert.equal(a.calls.at(-1)[0], 'load');
+    assert.equal(a.calls.at(-1)[1].startSeconds, 0);
+  }
 });
 
 test('switching saves A before detaching; stale A events cannot write B', () => {

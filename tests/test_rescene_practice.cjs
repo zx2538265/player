@@ -93,7 +93,7 @@ test('Busy Boy selection and replay use its absolute captions and clear them on 
 
 test('new official guides load by song name and use their own response cards',async()=>{
   const catalog=require('../rescene/songs.json');
-  for(const [slug,id,count] of [['with','cLtl2aFq_6M',25],['inside-out','cL_B5W4gBRU',33]]) {
+  for(const [slug,id,count] of [['with','cLtl2aFq_6M',27],['inside-out','cL_B5W4gBRU',33]]) {
     const song=catalog.find(s=>s.slug===slug),s=await setup(catalog,`#${slug}`),p=s.players[0];
     assert.equal(p.options.videoId,id);assert.equal(song.chant.cues.length,count);
     p.ready();const cue=song.chant.cues.find(c=>c.phoneticZh);

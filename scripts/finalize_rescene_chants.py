@@ -15,8 +15,12 @@ def write(path, value):
     if path == ROOT / 'rescene/songs.json':
         from fix_rescene_cue_ends import apply_corrections as apply_cue_ends
         apply_cue_ends(value)
+        from fix_rescene_with_repeats import apply_corrections as apply_with_repeats
+        apply_with_repeats(value)
         from apply_rescene_phonetics import apply_phonetics
         apply_phonetics(value)
+        from fix_rescene_with_repeats import save_reviewed_track
+        save_reviewed_track(value)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
 

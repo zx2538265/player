@@ -1,5 +1,13 @@
 # RESCENE 應援練習室
 
+## With 重複應援與歡呼尾端修正（2026-11-06）
+
+- 兩段副歌的 You 各有兩次變黑：93.2–94.0、96.2–96.9，以及 151.7–152.5、154.7–155.4 秒；With 共 27 張應援卡
+- 末段歡呼在 177.3 秒消失，原 178.8 秒是下層一般歌詞結束，因此修正歡呼尾端
+- 決策保存在 `with-repeat-corrections.json`，共用 catalog writer 會重套；`scripts/fix_rescene_with_repeats.py` 可獨立執行
+- 完整閱讀 72 組來源歌詞畫面，檢視全部應援的 0.5 秒連續圖，更動處以 0.1 秒完整畫面核對。直接聽校與正常速度完整播放尚未完成
+- 原片及 OCR 不變；存在本機來源目錄時，另存 `chant.with-repeat-v2.json`／`.srt`，不覆寫原始紀錄
+
 ## With、Inside Out 音樂播放區間（2026-11-03）
 
 - 依本次指定，沿用 LOVE ATTACK 的 `startSeconds`／`endSeconds` 播放限制：With 32–221 秒（0:32–3:41），Inside Out 24–237 秒（0:24–3:57）

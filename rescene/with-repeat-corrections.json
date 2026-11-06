@@ -1,0 +1,20 @@
+{
+  "videoId": "cLtl2aFq_6M",
+  "reviewDate": "2026-11-06",
+  "basis": "Both chorus You captions repeat their blue-to-black fill: 93.2/96.2 and 151.7/154.7, with resets at 94.0 and 152.5. Cheer caption disappears at 177.3 while ordinary lyrics continue. 0.1-second full-frame boundary samples; direct listening pending.",
+  "evidence": "video/RESCENE應援/assets/you-repeat-review/",
+  "cues": [
+    {"start": 93.2, "end": 94.0, "text": "You", "sourceIds": ["cLtl2aFq_6M-20"]},
+    {"start": 96.2, "end": 96.9, "text": "You", "sourceIds": ["cLtl2aFq_6M-20-repeat"]},
+    {"start": 151.7, "end": 152.5, "text": "You", "sourceIds": ["cLtl2aFq_6M-41"]},
+    {"start": 154.7, "end": 155.4, "text": "You", "sourceIds": ["cLtl2aFq_6M-41-repeat"]},
+    {"start": 173.7, "end": 177.3, "text": "（歡呼）", "sourceIds": ["cLtl2aFq_6M-49"]}
+  ],
+  "fullReviewEvidence": "video/RESCENE應援/assets/full-video-review/",
+  "scope": "72 source caption groups checked for text/color; temporal pixel scan at 0.1s; both repeated You sequences and final chorus inspected in contact sheets; changed boundaries checked in full frames",
+  "unchangedDifferencesFromExternalLyrics": [
+    "Video caption uses Nothin' b-b-breaks",
+    "Both Outro With you phrases are preceded by Oh in the video caption",
+    "External lyric backing lines during member-name chant are not displayed in the guide; not added"
+  ]
+}

@@ -4,6 +4,35 @@ const assert=require('node:assert/strict');
 const Chant=require('../rescene/chant.js');
 const songs=require('../rescene/songs.json');
 
+test('With resets between the two You responses and supports seeking back',()=>{
+  const track=songs.find(s=>s.slug==='with').chant;
+  const cues=track.cues.filter(c=>c.sourceIds.some(id=>id==='cLtl2aFq_6M-20'||id==='cLtl2aFq_6M-20-repeat'));
+  assert.deepEqual(cues.map(c=>[c.start,c.end]),[[93.2,94],[96.2,96.9]]);
+  for(const rate of [.5,1,2]) {
+    for(const time of [93.3,96.3,93.3]) {
+      assert.equal(Chant.state(track,time,1,rate).mode,'active');
+      assert.equal(Chant.state(track,time,1,rate).text,'You');
+    }
+    assert.equal(Chant.state(track,94,1,rate).mode,rate===.5?'waiting':'countdown');
+    assert.equal(Chant.state(track,96.1,1,rate).mode,'countdown');
+  }
+});
+
+test('With second chorus also repeats You and the cheer ends before ordinary lyrics',()=>{
+  const track=songs.find(s=>s.slug==='with').chant;
+  const cues=track.cues.filter(c=>c.text==='You');
+  assert.deepEqual(cues.map(c=>[c.start,c.end]),[[93.2,94],[96.2,96.9],[151.7,152.5],[154.7,155.4]]);
+  for(const rate of [.5,1,2]) {
+    for(const time of [151.8,154.8,151.8]) {
+      assert.equal(Chant.state(track,time,1,rate).mode,'active');
+      assert.equal(Chant.state(track,time,1,rate).text,'You');
+    }
+    assert.notEqual(Chant.state(track,152.5,1,rate).mode,'active');
+    assert.equal(Chant.state(track,177.2,1,rate).text,'（歡呼）');
+    assert.notEqual(Chant.state(track,177.3,1,rate).mode,'active');
+  }
+});
+
 test('all reviewed caption tails stay active without changing entry times or crossing the next card',()=>{
   const review=require('../rescene/cue-end-review.json');
   assert.equal(review.songs.reduce((n,s)=>n+s.cues.length,0),424);
@@ -55,8 +84,8 @@ test('Pretty Girl keeps both reported phrases visible through their official cap
   assert.notEqual(Chant.state(track,217.9,1).mode,'active');
 });
 
-test('482 source-bound cards have unique provenance and valid boundaries',()=>{
-  assert.deepEqual(songs.map(s=>s.chant.cues.length),[42,31,46,35,52,49,34,28,30,29,48,25,33]);
+test('484 source-bound cards have unique provenance and valid boundaries',()=>{
+  assert.deepEqual(songs.map(s=>s.chant.cues.length),[42,31,46,35,52,49,34,28,30,29,48,27,33]);
   const ids=new Set();
   for(const song of songs){
     const track=song.chant,id=song.sources[0].videoId;
@@ -70,7 +99,7 @@ test('482 source-bound cards have unique provenance and valid boundaries',()=>{
       assert.ok(!cue.text.includes(' / '));
     }
   }
-  assert.equal(ids.size,482);
+  assert.equal(ids.size,484);
 });
 
 test('LOVE ATTACK retains both fills of each repeated phrase, including replay',()=>{

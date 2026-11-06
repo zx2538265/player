@@ -23,7 +23,7 @@ GUIDES = {
         55:'my scent', 58:'Do you?', 61:'Flower, flower', 63:'higher, higher',
         65:'oh my', 67:'Inside out', 72:'이', 73:'me', 74:'right now',
         78:'Flower, flower', 80:'higher, higher', 82:'oh my', 84:'Inside out',
-        86:'더 더', 92:'더 더', 96:'（歡呼）'}, merge={43:44,45:46}),
+        86:'더 더', 92:'더 더', 95:'inside out', 96:'（歡呼）'}, merge={43:44,45:46}),
 }
 
 
@@ -61,6 +61,8 @@ def prepare(vid):
         # Consecutive 0.1s source frames resolve mask drift on these entrances.
         if vid=='cLtl2aFq_6M':
             start = {8:60.2,26:107.2,48:170.5,54:184.8}.get(index,start)
+        if vid=='cL_B5W4gBRU' and index==95:
+            start=231.8  # Full-frame 230.0–233.9s review, 0.1s steps.
         assert start < end
         events.append(dict(id=f'{vid}-{index}',task_index=index,original=text,
             source_original='함성' if text=='（歡呼）' else text,
@@ -69,6 +71,10 @@ def prepare(vid):
             evidence=[tasks[j]['image'] for j in range(index,guide['merge'].get(index,index)+1)],
             visual_review='accepted',listening_review='pending',
             note='노래 부르듯이 is an instruction to sing this line, excluded from response text' if vid=='cLtl2aFq_6M' and index==26 else 'Blue response only; black fill entrance, caption end'))
+        if vid=='cL_B5W4gBRU' and index==95:
+            events[-1]['omission_review']=dict(reason='Previously misclassified as ordinary lyrics; blue inside out response confirmed',
+                manifest='omission-0351-tasks.json',review_sheet='omission-0351-review.jpg',
+                interval=[230.0,233.9],full_frame=True,step=.1)
     accepted = set(guide['review']) | set(guide['merge'].values())
     write(folder/'chant-refined.json',dict(videoId=vid,events=events,
         rejected=[dict(task_index=t['task_index'],reason='Ordinary lyric, continuation, blank or post-song conversation') for t in tasks if t['task_index'] not in accepted],
@@ -82,7 +88,7 @@ def finalize(vid):
     info = read(folder/'source.info.json')
     assert info['id']==vid and info['channel']=='RESCENE'
     reviewed = read(folder/'chant-refined.json')
-    boundary_file='chant-boundary-tasks-blue-v3.json' if vid=='cLtl2aFq_6M' else 'chant-boundary-tasks-blue-v2.json'
+    boundary_file='chant-boundary-tasks-blue-v3.json'
     boundaries = read(folder/boundary_file)
     tasks = read(folder/'chant-ocr-tasks-v2.json')['tasks']
     rows = [json.loads(l) for l in (folder/'chant-ocr-results-v2.jsonl').read_text(encoding='utf-8').splitlines()]

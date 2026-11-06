@@ -57,4 +57,6 @@ test('new guides use existing name readings and shared Korean phrase spellings',
   assert.equal(cards['그 순간'].split(' ').slice(1).join(' '), cards['순간']);
   assert.equal(cards['정원이 진경은 미나미\n이예빈 김가영'],
     cards['정원이 진경은 미나미\n이예빈 김가영 리센느'].replace(/ RESCENE$/, ''));
+  assert.equal(cards['백! 화! 요! 란! Inside out!'], '貝! 花! 唷! 蘭! Inside out!');
+  assert.equal(cards['꽃처럼'], '勾秋隆');
 });

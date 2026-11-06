@@ -84,8 +84,8 @@ test('Pretty Girl keeps both reported phrases visible through their official cap
   assert.notEqual(Chant.state(track,217.9,1).mode,'active');
 });
 
-test('484 source-bound cards have unique provenance and valid boundaries',()=>{
-  assert.deepEqual(songs.map(s=>s.chant.cues.length),[42,31,46,35,52,49,34,28,30,29,48,27,33]);
+test('485 source-bound cards have unique provenance and valid boundaries',()=>{
+  assert.deepEqual(songs.map(s=>s.chant.cues.length),[42,31,46,35,52,49,34,28,30,29,48,27,34]);
   const ids=new Set();
   for(const song of songs){
     const track=song.chant,id=song.sources[0].videoId;
@@ -99,7 +99,20 @@ test('484 source-bound cards have unique provenance and valid boundaries',()=>{
       assert.ok(!cue.text.includes(' / '));
     }
   }
-  assert.equal(ids.size,484);
+  assert.equal(ids.size,485);
+});
+
+test('Inside Out keeps the reported final inside out response separate from white lyrics and cheers',()=>{
+  const track=songs.find(s=>s.slug==='inside-out').chant;
+  const cue=track.cues.find(c=>c.sourceIds.includes('cL_B5W4gBRU-95'));
+  assert.deepEqual([cue.start,cue.end,cue.text],[231.8,233.2,'inside out']);
+  for(const t of [231.8,232.5,233.1,231.8]) {
+    assert.equal(Chant.state(track,t,1).mode,'active');
+    assert.equal(Chant.state(track,t,1).text,'inside out');
+  }
+  assert.notEqual(Chant.state(track,231.7,1).mode,'active');
+  assert.notEqual(Chant.state(track,233.2,1).mode,'active');
+  assert.equal(Chant.state(track,233.5,1).text,'（歡呼）');
 });
 
 test('LOVE ATTACK retains both fills of each repeated phrase, including replay',()=>{

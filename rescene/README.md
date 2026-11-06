@@ -1,5 +1,13 @@
 # RESCENE 應援練習室
 
+## Inside Out 空耳校訂與 3:51 補漏（2026-11-03）
+
+- 依使用者校訂，`백! 화! 요! 란! Inside out!` 空耳改成「貝! 花! 唷! 蘭! Inside out!」；`꽃처럼` 改成「勾秋隆」
+- 補回片尾藍色 `inside out`，231.8–233.2 秒，來源 ID `cL_B5W4gBRU-95`；排除白字 `from the`。此卡先前誤列一般歌詞，現為 34 張、全歌單 483 張
+- 人工檢視 230.0–233.9 秒共 40 張、每 0.1 秒的完整來源畫面；新清單 `omission-0351-tasks.json` 與 `omission-0351-review.jpg`。沿用已完成 v2 OCR，未新增辨識執行；最後採用 `chant-boundary-tasks-blue-v3.json` 邊界清單
+- 既有 SRT、ledger 與 refined 快照以 `.before-0351` 保留在影片目錄；更新 builder 後重建資料、SRT、QA、diff 與空耳對照，不修改原片。保留原先音樂播放區間及其他提示時間
+- 此次為文字與畫面邊界核對，未完成直接聽校或正常速度播放驗收；2026-11-06 納入推送範圍
+
 ## With 重複應援與歡呼尾端修正（2026-11-06）
 
 - 兩段副歌的 You 各有兩次變黑：93.2–94.0、96.2–96.9，以及 151.7–152.5、154.7–155.4 秒；With 共 27 張應援卡
@@ -24,7 +32,7 @@
 - 兩首有效 GPU OCR 共 178 筆、零辨識執行錯誤。逐張檢視來源卡片及完整畫面 0.1 秒邊界；可辨識變黑時依變黑定位，Inside Out 的「보여줘」無變黑，依字幕出現。With 4 張另用連續畫面人工修正進入時間
 - 原未標版本 inventory 因奇數裁切高度發生 YUV420 錯位，僅保留供追溯，沒有採用；有效來源是 `chant-ocr-tasks-v2.json`、`chant-ocr-results-v2.jsonl`。Paddle cuDNN 版本警告仍存在，但有效辨識完整完成且無 row error
 - 本機證據保存在各自 `video/<id>/`，含原片、metadata、append-only OCR、ledger、原文 SRT、QA、diff 與邊界圖。新韓文卡片同步空耳初稿，仍待直接聽校
-- 重建：`python scripts/build_rescene_with_inside_out.py --prepare`，再對 With 執行 `python scripts/rescene_chant_boundaries.py --id cLtl2aFq_6M --revision=-blue-v3`，Inside Out 使用 `--id cL_B5W4gBRU --revision=-blue-v2`；最後執行 `python scripts/build_rescene_with_inside_out.py` 與 `python scripts/apply_rescene_phonetics.py`。一般 finalizer 已委派新 builder；修改時間需另立邊界 revision
+- 重建：`python scripts/build_rescene_with_inside_out.py --prepare`，再對 With 執行 `python scripts/rescene_chant_boundaries.py --id cLtl2aFq_6M --revision=-blue-v3`，Inside Out 使用 `--id cL_B5W4gBRU --revision=-blue-v3`；最後執行 `python scripts/build_rescene_with_inside_out.py` 與 `python scripts/apply_rescene_phonetics.py`。一般 finalizer 已委派新 builder；修改時間需另立邊界 revision
 - 26 項播放器／應援／空耳測試、10 項 Pages 打包測試及兩首 SRT／OCR audit 通過；尚未完整逐句直接聽校、正常速度全卡可讀性／同步與實際 YouTube 播放驗收。未 commit、push 或部署
 
 ## 全歌單句尾顯示比對（2026-10-26）

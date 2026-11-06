@@ -4147,7 +4147,7 @@
     "artist": "RESCENE",
     "section": "백화요란 (Inside Out)",
     "hasChant": true,
-    "note": "官方應援教學 · 33 張提示卡 · 依畫面校時，聽校待完成",
+    "note": "官方應援教學 · 34 張提示卡 · 依畫面校時，聽校待完成",
     "sources": [
       {
         "kind": "官方應援教學",
@@ -4171,7 +4171,7 @@
           "sourceIds": [
             "cL_B5W4gBRU-4"
           ],
-          "phoneticZh": "貝ㄎ! 花! 唷! 蘭! Inside out!"
+          "phoneticZh": "貝! 花! 唷! 蘭! Inside out!"
         },
         {
           "start": 35.9,
@@ -4198,7 +4198,7 @@
           "sourceIds": [
             "cL_B5W4gBRU-16"
           ],
-          "phoneticZh": "勾ㄊ秋隆"
+          "phoneticZh": "勾秋隆"
         },
         {
           "start": 62.3,
@@ -4431,6 +4431,14 @@
             "cL_B5W4gBRU-92"
           ],
           "phoneticZh": "兜 兜"
+        },
+        {
+          "start": 231.8,
+          "end": 233.2,
+          "text": "inside out",
+          "sourceIds": [
+            "cL_B5W4gBRU-95"
+          ]
         },
         {
           "start": 233.4,

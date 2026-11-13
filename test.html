@@ -84,24 +84,91 @@
       background: #2f2f2f;
     }
 
-    #shareControls {
+    .share-dialog {
+      box-sizing: border-box;
+      width: min(420px, calc(100% - 32px));
+      max-height: calc(100% - 32px);
+      padding: 22px;
+      border: 1px solid #383f50;
+      border-radius: 18px;
+      background: #191d26;
+      color: #f4f6fa;
+      box-shadow: 0 20px 60px #0009;
+    }
+
+    .share-dialog::backdrop { background: #090b11b8; }
+
+    .share-dialog header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: flex-end;
+      margin-bottom: 16px;
+    }
+
+    .share-dialog h2 { margin: 0; font-size: 20px; }
+
+    .share-dialog button {
+      min-height: 44px;
+      border: 0;
+      border-radius: 10px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .share-close {
+      min-width: 44px;
+      background: #2b3140;
+      color: inherit;
+    }
+
+    .share-dialog input[type="text"] {
+      box-sizing: border-box;
+      min-height: 44px;
+      border: 1px solid #454e61;
+      border-radius: 10px;
+      padding: 8px 12px;
+      background: #11151d;
+      color: inherit;
+      font: inherit;
+    }
+
+    #shareLink { width: 100%; }
+
+    .share-time {
+      display: flex;
       flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      margin: 10px 0 14px;
+    }
+
+    .share-time label {
+      display: inline-flex;
       gap: 8px;
+      align-items: center;
+      min-height: 44px;
+      cursor: pointer;
     }
 
-    #shareControls:has(#copyShareBtn[hidden]) {
-      display: none;
+    .share-time input[type="checkbox"] { accent-color: #9ecbff; }
+    #shareStartTime { width: 7em; }
+    #shareStartTime[aria-invalid="true"] { border-color: #ff9b9b; }
+
+    #copyShareBtn {
+      width: 100%;
+      background: #9ecbff;
+      color: #0c2038;
+      font-weight: 700;
     }
 
-    #shareStartOption {
-      white-space: nowrap;
-    }
+    #copyShareBtn:hover { background: #c2dfff; }
 
-    #shareStartTime {
-      width: 7em;
+    #shareStatus {
+      display: block;
+      min-height: 1.4em;
+      margin-top: 8px;
+      color: #c5d3e8;
+      font-size: 14px;
     }
 
     #videoIdInput,
@@ -585,14 +652,25 @@
       <a class="library-back-link" href="library.html">← 翻譯清單</a>
       <input id="videoIdInput" type="text" placeholder="請輸入 YouTube 影片 ID，例如 dqNMWaT9mog" />
       <button id="loadVideoBtn">載入影片</button>
-      <div id="shareControls">
-        <label id="shareStartOption" hidden><input id="shareStartEnabled" type="checkbox" autocomplete="off" /> 開始時間</label>
-        <input id="shareStartTime" type="text" placeholder="0:00" aria-label="開始時間（分:秒或時:分:秒）" autocomplete="off" hidden />
-        <button id="copyShareBtn" type="button" hidden>複製分享連結</button>
-      </div>
-      <span id="shareStatus" role="status" aria-live="polite"></span>
+      <button id="openShareBtn" type="button" aria-haspopup="dialog" hidden>分享</button>
       <input id="srtFileInput" type="file" accept=".srt" />
     </div>
+
+    <dialog id="shareDialog" class="share-dialog" aria-labelledby="shareTitle">
+      <header>
+        <h2 id="shareTitle">分享影片</h2>
+        <form method="dialog">
+          <button class="share-close" aria-label="關閉分享" autofocus>✕</button>
+        </form>
+      </header>
+      <input id="shareLink" type="text" aria-label="分享連結" readonly />
+      <div class="share-time">
+        <label><input id="shareStartEnabled" type="checkbox" autocomplete="off" /> 指定開始時間</label>
+        <input id="shareStartTime" type="text" placeholder="0:00" aria-label="開始時間（分:秒或時:分:秒）" autocomplete="off" hidden />
+      </div>
+      <button id="copyShareBtn" type="button">複製連結</button>
+      <span id="shareStatus" role="status"></span>
+    </dialog>
 
     <div id="resumePrompt" hidden style="margin: 0 0 12px; padding: 12px; border: 1px solid #666; border-radius: 8px;">
       <span id="resumeMessage" role="status" aria-live="polite"></span>
@@ -676,7 +754,7 @@
 
   </div>
 
-  <script src="share.js?v=20261113-1"></script>
+  <script src="share.js?v=20261113-2"></script>
   <script src="playback-progress.js?v=20261113-1"></script>
   <script src="test-youtube-ratio.js?v=20261026-1"></script>
   <script>

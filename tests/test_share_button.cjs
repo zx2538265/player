@@ -9,17 +9,25 @@ const url = `https://allenka.com/share/${id}/`;
 function setup(fetch, clipboard = { writeText: async () => {} }) {
   const element = () => ({
     hidden: true,
-    addEventListener(event, fn) { this[event] = fn; }
+    addEventListener(event, fn) { this[event] = fn; },
+    setAttribute() {},
+    focus() { this.focused = true; }
   });
-  const button = element(), option = element(), checkbox = element(), input = element();
-  input.focus = () => { input.focused = true; };
+  const button = element(), openButton = element(), checkbox = element(), input = element(), link = element();
+  link.select = () => { link.selected = true; };
+  const dialog = {
+    ...element(),
+    open: false,
+    showModal() { this.open = true; },
+    close() { this.open = false; }
+  };
   const status = { textContent: '' };
-  const elements = { copyShareBtn: button, shareStartOption: option, shareStartEnabled: checkbox, shareStartTime: input, shareStatus: status };
-  const prompts = [];
-  const context = { fetch, navigator: { clipboard }, window: { prompt: (...args) => prompts.push(args) },
+  const elements = { copyShareBtn: button, openShareBtn: openButton, shareDialog: dialog, shareLink: link,
+    shareStartEnabled: checkbox, shareStartTime: input, shareStatus: status };
+  const context = { fetch, navigator: { clipboard }, window: {},
     document: { getElementById: name => elements[name] } };
   vm.runInNewContext(source, context);
-  return { button, option, checkbox, input, status, prompts, update: context.window.updateShareVideo };
+  return { button, openButton, dialog, link, checkbox, input, status, update: context.window.updateShareVideo };
 }
 const response = videos => ({ ok: true, json: async () => ({ version: 1, videos }) });
 
@@ -27,12 +35,17 @@ test('copies only a generated share URL and hides on unknown video', async () =>
   const copies = [];
   const app = setup(async () => response({ [id]: url }), { writeText: async value => copies.push(value) });
   await app.update(id);
-  assert.equal(app.button.hidden, false);
+  assert.equal(app.openButton.hidden, false);
+  app.openButton.click();
+  assert.equal(app.link.value, url);
+  await app.update(id);
+  assert.equal(app.dialog.open, true);
   await app.button.click();
   assert.deepEqual(copies, [url]);
   assert.equal(app.status.textContent, '已複製分享連結');
   await app.update('AAAAAAAAAAA');
-  assert.equal(app.button.hidden, true);
+  assert.equal(app.openButton.hidden, true);
+  assert.equal(app.dialog.open, false);
   await app.button.click();
   assert.equal(copies.length, 1);
 });
@@ -41,10 +54,12 @@ test('failed clipboard gives a manually copyable URL', async () => {
   // Simulate a denied clipboard permission.
   const denied = setup(async () => response({ [id]: url }), { writeText: async () => { throw Error('denied'); } });
   await denied.update(id);
+  denied.openButton.click();
   denied.checkbox.checked = true;
   denied.checkbox.change();
   await denied.button.click();
-  assert.equal(denied.prompts[0][1], url + '?t=0');
+  assert.equal(denied.link.value, url + '?t=0');
+  assert.equal(denied.link.selected, true);
 });
 
 test('optional start time snapshots playback on check and accepts a manual edit', async () => {
@@ -52,7 +67,7 @@ test('optional start time snapshots playback on check and accepts a manual edit'
   let currentTime = 0;
   const app = setup(async () => response({ [id]: url }), { writeText: async value => copies.push(value) });
   await app.update(id, () => currentTime);
-  assert.equal(app.option.hidden, false);
+  app.openButton.click();
   assert.equal(app.input.hidden, true);
   currentTime = 83.9;
   app.checkbox.checked = true;
@@ -62,6 +77,8 @@ test('optional start time snapshots playback on check and accepts a manual edit'
   currentTime = 90;
   await app.button.click();
   app.input.value = '1:02:03';
+  app.input.input();
+  assert.equal(app.link.value, url + '?t=3723');
   await app.button.click();
   assert.deepEqual(copies, [url + '?t=83', url + '?t=3723']);
 
@@ -80,7 +97,7 @@ test('optional start time snapshots playback on check and accepts a manual edit'
   app.checkbox.change();
   assert.equal(app.input.value, '1:30');
   await app.update('AAAAAAAAAAA');
-  assert.equal(app.option.hidden, true);
+  assert.equal(app.openButton.hidden, true);
   assert.equal(app.checkbox.checked, false);
 });
 
@@ -91,13 +108,13 @@ test('a slow manifest never restores a previous video share button', async () =>
   const second = app.update('BBBBBBBBBBB');
   resolve(response({ [id]: url }));
   await Promise.all([first, second]);
-  assert.equal(app.button.hidden, true);
+  assert.equal(app.openButton.hidden, true);
 });
 
 test('missing or tampered manifest never exposes a broken share URL', async () => {
   for (const fetch of [async () => ({ ok: false }), async () => response({ [id]: 'https://evil.test/' })]) {
     const app = setup(fetch);
     await app.update(id);
-    assert.equal(app.button.hidden, true);
+    assert.equal(app.openButton.hidden, true);
   }
 });

@@ -43,6 +43,18 @@ test('restart clears previous progress and starts at zero', () => {
   assert.equal(a.calls.at(-1)[1].startSeconds, 0);
 });
 
+test('a shared start time including zero takes precedence over saved progress', () => {
+  const a = setup();
+  a.seed('A');
+  for (const seconds of [83, 0]) {
+    a.progress.load('A', seconds);
+    assert.equal(a.calls.at(-1)[0], 'load');
+    assert.equal(a.calls.at(-1)[1].startSeconds, seconds);
+    assert.equal(a.prompts.at(-1), null);
+  }
+  assert.equal(JSON.parse(a.data.get(key('A'))).seconds, 125);
+});
+
 test('edited showcase starts at zero and switching videos also starts at zero', () => {
   const a = setup();
   a.progress.load('1BC-953eVP4');
@@ -140,13 +152,13 @@ test('late native play during subtitle loading cannot overwrite saved progress',
 
 test('actual page load flow saves before pausing and only loads the latest subtitle request', async () => {
   const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
-  const load = html.slice(html.indexOf('    async function loadVideoById(videoId)'), html.indexOf('    retrySubtitlesBtnEl.addEventListener'));
+  const load = html.slice(html.indexOf('    async function loadVideoById('), html.indexOf('    retrySubtitlesBtnEl.addEventListener'));
   const events = [], pending = {};
   let request = 0;
   const context = {
     requestedVideoId: '', alert() {}, revealPlayerSideTools() {}, loadVideoOrientation() {},
-    progress: { detach: () => events.push('save/detach'), load: id => events.push('load:' + id) },
-    window: { updateShareVideo() {} },
+    progress: { detach: () => events.push('save/detach'), load: (id, time) => events.push(`load:${id}:${time}`) },
+    updateVideoShare() {},
     player: { pauseVideo: () => events.push('pause'), loadVideoById() {} },
     subtitleLoadingEl: {}, subtitleLoadingSpinnerEl: {}, retrySubtitlesBtnEl: {}, subtitleLoadingMessageEl: {},
     playerWrapEl: { setAttribute() {} }, setSubtitles() {},
@@ -156,10 +168,10 @@ test('actual page load flow saves before pausing and only loads the latest subti
     }
   };
   vm.runInNewContext(load, context);
-  const first = context.loadVideoById('A');
-  const second = context.loadVideoById('B');
+  const first = context.loadVideoById('A', 90);
+  const second = context.loadVideoById('B', 83);
   pending.B(); await second; pending.A(); await first;
-  assert.deepEqual(events, ['save/detach', 'pause', 'save/detach', 'pause', 'load:B']);
+  assert.deepEqual(events, ['save/detach', 'pause', 'save/detach', 'pause', 'load:B:83']);
   assert.equal(context.subtitleLoadingEl.hidden, true);
 });
 

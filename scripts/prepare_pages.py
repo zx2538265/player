@@ -87,7 +87,11 @@ def build_share_pages(payload, site):
   <h1>{title}</h1>
   <p>{description}</p>
   <p><a href="{player}">觀看中文字幕影片 →</a></p>
-  <script>window.location.replace("../../?v={video_id}");</script>
+  <script>
+    const start = new URLSearchParams(window.location.search).get("t");
+    const timeQuery = /^[0-9]+$/.test(start) && Number.isSafeInteger(Number(start)) ? "&t=" + Number(start) : "";
+    window.location.replace("../../?v={video_id}" + timeQuery);
+  </script>
 </body>
 </html>
 '''.format(**values, video_id=vid, image_tags=image_tags, image_body=image_body, card="summary_large_image" if image else "summary")

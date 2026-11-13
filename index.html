@@ -84,6 +84,10 @@
       background: #2f2f2f;
     }
 
+    #shareStartTime {
+      width: 7em;
+    }
+
     #videoIdInput,
     #loadVideoBtn,
     #srtFileInput,
@@ -565,6 +569,8 @@
       <a class="library-back-link" href="library.html">← 翻譯清單</a>
       <input id="videoIdInput" type="text" placeholder="請輸入 YouTube 影片 ID，例如 dqNMWaT9mog" />
       <button id="loadVideoBtn">載入影片</button>
+      <label id="shareStartOption" hidden><input id="shareStartEnabled" type="checkbox" autocomplete="off" /> 開始時間</label>
+      <input id="shareStartTime" type="text" placeholder="0:00" aria-label="開始時間（分:秒或時:分:秒）" autocomplete="off" hidden />
       <button id="copyShareBtn" type="button" hidden>複製分享連結</button>
       <span id="shareStatus" role="status" aria-live="polite"></span>
       <input id="srtFileInput" type="file" accept=".srt" />
@@ -721,7 +727,12 @@
     const resetSubtitleSettingsBtnEl = document.getElementById("resetSubtitleSettingsBtn");
     const toggleFullscreenBtnEl = document.getElementById("toggleFullscreenBtn");
     const toggleSubtitleSettingsBtnEl = document.getElementById("toggleSubtitleSettingsBtn");
-    const initialVideoId = new URLSearchParams(window.location.search).get("v")?.trim() || "";
+    const query = new URLSearchParams(window.location.search);
+    const initialVideoId = query.get("v")?.trim() || "";
+    const startTime = query.get("t");
+    const initialStartSeconds = /^\d+$/.test(startTime) && Number.isSafeInteger(Number(startTime))
+      ? Number(startTime)
+      : undefined;
     const subtitleSettingsStorageKey = "player-test-subtitle-ratio-prefs-v1";
     const playerControlsAutoHideDelay = 2200;
     const orientationHintDuration = 5000;
@@ -732,7 +743,13 @@
     if (initialVideoId) {
       videoIdInput.value = initialVideoId;
       infoEl.textContent = `已從網址讀取影片 ID：${initialVideoId}`;
-      window.updateShareVideo(initialVideoId);
+      updateVideoShare(initialVideoId);
+    }
+
+    function updateVideoShare(videoId) {
+      window.updateShareVideo(videoId, () => {
+        if (player?.getVideoData?.()?.video_id === videoId) return player.getCurrentTime?.();
+      });
     }
 
     function updateFullscreenButtonState(isFullscreen) {
@@ -1533,7 +1550,7 @@
       }
     }
 
-    async function loadVideoById(videoId) {
+    async function loadVideoById(videoId, startSeconds) {
       if (!videoId) {
         alert("請輸入 YouTube 影片 ID");
         return;
@@ -1544,7 +1561,7 @@
       isPlayerPlaying = false;
       revealPlayerSideTools();
       loadVideoOrientation(videoId);
-      window.updateShareVideo(videoId);
+      updateVideoShare(videoId);
       if (player && typeof player.pauseVideo === "function") player.pauseVideo();
       subtitleLoadingEl.hidden = false;
       subtitleLoadingSpinnerEl.hidden = false;
@@ -1560,7 +1577,7 @@
       subtitleLoadingEl.hidden = true;
 
       if (player && typeof player.loadVideoById === "function") {
-        progress.load(videoId);
+        progress.load(videoId, startSeconds);
 
         if (typeof player.setPlaybackQuality === "function") {
           player.setPlaybackQuality("hd1080");
@@ -1594,7 +1611,7 @@
             }
 
             if (initialVideoId) {
-              loadVideoById(initialVideoId);
+              loadVideoById(initialVideoId, initialStartSeconds);
             }
           },
           onStateChange: handlePlayerStateChange

@@ -61,7 +61,8 @@ class SharePagesTests(unittest.TestCase):
         self.assertEqual(parsed.meta["twitter:card"], "summary_large_image")
         self.assertIn("RESCENE · 綜藝", parsed.meta["og:description"])
         self.assertEqual(parsed.scripts, 1)
-        self.assertIn(f'window.location.replace("../../?v={self.vid}")', html)
+        self.assertIn('new URLSearchParams(window.location.search).get("t")', html)
+        self.assertIn(f'window.location.replace("../../?v={self.vid}" + timeQuery)', html)
         manifest = json.loads((self.site / "data/share.json").read_text())
         self.assertEqual(manifest["videos"][self.vid], parsed.meta["og:url"])
 

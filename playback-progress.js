@@ -36,11 +36,12 @@
       videoId = ''; played = false; waiting = false; resumeAt = 0;
       showResume(null);
     }
-    function load(id) {
+    function load(id, startSeconds) {
       videoId = id; played = false;
-      resumeAt = read(id); waiting = resumeAt > 0;
+      resumeAt = startSeconds === undefined ? read(id) : 0;
+      waiting = resumeAt > 0;
       showResume(waiting ? resumeAt : null);
-      const options = { videoId: id, startSeconds: waiting ? resumeAt : 0, suggestedQuality: 'hd1080' };
+      const options = { videoId: id, startSeconds: startSeconds ?? resumeAt, suggestedQuality: 'hd1080' };
       if (waiting) getPlayer().cueVideoById(options);
       else getPlayer().loadVideoById(options);
     }

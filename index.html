@@ -84,6 +84,22 @@
       background: #2f2f2f;
     }
 
+    #shareControls {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    #shareControls:has(#copyShareBtn[hidden]) {
+      display: none;
+    }
+
+    #shareStartOption {
+      white-space: nowrap;
+    }
+
     #shareStartTime {
       width: 7em;
     }
@@ -569,9 +585,11 @@
       <a class="library-back-link" href="library.html">← 翻譯清單</a>
       <input id="videoIdInput" type="text" placeholder="請輸入 YouTube 影片 ID，例如 dqNMWaT9mog" />
       <button id="loadVideoBtn">載入影片</button>
-      <label id="shareStartOption" hidden><input id="shareStartEnabled" type="checkbox" autocomplete="off" /> 開始時間</label>
-      <input id="shareStartTime" type="text" placeholder="0:00" aria-label="開始時間（分:秒或時:分:秒）" autocomplete="off" hidden />
-      <button id="copyShareBtn" type="button" hidden>複製分享連結</button>
+      <div id="shareControls">
+        <label id="shareStartOption" hidden><input id="shareStartEnabled" type="checkbox" autocomplete="off" /> 開始時間</label>
+        <input id="shareStartTime" type="text" placeholder="0:00" aria-label="開始時間（分:秒或時:分:秒）" autocomplete="off" hidden />
+        <button id="copyShareBtn" type="button" hidden>複製分享連結</button>
+      </div>
       <span id="shareStatus" role="status" aria-live="polite"></span>
       <input id="srtFileInput" type="file" accept=".srt" />
     </div>
@@ -658,8 +676,8 @@
 
   </div>
 
-  <script src="share.js"></script>
-  <script src="playback-progress.js"></script>
+  <script src="share.js?v=20261113-1"></script>
+  <script src="playback-progress.js?v=20261113-1"></script>
   <script src="test-youtube-ratio.js?v=20261026-1"></script>
   <script>
     let player = null;

@@ -261,3 +261,10 @@
 - 依使用者指定由 00:09 開始，播放至 194.939 秒；42 張應援依全曲及逐卡音訊比對平移 -6.061 秒，倒數、跳句、循環使用現場原影片絕對時間。
 - 重建腳本 `scripts/add_rescene_love_attack_live.py` 已接入共用 writer；來源與 QA 留存 `video/ajhEFz1zNMQ/`。
 - 33 項 Node 測試、10 項打包測試通過；正常速度播放、直接聽校及嵌入實播尚未完成。未提交或推送本輪變更。
+
+## Pretty Girl 現場版（2026-11-14）
+
+- 加入指定 MBC 音樂中心現場版 `pEreGS1gwls`，按鈕與教學版切換，共用 `#pretty-girl` 網址，不帶 `/live`。
+- 52 張原文／空耳以整曲波形與頻譜交叉比對平移 -22.870 秒；練習區間 0–211.33 秒，支援倒數、逐句重練與循環。
+- 原教學與 Special Video、其他歌曲來源保持不變；`scripts/add_rescene_pretty_girl_live.py` 已接入共用 writer。
+- 證據與 QA 保存在 `video/pEreGS1gwls/`。34 項 Node 測試、10 項打包測試通過；現場收音部分匹配信心偏低，完整播放與直接聽校未完成。本次未提交或推送。

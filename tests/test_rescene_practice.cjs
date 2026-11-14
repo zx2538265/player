@@ -171,3 +171,20 @@ test('LOVE ATTACK live starts at nine seconds and retains correct version indice
  s.get('sourceButtons').children[0].onclick();p=s.players.at(-1);p.ready();assert.equal(p.options.videoId,'xn12KH78Dx4');
  s.get('sourceButtons').children[1].onclick();p=s.players.at(-1);p.ready();assert.equal(p.options.videoId,'ajhEFz1zNMQ');assert.equal(s.location.hash,'#love-attack');
 });
+
+test('Pretty Girl live preserves 52 cues and switches without changing the song URL',async()=>{
+ const song=require('../rescene/songs.json').find(s=>s.slug==='pretty-girl'),live=song.sources.find(s=>s.slug==='live');
+ const s=await setup([song],'#pretty-girl');s.players[0].ready();
+ assert.equal(s.get('sourceButtons').children.length,2);s.get('sourceButtons').children[1].onclick();let p=s.players.at(-1);p.ready();
+ assert.equal(p.options.videoId,'pEreGS1gwls');assert.equal(s.location.hash,'#pretty-girl');assert.equal(s.get('ktvList').children.length,52);
+ for(let i=0;i<live.chant.cues.length;i++){
+  const cue=live.chant.cues[i],original=song.chant.cues[i];
+  assert.equal(cue.text,original.text);assert.equal(cue.phoneticZh,original.phoneticZh);
+  assert.ok(Math.abs(cue.start-original.start+22.87)<0.001);assert.ok(cue.start>=0&&cue.end<=live.endSeconds);
+  p.time=cue.start;p.state=1;s.tick();assert.equal(s.get('ktvList').children[i].dataset.state,'active');
+ }
+ s.get('ktvList').children[0].onclick();s.tick();assert.match(s.get('ktvList').children[0].children[0].textContent,/下一句 3 秒/);
+ s.get('loopCue').checked=true;s.get('loopCue').onchange();p.time=live.chant.cues[0].end;s.tick();assert.equal(p.time,live.chant.cues[0].start-3);
+ s.get('loopCue').checked=false;s.get('loopCue').onchange();p.time=live.endSeconds;p.state=1;s.tick();assert.equal(p.state,2);
+ s.get('sourceButtons').children[0].onclick();p=s.players.at(-1);p.ready();assert.equal(p.options.videoId,'RX592yMx7P0');assert.equal(s.location.hash,'#pretty-girl');
+});

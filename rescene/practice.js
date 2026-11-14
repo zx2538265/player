@@ -346,7 +346,7 @@ $('seek').oninput = () => {if(ready) manualSeek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').value); savePreferences(); player.setPlaybackRate(preferences.speed); }};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20261114-love-live-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20261114-pretty-live-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   const firstSlugs = ['with', 'inside-out'];
   songs = [...firstSlugs.flatMap(slug => data.filter(song => song.slug === slug)),
     ...data.filter(song => !firstSlugs.includes(song.slug))];

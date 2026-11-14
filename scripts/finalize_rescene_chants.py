@@ -25,6 +25,8 @@ def write(path, value):
         apply_inside_out_live(value)
         from add_rescene_love_attack_live import apply_live_version as apply_love_attack_live
         apply_love_attack_live(value)
+        from add_rescene_pretty_girl_live import apply_live_version as apply_pretty_girl_live
+        apply_pretty_girl_live(value)
         from fix_rescene_with_repeats import save_reviewed_track
         save_reviewed_track(value)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

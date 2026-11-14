@@ -1789,6 +1789,468 @@
         "kind": "官方 Special Video",
         "title": "RESCENE — Pretty Girl",
         "url": "https://www.youtube.com/watch?v=qZlu2j2SiBA"
+      },
+      {
+        "kind": "現場版 · 音樂中心",
+        "slug": "live",
+        "title": "[#음중풀캠8K] RESCENE (리센느) – Pretty Girl FullCam | 쇼! 음악중심 | MBC260711",
+        "url": "https://www.youtube.com/watch?v=pEreGS1gwls",
+        "videoId": "pEreGS1gwls",
+        "startSeconds": 0,
+        "endSeconds": 211.33,
+        "chant": {
+          "videoId": "pEreGS1gwls",
+          "status": "audio_aligned_listening_pending",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "note": "沿用官方教學應援，依整曲音訊比對平移 -22.870 秒；非現場觀眾喊聲轉錄。已核對主體音訊及代表畫面，完整直接聽校待完成。",
+          "cues": [
+            {
+              "start": 7.73,
+              "end": 10.23,
+              "text": "정원이 진경은 미나미",
+              "sourceIds": [
+                "RX592yMx7P0-138"
+              ],
+              "phoneticZh": "衝丸妮 金ㄍㄧㄛ恩 Minami"
+            },
+            {
+              "start": 11.23,
+              "end": 13.73,
+              "text": "이예빈 김가영 리센느",
+              "sourceIds": [
+                "RX592yMx7P0-140"
+              ],
+              "phoneticZh": "伊耶彬 金嘎勇 RESCENE"
+            },
+            {
+              "start": 14.93,
+              "end": 16.43,
+              "text": "프리티걸 나야 나",
+              "sourceIds": [
+                "RX592yMx7P0-142"
+              ],
+              "phoneticZh": "普哩踢勾 那呀 那"
+            },
+            {
+              "start": 16.43,
+              "end": 18.43,
+              "text": "one twe three yeah",
+              "sourceIds": [
+                "RX592yMx7P0-143"
+              ]
+            },
+            {
+              "start": 20.13,
+              "end": 21.73,
+              "text": "every wanna pretty",
+              "sourceIds": [
+                "RX592yMx7P0-145"
+              ]
+            },
+            {
+              "start": 23.93,
+              "end": 25.53,
+              "text": "no no no no",
+              "sourceIds": [
+                "RX592yMx7P0-147"
+              ]
+            },
+            {
+              "start": 27.33,
+              "end": 29.03,
+              "text": "every wanna pretty",
+              "sourceIds": [
+                "RX592yMx7P0-149"
+              ]
+            },
+            {
+              "start": 35.43,
+              "end": 37.13,
+              "text": "리센느!",
+              "sourceIds": [
+                "RX592yMx7P0-152"
+              ],
+              "phoneticZh": "RESCENE!"
+            },
+            {
+              "start": 47.93,
+              "end": 49.53,
+              "text": "기본",
+              "sourceIds": [
+                "RX592yMx7P0-156-1"
+              ],
+              "phoneticZh": "gi崩"
+            },
+            {
+              "start": 49.53,
+              "end": 50.43,
+              "text": "선택",
+              "sourceIds": [
+                "RX592yMx7P0-156-2"
+              ],
+              "phoneticZh": "松堆"
+            },
+            {
+              "start": 54.53,
+              "end": 56.83,
+              "text": "girl!",
+              "sourceIds": [
+                "RX592yMx7P0-158-1"
+              ]
+            },
+            {
+              "start": 56.83,
+              "end": 58.43,
+              "text": "Pretty Girl",
+              "sourceIds": [
+                "RX592yMx7P0-158-2"
+              ]
+            },
+            {
+              "start": 61.73,
+              "end": 62.13,
+              "text": "넌",
+              "sourceIds": [
+                "RX592yMx7P0-159"
+              ],
+              "phoneticZh": "嫩"
+            },
+            {
+              "start": 66.73,
+              "end": 68.53,
+              "text": "yeah yeah yeah yeah",
+              "sourceIds": [
+                "RX592yMx7P0-161"
+              ]
+            },
+            {
+              "start": 68.93,
+              "end": 71.23,
+              "text": "girl!",
+              "sourceIds": [
+                "RX592yMx7P0-162-1"
+              ]
+            },
+            {
+              "start": 71.23,
+              "end": 72.93,
+              "text": "Pretty Girl",
+              "sourceIds": [
+                "RX592yMx7P0-162-2"
+              ]
+            },
+            {
+              "start": 76.13,
+              "end": 76.53,
+              "text": "넌",
+              "sourceIds": [
+                "RX592yMx7P0-163"
+              ],
+              "phoneticZh": "嫩"
+            },
+            {
+              "start": 79.23,
+              "end": 81.03,
+              "text": "Yeah yeah yeah yeah",
+              "sourceIds": [
+                "RX592yMx7P0-165"
+              ]
+            },
+            {
+              "start": 85.53,
+              "end": 86.63,
+              "text": "리마인",
+              "sourceIds": [
+                "RX592yMx7P0-167"
+              ],
+              "phoneticZh": "REMINE"
+            },
+            {
+              "start": 91.63,
+              "end": 93.33,
+              "text": "every wanna pretty",
+              "sourceIds": [
+                "RX592yMx7P0-170"
+              ]
+            },
+            {
+              "start": 95.43,
+              "end": 97.13,
+              "text": "no no no no",
+              "sourceIds": [
+                "RX592yMx7P0-172"
+              ]
+            },
+            {
+              "start": 98.83,
+              "end": 100.53,
+              "text": "every wanna pretty",
+              "sourceIds": [
+                "RX592yMx7P0-174"
+              ]
+            },
+            {
+              "start": 108.33,
+              "end": 110.63,
+              "text": "girl!",
+              "sourceIds": [
+                "RX592yMx7P0-180-1"
+              ]
+            },
+            {
+              "start": 110.63,
+              "end": 112.33,
+              "text": "Pretty Girl",
+              "sourceIds": [
+                "RX592yMx7P0-180-2"
+              ]
+            },
+            {
+              "start": 115.43,
+              "end": 115.93,
+              "text": "넌",
+              "sourceIds": [
+                "RX592yMx7P0-181"
+              ],
+              "phoneticZh": "嫩"
+            },
+            {
+              "start": 120.53,
+              "end": 122.33,
+              "text": "yeah yeah yeah yeah",
+              "sourceIds": [
+                "RX592yMx7P0-183"
+              ]
+            },
+            {
+              "start": 122.73,
+              "end": 124.93,
+              "text": "girl!",
+              "sourceIds": [
+                "RX592yMx7P0-184-1"
+              ]
+            },
+            {
+              "start": 124.93,
+              "end": 126.73,
+              "text": "Pretty Girl",
+              "sourceIds": [
+                "RX592yMx7P0-184-2"
+              ]
+            },
+            {
+              "start": 129.83,
+              "end": 130.33,
+              "text": "넌",
+              "sourceIds": [
+                "RX592yMx7P0-185"
+              ],
+              "phoneticZh": "嫩"
+            },
+            {
+              "start": 133.13,
+              "end": 134.73,
+              "text": "Yeah yeah yeah yeah",
+              "sourceIds": [
+                "RX592yMx7P0-187"
+              ]
+            },
+            {
+              "start": 137.83,
+              "end": 138.23,
+              "text": "리",
+              "sourceIds": [
+                "RX592yMx7P0-189"
+              ],
+              "phoneticZh": "RE"
+            },
+            {
+              "start": 139.63,
+              "end": 139.93,
+              "text": "센",
+              "sourceIds": [
+                "RX592yMx7P0-190"
+              ],
+              "phoneticZh": "SCE"
+            },
+            {
+              "start": 141.43,
+              "end": 141.83,
+              "text": "느",
+              "sourceIds": [
+                "RX592yMx7P0-191"
+              ],
+              "phoneticZh": "NE"
+            },
+            {
+              "start": 143.23,
+              "end": 143.73,
+              "text": "짱",
+              "sourceIds": [
+                "RX592yMx7P0-192"
+              ],
+              "phoneticZh": "將"
+            },
+            {
+              "start": 149.13,
+              "end": 150.93,
+              "text": "（歡呼）",
+              "sourceIds": [
+                "RX592yMx7P0-194"
+              ]
+            },
+            {
+              "start": 151.33,
+              "end": 153.53,
+              "text": "girl!",
+              "sourceIds": [
+                "RX592yMx7P0-195-1"
+              ]
+            },
+            {
+              "start": 153.53,
+              "end": 155.33,
+              "text": "Pretty Girl",
+              "sourceIds": [
+                "RX592yMx7P0-195-2"
+              ]
+            },
+            {
+              "start": 158.43,
+              "end": 158.93,
+              "text": "넌",
+              "sourceIds": [
+                "RX592yMx7P0-196"
+              ],
+              "phoneticZh": "嫩"
+            },
+            {
+              "start": 163.53,
+              "end": 165.13,
+              "text": "yeah yeah yeah yeah",
+              "sourceIds": [
+                "RX592yMx7P0-198"
+              ]
+            },
+            {
+              "start": 165.53,
+              "end": 169.63,
+              "text": "girl!",
+              "sourceIds": [
+                "RX592yMx7P0-199"
+              ]
+            },
+            {
+              "start": 172.73,
+              "end": 173.13,
+              "text": "넌",
+              "sourceIds": [
+                "RX592yMx7P0-200"
+              ],
+              "phoneticZh": "嫩"
+            },
+            {
+              "start": 176.33,
+              "end": 178.83,
+              "text": "（歡呼）",
+              "sourceIds": [
+                "RX592yMx7P0-202"
+              ]
+            },
+            {
+              "start": 179.63,
+              "end": 181.03,
+              "text": "If you wanna pretty",
+              "sourceIds": [
+                "RX592yMx7P0-204"
+              ]
+            },
+            {
+              "start": 181.23,
+              "end": 183.03,
+              "text": "every wanna pretty",
+              "sourceIds": [
+                "RX592yMx7P0-205"
+              ]
+            },
+            {
+              "start": 183.13,
+              "end": 184.83,
+              "text": "안된다는 맘은",
+              "sourceIds": [
+                "RX592yMx7P0-206"
+              ],
+              "phoneticZh": "安堆噠嫩 馬門"
+            },
+            {
+              "start": 184.83,
+              "end": 186.73,
+              "text": "no no no no",
+              "sourceIds": [
+                "RX592yMx7P0-207"
+              ]
+            },
+            {
+              "start": 186.83,
+              "end": 188.43,
+              "text": "If you wanna pretty",
+              "sourceIds": [
+                "RX592yMx7P0-209"
+              ]
+            },
+            {
+              "start": 188.53,
+              "end": 190.23,
+              "text": "every wanna pretty",
+              "sourceIds": [
+                "RX592yMx7P0-210"
+              ]
+            },
+            {
+              "start": 190.53,
+              "end": 195.03,
+              "text": "어디서나 당당하게 걷기",
+              "sourceIds": [
+                "RX592yMx7P0-211"
+              ],
+              "phoneticZh": "喔滴搜那 當當哈給 勾gi"
+            },
+            {
+              "start": 197.53,
+              "end": 200.23,
+              "text": "눈부셔 빛난다 리센느",
+              "sourceIds": [
+                "RX592yMx7P0-214"
+              ],
+              "phoneticZh": "嫩不修 彬南噠 RESCENE"
+            },
+            {
+              "start": 201.33,
+              "end": 203.73,
+              "text": "고마워 영원해 리마인",
+              "sourceIds": [
+                "RX592yMx7P0-216"
+              ],
+              "phoneticZh": "摳馬窩 永問嘿 REMINE"
+            },
+            {
+              "start": 204.73,
+              "end": 206.43,
+              "text": "우리 모두 프리티걸",
+              "sourceIds": [
+                "RX592yMx7P0-218"
+              ],
+              "phoneticZh": "嗚哩 摸嘟 普哩踢勾"
+            }
+          ],
+          "phoneticStatus": "draft",
+          "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名依使用者校訂使用空耳或讀音羅馬字，並非官方姓名寫法。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。",
+          "displayEndBasis": "reviewed-source-caption",
+          "derivedFrom": {
+            "videoId": "RX592yMx7P0",
+            "offsetSeconds": -22.87
+          }
+        }
       }
     ],
     "chant": {

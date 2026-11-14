@@ -271,7 +271,9 @@ $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').v
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
 fetch('songs.json?v=20261114-may-name-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
-  songs = data;
+  const firstSlugs = ['with', 'inside-out'];
+  songs = [...firstSlugs.flatMap(slug => data.filter(song => song.slug === slug)),
+    ...data.filter(song => !firstSlugs.includes(song.slug))];
   songs.forEach((song,index) => {
     const option = document.createElement('option'); option.value = index; option.textContent = `${String(song.number).padStart(2,'0')} · ${song.title} / ${song.artist}`; $('songSelect').append(option);
   });

@@ -13,6 +13,277 @@
         "videoId": "x4b_9YdhT8M",
         "startSeconds": 31,
         "endSeconds": 220
+      },
+      {
+        "kind": "現場版 · M COUNTDOWN",
+        "slug": "live",
+        "title": "WE GO UP 現場版",
+        "url": "https://www.youtube.com/watch?v=R_Zn4YqvQ1o",
+        "videoId": "R_Zn4YqvQ1o",
+        "startSeconds": 9.082,
+        "endSeconds": 198.083,
+        "chant": {
+          "videoId": "R_Zn4YqvQ1o",
+          "note": "沿用教學版應援，依音訊比對平移 -21.9175 秒；非現場觀眾喊聲轉錄。完整直接聽校與實播同步待確認，片尾歡呼沿用音樂時間映射。",
+          "cues": [
+            {
+              "start": 19.982,
+              "end": 21.683,
+              "text": "BABY! MONSTER!"
+            },
+            {
+              "start": 23.882,
+              "end": 24.582,
+              "text": "Show ya"
+            },
+            {
+              "start": 26.783,
+              "end": 27.382,
+              "text": "on ya"
+            },
+            {
+              "start": 39.282,
+              "end": 39.983,
+              "text": "be bygones"
+            },
+            {
+              "start": 40.582,
+              "end": 41.382,
+              "text": "no problems"
+            },
+            {
+              "start": 43.382,
+              "end": 44.582,
+              "text": "be icons"
+            },
+            {
+              "start": 44.582,
+              "end": 47.483,
+              "text": "Whatchu gon’ / Whatchu gon’ do"
+            },
+            {
+              "start": 47.483,
+              "end": 49.983,
+              "text": "Lookin’ good / Lookin’ fly\nLookin’ brand new"
+            },
+            {
+              "start": 54.483,
+              "end": 55.782,
+              "text": "You love it love it"
+            },
+            {
+              "start": 58.582,
+              "end": 60.983,
+              "text": "B.A.B.Y.M.O.N\nwe up, up, up"
+            },
+            {
+              "start": 60.983,
+              "end": 62.483,
+              "text": "We go up"
+            },
+            {
+              "start": 62.882,
+              "end": 64.082,
+              "text": "Killas killas"
+            },
+            {
+              "start": 64.082,
+              "end": 65.382,
+              "text": "We go up"
+            },
+            {
+              "start": 65.682,
+              "end": 67.082,
+              "text": "Villains villains"
+            },
+            {
+              "start": 72.483,
+              "end": 73.882,
+              "text": "We go up"
+            },
+            {
+              "start": 74.182,
+              "end": 75.382,
+              "text": "Killas killas"
+            },
+            {
+              "start": 75.483,
+              "end": 76.582,
+              "text": "We go up"
+            },
+            {
+              "start": 77.282,
+              "end": 78.483,
+              "text": "Villains villains"
+            },
+            {
+              "start": 84.582,
+              "end": 87.483,
+              "text": "Copy copy copy copy"
+            },
+            {
+              "start": 87.483,
+              "end": 89.983,
+              "text": "Copy copy"
+            },
+            {
+              "start": 101.983,
+              "end": 102.682,
+              "text": "be bygones"
+            },
+            {
+              "start": 103.483,
+              "end": 104.182,
+              "text": "no problems"
+            },
+            {
+              "start": 106.082,
+              "end": 107.383,
+              "text": "be icons"
+            },
+            {
+              "start": 107.383,
+              "end": 110.383,
+              "text": "Whatchu gon’ / Whatchu gon’ do"
+            },
+            {
+              "start": 110.383,
+              "end": 113.082,
+              "text": "Lookin’ good / Lookin’ fly\nLookin’ brand new"
+            },
+            {
+              "start": 117.282,
+              "end": 118.582,
+              "text": "You love it love it"
+            },
+            {
+              "start": 121.383,
+              "end": 123.782,
+              "text": "B.A.B.Y.M.O.N\nwe up, up, up"
+            },
+            {
+              "start": 123.782,
+              "end": 125.383,
+              "text": "We go up"
+            },
+            {
+              "start": 125.782,
+              "end": 126.883,
+              "text": "Killas killas"
+            },
+            {
+              "start": 126.883,
+              "end": 128.282,
+              "text": "We go up"
+            },
+            {
+              "start": 128.583,
+              "end": 129.883,
+              "text": "Villains villains"
+            },
+            {
+              "start": 135.383,
+              "end": 136.782,
+              "text": "We go up"
+            },
+            {
+              "start": 137.183,
+              "end": 138.282,
+              "text": "Killas killas"
+            },
+            {
+              "start": 138.282,
+              "end": 139.683,
+              "text": "We go up"
+            },
+            {
+              "start": 140.183,
+              "end": 141.282,
+              "text": "Villains villains"
+            },
+            {
+              "start": 149.282,
+              "end": 150.183,
+              "text": "run it up"
+            },
+            {
+              "start": 152.183,
+              "end": 153.083,
+              "text": "burn it up"
+            },
+            {
+              "start": 154.983,
+              "end": 155.782,
+              "text": "say my name"
+            },
+            {
+              "start": 160.683,
+              "end": 161.782,
+              "text": "dangerous"
+            },
+            {
+              "start": 163.583,
+              "end": 164.483,
+              "text": "buckle up"
+            },
+            {
+              "start": 169.483,
+              "end": 171.083,
+              "text": "We go up"
+            },
+            {
+              "start": 171.483,
+              "end": 172.583,
+              "text": "Killas killas"
+            },
+            {
+              "start": 172.583,
+              "end": 173.883,
+              "text": "We go up"
+            },
+            {
+              "start": 174.383,
+              "end": 175.782,
+              "text": "Villains villains"
+            },
+            {
+              "start": 178.983,
+              "end": 181.282,
+              "text": "B.A.B.Y.M.O.N"
+            },
+            {
+              "start": 181.383,
+              "end": 182.583,
+              "text": "We go up"
+            },
+            {
+              "start": 182.782,
+              "end": 184.083,
+              "text": "Killas killas"
+            },
+            {
+              "start": 184.083,
+              "end": 185.282,
+              "text": "We go up"
+            },
+            {
+              "start": 185.683,
+              "end": 187.183,
+              "text": "Villains villains"
+            },
+            {
+              "start": 192.282,
+              "end": 198.083,
+              "text": "We go up!\n（接著歡呼）"
+            }
+          ],
+          "status": "audio_aligned_listening_pending",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "derivedFrom": {
+            "videoId": "x4b_9YdhT8M",
+            "offsetSeconds": -21.9175
+          }
+        }
       }
     ],
     "note": "播放範圍 00:31～03:40；依指定影片製作 50 張應援提示",
@@ -287,6 +558,212 @@
         "videoId": "9DlDGxKQsDg",
         "startSeconds": 30,
         "endSeconds": 205
+      },
+      {
+        "kind": "現場版 · 音樂中心",
+        "slug": "live",
+        "title": "CHOOM 現場版",
+        "url": "https://www.youtube.com/watch?v=c1jLt0EarG4",
+        "videoId": "c1jLt0EarG4",
+        "startSeconds": 1.845,
+        "endSeconds": 176.845,
+        "chant": {
+          "videoId": "c1jLt0EarG4",
+          "note": "沿用教學版應援，依音訊比對平移 -28.1555 秒；非現場觀眾喊聲轉錄。完整直接聽校與實播同步待確認，片尾歡呼沿用音樂時間映射。",
+          "cues": [
+            {
+              "start": 8.045,
+              "end": 10.144,
+              "text": "1, 2 heat is on"
+            },
+            {
+              "start": 12.045,
+              "end": 14.244,
+              "text": "3, 4 BABYMON"
+            },
+            {
+              "start": 22.045,
+              "end": 24.045,
+              "text": "We gon get this party started"
+            },
+            {
+              "start": 30.744,
+              "end": 31.945,
+              "text": "Better run that, run that"
+            },
+            {
+              "start": 32.044,
+              "end": 33.745,
+              "text": "Oh my oh my my"
+            },
+            {
+              "start": 36.144,
+              "end": 37.745,
+              "text": "Oh my oh my my"
+            },
+            {
+              "start": 40.044,
+              "end": 41.944,
+              "text": "Loosen up"
+            },
+            {
+              "start": 42.044,
+              "end": 44.044,
+              "text": "Burn it up"
+            },
+            {
+              "start": 48.044,
+              "end": 50.044,
+              "text": "choom"
+            },
+            {
+              "start": 52.044,
+              "end": 54.444,
+              "text": "Choom /\nWatch out watch out"
+            },
+            {
+              "start": 60.044,
+              "end": 62.044,
+              "text": "Choom /\nWatch out watch out"
+            },
+            {
+              "start": 62.144,
+              "end": 64.745,
+              "text": "Choom choom choom choom choom"
+            },
+            {
+              "start": 67.344,
+              "end": 68.745,
+              "text": "vroom vroom"
+            },
+            {
+              "start": 71.644,
+              "end": 73.144,
+              "text": "choom choom"
+            },
+            {
+              "start": 85.644,
+              "end": 89.044,
+              "text": "Choom choom choom"
+            },
+            {
+              "start": 100.844,
+              "end": 102.145,
+              "text": "I’m a MONSTER queen"
+            },
+            {
+              "start": 102.245,
+              "end": 103.745,
+              "text": "Oh my oh my my"
+            },
+            {
+              "start": 106.044,
+              "end": 107.645,
+              "text": "Oh my oh my my"
+            },
+            {
+              "start": 110.145,
+              "end": 111.844,
+              "text": "Loosen up"
+            },
+            {
+              "start": 111.944,
+              "end": 114.145,
+              "text": "Burn it up"
+            },
+            {
+              "start": 118.245,
+              "end": 120.145,
+              "text": "choom"
+            },
+            {
+              "start": 122.145,
+              "end": 124.245,
+              "text": "Choom /\nWatch out watch out"
+            },
+            {
+              "start": 130.044,
+              "end": 131.945,
+              "text": "Choom /\nWatch out watch out"
+            },
+            {
+              "start": 132.044,
+              "end": 134.645,
+              "text": "Choom choom choom choom choom"
+            },
+            {
+              "start": 137.445,
+              "end": 138.645,
+              "text": "vroom vroom"
+            },
+            {
+              "start": 141.645,
+              "end": 143.544,
+              "text": "choom choom"
+            },
+            {
+              "start": 150.945,
+              "end": 152.145,
+              "text": "Na na na"
+            },
+            {
+              "start": 153.044,
+              "end": 153.945,
+              "text": "Na na na"
+            },
+            {
+              "start": 156.445,
+              "end": 158.645,
+              "text": "Choom choom choom choom"
+            },
+            {
+              "start": 158.645,
+              "end": 159.845,
+              "text": "That’s right"
+            },
+            {
+              "start": 159.845,
+              "end": 161.945,
+              "text": "Everybody everybody\nmake some room"
+            },
+            {
+              "start": 161.945,
+              "end": 163.945,
+              "text": "Choom, that’s right"
+            },
+            {
+              "start": 163.945,
+              "end": 166.745,
+              "text": "Choom choom choom choom choom"
+            },
+            {
+              "start": 166.745,
+              "end": 167.945,
+              "text": "That’s right"
+            },
+            {
+              "start": 167.945,
+              "end": 170.145,
+              "text": "Everybody everybody\nmake some room"
+            },
+            {
+              "start": 170.145,
+              "end": 172.044,
+              "text": "Choom, that’s right"
+            },
+            {
+              "start": 172.044,
+              "end": 176.845,
+              "text": "Choom choom choom choom choom"
+            }
+          ],
+          "status": "audio_aligned_listening_pending",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "derivedFrom": {
+            "videoId": "9DlDGxKQsDg",
+            "offsetSeconds": -28.1555
+          }
+        }
       }
     ],
     "note": "播放範圍 00:30～03:25；依指定影片製作 37 張應援提示",
@@ -494,6 +971,202 @@
         "url": "https://www.youtube.com/watch?v=CRSVJA-dKWo",
         "title": "BATTER UP 應援練習（艾倫Allen）",
         "videoId": "CRSVJA-dKWo"
+      },
+      {
+        "kind": "現場版 · HELLO MONSTER",
+        "slug": "live",
+        "title": "BATTER UP 現場版",
+        "url": "https://www.youtube.com/watch?v=Y4BxIn0jpOU",
+        "videoId": "Y4BxIn0jpOU",
+        "startSeconds": 0,
+        "endSeconds": 193.083,
+        "chant": {
+          "videoId": "Y4BxIn0jpOU",
+          "note": "沿用教學版應援，依音訊比對平移 +1.0830 秒；非現場觀眾喊聲轉錄。完整直接聽校與實播同步待確認，片尾歡呼沿用音樂時間映射。",
+          "cues": [
+            {
+              "start": 9.683,
+              "end": 12.383,
+              "text": "RUKA PHARITA ASA"
+            },
+            {
+              "start": 12.383,
+              "end": 15.883,
+              "text": "AHYEON RAMI RORA CHIQUITA"
+            },
+            {
+              "start": 15.983,
+              "end": 17.183,
+              "text": "BATTER UP"
+            },
+            {
+              "start": 33.233,
+              "end": 33.903,
+              "text": "Me"
+            },
+            {
+              "start": 35.083,
+              "end": 35.683,
+              "text": "bee"
+            },
+            {
+              "start": 46.283,
+              "end": 47.883,
+              "text": "（歡呼）"
+            },
+            {
+              "start": 53.883,
+              "end": 55.383,
+              "text": "（歡呼）"
+            },
+            {
+              "start": 61.683,
+              "end": 63.783,
+              "text": "Batter Batter Batter Up"
+            },
+            {
+              "start": 65.583,
+              "end": 67.283,
+              "text": "BABYMONSTER Batter Up"
+            },
+            {
+              "start": 69.183,
+              "end": 71.083,
+              "text": "Batter Batter Batter Up"
+            },
+            {
+              "start": 72.883,
+              "end": 74.583,
+              "text": "BABYMONSTER Batter Up"
+            },
+            {
+              "start": 78.073,
+              "end": 78.383,
+              "text": "stop"
+            },
+            {
+              "start": 79.813,
+              "end": 80.183,
+              "text": "shot"
+            },
+            {
+              "start": 86.323,
+              "end": 87.683,
+              "text": "Going going gone (gone)"
+            },
+            {
+              "start": 90.023,
+              "end": 91.083,
+              "text": "Run Run Run Run"
+            },
+            {
+              "start": 93.733,
+              "end": 94.483,
+              "text": "비켜 · bi-kyeo\n逼ㄎㄧㄜ",
+              "phoneticZh": "逼ㄎㄧㄜ"
+            },
+            {
+              "start": 97.413,
+              "end": 98.383,
+              "text": "mirror"
+            },
+            {
+              "start": 107.093,
+              "end": 107.683,
+              "text": "Me"
+            },
+            {
+              "start": 108.903,
+              "end": 109.483,
+              "text": "bee"
+            },
+            {
+              "start": 120.483,
+              "end": 121.783,
+              "text": "（歡呼）"
+            },
+            {
+              "start": 127.983,
+              "end": 129.183,
+              "text": "（歡呼）"
+            },
+            {
+              "start": 135.483,
+              "end": 137.383,
+              "text": "Batter Batter Batter Up"
+            },
+            {
+              "start": 139.383,
+              "end": 141.083,
+              "text": "BABYMONSTER Batter Up"
+            },
+            {
+              "start": 143.083,
+              "end": 144.983,
+              "text": "Batter Batter Batter Up"
+            },
+            {
+              "start": 146.783,
+              "end": 148.483,
+              "text": "BABYMONSTER Batter Up"
+            },
+            {
+              "start": 161.083,
+              "end": 161.883,
+              "text": "Move on"
+            },
+            {
+              "start": 162.953,
+              "end": 164.283,
+              "text": "Monsters of the world"
+            },
+            {
+              "start": 168.293,
+              "end": 169.183,
+              "text": "어디든",
+              "phoneticZh": "歐滴蹬"
+            },
+            {
+              "start": 171.083,
+              "end": 172.483,
+              "text": "Batter up up up up"
+            },
+            {
+              "start": 175.873,
+              "end": 176.883,
+              "text": "Move on"
+            },
+            {
+              "start": 177.713,
+              "end": 179.183,
+              "text": "Monsters of the world"
+            },
+            {
+              "start": 183.033,
+              "end": 183.883,
+              "text": "어디든",
+              "phoneticZh": "歐滴蹬"
+            },
+            {
+              "start": 185.683,
+              "end": 187.383,
+              "text": "Batter Batter Batter up"
+            },
+            {
+              "start": 187.783,
+              "end": 190.083,
+              "text": "（歡呼）"
+            }
+          ],
+          "phoneticStatus": "source",
+          "phoneticNote": "中文空耳沿用來源影片，僅調整為大字顯示，原文與羅馬字保留於下方。",
+          "status": "audio_aligned_listening_pending",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "derivedFrom": {
+            "videoId": "CRSVJA-dKWo",
+            "offsetSeconds": 1.083
+          }
+        }
       }
     ],
     "note": "依指定影片製作 34 張紅字應援提示",
@@ -693,6 +1366,243 @@
         "videoId": "X2GfGkH-3hg",
         "startSeconds": 52,
         "endSeconds": 232
+      },
+      {
+        "kind": "現場版 · 音樂中心",
+        "slug": "live",
+        "title": "DRIP 現場版",
+        "url": "https://www.youtube.com/watch?v=nvMzXCBoiEQ",
+        "videoId": "nvMzXCBoiEQ",
+        "startSeconds": 0.24,
+        "endSeconds": 180.24,
+        "chant": {
+          "videoId": "nvMzXCBoiEQ",
+          "note": "沿用教學版應援，依音訊比對平移 -51.7595 秒；非現場觀眾喊聲轉錄。完整直接聽校與實播同步待確認，片尾歡呼沿用音樂時間映射。",
+          "cues": [
+            {
+              "start": 6.04,
+              "end": 7.84,
+              "text": "BABY! MONSTER!"
+            },
+            {
+              "start": 9.1,
+              "end": 9.74,
+              "text": "much"
+            },
+            {
+              "start": 11.081,
+              "end": 11.54,
+              "text": "much"
+            },
+            {
+              "start": 13.111,
+              "end": 13.641,
+              "text": "lunch"
+            },
+            {
+              "start": 15.06,
+              "end": 15.74,
+              "text": "truck"
+            },
+            {
+              "start": 15.84,
+              "end": 17.34,
+              "text": "찌릿찌릿 끼리끼리",
+              "phoneticZh": "幾哩幾哩 ㄍㄧ哩ㄍㄧ哩"
+            },
+            {
+              "start": 18.04,
+              "end": 18.84,
+              "text": "Kitty kitty"
+            },
+            {
+              "start": 23.09,
+              "end": 24.34,
+              "text": "hit that dance"
+            },
+            {
+              "start": 24.721,
+              "end": 25.74,
+              "text": "na-na-na"
+            },
+            {
+              "start": 28.391,
+              "end": 29.84,
+              "text": "na-na-na"
+            },
+            {
+              "start": 33.06,
+              "end": 33.641,
+              "text": "me"
+            },
+            {
+              "start": 35.04,
+              "end": 36.24,
+              "text": "me"
+            },
+            {
+              "start": 39.04,
+              "end": 40.04,
+              "text": "밤이야",
+              "phoneticZh": "巴米呀"
+            },
+            {
+              "start": 42.29,
+              "end": 43.941,
+              "text": "what you say"
+            },
+            {
+              "start": 50.23,
+              "end": 51.74,
+              "text": "what you say"
+            },
+            {
+              "start": 51.74,
+              "end": 52.941,
+              "text": "Are you ready?"
+            },
+            {
+              "start": 52.941,
+              "end": 55.24,
+              "text": "Set, turn on the lights"
+            },
+            {
+              "start": 55.24,
+              "end": 56.04,
+              "text": "Baby got"
+            },
+            {
+              "start": 59.441,
+              "end": 60.441,
+              "text": "Look at that"
+            },
+            {
+              "start": 64.141,
+              "end": 67.54,
+              "text": "Drip · Drip · Drip · Drip\n（第 1、3、5、7 聲）"
+            },
+            {
+              "start": 68.141,
+              "end": 71.54,
+              "text": "Drip · Drip · Drip · Drip\n（第 1、3、5、7 聲）"
+            },
+            {
+              "start": 74.24,
+              "end": 75.54,
+              "text": "Monster, monster, monster"
+            },
+            {
+              "start": 80.331,
+              "end": 81.94,
+              "text": "180도 바꿔",
+              "phoneticZh": "掰趴西都巴國"
+            },
+            {
+              "start": 86.24,
+              "end": 88.041,
+              "text": "（握拳高舉）MONSTIEZ"
+            },
+            {
+              "start": 89.201,
+              "end": 90.24,
+              "text": "we gon’ ride"
+            },
+            {
+              "start": 90.59,
+              "end": 91.74,
+              "text": "na-na-na"
+            },
+            {
+              "start": 94.46,
+              "end": 95.84,
+              "text": "na-na-na"
+            },
+            {
+              "start": 99.041,
+              "end": 99.44,
+              "text": "me"
+            },
+            {
+              "start": 101.041,
+              "end": 102.041,
+              "text": "me"
+            },
+            {
+              "start": 105.011,
+              "end": 105.94,
+              "text": "밤이야",
+              "phoneticZh": "巴米呀"
+            },
+            {
+              "start": 108.231,
+              "end": 109.84,
+              "text": "what you say"
+            },
+            {
+              "start": 116.16,
+              "end": 117.641,
+              "text": "what you say"
+            },
+            {
+              "start": 117.641,
+              "end": 118.84,
+              "text": "Are you ready?"
+            },
+            {
+              "start": 118.84,
+              "end": 121.041,
+              "text": "Set, turn on the lights"
+            },
+            {
+              "start": 121.141,
+              "end": 121.94,
+              "text": "Baby got"
+            },
+            {
+              "start": 125.34,
+              "end": 126.34,
+              "text": "Look at that"
+            },
+            {
+              "start": 130.041,
+              "end": 133.44,
+              "text": "Drip · Drip · Drip · Drip\n（第 1、3、5、7 聲）"
+            },
+            {
+              "start": 134.041,
+              "end": 137.641,
+              "text": "Drip · Drip · Drip · Drip\n（第 1、3、5、7 聲）"
+            },
+            {
+              "start": 160.946,
+              "end": 162.84,
+              "text": "drip, drip, drip"
+            },
+            {
+              "start": 164.24,
+              "end": 166.24,
+              "text": "Drip, drip, drip"
+            },
+            {
+              "start": 168.84,
+              "end": 170.641,
+              "text": "drip, drip, drip"
+            },
+            {
+              "start": 172.141,
+              "end": 174.141,
+              "text": "Drip, drip, drip"
+            }
+          ],
+          "phoneticStatus": "draft",
+          "phoneticNote": "中文空耳為依韓文發音製作的近似讀音初稿，非官方應援文字，尚未逐句聽校；中文字不照國語聲調念，字後的ㄎ／ㄆ／ㄊ／ㄇ／ㄹ為收尾音，不另念一拍，節奏與延音請跟著影片。",
+          "status": "audio_aligned_listening_pending",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "derivedFrom": {
+            "videoId": "X2GfGkH-3hg",
+            "offsetSeconds": -51.7595
+          }
+        }
       }
     ],
     "note": "播放範圍 00:52～03:52；依指定影片製作 42 張應援提示",
@@ -937,6 +1847,1195 @@
         "kind": "官方應援表",
         "url": "https://babymonster-official.jp/s/ygbm/diary/detail/453459?cd=cheer",
         "title": "MOON 官方應援方法"
+      },
+      {
+        "kind": "現場版 · 音樂中心",
+        "slug": "live",
+        "title": "MOON 現場版",
+        "url": "https://www.youtube.com/watch?v=fuVaqtSfYvE",
+        "videoId": "fuVaqtSfYvE",
+        "startSeconds": 0,
+        "endSeconds": 187.653,
+        "chant": {
+          "videoId": "fuVaqtSfYvE",
+          "sourceUrl": "https://babymonster-official.jp/s/ygbm/diary/detail/453459?cd=cheer",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "note": "沿用教學版應援，依音訊比對平移 +4.6527 秒；非現場觀眾喊聲轉錄。完整直接聽校與實播同步待確認，片尾歡呼沿用音樂時間映射。",
+          "cues": [
+            {
+              "start": 10.893,
+              "end": 11.883,
+              "text": "I'm the moon"
+            },
+            {
+              "start": 15.043,
+              "end": 17.243,
+              "text": "Zalabim zalabam zalaboom"
+            },
+            {
+              "start": 19.783,
+              "end": 21.723,
+              "text": "I'm the moon, I'm the moon, I'm the moon"
+            },
+            {
+              "start": 22.683,
+              "end": 23.303,
+              "text": "thickens"
+            },
+            {
+              "start": 23.863,
+              "end": 24.323,
+              "text": "vision"
+            },
+            {
+              "start": 28.023,
+              "end": 28.443,
+              "text": "digger"
+            },
+            {
+              "start": 29.043,
+              "end": 29.483,
+              "text": "figure"
+            },
+            {
+              "start": 42.603,
+              "end": 43.983,
+              "text": "까만 밤 빛이나",
+              "phoneticZh": "嘎曼邦 比七那"
+            },
+            {
+              "start": 43.983,
+              "end": 45.463,
+              "text": "진짜가 나타나",
+              "phoneticZh": "金加嘎 那他那"
+            },
+            {
+              "start": 48.203,
+              "end": 49.423,
+              "text": "거울아 거울아",
+              "phoneticZh": "摳嗚拉 摳嗚拉"
+            },
+            {
+              "start": 49.423,
+              "end": 50.523,
+              "text": "말해봐 알잖아",
+              "phoneticZh": "馬雷吧 阿加拿"
+            },
+            {
+              "start": 52.873,
+              "end": 53.723,
+              "text": "I'm the moon"
+            },
+            {
+              "start": 56.803,
+              "end": 58.963,
+              "text": "Zalabim zalabam zalaboom"
+            },
+            {
+              "start": 61.483,
+              "end": 63.423,
+              "text": "I'm the moon, I'm the moon, I'm the moon"
+            },
+            {
+              "start": 63.423,
+              "end": 64.203,
+              "text": "I'm the moon"
+            },
+            {
+              "start": 67.103,
+              "end": 69.583,
+              "text": "Zalabim zalabam zalaboom"
+            },
+            {
+              "start": 71.983,
+              "end": 73.903,
+              "text": "I'm the moon, I'm the moon, I'm the moon"
+            },
+            {
+              "start": 74.693,
+              "end": 76.183,
+              "text": "Charismatic, energetic"
+            },
+            {
+              "start": 76.183,
+              "end": 77.443,
+              "text": "It's a habit"
+            },
+            {
+              "start": 100.203,
+              "end": 101.423,
+              "text": "까만 밤 빛이나",
+              "phoneticZh": "嘎曼邦 比七那"
+            },
+            {
+              "start": 101.423,
+              "end": 102.743,
+              "text": "진짜가 나타나",
+              "phoneticZh": "金加嘎 那他那"
+            },
+            {
+              "start": 105.563,
+              "end": 106.783,
+              "text": "거울아 거울아",
+              "phoneticZh": "摳嗚拉 摳嗚拉"
+            },
+            {
+              "start": 106.783,
+              "end": 107.923,
+              "text": "말해봐 알잖아",
+              "phoneticZh": "馬雷吧 阿加拿"
+            },
+            {
+              "start": 110.413,
+              "end": 111.083,
+              "text": "I'm the moon"
+            },
+            {
+              "start": 114.303,
+              "end": 116.343,
+              "text": "Zalabim zalabam zalaboom"
+            },
+            {
+              "start": 118.883,
+              "end": 120.823,
+              "text": "I'm the moon, I'm the moon, I'm the moon"
+            },
+            {
+              "start": 120.823,
+              "end": 121.583,
+              "text": "I'm the moon"
+            },
+            {
+              "start": 124.603,
+              "end": 127.023,
+              "text": "Zalabim zalabam zalaboom"
+            },
+            {
+              "start": 129.343,
+              "end": 131.323,
+              "text": "I'm the moon, I'm the moon, I'm the moon"
+            },
+            {
+              "start": 136.683,
+              "end": 138.103,
+              "text": "If you wanna ride"
+            },
+            {
+              "start": 138.103,
+              "end": 139.123,
+              "text": "If you wanna ride"
+            },
+            {
+              "start": 139.123,
+              "end": 140.783,
+              "text": "If you wanna ride"
+            },
+            {
+              "start": 140.783,
+              "end": 142.283,
+              "text": "If you wanna ride, let's ride"
+            },
+            {
+              "start": 157.703,
+              "end": 160.223,
+              "text": "Hut 1, 2 hut 1, 2, 3"
+            },
+            {
+              "start": 160.223,
+              "end": 162.823,
+              "text": "All eyes, all eyes on me"
+            },
+            {
+              "start": 168.163,
+              "end": 170.803,
+              "text": "Hut 1, 2 hut 1, 2, 3"
+            },
+            {
+              "start": 170.803,
+              "end": 173.263,
+              "text": "All eyes, all eyes on me"
+            },
+            {
+              "start": 174.153,
+              "end": 178.653,
+              "text": "（歡呼）"
+            }
+          ],
+          "phoneticStatus": "draft",
+          "phoneticNote": "中文空耳為依韓文發音製作的近似讀音初稿，非官方應援文字，尚未逐句聽校；中文字不照國語聲調念，字後的ㄎ／ㄆ／ㄊ／ㄇ／ㄹ為收尾音，不另念一拍，節奏與延音請跟著影片。",
+          "status": "audio_aligned_listening_pending",
+          "derivedFrom": {
+            "videoId": "jfqBPlcBGtE",
+            "offsetSeconds": 4.6527
+          }
+        },
+        "subtitles": {
+          "videoId": "fuVaqtSfYvE",
+          "sourceUrl": "https://www.youtube.com/watch?v=fuVaqtSfYvE",
+          "cues": [
+            {
+              "start": 10.893,
+              "end": 11.883,
+              "parts": [
+                {
+                  "text": "I'm the moon",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 11.883,
+              "end": 14.683,
+              "parts": [
+                {
+                  "text": "보름달 뜨는 밤 On the loose",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 15.043,
+              "end": 17.243,
+              "parts": [
+                {
+                  "text": "Zalabim zalabam zalaboom",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 17.243,
+              "end": 19.783,
+              "parts": [
+                {
+                  "text": "I shine so bright in the gloom",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 19.783,
+              "end": 21.723,
+              "parts": [
+                {
+                  "text": "I'm the moon, I'm the moon, I'm the moon",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 21.723,
+              "end": 23.303,
+              "parts": [
+                {
+                  "text": "Fog ",
+                  "chant": false
+                },
+                {
+                  "text": "thickens",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 23.303,
+              "end": 24.323,
+              "parts": [
+                {
+                  "text": "Night ",
+                  "chant": false
+                },
+                {
+                  "text": "vision",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 24.323,
+              "end": 27.003,
+              "parts": [
+                {
+                  "text": "Where we gonna end up is unwritten",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 27.003,
+              "end": 28.443,
+              "parts": [
+                {
+                  "text": "Grave ",
+                  "chant": false
+                },
+                {
+                  "text": "digger",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 28.443,
+              "end": 29.483,
+              "parts": [
+                {
+                  "text": "Go ",
+                  "chant": false
+                },
+                {
+                  "text": "figure",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 29.483,
+              "end": 31.403,
+              "parts": [
+                {
+                  "text": "But if you're killing my mood",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 31.403,
+              "end": 32.343,
+              "parts": [
+                {
+                  "text": "Good riddance",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 32.343,
+              "end": 33.763,
+              "parts": [
+                {
+                  "text": "Ice in my veins",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 33.763,
+              "end": 36.403,
+              "parts": [
+                {
+                  "text": "You're gonna need to keep up with the pace",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 36.403,
+              "end": 37.603,
+              "parts": [
+                {
+                  "text": "더 빨리 더 높이",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 37.603,
+              "end": 39.763,
+              "parts": [
+                {
+                  "text": "When you, when you, when you at the crack of dawn",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 39.763,
+              "end": 41.003,
+              "parts": [
+                {
+                  "text": "You keep on raving on",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 41.003,
+              "end": 42.523,
+              "parts": [
+                {
+                  "text": "You keep on raving on uh",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 42.603,
+              "end": 43.983,
+              "parts": [
+                {
+                  "text": "까만 밤 빛이나",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 43.983,
+              "end": 45.463,
+              "parts": [
+                {
+                  "text": "진짜가 나타나",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 45.463,
+              "end": 46.723,
+              "parts": [
+                {
+                  "text": "세상을 불태워라",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 46.723,
+              "end": 48.203,
+              "parts": [
+                {
+                  "text": "(Baby do you see me now)",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 48.203,
+              "end": 49.423,
+              "parts": [
+                {
+                  "text": "거울아 거울아",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 49.423,
+              "end": 50.523,
+              "parts": [
+                {
+                  "text": "말해봐 알잖아",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 50.523,
+              "end": 52.223,
+              "parts": [
+                {
+                  "text": "In your heart, leave a mark",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 52.873,
+              "end": 53.723,
+              "parts": [
+                {
+                  "text": "I'm the moon",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 53.723,
+              "end": 56.563,
+              "parts": [
+                {
+                  "text": "보름달 뜨는 밤 On the loose",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 56.803,
+              "end": 58.963,
+              "parts": [
+                {
+                  "text": "Zalabim zalabam zalaboom",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 58.963,
+              "end": 61.483,
+              "parts": [
+                {
+                  "text": "I'm the queen of the tide and the youth",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 61.483,
+              "end": 63.423,
+              "parts": [
+                {
+                  "text": "I'm the moon, I'm the moon, I'm the moon",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 63.423,
+              "end": 64.203,
+              "parts": [
+                {
+                  "text": "I'm the moon",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 64.203,
+              "end": 66.963,
+              "parts": [
+                {
+                  "text": "보름달 뜨는 밤 On the loose",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 67.103,
+              "end": 69.583,
+              "parts": [
+                {
+                  "text": "Zalabim zalabam zalaboom",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 69.583,
+              "end": 71.983,
+              "parts": [
+                {
+                  "text": "I'm the queen of the tide and the youth",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 71.983,
+              "end": 74.023,
+              "parts": [
+                {
+                  "text": "I'm the moon, I'm the moon, I'm the moon",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 74.693,
+              "end": 76.183,
+              "parts": [
+                {
+                  "text": "Charismatic, energetic",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 76.183,
+              "end": 77.443,
+              "parts": [
+                {
+                  "text": "It's a habit",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 77.443,
+              "end": 79.043,
+              "parts": [
+                {
+                  "text": "Oh she stuntin', she stuntin'",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 79.043,
+              "end": 80.383,
+              "parts": [
+                {
+                  "text": "I'm in a spaceship coupe",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 80.383,
+              "end": 81.783,
+              "parts": [
+                {
+                  "text": "We 'bout to take off",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 81.783,
+              "end": 82.963,
+              "parts": [
+                {
+                  "text": "Leave 'em in the dust",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 82.963,
+              "end": 84.103,
+              "parts": [
+                {
+                  "text": "Yeah see you later",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 84.103,
+              "end": 85.603,
+              "parts": [
+                {
+                  "text": "Outta this world",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 85.603,
+              "end": 86.783,
+              "parts": [
+                {
+                  "text": "I'm off the radar",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 86.783,
+              "end": 89.523,
+              "parts": [
+                {
+                  "text": "You wish on a star that you had these bars",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 89.523,
+              "end": 90.723,
+              "parts": [
+                {
+                  "text": "I whoosh / Gettin' that ah",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 90.723,
+              "end": 92.063,
+              "parts": [
+                {
+                  "text": "When we go strut in like woah",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 92.063,
+              "end": 93.383,
+              "parts": [
+                {
+                  "text": "Setting on hot / That's what we got",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 93.383,
+              "end": 94.683,
+              "parts": [
+                {
+                  "text": "That's how we baking that dough",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 94.683,
+              "end": 96.003,
+              "parts": [
+                {
+                  "text": "Lock and we load / Shoot for the stars",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 96.003,
+              "end": 97.343,
+              "parts": [
+                {
+                  "text": "We in the sky / Raising the bar",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 97.343,
+              "end": 98.643,
+              "parts": [
+                {
+                  "text": "Eyes on the prize / Shining my light",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 98.643,
+              "end": 100.203,
+              "parts": [
+                {
+                  "text": "Ready get set / S.O.S / When I flex",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 100.203,
+              "end": 101.423,
+              "parts": [
+                {
+                  "text": "까만 밤 빛이나",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 101.423,
+              "end": 102.743,
+              "parts": [
+                {
+                  "text": "진짜가 나타나",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 102.743,
+              "end": 104.163,
+              "parts": [
+                {
+                  "text": "세상을 불태워라",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 104.163,
+              "end": 105.563,
+              "parts": [
+                {
+                  "text": "(Baby do you see me now)",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 105.563,
+              "end": 106.783,
+              "parts": [
+                {
+                  "text": "거울아 거울아",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 106.783,
+              "end": 107.923,
+              "parts": [
+                {
+                  "text": "말해봐 알잖아",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 107.923,
+              "end": 109.563,
+              "parts": [
+                {
+                  "text": "In your heart, leave a mark",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 110.413,
+              "end": 111.083,
+              "parts": [
+                {
+                  "text": "I'm the moon",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 111.083,
+              "end": 113.923,
+              "parts": [
+                {
+                  "text": "보름달 뜨는 밤 On the loose",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 114.303,
+              "end": 116.343,
+              "parts": [
+                {
+                  "text": "Zalabim zalabam zalaboom",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 116.343,
+              "end": 118.883,
+              "parts": [
+                {
+                  "text": "I'm the queen of the tide and the youth",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 118.883,
+              "end": 120.823,
+              "parts": [
+                {
+                  "text": "I'm the moon, I'm the moon, I'm the moon",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 120.823,
+              "end": 121.583,
+              "parts": [
+                {
+                  "text": "I'm the moon",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 121.583,
+              "end": 124.403,
+              "parts": [
+                {
+                  "text": "보름달 뜨는 밤 On the loose",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 124.603,
+              "end": 127.023,
+              "parts": [
+                {
+                  "text": "Zalabim zalabam zalaboom",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 127.023,
+              "end": 129.343,
+              "parts": [
+                {
+                  "text": "I'm the queen of the tide and the youth",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 129.343,
+              "end": 131.323,
+              "parts": [
+                {
+                  "text": "I'm the moon, I'm the moon, I'm the moon",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 131.323,
+              "end": 132.523,
+              "parts": [
+                {
+                  "text": "하늘을 봐",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 132.523,
+              "end": 134.163,
+              "parts": [
+                {
+                  "text": "We gonna shine bright",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 134.163,
+              "end": 135.263,
+              "parts": [
+                {
+                  "text": "내 길을 가",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 135.263,
+              "end": 136.683,
+              "parts": [
+                {
+                  "text": "Baby it's our time",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 136.683,
+              "end": 138.103,
+              "parts": [
+                {
+                  "text": "If you wanna ride",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 138.103,
+              "end": 139.123,
+              "parts": [
+                {
+                  "text": "If you wanna ride",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 139.123,
+              "end": 140.783,
+              "parts": [
+                {
+                  "text": "If you wanna ride",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 140.783,
+              "end": 142.283,
+              "parts": [
+                {
+                  "text": "If you wanna ride, let's ride",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 142.283,
+              "end": 142.803,
+              "parts": [
+                {
+                  "text": "Give 'em all in",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 142.803,
+              "end": 144.003,
+              "parts": [
+                {
+                  "text": "Give 'em all out",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 144.003,
+              "end": 144.863,
+              "parts": [
+                {
+                  "text": "Give 'em all a show / Ride let's ride",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 144.863,
+              "end": 146.003,
+              "parts": [
+                {
+                  "text": "Give 'em all in / Give 'em all out",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 146.003,
+              "end": 146.863,
+              "parts": [
+                {
+                  "text": "Give 'em all that woah",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 146.863,
+              "end": 148.203,
+              "parts": [
+                {
+                  "text": "Baby I'mma glow",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 148.203,
+              "end": 149.183,
+              "parts": [
+                {
+                  "text": "It's about to blow",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 149.183,
+              "end": 150.303,
+              "parts": [
+                {
+                  "text": "They don't even know",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 151.803,
+              "end": 155.243,
+              "parts": [
+                {
+                  "text": "Outta this world, we be taking off, get in",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 155.243,
+              "end": 157.703,
+              "parts": [
+                {
+                  "text": "Look at me, I'mma need your attention",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 157.703,
+              "end": 160.223,
+              "parts": [
+                {
+                  "text": "Hut 1, 2 hut 1, 2, 3",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 160.223,
+              "end": 162.823,
+              "parts": [
+                {
+                  "text": "All eyes, all eyes on me",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 162.823,
+              "end": 165.703,
+              "parts": [
+                {
+                  "text": "Outta this world, we be taking off, get in",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 165.703,
+              "end": 168.163,
+              "parts": [
+                {
+                  "text": "Look at me, I'mma need your attention",
+                  "chant": false
+                }
+              ]
+            },
+            {
+              "start": 168.163,
+              "end": 170.803,
+              "parts": [
+                {
+                  "text": "Hut 1, 2 hut 1, 2, 3",
+                  "chant": true
+                }
+              ]
+            },
+            {
+              "start": 170.803,
+              "end": 173.383,
+              "parts": [
+                {
+                  "text": "All eyes, all eyes on me",
+                  "chant": true
+                }
+              ]
+            }
+          ],
+          "derivedFrom": {
+            "videoId": "jfqBPlcBGtE",
+            "offsetSeconds": 4.6527
+          },
+          "status": "audio_aligned_listening_pending"
+        }
       }
     ],
     "note": "依官方應援表整理，保留英文與韓文、排除日文讀音；一般歌詞白字，紅字應援改為黃色粗體。時間經模型輔助對齊，部分進入點仍待人工聽校與 YouTube 實播確認。",
@@ -8469,6 +10568,184 @@
         "url": "https://www.youtube.com/watch?v=6qGzeS2zfOk",
         "title": "FOREVER Fanchant Guide（Moon Light／非官方）",
         "videoId": "6qGzeS2zfOk"
+      },
+      {
+        "kind": "現場版 · 人氣歌謠",
+        "slug": "live",
+        "title": "FOREVER 現場版",
+        "url": "https://www.youtube.com/watch?v=Yb2m3FkIR_g",
+        "videoId": "Yb2m3FkIR_g",
+        "startSeconds": 0,
+        "endSeconds": 217.798,
+        "chant": {
+          "videoId": "Yb2m3FkIR_g",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "note": "沿用教學版應援，依音訊比對平移 +1.7975 秒；非現場觀眾喊聲轉錄。完整直接聽校與實播同步待確認，片尾歡呼沿用音樂時間映射。",
+          "cues": [
+            {
+              "start": 8.897,
+              "end": 11.497,
+              "text": "ok ok ok"
+            },
+            {
+              "start": 13.598,
+              "end": 15.098,
+              "text": "BABYMONSTER"
+            },
+            {
+              "start": 21.098,
+              "end": 22.598,
+              "text": "bye bye bye"
+            },
+            {
+              "start": 27.797,
+              "end": 29.697,
+              "text": "（拍手 ×4）"
+            },
+            {
+              "start": 35.898,
+              "end": 37.297,
+              "text": "타고났지 Like this",
+              "phoneticZh": "他勾那基 Like this"
+            },
+            {
+              "start": 48.197,
+              "end": 49.998,
+              "text": "Ooh ooh ooh ooh ooh ooh\n（拍手 ×4）"
+            },
+            {
+              "start": 49.998,
+              "end": 51.797,
+              "text": "Ooh ooh ooh ooh ay\n（拍手 ×4）"
+            },
+            {
+              "start": 73.998,
+              "end": 77.597,
+              "text": "Forever"
+            },
+            {
+              "start": 77.597,
+              "end": 81.297,
+              "text": "Forever"
+            },
+            {
+              "start": 81.297,
+              "end": 86.597,
+              "text": "Forever"
+            },
+            {
+              "start": 95.897,
+              "end": 96.498,
+              "text": "AH"
+            },
+            {
+              "start": 99.998,
+              "end": 100.498,
+              "text": "예뻐",
+              "phoneticZh": "耶波"
+            },
+            {
+              "start": 100.998,
+              "end": 101.397,
+              "text": "바빠",
+              "phoneticZh": "巴爸"
+            },
+            {
+              "start": 101.698,
+              "end": 102.097,
+              "text": "나빠",
+              "phoneticZh": "哪爸"
+            },
+            {
+              "start": 103.597,
+              "end": 106.498,
+              "text": "B A B Y M O N"
+            },
+            {
+              "start": 106.698,
+              "end": 107.498,
+              "text": "Get money"
+            },
+            {
+              "start": 113.498,
+              "end": 114.597,
+              "text": "money in the bag"
+            },
+            {
+              "start": 118.297,
+              "end": 120.097,
+              "text": "Ooh ooh ooh ooh ooh ooh\n（拍手 ×4）"
+            },
+            {
+              "start": 120.097,
+              "end": 121.897,
+              "text": "Ooh ooh ooh ooh ay\n（拍手 ×4）"
+            },
+            {
+              "start": 144.198,
+              "end": 147.798,
+              "text": "Forever"
+            },
+            {
+              "start": 147.798,
+              "end": 151.398,
+              "text": "Forever"
+            },
+            {
+              "start": 151.398,
+              "end": 154.998,
+              "text": "Forever"
+            },
+            {
+              "start": 178.798,
+              "end": 180.798,
+              "text": "We forever forever"
+            },
+            {
+              "start": 180.998,
+              "end": 182.698,
+              "text": "Forever ever ever"
+            },
+            {
+              "start": 188.698,
+              "end": 191.098,
+              "text": "착각하지는 마",
+              "phoneticZh": "恰ㄎ 嘎卡基嫩 馬"
+            },
+            {
+              "start": 194.098,
+              "end": 196.198,
+              "text": "I’m spreading my wings"
+            },
+            {
+              "start": 197.598,
+              "end": 201.298,
+              "text": "Forever\n（接著拍手 ×4）"
+            },
+            {
+              "start": 201.298,
+              "end": 204.998,
+              "text": "Forever\n（接著拍手 ×4）"
+            },
+            {
+              "start": 204.998,
+              "end": 208.698,
+              "text": "Forever"
+            },
+            {
+              "start": 213.198,
+              "end": 214.598,
+              "text": "（歡呼）"
+            }
+          ],
+          "phoneticStatus": "draft",
+          "phoneticNote": "中文空耳為依韓文發音製作的近似讀音初稿，非官方應援文字，尚未逐句聽校；中文字不照國語聲調念，字後的ㄎ／ㄆ／ㄊ／ㄇ／ㄹ為收尾音，不另念一拍，節奏與延音請跟著影片。",
+          "status": "audio_aligned_listening_pending",
+          "derivedFrom": {
+            "videoId": "6qGzeS2zfOk",
+            "offsetSeconds": 1.7975
+          }
+        }
       }
     ],
     "note": "依指定 Moon Light 影片製作 30 張藍字應援與拍手提示，句中進入點已作模型輔助校正",
@@ -8660,6 +10937,187 @@
         "videoId": "wBHKLsujSNA",
         "startSeconds": 28,
         "endSeconds": 173
+      },
+      {
+        "kind": "現場版 · M COUNTDOWN",
+        "slug": "live",
+        "title": "HOT SAUCE 現場版",
+        "url": "https://www.youtube.com/watch?v=QQQLDjLufNo",
+        "videoId": "QQQLDjLufNo",
+        "startSeconds": 45.211,
+        "endSeconds": 190.211,
+        "chant": {
+          "videoId": "QQQLDjLufNo",
+          "note": "沿用教學版應援，依音訊比對平移 +17.2108 秒；非現場觀眾喊聲轉錄。完整直接聽校與實播同步待確認，片尾歡呼沿用音樂時間映射。",
+          "cues": [
+            {
+              "start": 47.411,
+              "end": 49.011,
+              "text": "Fire go higher"
+            },
+            {
+              "start": 49.011,
+              "end": 51.111,
+              "text": "Wherever we are"
+            },
+            {
+              "start": 51.111,
+              "end": 54.611,
+              "text": "BABYMONSTER girls got that\nwoo woo ah"
+            },
+            {
+              "start": 55.111,
+              "end": 56.411,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 57.011,
+              "end": 58.311,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 62.411,
+              "end": 63.711,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 64.211,
+              "end": 65.511,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 72.711,
+              "end": 74.311,
+              "text": "B.A.B.Y.M.O.N"
+            },
+            {
+              "start": 88.811,
+              "end": 90.811,
+              "text": "BABYMONSTER bring the party"
+            },
+            {
+              "start": 98.411,
+              "end": 99.711,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 100.211,
+              "end": 101.511,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 105.611,
+              "end": 107.111,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 107.511,
+              "end": 108.711,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 116.411,
+              "end": 116.911,
+              "text": "lemonade"
+            },
+            {
+              "start": 117.411,
+              "end": 117.811,
+              "text": "remedy"
+            },
+            {
+              "start": 120.511,
+              "end": 121.511,
+              "text": "fire like this"
+            },
+            {
+              "start": 122.311,
+              "end": 123.211,
+              "text": "vibe like this"
+            },
+            {
+              "start": 141.711,
+              "end": 143.011,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 143.511,
+              "end": 144.811,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 148.911,
+              "end": 150.311,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 150.811,
+              "end": 152.111,
+              "text": "Hot / sauce"
+            },
+            {
+              "start": 157.611,
+              "end": 159.011,
+              "text": "Fire go higher"
+            },
+            {
+              "start": 159.011,
+              "end": 161.111,
+              "text": "Wherever we are"
+            },
+            {
+              "start": 161.111,
+              "end": 164.711,
+              "text": "BABYMONSTER girls got that\nwoo woo ah"
+            },
+            {
+              "start": 164.711,
+              "end": 166.211,
+              "text": "Fire go higher"
+            },
+            {
+              "start": 166.211,
+              "end": 168.311,
+              "text": "Wherever we are"
+            },
+            {
+              "start": 168.311,
+              "end": 172.011,
+              "text": "BABYMONSTER girls got that\nwoo woo"
+            },
+            {
+              "start": 172.011,
+              "end": 174.311,
+              "text": "Hot sauce"
+            },
+            {
+              "start": 175.611,
+              "end": 177.611,
+              "text": "Hot sauce"
+            },
+            {
+              "start": 179.211,
+              "end": 181.611,
+              "text": "Hot sauce"
+            },
+            {
+              "start": 182.811,
+              "end": 184.911,
+              "text": "Hot sauce"
+            },
+            {
+              "start": 186.611,
+              "end": 190.211,
+              "text": "（歡呼）"
+            }
+          ],
+          "status": "audio_aligned_listening_pending",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "derivedFrom": {
+            "videoId": "wBHKLsujSNA",
+            "offsetSeconds": 17.2108
+          }
+        }
       }
     ],
     "note": "播放範圍 00:28～02:53；依指定影片製作 32 張紅字應援提示",
@@ -8844,6 +11302,302 @@
         "videoId": "xN3X_tl4zlQ",
         "startSeconds": 30,
         "endSeconds": 205
+      },
+      {
+        "kind": "現場版 · M COUNTDOWN",
+        "slug": "live",
+        "title": "SUGAR HONEY ICE TEA 現場版",
+        "url": "https://www.youtube.com/watch?v=ISJForNHmA0",
+        "videoId": "ISJForNHmA0",
+        "startSeconds": 13.29,
+        "endSeconds": 188.29,
+        "chant": {
+          "videoId": "ISJForNHmA0",
+          "note": "沿用教學版應援，依音訊比對平移 -16.7105 秒；非現場觀眾喊聲轉錄。完整直接聽校與實播同步待確認，片尾歡呼沿用音樂時間映射。",
+          "cues": [
+            {
+              "start": 17.49,
+              "end": 20.99,
+              "text": "B.A.B.Y.M.O.N\nSUGAR HONEY ICE TEA"
+            },
+            {
+              "start": 21.189,
+              "end": 24.689,
+              "text": "B.A.B.Y.M.O.N\nSUGAR HONEY ICE TEA"
+            },
+            {
+              "start": 26.99,
+              "end": 28.29,
+              "text": "and you know it"
+            },
+            {
+              "start": 30.589,
+              "end": 31.689,
+              "text": "and you know it"
+            },
+            {
+              "start": 31.89,
+              "end": 35.29,
+              "text": "Ice, ice, ice"
+            },
+            {
+              "start": 36.79,
+              "end": 38.79,
+              "text": "I, I, I’m the sugar honey"
+            },
+            {
+              "start": 39.99,
+              "end": 40.889,
+              "text": "ice cream"
+            },
+            {
+              "start": 41.689,
+              "end": 42.59,
+              "text": "icing"
+            },
+            {
+              "start": 43.49,
+              "end": 44.49,
+              "text": "pipe dream"
+            },
+            {
+              "start": 44.689,
+              "end": 46.189,
+              "text": "I know, I know, I know"
+            },
+            {
+              "start": 46.889,
+              "end": 47.99,
+              "text": "enticing"
+            },
+            {
+              "start": 48.79,
+              "end": 49.79,
+              "text": "lime green"
+            },
+            {
+              "start": 50.69,
+              "end": 51.49,
+              "text": "rising"
+            },
+            {
+              "start": 51.69,
+              "end": 53.29,
+              "text": "Let’s go, let’s go, let’s go"
+            },
+            {
+              "start": 56.79,
+              "end": 58.59,
+              "text": "Stop"
+            },
+            {
+              "start": 60.389,
+              "end": 62.09,
+              "text": "Drop"
+            },
+            {
+              "start": 64.09,
+              "end": 67.69,
+              "text": "Monster melody"
+            },
+            {
+              "start": 69.889,
+              "end": 71.29,
+              "text": "and you know it"
+            },
+            {
+              "start": 73.49,
+              "end": 74.79,
+              "text": "and you know it"
+            },
+            {
+              "start": 74.79,
+              "end": 78.389,
+              "text": "yeah you know it"
+            },
+            {
+              "start": 79.79,
+              "end": 81.79,
+              "text": "I, I’m the sugar honey ice"
+            },
+            {
+              "start": 84.59,
+              "end": 85.59,
+              "text": "Yuh yuh yuh"
+            },
+            {
+              "start": 88.29,
+              "end": 89.19,
+              "text": "Yuh yuh yuh"
+            },
+            {
+              "start": 90.389,
+              "end": 92.69,
+              "text": "this /\nYou wish"
+            },
+            {
+              "start": 97.19,
+              "end": 98.09,
+              "text": "ice cream"
+            },
+            {
+              "start": 98.99,
+              "end": 99.79,
+              "text": "icing"
+            },
+            {
+              "start": 100.69,
+              "end": 101.69,
+              "text": "pipe dream"
+            },
+            {
+              "start": 101.889,
+              "end": 103.49,
+              "text": "I know, I know, I know"
+            },
+            {
+              "start": 104.09,
+              "end": 105.19,
+              "text": "enticing"
+            },
+            {
+              "start": 105.99,
+              "end": 106.99,
+              "text": "lime green"
+            },
+            {
+              "start": 107.889,
+              "end": 108.69,
+              "text": "rising"
+            },
+            {
+              "start": 108.889,
+              "end": 110.59,
+              "text": "Let’s go, let’s go, let’s go"
+            },
+            {
+              "start": 114.09,
+              "end": 115.79,
+              "text": "Stop"
+            },
+            {
+              "start": 117.59,
+              "end": 119.29,
+              "text": "Drop"
+            },
+            {
+              "start": 121.29,
+              "end": 124.889,
+              "text": "Monster melody"
+            },
+            {
+              "start": 127.19,
+              "end": 128.489,
+              "text": "and you know it"
+            },
+            {
+              "start": 130.69,
+              "end": 132.09,
+              "text": "and you know it"
+            },
+            {
+              "start": 134.389,
+              "end": 135.69,
+              "text": "yeah you know it"
+            },
+            {
+              "start": 136.989,
+              "end": 138.989,
+              "text": "I, I’m the sugar honey ice"
+            },
+            {
+              "start": 139.19,
+              "end": 142.79,
+              "text": "Tasty"
+            },
+            {
+              "start": 142.79,
+              "end": 146.29,
+              "text": "Crazy"
+            },
+            {
+              "start": 146.389,
+              "end": 150.489,
+              "text": "Baby"
+            },
+            {
+              "start": 157.19,
+              "end": 159.59,
+              "text": "Sugar honey ice tea"
+            },
+            {
+              "start": 159.69,
+              "end": 160.69,
+              "text": "You know it, know it"
+            },
+            {
+              "start": 160.889,
+              "end": 162.489,
+              "text": "Sugar honey"
+            },
+            {
+              "start": 162.59,
+              "end": 164.389,
+              "text": "I’m the sugar, I’m the sugar"
+            },
+            {
+              "start": 164.389,
+              "end": 166.79,
+              "text": "Sugar honey ice tea"
+            },
+            {
+              "start": 166.889,
+              "end": 167.889,
+              "text": "You know it, know it"
+            },
+            {
+              "start": 167.989,
+              "end": 169.69,
+              "text": "Sugar honey"
+            },
+            {
+              "start": 169.79,
+              "end": 171.389,
+              "text": "I’m the sugar, I’m the sugar"
+            },
+            {
+              "start": 174.29,
+              "end": 175.19,
+              "text": "ice tea"
+            },
+            {
+              "start": 177.889,
+              "end": 178.69,
+              "text": "ice tea"
+            },
+            {
+              "start": 181.489,
+              "end": 182.29,
+              "text": "ice tea"
+            },
+            {
+              "start": 185.489,
+              "end": 186.59,
+              "text": "ice tea"
+            },
+            {
+              "start": 186.69,
+              "end": 188.29,
+              "text": "（歡呼）"
+            }
+          ],
+          "status": "audio_aligned_listening_pending",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "derivedFrom": {
+            "videoId": "xN3X_tl4zlQ",
+            "offsetSeconds": -16.7105
+          }
+        }
       }
     ],
     "note": "播放範圍 00:30～03:25；依指定影片製作 55 張應援提示",

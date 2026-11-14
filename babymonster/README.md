@@ -46,3 +46,35 @@
 - Stuck in the Middle（第 15 首）使用指定 KaM7ZxoGQuE LIVE STAGE，依使用者附圖加入 86 段英文歌詞與最後副歌 10 段紅字應援，排除日文及歡呼註記。時間經 large-v3、medium 與英文 CTC 輔助定位，仍待全曲人工聽校與 YouTube 實播同步驗收；SRT、來源圖與校時紀錄位於 video/KaM7ZxoGQuE/。
 
 - Love, Maybe（第 16 首）使用指定 xPq1Oz_hzVc HELLO MONSTER WORLD TOUR KANAGAWA，依使用者附圖加入 52 段英文歌詞與 16 張紅字應援提示；一般歌詞白字、應援固定黃色粗體，最後一句非紅字歌詞保持白色，日文歡呼註記不納入。時間經 large-v3、medium 與英文 CTC 輔助定位，保留快唱段與延音分歧，仍待全曲人工聽校。本機頁面已確認曲目與來源載入，但內嵌 YouTube 回報無法播放，未完成實播同步驗收；來源圖、音訊、SRT、逐行對應與校時紀錄位於 video/xPq1Oz_hzVc/。
+
+## 三首現場版（2026-11-15）
+
+- WE GO UP 新增指定 M COUNTDOWN 現場版 `R_Zn4YqvQ1o`，50 張提示平移 −21.9175 秒。
+- CHOOM 新增指定音樂中心現場版 `c1jLt0EarG4`，37 張提示平移 −28.1555 秒。
+- BATTER UP 新增指定 HELLO MONSTER 現場版 `Y4BxIn0jpOU`，34 張提示平移 +1.083 秒；片尾歡呼匹配信心低，保留教學音樂映射並標示待聽校。現場延伸段超出原教學提示範圍，未自行補入。
+- 現場時間軸放於各來源的 `chant`，原教學、原文／空耳、收藏編號及其他歌曲保持不變。以 `python scripts/add_babymonster_live.py` 重建。
+- 來源音訊、全曲／逐卡比對、代表畫面、SHA-256 與 QA 保存於 `video/<live-id>/`；BATTER UP 另存頻譜交叉比對。
+- 已完成結構與切換／跳句測試及代表畫面檢視；全曲正常速度播放、直接聽校與 YouTube 實播同步仍未完成。未提交推送本輪修改。
+
+## DRIP、MOON 現場版（2026-11-15）
+
+- DRIP 新增指定音樂中心影片 `nvMzXCBoiEQ`，42 張應援平移 −51.7595 秒，練習範圍 0.240–180.240 秒。
+- MOON 新增指定音樂中心影片 `fuVaqtSfYvE`，38 張應援及 94 段歌詞字幕平移 +4.6527 秒，練習範圍 0–187.653 秒；原舞台與官方應援表來源保留，字幕標色不變。
+- 兩首完成全曲及逐卡波形比對、35 秒間隔代表畫面檢視；MOON 局部音訊候選有約 0.1 秒差異，保留整曲中位數映射，完整直接聽校與實播同步未完成。
+- 來源與 QA 保存在 `video/nvMzXCBoiEQ/`、`video/fuVaqtSfYvE/`，重建沿用 `scripts/add_babymonster_live.py`。
+- 96 項 Node 測試、10 項 Pages 打包測試通過；既有三首現場版、原來源與其他歌曲均保持相等。本輪未提交推送。
+
+## FOREVER、HOT SAUCE 現場版（2026-11-15）
+
+- FOREVER 新增指定人氣歌謠影片 `Yb2m3FkIR_g`，30 張應援平移 +1.7975 秒，練習範圍 0–217.798 秒。
+- HOT SAUCE 新增指定 M COUNTDOWN 影片 `QQQLDjLufNo`，32 張應援平移 +17.2108 秒，練習範圍 45.211–190.211 秒，略過較長片頭。
+- 完成全曲／逐卡波形比對及 40 秒間隔代表畫面檢視，原應援與空耳、先前五首現場版及其他歌曲保持相等；片尾歡呼沿用音樂映射，並非觀眾喊聲辨識。
+- 來源、逐卡比對、SHA-256 與 QA 保存於各影片資料夾；重建沿用 `scripts/add_babymonster_live.py`。
+- 98 項 Node 測試、10 項 Pages 打包測試通過；全曲正常速度播放、直接聽校及實播同步未完成。未提交推送。
+
+## SUGAR HONEY ICE TEA 現場版（2026-11-15）
+
+- 新增指定 M COUNTDOWN 影片 `ISJForNHmA0`，55 張應援平移 −16.7105 秒，練習範圍 13.290–188.290 秒。
+- 全曲及逐卡波形比對一致，完成 40 秒間隔代表畫面檢視；片尾歡呼沿用教學時間映射，非現場喊聲辨識。
+- 來源、比對、SHA-256 與 QA 保存於 `video/ISJForNHmA0/`；重建沿用 `scripts/add_babymonster_live.py`。先前七首現場版、原來源及其他歌曲保持相等。
+- 99 項 Node 測試、10 項 Pages 打包測試通過；全曲直接聽校、正常速度播放與實播同步尚未完成。未提交推送。

@@ -404,7 +404,7 @@ $('seek').oninput = () => {if(ready) manualSeek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').value); savePreferences(); player.setPlaybackRate(preferences.speed); }};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20261115-layout-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20261115-eight-live-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   songs = data.filter(song => practiceCues(song).length > 0);
   songs.forEach((song,index) => {
     const option = document.createElement('option'); option.value = index; option.textContent = `${String(index + 1).padStart(2,'0')} · ${song.title}`; $('songSelect').append(option);

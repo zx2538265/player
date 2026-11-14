@@ -9,6 +9,8 @@ let ktvFollow = true, ktvRows = [], ktvMarks = [], ktvActive = -1;
 let followResumeAt = null, followTouches = 0;
 const followPointers = new Set();
 function pauseKtvFollow() {
+  // Cancel only automatic motion; repeated touchmove events must not stop native momentum.
+  if (ktvFollow) { const list = $('ktvList'); list.scrollTo?.({top:list.scrollTop, behavior:'instant'}); }
   setKtvFollow(false);
   followResumeAt = Date.now() + 3000;
 }
@@ -106,7 +108,10 @@ function updateKtv() {
   const target = active >= 0 ? active : next;
   if (visible && ktvFollow && target >= 0 && target !== ktvActive) {
     const list = $('ktvList'), row = ktvRows[target];
-    list.scrollTop = Math.max(0, row.offsetTop - (list.clientHeight - row.offsetHeight) / 2);
+    const top = Math.max(0, row.offsetTop - (list.clientHeight - row.offsetHeight) / 2);
+    const behavior = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+    if (list.scrollTo) list.scrollTo({top, behavior});
+    else list.scrollTop = top;
     ktvActive = target;
   }
 }

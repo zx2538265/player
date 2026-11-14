@@ -15,7 +15,7 @@ async function setup(project, catalog = null, hash = '') {
   context.YT={Player:function(id,options){const p={options,state:-1,time:0,rate:1,plays:0,destroy(){},getDuration(){return 183},getCurrentTime(){return this.time},seekTo(t){this.time=t},setPlaybackRate(r){this.rate=r;options.events.onPlaybackRateChange({data:r})},getAvailablePlaybackRates:()=>[0.5,1,2],getPlaybackRate(){return this.rate},getPlayerState(){return this.state},playVideo(){this.plays++;this.state=1},pauseVideo(){this.state=2},emit(data){this.state=data;options.events.onStateChange({data})},ready(){options.events.onReady({target:this})}};players.push(p);return p}};
   vm.runInNewContext(fs.readFileSync(project+'/practice.js','utf8'),context);
   await new Promise(resolve=>setImmediate(resolve));
-  return {following:()=>String(vm.runInNewContext("ktvFollow",context)),get,players,timers,location,advance:ms=>{now+=ms},dispatch:(name,event)=>listeners[name](event),navigate:hash=>{location.hash=hash;listeners.hashchange();},tick:()=>intervals.forEach(fn=>fn()),select:i=>{get('songSelect').value=i;get('songSelect').onchange()},enable:()=>{get('continuous').checked=true;get('continuous').onchange()}};
+  return {motion:reduce=>{context.matchMedia=()=>({matches:reduce})},following:()=>String(vm.runInNewContext("ktvFollow",context)),get,players,timers,location,advance:ms=>{now+=ms},dispatch:(name,event)=>listeners[name](event),navigate:hash=>{location.hash=hash;listeners.hashchange();},tick:()=>intervals.forEach(fn=>fn()),select:i=>{get('songSelect').value=i;get('songSelect').onchange()},enable:()=>{get('continuous').checked=true;get('continuous').onchange()}};
 }
 
 
@@ -66,3 +66,15 @@ for(const project of ['rescene','babymonster']) {
    assert.doesNotMatch(fs.readFileSync(project+'/practice.js','utf8'),/\$\('ktvFollow'\)/);
   }
  });
+
+for(const project of ['rescene','babymonster']) {
+ test(project+' smooth follow is interruptible and respects reduced motion',async()=>{
+  const s=await setup(project,require('../'+project+'/songs.json')),p=s.players[0];p.ready();p.state=1;
+  const list=s.get('ktvList'),calls=[];list.scrollTo=options=>{calls.push(options);list.scrollTop=options.top};
+  list.onwheel();s.advance(3000);s.tick();assert.equal(calls.at(-1).behavior,'smooth');
+  const n=calls.length;s.tick();assert.equal(calls.length,n,'same cue does not restart animation');
+  list.ontouchstart({touches:[{}]});assert.equal(calls.at(-1).behavior,'instant');
+  const stopped=calls.length;list.ontouchmove();assert.equal(calls.length,stopped,'manual motion is not repeatedly cancelled');
+  s.dispatch('touchend',{touches:[]});s.motion(true);s.advance(3000);s.tick();assert.equal(calls.at(-1).behavior,'instant');
+ });
+}

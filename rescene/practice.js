@@ -281,7 +281,7 @@ function selectSong(index, updateHash = true, autoplay = null, sourceIndex = 0) 
     mountPlayer(song,token);
     loadTimer = setTimeout(() => { if(token === generation && !ready) fail('影片載入較久，可從「本首來源與版本說明」開啟原影片。'); },15000);
   }
-  if(updateHash) history.replaceState(null,'',`#${encodeURIComponent(song.slug)}${playbackSource(song)?.slug ? "/" + encodeURIComponent(playbackSource(song).slug) : ""}`);
+  if(updateHash) history.replaceState(null,'',`#${encodeURIComponent(song.slug)}`);
   if(!source && pendingPlay) advance(song.title + '（無影片）');
 }
 function fromHash() {

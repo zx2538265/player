@@ -123,7 +123,7 @@ test('With live version uses its own player, cues, countdown and bounds; guide r
  assert.equal(s.get('sourceButtons').children[0].attributes['aria-pressed'],'true');
  assert.equal(s.get('sourceButtons').children[1].attributes['aria-pressed'],'false');assert.equal(s.get('loopCue').checked,false);
  assert.equal(s.get('ktvDuration').textContent,'3:41');
- s.get('sourceButtons').children[1].onclick();p=s.players.at(-1);p.ready();assert.equal(s.location.hash,'#with/live');
+ s.get('sourceButtons').children[1].onclick();p=s.players.at(-1);p.ready();assert.equal(s.location.hash,'#with');
  p.options.events.onError();s.get('retry').onclick();p=s.players.at(-1);p.ready();assert.equal(p.options.videoId,live.videoId);
  p.time=live.endSeconds;p.state=1;s.tick();assert.equal(p.state,2);assert.match(s.get('ktvStatus').textContent,/練習結束/);
  s.navigate('#with/missing');assert.equal(s.players.at(-1).options.videoId,'cLtl2aFq_6M');
@@ -133,7 +133,7 @@ test('Inside Out live version retains all 34 cues and switches independently fro
  const catalog=require('../rescene/songs.json'),song=catalog.find(s=>s.slug==='inside-out');
  const live=song.sources.find(source=>source.slug==='live');
  const s=await setup(catalog,'#inside-out/live');let p=s.players[0];p.ready();
- assert.equal(p.options.videoId,'_hvATW8DixU');assert.equal(s.get('sourceButtons').children.length,2);
+ assert.equal(p.options.videoId,'_hvATW8DixU');assert.equal(s.location.hash,'#inside-out');assert.equal(s.get('sourceButtons').children.length,2);
  assert.equal(s.get('ktvList').children.length,34);assert.equal(live.chant.videoId,live.videoId);
  for(let i=0;i<live.chant.cues.length;i++){
   const cue=live.chant.cues[i],original=song.chant.cues[i];
@@ -169,5 +169,5 @@ test('LOVE ATTACK live starts at nine seconds and retains correct version indice
  s.get('loopCue').checked=true;s.get('loopCue').onchange();p.time=live.chant.cues[0].end;s.tick();assert.equal(p.time,live.chant.cues[0].start-3);
  s.get('loopCue').checked=false;s.get('loopCue').onchange();p.time=live.endSeconds;p.state=1;s.tick();assert.equal(p.state,2);
  s.get('sourceButtons').children[0].onclick();p=s.players.at(-1);p.ready();assert.equal(p.options.videoId,'xn12KH78Dx4');
- s.get('sourceButtons').children[1].onclick();p=s.players.at(-1);p.ready();assert.equal(p.options.videoId,'ajhEFz1zNMQ');assert.equal(s.location.hash,'#love-attack/live');
+ s.get('sourceButtons').children[1].onclick();p=s.players.at(-1);p.ready();assert.equal(p.options.videoId,'ajhEFz1zNMQ');assert.equal(s.location.hash,'#love-attack');
 });

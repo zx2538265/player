@@ -4,6 +4,62 @@ let pendingPlay = false;
 let segmentEnded = false;
 let cueTarget = null, loopTarget = null, catalogFilter = 'all';
 let preferences = {}, favorites = new Set();
+let ktvFollow = true, ktvRows = [], ktvMarks = [], ktvActive = -1;
+function setKtvFollow(value) {
+  ktvFollow = value;
+  $('ktvFollow').setAttribute('aria-pressed', String(value));
+  $('ktvFollow').textContent = value ? '自動跟隨：開' : '回到目前句';
+  if (value) ktvActive = -1;
+}
+function renderKtv() {
+  ktvRows = []; ktvMarks = []; ktvActive = -1;
+  setKtvFollow(true);
+  $('ktvList').replaceChildren(); $('ktvMarkers').replaceChildren();
+  const cues = practiceCues(), range = bounds();
+  const end = range.end ?? cues.at(-1)?.end ?? range.start + 1;
+  cues.forEach((cue, index) => {
+    const row = document.createElement('button'); row.className = 'ktv-row';
+    const time = document.createElement('span'); time.className = 'ktv-time'; time.textContent = format(cue.start);
+    const words = document.createElement('span'), primary = document.createElement('strong');
+    const wording = preferences.wording || 'both';
+    primary.textContent = wording === 'original' ? cue.text : cue.phoneticZh || cue.text; words.append(primary);
+    if (cue.phoneticZh && wording === 'both') { const original = document.createElement('small'); original.textContent = cue.text; words.append(original); }
+    row.append(time, words);
+    row.setAttribute('aria-label', `${format(cue.start)} ${primary.textContent}，播放這句`);
+    row.onclick = () => { setKtvFollow(true); jumpToCue(index, true); };
+    const mark = document.createElement('button'); mark.className = 'ktv-marker';
+    mark.style.left = `${100 * (Math.max(range.start, cue.start) - range.start) / (end - range.start)}%`;
+    mark.style.width = `${100 * (Math.min(end, cue.end) - Math.max(range.start, cue.start)) / (end - range.start)}%`;
+    mark.title = `${format(cue.start)} · ${cue.phoneticZh || cue.text}`;
+    mark.setAttribute('aria-label', mark.title); mark.tabIndex = -1;
+    mark.onclick = row.onclick;
+    ktvRows.push(row); ktvMarks.push(mark); $('ktvList').append(row); $('ktvMarkers').append(mark);
+  });
+}
+function updateKtv() {
+  const cues = practiceCues(), visible = cues.length > 0;
+  const time = ready ? player.getCurrentTime() : bounds().start;
+  const range = bounds(), end = range.end ?? cues.at(-1)?.end ?? range.start + 1;
+  $('ktvMarkers').style.setProperty('--position', `${Math.max(0, Math.min(100, 100 * (time - range.start) / (end - range.start)))}%`);
+  $('ktvElapsed').textContent = format(time);
+  $('ktvDuration').textContent = format(range.end ?? (ready ? player.getDuration() : 0));
+  const active = segmentEnded ? -1 : cues.findIndex(c => c.start <= time && time < c.end);
+  const next = segmentEnded ? -1 : cues.findIndex(c => c.start > time);
+  ktvRows.forEach((row, i) => {
+    row.disabled = !ready; ktvMarks[i].disabled = !ready;
+    row.dataset.state = i === active ? 'active' : i === next ? 'next' : cues[i].end <= time ? 'past' : 'future';
+    row.setAttribute('aria-current', i === active ? 'true' : 'false');
+    ktvMarks[i].dataset.state = row.dataset.state;
+  });
+  const rate = ready ? player.getPlaybackRate() || 1 : 1;
+  $('ktvStatus').textContent = !cues.length ? '本首尚無應援提示' : !ready ? '等待影片就緒 · 可先閱讀應援' : segmentEnded ? '本首練習結束' : player.getPlayerState() === 3 ? '影片緩衝中…' : player.getPlayerState() !== 1 ? '按播放，或點一句開始練習' : active >= 0 ? `本句應援 · ${active + 1} / ${cues.length}` : next >= 0 ? `距離下一句還有 ${Math.ceil((cues[next].start - time) / rate)} 秒` : '本首應援已結束';
+  const target = active >= 0 ? active : next;
+  if (visible && ktvFollow && target >= 0 && target !== ktvActive) {
+    const list = $('ktvList'), row = ktvRows[target];
+    list.scrollTop = Math.max(0, row.offsetTop - (list.clientHeight - row.offsetHeight) / 2);
+    ktvActive = target;
+  }
+}
 try {
   const stored = JSON.parse(localStorage.getItem('rescene-practice') || '{}');
   if (stored && typeof stored === 'object') preferences = stored;
@@ -111,23 +167,16 @@ function updateSubtitles() {
 }
 function updateChant() {
   updateSubtitles();
+  updateKtv();
   const song = songs[selected], source = song?.sources.find(s => s.videoId), track = song?.chant;
   const available = typeof Chant !== 'undefined' && Chant.validTrack(track, source?.videoId);
-  $('chantEnabled').disabled = !available;
+
   $('chantUnavailable').hidden = available;
   updatePracticeControls();
   const note = available ? [track.note, track.phoneticNote].filter(Boolean).join('\n') : '本首尚未建立逐句應援提示，可先跟著來源影片練習。';
   if ($('chantNote').textContent !== note) $('chantNote').textContent = note;
-  $('chantDisplay').hidden = !available || !$('chantEnabled').checked;
-  if (!available) return;
-  const view = ready ? Chant.state(track, player.getCurrentTime(), segmentEnded ? 0 : player.getPlayerState(), player.getPlaybackRate()) :
-    {mode:'paused',label:'等待影片就緒',text:track.cues[0].text,phoneticZh:track.cues[0].phoneticZh || '',next:'',count:''};
-  $('chantDisplay').dataset.mode = view.mode;
-  $('chantOriginal').hidden = !view.phoneticZh;
-  for (const [id, value] of [['chantLabel',view.label],['chantText',view.phoneticZh || view.text],['chantOriginal',view.phoneticZh ? view.text : ''],['chantNext',view.next],['chantCount',view.count]]) {
-    if ($(id).textContent !== value) $(id).textContent = value;
-  }
 }
+
 function sourcesInto(container, song) {
   container.replaceChildren();
   if (!song.sources.length) { container.textContent = '應援來源待補'; return; }
@@ -207,6 +256,7 @@ function selectSong(index, updateHash = true, autoplay = null) {
   $('videoContainer').hidden = !source; $('transport').hidden = !source; $('externalNote').hidden = !!source;
   $('externalNote').textContent = external ? '請開啟參考來源觀看本首應援。' : '本首應援來源待補。';
   $('status').textContent = source ? '正在載入影片…' : external ? '參考連結列於下方' : '尚無可播放的應援來源';
+  renderKtv();
   updateChant();
   if(source) {
     mountPlayer(song,token);
@@ -227,8 +277,10 @@ function fromHash() {
   selectSong(index < 0 ? 0 : index, index >= 0);
 }
 $('continuous').onchange = () => { pendingPlay = false; updateContinuousStatus(); };
-$('chantEnabled').checked = preferences.chantEnabled !== false;
-$('chantEnabled').onchange = () => {preferences.chantEnabled = $('chantEnabled').checked; savePreferences(); updateChant();};
+$('ktvFollow').onclick = () => { setKtvFollow(!ktvFollow); updateKtv(); };
+$('ktvList').onwheel = $('ktvList').ontouchstart = () => setKtvFollow(false);
+$('ktvList').onpointerdown = event => { if (event.target === $('ktvList')) setKtvFollow(false); };
+$('ktvList').onkeydown = event => { if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End'].includes(event.key)) setKtvFollow(false); };
 $('subtitleFullscreen').hidden = !(document.fullscreenEnabled && $('videoContainer').requestFullscreen);
 $('subtitleFullscreen').onclick = async () => {
   try {
@@ -242,9 +294,11 @@ $('exitVideoFullscreen').onclick = async () => {
   }
 };
 $('chantSize').value = ['1','1.25','1.5'].includes(preferences.size) ? preferences.size : '1';
-$('chantDisplay').style.setProperty('--scale', $('chantSize').value);
 $('subtitleDisplay').style.setProperty('--scale', $('chantSize').value);
-$('chantSize').onchange = () => {preferences.size = $('chantSize').value; $('chantDisplay').style.setProperty('--scale', preferences.size); $('subtitleDisplay').style.setProperty('--scale', preferences.size); savePreferences();};
+$('ktvPanel').style.setProperty('--scale', $('chantSize').value);
+$('wordingMode').value = ['both','phonetic','original'].includes(preferences.wording) ? preferences.wording : 'both';
+$('wordingMode').onchange = () => { preferences.wording = $('wordingMode').value; savePreferences(); renderKtv(); updateKtv(); };
+$('chantSize').onchange = () => {preferences.size = $('chantSize').value; $('ktvPanel').style.setProperty('--scale', preferences.size); $('subtitleDisplay').style.setProperty('--scale', preferences.size); savePreferences();};
 $('focusMode').onclick = () => {const focused = document.body.classList.toggle('focus'); $('focusMode').setAttribute('aria-pressed', String(focused)); $('focusMode').textContent = focused ? '↙ 返回歌單' : '↗ 專注練習'; $('songTitle').scrollIntoView({block:'start'});};
 window.addEventListener('keydown', event => {if (event.key === 'Escape' && document.body.classList.contains('focus')) $('focusMode').click();});
 $('search').oninput = renderCatalog;

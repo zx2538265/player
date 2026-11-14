@@ -17,22 +17,6 @@ async function setup(catalog = null, hash = '') {
   return {get,players,timers,location,navigate:hash=>{location.hash=hash;listeners.hashchange();},tick:()=>intervals.forEach(fn=>fn()),select:i=>{get('songSelect').value=i;get('songSelect').onchange()},enable:()=>{get('continuous').checked=true;get('continuous').onchange()}};
 }
 
-test('song URLs and legacy links survive catalog reordering and renumbering',async()=>{
-  const catalog=JSON.parse(JSON.stringify(require('../rescene/songs.json'))).reverse();
-  catalog.forEach((song,i)=>song.number=i+1);
-  const s=await setup(catalog,'#pretty-girl');
-  assert.equal(s.get('songTitle').textContent,'Pretty Girl');
-  s.navigate('#song-1');
-  assert.equal(s.get('songTitle').textContent,'LOVE ATTACK');
-  assert.equal(s.location.hash,'#love-attack');
-  s.select(catalog.findIndex(song=>song.title==='Busy Boy'));
-  assert.equal(s.location.hash,'#busy-boy');
-  for(const hash of ['#no-such-song','#%E0%A4%A','#song-999']) {
-    s.navigate(hash);assert.equal(s.get('songTitle').textContent,catalog[0].title);
-  }
-  s.navigate('#%70retty-girl');assert.equal(s.get('songTitle').textContent,'Pretty Girl');
-  const count=s.players.length;s.navigate('#practice');assert.equal(s.players.length,count);
-});
 test('off by default; ended stays on current song',async()=>{const s=await setup();s.players[0].ready();s.players[0].emit(0);assert.equal(s.players.length,1);assert.equal(s.get('continuous').checked,false)});
 test('advance skips missing videos, autoplays and stops at end',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].emit(0);assert.equal(s.players[1].options.videoId,'id2');s.players[1].ready();assert.equal(s.players[1].plays,1);s.players[1].emit(0);s.players[2].ready();s.players[2].emit(0);assert.equal(s.players.length,3);assert.match(s.get('continuousStatus').textContent,/歌單播放完畢/)});
 test('manual selection preserves playing or paused intent',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].state=1;s.select(2);s.players[1].ready();assert.equal(s.players[1].plays,1);s.players[1].state=2;s.select(3);s.players[2].ready();assert.equal(s.players[2].plays,0)});
@@ -40,118 +24,60 @@ test('explicit error advances; slow loading and blocked autoplay do not',async()
 test('disable during loading cancels autoplay and stale callbacks cannot advance',async()=>{const s=await setup();s.enable();s.players[0].ready();s.players[0].emit(0);s.get('continuous').checked=false;s.get('continuous').onchange();s.players[1].ready();assert.equal(s.players[1].plays,0);s.players[0].options.events.onError();assert.equal(s.players.length,2)});
 
 
-test('RESCENE catalog binds all thirteen guides to their visual chant tracks', async()=>{
-  const catalog=require('../rescene/songs.json');
-  assert.deepEqual(catalog.slice(0,5).map(song=>song.title),['LOVE ATTACK','Runaway','Deja Vu','Pinball','Pretty Girl']);
-  assert.equal(catalog.length,13);
-  assert.equal(new Set(catalog.map(song=>song.slug)).size,13);
-  assert.ok(catalog.every(song=>/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(song.slug)));
-  assert.deepEqual(catalog.map(song=>song.sources[0].videoId),['xn12KH78Dx4','7DZlkZ4bMpU','9FlQOv6-Mjc','YyixhiYpkkY','RX592yMx7P0','s1S-lnU-yMI','-55bUrG1qjg','VKlrVbgJG-g','Ma6IENHO584','ykVJo0wFlQ4','hc1HS71j6oY','cLtl2aFq_6M','cL_B5W4gBRU']);
-  const s=await setup(catalog);s.players[0].ready();
-  assert.equal(s.get('chantEnabled').disabled,false);
-  assert.equal(s.get('chantDisplay').hidden,false);
-  assert.equal(s.get('loopCue').disabled,false);
-  assert.equal(s.players[0].options.videoId,'xn12KH78Dx4');
-  s.enable();s.players[0].emit(0);s.players[1].ready();
-  assert.equal(s.players[1].options.videoId,'7DZlkZ4bMpU');
-  assert.equal(s.players[1].plays,1);
-  const chant=require('../rescene/chant.js');
-  assert.ok(catalog.every(song=>song.hasChant && chant.validTrack(song.chant,song.sources[0].videoId)));
-});
+test('KTV follows playback, retains loop target, and restores follow after manual browsing',async()=>{
+  const song=require('../rescene/songs.json').find(s=>s.slug==='inside-out');
+  const s=await setup([song]);const p=s.players[0];p.ready();
+  const rows=s.get('ktvList').children,marks=s.get('ktvMarkers').children;
+  assert.equal(rows.length,song.chant.cues.length);assert.equal(marks.length,rows.length);
 
-test('YoYo switches its own video, captions and replay without carrying old cues',async()=>{
-  const catalog=require('../rescene/songs.json'),s=await setup(catalog);
-  s.players[0].ready();s.select(9);
-  const p=s.players[1],cue=catalog[9].chant.cues[1];p.ready();
-  assert.equal(p.options.videoId,'ykVJo0wFlQ4');
-  p.time=cue.start;p.emit(1);s.tick();
-  assert.equal(s.get('chantText').textContent,'叉加內');
-  assert.equal(s.get('chantLabel').textContent,'現在喊！');
-  p.emit(2);s.tick();assert.equal(s.get('chantLabel').textContent,'已暫停');
-  s.get('repeatCue').onclick();assert.equal(p.time,cue.start-3);
-  s.select(0);s.players[2].ready();
-  assert.equal(s.get('chantText').textContent,catalog[0].chant.cues[0].text);
-});
-
-test('Busy Boy selection and replay use its absolute captions and clear them on switching',async()=>{
-  const catalog=require('../rescene/songs.json'),s=await setup(catalog);
-  s.players[0].ready();s.select(catalog.findIndex(song=>song.title==='Busy Boy'));
-  const p=s.players.at(-1);
-  assert.equal(s.get('chantText').textContent,catalog.find(song=>song.title==='Busy Boy').chant.cues[0].phoneticZh);
-  p.ready();
-  assert.equal(p.options.videoId,'hc1HS71j6oY');
-  p.time=26.7;p.state=1;s.tick();
-  assert.equal(s.get('chantText').textContent,'七');
-  assert.equal(s.get('chantDisplay').dataset.mode,'countdown');
-  p.time=28.7;s.tick();
-  assert.equal(s.get('chantText').textContent,'七');
-  s.get('repeatCue').onclick();
-  assert.ok(p.time<28.6);
-  s.select(0);s.players.at(-1).ready();s.tick();
-  assert.notEqual(s.get('chantText').textContent,'七');
-});
-
-test('new official guides load by song name and use their own response cards',async()=>{
-  const catalog=require('../rescene/songs.json');
-  for(const [slug,id,count] of [['with','cLtl2aFq_6M',27],['inside-out','cL_B5W4gBRU',34]]) {
-    const song=catalog.find(s=>s.slug===slug),s=await setup(catalog,`#${slug}`),p=s.players[0];
-    assert.equal(p.options.videoId,id);assert.equal(song.chant.cues.length,count);
-    p.ready();const cue=song.chant.cues.find(c=>c.phoneticZh);
-    p.time=cue.start;p.emit(1);s.tick();assert.equal(s.get('chantText').textContent,cue.phoneticZh);
-    assert.equal(s.get('chantOriginal').textContent,cue.text);
-    s.get('repeatCue').onclick();assert.equal(p.time,cue.start-3);
-    s.select(0);assert.equal(s.location.hash,'#love-attack');
-  }
-});
-
-test('With and Inside Out start at music and stop after the final response',async()=>{
-  const catalog=require('../rescene/songs.json');
-  for(const [slug,start,end] of [['with',32,221],['inside-out',24,237]]) {
-    const song=catalog.find(s=>s.slug===slug),source=song.sources[0];
-    assert.equal(source.startSeconds,start);assert.equal(source.endSeconds,end);
-    assert.ok(song.chant.cues.every(c=>c.start>=start && c.end<=end));
-    const s=await setup(catalog,`#${slug}`),p=s.players[0];
-    assert.equal(p.options.playerVars.start,start);assert.equal(p.options.playerVars.end,end);
-    p.ready();p.time=end;p.state=1;s.tick();
-    assert.equal(p.state,2);assert.equal(s.get('chantLabel').textContent,'本首練習結束');
-    assert.equal(s.players.length,1);
-    s.get('play').onclick();assert.equal(p.time,start);assert.equal(p.state,1);
-  }
-});
-
-test('real cards follow seek, pause, speed, repeat and source switching',async()=>{
-  const catalog=require('../rescene/songs.json'), s=await setup(catalog), p=s.players[0];
-  p.ready(); const cue=catalog[0].chant.cues[0];
-  p.time=cue.start;p.emit(1);s.tick();
-  assert.equal(s.get('chantText').textContent,cue.text);
-  assert.equal(s.get('chantDisplay').dataset.mode,'active');
-  p.emit(2);s.tick();assert.equal(s.get('chantLabel').textContent,'已暫停');
-  p.time=cue.start-4;p.rate=2;p.emit(1);s.tick();
-  assert.equal(s.get('chantCount').textContent,'2');
-  s.get('repeatCue').onclick();assert.equal(p.time,cue.start-3);
+  const cue=song.chant.cues[3];rows[3].onclick();assert.equal(p.time,cue.start-3);assert.equal(p.state,1);
+  p.time=cue.start;s.tick();assert.equal(rows[3].dataset.state,'active');
   s.get('loopCue').checked=true;s.get('loopCue').onchange();
-  p.time=cue.end+.1;s.tick();assert.equal(p.time,cue.start-3);
-  const nextIndex=catalog.findIndex(song=>song.title==='UhUh');
-  s.select(nextIndex);const next=s.players[1];next.ready();
-  assert.equal(next.options.videoId,'s1S-lnU-yMI');
-  assert.equal(s.get('chantText').textContent,(catalog[nextIndex].chant.cues[0].phoneticZh || catalog[nextIndex].chant.cues[0].text));
+  marks[4].onclick();assert.equal(p.time,song.chant.cues[4].start-3);
+  p.time=song.chant.cues[4].end;s.tick();assert.equal(p.time,song.chant.cues[4].start-3);
+  s.get('ktvList').onwheel();assert.equal(s.get('ktvFollow').textContent,'回到目前句');
+  s.get('ktvFollow').onclick();assert.equal(s.get('ktvFollow').textContent,'自動跟隨：開');
+
+});
+test('KTV clears old cues on song changes and disables seeking after player failure',async()=>{
+  const catalog=require('../rescene/songs.json');const s=await setup(catalog,'#inside-out');
+  s.players[0].ready();s.navigate('#with');
+  assert.equal(s.get('ktvList').children.length,catalog.find(s=>s.slug==='with').chant.cues.length);
+  assert.ok(s.get('ktvList').children.every(row=>row.disabled));
+  s.players.at(-1).ready();assert.ok(s.get('ktvList').children.every(row=>!row.disabled));
+  s.players.at(-1).options.events.onError();assert.ok(s.get('ktvList').children.every(row=>row.disabled));
 });
 
-test('phonetics show original Korean and clear it on Latin cards, switching and end',async()=>{
-  const catalog=require('../rescene/songs.json'),s=await setup(catalog);
-  s.select(9);const p=s.players.at(-1);p.ready();
-  const cue=catalog[9].chant.cues[1];p.time=cue.start;p.emit(1);s.tick();
-  assert.equal(s.get('chantText').textContent,'叉加內');
-  assert.equal(s.get('chantOriginal').textContent,'찾아내');
-  assert.equal(s.get('chantOriginal').hidden,false);
-  p.emit(2);s.tick();assert.equal(s.get('chantOriginal').textContent,'찾아내');
-  p.time=catalog[9].chant.cues.find(c=>!c.phoneticZh).start;p.emit(1);s.tick();
-  assert.equal(s.get('chantOriginal').textContent,'');
-  assert.equal(s.get('chantOriginal').hidden,true);
-  s.select(10);
-  assert.match(s.get('chantText').textContent,/衝丸妮 金ㄍㄧㄛ恩 Minami\n伊耶彬 金嘎勇 RESCENE/);
-  assert.equal(s.get('chantOriginal').hidden,false);
-  const last=s.players.at(-1);last.ready();last.emit(0);s.tick();
-  assert.equal(s.get('chantOriginal').textContent,'');
-  assert.equal(s.get('chantOriginal').hidden,true);
+test('song identity and legacy links survive ordering; With leads the practice list',async()=>{
+ const catalog=JSON.parse(JSON.stringify(require('../rescene/songs.json'))).reverse();
+ const s=await setup(catalog,'#inside-out');
+ assert.equal(s.players[0].options.videoId,'cL_B5W4gBRU');
+ s.navigate('#song-1');assert.equal(s.location.hash,'#love-attack');
+ assert.equal(s.players.at(-1).options.videoId,'xn12KH78Dx4');
+ s.navigate('#unknown');assert.equal(s.get('songTitle').textContent,'With');
+ for(const song of catalog){s.navigate('#'+song.slug);assert.equal(s.players.at(-1).options.videoId,song.sources[0].videoId);assert.equal(s.get('ktvList').children.length,song.chant.cues.length);}
+});
+test('wording settings preserve original text and source timing',async()=>{
+ const song=require('../rescene/songs.json').find(s=>s.slug==='inside-out'),s=await setup([song]);
+ const p=s.players[0];p.ready();
+ const words=()=>s.get('ktvList').children[0].children[1].children;
+ assert.equal(words().length,2);assert.equal(words()[0].textContent,song.chant.cues[0].phoneticZh);
+ s.get('wordingMode').value='original';s.get('wordingMode').onchange();
+ assert.equal(words().length,1);assert.equal(words()[0].textContent,song.chant.cues[0].text);
+ s.get('ktvList').children[0].onclick();assert.equal(p.time,Math.max(song.sources[0].startSeconds,song.chant.cues[0].start-3));
+ s.get('wordingMode').value='phonetic';s.get('wordingMode').onchange();assert.equal(words().length,1);assert.equal(words()[0].textContent,song.chant.cues[0].phoneticZh);
+});
+test('KTV clock handles pause, speed, end and backward seek without losing source bounds',async()=>{
+ const song=require('../rescene/songs.json').find(s=>s.slug==='inside-out'),s=await setup([song]);const p=s.players[0];p.ready();
+ const cue=song.chant.cues[3];p.time=cue.start-4;p.rate=2;p.state=1;s.tick();assert.match(s.get('ktvStatus').textContent,/2 秒/);
+ p.time=cue.start;s.tick();assert.equal(s.get('ktvList').children[3].dataset.state,'active');
+ p.emit(2);assert.match(s.get('ktvStatus').textContent,/按播放/);
+ p.time=song.sources[0].endSeconds;p.state=1;s.tick();assert.equal(p.state,2);assert.match(s.get('ktvStatus').textContent,/練習結束/);
+ s.get('ktvList').children[0].onclick();s.tick();assert.equal(p.time,song.chant.cues[0].start-3);assert.doesNotMatch(s.get('ktvStatus').textContent,/練習結束/);
+});
+test('removed card UI has no dangling JavaScript element references',()=>{
+ const html=fs.readFileSync('rescene/index.html','utf8'),js=fs.readFileSync('rescene/practice.js','utf8');
+ const ids=new Set([...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]));
+ for(const m of js.matchAll(/\$\('([^']+)'\)/g)) assert.ok(ids.has(m[1]),m[1]);
+ assert.doesNotMatch(html,/id="(?:cardView|ktvView|chantDisplay)"|大字提示/);
 });

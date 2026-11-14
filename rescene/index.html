@@ -23,40 +23,51 @@
   <link rel="stylesheet" href="practice.css?v=20261026-phonetic-v1">
   <script src="chant.js?v=20261026-phonetic-v1" defer></script>
   <script src="subtitles.js?v=20260925-pretty-girl" defer></script>
-  <script src="practice.js?v=20261114-with-phonetic-v2" defer></script>
-<link rel="stylesheet" href="pulse.css?v=20261026-pulse-v1"></head>
+  <script src="practice.js?v=20261114-room-v6" defer></script>
+<link rel="stylesheet" href="pulse.css?v=20261114-room-v6"></head>
 <body>
-  <header><a class="brand" href="./">RESCENE<span>REMINE PRACTICE ROOM</span></a></header>
+  <header><a class="brand" href="./">RESCENE<span>REMINE PRACTICE ROOM</span></a><a class="header-link" href="#catalogTitle">選一首來練 ↗</a></header>
   <main>
 <section class="hero pulse-banner" aria-labelledby="heroTitle">
-      <div class="hero-copy"><h1 id="heroTitle">RESCENE</h1><p class="hero-subtitle">REMINE 應援練習室</p><p>把喜歡的旋律，練成我們的默契。</p></div>
       <figure class="concept"><img src="pulse-banner.webp" width="2640" height="1056" alt="RESCENE 五位成員穿著白色服裝的 Pulse 團體概念照" fetchpriority="high"></figure>
-    </section><div class="room-label"><span>01 / THE PRACTICE ROOM</span><span>選一首喜歡的，跟著心跳練習</span></div>
+      <div class="hero-copy"><h1 id="heroTitle">RESCENE</h1><p class="hero-subtitle">REMINE 應援練習室</p><p>把喜歡的旋律，練成我們的默契。</p></div>
+    </section>
     <div class="layout">
       <section id="practice" class="studio" aria-label="應援練習">
         <div class="song-heading"><div><p class="eyebrow" id="songMeta">準備曲目中</p><h2 id="songTitle" tabindex="-1">載入曲目…</h2></div><button id="focusMode" aria-pressed="false">↗ 專注練習</button></div>
         <nav class="song-nav" aria-label="切換曲目"><button id="previous" disabled>← 上一首</button><label for="songSelect" class="sr-only">選擇曲目</label><select id="songSelect" disabled></select><button id="next" disabled>下一首 →</button></nav>
+        <div class="practice-workspace"><div class="media-column">
         <div class="video-heading"><span>跟著影片練</span><a id="watchLink" target="_blank" rel="noopener" hidden>在 YouTube 開啟 ↗</a></div>
-        <div class="video" id="videoContainer"><div id="player"></div><div id="subtitleDisplay" class="subtitle-display" aria-label="應援字幕" hidden><p id="subtitleText"></p></div><button id="exitVideoFullscreen" class="exit-video-fullscreen">離開全螢幕</button></div><p id="externalNote" hidden></p>
+        <div class="video" id="videoContainer"><div id="player"></div><div id="subtitleDisplay" class="subtitle-display" aria-label="應援字幕" hidden><p id="subtitleText"></p></div><button id="exitVideoFullscreen" class="exit-video-fullscreen">離開全螢幕</button></div><p id="externalNote" hidden></p><div class="chant-timeline"><div class="chant-clock"><span id="ktvElapsed">0:00</span><p id="ktvStatus" class="ktv-status">等待影片就緒</p><span id="ktvDuration">0:00</span></div>
+          <div id="ktvMarkers" class="ktv-markers" role="group" aria-label="應援位置，點選提前三秒播放"></div>
+</div>
         <section id="subtitlePanel" class="subtitle-panel" aria-label="應援字幕" hidden>
           <div class="subtitle-head"><span>白字：歌詞 · <strong class="subtitle-chant">黃字粗體：應援</strong></span><button id="subtitleFullscreen" hidden>全螢幕（含字幕）</button></div>
         </section>
         <p id="status" role="status">正在載入練習歌單…</p><button id="retry" hidden>重新載入影片</button>
-        <section class="chant-panel" aria-label="應援大字提示">
-          <div class="cue-head"><label><input id="chantEnabled" type="checkbox" checked> 顯示提示</label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>
-          <p id="chantUnavailable" hidden>逐句應援提示準備中，可先跟著影片練習。</p>
-          <div id="chantDisplay" class="chant-display" data-mode="waiting"><p id="chantLabel" class="chant-label">正在載入提示…</p><div class="cue"><span id="chantCount" aria-label="進場倒數"></span><div class="chant-wording"><p id="chantText"></p><p id="chantOriginal" class="chant-original" hidden></p></div></div><p id="chantNext" class="up-next"></p></div>
-          <p class="phonetic-help">韓文空耳初稿，待逐句聽校；名字用英文，下方保留韓文，收尾注音不另喊一拍</p>
-        </section>
-        <fieldset id="transport" class="controls" disabled><legend class="sr-only">播放控制</legend>
-          <div class="timeline"><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="1" value="0" step="0.1"><output id="clock">0:00 / 0:00</output></div>
+
+        </div>
+
+
+<div class="practice-extras">
+        <details class="source"><summary>本首來源與版本說明</summary><p id="version"></p><p id="chantNote"></p><div id="currentSources"></div></details>
+</div>
+        <section id="ktvPanel" class="ktv-panel" aria-label="逐句應援練習">
+          <div class="ktv-heading"><span class="follow-hint">跟著影片自動捲動</span><div class="follow-actions"><div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label></div><button id="ktvFollow" aria-pressed="true">自動跟隨：開</button></div></div><p id="continuousStatus" class="continuous-status" role="status"></p>
+<details class="room-settings"><summary>練習設定</summary>        <fieldset id="transport" class="controls" disabled><legend class="sr-only">播放控制</legend>
+          <div class="timeline" hidden><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="1" value="0" step="0.1"><output id="clock">0:00 / 0:00</output></div>
           <div class="transport"><button id="previousCue" disabled>上一句</button><button id="play" class="primary">播放</button><button id="nextCue" disabled>下一句</button></div>
           <div class="tools"><button id="repeatCue" disabled>↶ 重練這句</button><button id="back">↶ 5 秒</button><label><input id="loopCue" type="checkbox" disabled> 單句循環</label><label>速度 <select id="speed"><option value="1">1×</option></select></label></div>
         </fieldset>
-        <div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label><span id="continuousStatus" role="status"></span></div>
-        <details class="source"><summary>本首來源與版本說明</summary><p id="version"></p><p id="chantNote"></p><div id="currentSources"></div></details>
+          <div class="chant-settings"><label>顯示 <select id="wordingMode"><option value="both">空耳＋原文</option><option value="phonetic">只看空耳</option><option value="original">只看原文</option></select></label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>
+</details>
+          <p class="lyric-legend">點一句，提前 3 秒開始練習</p>
+          <p id="chantUnavailable" hidden>本首應援準備中，先跟著影片練習吧</p>
+          <div id="ktvList" class="ktv-list" tabindex="0" aria-label="逐句應援清單"></div>
+          <details class="reading-help"><summary>應援與空耳怎麼看？</summary><p>這裡只顯示要喊的應援，不是整首歌詞。深色是目前句，淺色是下一句。手動捲動後，按「回到目前句」繼續跟隨。</p><p>空耳仍為初稿，待逐句聽校；收尾注音不另喊一拍。原文與來源保留供核對。</p></details>
+        </section></div>
       </section>
-      <aside class="catalog" aria-labelledby="catalogTitle"><div class="catalog-heading"><div><p class="eyebrow">YOUR PRACTICE SETLIST</p><h2 id="catalogTitle">練習歌單</h2></div><span id="songCount" role="status"></span></div>
+      <aside class="catalog" aria-labelledby="catalogTitle"><div class="catalog-heading"><div><p class="eyebrow">YOUR PRACTICE SETLIST</p><h2 id="catalogTitle" tabindex="-1">練習歌單</h2></div><span id="songCount" role="status"></span></div>
         <input id="search" type="search" placeholder="搜尋歌曲" aria-label="搜尋歌曲">
         <div class="filters" role="group" aria-label="歌單篩選"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="chant" aria-pressed="false">有提示</button><button data-filter="saved" aria-pressed="false">收藏</button></div>
         <p class="list-hint">選一首喜歡的，開始收藏與練習</p><div id="songList"></div>

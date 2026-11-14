@@ -1,20 +1,29 @@
 # RESCENE 應援練習室
 
+## With 影片優先全曲畫面複核（2026-11-06）
+
+- 完整閱讀 72 組來源歌詞畫面，並逐一檢視全部應援字卡的 0.5 秒連續圖；另做 0.1 秒像素變色掃描與更動處完整畫面邊界核對。未新增 OCR、ASR，未直接聽校或正常速度完整播放
+- 第二段副歌同樣有兩次 You：151.7–152.5、154.7–155.4 秒；第一段維持 93.2–94.0、96.2–96.9 秒。With 現為 27 張，全歌單 485 張
+- task 49–50 歡呼在 177.3 秒消失，原 178.8 秒是下層一般歌詞結束，因此只修正歡呼尾端，起點維持 173.7 秒
+- 影片字幕保留 b-b-breaks 和兩段 Outro 的 Oh；外部歌詞的額外伴唱未見於這支教學畫面，不加入應援或小本
+- 決策仍由 `with-repeat-corrections.json` 疊加，原 OCR／ledger／SRT 不覆寫；每次共用 catalog writer 寫入會另存 `chant.with-repeat-v2.json`／`.srt`
+- 複核紀錄：`video/RESCENE應援/With-影片複核.md`；這次網站僅更新本機資料與快取版本，未推送或部署
+
+## With 第一段副歌重複 You（2026-11-06）
+
+- 依使用者回報核對 01:36：同一字幕的追加 You 有兩次變黑。第一張 93.2–94.0 秒，94.0 秒恢復藍色；新增第二張 96.2–96.9 秒。With 現為 26 張，全歌單 484 張
+- 依 0.1 秒來源畫面核對重設與第二次進入；保留原片，證據在 `video/RESCENE應援/assets/you-repeat-review/`。未新增 OCR、未直接聽校或驗收正式網站實播
+- 決策保存於 `with-repeat-corrections.json`；執行 `scripts/fix_rescene_with_repeats.py` 可重套。共用 catalog writer 會套用此修正，因此官方 builder 重建不會遺失
+- 原 OCR ledger／SRT 保持原證據版本；本次修正版另存 `video/cLtl2aFq_6M/chant.with-repeat-v1.srt` 與對應 JSON，來源映射由上述 correction 疊加現行 catalog
+- 小本第一段副歌同步排兩次 You, you【You】。本次更新本機網站資料與快取版本，未 commit、push 或部署
+
 ## Inside Out 空耳校訂與 3:51 補漏（2026-11-03）
 
 - 依使用者校訂，`백! 화! 요! 란! Inside out!` 空耳改成「貝! 花! 唷! 蘭! Inside out!」；`꽃처럼` 改成「勾秋隆」
 - 補回片尾藍色 `inside out`，231.8–233.2 秒，來源 ID `cL_B5W4gBRU-95`；排除白字 `from the`。此卡先前誤列一般歌詞，現為 34 張、全歌單 483 張
 - 人工檢視 230.0–233.9 秒共 40 張、每 0.1 秒的完整來源畫面；新清單 `omission-0351-tasks.json` 與 `omission-0351-review.jpg`。沿用已完成 v2 OCR，未新增辨識執行；最後採用 `chant-boundary-tasks-blue-v3.json` 邊界清單
 - 既有 SRT、ledger 與 refined 快照以 `.before-0351` 保留在影片目錄；更新 builder 後重建資料、SRT、QA、diff 與空耳對照，不修改原片。保留原先音樂播放區間及其他提示時間
-- 此次為文字與畫面邊界核對，未完成直接聽校或正常速度播放驗收；2026-11-06 納入推送範圍
-
-## With 重複應援與歡呼尾端修正（2026-11-06）
-
-- 兩段副歌的 You 各有兩次變黑：93.2–94.0、96.2–96.9，以及 151.7–152.5、154.7–155.4 秒；With 共 27 張應援卡
-- 末段歡呼在 177.3 秒消失，原 178.8 秒是下層一般歌詞結束，因此修正歡呼尾端
-- 決策保存在 `with-repeat-corrections.json`，共用 catalog writer 會重套；`scripts/fix_rescene_with_repeats.py` 可獨立執行
-- 完整閱讀 72 組來源歌詞畫面，檢視全部應援的 0.5 秒連續圖，更動處以 0.1 秒完整畫面核對。直接聽校與正常速度完整播放尚未完成
-- 原片及 OCR 不變；存在本機來源目錄時，另存 `chant.with-repeat-v2.json`／`.srt`，不覆寫原始紀錄
+- 此次為文字與畫面邊界核對，未完成直接聽校或正常速度播放驗收；未提交或推送
 
 ## With、Inside Out 音樂播放區間（2026-11-03）
 

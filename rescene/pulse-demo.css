@@ -1,0 +1,25 @@
+:root{--gold:#42626b;--ink:#303d43;--muted:#617179;--line:#cbd4d6;color-scheme:light}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(ellipse at 70% 0,#d9e3e7 0,transparent 55%),repeating-linear-gradient(90deg,transparent 0 95px,#82979d09 95px 96px),#f2f2ed;color:var(--ink)}
+header,main{max-width:1320px;padding-left:44px;padding-right:44px}
+header{padding-top:23px;padding-bottom:23px;gap:24px}
+header .brand{font:italic 34px/1 Georgia,serif;letter-spacing:-2px;color:var(--ink)}
+header .brand span{font:8px/1.5 system-ui;letter-spacing:2px;color:var(--muted);margin-top:9px}
+header nav{display:flex;gap:30px;margin-left:auto;align-items:center}header nav a{font-size:11px;color:var(--ink);letter-spacing:1px}
+.demo-tag{font-size:8px;letter-spacing:1.3px;border-left:1px solid var(--line);padding-left:24px;color:var(--muted)}
+main{padding-top:30px}
+.hero.pulse-banner{display:flex;flex-direction:column;min-height:0;height:auto;margin-bottom:26px;padding:0;gap:0;background:#d6e0e3;border:1px solid #bccbd0;border-radius:2px;box-shadow:none;overflow:hidden}
+.pulse-banner .concept{order:0;position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:2.5;margin:0;padding:0;border:0;background:#d6e0e3;transform:none;box-shadow:none;overflow:hidden}
+.pulse-banner .concept img{position:static;display:block;width:100%;height:auto;object-fit:contain;object-position:center}
+.pulse-banner .concept:after{display:none}
+.pulse-banner .hero-copy{order:1;display:flex;align-items:center;gap:24px;width:100%;padding:18px 26px}
+.pulse-banner h1{font:400 30px/1.2 Georgia,serif;letter-spacing:2px;margin:0;color:var(--ink)}
+.pulse-banner .hero-subtitle{font-size:13px;letter-spacing:1px;color:var(--ink);margin:0}
+.pulse-banner .hero-copy>p:last-of-type{font-size:12px;color:var(--muted);margin:0 0 0 auto;max-width:none}
+.room-label{color:#536c75;padding-bottom:22px;letter-spacing:2px}.layout{grid-template-columns:minmax(0,1fr) 330px;gap:26px}.studio,.catalog{background:#f9f9f3;border:1px solid var(--line);border-radius:2px;box-shadow:none;padding:25px}.catalog{top:20px}.song-heading h2{font:400 30px Georgia,serif}.catalog-heading h2{font-size:19px;letter-spacing:2px}
+button,select{border-radius:2px;background:#f7f8f3}button:hover{background:#e1e9e9;border-color:#718b93}.video{border-color:#b6c7cb;border-radius:2px}.controls{border-radius:2px;background:#edf1ee}.transport .primary,.transport .primary:hover{background:#496770;border-color:#496770}.cue{border-radius:0;background:linear-gradient(100deg,#e1eaeb,#f3f5ef);border-left-color:#6b8891}.chant-display[data-mode=active] .cue{background:#d1e0e2}.subtitle-panel{border-radius:2px;background:#f2f5ee}.subtitle-head .subtitle-chant{color:#42626b}
+#search{border-radius:2px;background:#eff2ee}.filters button[aria-pressed=true]{background:#dce6e7;border-color:#6d8992;color:#344f58}.song{border-color:#d7dfe0}.song.selected{background:#e2ebeb;border-radius:0}.song-pick:hover,.save:hover{background:#e9eeee}.song-pick strong{font:400 17px Georgia,system-ui,serif}.song-pick small{line-height:1.5}.song-pick{padding-top:18px;padding-bottom:18px}#chantUnavailable{background:#edf2ef;border-radius:2px}::selection{background:#c2d6dc;color:#203b45}footer{color:#60747c}
+@media(max-width:850px){header,main{padding-left:22px;padding-right:22px}header nav{gap:18px}.demo-tag{display:none}.layout{grid-template-columns:1fr}.catalog{position:static}}
+@media(max-width:600px){.pulse-banner .hero-copy{display:grid;grid-template-columns:1fr;gap:5px;padding:14px 18px}.pulse-banner h1{font-size:25px;margin:0;letter-spacing:2px}.pulse-banner .hero-subtitle{font-size:11px;margin:0}.pulse-banner .hero-copy>p:last-of-type{display:none}.pulse-banner .concept{height:auto;aspect-ratio:2.5}.pulse-banner .concept img{width:100%;height:auto}}
+@media(max-width:560px){header,main{padding-left:16px;padding-right:16px}header{gap:10px}header .brand{font-size:29px}header .brand span{font-size:6px;letter-spacing:1px}header nav{gap:14px}header nav a{font-size:10px}header nav a:last-child{display:none}.room-label{font-size:8px;letter-spacing:1px}.room-label span:last-child{font-size:9px}.studio,.catalog{padding:17px}.song-heading h2{font-size:27px}.song-nav button{font-size:11px}footer{letter-spacing:1px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

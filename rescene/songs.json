@@ -19,6 +19,378 @@
         "kind": "官方 MV",
         "title": "RESCENE — LOVE ATTACK",
         "url": "https://www.youtube.com/watch?v=9XttLI0oH0I"
+      },
+      {
+        "kind": "現場版 · M COUNTDOWN",
+        "slug": "live",
+        "title": "'SPECIAL STAGE' RESCENE(리센느) - LOVE ATTACK #엠카운트다운 EP.933 | Mnet 260618 방송",
+        "url": "https://www.youtube.com/watch?v=ajhEFz1zNMQ",
+        "videoId": "ajhEFz1zNMQ",
+        "startSeconds": 9,
+        "endSeconds": 194.939,
+        "chant": {
+          "videoId": "ajhEFz1zNMQ",
+          "status": "audio_aligned_listening_pending",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "note": "沿用官方教學應援，依整曲音訊比對平移 -6.061 秒；非現場觀眾喊聲轉錄。已核對主體音訊及代表畫面，完整直接聽校待完成。",
+          "cues": [
+            {
+              "start": 16.139,
+              "end": 17.539,
+              "text": "Feeling love attack!",
+              "sourceIds": [
+                "xn12KH78Dx4-133"
+              ]
+            },
+            {
+              "start": 20.739,
+              "end": 21.739,
+              "text": "RESCENE!",
+              "sourceIds": [
+                "xn12KH78Dx4-135"
+              ]
+            },
+            {
+              "start": 24.839,
+              "end": 26.039,
+              "text": "LOVE ATTACK!",
+              "sourceIds": [
+                "xn12KH78Dx4-137"
+              ]
+            },
+            {
+              "start": 27.739,
+              "end": 28.439,
+              "text": "너!",
+              "sourceIds": [
+                "xn12KH78Dx4-139"
+              ],
+              "phoneticZh": "no!"
+            },
+            {
+              "start": 29.039,
+              "end": 30.339,
+              "text": "started",
+              "sourceIds": [
+                "xn12KH78Dx4-140"
+              ]
+            },
+            {
+              "start": 33.339,
+              "end": 34.539,
+              "text": "않지",
+              "sourceIds": [
+                "xn12KH78Dx4-143"
+              ],
+              "phoneticZh": "安七"
+            },
+            {
+              "start": 37.839,
+              "end": 38.939,
+              "text": "waiting for",
+              "sourceIds": [
+                "xn12KH78Dx4-145"
+              ]
+            },
+            {
+              "start": 39.339,
+              "end": 40.039,
+              "text": "스친",
+              "sourceIds": [
+                "xn12KH78Dx4-146"
+              ],
+              "phoneticZh": "斯親"
+            },
+            {
+              "start": 40.339,
+              "end": 41.139,
+              "text": "끌림",
+              "sourceIds": [
+                "xn12KH78Dx4-147"
+              ],
+              "phoneticZh": "哥林"
+            },
+            {
+              "start": 49.739,
+              "end": 51.439,
+              "text": "1234",
+              "sourceIds": [
+                "xn12KH78Dx4-155"
+              ],
+              "phoneticZh": "One, two, three, four"
+            },
+            {
+              "start": 57.939,
+              "end": 59.039,
+              "text": "RESCENE!",
+              "sourceIds": [
+                "xn12KH78Dx4-158"
+              ]
+            },
+            {
+              "start": 66.539,
+              "end": 67.539,
+              "text": "LOVE ATTACK!",
+              "sourceIds": [
+                "xn12KH78Dx4-161"
+              ]
+            },
+            {
+              "start": 69.239,
+              "end": 69.739,
+              "text": "SCENE!",
+              "sourceIds": [
+                "xn12KH78Dx4-162"
+              ]
+            },
+            {
+              "start": 70.939,
+              "end": 71.939,
+              "text": "RESCENE!",
+              "sourceIds": [
+                "xn12KH78Dx4-163"
+              ]
+            },
+            {
+              "start": 77.239,
+              "end": 78.739,
+              "text": "With me, With me",
+              "sourceIds": [
+                "xn12KH78Dx4-166"
+              ]
+            },
+            {
+              "start": 84.539,
+              "end": 85.739,
+              "text": "Feeling love attack!",
+              "sourceIds": [
+                "xn12KH78Dx4-169"
+              ]
+            },
+            {
+              "start": 99.839,
+              "end": 100.939,
+              "text": "Ambergris",
+              "sourceIds": [
+                "xn12KH78Dx4-178"
+              ]
+            },
+            {
+              "start": 102.039,
+              "end": 102.939,
+              "text": "드러내",
+              "sourceIds": [
+                "xn12KH78Dx4-179"
+              ],
+              "phoneticZh": "德囉內"
+            },
+            {
+              "start": 103.039,
+              "end": 104.239,
+              "text": "Beautiful",
+              "sourceIds": [
+                "xn12KH78Dx4-180"
+              ]
+            },
+            {
+              "start": 105.339,
+              "end": 106.439,
+              "text": "Fabulous",
+              "sourceIds": [
+                "xn12KH78Dx4-182"
+              ]
+            },
+            {
+              "start": 107.439,
+              "end": 108.539,
+              "text": "On and on",
+              "sourceIds": [
+                "xn12KH78Dx4-184"
+              ]
+            },
+            {
+              "start": 109.839,
+              "end": 111.639,
+              "text": "1234",
+              "sourceIds": [
+                "xn12KH78Dx4-186"
+              ],
+              "phoneticZh": "One, two, three, four"
+            },
+            {
+              "start": 118.039,
+              "end": 119.039,
+              "text": "RESCENE!",
+              "sourceIds": [
+                "xn12KH78Dx4-189"
+              ]
+            },
+            {
+              "start": 126.639,
+              "end": 127.539,
+              "text": "LOVE ATTACK!",
+              "sourceIds": [
+                "xn12KH78Dx4-192"
+              ]
+            },
+            {
+              "start": 129.239,
+              "end": 129.739,
+              "text": "SCENE!",
+              "sourceIds": [
+                "xn12KH78Dx4-193"
+              ]
+            },
+            {
+              "start": 131.039,
+              "end": 131.739,
+              "text": "RESCENE!",
+              "sourceIds": [
+                "xn12KH78Dx4-194"
+              ]
+            },
+            {
+              "start": 137.039,
+              "end": 138.639,
+              "text": "With me, With me",
+              "sourceIds": [
+                "xn12KH78Dx4-197"
+              ]
+            },
+            {
+              "start": 144.439,
+              "end": 145.739,
+              "text": "Feeling love attack!",
+              "sourceIds": [
+                "xn12KH78Dx4-200"
+              ]
+            },
+            {
+              "start": 146.239,
+              "end": 148.039,
+              "text": "I am all you need",
+              "sourceIds": [
+                "xn12KH78Dx4-201"
+              ]
+            },
+            {
+              "start": 148.039,
+              "end": 149.339,
+              "text": "I am all you need",
+              "sourceIds": [
+                "xn12KH78Dx4-201-repeat"
+              ]
+            },
+            {
+              "start": 150.639,
+              "end": 152.439,
+              "text": "I am all you need",
+              "sourceIds": [
+                "xn12KH78Dx4-203"
+              ]
+            },
+            {
+              "start": 152.439,
+              "end": 153.639,
+              "text": "I am all you need",
+              "sourceIds": [
+                "xn12KH78Dx4-203-repeat"
+              ]
+            },
+            {
+              "start": 154.539,
+              "end": 156.539,
+              "text": "（歡呼）",
+              "sourceIds": [
+                "xn12KH78Dx4-205"
+              ]
+            },
+            {
+              "start": 162.939,
+              "end": 163.939,
+              "text": "RESCENE!",
+              "sourceIds": [
+                "xn12KH78Dx4-208"
+              ]
+            },
+            {
+              "start": 171.439,
+              "end": 172.439,
+              "text": "LOVE ATTACK!",
+              "sourceIds": [
+                "xn12KH78Dx4-211"
+              ]
+            },
+            {
+              "start": 173.139,
+              "end": 174.139,
+              "text": "장면에",
+              "sourceIds": [
+                "xn12KH78Dx4-212"
+              ],
+              "phoneticZh": "將謬內"
+            },
+            {
+              "start": 175.439,
+              "end": 176.039,
+              "text": "황홀해",
+              "sourceIds": [
+                "xn12KH78Dx4-214"
+              ],
+              "phoneticZh": "晃厚嘿"
+            },
+            {
+              "start": 177.539,
+              "end": 178.539,
+              "text": "잡을 땐",
+              "sourceIds": [
+                "xn12KH78Dx4-216"
+              ],
+              "phoneticZh": "加不 店"
+            },
+            {
+              "start": 179.239,
+              "end": 180.739,
+              "text": "어우러질 땐",
+              "sourceIds": [
+                "xn12KH78Dx4-217"
+              ],
+              "phoneticZh": "喔嗚囉吉 店"
+            },
+            {
+              "start": 181.939,
+              "end": 183.839,
+              "text": "With me, With me",
+              "sourceIds": [
+                "xn12KH78Dx4-218"
+              ]
+            },
+            {
+              "start": 186.539,
+              "end": 189.339,
+              "text": "완벽하게 어울려",
+              "sourceIds": [
+                "xn12KH78Dx4-220"
+              ],
+              "phoneticZh": "完謬卡給 喔嗚聊"
+            },
+            {
+              "start": 189.439,
+              "end": 191.339,
+              "text": "Feeling love attack!",
+              "sourceIds": [
+                "xn12KH78Dx4-221"
+              ]
+            }
+          ],
+          "phoneticStatus": "draft",
+          "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名依使用者校訂使用空耳或讀音羅馬字，並非官方姓名寫法。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。",
+          "displayEndBasis": "reviewed-source-caption",
+          "derivedFrom": {
+            "videoId": "xn12KH78Dx4",
+            "offsetSeconds": -6.061
+          }
+        }
       }
     ],
     "chant": {
@@ -3897,6 +4269,259 @@
         "videoId": "cLtl2aFq_6M",
         "startSeconds": 32,
         "endSeconds": 221
+      },
+      {
+        "kind": "現場版 · Music Bank",
+        "slug": "live",
+        "title": "[K-Choreo 8K] 리센느 직캠 'With' (RESCENE Choreography) @MusicBank 261106",
+        "url": "https://www.youtube.com/watch?v=pUNac5ECLeg",
+        "videoId": "pUNac5ECLeg",
+        "startSeconds": 0,
+        "endSeconds": 189.563,
+        "chant": {
+          "videoId": "pUNac5ECLeg",
+          "status": "audio_aligned_listening_pending",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "note": "沿用官方教學應援，依整曲音訊比對平移 -31.437 秒；非現場觀眾喊聲轉錄。已核對主體音訊及代表畫面，完整直接聽校待完成。",
+          "cues": [
+            {
+              "start": 4.463,
+              "end": 8.963,
+              "text": "（歡呼）",
+              "sourceIds": [
+                "cLtl2aFq_6M-1"
+              ]
+            },
+            {
+              "start": 11.163,
+              "end": 12.963,
+              "text": "리! 센! 느!",
+              "sourceIds": [
+                "cLtl2aFq_6M-2"
+              ],
+              "phoneticZh": "RE! SCE! NE!"
+            },
+            {
+              "start": 17.063,
+              "end": 18.863,
+              "text": "oh oh oh nah",
+              "sourceIds": [
+                "cLtl2aFq_6M-4"
+              ]
+            },
+            {
+              "start": 21.363,
+              "end": 21.863,
+              "text": "（歡呼）",
+              "sourceIds": [
+                "cLtl2aFq_6M-5"
+              ]
+            },
+            {
+              "start": 23.363,
+              "end": 24.463,
+              "text": "oh oh yeah",
+              "sourceIds": [
+                "cLtl2aFq_6M-6"
+              ]
+            },
+            {
+              "start": 28.763,
+              "end": 31.263,
+              "text": "맘을 던져",
+              "sourceIds": [
+                "cLtl2aFq_6M-8"
+              ],
+              "phoneticZh": "馬餓 東揪"
+            },
+            {
+              "start": 46.463,
+              "end": 47.863,
+              "text": "리센느",
+              "sourceIds": [
+                "cLtl2aFq_6M-15"
+              ],
+              "phoneticZh": "RESCENE"
+            },
+            {
+              "start": 58.763,
+              "end": 59.663,
+              "text": "It's all",
+              "sourceIds": [
+                "cLtl2aFq_6M-19"
+              ]
+            },
+            {
+              "start": 61.763,
+              "end": 62.563,
+              "text": "You",
+              "sourceIds": [
+                "cLtl2aFq_6M-20"
+              ]
+            },
+            {
+              "start": 64.763,
+              "end": 65.463,
+              "text": "You",
+              "sourceIds": [
+                "cLtl2aFq_6M-20-repeat"
+              ]
+            },
+            {
+              "start": 69.163,
+              "end": 69.863,
+              "text": "네게 난",
+              "sourceIds": [
+                "cLtl2aFq_6M-22"
+              ],
+              "phoneticZh": "內給 南"
+            },
+            {
+              "start": 75.763,
+              "end": 77.163,
+              "text": "우릴 부를 때",
+              "sourceIds": [
+                "cLtl2aFq_6M-26"
+              ],
+              "phoneticZh": "嗚哩 普哩 爹"
+            },
+            {
+              "start": 79.363,
+              "end": 80.063,
+              "text": "감정",
+              "sourceIds": [
+                "cLtl2aFq_6M-27"
+              ],
+              "phoneticZh": "甘炯"
+            },
+            {
+              "start": 82.263,
+              "end": 82.863,
+              "text": "함성",
+              "sourceIds": [
+                "cLtl2aFq_6M-28"
+              ],
+              "phoneticZh": "喊松"
+            },
+            {
+              "start": 87.263,
+              "end": 90.163,
+              "text": "맘을 던져",
+              "sourceIds": [
+                "cLtl2aFq_6M-30"
+              ],
+              "phoneticZh": "馬餓 東揪"
+            },
+            {
+              "start": 104.963,
+              "end": 106.463,
+              "text": "리센느",
+              "sourceIds": [
+                "cLtl2aFq_6M-36"
+              ],
+              "phoneticZh": "RESCENE"
+            },
+            {
+              "start": 117.263,
+              "end": 118.063,
+              "text": "It's all",
+              "sourceIds": [
+                "cLtl2aFq_6M-40"
+              ]
+            },
+            {
+              "start": 120.263,
+              "end": 121.063,
+              "text": "You",
+              "sourceIds": [
+                "cLtl2aFq_6M-41"
+              ]
+            },
+            {
+              "start": 123.263,
+              "end": 123.963,
+              "text": "You",
+              "sourceIds": [
+                "cLtl2aFq_6M-41-repeat"
+              ]
+            },
+            {
+              "start": 127.663,
+              "end": 128.363,
+              "text": "네게 난",
+              "sourceIds": [
+                "cLtl2aFq_6M-43"
+              ],
+              "phoneticZh": "內給 南"
+            },
+            {
+              "start": 139.063,
+              "end": 141.463,
+              "text": "Nothin’ b-b-breaks",
+              "sourceIds": [
+                "cLtl2aFq_6M-48"
+              ]
+            },
+            {
+              "start": 142.263,
+              "end": 145.863,
+              "text": "（歡呼）",
+              "sourceIds": [
+                "cLtl2aFq_6M-49"
+              ]
+            },
+            {
+              "start": 153.363,
+              "end": 156.963,
+              "text": "정원이 진경은 미나미\n이예빈 김가영",
+              "sourceIds": [
+                "cLtl2aFq_6M-54"
+              ],
+              "phoneticZh": "衝丸妮 金ㄍㄧㄛ恩 Minami\n伊耶彬 金嘎勇"
+            },
+            {
+              "start": 157.263,
+              "end": 159.163,
+              "text": "리마인 함! 께! 해! 줘!",
+              "sourceIds": [
+                "cLtl2aFq_6M-55"
+              ],
+              "phoneticZh": "REMINE 喊! 給! 嘿! 邱!"
+            },
+            {
+              "start": 162.763,
+              "end": 163.463,
+              "text": "네게 난",
+              "sourceIds": [
+                "cLtl2aFq_6M-57"
+              ],
+              "phoneticZh": "內給 南"
+            },
+            {
+              "start": 174.463,
+              "end": 175.163,
+              "text": "네게 난",
+              "sourceIds": [
+                "cLtl2aFq_6M-65"
+              ],
+              "phoneticZh": "內給 南"
+            },
+            {
+              "start": 186.163,
+              "end": 188.763,
+              "text": "（歡呼）",
+              "sourceIds": [
+                "cLtl2aFq_6M-72"
+              ]
+            }
+          ],
+          "phoneticStatus": "draft",
+          "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名依使用者校訂使用空耳或讀音羅馬字，並非官方姓名寫法。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。",
+          "derivedFrom": {
+            "videoId": "cLtl2aFq_6M",
+            "offsetSeconds": -31.437
+          }
+        }
       }
     ],
     "chant": {
@@ -4156,6 +4781,313 @@
         "videoId": "cL_B5W4gBRU",
         "startSeconds": 24,
         "endSeconds": 237
+      },
+      {
+        "kind": "現場版 · Show Champion",
+        "slug": "live",
+        "title": "[쇼챔직캠 4K] RESCENE (리센느) - 백화요란 (Inside Out) | Show Champion | EP.618 | 261111",
+        "url": "https://www.youtube.com/watch?v=_hvATW8DixU",
+        "videoId": "_hvATW8DixU",
+        "startSeconds": 0,
+        "endSeconds": 213.9,
+        "chant": {
+          "videoId": "_hvATW8DixU",
+          "status": "audio_aligned_listening_pending",
+          "timingBasis": "audio_cross_correlation_transfer",
+          "note": "沿用官方教學應援，依整曲音訊比對平移 -23.100 秒；非現場觀眾喊聲轉錄。已核對主體音訊及代表畫面，完整直接聽校待完成。",
+          "cues": [
+            {
+              "start": 6.1,
+              "end": 10.1,
+              "text": "백! 화! 요! 란! Inside out!",
+              "sourceIds": [
+                "cL_B5W4gBRU-4"
+              ],
+              "phoneticZh": "貝! 花! 唷! 蘭! Inside out!"
+            },
+            {
+              "start": 12.8,
+              "end": 13.8,
+              "text": "너!",
+              "sourceIds": [
+                "cL_B5W4gBRU-6"
+              ],
+              "phoneticZh": "no!"
+            },
+            {
+              "start": 23.2,
+              "end": 25.7,
+              "text": "나!",
+              "sourceIds": [
+                "cL_B5W4gBRU-11"
+              ],
+              "phoneticZh": "那!"
+            },
+            {
+              "start": 36.3,
+              "end": 37.8,
+              "text": "꽃처럼",
+              "sourceIds": [
+                "cL_B5W4gBRU-16"
+              ],
+              "phoneticZh": "勾秋隆"
+            },
+            {
+              "start": 39.2,
+              "end": 40.9,
+              "text": "눈부셔",
+              "sourceIds": [
+                "cL_B5W4gBRU-17"
+              ],
+              "phoneticZh": "嫩不修"
+            },
+            {
+              "start": 47.5,
+              "end": 48.5,
+              "text": "Do you?",
+              "sourceIds": [
+                "cL_B5W4gBRU-20"
+              ]
+            },
+            {
+              "start": 51.1,
+              "end": 53.4,
+              "text": "Flower, flower",
+              "sourceIds": [
+                "cL_B5W4gBRU-23"
+              ]
+            },
+            {
+              "start": 56.0,
+              "end": 57.5,
+              "text": "higher, higher",
+              "sourceIds": [
+                "cL_B5W4gBRU-25"
+              ]
+            },
+            {
+              "start": 62.6,
+              "end": 63.2,
+              "text": "oh my",
+              "sourceIds": [
+                "cL_B5W4gBRU-28"
+              ]
+            },
+            {
+              "start": 68.5,
+              "end": 71.0,
+              "text": "Inside out",
+              "sourceIds": [
+                "cL_B5W4gBRU-30"
+              ]
+            },
+            {
+              "start": 72.3,
+              "end": 72.9,
+              "text": "더 더",
+              "sourceIds": [
+                "cL_B5W4gBRU-32"
+              ],
+              "phoneticZh": "兜 兜"
+            },
+            {
+              "start": 82.3,
+              "end": 82.9,
+              "text": "더 더",
+              "sourceIds": [
+                "cL_B5W4gBRU-37"
+              ],
+              "phoneticZh": "兜 兜"
+            },
+            {
+              "start": 90.0,
+              "end": 90.8,
+              "text": "Yeah yeah",
+              "sourceIds": [
+                "cL_B5W4gBRU-40"
+              ]
+            },
+            {
+              "start": 96.5,
+              "end": 97.6,
+              "text": "Oh la la",
+              "sourceIds": [
+                "cL_B5W4gBRU-43"
+              ]
+            },
+            {
+              "start": 97.9,
+              "end": 99.3,
+              "text": "Fall in love",
+              "sourceIds": [
+                "cL_B5W4gBRU-45"
+              ]
+            },
+            {
+              "start": 109.7,
+              "end": 111.0,
+              "text": "보여줘",
+              "sourceIds": [
+                "cL_B5W4gBRU-51"
+              ],
+              "phoneticZh": "波唷邱"
+            },
+            {
+              "start": 116.6,
+              "end": 117.8,
+              "text": "순간",
+              "sourceIds": [
+                "cL_B5W4gBRU-54"
+              ],
+              "phoneticZh": "孫甘"
+            },
+            {
+              "start": 119.4,
+              "end": 121.0,
+              "text": "my scent",
+              "sourceIds": [
+                "cL_B5W4gBRU-55"
+              ]
+            },
+            {
+              "start": 127.5,
+              "end": 128.3,
+              "text": "Do you?",
+              "sourceIds": [
+                "cL_B5W4gBRU-58"
+              ]
+            },
+            {
+              "start": 131.1,
+              "end": 133.4,
+              "text": "Flower, flower",
+              "sourceIds": [
+                "cL_B5W4gBRU-61"
+              ]
+            },
+            {
+              "start": 136.1,
+              "end": 137.6,
+              "text": "higher, higher",
+              "sourceIds": [
+                "cL_B5W4gBRU-63"
+              ]
+            },
+            {
+              "start": 142.5,
+              "end": 143.2,
+              "text": "oh my",
+              "sourceIds": [
+                "cL_B5W4gBRU-65"
+              ]
+            },
+            {
+              "start": 148.4,
+              "end": 150.4,
+              "text": "Inside out",
+              "sourceIds": [
+                "cL_B5W4gBRU-67"
+              ]
+            },
+            {
+              "start": 161.0,
+              "end": 161.6,
+              "text": "이",
+              "sourceIds": [
+                "cL_B5W4gBRU-72"
+              ],
+              "phoneticZh": "伊"
+            },
+            {
+              "start": 162.2,
+              "end": 162.9,
+              "text": "me",
+              "sourceIds": [
+                "cL_B5W4gBRU-73"
+              ]
+            },
+            {
+              "start": 164.4,
+              "end": 165.7,
+              "text": "right now",
+              "sourceIds": [
+                "cL_B5W4gBRU-74"
+              ]
+            },
+            {
+              "start": 171.1,
+              "end": 173.5,
+              "text": "Flower, flower",
+              "sourceIds": [
+                "cL_B5W4gBRU-78"
+              ]
+            },
+            {
+              "start": 176.0,
+              "end": 177.5,
+              "text": "higher, higher",
+              "sourceIds": [
+                "cL_B5W4gBRU-80"
+              ]
+            },
+            {
+              "start": 182.5,
+              "end": 183.2,
+              "text": "oh my",
+              "sourceIds": [
+                "cL_B5W4gBRU-82"
+              ]
+            },
+            {
+              "start": 188.4,
+              "end": 190.9,
+              "text": "Inside out",
+              "sourceIds": [
+                "cL_B5W4gBRU-84"
+              ]
+            },
+            {
+              "start": 192.2,
+              "end": 192.8,
+              "text": "더 더",
+              "sourceIds": [
+                "cL_B5W4gBRU-86"
+              ],
+              "phoneticZh": "兜 兜"
+            },
+            {
+              "start": 202.2,
+              "end": 202.8,
+              "text": "더 더",
+              "sourceIds": [
+                "cL_B5W4gBRU-92"
+              ],
+              "phoneticZh": "兜 兜"
+            },
+            {
+              "start": 208.7,
+              "end": 210.1,
+              "text": "inside out",
+              "sourceIds": [
+                "cL_B5W4gBRU-95"
+              ]
+            },
+            {
+              "start": 210.3,
+              "end": 213.5,
+              "text": "（歡呼）",
+              "sourceIds": [
+                "cL_B5W4gBRU-96"
+              ]
+            }
+          ],
+          "phoneticStatus": "draft",
+          "phoneticNote": "中文空耳為近似讀音初稿，尚未逐句聽校；中文字不照國語聲調念，ㄎ／ㄆ／ㄊ為收尾音，不另喊一拍，節奏與延音請跟著影片。團名、藝名與粉絲名使用英文，本名依使用者校訂使用空耳或讀音羅馬字，並非官方姓名寫法。RESCENE 拆拍以 RE! SCE! NE! 提示三拍，請依下方韓文喊。",
+          "derivedFrom": {
+            "videoId": "cL_B5W4gBRU",
+            "offsetSeconds": -23.1
+          }
+        }
       }
     ],
     "chant": {

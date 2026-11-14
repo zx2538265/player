@@ -19,6 +19,12 @@ def write(path, value):
         apply_with_repeats(value)
         from apply_rescene_phonetics import apply_phonetics
         apply_phonetics(value)
+        from add_rescene_with_live import apply_live_version
+        apply_live_version(value)
+        from add_rescene_inside_out_live import apply_live_version as apply_inside_out_live
+        apply_inside_out_live(value)
+        from add_rescene_love_attack_live import apply_live_version as apply_love_attack_live
+        apply_love_attack_live(value)
         from fix_rescene_with_repeats import save_reviewed_track
         save_reviewed_track(value)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

@@ -39,3 +39,104 @@ body.focus .video{max-height:none;min-height:0;aspect-ratio:16/9}
 .ktv-panel{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;align-content:start}.ktv-heading{grid-column:1;grid-row:1;margin:0;min-width:0}.room-settings{grid-column:2;grid-row:1;align-self:center;margin:0}.room-settings[open]{grid-column:1 / -1;grid-row:2}.ktv-panel>.continuous-status,.ktv-panel>.lyric-legend,.ktv-panel>#chantUnavailable,.ktv-panel>.ktv-list,.ktv-panel>.reading-help{grid-column:1 / -1}.lyric-legend{display:none}.ktv-panel .follow-actions{flex-wrap:nowrap}.room-settings>summary{white-space:nowrap}.ktv-list{margin-top:8px}.follow-hint{font-size:10px}
 @media(max-width:1100px) and (min-width:901px){.follow-hint{display:none}.follow-actions{margin-left:0}}
 @media(max-width:900px){.ktv-panel{column-gap:8px}.ktv-heading{gap:4px}.follow-actions{gap:8px}.follow-actions .continuous-control label{font-size:11px}.ktv-heading .follow-actions button{font-size:10px;padding:4px}.room-settings>summary{font-size:10px}.ktv-list{margin-top:0}.media-column #status{font-size:10px}}
+/* Practice layout v7: persistent identity and full chants. */
+header, main { max-width:1600px; }
+.layout { display:grid; grid-template-columns:240px minmax(0,1fr); gap:24px; align-items:start; }
+.studio { grid-column:2; grid-row:1; min-width:0; padding:24px; }
+.catalog { grid-column:1; grid-row:1; position:sticky; top:20px; margin:0; padding:18px 14px; min-width:0; }
+.catalog-heading { gap:8px; }
+.catalog-heading h2 { font-size:20px; }
+#songCount { white-space:nowrap; }
+.catalog #search { margin:18px 0 10px; }
+.filters { display:flex; margin:0; gap:4px; }
+.filters button { flex:1; min-width:0; padding:6px; }
+#songList { grid-template-columns:1fr; max-height:560px; gap:6px; }
+.song-pick { gap:8px; padding:12px 8px; }
+.song-pick strong { font:600 14px/1.5 system-ui,sans-serif; }
+.song-pick small { font-size:11px; }
+.song-heading { border-bottom:1px solid var(--line); padding-bottom:18px; }
+.song-heading h2 { font-size:30px; }
+.practice-workspace { column-gap:24px; }
+.video, body.focus .video { min-height:0; max-height:none; aspect-ratio:16/9; }
+.ktv-panel { display:flex; flex-direction:column; padding:0; }
+.ktv-heading { flex-wrap:nowrap; gap:8px; }
+.ktv-heading .lyric-legend { flex:1; min-width:0; margin:0; font-size:12px; line-height:1.5; }
+.ktv-heading .follow-actions { flex:0 0 auto; width:auto; flex-wrap:nowrap; gap:8px; margin-left:0; }
+.ktv-heading .follow-actions button { border:1px solid var(--line); background:#fff; padding:8px; font-size:12px; min-height:44px; }
+.ktv-heading .follow-actions button[aria-pressed=false] { color:#fff; background:var(--gold); }
+.follow-actions .continuous-control label { min-height:44px; font-size:12px; }
+.room-settings, .room-settings[open] { align-self:stretch; margin:4px 0; }
+.room-settings>summary { min-height:44px; padding:10px 0; font-size:12px; }
+.chant-settings { font-size:12px; }
+.chant-settings select { min-height:44px; }
+.lyric-legend { display:block; margin:6px 0 10px; font-size:12px; }
+.ktv-list { flex:none; height:420px; margin:0; padding:12px 8px; border:1px solid var(--line); border-radius:12px; background:#f2f6f5; }
+.ktv-time { display:block; font-size:11px; margin-bottom:5px; }
+.ktv-row[data-state=active] .ktv-time { font-weight:700; }
+.ktv-row[data-state=next] .ktv-time { color:var(--gold); font-weight:700; font-variant-numeric:tabular-nums; }
+.ktv-row[data-state=past] { color:#60747c; }
+.ktv-panel>.controls { margin:12px 0 0; padding:12px; border:1px solid var(--line); border-radius:12px; background:#edf3f2; }
+.ktv-panel .transport { margin:0 0 8px; }
+.ktv-panel .transport button { min-height:44px; padding:8px 4px; }
+.ktv-panel .tools { display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:12px; }
+.ktv-panel .tools button, .ktv-panel .tools label { min-height:44px; font-size:12px; }
+.ktv-panel .tools select { min-height:44px; }
+.reading-help, .catalog-note, .source { font-size:12px; }
+.reading-help summary, .catalog-note summary, .source summary { min-height:44px; padding:10px 0; cursor:pointer; }
+body.focus header, body.focus .hero.pulse-banner { display:flex; }
+body.focus .layout { display:block; max-width:none; }
+body.focus .ktv-list { height:520px; }
+@media(max-width:1279px) {
+  .layout { grid-template-columns:minmax(0,1fr); }
+  .studio { grid-column:1; grid-row:1; }
+  .catalog { grid-column:1; grid-row:2; position:static; }
+  #songList { grid-template-columns:repeat(3,minmax(0,1fr)); max-height:360px; }
+}
+@media(max-width:900px) {
+  .studio { padding:20px; }
+  #songList { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .ktv-list { height:380px; }
+}
+@media(max-width:540px) {
+  header, main { padding-left:12px; padding-right:12px; }
+  .studio { padding:14px; }
+  .song-heading { align-items:flex-start; }
+  .song-heading h2 { font-size:25px; }
+  .song-heading button { font-size:11px; padding:8px; }
+  .song-nav { flex-wrap:wrap; }
+  .song-nav select { order:-1; flex:1 0 100%; width:100%; }
+  .song-nav button { flex:1; }
+  .ktv-heading .follow-actions { width:auto; gap:6px; }
+  .ktv-heading .lyric-legend, .ktv-heading .follow-actions button, .ktv-heading .continuous-control label { font-size:11px; }
+  .ktv-heading .follow-actions button { padding:6px; }
+  .ktv-row { padding:16px 8px; }
+  .ktv-row strong { font-size:calc(21px * var(--scale)); }
+  .ktv-list { height:360px; }
+  #songList { grid-template-columns:1fr; }
+  body.focus .ktv-list { height:440px; }
+}
+.source-choice { display:flex; flex-direction:column; align-items:flex-start; gap:6px; margin:0 0 14px; padding:0; }
+.source-choice>span { color:var(--muted); font-size:12px; }
+.source-buttons { display:flex; flex-wrap:wrap; gap:8px; width:100%; }
+.source-buttons button { min-height:36px; padding:6px 12px; border:1px solid #7295a2; border-radius:2px; background:transparent; color:var(--gold); font-size:12px; font-weight:700; }
+.source-buttons button:hover { background:#e2ecee; border-color:var(--gold); }
+.source-buttons button[aria-pressed=true] { background:var(--gold); border-color:var(--gold); color:#fff; }
+@media(max-width:540px) {
+  .source-buttons { gap:8px; }
+  .source-buttons button { flex:0 1 auto; min-height:40px; padding:6px 10px; font-size:12px; }
+}
+/* Shared header row keeps the video and chant frame at the same top edge. */
+.practice-workspace { grid-template-rows:auto auto 1fr; row-gap:12px; }
+.practice-workspace>.source-choice { grid-column:1; grid-row:1; margin:0; align-self:center; }
+.practice-workspace>.ktv-heading { grid-column:2; grid-row:1; margin:0; align-self:center; }
+.practice-workspace>.media-column { grid-column:1; grid-row:2; }
+.practice-workspace>.ktv-panel { grid-column:2; grid-row:2 / span 2; }
+.practice-workspace>.practice-extras { grid-column:1; grid-row:3; }
+@media(max-width:900px) {
+  .practice-workspace { grid-template-rows:none; grid-auto-rows:auto; }
+  .practice-workspace>.source-choice { grid-column:1; grid-row:auto; order:0; }
+  .practice-workspace>.media-column { grid-column:1; grid-row:auto; order:1; }
+  .practice-workspace>.ktv-heading { grid-column:1; grid-row:auto; order:2; }
+  .practice-workspace>.ktv-panel { grid-column:1; grid-row:auto; order:3; }
+  .practice-workspace>.practice-extras { grid-column:1; grid-row:auto; order:4; }
+}

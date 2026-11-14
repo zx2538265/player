@@ -1,0 +1,56 @@
+/* New practice interactions, using the original BABYMONSTER theme. */
+.layout{grid-template-columns:240px minmax(0,1fr);gap:24px}
+.studio{grid-column:2;grid-row:1}
+.catalog{grid-column:1;grid-row:1;padding:18px 14px;min-width:0}
+.catalog-heading{gap:8px}#songCount{white-space:nowrap}
+.practice-workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 24px;align-items:start}
+.source-choice{grid-column:1;grid-row:1;align-self:center}
+.source-buttons{display:flex;flex-wrap:wrap;gap:8px}
+.source-buttons button{font-size:12px;padding:6px 10px}
+.source-buttons button[aria-pressed=true]{background:var(--gold);color:#0c1b27;border-color:var(--gold)}
+.ktv-heading{grid-column:2;grid-row:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+.lyric-legend{margin:0;font-size:11px;color:var(--muted)}
+.follow-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.follow-actions .continuous-control{margin:0}
+.follow-actions button{font-size:11px;padding:6px 8px}
+.media-column{grid-column:1;grid-row:2;min-width:0}
+.practice-extras{grid-column:1;grid-row:3;min-width:0}
+.ktv-panel{grid-column:2;grid-row:2 / span 2;min-width:0;--scale:1}
+.video,body.focus .video{min-height:0;max-height:none;aspect-ratio:16/9}
+.ktv-list{position:relative;height:420px;overflow:auto;scrollbar-width:thin;scrollbar-color:var(--line) #101e2c;padding:12px 8px;border:1px solid var(--line);border-radius:12px;background:#101e2c}
+.ktv-row{display:block;width:100%;text-align:center;min-height:80px;margin:0 0 8px;padding:18px 12px;border:0;border-left:3px solid transparent;background:transparent}
+.ktv-row:disabled{opacity:1;color:var(--muted)}
+.ktv-row strong,.ktv-row small{display:block;white-space:pre-line;overflow-wrap:anywhere}
+.ktv-row strong{font-size:calc(24px * var(--scale));line-height:1.5;font-weight:850}
+.ktv-row small{font-size:calc(14px * var(--scale));line-height:1.5;color:var(--muted);margin-top:8px}
+.ktv-time{display:block;font-size:11px;color:var(--muted);margin-bottom:5px}
+.ktv-row[data-state=active]{background:#25465e;border-left-color:var(--gold);color:var(--gold)}
+.ktv-row[data-state=next]{background:#142334;color:var(--ink)}
+.ktv-row[data-state=next] .ktv-time{color:var(--gold)}
+.ktv-row[data-state=past]{color:var(--muted)}
+.chant-timeline{margin-top:10px}
+.chant-clock{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.ktv-status{text-align:center;margin:0}.chant-clock>span{flex-shrink:0}
+.ktv-markers{position:relative;height:24px;margin-top:8px;background:#142334;border-radius:6px;overflow:hidden}
+.ktv-markers:after{content:'';position:absolute;top:0;bottom:0;left:var(--position,0%);width:2px;background:var(--ink);pointer-events:none}
+.ktv-marker{position:absolute;top:4px;height:16px;min-height:0;min-width:2px;padding:0;border:0;border-radius:2px;background:#52778f}
+.ktv-marker[data-state=active]{background:var(--gold)}
+.ktv-panel>.controls{margin:12px 0;padding:12px}
+.ktv-panel .transport{margin:0 0 8px;gap:6px}.ktv-panel .transport button{padding:8px 4px;font-size:12px}
+.ktv-panel .tools{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ktv-panel .tools label{flex-wrap:wrap;white-space:normal}
+.continuous-status,.room-settings,.reading-help{font-size:11px;color:var(--muted)}
+.continuous-status:empty{display:none}
+.room-settings summary,.reading-help summary{min-height:44px;padding:10px 0;cursor:pointer}
+.room-settings[open]{padding:0 12px 12px;background:#101e2c;border:1px solid var(--line);border-radius:8px}
+.chant-settings{display:flex;flex-wrap:wrap;gap:12px}.chant-settings label{display:flex;align-items:center;gap:6px}
+.reading-help{border-top:1px solid var(--line);margin-top:8px}
+body.focus .layout{max-width:none}body.focus .ktv-list{height:520px}
+@media(max-width:1100px){.layout{grid-template-columns:minmax(0,1fr)}.studio{grid-column:1;grid-row:1}.catalog{grid-column:1;grid-row:2;position:static}#songList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;max-height:360px}}
+@media(max-width:760px){.practice-workspace{display:flex;flex-direction:column;gap:12px}.practice-workspace>*{width:100%}.source-choice{order:0}.media-column{order:1}.ktv-heading{order:2}.ktv-panel{order:3}.practice-extras{order:4}.ktv-list{height:360px}.ktv-row strong{font-size:calc(21px * var(--scale))}body.focus .ktv-list{height:440px}}
+@media(max-width:480px){#songList{grid-template-columns:1fr}.ktv-heading{align-items:flex-start}.follow-actions{width:100%;justify-content:space-between}.chant-settings select{max-width:100%}}
+
+/* Keep touch scrolling native; double taps are handled by the cue gesture. */
+.ktv-list{touch-action:pan-y pinch-zoom;overscroll-behavior-y:contain}
+.ktv-row{touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none}
+.ktv-heading{flex-wrap:wrap}.ktv-heading .lyric-legend{flex-basis:100%;white-space:normal}

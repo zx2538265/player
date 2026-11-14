@@ -68,7 +68,7 @@
 ## 韓文應援空耳初稿（2026-10-26）
 
 - 11 首、122 張含韓文卡片（97 種完整卡片文字）新增 `phoneticZh`：大字英文名字／空耳，小字保留韓文原文，預覽與下一句同步套用。原文、來源 ID、421 張卡片及時間軸保留。
-- 藝名用 Woni、Liv、Minami、May、Zena，團名用 RESCENE，粉絲名用 REMINE。依使用者校訂，정원이 使用「衝丸妮」、진경은 使用「金ㄍㄧㄛ恩」、미나미 使用 Minami；이예빈 使用「伊耶彬」、김가영 使用「金嘎勇」，皆為使用者指定的空耳寫法。拆拍團名使用 RE! SCE! NE!，依韓文喊三拍。
+- 藝名用 Woni、Liv、Minami、May、Zena，團名用 RESCENE，粉絲名用 REMINE。依使用者校訂，정원이 使用「衝丸妮」、진경은 使用「金kiann恩」、미나미 使用 Minami；이예빈 使用「伊耶彬」、김가영 使用「kim嘎勇」，皆為使用者指定的空耳寫法。拆拍團名使用 RE! SCE! NE!，依韓文喊三拍。
 - 全部為 `draft`，依韓文文字讀音製作，尚未逐句直接聽校；不能視為正式讀音、同步或全卡版面驗收。中文字不依國語聲調念，收尾注音不另喊一拍；保留少量拉丁音節輔助近似發音。
 - 用字維護於 [phonetics.zh.json](phonetics.zh.json)，逐卡對照為 [phonetic-review.tsv](phonetic-review.tsv)。執行 `python scripts/apply_rescene_phonetics.py` 更新網站與對照表。全歌單、YoYo、Busy Boy builder 共用的 catalog 寫入程序也會重新套用對照；原 OCR ledger 與 SRT 仍是韓文證據，不改成空耳。
 - 本次驗證涵蓋資料覆蓋率、來源與時間軸不變、重套一致性、倒數／暫停／切歌／結束顯示。內嵌瀏覽器無法連線本機預覽，320px／390px／桌機實際版面、YouTube 實播及全曲聽校待完成。

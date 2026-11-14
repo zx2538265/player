@@ -115,8 +115,8 @@ test('player integration: automatic overlay, seeking, pause, rate, song changes 
   assert.deepEqual(s.get('subtitleText').children.map(c=>c.className),['subtitle-lyric','subtitle-chant','subtitle-lyric']);
   p.state=2;s.tick();assert.equal(s.get('subtitleText').children[1].tagName,'strong');
   p.rate=.5;s.tick();assert.equal(s.get('subtitleText').children[1].tagName,'strong');
-  s.get('chantEnabled').checked=false;s.get('chantEnabled').onchange();
-  assert.equal(s.get('subtitleDisplay').hidden,false);assert.equal(s.get('chantDisplay').hidden,true);
+  s.get('wordingMode').value='original';s.get('wordingMode').onchange();
+  assert.equal(s.get('subtitleDisplay').hidden,false);assert.ok(s.get('ktvList').children.length);
   s.get('seek').value='0';s.get('seek').oninput();s.tick();assert.equal(s.get('subtitleText').textContent,'');
   s.get('seek').value=String(marked[7].start);s.get('seek').oninput();s.tick();
   assert.equal(s.get('subtitleText').textContent,'You say both (both) both (both)');
@@ -131,7 +131,7 @@ test('player integration: automatic overlay, seeking, pause, rate, song changes 
   next.state=0;s.tick();assert.equal(s.get('subtitleText').textContent,'');
   next.state=1;next.time=173.9;s.tick();assert.equal(next.state,1);
   next.time=174;s.tick();assert.equal(next.state,2);
-  assert.equal(s.get('chantLabel').textContent,'本首練習結束');
+  assert.equal(s.get('ktvStatus').textContent,'本首練習結束');
 });
 
  test('CLIK CLAK response entrances exclude preceding lyrics and gaps between responses', () => {

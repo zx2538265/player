@@ -140,3 +140,8 @@ body.focus .ktv-list { height:520px; }
   .practice-workspace>.ktv-panel { grid-column:1; grid-row:auto; order:3; }
   .practice-workspace>.practice-extras { grid-column:1; grid-row:auto; order:4; }
 }
+
+/* Keep touch scrolling native; double taps are handled by the cue gesture. */
+.ktv-list{touch-action:pan-y pinch-zoom;overscroll-behavior-y:contain}
+.ktv-row{touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none}
+.ktv-heading{flex-wrap:wrap}.ktv-heading .lyric-legend{flex-basis:100%;white-space:normal}

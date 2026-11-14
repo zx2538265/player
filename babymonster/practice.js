@@ -1,9 +1,100 @@
 'use strict';
 const $ = id => document.getElementById(id);
 let pendingPlay = false;
+let selectedSource = 0;
 let segmentEnded = false;
 let cueTarget = null, loopTarget = null, catalogFilter = 'all';
 let preferences = {}, favorites = new Set();
+let ktvFollow = true, ktvRows = [], ktvMarks = [], ktvActive = -1;
+function setKtvFollow(value) {
+  ktvFollow = value;
+  $('ktvFollow').setAttribute('aria-pressed', String(value));
+  $('ktvFollow').textContent = value ? '自動跟隨：開' : '回到目前句';
+  if (value) ktvActive = -1;
+}
+let pendingCueTap = null;
+function bindCueGesture(row, activate) {
+  let press = null;
+  row.onpointerdown = event => {
+    if (event.button !== 0) return;
+    setKtvFollow(false);
+    press = {id:event.pointerId, x:event.clientX, y:event.clientY, time:event.timeStamp, scroll:$('ktvList').scrollTop};
+  };
+  row.onpointermove = event => {
+    if (press && (Math.abs(event.clientX - press.x) > 10 || Math.abs(event.clientY - press.y) > 10)) {
+      press = null; pendingCueTap = null;
+    }
+  };
+  row.onpointercancel = () => { press = null; pendingCueTap = null; };
+  row.onpointerup = event => {
+    const start = press; press = null;
+    if (!start || event.pointerId !== start.id || event.timeStamp - start.time > 500 ||
+        Math.abs(event.clientX - start.x) > 10 || Math.abs(event.clientY - start.y) > 10 ||
+        $('ktvList').scrollTop !== start.scroll) { pendingCueTap = null; return; }
+    const previous = pendingCueTap;
+    pendingCueTap = {row, time:event.timeStamp, x:event.clientX, y:event.clientY};
+    if (previous?.row === row && event.timeStamp - previous.time <= 350 &&
+        Math.abs(event.clientX - previous.x) <= 24 && Math.abs(event.clientY - previous.y) <= 24) {
+      pendingCueTap = null; activate();
+    }
+  };
+  // Keyboard and assistive activation remain a single action; pointer clicks are handled above.
+  row.onclick = event => { if (event.detail === 0) { pendingCueTap = null; activate(); } };
+}
+function renderKtv() {
+  pendingCueTap = null;
+  ktvRows = []; ktvMarks = []; ktvActive = -1;
+  setKtvFollow(true);
+  $('ktvList').replaceChildren(); $('ktvMarkers').replaceChildren();
+  const cues = practiceCues(), range = bounds();
+  const end = range.end ?? cues.at(-1)?.end ?? range.start + 1;
+  cues.forEach((cue, index) => {
+    const row = document.createElement('button'); row.className = 'ktv-row';
+    const time = document.createElement('span'); time.className = 'ktv-time'; time.textContent = format(cue.start);
+    const words = document.createElement('span'), primary = document.createElement('strong');
+    const wording = preferences.wording || 'both';
+    primary.textContent = wording === 'original' ? cue.text : cue.phoneticZh || cue.text; words.append(primary);
+    if (cue.phoneticZh && wording === 'both') { const original = document.createElement('small'); original.textContent = cue.text; words.append(original); }
+    row.append(time, words);
+    row.setAttribute('aria-label', `${format(cue.start)} ${primary.textContent}，點兩下從這句前 3 秒播放`);
+    const activate = () => { setKtvFollow(true); jumpToCue(index, true); };
+    bindCueGesture(row, activate);
+    const mark = document.createElement('button'); mark.className = 'ktv-marker';
+    mark.style.left = `${100 * (Math.max(range.start, cue.start) - range.start) / (end - range.start)}%`;
+    mark.style.width = `${100 * (Math.min(end, cue.end) - Math.max(range.start, cue.start)) / (end - range.start)}%`;
+    mark.title = `${format(cue.start)} · ${cue.phoneticZh || cue.text}`;
+    mark.setAttribute('aria-label', mark.title); mark.tabIndex = -1;
+    mark.onclick = activate;
+    ktvRows.push(row); ktvMarks.push(mark); $('ktvList').append(row); $('ktvMarkers').append(mark);
+  });
+}
+function updateKtv() {
+  const cues = practiceCues(), visible = cues.length > 0;
+  const time = ready ? player.getCurrentTime() : bounds().start;
+  const range = bounds(), end = range.end ?? cues.at(-1)?.end ?? range.start + 1;
+  $('ktvMarkers').style.setProperty('--position', `${Math.max(0, Math.min(100, 100 * (time - range.start) / (end - range.start)))}%`);
+  $('ktvElapsed').textContent = format(time);
+  $('ktvDuration').textContent = format(range.end ?? (ready ? player.getDuration() : 0));
+  const active = segmentEnded ? -1 : cues.findIndex(c => c.start <= time && time < c.end);
+  const next = segmentEnded ? -1 : cues.findIndex(c => c.start > time);
+  const rate = ready ? player.getPlaybackRate() || 1 : 1;
+  const state = ready ? player.getPlayerState() : -1;
+  ktvRows.forEach((row, i) => {
+    row.disabled = !ready; ktvMarks[i].disabled = !ready;
+    row.dataset.state = i === active ? 'active' : i === next ? 'next' : cues[i].end <= time ? 'past' : 'future';
+    row.setAttribute('aria-current', i === active ? 'true' : 'false');
+    ktvMarks[i].dataset.state = row.dataset.state;
+    const countdown = i === next && ready ? ` · 下一句 ${Math.ceil((cues[i].start - time) / rate)} 秒${state === 3 ? '（緩衝中）' : state !== 1 ? '（暫停）' : ''}` : i === next ? ' · 下一句' : i === active ? ' · 目前句' : '';
+    row.children[0].textContent = format(cues[i].start) + countdown;
+  });
+  $('ktvStatus').textContent = !cues.length ? '本首尚無應援提示' : !ready ? '等待影片就緒 · 可先閱讀應援' : segmentEnded ? '本首練習結束' : player.getPlayerState() === 3 ? '影片緩衝中…' : player.getPlayerState() !== 1 ? '按播放，或點兩下應援開始練習' : active >= 0 ? `本句應援 · ${active + 1} / ${cues.length}` : next >= 0 ? `距離下一句還有 ${Math.ceil((cues[next].start - time) / rate)} 秒` : '本首應援已結束';
+  const target = active >= 0 ? active : next;
+  if (visible && ktvFollow && target >= 0 && target !== ktvActive) {
+    const list = $('ktvList'), row = ktvRows[target];
+    list.scrollTop = Math.max(0, row.offsetTop - (list.clientHeight - row.offsetHeight) / 2);
+    ktvActive = target;
+  }
+}
 try {
   const stored = JSON.parse(localStorage.getItem('babymonster-practice') || '{}');
   if (stored && typeof stored === 'object') preferences = stored;
@@ -19,9 +110,16 @@ function savePreferences() {
 function updateContinuousStatus() {
   $('continuousStatus').textContent = $('loopCue').checked ? '單句循環中，暫不接續下一首' : $('continuous').checked ? '播完自動接下一首' : '已關閉連續播放';
 }
+function playbackSource(song = songs[selected]) {
+  if (song === songs[selected] && song?.sources[selectedSource]?.videoId) return song.sources[selectedSource];
+  return song?.sources.find(s => s.videoId);
+}
+function chantTrack(song = songs[selected]) {
+  return playbackSource(song)?.chant || song?.chant;
+}
 function practiceCues(song = songs[selected]) {
-  const source = song?.sources.find(s => s.videoId);
-  return typeof Chant !== 'undefined' && Chant.validTrack(song?.chant, source?.videoId) ? song.chant.cues.filter(c =>
+  const source = playbackSource(song);
+  return typeof Chant !== 'undefined' && Chant.validTrack(chantTrack(song), source?.videoId) ? chantTrack(song).cues.filter(c =>
     c.end > (source.startSeconds || 0) && (!Number.isFinite(source.endSeconds) || c.start < source.endSeconds)) : [];
 }
 function currentCueIndex() {
@@ -59,19 +157,16 @@ function renderCatalog() {
   $('songList').replaceChildren();
   let count = 0;
   songs.forEach((song, index) => {
-    const available = practiceCues(song).length > 0;
     if (!(song.title + ' ' + song.artist).toLowerCase().includes(query) ||
-      (catalogFilter === 'chant' && !available) || (catalogFilter === 'saved' && !favorites.has(song.number))) return;
+      (catalogFilter === 'saved' && !favorites.has(song.number))) return;
     count++;
     const row = document.createElement('article'); row.className = 'song' + (index === selected ? ' selected' : '');
     const pick = document.createElement('button'); pick.className = 'song-pick'; pick.dataset.song = index;
     pick.setAttribute('aria-pressed', String(index === selected));
-    const number = document.createElement('span'); number.className = 'number'; number.textContent = String(song.number).padStart(2, '0');
-    const info = document.createElement('span'), title = document.createElement('strong'), state = document.createElement('small');
+    const number = document.createElement('span'); number.className = 'number'; number.textContent = String(index + 1).padStart(2, '0');
+    const info = document.createElement('span'), title = document.createElement('strong');
     title.textContent = song.title;
-    state.textContent = song.artist + ' · ' + song.section + ' · ' + (available ? '有應援提示' : song.sources.some(s => s.videoId) ? '影片練習' : song.sources.length ? '外部來源' : '來源待補');
-    if (available) state.className = 'badge';
-    info.append(title, state); pick.append(number, info);
+    info.append(title); pick.append(number, info);
     pick.onclick = () => {selectSong(index); $('songTitle').focus(); $('songTitle').scrollIntoView({block:'start'});};
     const save = document.createElement('button'); save.className = 'save';
     save.textContent = favorites.has(song.number) ? '★' : '☆';
@@ -90,7 +185,7 @@ function renderCatalog() {
   if (!count) { const empty = document.createElement('p'); empty.textContent = '沒有符合的歌曲，試試其他關鍵字或篩選。'; $('songList').append(empty); }
 }
 function bounds() {
-  const source = songs[selected]?.sources.find(s => s.videoId);
+  const source = playbackSource();
   const start = Number.isFinite(source?.startSeconds) ? Math.max(0, source.startSeconds) : 0;
   const end = Number.isFinite(source?.endSeconds) && source.endSeconds > start ? source.endSeconds : null;
   return {start, end};
@@ -106,7 +201,7 @@ function finishSegment() {
 let songs = [], selected = 0, player, ready = false, generation = 0, loadTimer;
 const format = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
 function updateSubtitles() {
-  const song = songs[selected], source = song?.sources.find(s => s.videoId), track = song?.subtitles;
+  const song = songs[selected], source = playbackSource(song), track = source?.subtitles || song?.subtitles;
   const available = typeof Subtitles !== 'undefined' && Subtitles.validTrack(track, source?.videoId);
   $('subtitlePanel').hidden = !available;
   const cue = available && ready ? Subtitles.at(track, player.getCurrentTime(), segmentEnded ? 0 : player.getPlayerState()) : null;
@@ -115,23 +210,16 @@ function updateSubtitles() {
 }
 function updateChant() {
   updateSubtitles();
-  const song = songs[selected], source = song?.sources.find(s => s.videoId), track = song?.chant;
+  updateKtv();
+  const song = songs[selected], source = playbackSource(song), track = chantTrack(song);
   const available = typeof Chant !== 'undefined' && Chant.validTrack(track, source?.videoId);
-  $('chantEnabled').disabled = !available;
+
   $('chantUnavailable').hidden = available;
   updatePracticeControls();
   const note = available ? [track.note, track.phoneticNote].filter(Boolean).join('\n') : '本首尚未建立逐句應援提示，可先跟著來源影片練習。';
   if ($('chantNote').textContent !== note) $('chantNote').textContent = note;
-  $('chantDisplay').hidden = !available || !$('chantEnabled').checked;
-  if (!available) return;
-  const view = ready ? Chant.state(track, player.getCurrentTime(), segmentEnded ? 0 : player.getPlayerState(), player.getPlaybackRate()) :
-    {mode:'paused',label:'等待影片就緒',text:track.cues[0].text,phoneticZh:track.cues[0].phoneticZh || '',next:'',count:''};
-  $('chantDisplay').dataset.mode = view.mode;
-  $('chantOriginal').hidden = !view.phoneticZh;
-  for (const [id, value] of [['chantLabel',view.label],['chantText',view.phoneticZh || view.text],['chantOriginal',view.phoneticZh ? view.text : ''],['chantNext',view.next],['chantCount',view.count]]) {
-    if ($(id).textContent !== value) $(id).textContent = value;
-  }
 }
+
 function sourcesInto(container, song) {
   container.replaceChildren();
   if (!song.sources.length) { container.textContent = '應援來源待補'; return; }
@@ -159,7 +247,7 @@ function advance(reason = '') {
   $('continuousStatus').textContent = skipped.length ? '已跳過 ' + skipped.join('、') : '接續播放：' + songs[index].title;
 }
 function mountPlayer(song, token) {
-  const source = song.sources.find(s => s.videoId);
+  const source = playbackSource(song);
   if (!source || !window.YT?.Player || token !== generation || player) return;
   player = new YT.Player('player', {
     videoId:source.videoId, width:'100%', height:'100%',
@@ -184,11 +272,26 @@ function mountPlayer(song, token) {
     }
   });
 }
-function selectSong(index, updateHash = true, autoplay = null) {
+function selectSong(index, updateHash = true, autoplay = null, sourceIndex = 0) {
   if(!Number.isInteger(index) || index < 0 || index >= songs.length) return;
   pendingPlay = autoplay === null ? ($('continuous').checked && ready && player?.getPlayerState() === 1) : autoplay;
   $('continuousStatus').textContent = '';
   selected = index; const song = songs[index]; const token = ++generation;
+  selectedSource = song.sources[sourceIndex]?.videoId ? sourceIndex : Math.max(0, song.sources.findIndex(source => source.videoId));
+  $('sourceButtons').replaceChildren();
+  song.sources.forEach((source, i) => {
+    if (!source.videoId) return;
+    const button = document.createElement('button');
+    button.type = 'button'; button.dataset.source = i; button.textContent = source.kind;
+    button.setAttribute('aria-pressed', String(i === selectedSource));
+    button.onclick = () => {
+      if (i === selectedSource) return;
+      selectSong(selected, true, false, i);
+      [...$('sourceButtons').children].find(item => Number(item.dataset.source) === i)?.focus();
+    };
+    $('sourceButtons').append(button);
+  });
+  $('sourceChoice').hidden = !song.sources.some(source => source.videoId);
   cueTarget = null; loopTarget = null; $('loopCue').checked = false; $('retry').hidden = true;
   segmentEnded = false;
   ready = false; clearTimeout(loadTimer); if(player) {player.destroy(); player = null;}
@@ -196,25 +299,22 @@ function selectSong(index, updateHash = true, autoplay = null) {
   $('transport').disabled = true; $('play').textContent = '播放'; $('clock').textContent = '0:00 / 0:00'; $('seek').value = 0;
   $('speed').replaceChildren(Object.assign(document.createElement('option'),{value:'1',textContent:'1×'}));
   $('songTitle').textContent = song.title; document.title = `${song.title} · BABYMONSTER 應援練習室`;
-  $('songMeta').textContent = `${String(song.number).padStart(2,'0')} / ${song.artist} · ${song.section}`;
-  $('version').textContent = `${String(song.number).padStart(2,'0')} / ${song.section} · ${song.artist} — ${song.note}`;
+  $('songMeta').textContent = `${String(index + 1).padStart(2,'0')} / ${song.artist} · ${song.section}`;
+  $('version').textContent = `${String(index + 1).padStart(2,'0')} / ${song.section} · ${song.artist} — ${song.note}`;
   $('songSelect').value = index; $('previous').disabled = index === 0; $('next').disabled = index === songs.length - 1;
   sourcesInto($('currentSources'),song);
   document.querySelectorAll('[data-song]').forEach(button => button.setAttribute('aria-pressed',String(Number(button.dataset.song) === index)));
   renderCatalog();
-  const source = song.sources.find(s => s.videoId);
+  const source = playbackSource(song);
   const external = song.sources[0];
-  $('watchLink').hidden = !external;
-  if (external) $('watchLink').href = source ? `https://www.youtube.com/watch?v=${source.videoId}` : external.resolvedUrl || external.url;
-  else $('watchLink').removeAttribute('href');
-  $('watchLink').textContent = source ? '在 YouTube 開啟 ↗' : '開啟參考來源 ↗';
   $('videoContainer').hidden = !source; $('transport').hidden = !source; $('externalNote').hidden = !!source;
-  $('externalNote').textContent = external ? '請開啟參考來源觀看本首應援。' : '本首應援來源待補或沒有';
+  $('externalNote').textContent = external ? '請開啟參考來源觀看本首應援。' : '本首應援來源待補。';
   $('status').textContent = source ? '正在載入影片…' : external ? '參考連結列於下方' : '尚無可播放的應援來源';
+  renderKtv();
   updateChant();
   if(source) {
     mountPlayer(song,token);
-    loadTimer = setTimeout(() => { if(token === generation && !ready) fail('影片載入較久，可用上方連結開啟原影片。'); },15000);
+    loadTimer = setTimeout(() => { if(token === generation && !ready) fail('影片載入較久，可從「本首來源與版本說明」開啟原影片。'); },15000);
   }
   if(updateHash) history.replaceState(null,'',`#song-${song.number}`);
   if(!source && pendingPlay) advance(song.title + '（無影片）');
@@ -222,11 +322,16 @@ function selectSong(index, updateHash = true, autoplay = null) {
 function fromHash() {
   const match = /^#song-(\d+)$/.exec(location.hash);
   const number = match ? Number(match[1]) : 1;
-  selectSong(number >= 1 && number <= songs.length ? number - 1 : 0, false);
+  const index = songs.findIndex(song => song.number === number);
+  selectSong(index >= 0 ? index : 0, false);
 }
 $('continuous').onchange = () => { pendingPlay = false; updateContinuousStatus(); };
-$('chantEnabled').checked = preferences.chantEnabled !== false;
-$('chantEnabled').onchange = () => {preferences.chantEnabled = $('chantEnabled').checked; savePreferences(); updateChant();};
+$('ktvFollow').onclick = () => { setKtvFollow(!ktvFollow); updateKtv(); };
+$('ktvList').onwheel = () => { pendingCueTap = null; setKtvFollow(false); };
+$('ktvList').ontouchstart = () => setKtvFollow(false);
+$('ktvList').ontouchmove = () => { pendingCueTap = null; setKtvFollow(false); };
+$('ktvList').onpointerdown = event => { if (event.target === $('ktvList')) setKtvFollow(false); };
+$('ktvList').onkeydown = event => { if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End'].includes(event.key)) setKtvFollow(false); };
 $('subtitleFullscreen').hidden = !(document.fullscreenEnabled && $('videoContainer').requestFullscreen);
 $('subtitleFullscreen').onclick = async () => {
   try {
@@ -240,10 +345,12 @@ $('exitVideoFullscreen').onclick = async () => {
   }
 };
 $('chantSize').value = ['1','1.25','1.5'].includes(preferences.size) ? preferences.size : '1';
-$('chantDisplay').style.setProperty('--scale', $('chantSize').value);
 $('subtitleDisplay').style.setProperty('--scale', $('chantSize').value);
-$('chantSize').onchange = () => {preferences.size = $('chantSize').value; $('chantDisplay').style.setProperty('--scale', preferences.size); $('subtitleDisplay').style.setProperty('--scale', preferences.size); savePreferences();};
-$('focusMode').onclick = () => {const focused = document.body.classList.toggle('focus'); $('focusMode').setAttribute('aria-pressed', String(focused)); $('focusMode').textContent = focused ? '↙ 返回歌單' : '↗ 專注練習'; $('songTitle').scrollIntoView({block:'start'});};
+$('ktvPanel').style.setProperty('--scale', $('chantSize').value);
+$('wordingMode').value = ['both','phonetic','original'].includes(preferences.wording) ? preferences.wording : 'both';
+$('wordingMode').onchange = () => { preferences.wording = $('wordingMode').value; savePreferences(); renderKtv(); updateKtv(); };
+$('chantSize').onchange = () => {preferences.size = $('chantSize').value; $('ktvPanel').style.setProperty('--scale', preferences.size); $('subtitleDisplay').style.setProperty('--scale', preferences.size); savePreferences();};
+$('focusMode').onclick = () => {const focused = document.body.classList.toggle('focus'); $('focusMode').setAttribute('aria-pressed', String(focused)); $('focusMode').textContent = focused ? '↙ 還原版面' : '↗ 放大練習區'; $('songTitle').scrollIntoView({block:'start'});};
 window.addEventListener('keydown', event => {if (event.key === 'Escape' && document.body.classList.contains('focus')) $('focusMode').click();});
 $('search').oninput = renderCatalog;
 document.querySelectorAll('[data-filter]').forEach(button => {button.onclick = () => {catalogFilter = button.dataset.filter; document.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button))); renderCatalog();};});
@@ -251,7 +358,7 @@ $('previousCue').onclick = () => jumpToCue(currentCueIndex() - 1);
 $('nextCue').onclick = () => jumpToCue(currentCueIndex() + 1);
 $('repeatCue').onclick = () => jumpToCue(currentCueIndex(), true);
 $('loopCue').onchange = () => {loopTarget = $('loopCue').checked ? currentCueIndex() : null; updateContinuousStatus();};
-$('retry').onclick = () => {if (window.YT?.Player) selectSong(selected, false, false); else location.reload();};
+$('retry').onclick = () => {if (window.YT?.Player) selectSong(selected, false, false, selectedSource); else location.reload();};
 $('previous').onclick = () => selectSong(selected-1);
 $('next').onclick = () => selectSong(selected+1);
 $('songSelect').onchange = () => selectSong(Number($('songSelect').value));
@@ -268,10 +375,10 @@ $('seek').oninput = () => {if(ready) manualSeek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').value); savePreferences(); player.setPlaybackRate(preferences.speed); }};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20261001-i-like-it-first-three-v7').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
-  songs = data;
+fetch('songs.json?v=20261115-layout-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+  songs = data.filter(song => practiceCues(song).length > 0);
   songs.forEach((song,index) => {
-    const option = document.createElement('option'); option.value = index; option.textContent = `${String(song.number).padStart(2,'0')} · ${song.title} / ${song.artist}`; $('songSelect').append(option);
+    const option = document.createElement('option'); option.value = index; option.textContent = `${String(index + 1).padStart(2,'0')} · ${song.title}`; $('songSelect').append(option);
   });
   $('songSelect').disabled = false;fromHash();
 }).catch(() => fail('曲目資料載入失敗，請重新整理頁面。'));

@@ -30,7 +30,7 @@ test('KTV follows playback, retains loop target, and restores follow after manua
   const rows=s.get('ktvList').children,marks=s.get('ktvMarkers').children;
   assert.equal(rows.length,song.chant.cues.length);assert.equal(marks.length,rows.length);
 
-  const cue=song.chant.cues[3];rows[3].onclick();assert.equal(p.time,cue.start-3);assert.equal(p.state,1);
+  const cue=song.chant.cues[3];rows[3].onclick({detail:0});assert.equal(p.time,cue.start-3);assert.equal(p.state,1);
   p.time=cue.start;s.tick();assert.equal(rows[3].dataset.state,'active');
   s.get('loopCue').checked=true;s.get('loopCue').onchange();
   marks[4].onclick();assert.equal(p.time,song.chant.cues[4].start-3);
@@ -64,7 +64,7 @@ test('wording settings preserve original text and source timing',async()=>{
  assert.equal(words().length,2);assert.equal(words()[0].textContent,song.chant.cues[0].phoneticZh);
  s.get('wordingMode').value='original';s.get('wordingMode').onchange();
  assert.equal(words().length,1);assert.equal(words()[0].textContent,song.chant.cues[0].text);
- s.get('ktvList').children[0].onclick();assert.equal(p.time,Math.max(song.sources[0].startSeconds,song.chant.cues[0].start-3));
+ s.get('ktvList').children[0].onclick({detail:0});assert.equal(p.time,Math.max(song.sources[0].startSeconds,song.chant.cues[0].start-3));
  s.get('wordingMode').value='phonetic';s.get('wordingMode').onchange();assert.equal(words().length,1);assert.equal(words()[0].textContent,song.chant.cues[0].phoneticZh);
 });
 test('KTV clock handles pause, speed, end and backward seek without losing source bounds',async()=>{
@@ -73,7 +73,7 @@ test('KTV clock handles pause, speed, end and backward seek without losing sourc
  p.time=cue.start;s.tick();assert.equal(s.get('ktvList').children[3].dataset.state,'active');
  p.emit(2);assert.match(s.get('ktvStatus').textContent,/按播放/);
  p.time=song.sources[0].endSeconds;p.state=1;s.tick();assert.equal(p.state,2);assert.match(s.get('ktvStatus').textContent,/練習結束/);
- s.get('ktvList').children[0].onclick();s.tick();assert.equal(p.time,song.chant.cues[0].start-3);assert.doesNotMatch(s.get('ktvStatus').textContent,/練習結束/);
+ s.get('ktvList').children[0].onclick({detail:0});s.tick();assert.equal(p.time,song.chant.cues[0].start-3);assert.doesNotMatch(s.get('ktvStatus').textContent,/練習結束/);
 });
 test('removed card UI has no dangling JavaScript element references',()=>{
  const html=fs.readFileSync('rescene/index.html','utf8'),js=fs.readFileSync('rescene/practice.js','utf8');
@@ -94,7 +94,7 @@ test('next chant counts down during current chant, pauses, changes speed and cle
  p.state=3;s.tick();assert.match(rows[3].children[0].textContent,/緩衝中/);
  p.state=1;p.rate=1;s.tick();assert.match(rows[3].children[0].textContent,/下一句 4 秒/);
  p.time=cues[3].start;s.tick();assert.match(rows[3].children[0].textContent,/目前句/);assert.doesNotMatch(rows[3].children[0].textContent,/下一句/);
- rows[3].onclick();s.tick();assert.match(rows[3].children[0].textContent,/下一句 3 秒/);
+ rows[3].onclick({detail:0});s.tick();assert.match(rows[3].children[0].textContent,/下一句 3 秒/);
  p.time=song.sources[0].endSeconds;s.tick();assert.ok(rows.every(row=>!row.children[0].textContent.includes('下一句')));
 });
 
@@ -116,7 +116,7 @@ test('With live version uses its own player, cues, countdown and bounds; guide r
    p.time=cue.start;p.state=1;s.tick();assert.equal(s.get('ktvList').children[i].dataset.state,'active');
  }
  const cue=live.chant.cues[2];p.time=cue.start-2;p.state=1;s.tick();assert.match(s.get('ktvList').children[2].children[0].textContent,/下一句 2 秒/);
- s.get('ktvList').children[2].onclick();assert.equal(p.time,cue.start-3);
+ s.get('ktvList').children[2].onclick({detail:0});assert.equal(p.time,cue.start-3);
  s.get('loopCue').checked=true;s.get('loopCue').onchange();p.time=cue.end;s.tick();assert.equal(p.time,cue.start-3);
  s.get('sourceButtons').children[0].onclick();p=s.players.at(-1);p.ready();
  assert.equal(p.options.videoId,'cLtl2aFq_6M');assert.equal(s.location.hash,'#with');
@@ -142,7 +142,7 @@ test('Inside Out live version retains all 34 cues and switches independently fro
   assert.ok(cue.start>=0&&cue.end<=live.endSeconds);
   p.time=cue.start;p.state=1;s.tick();assert.equal(s.get('ktvList').children[i].dataset.state,'active');
  }
- s.get('ktvList').children[2].onclick();s.tick();assert.match(s.get('ktvList').children[2].children[0].textContent,/下一句 3 秒/);
+ s.get('ktvList').children[2].onclick({detail:0});s.tick();assert.match(s.get('ktvList').children[2].children[0].textContent,/下一句 3 秒/);
  s.get('loopCue').checked=true;s.get('loopCue').onchange();p.time=live.chant.cues[2].end;s.tick();assert.equal(p.time,live.chant.cues[2].start-3);
  s.get('loopCue').checked=false;s.get('loopCue').onchange();p.time=live.endSeconds;p.state=1;s.tick();assert.equal(p.state,2);
  s.get('sourceButtons').children[0].onclick();p=s.players.at(-1);p.ready();assert.equal(p.options.videoId,'cL_B5W4gBRU');assert.equal(s.location.hash,'#inside-out');
@@ -165,7 +165,7 @@ test('LOVE ATTACK live starts at nine seconds and retains correct version indice
   p.time=cue.start;p.state=1;s.tick();assert.equal(s.get('ktvList').children[i].dataset.state,'active');
  }
  p.time=9;s.get('back').onclick();assert.equal(p.time,9);
- s.get('ktvList').children[0].onclick();s.tick();assert.match(s.get('ktvList').children[0].children[0].textContent,/下一句 3 秒/);
+ s.get('ktvList').children[0].onclick({detail:0});s.tick();assert.match(s.get('ktvList').children[0].children[0].textContent,/下一句 3 秒/);
  s.get('loopCue').checked=true;s.get('loopCue').onchange();p.time=live.chant.cues[0].end;s.tick();assert.equal(p.time,live.chant.cues[0].start-3);
  s.get('loopCue').checked=false;s.get('loopCue').onchange();p.time=live.endSeconds;p.state=1;s.tick();assert.equal(p.state,2);
  s.get('sourceButtons').children[0].onclick();p=s.players.at(-1);p.ready();assert.equal(p.options.videoId,'xn12KH78Dx4');
@@ -183,7 +183,7 @@ test('Pretty Girl live preserves 52 cues and switches without changing the song 
   assert.ok(Math.abs(cue.start-original.start+22.87)<0.001);assert.ok(cue.start>=0&&cue.end<=live.endSeconds);
   p.time=cue.start;p.state=1;s.tick();assert.equal(s.get('ktvList').children[i].dataset.state,'active');
  }
- s.get('ktvList').children[0].onclick();s.tick();assert.match(s.get('ktvList').children[0].children[0].textContent,/下一句 3 秒/);
+ s.get('ktvList').children[0].onclick({detail:0});s.tick();assert.match(s.get('ktvList').children[0].children[0].textContent,/下一句 3 秒/);
  s.get('loopCue').checked=true;s.get('loopCue').onchange();p.time=live.chant.cues[0].end;s.tick();assert.equal(p.time,live.chant.cues[0].start-3);
  s.get('loopCue').checked=false;s.get('loopCue').onchange();p.time=live.endSeconds;p.state=1;s.tick();assert.equal(p.state,2);
  s.get('sourceButtons').children[0].onclick();p=s.players.at(-1);p.ready();assert.equal(p.options.videoId,'RX592yMx7P0');assert.equal(s.location.hash,'#pretty-girl');

@@ -22,46 +22,62 @@
   <meta name="twitter:description" content="依 CHOOM 練習歌單整理曲目，支援切歌、調整速度與連續播放，一首一首練起來。">
   <meta name="twitter:image" content="https://allenka.com/babymonster/share-cover-wide.png">
   <meta name="twitter:image:alt" content="深藍冰霧風格的 BABYMONSTER 應援練習室封面">
-  <link rel="stylesheet" href="practice.css?v=20260930-phonetic-v1">
-  <script src="chant.js?v=20260930-phonetic-v1" defer></script>
-  <script src="subtitles.js?v=20260925-clik-clak" defer></script>
-  <script src="practice.js?v=20261001-i-like-it-first-three-v7" defer></script>
+  <link rel="stylesheet" href="practice.css?v=20261115-original-style-v2">
+  <script src="chant.js?v=20261115-layout-v1" defer></script>
+  <script src="subtitles.js?v=20261115-layout-v1" defer></script>
+  <script src="practice.js?v=20261115-double-tap-v1" defer></script>
+<link rel="stylesheet" href="ux.css?v=20261115-double-tap-v1">
 </head>
 <body>
   <header><a class="brand" href="./">BABYMONSTER<span>MONSTIEZ PRACTICE ROOM</span></a></header>
   <main>
-    <section class="hero"><div><p class="eyebrow">2026–27 WORLD TOUR</p><h1>CHOOM</h1><p>把每一句練熟，一起喊出我們的主場。</p></div><div class="tour-art" aria-hidden="true"></div></section>
+<section class="hero"><div><p class="eyebrow">2026–27 WORLD TOUR</p><h1>CHOOM</h1><p>把每一句練熟，一起喊出我們的主場。</p></div><div class="tour-art" aria-hidden="true"></div></section>
     <div class="layout">
-      <section class="studio" aria-label="應援練習">
-        <div class="song-heading"><div><p class="eyebrow" id="songMeta">準備曲目中</p><h2 id="songTitle" tabindex="-1">載入曲目…</h2></div><button id="focusMode" aria-pressed="false">↗ 專注練習</button></div>
+      <section id="practice" class="studio" aria-label="應援練習">
+        <div class="song-heading"><div><p class="eyebrow" id="songMeta">準備曲目中</p><h2 id="songTitle" tabindex="-1">載入曲目…</h2></div><button id="focusMode" aria-pressed="false">↗ 放大練習區</button></div>
         <nav class="song-nav" aria-label="切換曲目"><button id="previous" disabled>← 上一首</button><label for="songSelect" class="sr-only">選擇曲目</label><select id="songSelect" disabled></select><button id="next" disabled>下一首 →</button></nav>
-        <div class="video-heading"><span>跟著影片練</span><a id="watchLink" target="_blank" rel="noopener" hidden>在 YouTube 開啟 ↗</a></div>
-        <div class="video" id="videoContainer"><div id="player"></div><div id="subtitleDisplay" class="subtitle-display" aria-label="應援字幕" hidden><p id="subtitleText"></p></div><button id="exitVideoFullscreen" class="exit-video-fullscreen">離開全螢幕</button></div><p id="externalNote" hidden></p>
+        <div class="practice-workspace">
+        <div id="sourceChoice" class="source-choice" hidden><div id="sourceButtons" class="source-buttons" role="group" aria-label="影片版本"></div></div>
+          <div class="ktv-heading"><p class="lyric-legend"><strong>跟著影片自動捲動　點兩下跳到那一句提前 3 秒</strong></p><div class="follow-actions"><div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label></div><button id="ktvFollow" aria-pressed="true">自動跟隨：開</button></div></div>
+        <div class="media-column">
+        <div class="video" id="videoContainer"><div id="player"></div><div id="subtitleDisplay" class="subtitle-display" aria-label="應援字幕" hidden><p id="subtitleText"></p></div><button id="exitVideoFullscreen" class="exit-video-fullscreen">離開全螢幕</button></div><p id="externalNote" hidden></p><div class="chant-timeline"><div class="chant-clock"><span id="ktvElapsed">0:00</span><p id="ktvStatus" class="ktv-status">等待影片就緒</p><span id="ktvDuration">0:00</span></div>
+          <div id="ktvMarkers" class="ktv-markers" role="group" aria-label="應援位置，點選提前三秒播放"></div>
+</div>
         <section id="subtitlePanel" class="subtitle-panel" aria-label="應援字幕" hidden>
           <div class="subtitle-head"><span>白字：歌詞 · <strong class="subtitle-chant">黃字粗體：應援</strong></span><button id="subtitleFullscreen" hidden>全螢幕（含字幕）</button></div>
         </section>
         <p id="status" role="status">正在載入練習歌單…</p><button id="retry" hidden>重新載入影片</button>
-        <section class="chant-panel" aria-label="應援大字提示">
-          <div class="cue-head"><label><input id="chantEnabled" type="checkbox" checked> 顯示提示</label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>
-          <p id="chantUnavailable" hidden>本首逐句應援提示待補，加入核對過的影片後即可開始練習。</p>
-          <div id="chantDisplay" class="chant-display" data-mode="waiting"><p id="chantLabel" class="chant-label">正在載入提示…</p><div class="cue"><span id="chantCount" aria-label="進場倒數"></span><div class="chant-wording"><p id="chantText"></p><p id="chantOriginal" class="chant-original" hidden></p></div></div><p id="chantNext" class="up-next"></p></div>
-          <p class="phonetic-help">韓文應援以中文空耳輔助跟喊，下方保留原文；中文字不照國語聲調念，收尾音與節奏請跟著影片。新增空耳為初稿，仍待逐句聽校。</p>
-        </section>
+
+        </div>
+
+
+<div class="practice-extras">
+        <details class="source"><summary>本首來源與版本說明</summary><p id="version"></p><p id="chantNote"></p><div id="currentSources"></div></details>
+</div>
+        <section id="ktvPanel" class="ktv-panel" aria-label="逐句應援練習">
+
+
+          <p id="chantUnavailable" hidden>本首應援準備中，先跟著影片練習吧</p>
+          <div id="ktvList" class="ktv-list" tabindex="0" aria-label="逐句應援清單"></div>
+          <p id="continuousStatus" class="continuous-status" role="status"></p>
         <fieldset id="transport" class="controls" disabled><legend class="sr-only">播放控制</legend>
-          <div class="timeline"><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="1" value="0" step="0.1"><output id="clock">0:00 / 0:00</output></div>
+          <div class="timeline" hidden><label class="sr-only" for="seek">影片進度</label><input id="seek" type="range" min="0" max="1" value="0" step="0.1"><output id="clock">0:00 / 0:00</output></div>
           <div class="transport"><button id="previousCue" disabled>上一句</button><button id="play" class="primary">播放</button><button id="nextCue" disabled>下一句</button></div>
           <div class="tools"><button id="repeatCue" disabled>↶ 重練這句</button><button id="back">↶ 5 秒</button><label><input id="loopCue" type="checkbox" disabled> 單句循環</label><label>速度 <select id="speed"><option value="1">1×</option></select></label></div>
         </fieldset>
-        <div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label><span id="continuousStatus" role="status"></span></div>
-        <details class="source"><summary>本首來源與版本說明</summary><p id="version"></p><p id="chantNote"></p><div id="currentSources"></div></details>
+<details class="room-settings"><summary>顯示設定</summary>
+          <div class="chant-settings"><label>顯示 <select id="wordingMode"><option value="both">空耳＋原文</option><option value="phonetic">只看空耳</option><option value="original">只看原文</option></select></label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>
+</details>
+          <details class="reading-help"><summary>應援與空耳怎麼看？</summary><p>這裡只顯示要喊的應援，不是整首歌詞。亮色標示目前句，下一句會顯示倒數。手動捲動後，按「回到目前句」繼續跟隨。</p><p>空耳仍為初稿，待逐句聽校；收尾注音不另喊一拍。原文與來源保留供核對。</p></details>
+        </section></div>
       </section>
-      <aside class="catalog" aria-labelledby="catalogTitle"><div class="catalog-heading"><div><p class="eyebrow">YOUR PRACTICE SETLIST</p><h2 id="catalogTitle">練習歌單</h2></div><span id="songCount" role="status"></span></div>
+      <aside class="catalog" aria-labelledby="catalogTitle"><div class="catalog-heading"><div><p class="eyebrow">YOUR PRACTICE SETLIST</p><h2 id="catalogTitle" tabindex="-1">練習歌單</h2></div><span id="songCount" role="status"></span></div>
         <input id="search" type="search" placeholder="搜尋歌曲或成員" aria-label="搜尋歌曲或成員">
-        <div class="filters" role="group" aria-label="歌單篩選"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="chant" aria-pressed="false">有提示</button><button data-filter="saved" aria-pressed="false">收藏</button></div>
-        <p class="list-hint">歌單來自韓國場（6/28 首爾場），僅供台灣場應援練習參考</p><p class="list-hint">30 個歌曲項目 · 選一首，開始收藏與練習</p><div id="songList"></div>
+        <div class="filters" role="group" aria-label="歌單篩選"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="saved" aria-pressed="false">收藏</button></div>
+        <p class="list-hint">歌單來自韓國場（6/28 首爾場），僅供台灣場應援練習參考</p><p class="list-hint">只列出已有應援提示的歌曲 · 選一首開始練習</p><div id="songList"></div>
         <details class="catalog-note"><summary>歌單與來源說明</summary><p>歌單來自韓國場，僅供台灣場應援練習參考，並非台灣場正式歌單。順序依 <a href="https://www.setlist.fm/setlist/babymonster/2026/jamsil-arena-seoul-south-korea-4376a3d7.html" target="_blank" rel="noopener">6/28 韓國首爾場參考紀錄</a>，組曲分開列出各首歌曲，保留個人舞台、Remix 與安可順序，不含 VCR 與 Ment。應援影片與逐句提示尚待補齊。收錄連結與提示不代表官方應援或已完成版本校對。</p><p>收藏與偏好設定僅儲存在此瀏覽器。</p></details>
       </aside>
-    </div><footer>BABYMONSTER / MONSTIEZ PRACTICE ROOM <span>每一句，都會成為現場的一部分。</span></footer>
+    </div><footer>BABYMONSTER / MONSTIEZ PRACTICE ROOM <span>Every voice, one pulse.</span></footer>
   </main>
 </body>
 </html>

@@ -12,7 +12,37 @@ function setKtvFollow(value) {
   $('ktvFollow').textContent = value ? '自動跟隨：開' : '回到目前句';
   if (value) ktvActive = -1;
 }
+let pendingCueTap = null;
+function bindCueGesture(row, activate) {
+  let press = null;
+  row.onpointerdown = event => {
+    if (event.button !== 0) return;
+    setKtvFollow(false);
+    press = {id:event.pointerId, x:event.clientX, y:event.clientY, time:event.timeStamp, scroll:$('ktvList').scrollTop};
+  };
+  row.onpointermove = event => {
+    if (press && (Math.abs(event.clientX - press.x) > 10 || Math.abs(event.clientY - press.y) > 10)) {
+      press = null; pendingCueTap = null;
+    }
+  };
+  row.onpointercancel = () => { press = null; pendingCueTap = null; };
+  row.onpointerup = event => {
+    const start = press; press = null;
+    if (!start || event.pointerId !== start.id || event.timeStamp - start.time > 500 ||
+        Math.abs(event.clientX - start.x) > 10 || Math.abs(event.clientY - start.y) > 10 ||
+        $('ktvList').scrollTop !== start.scroll) { pendingCueTap = null; return; }
+    const previous = pendingCueTap;
+    pendingCueTap = {row, time:event.timeStamp, x:event.clientX, y:event.clientY};
+    if (previous?.row === row && event.timeStamp - previous.time <= 350 &&
+        Math.abs(event.clientX - previous.x) <= 24 && Math.abs(event.clientY - previous.y) <= 24) {
+      pendingCueTap = null; activate();
+    }
+  };
+  // Keyboard and assistive activation remain a single action; pointer clicks are handled above.
+  row.onclick = event => { if (event.detail === 0) { pendingCueTap = null; activate(); } };
+}
 function renderKtv() {
+  pendingCueTap = null;
   ktvRows = []; ktvMarks = []; ktvActive = -1;
   setKtvFollow(true);
   $('ktvList').replaceChildren(); $('ktvMarkers').replaceChildren();
@@ -26,14 +56,15 @@ function renderKtv() {
     primary.textContent = wording === 'original' ? cue.text : cue.phoneticZh || cue.text; words.append(primary);
     if (cue.phoneticZh && wording === 'both') { const original = document.createElement('small'); original.textContent = cue.text; words.append(original); }
     row.append(time, words);
-    row.setAttribute('aria-label', `${format(cue.start)} ${primary.textContent}，播放這句`);
-    row.onclick = () => { setKtvFollow(true); jumpToCue(index, true); };
+    row.setAttribute('aria-label', `${format(cue.start)} ${primary.textContent}，點兩下從這句前 3 秒播放`);
+    const activate = () => { setKtvFollow(true); jumpToCue(index, true); };
+    bindCueGesture(row, activate);
     const mark = document.createElement('button'); mark.className = 'ktv-marker';
     mark.style.left = `${100 * (Math.max(range.start, cue.start) - range.start) / (end - range.start)}%`;
     mark.style.width = `${100 * (Math.min(end, cue.end) - Math.max(range.start, cue.start)) / (end - range.start)}%`;
     mark.title = `${format(cue.start)} · ${cue.phoneticZh || cue.text}`;
     mark.setAttribute('aria-label', mark.title); mark.tabIndex = -1;
-    mark.onclick = row.onclick;
+    mark.onclick = activate;
     ktvRows.push(row); ktvMarks.push(mark); $('ktvList').append(row); $('ktvMarkers').append(mark);
   });
 }
@@ -56,7 +87,7 @@ function updateKtv() {
     const countdown = i === next && ready ? ` · 下一句 ${Math.ceil((cues[i].start - time) / rate)} 秒${state === 3 ? '（緩衝中）' : state !== 1 ? '（暫停）' : ''}` : i === next ? ' · 下一句' : i === active ? ' · 目前句' : '';
     row.children[0].textContent = format(cues[i].start) + countdown;
   });
-  $('ktvStatus').textContent = !cues.length ? '本首尚無應援提示' : !ready ? '等待影片就緒 · 可先閱讀應援' : segmentEnded ? '本首練習結束' : player.getPlayerState() === 3 ? '影片緩衝中…' : player.getPlayerState() !== 1 ? '按播放，或點一句開始練習' : active >= 0 ? `本句應援 · ${active + 1} / ${cues.length}` : next >= 0 ? `距離下一句還有 ${Math.ceil((cues[next].start - time) / rate)} 秒` : '本首應援已結束';
+  $('ktvStatus').textContent = !cues.length ? '本首尚無應援提示' : !ready ? '等待影片就緒 · 可先閱讀應援' : segmentEnded ? '本首練習結束' : player.getPlayerState() === 3 ? '影片緩衝中…' : player.getPlayerState() !== 1 ? '按播放，或點兩下應援開始練習' : active >= 0 ? `本句應援 · ${active + 1} / ${cues.length}` : next >= 0 ? `距離下一句還有 ${Math.ceil((cues[next].start - time) / rate)} 秒` : '本首應援已結束';
   const target = active >= 0 ? active : next;
   if (visible && ktvFollow && target >= 0 && target !== ktvActive) {
     const list = $('ktvList'), row = ktvRows[target];
@@ -300,7 +331,9 @@ function fromHash() {
 }
 $('continuous').onchange = () => { pendingPlay = false; updateContinuousStatus(); };
 $('ktvFollow').onclick = () => { setKtvFollow(!ktvFollow); updateKtv(); };
-$('ktvList').onwheel = $('ktvList').ontouchstart = () => setKtvFollow(false);
+$('ktvList').onwheel = () => { pendingCueTap = null; setKtvFollow(false); };
+$('ktvList').ontouchstart = () => setKtvFollow(false);
+$('ktvList').ontouchmove = () => { pendingCueTap = null; setKtvFollow(false); };
 $('ktvList').onpointerdown = event => { if (event.target === $('ktvList')) setKtvFollow(false); };
 $('ktvList').onkeydown = event => { if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End'].includes(event.key)) setKtvFollow(false); };
 $('subtitleFullscreen').hidden = !(document.fullscreenEnabled && $('videoContainer').requestFullscreen);
@@ -346,7 +379,7 @@ $('seek').oninput = () => {if(ready) manualSeek(Number($('seek').value));};
 $('speed').onchange = () => {if(ready) { preferences.speed = Number($('speed').value); savePreferences(); player.setPlaybackRate(preferences.speed); }};
 window.addEventListener('hashchange',fromHash);
 window.onYouTubeIframeAPIReady = () => {if(songs.length) mountPlayer(songs[selected],generation);};
-fetch('songs.json?v=20261114-pretty-live-v1').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
+fetch('songs.json?v=20261115-name-phonetics').then(response => {if(!response.ok) throw new Error('catalog'); return response.json();}).then(data => {
   const firstSlugs = ['with', 'inside-out'];
   songs = [...firstSlugs.flatMap(slug => data.filter(song => song.slug === slug)),
     ...data.filter(song => !firstSlugs.includes(song.slug))];

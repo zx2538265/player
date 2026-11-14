@@ -48,7 +48,7 @@ function element() {
     append(...items){this.children.push(...items)},replaceChildren(...items){this.children=items},
     setAttribute(){},removeAttribute(){},focus(){},scrollIntoView(){}};
 }
-test('player renders large phonetics, small original and clears original on song change/end', async () => {
+test('player renders phonetics and original in KTV rows and refreshes them on song changes', async () => {
   const elements = new Map(), players = [], intervals = [];
   const get = id => {if (!elements.has(id)) elements.set(id,element());return elements.get(id)};
   const context = {document:{getElementById:get,createElement:element,querySelectorAll:()=>[],head:element()},
@@ -63,20 +63,22 @@ test('player renders large phonetics, small original and clears original on song
   vm.createContext(context);
   for (const file of ['chant.js','subtitles.js','practice.js']) vm.runInContext(fs.readFileSync('babymonster/'+file,'utf8'),context);
   await new Promise(resolve=>setImmediate(resolve));
-  assert.equal(get('chantText').textContent,songs[2].chant.cues[0].text);
+  const rows = () => get('ktvList').children;
+  assert.equal(rows().length,songs[2].chant.cues.length);
   context.onYouTubeIframeAPIReady();
-  const p = players.at(-1);p.ready();p.time=92.65;p.state=1;
-  const tick = () => intervals.forEach(fn=>fn());tick();
-  assert.equal(get('chantText').textContent,'逼ㄎㄧㄜ');
-  assert.equal(get('chantOriginal').textContent,'비켜 · bi-kyeo\n逼ㄎㄧㄜ');
-  assert.equal(get('chantOriginal').hidden,false);
-  p.state=2;tick();assert.equal(get('chantOriginal').hidden,false);
+  const p=players.at(-1);p.ready();p.time=92.65;p.state=1;
+  const tick=()=>intervals.forEach(fn=>fn());tick();
+  const active=()=>rows().find(row=>row.dataset.state==='active');
+  assert.equal(active().children[1].children[0].textContent,'逼ㄎㄧㄜ');
+  assert.equal(active().children[1].children[1].textContent,'비켜 · bi-kyeo\n逼ㄎㄧㄜ');
+  p.state=2;tick();assert.ok(active());
+  get('wordingMode').value='original';get('wordingMode').onchange();tick();
+  assert.equal(active().children[1].children.length,1);
+  assert.equal(active().children[1].children[0].textContent,'비켜 · bi-kyeo\n逼ㄎㄧㄜ');
   vm.runInContext('selectSong(6)',context);
+  assert.equal(rows().length,songs[6].chant.cues.length);
   const sheesh=players.at(-1);sheesh.ready();sheesh.time=56.45;sheesh.state=1;tick();
-  assert.equal(get('chantText').textContent,'促波');
-  assert.equal(get('chantOriginal').textContent,'축복');
-  sheesh.state=0;tick();assert.equal(get('chantOriginal').hidden,true);
-  assert.equal(get('chantOriginal').textContent,'');
+  assert.equal(active().children[1].children[0].textContent,'축복');
   vm.runInContext('selectSong(0)',context);
-  players.at(-1).ready();tick();assert.equal(get('chantOriginal').hidden,true);
+  assert.equal(rows().length,songs[0].chant.cues.length);
 });

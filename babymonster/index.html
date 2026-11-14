@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="practice.css?v=20261115-original-style-v2">
   <script src="chant.js?v=20261115-layout-v1" defer></script>
   <script src="subtitles.js?v=20261115-layout-v1" defer></script>
-  <script src="practice.js?v=20261115-double-tap-v1" defer></script>
+  <script src="practice.js?v=20261115-auto-follow-v2" defer></script>
 <link rel="stylesheet" href="ux.css?v=20261115-deploy-fix-v2">
 </head>
 <body>
@@ -38,7 +38,7 @@
         <nav class="song-nav" aria-label="切換曲目"><button id="previous" disabled>← 上一首</button><label for="songSelect" class="sr-only">選擇曲目</label><select id="songSelect" disabled></select><button id="next" disabled>下一首 →</button></nav>
         <div class="practice-workspace">
         <div id="sourceChoice" class="source-choice" hidden><div id="sourceButtons" class="source-buttons" role="group" aria-label="影片版本"></div></div>
-          <div class="ktv-heading"><p class="lyric-legend"><strong>跟著影片自動捲動　點兩下跳到那一句提前 3 秒</strong></p><div class="follow-actions"><div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label></div><button id="ktvFollow" aria-pressed="true">自動跟隨：開</button></div></div>
+          <div class="ktv-heading"><p class="lyric-legend"><strong>跟著影片自動捲動　點兩下跳到那一句提前 3 秒</strong></p><div class="follow-actions"><div class="continuous-control"><label><input id="continuous" type="checkbox"> 連續播放</label></div></div></div>
         <div class="media-column">
         <div class="video" id="videoContainer"><div id="player"></div><div id="subtitleDisplay" class="subtitle-display" aria-label="應援字幕" hidden><p id="subtitleText"></p></div><button id="exitVideoFullscreen" class="exit-video-fullscreen">離開全螢幕</button></div><p id="externalNote" hidden></p><div class="chant-timeline"><div class="chant-clock"><span id="ktvElapsed">0:00</span><p id="ktvStatus" class="ktv-status">等待影片就緒</p><span id="ktvDuration">0:00</span></div>
           <div id="ktvMarkers" class="ktv-markers" role="group" aria-label="應援位置，點選提前三秒播放"></div>
@@ -68,7 +68,7 @@
 <details class="room-settings"><summary>顯示設定</summary>
           <div class="chant-settings"><label>顯示 <select id="wordingMode"><option value="both">空耳＋原文</option><option value="phonetic">只看空耳</option><option value="original">只看原文</option></select></label><label>字級 <select id="chantSize"><option value="1">標準</option><option value="1.25">大</option><option value="1.5">特大</option></select></label></div>
 </details>
-          <details class="reading-help"><summary>應援與空耳怎麼看？</summary><p>這裡只顯示要喊的應援，不是整首歌詞。亮色標示目前句，下一句會顯示倒數。手動捲動後，按「回到目前句」繼續跟隨。</p><p>空耳仍為初稿，待逐句聽校；收尾注音不另喊一拍。原文與來源保留供核對。</p></details>
+          <details class="reading-help"><summary>應援與空耳怎麼看？</summary><p>這裡只顯示要喊的應援，不是整首歌詞。亮色標示目前句，下一句會顯示倒數。手動捲動停止 3 秒且影片播放中，會恢復自動跟隨。</p><p>空耳仍為初稿，待逐句聽校；收尾注音不另喊一拍。原文與來源保留供核對。</p></details>
         </section></div>
       </section>
       <aside class="catalog" aria-labelledby="catalogTitle"><div class="catalog-heading"><div><p class="eyebrow">YOUR PRACTICE SETLIST</p><h2 id="catalogTitle" tabindex="-1">練習歌單</h2></div><span id="songCount" role="status"></span></div>

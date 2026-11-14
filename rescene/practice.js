@@ -6,10 +6,23 @@ let segmentEnded = false;
 let cueTarget = null, loopTarget = null, catalogFilter = 'all';
 let preferences = {}, favorites = new Set();
 let ktvFollow = true, ktvRows = [], ktvMarks = [], ktvActive = -1;
+let followResumeAt = null, followTouches = 0;
+const followPointers = new Set();
+function pauseKtvFollow() {
+  setKtvFollow(false);
+  followResumeAt = Date.now() + 3000;
+}
+function releaseKtvPointer(event) {
+  if (followPointers.delete(event.pointerId) && !ktvFollow) followResumeAt = Date.now() + 3000;
+}
+function releaseKtvTouch(event) {
+  if (!followTouches) return;
+  followTouches = event.touches.length;
+  if (!ktvFollow) followResumeAt = Date.now() + 3000;
+}
 function setKtvFollow(value) {
+  followResumeAt = null;
   ktvFollow = value;
-  $('ktvFollow').setAttribute('aria-pressed', String(value));
-  $('ktvFollow').textContent = value ? '自動跟隨：開' : '回到目前句';
   if (value) ktvActive = -1;
 }
 let pendingCueTap = null;
@@ -17,7 +30,7 @@ function bindCueGesture(row, activate) {
   let press = null;
   row.onpointerdown = event => {
     if (event.button !== 0) return;
-    setKtvFollow(false);
+    pauseKtvFollow();
     press = {id:event.pointerId, x:event.clientX, y:event.clientY, time:event.timeStamp, scroll:$('ktvList').scrollTop};
   };
   row.onpointermove = event => {
@@ -88,6 +101,8 @@ function updateKtv() {
     row.children[0].textContent = format(cues[i].start) + countdown;
   });
   $('ktvStatus').textContent = !cues.length ? '本首尚無應援提示' : !ready ? '等待影片就緒 · 可先閱讀應援' : segmentEnded ? '本首練習結束' : player.getPlayerState() === 3 ? '影片緩衝中…' : player.getPlayerState() !== 1 ? '按播放，或點兩下應援開始練習' : active >= 0 ? `本句應援 · ${active + 1} / ${cues.length}` : next >= 0 ? `距離下一句還有 ${Math.ceil((cues[next].start - time) / rate)} 秒` : '本首應援已結束';
+  if (!ktvFollow && followResumeAt !== null && Date.now() >= followResumeAt &&
+      !followTouches && !followPointers.size && state === 1 && !segmentEnded) setKtvFollow(true);
   const target = active >= 0 ? active : next;
   if (visible && ktvFollow && target >= 0 && target !== ktvActive) {
     const list = $('ktvList'), row = ktvRows[target];
@@ -330,12 +345,21 @@ function fromHash() {
   selectSong(index < 0 ? 0 : index, index >= 0, null, sourceIndex);
 }
 $('continuous').onchange = () => { pendingPlay = false; updateContinuousStatus(); };
-$('ktvFollow').onclick = () => { setKtvFollow(!ktvFollow); updateKtv(); };
-$('ktvList').onwheel = () => { pendingCueTap = null; setKtvFollow(false); };
-$('ktvList').ontouchstart = () => setKtvFollow(false);
-$('ktvList').ontouchmove = () => { pendingCueTap = null; setKtvFollow(false); };
-$('ktvList').onpointerdown = event => { if (event.target === $('ktvList')) setKtvFollow(false); };
-$('ktvList').onkeydown = event => { if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End'].includes(event.key)) setKtvFollow(false); };
+$('ktvList').onwheel = () => { pendingCueTap = null; pauseKtvFollow(); };
+$('ktvList').ontouchstart = event => { followTouches = event.touches.length; pauseKtvFollow(); };
+$('ktvList').ontouchmove = () => { pendingCueTap = null; pauseKtvFollow(); };
+// Native momentum scrolling continues after touchend: every scroll restarts the quiet period.
+// Programmatic follow scrolls are ignored so they cannot suspend following themselves.
+$('ktvList').onscroll = () => { if (!ktvFollow) { pendingCueTap = null; followResumeAt = Date.now() + 3000; } };
+$('ktvList').onpointerdown = event => {
+  if (event.pointerType !== 'touch' && event.button === 0) followPointers.add(event.pointerId);
+  pauseKtvFollow();
+};
+window.addEventListener('pointerup', releaseKtvPointer);
+window.addEventListener('pointercancel', releaseKtvPointer);
+window.addEventListener('touchend', releaseKtvTouch);
+window.addEventListener('touchcancel', releaseKtvTouch);
+$('ktvList').onkeydown = event => { if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End'].includes(event.key)) pauseKtvFollow(); };
 $('subtitleFullscreen').hidden = !(document.fullscreenEnabled && $('videoContainer').requestFullscreen);
 $('subtitleFullscreen').onclick = async () => {
   try {

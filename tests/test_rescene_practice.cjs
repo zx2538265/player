@@ -35,8 +35,8 @@ test('KTV follows playback, retains loop target, and restores follow after manua
   s.get('loopCue').checked=true;s.get('loopCue').onchange();
   marks[4].onclick();assert.equal(p.time,song.chant.cues[4].start-3);
   p.time=song.chant.cues[4].end;s.tick();assert.equal(p.time,song.chant.cues[4].start-3);
-  s.get('ktvList').onwheel();assert.equal(s.get('ktvFollow').textContent,'回到目前句');
-  s.get('ktvFollow').onclick();assert.equal(s.get('ktvFollow').textContent,'自動跟隨：開');
+  s.get('ktvList').onwheel();
+  rows[3].onclick({detail:0});assert.equal(p.time,cue.start-3);
 
 });
 test('KTV clears old cues on song changes and disables seeking after player failure',async()=>{
